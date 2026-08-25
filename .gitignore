@@ -1,0 +1,30 @@
+# Python 缓存与测试缓存
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 虚拟环境与本地配置
+.venv/
+venv/
+.env
+.env.*
+
+# 模型权重与训练检查点
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.gguf
+checkpoints/
+runs/
+
+# 构建与系统文件
+build/
+dist/
+*.egg-info/
+.DS_Store
+*.tmp
+*.swp

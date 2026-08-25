@@ -1,0 +1,11 @@
+{
+  "evidence_shuffle_reduces_action_accuracy": true,
+  "fake_replication_rejected": true,
+  "hidden_evidence_has_no_preference_reversal": true,
+  "insufficient_not_called_refuted": true,
+  "invalid_high_surface_score_blocked": true,
+  "pass": true,
+  "reliable_negative_is_refuted_and_confirmed": true,
+  "surface_novelty_not_rewarded": true,
+  "world_filename_randomization_invariant": true
+}

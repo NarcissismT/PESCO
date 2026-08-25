@@ -1,0 +1,18 @@
+environment:
+  name: tier0_hidden_paired_world
+  question_id: rq_tier0_001
+  worlds: [supported, refuted, insufficient, invalid]
+  candidate_actions:
+    - continue_current_method
+    - add_samples_or_seeds
+    - repair_data_split
+    - switch_to_alternative_method
+  exploration_seed_count: 4
+  confirmation_seed_count: 4
+  budget: 6
+  hidden_fields:
+    - world_id
+    - latent_effect
+    - verifier_label
+    - confirmation_result
+    - final_test_split

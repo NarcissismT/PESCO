@@ -1,0 +1,32 @@
+{
+  "records": [
+    {
+      "candidate_options": [
+        "continue_current_method",
+        "switch_to_alternative_method"
+      ],
+      "double_difference": 1.7999999999999998,
+      "estimated_values": {
+        "world_01": {
+          "continue_current_method": 0.8999999999999999,
+          "switch_to_alternative_method": 0.0
+        },
+        "world_02": {
+          "continue_current_method": -0.8999999999999999,
+          "switch_to_alternative_method": 0.0
+        }
+      },
+      "paired_confidence": {
+        "confirmed_reversal": true,
+        "delta_a_lcb": 0.8999999999999999,
+        "delta_b_ucb": -0.8999999999999999
+      },
+      "paired_worlds": [
+        "world_01",
+        "world_02"
+      ],
+      "question_id": "rq_tier0_001",
+      "world_ids_visible_to_policy": false
+    }
+  ]
+}

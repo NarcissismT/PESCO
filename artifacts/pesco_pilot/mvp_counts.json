@@ -1,0 +1,18 @@
+{
+  "action_count": 4,
+  "branch_groups": 16,
+  "branch_vector_executions": 16,
+  "confirmation_eligible_branch_groups": 12,
+  "confirmation_experiments": 48,
+  "confirmation_is_held_out": true,
+  "confirmation_scope": "decisive_supported_or_refuted_branches_only",
+  "confirmation_seed_count": 4,
+  "exploration_environment_calls_total": 80,
+  "exploration_experiments": 64,
+  "exploration_seed_count": 4,
+  "exploration_seed_observations": 64,
+  "required_branch_groups_16": true,
+  "required_exploration_experiments_64": true,
+  "single_seed_audit_reruns": 64,
+  "world_count": 4
+}

@@ -1,0 +1,16 @@
+{
+  "all_worlds_execute": true,
+  "branch_group_count_16": true,
+  "confirmed_reversal": true,
+  "cpu_reference_loop_authorized": true,
+  "exploration_experiments_64": true,
+  "insufficient_not_refuted": true,
+  "invalid_world_detected": true,
+  "negative_controls_pass": true,
+  "no_world_identifier_leakage": true,
+  "pass": true,
+  "reproducible_branches": true,
+  "scientific_verifier_independent": true,
+  "supported_refuted_distinguishable": true,
+  "tier2_llm_training_authorized": false
+}

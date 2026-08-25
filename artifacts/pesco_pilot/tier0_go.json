@@ -1,0 +1,12 @@
+{
+  "all_four_evidence_states_reachable": true,
+  "base_action_accuracy": 0.25,
+  "confirmed_preference_reversals_exist": true,
+  "evidence_blind_policy_underperforms_oracle": true,
+  "insufficient_to_resolved_transition_supported": true,
+  "invalid_to_valid_transition_supported": true,
+  "optimal_action_computable": true,
+  "oracle_action_accuracy": 1.0,
+  "pass": true,
+  "world_generation_reproducible": true
+}

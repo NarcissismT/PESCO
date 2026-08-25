@@ -1,0 +1,7 @@
+{
+  "schema_version": "pesco_questions_v0_2",
+  "question_ids": ["rq_tier0_001"],
+  "question_family": "group_generalization",
+  "description": "Determine whether method A improves group-held-out performance.",
+  "world_id_visible_to_agent": false
+}

@@ -1,0 +1,24 @@
+suite_name: pesco_cpu_reference_matched_suite
+implementation_status: adapter_reference_not_external_reimplementation
+shared:
+  environment: tier0_hidden_paired_world
+  verifier: trusted_verifier_v1
+  exploration_seeds: [17, 29, 41, 53]
+  confirmation_seeds: [103, 107, 109, 113]
+  executor: frozen_tier0_executor
+  final_splits_accessible: false
+methods:
+  - Base
+  - SFT
+  - GRPO-Terminal
+  - GRPO-FourState
+  - GDPO
+  - SMOPD
+  - Evidence-Gated SMOPD
+  - DiscoPO
+  - Ecpo
+  - TCPO
+  - CVT-RL
+  - Search-Only
+  - PESCO-Offline
+  - PESCO-Full

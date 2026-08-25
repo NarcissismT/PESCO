@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pesco-results-v0.1",
+  "title": "PESCO executable result records",
+  "description": "Minimal interchange contract for metrics and visualization. Extra fields are allowed for audit events.",
+  "type": "object",
+  "properties": {
+    "schema_version": {"type": "string"},
+    "records": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "required": ["records"],
+  "additionalProperties": true,
+  "$defs": {
+    "record": {
+      "type": "object",
+      "required": ["method", "question_id", "true_state", "predicted_state"],
+      "properties": {
+        "method": {"type": "string"},
+        "split": {"type": "string"},
+        "question_id": {"type": "string"},
+        "world_id": {"type": "string"},
+        "world_pair_id": {"type": "string"},
+        "snapshot_id": {"type": "string"},
+        "branch_id": {"type": "string"},
+        "seed": {"type": "integer"},
+        "true_state": {"enum": ["Supported", "Refuted", "Insufficient", "Invalid"]},
+        "predicted_state": {"enum": ["Supported", "Refuted", "Insufficient", "Invalid"]},
+        "selected_action": {"type": "string"},
+        "valid_claim": {"type": "boolean"},
+        "belief_score": {"type": "number"},
+        "task_utility": {"type": "number"},
+        "replication_utility": {"type": "number"},
+        "discovery_utility": {"type": "number"},
+        "cost": {"type": "number"},
+        "switch": {"type": "boolean"},
+        "switch_beneficial": {"type": "boolean"},
+        "independent_confirmed": {"type": "boolean"},
+        "new_path_verified": {"type": "boolean"},
+        "turn": {"type": "number"},
+        "utility": {"type": "number"}
+      },
+      "additionalProperties": true
+    }
+  }
+}
+

@@ -1,0 +1,40 @@
+schema_version: pesco_ablations_v0.2
+formal_results_authorized: false
+reason: final ID/OOD and promotion splits remain reserved in the CPU pilot
+ablations:
+  - name: No-PairedWorld
+    removed_mechanism: paired_world_training
+    primary_metrics: [flip_accuracy, vrs]
+  - name: No-FlipLoss
+    removed_mechanism: preference_reversal_loss
+    primary_metrics: [flip_accuracy, effective_switch_rate]
+  - name: No-Branch
+    removed_mechanism: same_state_real_branches
+    primary_metrics: [research_regret, invalid_repair_rate]
+  - name: No-ProperScore
+    removed_mechanism: proper_log_score
+    primary_metrics: [refutation_acceptance, invalid_claim_rate]
+  - name: No-ValidityGate
+    removed_mechanism: validity_hard_gate
+    primary_metrics: [invalid_claim_rate, fdr]
+  - name: No-Replication
+    removed_mechanism: independent_confirmation
+    primary_metrics: [fdr, replication_rate]
+  - name: No-NoveltyCertificate
+    removed_mechanism: novelty_certificate
+    primary_metrics: [vnpr, fdr]
+  - name: No-StrategyMask
+    removed_mechanism: strategy_token_mask
+    primary_metrics: [vrs, cost]
+  - name: No-CostPenalty
+    removed_mechanism: cost_penalty
+    primary_metrics: [cost, vrs]
+  - name: No-FactorizedEvidence
+    removed_mechanism: factorized_evidence_state
+    primary_metrics: [state_macro_f1, invalid_repair_rate]
+  - name: StaticTeacherMix
+    removed_mechanism: dynamic_teacher_conditioning
+    primary_metrics: [flip_accuracy, vrs]
+  - name: StateGateOnly
+    removed_mechanism: branch_value_learning
+    primary_metrics: [research_regret, effective_switch_rate]

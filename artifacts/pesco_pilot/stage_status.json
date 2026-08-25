@@ -1,0 +1,84 @@
+{
+  "stage_0_freeze": {
+    "evidence": {
+      "contamination_audit_pass": true,
+      "final_split_is_inaccessible": true,
+      "pass": true,
+      "protocol_digest": "sha256:883bd108e435bdb3734fe2b4536edcb384f429963d1a4379a89cd41848ffc314",
+      "protocol_digest_bound": true,
+      "question_manifest_digest": "sha256:70eb6d12d01801d61f4e1b932a8ceb8b39f5211b782b63ff222cb923de0a81b7",
+      "question_manifest_digest_bound": true,
+      "question_manifest_is_sealed": true,
+      "resource_budget_defined": true,
+      "verifier_digest": "sha256:4367c3574b77276978733dff3a56c21132c2a635197ffc18ae456c7f2ada0ad4",
+      "verifier_digest_bound": true,
+      "verifier_immutable": true,
+      "world_id_hidden": true,
+      "world_manifest_digest": "sha256:01c132010ca6b2a4720024d3ca4ee0fddec7e62d5da9c790093c0bc5c40303ca",
+      "world_manifest_digest_bound": true
+    },
+    "stage": "stage_0_freeze",
+    "status": "GO"
+  },
+  "stage_1_tier0": {
+    "evidence": {
+      "all_four_evidence_states_reachable": true,
+      "base_action_accuracy": 0.25,
+      "confirmed_preference_reversals_exist": true,
+      "evidence_blind_policy_underperforms_oracle": true,
+      "insufficient_to_resolved_transition_supported": true,
+      "invalid_to_valid_transition_supported": true,
+      "optimal_action_computable": true,
+      "oracle_action_accuracy": 1.0,
+      "pass": true,
+      "world_generation_reproducible": true
+    },
+    "stage": "stage_1_tier0",
+    "status": "GO"
+  },
+  "stage_2_verifier": {
+    "evidence": {
+      "negative_controls": {
+        "evidence_shuffle_reduces_action_accuracy": true,
+        "fake_replication_rejected": true,
+        "hidden_evidence_has_no_preference_reversal": true,
+        "insufficient_not_called_refuted": true,
+        "invalid_high_surface_score_blocked": true,
+        "pass": true,
+        "reliable_negative_is_refuted_and_confirmed": true,
+        "surface_novelty_not_rewarded": true,
+        "world_filename_randomization_invariant": true
+      },
+      "pass": true
+    },
+    "stage": "stage_2_verifier",
+    "status": "GO"
+  },
+  "stage_3_zero_shot": {
+    "evidence": {
+      "pass": true,
+      "status": "diagnostic_only"
+    },
+    "stage": "stage_3_zero_shot",
+    "status": "GO"
+  },
+  "stage_4_offline": {
+    "evidence": {
+      "pass": true
+    },
+    "stage": "stage_4_offline",
+    "status": "GO"
+  },
+  "stage_5_online": {
+    "evidence": {
+      "pass": false,
+      "reason": "Tier-2 online LLM RL not authorised in CPU pilot"
+    },
+    "stage": "stage_5_online",
+    "status": "NO-GO"
+  },
+  "tier2_scientific_hard_gate": {
+    "reason": "no frozen model/executor bundle and no final ID/OOD access",
+    "status": "NO-GO"
+  }
+}

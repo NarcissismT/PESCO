@@ -1,0 +1,11 @@
+{
+  "schema_version": "pesco_worlds_v0_2",
+  "world_count": 4,
+  "world_ids_hidden_from_agent": true,
+  "worlds": [
+    {"kind": "supported", "initial_samples": 120, "leakage": false},
+    {"kind": "refuted", "initial_samples": 120, "leakage": false},
+    {"kind": "insufficient", "initial_samples": 18, "leakage": false},
+    {"kind": "invalid", "initial_samples": 120, "leakage": true}
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "diagnostic_only": true,
+  "negative_controls": {
+    "confounding_invalid_before_repair": true,
+    "leakage_invalid_before_repair": true,
+    "repair_restores_validity": true
+  },
+  "rows": [
+    {
+      "action": "continue_current_method",
+      "confirmation_passed": true,
+      "evidence_state": "supported",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.08912763131687346,
+      "validity_pass": true,
+      "world_id": "tier1_supported",
+      "world_kind": "supported"
+    },
+    {
+      "action": "add_samples_or_seeds",
+      "confirmation_passed": true,
+      "evidence_state": "supported",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.09728190782921836,
+      "validity_pass": true,
+      "world_id": "tier1_supported",
+      "world_kind": "supported"
+    },
+    {
+      "action": "repair_data_split",
+      "confirmation_passed": true,
+      "evidence_state": "supported",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.08912763131687346,
+      "validity_pass": true,
+      "world_id": "tier1_supported",
+      "world_kind": "supported"
+    },
+    {
+      "action": "switch_to_alternative_method",
+      "confirmation_passed": false,
+      "evidence_state": "refuted",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.014127631316873468,
+      "validity_pass": true,
+      "world_id": "tier1_supported",
+      "world_kind": "supported"
+    },
+    {
+      "action": "continue_current_method",
+      "confirmation_passed": false,
+      "evidence_state": "invalid",
+      "repair_or_sample_transition": false,
+      "surface_effect": -0.010872368683126531,
+      "validity_pass": false,
+      "world_id": "tier1_confounded",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "add_samples_or_seeds",
+      "confirmation_passed": false,
+      "evidence_state": "invalid",
+      "repair_or_sample_transition": false,
+      "surface_effect": -0.002718092170781633,
+      "validity_pass": false,
+      "world_id": "tier1_confounded",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "repair_data_split",
+      "confirmation_passed": true,
+      "evidence_state": "refuted",
+      "repair_or_sample_transition": false,
+      "surface_effect": -0.010872368683126531,
+      "validity_pass": true,
+      "world_id": "tier1_confounded",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "switch_to_alternative_method",
+      "confirmation_passed": false,
+      "evidence_state": "invalid",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.07912763131687346,
+      "validity_pass": false,
+      "world_id": "tier1_confounded",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "repair_data_split",
+      "confirmation_passed": true,
+      "evidence_state": "refuted",
+      "repair_or_sample_transition": true,
+      "surface_effect": -0.010872368683126531,
+      "validity_pass": true,
+      "world_id": "tier1_confounded",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "continue_current_method",
+      "confirmation_passed": false,
+      "evidence_state": "invalid",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.1891276313168735,
+      "validity_pass": false,
+      "world_id": "tier1_leakage",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "add_samples_or_seeds",
+      "confirmation_passed": false,
+      "evidence_state": "invalid",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.19728190782921837,
+      "validity_pass": false,
+      "world_id": "tier1_leakage",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "repair_data_split",
+      "confirmation_passed": true,
+      "evidence_state": "refuted",
+      "repair_or_sample_transition": false,
+      "surface_effect": -0.010872368683126531,
+      "validity_pass": true,
+      "world_id": "tier1_leakage",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "switch_to_alternative_method",
+      "confirmation_passed": true,
+      "evidence_state": "supported",
+      "repair_or_sample_transition": false,
+      "surface_effect": 0.04912763131687346,
+      "validity_pass": true,
+      "world_id": "tier1_leakage",
+      "world_kind": "invalid"
+    },
+    {
+      "action": "repair_data_split",
+      "confirmation_passed": true,
+      "evidence_state": "refuted",
+      "repair_or_sample_transition": true,
+      "surface_effect": -0.010872368683126531,
+      "validity_pass": true,
+      "world_id": "tier1_leakage",
+      "world_kind": "invalid"
+    }
+  ],
+  "schema_version": "pesco_tier1_smoke_v0.1",
+  "tier2_claim": false
+}

@@ -1,0 +1,43 @@
+protocol_version: pesco_v0_2
+status: pilot_frozen_cpu_reference
+task:
+  objective: evidence_conditioned_research_strategy
+  question_manifest: PESCO/data/manifests/questions_v0_2.json
+  task_cutoff_date: "2026-08-25"
+  question_family: group_generalization
+worlds:
+  mechanism_manifest: PESCO/data/manifests/worlds_v0_2.json
+  expose_world_id_to_agent: false
+  expose_hidden_truth_to_agent: false
+  allow_runtime_world_mutation: false
+evidence:
+  minimum_meaningful_effect: 0.02
+  confidence_level: 0.95
+  invalid_precedence: true
+  allow_posthoc_power_as_refutation: false
+  require_hypothesis_registration: true
+verification:
+  evaluator_version: trusted_verifier_v1
+  immutable_evaluator: true
+  independent_confirmation_required: true
+  exploration_seeds: [17, 29, 41, 53]
+  confirmation_seeds: [103, 107, 109, 113]
+budget:
+  max_strategy_turns: 6
+  max_candidate_options_per_turn: 4
+  max_confirmation_attempts: 2
+  normalize_cost: true
+security:
+  network_policy: none
+  allow_evaluator_modification: false
+  allow_hidden_test_access: false
+  allow_target_paper_access: false
+splits:
+  train_manifest: PESCO/data/manifests/train_v0_2.json
+  dev_manifest: PESCO/data/manifests/dev_v0_2.json
+  promotion_manifest: PESCO/data/manifests/promotion_v0_2.json
+  final_id_manifest: PESCO/data/manifests/final_id_v0_2.json
+  final_ood_manifest: PESCO/data/manifests/final_ood_v0_2.json
+gates:
+  tier2_scientific_hard_gate: false
+  qlora_authorized: false

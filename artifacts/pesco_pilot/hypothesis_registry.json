@@ -1,0 +1,72 @@
+{
+  "beliefs": {
+    "h_rq_tier0_001": [
+      {
+        "event_index": 0,
+        "event_type": "belief_committed",
+        "previous_event_hash": "genesis",
+        "probability": 0.5,
+        "record_hash": "sha256:bc9a8419df239730bb7925cf21ec30e906d7dac1024b6867e9719561b52946ea",
+        "source": "pre_registered_prior",
+        "timestamp": "2026-08-25T00:00:00+00:00",
+        "turn": 0
+      }
+    ]
+  },
+  "confirmation_protocol_frozen": [
+    "h_rq_tier0_001"
+  ],
+  "evidence": {
+    "h_rq_tier0_001": [
+      {
+        "branch_groups": 16,
+        "confirmed_reversal": true,
+        "event_index": 1,
+        "event_type": "evidence_appended",
+        "evidence_type": "tier0_mvp_completed",
+        "exploration_experiments": 64,
+        "mvp_gate_pass": true,
+        "previous_event_hash": "sha256:bc9a8419df239730bb7925cf21ec30e906d7dac1024b6867e9719561b52946ea",
+        "record_hash": "sha256:830b89c2beae2d3af6c02fcd14af584a197b9a5c1ebc19693f7fc0ab9411fb4b"
+      }
+    ]
+  },
+  "hash_chain_valid": true,
+  "hash_chains": {
+    "h_rq_tier0_001": [
+      {
+        "event_index": 0,
+        "event_type": "belief_committed",
+        "previous_event_hash": "genesis",
+        "probability": 0.5,
+        "record_hash": "sha256:bc9a8419df239730bb7925cf21ec30e906d7dac1024b6867e9719561b52946ea",
+        "source": "pre_registered_prior",
+        "timestamp": "2026-08-25T00:00:00+00:00",
+        "turn": 0
+      },
+      {
+        "branch_groups": 16,
+        "confirmed_reversal": true,
+        "event_index": 1,
+        "event_type": "evidence_appended",
+        "evidence_type": "tier0_mvp_completed",
+        "exploration_experiments": 64,
+        "mvp_gate_pass": true,
+        "previous_event_hash": "sha256:bc9a8419df239730bb7925cf21ec30e906d7dac1024b6867e9719561b52946ea",
+        "record_hash": "sha256:830b89c2beae2d3af6c02fcd14af584a197b9a5c1ebc19693f7fc0ab9411fb4b"
+      }
+    ]
+  },
+  "hypotheses": {
+    "h_rq_tier0_001": {
+      "claim": "method A has a positive group-held-out effect",
+      "delta_min": 0.02,
+      "estimand": "group_held_out_accuracy_delta",
+      "hypothesis_id": "h_rq_tier0_001",
+      "protocol_version": "pesco_v0_1",
+      "question_id": "rq_tier0_001",
+      "registered_before_confirmation": true,
+      "timestamp": "2026-08-25T00:00:00+00:00"
+    }
+  }
+}

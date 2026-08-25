@@ -1,0 +1,48 @@
+{
+  "epochs": [
+    {
+      "epoch": 0.0,
+      "mean_advantage": 3.122502256758253e-17,
+      "reversal_count": 1.0,
+      "reversal_loss": 0.4065263919245601
+    },
+    {
+      "epoch": 1.0,
+      "mean_advantage": 2.0816681711721685e-17,
+      "reversal_count": 1.0,
+      "reversal_loss": 0.2244377179624595
+    },
+    {
+      "epoch": 2.0,
+      "mean_advantage": 2.0816681711721685e-17,
+      "reversal_count": 1.0,
+      "reversal_loss": 0.11888128171912207
+    }
+  ],
+  "reversal_pairs": [
+    {
+      "epoch": 0,
+      "world_a": "world_01",
+      "world_b": "world_02",
+      "delta_a": 1.0,
+      "delta_b": -0.9,
+      "confirmed": true
+    },
+    {
+      "epoch": 1,
+      "world_a": "world_01",
+      "world_b": "world_02",
+      "delta_a": 1.0,
+      "delta_b": -0.9,
+      "confirmed": true
+    },
+    {
+      "epoch": 2,
+      "world_a": "world_01",
+      "world_b": "world_02",
+      "delta_a": 1.0,
+      "delta_b": -0.9,
+      "confirmed": true
+    }
+  ]
+}

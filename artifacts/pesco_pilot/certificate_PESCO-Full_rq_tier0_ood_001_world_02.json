@@ -1,0 +1,13 @@
+{
+  "actually_executed": true,
+  "autonomous": true,
+  "certificate_pass": true,
+  "independently_confirmed": true,
+  "lower_confidence_gain": 0.1,
+  "method_family": "alternative_method_family",
+  "proposal_source": "policy_on_policy",
+  "proposed_without_method_hint": true,
+  "reason": "passed",
+  "structurally_distinct": true,
+  "valid_experiment": true
+}

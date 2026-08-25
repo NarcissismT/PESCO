@@ -1,0 +1,19 @@
+{
+  "title": "PESCO experimental report",
+  "bootstrap_draws": 300,
+  "bootstrap_seed": 17,
+  "figure_formats": [
+    "png",
+    "svg"
+  ],
+  "vrs_weights": {
+    "alpha": 1.0,
+    "beta": 1.0,
+    "gamma": 1.0,
+    "eta": 1.0,
+    "lambda": 0.1
+  },
+  "record_count": 64,
+  "source": "PESCO/artifacts/tier0_report/tier0_results.json",
+  "input_mode": "tier0"
+}

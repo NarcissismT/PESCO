@@ -1,0 +1,75 @@
+{
+  "methods": [
+    {
+      "implementation_status": "fixed_policy_reference",
+      "name": "Base"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "SFT"
+    },
+    {
+      "implementation_status": "fixed_policy_reference",
+      "name": "GRPO-Terminal"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "GRPO-FourState"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "GDPO"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "SMOPD"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "Evidence-Gated SMOPD"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "DiscoPO"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "Ecpo"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "TCPO"
+    },
+    {
+      "implementation_status": "reference_cpu_adapter",
+      "name": "CVT-RL"
+    },
+    {
+      "implementation_status": "oracle_search_diagnostic",
+      "name": "Search-Only"
+    },
+    {
+      "implementation_status": "tabular_pesco_reference",
+      "name": "PESCO-Offline"
+    },
+    {
+      "implementation_status": "tabular_pesco_reference",
+      "name": "PESCO-Full"
+    }
+  ],
+  "protocol_version": "pesco_v0_1",
+  "shared_confirmation_seeds": [
+    103,
+    107,
+    109,
+    113
+  ],
+  "shared_environment": "Tier0ResearchEnvironment",
+  "shared_exploration_seeds": [
+    17,
+    29,
+    41,
+    53
+  ],
+  "shared_verifier": "TrustedVerifier"
+}

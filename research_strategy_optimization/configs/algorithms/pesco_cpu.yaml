@@ -1,0 +1,26 @@
+algorithm:
+  name: pesco_cpu_reference
+  horizon:
+    max_high_level_turns: 6
+    branch_continuation_depth: 1
+    finite_horizon_discount: 1.0
+  branching:
+    options_per_critical_state: 4
+    exploration_seeds: [17, 29, 41, 53]
+    independent_confirmation_seeds: [103, 107, 109, 113]
+    use_common_random_numbers: true
+  advantages:
+    estimator: leave_one_out
+    detach_baseline: true
+    reversal_margin: 0.05
+  objective:
+    option_clip_epsilon: 0.2
+    state_loss_weight: 0.2
+    reversal_loss_weight: 0.5
+    reference_kl_weight: 0.02
+    normalized_cost_weight: 0.05
+  evidence:
+    probability_clip: 0.001
+    invalid_claim_hard_gate: true
+    independent_confirmation_required: true
+    reward_supported_and_refuted_symmetrically: true

@@ -1,0 +1,11 @@
+method,true_state,predicted_state,count
+Tier0-BranchRollout,Insufficient,Insufficient,10
+Tier0-BranchRollout,Insufficient,Refuted,2
+Tier0-BranchRollout,Insufficient,Supported,4
+Tier0-BranchRollout,Invalid,Invalid,8
+Tier0-BranchRollout,Invalid,Refuted,4
+Tier0-BranchRollout,Invalid,Supported,4
+Tier0-BranchRollout,Refuted,Refuted,12
+Tier0-BranchRollout,Refuted,Supported,4
+Tier0-BranchRollout,Supported,Refuted,3
+Tier0-BranchRollout,Supported,Supported,13

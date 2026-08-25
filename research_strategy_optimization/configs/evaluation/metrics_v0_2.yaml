@@ -1,0 +1,12 @@
+primary_metric: vrs
+vrs_weights:
+  alpha_belief: 1.0
+  beta_task: 1.0
+  gamma_replication: 1.0
+  eta_discovery: 1.0
+  lambda_cost: 0.1
+statistics:
+  independent_unit: question_id
+  bootstrap: clustered_by_question
+  confidence_level: 0.95
+  correction: Holm

@@ -1,0 +1,8 @@
+{
+  "cpu_reference_offline_training": true,
+  "pass": true,
+  "qlora": false,
+  "reason": "MVP gate authorises only the transparent tabular reference loop; the plan's Tier-2 scientific hard gate remains closed.",
+  "tier1_online_training": false,
+  "tier2_llm_rl": false
+}

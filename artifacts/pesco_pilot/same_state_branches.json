@@ -1,0 +1,576 @@
+{
+  "records": [
+    {
+      "advantage": 0.9633333333333334,
+      "branch_id": "branch_0000",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 1.044,
+      "evidence_state": "supported",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.944,
+        0.944,
+        0.944,
+        0.944
+      ],
+      "option": "continue_current_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 1.044,
+      "validity_pass": true,
+      "world_id": "world_01",
+      "world_kind": "supported"
+    },
+    {
+      "advantage": -0.3566666666666667,
+      "branch_id": "branch_0001",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.05400000000000002,
+      "evidence_state": "supported",
+      "execution_cost": 2.92,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        -0.045999999999999985,
+        -0.045999999999999985,
+        -0.045999999999999985,
+        -0.045999999999999985
+      ],
+      "option": "add_samples_or_seeds",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.05400000000000002,
+      "validity_pass": true,
+      "world_id": "world_01",
+      "world_kind": "supported"
+    },
+    {
+      "advantage": -0.23666666666666664,
+      "branch_id": "branch_0002",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.14400000000000002,
+      "evidence_state": "supported",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.044,
+        0.044,
+        0.044,
+        0.044
+      ],
+      "option": "repair_data_split",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.14400000000000002,
+      "validity_pass": true,
+      "world_id": "world_01",
+      "world_kind": "supported"
+    },
+    {
+      "advantage": -0.37,
+      "branch_id": "branch_0003",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": false,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.044,
+      "evidence_state": "refuted",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.044,
+        0.044,
+        0.044,
+        0.044
+      ],
+      "option": "switch_to_alternative_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.044,
+      "validity_pass": true,
+      "world_id": "world_01",
+      "world_kind": "supported"
+    },
+    {
+      "advantage": -0.26999999999999996,
+      "branch_id": "branch_0000",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.14400000000000002,
+      "evidence_state": "refuted",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.044,
+        0.044,
+        0.044,
+        0.044
+      ],
+      "option": "continue_current_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.14400000000000002,
+      "validity_pass": true,
+      "world_id": "world_02",
+      "world_kind": "refuted"
+    },
+    {
+      "advantage": -0.39,
+      "branch_id": "branch_0001",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.05400000000000002,
+      "evidence_state": "refuted",
+      "execution_cost": 2.92,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        -0.045999999999999985,
+        -0.045999999999999985,
+        -0.045999999999999985,
+        -0.045999999999999985
+      ],
+      "option": "add_samples_or_seeds",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.05400000000000002,
+      "validity_pass": true,
+      "world_id": "world_02",
+      "world_kind": "refuted"
+    },
+    {
+      "advantage": -0.26999999999999996,
+      "branch_id": "branch_0002",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.14400000000000002,
+      "evidence_state": "refuted",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.044,
+        0.044,
+        0.044,
+        0.044
+      ],
+      "option": "repair_data_split",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.14400000000000002,
+      "validity_pass": true,
+      "world_id": "world_02",
+      "world_kind": "refuted"
+    },
+    {
+      "advantage": 0.93,
+      "branch_id": "branch_0003",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 1.044,
+      "evidence_state": "supported",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.944,
+        0.944,
+        0.944,
+        0.944
+      ],
+      "option": "switch_to_alternative_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 1.044,
+      "validity_pass": true,
+      "world_id": "world_02",
+      "world_kind": "refuted"
+    },
+    {
+      "advantage": -0.3288333333333333,
+      "branch_id": "branch_0000",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": false,
+      "confirmation_seed_count": 0,
+      "confirmation_seeds": [],
+      "estimated_value": 0.049100000000000005,
+      "evidence_state": "insufficient",
+      "execution_cost": 1.018,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.049100000000000005,
+        0.049100000000000005,
+        0.049100000000000005,
+        0.049100000000000005
+      ],
+      "option": "continue_current_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.049100000000000005,
+      "validity_pass": true,
+      "world_id": "world_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "advantage": 0.9865000000000002,
+      "branch_id": "branch_0001",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 1.0356,
+      "evidence_state": "supported",
+      "execution_cost": 1.288,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.9356,
+        0.9356,
+        0.9356,
+        0.9356
+      ],
+      "option": "add_samples_or_seeds",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 1.0356,
+      "validity_pass": true,
+      "world_id": "world_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "advantage": -0.3288333333333333,
+      "branch_id": "branch_0002",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": false,
+      "confirmation_seed_count": 0,
+      "confirmation_seeds": [],
+      "estimated_value": 0.049100000000000005,
+      "evidence_state": "insufficient",
+      "execution_cost": 1.018,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.049100000000000005,
+        0.049100000000000005,
+        0.049100000000000005,
+        0.049100000000000005
+      ],
+      "option": "repair_data_split",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.049100000000000005,
+      "validity_pass": true,
+      "world_id": "world_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "advantage": -0.3288333333333333,
+      "branch_id": "branch_0003",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": false,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.049100000000000005,
+      "evidence_state": "refuted",
+      "execution_cost": 1.018,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.049100000000000005,
+        0.049100000000000005,
+        0.049100000000000005,
+        0.049100000000000005
+      ],
+      "option": "switch_to_alternative_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.049100000000000005,
+      "validity_pass": true,
+      "world_id": "world_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "advantage": -0.4033333333333333,
+      "branch_id": "branch_0000",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": false,
+      "confirmation_seed_count": 0,
+      "confirmation_seeds": [],
+      "estimated_value": -0.05600000000000001,
+      "evidence_state": "invalid",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        -0.05600000000000001,
+        -0.05600000000000001,
+        -0.05600000000000001,
+        -0.05600000000000001
+      ],
+      "option": "continue_current_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "source": "policy_side_hidden_from_agent",
+      "utility": -0.05600000000000001,
+      "validity_pass": false,
+      "world_id": "world_04",
+      "world_kind": "invalid"
+    },
+    {
+      "advantage": -0.5233333333333333,
+      "branch_id": "branch_0001",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": false,
+      "confirmation_seed_count": 0,
+      "confirmation_seeds": [],
+      "estimated_value": -0.146,
+      "evidence_state": "invalid",
+      "execution_cost": 2.92,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        -0.146,
+        -0.146,
+        -0.146,
+        -0.146
+      ],
+      "option": "add_samples_or_seeds",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "source": "policy_side_hidden_from_agent",
+      "utility": -0.146,
+      "validity_pass": false,
+      "world_id": "world_04",
+      "world_kind": "invalid"
+    },
+    {
+      "advantage": 1.0633333333333335,
+      "branch_id": "branch_0002",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 1.044,
+      "evidence_state": "refuted",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.944,
+        0.944,
+        0.944,
+        0.944
+      ],
+      "option": "repair_data_split",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 1.044,
+      "validity_pass": true,
+      "world_id": "world_04",
+      "world_kind": "invalid"
+    },
+    {
+      "advantage": -0.13666666666666666,
+      "branch_id": "branch_0003",
+      "common_random_numbers": [
+        17,
+        29,
+        41,
+        53
+      ],
+      "confirmation_passed": true,
+      "confirmation_seed_count": 4,
+      "confirmation_seeds": [
+        103,
+        107,
+        109,
+        113
+      ],
+      "estimated_value": 0.14400000000000002,
+      "evidence_state": "supported",
+      "execution_cost": 1.12,
+      "exploration_seed_count": 4,
+      "exploration_seed_values": [
+        0.044,
+        0.044,
+        0.044,
+        0.044
+      ],
+      "option": "switch_to_alternative_method",
+      "question_id": "rq_tier0_001",
+      "record_type": "same_state_branch",
+      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "source": "policy_side_hidden_from_agent",
+      "utility": 0.14400000000000002,
+      "validity_pass": true,
+      "world_id": "world_04",
+      "world_kind": "invalid"
+    }
+  ]
+}

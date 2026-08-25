@@ -1,0 +1,115 @@
+{
+  "ablations": [
+    {
+      "name": "No-PairedWorld",
+      "primary_metrics": [
+        "flip_accuracy",
+        "vrs"
+      ],
+      "removed_mechanism": "paired_world_training",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-FlipLoss",
+      "primary_metrics": [
+        "flip_accuracy",
+        "effective_switch_rate"
+      ],
+      "removed_mechanism": "preference_reversal_loss",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-Branch",
+      "primary_metrics": [
+        "research_regret",
+        "invalid_repair_rate"
+      ],
+      "removed_mechanism": "same_state_real_branches",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-ProperScore",
+      "primary_metrics": [
+        "refutation_acceptance",
+        "invalid_claim_rate"
+      ],
+      "removed_mechanism": "proper_log_score",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-ValidityGate",
+      "primary_metrics": [
+        "invalid_claim_rate",
+        "fdr"
+      ],
+      "removed_mechanism": "validity_hard_gate",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-Replication",
+      "primary_metrics": [
+        "fdr",
+        "replication_rate"
+      ],
+      "removed_mechanism": "independent_confirmation",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-NoveltyCertificate",
+      "primary_metrics": [
+        "vnpr",
+        "fdr"
+      ],
+      "removed_mechanism": "novelty_certificate",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-StrategyMask",
+      "primary_metrics": [
+        "vrs",
+        "cost"
+      ],
+      "removed_mechanism": "strategy_token_mask",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-CostPenalty",
+      "primary_metrics": [
+        "cost",
+        "vrs"
+      ],
+      "removed_mechanism": "cost_penalty",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "No-FactorizedEvidence",
+      "primary_metrics": [
+        "state_macro_f1",
+        "invalid_repair_rate"
+      ],
+      "removed_mechanism": "factorized_evidence_state",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "StaticTeacherMix",
+      "primary_metrics": [
+        "flip_accuracy",
+        "vrs"
+      ],
+      "removed_mechanism": "dynamic_teacher_conditioning",
+      "status": "registered_not_run_on_final_splits"
+    },
+    {
+      "name": "StateGateOnly",
+      "primary_metrics": [
+        "research_regret",
+        "effective_switch_rate"
+      ],
+      "removed_mechanism": "branch_value_learning",
+      "status": "registered_not_run_on_final_splits"
+    }
+  ],
+  "formal_results_authorized": false,
+  "reason": "final ID/OOD and promotion splits remain reserved in the CPU pilot",
+  "schema_version": "pesco_ablations_v0.2"
+}

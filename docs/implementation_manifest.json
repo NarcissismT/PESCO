@@ -1,0 +1,30 @@
+{
+  "schema_version": "pesco_implementation_manifest_v0.2",
+  "source_plan": "PESCO_Research_Algorithm_and_Experimental_Plan_v1.md",
+  "cutoff_date": "2026-08-25",
+  "scope_note": "CPU/Tier-0 reference closure, Tier-1 smoke adapter, visualization, and fail-closed Tier-2 seam; no claim of completed LLM training or external-paper reproduction.",
+  "requirements": [
+    {"id": "R1", "plan_sections": ["6", "15", "20.3", "20.5", "20.6"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/evidence/hypothesis_registry.py", "artifacts/pesco_pilot/freeze_check.json", "artifacts/pesco_pilot/hypothesis_registry.json", "artifacts/pesco_pilot/audit_ledger.jsonl"]},
+    {"id": "R2", "plan_sections": ["5", "6.3", "14.2", "14.3"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/evidence/evidence_classifier.py", "research_strategy_optimization/environments/tier0_simulator.py", "artifacts/pesco_pilot/negative_controls.json", "artifacts/tier1_smoke.json"]},
+    {"id": "R3", "plan_sections": ["9.1", "9.2", "9.7", "20.4"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/algorithms/branch_rollout.py", "research_strategy_optimization/environments/snapshot_manager.py", "artifacts/pesco_pilot/same_state_branches.json", "artifacts/pesco_pilot/mvp_counts.json"]},
+    {"id": "R4", "plan_sections": ["9.3", "9.4", "9.5", "12.3", "12.6"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/algorithms/leave_one_out_advantage.py", "research_strategy_optimization/algorithms/objectives.py", "artifacts/pesco_pilot/training_log_full.json"]},
+    {"id": "R5", "plan_sections": ["10", "10.4", "10.5"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/algorithms/paired_world_sampler.py", "research_strategy_optimization/algorithms/preference_reversal_loss.py", "artifacts/pesco_pilot/reversal_pairs.json"]},
+    {"id": "R6", "plan_sections": ["11"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/algorithms/discovery_certificate.py", "artifacts/pesco_pilot/negative_controls.json", "artifacts/pesco_pilot/certificate_PESCO-Full_rq_tier0_001_world_02.json"]},
+    {"id": "R7", "plan_sections": ["12.7", "12.8", "22.5", "22.6"], "status": "cpu_reference_go_tier2_no_go", "evidence": ["research_strategy_optimization/algorithms/pesco_trainer.py", "research_strategy_optimization/environments/tier2_posttraining_env.py", "artifacts/pesco_pilot/stage_status.json", "artifacts/pesco_pilot/training_authorization.json"]},
+    {"id": "R8", "plan_sections": ["16"], "status": "protocol_matched_adapters_only", "evidence": ["research_strategy_optimization/configs/baselines/matched_cpu_suite.yaml", "artifacts/pesco_pilot/baseline_manifest.json", "artifacts/pesco_pilot/results.json"]},
+    {"id": "R9", "plan_sections": ["17", "19"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/evaluation/", "visualization/", "artifacts/pesco_pilot/report/summary.json", "artifacts/pesco_pilot/report/report_metadata.json"]},
+    {"id": "R10", "plan_sections": ["18", "22.2", "22.3"], "status": "mvp_go", "evidence": ["artifacts/pesco_pilot/tier0_go.json", "artifacts/pesco_pilot/mvp_gate.json", "artifacts/pesco_pilot/negative_controls.json"]},
+    {"id": "R11", "plan_sections": ["18.1"], "status": "registered_with_cpu_switches", "evidence": ["research_strategy_optimization/evaluation/ablations.py", "research_strategy_optimization/configs/algorithms/ablations_v0_2.yaml", "artifacts/pesco_pilot/ablation_manifest.json"]},
+    {"id": "R12", "plan_sections": ["21", "22.7"], "status": "freeze_and_budget_templates_present_final_scientific_run_pending", "evidence": ["research_strategy_optimization/configs/", "artifacts/pesco_pilot/compute_ledger.json", "artifacts/pesco_pilot/freeze_check.json"]}
+  ],
+  "completion_boundary": {
+    "tier0_cpu_reference": true,
+    "tier1_smoke": true,
+    "tier2_llm_rl": false,
+    "qlora": false,
+    "final_id_evaluation": false,
+    "final_ood_evaluation": false,
+    "external_paper_reimplementations": false,
+    "reason": "requires user-provided frozen checkpoint/executor bundle, final split access, and scientific-hard-gate approval"
+  }
+}

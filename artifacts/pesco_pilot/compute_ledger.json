@@ -1,0 +1,18 @@
+{
+  "confirmation_runs": 100,
+  "cost_weights": {
+    "confirmation_runs": 0.01,
+    "cpu_hours": 1.0,
+    "environment_runs": 0.01,
+    "retries": 0.01,
+    "teacher_calls": 0.1,
+    "tokens": 1e-05
+  },
+  "cpu_hours": 0.0,
+  "environment_runs": 224,
+  "gpu_hours": 0.0,
+  "retries": 0,
+  "teacher_calls": 0,
+  "tokens": 0,
+  "total_cost": 3.24
+}

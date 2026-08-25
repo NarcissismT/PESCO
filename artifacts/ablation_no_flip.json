@@ -1,0 +1,47 @@
+{
+  "config": {
+    "branch_options": 4,
+    "branch_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "epochs": 2,
+    "option_learning_rate": 0.15,
+    "reversal_beta": 1.0,
+    "reversal_learning_rate": 0.25,
+    "use_branch_advantage": true,
+    "use_flip_loss": false,
+    "use_paired_world": true,
+    "use_validity_gate": true
+  },
+  "schema_version": "pesco_ablation_result_v0.1",
+  "spec": {
+    "name": "No-FlipLoss",
+    "primary_metrics": [
+      "flip_accuracy",
+      "effective_switch_rate"
+    ],
+    "removed_mechanism": "preference_reversal_loss",
+    "status": "registered_not_run_on_final_splits"
+  },
+  "status": "cpu_reference_ablation_executed",
+  "training_log": {
+    "epochs": [
+      {
+        "epoch": 0.0,
+        "mean_advantage": 3.122502256758253e-17,
+        "reversal_count": 0.0,
+        "reversal_loss": 0.0
+      },
+      {
+        "epoch": 1.0,
+        "mean_advantage": -2.0816681711721685e-17,
+        "reversal_count": 0.0,
+        "reversal_loss": 0.0
+      }
+    ],
+    "reversal_pairs": []
+  }
+}

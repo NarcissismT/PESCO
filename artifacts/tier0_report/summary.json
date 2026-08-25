@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "title": "PESCO experimental report",
+    "bootstrap_draws": 300,
+    "bootstrap_seed": 17,
+    "figure_formats": [
+      "png",
+      "svg"
+    ],
+    "vrs_weights": {
+      "alpha": 1.0,
+      "beta": 1.0,
+      "gamma": 1.0,
+      "eta": 1.0,
+      "lambda": 0.1
+    },
+    "record_count": 64,
+    "source": "PESCO/artifacts/tier0_report/tier0_results.json",
+    "input_mode": "tier0"
+  },
+  "summary": [
+    {
+      "method": "Tier0-BranchRollout",
+      "split": "pilot",
+      "n": 64,
+      "state_macro_f1": 0.6796731065023748,
+      "vrs": 1.276987500000001,
+      "flip_accuracy": null,
+      "effective_switch_rate": 0.0625,
+      "unnecessary_switch_rate": 0.1875,
+      "appropriate_persistence": 0.0625,
+      "refutation_acceptance": 0.1875,
+      "underpower_handling": 0.8125,
+      "invalid_repair_rate": 0.0625,
+      "invalid_claim_rate": 0.0625,
+      "vnpr": 0.0,
+      "replication_rate": 0.8695652173913043,
+      "fdr": null,
+      "fdr_n": 0,
+      "cost": 1.4488750000000008,
+      "utility": 0.41796875,
+      "vrs_n": 64,
+      "flip_accuracy_n": 0,
+      "effective_switch_rate_n": 64,
+      "unnecessary_switch_rate_n": 64,
+      "appropriate_persistence_n": 64,
+      "refutation_acceptance_n": 64,
+      "underpower_handling_n": 64,
+      "invalid_repair_rate_n": 64,
+      "invalid_claim_rate_n": 64,
+      "vnpr_n": 64,
+      "replication_rate_n": 46,
+      "cost_n": 64,
+      "utility_n": 64,
+      "vrs_ci_low": 1.276987500000001,
+      "vrs_ci_high": 1.276987500000001
+    }
+  ],
+  "overall": [
+    {
+      "method": "Tier0-BranchRollout",
+      "split": "all",
+      "n": 64,
+      "state_macro_f1": 0.6796731065023748,
+      "vrs": 1.276987500000001,
+      "flip_accuracy": null,
+      "effective_switch_rate": 0.0625,
+      "unnecessary_switch_rate": 0.1875,
+      "appropriate_persistence": 0.0625,
+      "refutation_acceptance": 0.1875,
+      "underpower_handling": 0.8125,
+      "invalid_repair_rate": 0.0625,
+      "invalid_claim_rate": 0.0625,
+      "vnpr": 0.0,
+      "replication_rate": 0.8695652173913043,
+      "fdr": null,
+      "fdr_n": 0,
+      "cost": 1.4488750000000008,
+      "utility": 0.41796875,
+      "vrs_n": 64,
+      "flip_accuracy_n": 0,
+      "effective_switch_rate_n": 64,
+      "unnecessary_switch_rate_n": 64,
+      "appropriate_persistence_n": 64,
+      "refutation_acceptance_n": 64,
+      "underpower_handling_n": 64,
+      "invalid_repair_rate_n": 64,
+      "invalid_claim_rate_n": 64,
+      "vnpr_n": 64,
+      "replication_rate_n": 46,
+      "cost_n": 64,
+      "utility_n": 64
+    }
+  ],
+  "confusion": [
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Insufficient",
+      "predicted_state": "Insufficient",
+      "count": 10
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Insufficient",
+      "predicted_state": "Refuted",
+      "count": 2
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Insufficient",
+      "predicted_state": "Supported",
+      "count": 4
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Invalid",
+      "predicted_state": "Invalid",
+      "count": 8
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Invalid",
+      "predicted_state": "Refuted",
+      "count": 4
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Invalid",
+      "predicted_state": "Supported",
+      "count": 4
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Refuted",
+      "predicted_state": "Refuted",
+      "count": 12
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Refuted",
+      "predicted_state": "Supported",
+      "count": 4
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Supported",
+      "predicted_state": "Refuted",
+      "count": 3
+    },
+    {
+      "method": "Tier0-BranchRollout",
+      "true_state": "Supported",
+      "predicted_state": "Supported",
+      "count": 13
+    }
+  ]
+}

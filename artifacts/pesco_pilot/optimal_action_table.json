@@ -1,0 +1,50 @@
+{
+  "all_worlds_have_optimal_action": true,
+  "estimand": "one_step_verified_branch_utility",
+  "worlds": {
+    "world_01": {
+      "action_values": {
+        "add_samples_or_seeds": 0.05400000000000002,
+        "continue_current_method": 1.044,
+        "repair_data_split": 0.14400000000000002,
+        "switch_to_alternative_method": 0.044
+      },
+      "best_action": "continue_current_method",
+      "best_value": 1.044,
+      "world_kind": "supported"
+    },
+    "world_02": {
+      "action_values": {
+        "add_samples_or_seeds": 0.05400000000000002,
+        "continue_current_method": 0.14400000000000002,
+        "repair_data_split": 0.14400000000000002,
+        "switch_to_alternative_method": 1.044
+      },
+      "best_action": "switch_to_alternative_method",
+      "best_value": 1.044,
+      "world_kind": "refuted"
+    },
+    "world_03": {
+      "action_values": {
+        "add_samples_or_seeds": 1.0356,
+        "continue_current_method": 0.049100000000000005,
+        "repair_data_split": 0.049100000000000005,
+        "switch_to_alternative_method": 0.049100000000000005
+      },
+      "best_action": "add_samples_or_seeds",
+      "best_value": 1.0356,
+      "world_kind": "insufficient"
+    },
+    "world_04": {
+      "action_values": {
+        "add_samples_or_seeds": -0.146,
+        "continue_current_method": -0.05600000000000001,
+        "repair_data_split": 1.044,
+        "switch_to_alternative_method": 0.14400000000000002
+      },
+      "best_action": "repair_data_split",
+      "best_value": 1.044,
+      "world_kind": "invalid"
+    }
+  }
+}
