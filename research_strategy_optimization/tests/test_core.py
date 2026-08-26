@@ -12,13 +12,15 @@ from research_strategy_optimization.algorithms.objectives import (
     clipped_option_loss,
     factorized_evidence_loss,
     masked_token_advantages,
+    objective_breakdown,
     pesco_objective,
 )
 from research_strategy_optimization.evidence.evidence_classifier import classify_evidence
 from research_strategy_optimization.evidence.proper_scoring import belief_delta, log_score
 from research_strategy_optimization.environments.tier0_simulator import Tier0ResearchEnvironment, TrustedVerifier, default_mvp_worlds
+from research_strategy_optimization.environments.tier1_tabular_env import Tier1TabularEnvironment
 from research_strategy_optimization.environments.tier2_posttraining_env import Tier2PostTrainingEnvironment
-from research_strategy_optimization.evaluation.final_decision import freeze_check, mvp_gate
+from research_strategy_optimization.evaluation.final_decision import freeze_check, mvp_gate, stage_status
 from research_strategy_optimization.evaluation.multiple_testing import benjamini_hochberg, holm_adjust
 from research_strategy_optimization.schemas import EvidenceState, Protocol, ResearchAction
 from research_strategy_optimization.utils.ledger import AuditLedger
@@ -79,6 +81,40 @@ class EnvironmentIsolationTests(unittest.TestCase):
         payload = public_trajectory(result.record.trajectory)
         self.assertNotIn("verdicts", payload)
         self.assertEqual(payload["world_id"], "hidden_from_agent")
+
+    def test_hypothesis_beliefs_remain_bound_after_method_switch(self):
+        env = Tier0ResearchEnvironment()
+        env.reset(world_id="world_02")
+        env.execute_option(ResearchAction.CONTINUE, seeds=(17, 29, 41, 53))
+        before = env.visible_observation()
+        self.assertEqual(before.active_hypothesis_id, "H_A")
+        self.assertIn("H_B", before.belief_map())
+        branch = env.clone_from_snapshot(env.snapshot())
+        branch.execute_option(ResearchAction.SWITCH, seeds=(17, 29, 41, 53))
+        after = branch.visible_observation()
+        self.assertEqual(after.active_hypothesis_id, "H_B")
+        self.assertNotEqual(before.belief_map()["H_A"], after.belief_map()["H_B"])
+        self.assertEqual(after.to_dict()["active_hypothesis_id"], "H_B")
+
+    def test_confirmation_uses_distinct_dataset_and_split_hashes(self):
+        env = Tier0ResearchEnvironment()
+        env.reset(world_id="world_01")
+        output = env.execute_option(ResearchAction.CONTINUE, seeds=(17, 29, 41, 53))
+        verdict = TrustedVerifier().evaluate(output, env)
+        self.assertTrue(verdict.independent_confirmation_performed)
+        self.assertTrue(verdict.confirmation_data_independent)
+        self.assertNotEqual(output.dataset_hash, verdict.confirmation_dataset_hash)
+        self.assertNotEqual(output.split_hash, verdict.confirmation_split_hash)
+
+    def test_tier1_clone_preserves_numpy_backend(self):
+        env = Tier1TabularEnvironment()
+        env.reset(world_id="world_01")
+        clone = env.clone_from_snapshot(env.snapshot())
+        self.assertIsInstance(clone, Tier1TabularEnvironment)
+        output = clone.execute_option(ResearchAction.CONTINUE, seeds=(17, 29, 41, 53))
+        self.assertEqual(output.backend, Tier1TabularEnvironment.BACKEND)
+        self.assertIn("tier1_numpy_backend", output.validity_signals)
+        self.assertNotEqual(output.code_hash, env._hash("code:method_a"))
 
 
 class GateAndLedgerTests(unittest.TestCase):
@@ -146,6 +182,34 @@ class ObjectiveAndStatisticsTests(unittest.TestCase):
         self.assertTrue(math.isfinite(state))
         total = pesco_objective(1.0, 2.0, 3.0, weights=ObjectiveWeights(flip=0.5, state=0.2))
         self.assertAlmostEqual(total, 2.6)
+        breakdown = objective_breakdown(1.0, 2.0, 3.0, weights=ObjectiveWeights(flip=0.5, state=0.2))
+        self.assertAlmostEqual(breakdown["flip_loss_weighted"], 1.0)
+        self.assertAlmostEqual(breakdown["total_loss"], total)
+
+    def test_protocol_version_freeze_and_stage_status_are_evidence_bound(self):
+        protocol = Protocol()
+        self.assertEqual(protocol.protocol_version, "pesco_v0_2")
+        self.assertTrue(freeze_check({
+            "question_manifest_sealed": True,
+            "final_split_inaccessible": True,
+            "world_id_hidden": True,
+            "verifier_immutable": True,
+            "contamination_audit_pass": True,
+            "resource_budget_defined": True,
+            "protocol_version": "pesco_v0_2",
+            "expected_protocol_version": "pesco_v0_2",
+        })["pass"])
+        self.assertFalse(freeze_check({
+            "question_manifest_sealed": True,
+            "final_split_inaccessible": True,
+            "world_id_hidden": True,
+            "verifier_immutable": True,
+            "contamination_audit_pass": True,
+            "resource_budget_defined": True,
+            "protocol_version": "pesco_v0_1",
+            "expected_protocol_version": "pesco_v0_2",
+        })["pass"])
+        self.assertEqual(stage_status("stage_3_zero_shot", {"pass": True, "diagnostic_only": True})["status"], "NO-GO")
 
     def test_multiple_testing_corrections_are_monotone_and_bounded(self):
         p = [0.001, 0.02, 0.5]

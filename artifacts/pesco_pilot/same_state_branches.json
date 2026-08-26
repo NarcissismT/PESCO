@@ -1,7 +1,7 @@
 {
   "records": [
     {
-      "advantage": 0.9633333333333334,
+      "advantage": -0.020000000000000018,
       "branch_id": "branch_0000",
       "common_random_numbers": [
         17,
@@ -17,7 +17,7 @@
         109,
         113
       ],
-      "estimated_value": 1.044,
+      "estimated_value": 0.34400000000000003,
       "evidence_state": "supported",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -30,15 +30,15 @@
       "option": "continue_current_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "snapshot_id": "sha256:d5d6c2d123354e39b391fc1bc118a726a59b94ef583c7eb88cd6413e1ace0b22",
       "source": "policy_side_hidden_from_agent",
-      "utility": 1.044,
+      "utility": 0.34400000000000003,
       "validity_pass": true,
       "world_id": "world_01",
       "world_kind": "supported"
     },
     {
-      "advantage": -0.3566666666666667,
+      "advantage": -0.14000000000000007,
       "branch_id": "branch_0001",
       "common_random_numbers": [
         17,
@@ -54,7 +54,7 @@
         109,
         113
       ],
-      "estimated_value": 0.05400000000000002,
+      "estimated_value": 0.254,
       "evidence_state": "supported",
       "execution_cost": 2.92,
       "exploration_seed_count": 4,
@@ -67,15 +67,15 @@
       "option": "add_samples_or_seeds",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "snapshot_id": "sha256:d5d6c2d123354e39b391fc1bc118a726a59b94ef583c7eb88cd6413e1ace0b22",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.05400000000000002,
+      "utility": 0.254,
       "validity_pass": true,
       "world_id": "world_01",
       "world_kind": "supported"
     },
     {
-      "advantage": -0.23666666666666664,
+      "advantage": 0.31333333333333324,
       "branch_id": "branch_0002",
       "common_random_numbers": [
         17,
@@ -91,7 +91,7 @@
         109,
         113
       ],
-      "estimated_value": 0.14400000000000002,
+      "estimated_value": 0.594,
       "evidence_state": "supported",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -104,15 +104,15 @@
       "option": "repair_data_split",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "snapshot_id": "sha256:d5d6c2d123354e39b391fc1bc118a726a59b94ef583c7eb88cd6413e1ace0b22",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.14400000000000002,
+      "utility": 0.594,
       "validity_pass": true,
       "world_id": "world_01",
       "world_kind": "supported"
     },
     {
-      "advantage": -0.37,
+      "advantage": -0.15333333333333332,
       "branch_id": "branch_0003",
       "common_random_numbers": [
         17,
@@ -128,7 +128,7 @@
         109,
         113
       ],
-      "estimated_value": 0.044,
+      "estimated_value": 0.24400000000000005,
       "evidence_state": "refuted",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -141,15 +141,15 @@
       "option": "switch_to_alternative_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:339079833de0419ec10945d6dec4619b454dd677308d0115176e189161c2119e",
+      "snapshot_id": "sha256:d5d6c2d123354e39b391fc1bc118a726a59b94ef583c7eb88cd6413e1ace0b22",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.044,
+      "utility": 0.24400000000000005,
       "validity_pass": true,
       "world_id": "world_01",
       "world_kind": "supported"
     },
     {
-      "advantage": -0.26999999999999996,
+      "advantage": -0.053333333333333344,
       "branch_id": "branch_0000",
       "common_random_numbers": [
         17,
@@ -165,7 +165,7 @@
         109,
         113
       ],
-      "estimated_value": 0.14400000000000002,
+      "estimated_value": 0.34400000000000003,
       "evidence_state": "refuted",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -178,15 +178,15 @@
       "option": "continue_current_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "snapshot_id": "sha256:4338c4980ce1dcfacb0b401d6b149473ce9d0b3f728306f151a06d8dd020b7e6",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.14400000000000002,
+      "utility": 0.34400000000000003,
       "validity_pass": true,
       "world_id": "world_02",
       "world_kind": "refuted"
     },
     {
-      "advantage": -0.39,
+      "advantage": -0.1733333333333334,
       "branch_id": "branch_0001",
       "common_random_numbers": [
         17,
@@ -202,7 +202,7 @@
         109,
         113
       ],
-      "estimated_value": 0.05400000000000002,
+      "estimated_value": 0.254,
       "evidence_state": "refuted",
       "execution_cost": 2.92,
       "exploration_seed_count": 4,
@@ -215,15 +215,15 @@
       "option": "add_samples_or_seeds",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "snapshot_id": "sha256:4338c4980ce1dcfacb0b401d6b149473ce9d0b3f728306f151a06d8dd020b7e6",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.05400000000000002,
+      "utility": 0.254,
       "validity_pass": true,
       "world_id": "world_02",
       "world_kind": "refuted"
     },
     {
-      "advantage": -0.26999999999999996,
+      "advantage": 0.27999999999999986,
       "branch_id": "branch_0002",
       "common_random_numbers": [
         17,
@@ -239,7 +239,7 @@
         109,
         113
       ],
-      "estimated_value": 0.14400000000000002,
+      "estimated_value": 0.594,
       "evidence_state": "refuted",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -252,15 +252,15 @@
       "option": "repair_data_split",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "snapshot_id": "sha256:4338c4980ce1dcfacb0b401d6b149473ce9d0b3f728306f151a06d8dd020b7e6",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.14400000000000002,
+      "utility": 0.594,
       "validity_pass": true,
       "world_id": "world_02",
       "world_kind": "refuted"
     },
     {
-      "advantage": 0.93,
+      "advantage": -0.053333333333333344,
       "branch_id": "branch_0003",
       "common_random_numbers": [
         17,
@@ -276,7 +276,7 @@
         109,
         113
       ],
-      "estimated_value": 1.044,
+      "estimated_value": 0.34400000000000003,
       "evidence_state": "supported",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -289,15 +289,15 @@
       "option": "switch_to_alternative_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:204f5fb764f15da03b5775a00a015f966c9c39a67c1609e99c293b6dccdbcd4b",
+      "snapshot_id": "sha256:4338c4980ce1dcfacb0b401d6b149473ce9d0b3f728306f151a06d8dd020b7e6",
       "source": "policy_side_hidden_from_agent",
-      "utility": 1.044,
+      "utility": 0.34400000000000003,
       "validity_pass": true,
       "world_id": "world_02",
       "world_kind": "refuted"
     },
     {
-      "advantage": -0.3288333333333333,
+      "advantage": -0.14550000000000002,
       "branch_id": "branch_0000",
       "common_random_numbers": [
         17,
@@ -308,7 +308,7 @@
       "confirmation_passed": false,
       "confirmation_seed_count": 0,
       "confirmation_seeds": [],
-      "estimated_value": 0.049100000000000005,
+      "estimated_value": 0.1491,
       "evidence_state": "insufficient",
       "execution_cost": 1.018,
       "exploration_seed_count": 4,
@@ -321,15 +321,15 @@
       "option": "continue_current_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "snapshot_id": "sha256:218ed60b4e7c4b1546dc63876be6c561056922466a34a5704a2e629b649a7b84",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.049100000000000005,
+      "utility": 0.1491,
       "validity_pass": true,
       "world_id": "world_03",
       "world_kind": "insufficient"
     },
     {
-      "advantage": 0.9865000000000002,
+      "advantage": 0.10316666666666663,
       "branch_id": "branch_0001",
       "common_random_numbers": [
         17,
@@ -345,7 +345,7 @@
         109,
         113
       ],
-      "estimated_value": 1.0356,
+      "estimated_value": 0.3356,
       "evidence_state": "supported",
       "execution_cost": 1.288,
       "exploration_seed_count": 4,
@@ -358,15 +358,15 @@
       "option": "add_samples_or_seeds",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "snapshot_id": "sha256:218ed60b4e7c4b1546dc63876be6c561056922466a34a5704a2e629b649a7b84",
       "source": "policy_side_hidden_from_agent",
-      "utility": 1.0356,
+      "utility": 0.3356,
       "validity_pass": true,
       "world_id": "world_03",
       "world_kind": "insufficient"
     },
     {
-      "advantage": -0.3288333333333333,
+      "advantage": 0.1878333333333333,
       "branch_id": "branch_0002",
       "common_random_numbers": [
         17,
@@ -377,7 +377,7 @@
       "confirmation_passed": false,
       "confirmation_seed_count": 0,
       "confirmation_seeds": [],
-      "estimated_value": 0.049100000000000005,
+      "estimated_value": 0.3991,
       "evidence_state": "insufficient",
       "execution_cost": 1.018,
       "exploration_seed_count": 4,
@@ -390,15 +390,15 @@
       "option": "repair_data_split",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "snapshot_id": "sha256:218ed60b4e7c4b1546dc63876be6c561056922466a34a5704a2e629b649a7b84",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.049100000000000005,
+      "utility": 0.3991,
       "validity_pass": true,
       "world_id": "world_03",
       "world_kind": "insufficient"
     },
     {
-      "advantage": -0.3288333333333333,
+      "advantage": -0.14550000000000002,
       "branch_id": "branch_0003",
       "common_random_numbers": [
         17,
@@ -414,7 +414,7 @@
         109,
         113
       ],
-      "estimated_value": 0.049100000000000005,
+      "estimated_value": 0.1491,
       "evidence_state": "refuted",
       "execution_cost": 1.018,
       "exploration_seed_count": 4,
@@ -427,15 +427,15 @@
       "option": "switch_to_alternative_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:378d5459064aaa3aa55ffecd9100e1e35465656689bbc7e6ea57740a06d6bc6e",
+      "snapshot_id": "sha256:218ed60b4e7c4b1546dc63876be6c561056922466a34a5704a2e629b649a7b84",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.049100000000000005,
+      "utility": 0.1491,
       "validity_pass": true,
       "world_id": "world_03",
       "world_kind": "insufficient"
     },
     {
-      "advantage": -0.4033333333333333,
+      "advantage": -0.52,
       "branch_id": "branch_0000",
       "common_random_numbers": [
         17,
@@ -446,7 +446,7 @@
       "confirmation_passed": false,
       "confirmation_seed_count": 0,
       "confirmation_seeds": [],
-      "estimated_value": -0.05600000000000001,
+      "estimated_value": -0.356,
       "evidence_state": "invalid",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -459,15 +459,15 @@
       "option": "continue_current_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "snapshot_id": "sha256:db755c15a571eb53938d7c4df6499f00569eb8fe49ae8cb00e6e844f034a9aac",
       "source": "policy_side_hidden_from_agent",
-      "utility": -0.05600000000000001,
+      "utility": -0.356,
       "validity_pass": false,
       "world_id": "world_04",
       "world_kind": "invalid"
     },
     {
-      "advantage": -0.5233333333333333,
+      "advantage": -0.64,
       "branch_id": "branch_0001",
       "common_random_numbers": [
         17,
@@ -478,7 +478,7 @@
       "confirmation_passed": false,
       "confirmation_seed_count": 0,
       "confirmation_seeds": [],
-      "estimated_value": -0.146,
+      "estimated_value": -0.44599999999999995,
       "evidence_state": "invalid",
       "execution_cost": 2.92,
       "exploration_seed_count": 4,
@@ -491,15 +491,15 @@
       "option": "add_samples_or_seeds",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "snapshot_id": "sha256:db755c15a571eb53938d7c4df6499f00569eb8fe49ae8cb00e6e844f034a9aac",
       "source": "policy_side_hidden_from_agent",
-      "utility": -0.146,
+      "utility": -0.44599999999999995,
       "validity_pass": false,
       "world_id": "world_04",
       "world_kind": "invalid"
     },
     {
-      "advantage": 1.0633333333333335,
+      "advantage": 0.7466666666666666,
       "branch_id": "branch_0002",
       "common_random_numbers": [
         17,
@@ -515,7 +515,7 @@
         109,
         113
       ],
-      "estimated_value": 1.044,
+      "estimated_value": 0.594,
       "evidence_state": "refuted",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -528,15 +528,15 @@
       "option": "repair_data_split",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "snapshot_id": "sha256:db755c15a571eb53938d7c4df6499f00569eb8fe49ae8cb00e6e844f034a9aac",
       "source": "policy_side_hidden_from_agent",
-      "utility": 1.044,
+      "utility": 0.594,
       "validity_pass": true,
       "world_id": "world_04",
       "world_kind": "invalid"
     },
     {
-      "advantage": -0.13666666666666666,
+      "advantage": 0.41333333333333333,
       "branch_id": "branch_0003",
       "common_random_numbers": [
         17,
@@ -552,7 +552,7 @@
         109,
         113
       ],
-      "estimated_value": 0.14400000000000002,
+      "estimated_value": 0.34400000000000003,
       "evidence_state": "supported",
       "execution_cost": 1.12,
       "exploration_seed_count": 4,
@@ -565,9 +565,9 @@
       "option": "switch_to_alternative_method",
       "question_id": "rq_tier0_001",
       "record_type": "same_state_branch",
-      "snapshot_id": "sha256:3c3512b119135cc7bb6d722d3d87eff4a20ee5ffbbf8c68f52a81299873edfbb",
+      "snapshot_id": "sha256:db755c15a571eb53938d7c4df6499f00569eb8fe49ae8cb00e6e844f034a9aac",
       "source": "policy_side_hidden_from_agent",
-      "utility": 0.14400000000000002,
+      "utility": 0.34400000000000003,
       "validity_pass": true,
       "world_id": "world_04",
       "world_kind": "invalid"

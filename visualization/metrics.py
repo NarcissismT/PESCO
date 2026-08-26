@@ -212,34 +212,110 @@ def _ratio(numerator: float, denominator: float) -> Optional[float]:
     return numerator / denominator if denominator else None
 
 
-def _metric_value(record: Mapping[str, Any], name: str, weights: Mapping[str, float]) -> Optional[float]:
-    """Compute one scalar metric at record level."""
-    if name == "vrs":
-        explicit = _as_float(_first(record, "vrs", "credible_scientific_value"))
+# These metrics are only defined on a scientifically relevant subset of rows.  A
+# previous version averaged their boolean values over *all* worlds, which made a
+# method look worse simply because the experiment contained worlds where the
+# corresponding action was not required.  Keep the eligibility rules in one place so
+# the CSV, plots, and bootstrap code cannot silently drift apart.
+CONDITIONAL_METRICS: Tuple[str, ...] = (
+    "flip_accuracy",
+    "effective_switch_rate",
+    "invalid_repair_rate",
+    "underpower_handling",
+    "replication_rate",
+)
+
+# Public denominator aliases.  The ``*_n`` field on the metric itself remains for
+# backward compatibility; these explicit names make the conditional denominator
+# auditable in reports and are intentionally stable for downstream consumers.
+CONDITIONAL_DENOMINATOR_FIELDS = {
+    "flip_accuracy": "flip_eligible_n",
+    "effective_switch_rate": "required_switch_n",
+    "invalid_repair_rate": "invalid_repair_n",
+    "underpower_handling": "insufficient_handling_n",
+    "replication_rate": "confirmation_eligible_n",
+}
+
+
+def _truth_state(record: Mapping[str, Any]) -> Optional[str]:
+    """Read an evaluator-side state without treating a policy prediction as truth."""
+
+    return normalize_state(_first(
+        record,
+        "true_state",
+        "ground_truth_state",
+        "verifier_state",
+        "world_kind",
+        "world_state",
+    ))
+
+
+def _explicit_bool(record: Mapping[str, Any], *names: str) -> Optional[bool]:
+    """Return the first explicitly supplied boolean, preserving explicit False."""
+
+    for name in names:
+        if name in record and record[name] is not None:
+            return _as_bool(record[name])
+    return None
+
+
+def metric_eligibility(record: Mapping[str, Any], metric: str) -> bool:
+    """Whether one record belongs in a conditional metric's denominator.
+
+    Explicit eligibility flags always win.  Fallbacks use evaluator-side truth and
+    protocol metadata, never the model's predicted state.  This function is public so
+    runners can emit the same flags and tests can audit the denominator independently
+    of the aggregate implementation.
+    """
+
+    metric = str(metric)
+    if metric == "flip_accuracy":
+        explicit = _explicit_bool(record, "flip_eligible", "preference_reversal_eligible", "paired_flip_eligible")
         if explicit is not None:
             return explicit
-        valid = _as_bool(_first(record, "valid_claim", "claim_valid", "validity_pass"))
-        belief = _as_float(_first(record, "belief_score", "s_belief"))
-        task = _as_float(_first(record, "task_utility", "u_task"))
-        replication = _as_float(_first(record, "replication_utility", "u_replication"))
-        discovery = _as_float(_first(record, "discovery_utility", "u_discovery"))
-        cost = _as_float(_first(record, "cost", "total_cost", "compute_cost"))
-        # A fallback VRS must be auditable.  If a runner has not supplied all
-        # frozen components, leave it NA rather than silently treating missing
-        # scientific value as zero (plan §17.1).
-        if valid is None or any(value is None for value in (belief, task, replication, discovery, cost)):
-            return None
-        value = (
-            weights["alpha"] * float(belief)
-            + weights["beta"] * float(task)
-            + weights["gamma"] * float(replication)
-            + weights["eta"] * float(discovery)
+        truth = _truth_state(record)
+        pair = _first(record, "world_pair_id", "pair_id", "preference_pair_id")
+        # A hand-labelled flip outcome is itself an eligibility declaration for
+        # legacy records that did not carry an explicit pair field.
+        labelled = _first(record, "flip_correct", "preference_reversal_correct")
+        return truth in {"Supported", "Refuted"} and (pair is not None or labelled is not None)
+    if metric == "effective_switch_rate":
+        explicit = _explicit_bool(record, "required_switch", "switch_required", "required_action_is_switch")
+        if explicit is not None:
+            return explicit
+        best_action = str(_first(record, "best_action", "optimal_action", default="")).lower()
+        return _truth_state(record) == "Refuted" or best_action == "switch_to_alternative_method"
+    if metric == "invalid_repair_rate":
+        explicit = _explicit_bool(record, "invalid_repair_eligible", "invalid_initial", "initial_invalid")
+        if explicit is not None:
+            return explicit
+        return _truth_state(record) == "Invalid"
+    if metric == "underpower_handling":
+        explicit = _explicit_bool(record, "insufficient_handling_eligible", "insufficient_initial", "initial_insufficient")
+        if explicit is not None:
+            return explicit
+        return _truth_state(record) == "Insufficient"
+    if metric == "replication_rate":
+        explicit = _explicit_bool(record, "confirmation_eligible", "eligible_for_confirmation")
+        if explicit is not None:
+            return explicit
+        # ``entered_confirmation`` is the strongest legacy signal.  Do not default to
+        # True: invalid/insufficient branches are intentionally not confirmation
+        # eligible and must not dilute the denominator.
+        inferred = _explicit_bool(
+            record,
+            "entered_confirmation",
+            "confirmation_attempted",
+            "independent_confirmation_performed",
+            "independent_confirmed",
         )
-        return (value if valid else 0.0) - weights["lambda"] * float(cost)
-    if name == "state_correct":
-        truth = normalize_state(_first(record, "true_state", "world_state", "evidence_state"))
-        pred = normalize_state(_first(record, "predicted_state", "reported_state", "state_prediction"))
-        return float(truth == pred) if truth is not None and pred is not None else None
+        return bool(inferred) if inferred is not None else False
+    return True
+
+
+def _raw_metric_value(record: Mapping[str, Any], name: str, weights: Mapping[str, float]) -> Optional[float]:
+    """Record-level metric value before applying conditional eligibility."""
+
     if name == "flip_accuracy":
         value = _as_bool(_first(record, "flip_correct", "preference_reversal_correct"))
         return float(value) if value is not None else None
@@ -250,6 +326,53 @@ def _metric_value(record: Mapping[str, Any], name: str, weights: Mapping[str, fl
         switched = _as_bool(_first(record, "switch", "switched"))
         beneficial = _as_bool(_first(record, "switch_beneficial", "switch_confirmed_better"))
         return float(switched and beneficial) if switched is not None and beneficial is not None else None
+    if name == "invalid_repair_rate":
+        value = _as_bool(_first(record, "invalid_repaired", "experiment_repaired", "repair_success"))
+        if value is not None:
+            return float(value)
+        truth = _truth_state(record)
+        action = str(_first(record, "selected_action", "action", default="")).lower()
+        valid = _as_bool(_first(record, "valid_claim", "claim_valid", "validity_pass"))
+        return float("repair" in action and valid) if truth == "Invalid" and valid is not None else None
+    if name == "underpower_handling":
+        value = _as_bool(_first(record, "underpower_handled", "insufficient_handled", "evidence_gap_handled"))
+        if value is not None:
+            return float(value)
+        action = str(_first(record, "selected_action", "action", default="")).lower()
+        reasonable = any(token in action for token in ("sample", "repeat", "measure", "stop", "insufficient"))
+        return float(reasonable) if _truth_state(record) == "Insufficient" else None
+    if name == "replication_rate":
+        confirmed = _as_bool(_first(record, "independent_confirmed", "replication_passed", "independent_confirmation_passed", "confirmed"))
+        return float(confirmed) if confirmed is not None else None
+    return _metric_value_unconditional(record, name, weights)
+
+
+def _metric_value_unconditional(record: Mapping[str, Any], name: str, weights: Mapping[str, float]) -> Optional[float]:
+    """Implementation for metrics whose denominator is the full group."""
+
+    if name == "vrs":
+        explicit = _as_float(_first(record, "vrs", "credible_scientific_value"))
+        if explicit is not None:
+            return explicit
+        valid = _as_bool(_first(record, "valid_claim", "claim_valid", "validity_pass"))
+        belief = _as_float(_first(record, "belief_score", "s_belief"))
+        task = _as_float(_first(record, "task_utility", "u_task"))
+        replication = _as_float(_first(record, "replication_utility", "u_replication"))
+        discovery = _as_float(_first(record, "discovery_utility", "u_discovery"))
+        cost = _as_float(_first(record, "cost", "total_cost", "compute_cost"))
+        if valid is None or any(value is None for value in (belief, task, replication, discovery, cost)):
+            return None
+        value = (
+            weights["alpha"] * float(belief)
+            + weights["beta"] * float(task)
+            + weights["gamma"] * float(replication)
+            + weights["eta"] * float(discovery)
+        )
+        return (value if valid else 0.0) - weights["lambda"] * float(cost)
+    if name == "state_correct":
+        truth = _truth_state(record)
+        pred = normalize_state(_first(record, "predicted_state", "reported_state", "state_prediction"))
+        return float(truth == pred) if truth is not None and pred is not None else None
     if name == "unnecessary_switch_rate":
         value = _as_bool(_first(record, "unnecessary_switch", "switch_unnecessary"))
         if value is not None:
@@ -268,35 +391,20 @@ def _metric_value(record: Mapping[str, Any], name: str, weights: Mapping[str, fl
         value = _as_bool(_first(record, "refutation_accept", "accepted_refutation", "reliable_negative_result"))
         if value is not None:
             return float(value)
-        truth = normalize_state(_first(record, "true_state", "world_state"))
+        truth = _truth_state(record)
         pred = normalize_state(_first(record, "predicted_state", "reported_state"))
         return float(truth == "Refuted" and pred == "Refuted") if truth and pred else None
-    if name == "underpower_handling":
-        value = _as_bool(_first(record, "underpower_handled", "insufficient_handled", "evidence_gap_handled"))
-        if value is not None:
-            return float(value)
-        truth = normalize_state(_first(record, "true_state", "world_state"))
-        action = str(_first(record, "selected_action", "action", default="")).lower()
-        reasonable = any(token in action for token in ("sample", "repeat", "measure", "stop", "insufficient"))
-        return float(reasonable) if truth == "Insufficient" else None
-    if name == "invalid_repair_rate":
-        value = _as_bool(_first(record, "invalid_repaired", "experiment_repaired", "repair_success"))
-        return float(value) if value is not None else None
     if name == "invalid_claim_rate":
         value = _as_bool(_first(record, "invalid_claim", "claim_on_invalid"))
         if value is not None:
             return float(value)
-        truth = normalize_state(_first(record, "true_state", "world_state"))
+        truth = _truth_state(record)
         valid_claim = _as_bool(_first(record, "valid_claim", "claim_valid"))
         return float(valid_claim is True) if truth == "Invalid" and valid_claim is not None else None
     if name == "vnpr":
         verified = _as_bool(_first(record, "new_path_verified", "verified_new_path", "discovery_confirmed"))
         opportunity = _as_bool(_first(record, "discovery_opportunity", "new_path_opportunity", default=True))
         return float(verified) if verified is not None and opportunity else None
-    if name == "replication_rate":
-        confirmed = _as_bool(_first(record, "independent_confirmed", "replication_passed", "independent_confirmation_passed", "confirmed"))
-        entered = _as_bool(_first(record, "entered_confirmation", "confirmation_attempted", default=True))
-        return float(confirmed) if confirmed is not None and entered else None
     if name == "fdr":
         announced = _as_bool(_first(record, "new_path_announced", "discovery_announced", "announced_valid", "method_announced_valid"))
         if not announced:
@@ -316,6 +424,19 @@ def _metric_value(record: Mapping[str, Any], name: str, weights: Mapping[str, fl
     if name == "utility":
         return _as_float(_first(record, "utility", "verified_scientific_utility", "task_utility"))
     return _as_float(record.get(name))
+
+
+def _metric_value(record: Mapping[str, Any], name: str, weights: Mapping[str, float]) -> Optional[float]:
+    """Compute one scalar metric at record level.
+
+    Conditional metrics return ``None`` outside their declared denominator.  The
+    aggregate layer then computes the ratio using the corresponding eligible rows;
+    callers should not average this function over an unfiltered record list.
+    """
+
+    if name in CONDITIONAL_METRICS and not metric_eligibility(record, name):
+        return None
+    return _raw_metric_value(record, name, weights)
 
 
 METRIC_NAMES: Tuple[str, ...] = (
@@ -340,6 +461,12 @@ METRIC_NAMES: Tuple[str, ...] = (
 def _macro_f1(records: Sequence[Mapping[str, Any]]) -> Optional[float]:
     pairs = []
     for record in records:
+        # A trusted evaluator diagnostic is not a policy state prediction.  When a
+        # runner emits the explicit eligibility/source fields, honor them so an
+        # action-only method cannot receive perfect Macro-F1 by copying the verifier.
+        eligible = _as_bool(record.get("state_metric_eligible"))
+        if eligible is False or record.get("state_prediction_source") == "evaluator_diagnostic":
+            continue
         truth = normalize_state(_first(record, "true_state", "world_state", "evidence_state"))
         pred = normalize_state(_first(record, "predicted_state", "reported_state", "state_prediction"))
         if truth is not None and pred is not None:
@@ -377,6 +504,112 @@ def _group_records(records: Sequence[Mapping[str, Any]], by_split: bool = True) 
     return groups
 
 
+def _flip_pair_groups(records: Sequence[Mapping[str, Any]]) -> List[List[Mapping[str, Any]]]:
+    """Return eligible supported/refuted world-pair groups for FlipAcc.
+
+    FlipAcc is a pair-level estimand, not a four-world row-level average.  A pair is
+    eligible when the runner explicitly marks it eligible, or when both Supported and
+    Refuted members of the same ``world_pair_id`` are present.  Rows without a pair
+    identifier remain useful legacy observations when they carry an explicit
+    ``flip_eligible`` flag, but are never inferred eligible from a prediction alone.
+    """
+
+    grouped: Dict[str, List[Mapping[str, Any]]] = defaultdict(list)
+    for index, record in enumerate(records):
+        if not metric_eligibility(record, "flip_accuracy"):
+            continue
+        pair = _first(record, "world_pair_id", "pair_id", "preference_pair_id")
+        explicit = _explicit_bool(record, "flip_eligible", "preference_reversal_eligible", "paired_flip_eligible")
+        if pair is None:
+            # Explicitly labelled rows can be scored independently, but get distinct
+            # keys so two unrelated records are not accidentally paired.
+            pair = f"__explicit_flip_row_{index}"
+        else:
+            # Pair identifiers are often only unique within a question/split.  Keep
+            # that scope in the key so a direct aggregate over multiple splits cannot
+            # combine unrelated pairs that happen to share a short ID.
+            scope_question = str(_first(record, "question_id", "research_question_id", "task_id", default="all"))
+            scope_split = record_split(record)
+            pair = f"{scope_question}::{scope_split}::{pair}"
+        grouped[str(pair)].append(record)
+
+    eligible: List[List[Mapping[str, Any]]] = []
+    for rows in grouped.values():
+        explicit_flags = [
+            _explicit_bool(row, "flip_eligible", "preference_reversal_eligible", "paired_flip_eligible")
+            for row in rows
+        ]
+        states = {_truth_state(row) for row in rows}
+        explicit_yes = any(flag is True for flag in explicit_flags)
+        complete_pair = {"Supported", "Refuted"}.issubset(states)
+        if explicit_yes or complete_pair:
+            eligible.append(rows)
+    return eligible
+
+
+def _conditional_stats(
+    records: Sequence[Mapping[str, Any]],
+    metric: str,
+    weights: Mapping[str, float],
+) -> Tuple[Optional[float], int, int]:
+    """Return ``(rate, numerator, denominator)`` for a conditional metric."""
+
+    if metric == "flip_accuracy":
+        # One outcome per eligible pair.  If a legacy export repeats the pair outcome
+        # on both worlds, all repeated annotations must agree; disagreement is kept as
+        # a failed pair rather than silently selecting the first row.
+        numerator = 0
+        denominator = 0
+        for pair_rows in _flip_pair_groups(records):
+            values = [_raw_metric_value(row, metric, weights) for row in pair_rows]
+            denominator += 1
+            # An eligible pair with a missing/invalid outcome is retained in the
+            # denominator and fails closed.  Otherwise a policy could improve
+            # FlipAcc by simply omitting one side of a required pair.
+            numerator += int(bool(values) and all(value is not None and float(value) > 0.5 for value in values))
+        return _ratio(numerator, denominator), numerator, denominator
+
+    eligible_rows = [row for row in records if metric_eligibility(row, metric)]
+    values = [_raw_metric_value(row, metric, weights) for row in eligible_rows]
+    numerator = sum(
+        1 for value in values
+        if value is not None and math.isfinite(float(value)) and float(value) > 0.5
+    )
+    # Keep all eligible observations in the denominator, including rows whose
+    # outcome was omitted or malformed.  Missing outcomes are failures, not NA
+    # opportunities, for a conditional success-rate estimand.
+    denominator = len(eligible_rows)
+    return _ratio(numerator, denominator), numerator, denominator
+
+
+def conditional_metric_stats(
+    records: Sequence[Mapping[str, Any]],
+    metric: str,
+    *,
+    weights: Optional[Mapping[str, float]] = None,
+) -> Dict[str, Optional[float] | int]:
+    """Public auditable conditional-rate helper.
+
+    The returned mapping contains ``value``, ``numerator``, and ``denominator``.  A
+    metric with no eligible observations is ``None`` rather than zero.  This helper is
+    intentionally shared by report tests and downstream evaluators.
+    """
+
+    if metric not in CONDITIONAL_METRICS:
+        raise ValueError(f"{metric!r} is not a conditional metric")
+    metric_weights = {"alpha": 1.0, "beta": 1.0, "gamma": 1.0, "eta": 1.0, "lambda": 0.1}
+    if weights:
+        metric_weights.update({key: float(value) for key, value in weights.items() if key in metric_weights})
+    value, numerator, denominator = _conditional_stats(records, metric, metric_weights)
+    return {"value": value, "numerator": numerator, "denominator": denominator}
+
+
+def _aggregate_metric_value(records: Sequence[Mapping[str, Any]], metric: str, weights: Mapping[str, float]) -> Optional[float]:
+    if metric in CONDITIONAL_METRICS:
+        return _conditional_stats(records, metric, weights)[0]
+    return _mean(_raw_metric_value(record, metric, weights) for record in records)
+
+
 def aggregate_metrics(
     records: Sequence[Mapping[str, Any]],
     *,
@@ -396,26 +629,49 @@ def aggregate_metrics(
 
     rows: List[Dict[str, Any]] = []
     for (method, split), group in sorted(_group_records(records, by_split).items()):
-        row: Dict[str, Any] = {"method": method, "split": split, "n": len(group)}
+        roles = sorted({str(record.get("comparison_role")) for record in group if record.get("comparison_role") is not None})
+        row: Dict[str, Any] = {
+            "method": method,
+            "split": split,
+            "n": len(group),
+            "comparison_role": "; ".join(roles) if roles else None,
+            # Parse serialized booleans explicitly.  ``bool("false")`` is True and
+            # would turn a diagnostic-only export into a formally eligible method.
+            "formal_comparison_eligible": any(
+                _as_bool(record.get("formal_comparison_eligible")) is True for record in group
+            ),
+        }
         row["state_macro_f1"] = _macro_f1(group)
         for metric in METRIC_NAMES:
             if metric == "state_macro_f1":
                 continue
             if metric == "fdr":
                 announced = [record for record in group if _as_bool(_first(record, "new_path_announced", "discovery_announced", "announced_valid", "method_announced_valid"))]
-                values = [_metric_value(record, metric, metric_weights) for record in announced]
+                values = [_raw_metric_value(record, metric, metric_weights) for record in announced]
                 row[metric] = _mean(values)
-                row["fdr_n"] = len(announced)
+                row["fdr_n"] = sum(value is not None for value in values)
                 continue
-            values = [_metric_value(record, metric, metric_weights) for record in group]
+            if metric in CONDITIONAL_METRICS:
+                value, numerator, denominator = _conditional_stats(group, metric, metric_weights)
+                row[metric] = value
+                row[f"{metric}_n"] = denominator
+                row[f"{metric}_numerator"] = numerator
+                row[f"{metric}_denominator"] = denominator
+                # Add an explicit semantic alias (for example
+                # ``confirmation_eligible_n``) alongside the generic metric count.
+                row[CONDITIONAL_DENOMINATOR_FIELDS[metric]] = denominator
+                row[f"{metric}_eligible_n"] = denominator
+                row[f"{metric}_success_n"] = numerator
+                continue
+            values = [_raw_metric_value(record, metric, metric_weights) for record in group]
             row[metric] = _mean(values)
         # Useful denominators make sparse metrics auditable in CSV/report output.
         for metric in METRIC_NAMES:
             if metric == "state_macro_f1":
                 continue
-            if metric == "fdr":
+            if metric == "fdr" or metric in CONDITIONAL_METRICS:
                 continue
-            row[f"{metric}_n"] = sum(_metric_value(record, metric, metric_weights) is not None for record in group)
+            row[f"{metric}_n"] = sum(_raw_metric_value(record, metric, metric_weights) is not None for record in group)
         rows.append(row)
     return rows
 
@@ -451,6 +707,12 @@ def bootstrap_ci(
     intervals: Dict[Tuple[str, str], Tuple[Optional[float], Optional[float]]] = {}
     for key, clusters in groups.items():
         cluster_values = list(clusters.values())
+        # A percentile interval needs at least two independent question/task
+        # clusters.  Resampling one cluster only reproduces the point estimate and
+        # falsely suggests certainty, so the scientifically correct result is NA.
+        if len(cluster_values) < 2:
+            intervals[key] = (None, None)
+            continue
         samples: List[float] = []
         for _ in range(n_boot):
             sampled = [cluster_values[rng.randrange(len(cluster_values))] for _ in cluster_values]
@@ -458,7 +720,7 @@ def bootstrap_ci(
             if metric == "state_macro_f1":
                 value = _macro_f1(flat)
             else:
-                value = _mean(_metric_value(item, metric, metric_weights) for item in flat)
+                value = _aggregate_metric_value(flat, metric, metric_weights)
             if value is not None:
                 samples.append(value)
         if samples:
@@ -469,6 +731,12 @@ def bootstrap_ci(
         else:
             intervals[key] = (None, None)
     return intervals
+
+
+def cluster_count(records: Sequence[Mapping[str, Any]]) -> int:
+    """Return the number of independent question/task clusters in ``records``."""
+
+    return len({_cluster_key(record) for record in records})
 
 
 def write_csv(path: str | Path, rows: Sequence[Mapping[str, Any]]) -> None:

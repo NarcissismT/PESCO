@@ -1,63 +1,112 @@
 {
   "methods": [
     {
+      "comparison_role": "diagnostic_reference",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "fixed_policy_reference",
       "name": "Base"
     },
     {
+      "comparison_role": "diagnostic_control",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
+      "implementation_status": "transparent_rule_based_control",
+      "name": "Rule-Based"
+    },
+    {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "SFT"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "fixed_policy_reference",
       "name": "GRPO-Terminal"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "GRPO-FourState"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "GDPO"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "SMOPD"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "Evidence-Gated SMOPD"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "DiscoPO"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "Ecpo"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "TCPO"
     },
     {
+      "comparison_role": "external_name_adapter_excluded",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "reference_cpu_adapter",
       "name": "CVT-RL"
     },
     {
+      "comparison_role": "diagnostic_oracle_upper_bound",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "oracle_search_diagnostic",
       "name": "Search-Only"
     },
     {
+      "comparison_role": "diagnostic_pesco_reference",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "tabular_pesco_reference",
       "name": "PESCO-Offline"
     },
     {
+      "comparison_role": "diagnostic_pesco_reference",
+      "formal_comparison_eligible": false,
+      "formal_comparison_exclusion_reason": "no_frozen_multi_question_final_splits_or_genuine_external_implementation",
       "implementation_status": "tabular_pesco_reference",
       "name": "PESCO-Full"
     }
   ],
-  "protocol_version": "pesco_v0_1",
+  "protocol_version": "pesco_v0_2",
   "shared_confirmation_seeds": [
     103,
     107,

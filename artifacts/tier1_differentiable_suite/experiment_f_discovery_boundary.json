@@ -1,0 +1,20 @@
+{
+  "schema_version": "pesco_experiment_f_v0.1",
+  "experiment": "F_open_ended_discovery",
+  "status": "deferred_fixed_action_mvp_boundary",
+  "diagnostic_only": true,
+  "formal_comparison_authorized": false,
+  "objective": "evaluate genuinely open-ended action/tool discovery after the fixed-action MVP",
+  "fixed_action_mvp_discovery_utility": 0.0,
+  "candidate_generation_executed": false,
+  "reason": "The current benchmark has four registered actions; SWITCH is a registered action, not autonomous discovery. Open-ended candidate generation requires a separate tool sandbox, novelty certificate, and independent confirmation protocol.",
+  "required_next_gates": [
+    "held-out candidate-generation task family",
+    "structure/execution/validity/confirmation/utility certificate",
+    "discovery utility scored identically for all methods",
+    "independent confirmation data and final split lock"
+  ],
+  "protocol_version": "pesco_v0_2",
+  "protocol_digest": "sha256:9f0b78770c80c7163bcb006db994a2f4b1722f349fd366b86b304c19ca02974c",
+  "benchmark_manifest_digest": "sha256:542ec9f6b722753fad423a096f8b6b5b9d0ee8c78ba3d10f690d96ba94130518"
+}

@@ -1,0 +1,10 @@
+{
+  "action_count": 4,
+  "branch_groups": 192,
+  "confirmation_seed_count": 4,
+  "expected_seed_level_experiments": 768,
+  "exploration_seed_count": 4,
+  "question_count": 12,
+  "seed_level_experiments": 768,
+  "world_count": 48
+}

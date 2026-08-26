@@ -1,0 +1,722 @@
+[
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_01",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.286
+    },
+    "world_id": "t1_group_leakage_01__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_01",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_group_leakage_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_01",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 1.0137800000000001,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": -0.005080000000000008
+    },
+    "world_id": "t1_group_leakage_01__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "repair_data_split",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_01",
+    "target_action": "repair_data_split",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": 1.9375000000000002,
+      "switch_to_alternative_method": -0.414
+    },
+    "world_id": "t1_group_leakage_01__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_02",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.286
+    },
+    "world_id": "t1_group_leakage_02__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_02",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_group_leakage_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_02",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 1.0137800000000001,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": -0.005080000000000008
+    },
+    "world_id": "t1_group_leakage_02__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "repair_data_split",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_02",
+    "target_action": "repair_data_split",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": 1.9375000000000002,
+      "switch_to_alternative_method": -0.414
+    },
+    "world_id": "t1_group_leakage_02__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_03",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.286
+    },
+    "world_id": "t1_group_leakage_03__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_03",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_group_leakage_03__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_03",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 1.0137800000000001,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 0.74492
+    },
+    "world_id": "t1_group_leakage_03__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "repair_data_split",
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_03",
+    "target_action": "repair_data_split",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": 1.9375000000000002,
+      "switch_to_alternative_method": -0.414
+    },
+    "world_id": "t1_group_leakage_03__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_01",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_causal_confounding_01__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_01",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_causal_confounding_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_01",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.51378,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 1.24492
+    },
+    "world_id": "t1_causal_confounding_01__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "repair_data_split",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_01",
+    "target_action": "repair_data_split",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": 1.7874999999999999,
+      "switch_to_alternative_method": -0.414
+    },
+    "world_id": "t1_causal_confounding_01__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_02",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_causal_confounding_02__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_02",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_causal_confounding_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_02",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.51378,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 1.24492
+    },
+    "world_id": "t1_causal_confounding_02__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "repair_data_split",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_02",
+    "target_action": "repair_data_split",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": 1.7874999999999999,
+      "switch_to_alternative_method": -0.414
+    },
+    "world_id": "t1_causal_confounding_02__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_03",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_causal_confounding_03__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_03",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_causal_confounding_03__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_03",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.81378,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 1.24492
+    },
+    "world_id": "t1_causal_confounding_03__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "repair_data_split",
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_03",
+    "target_action": "repair_data_split",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": 1.7874999999999999,
+      "switch_to_alternative_method": -0.414
+    },
+    "world_id": "t1_causal_confounding_03__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_01",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_low_sample_variance_01__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_01",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_low_sample_variance_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_01",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 1.0137800000000001,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 0.74492
+    },
+    "world_id": "t1_low_sample_variance_01__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_01",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.7137800000000001,
+      "continue_current_method": -0.34608,
+      "repair_data_split": -0.35358,
+      "switch_to_alternative_method": -0.35508
+    },
+    "world_id": "t1_low_sample_variance_01__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_02",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.286
+    },
+    "world_id": "t1_low_sample_variance_02__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_02",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_low_sample_variance_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_02",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 1.0137800000000001,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 0.29491999999999996
+    },
+    "world_id": "t1_low_sample_variance_02__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_02",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.7137800000000001,
+      "continue_current_method": -0.34608,
+      "repair_data_split": -0.35358,
+      "switch_to_alternative_method": -0.35508
+    },
+    "world_id": "t1_low_sample_variance_02__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_03",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.286
+    },
+    "world_id": "t1_low_sample_variance_03__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_03",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_low_sample_variance_03__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_03",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 1.0137800000000001,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": -0.005080000000000008
+    },
+    "world_id": "t1_low_sample_variance_03__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "add_samples_or_seeds",
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_03",
+    "target_action": "add_samples_or_seeds",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.7137800000000001,
+      "continue_current_method": -0.34608,
+      "repair_data_split": -0.35358,
+      "switch_to_alternative_method": -0.35508
+    },
+    "world_id": "t1_low_sample_variance_03__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_subgroup_metric_mismatch_01__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_subgroup_metric_mismatch_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.51378,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 1.24492
+    },
+    "world_id": "t1_subgroup_metric_mismatch_01__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": -0.4125,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_subgroup_metric_mismatch_01__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_subgroup_metric_mismatch_02__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_subgroup_metric_mismatch_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.51378,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 1.24492
+    },
+    "world_id": "t1_subgroup_metric_mismatch_02__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": -0.4125,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_subgroup_metric_mismatch_02__invalid",
+    "world_kind": "invalid"
+  },
+  {
+    "empirical_winner": "continue_current_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "target_action": "continue_current_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 0.486
+    },
+    "world_id": "t1_subgroup_metric_mismatch_03__supported",
+    "world_kind": "supported"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -0.21550000000000002,
+      "continue_current_method": 0.6950000000000001,
+      "repair_data_split": 0.6875,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_subgroup_metric_mismatch_03__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": 0.51378,
+      "continue_current_method": 0.20392,
+      "repair_data_split": 0.19642,
+      "switch_to_alternative_method": 1.24492
+    },
+    "world_id": "t1_subgroup_metric_mismatch_03__insufficient",
+    "world_kind": "insufficient"
+  },
+  {
+    "empirical_winner": "switch_to_alternative_method",
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "target_action": "switch_to_alternative_method",
+    "target_matches": true,
+    "utilities": {
+      "add_samples_or_seeds": -1.3155000000000001,
+      "continue_current_method": -0.40499999999999997,
+      "repair_data_split": -0.4125,
+      "switch_to_alternative_method": 1.2360000000000002
+    },
+    "world_id": "t1_subgroup_metric_mismatch_03__invalid",
+    "world_kind": "invalid"
+  }
+]

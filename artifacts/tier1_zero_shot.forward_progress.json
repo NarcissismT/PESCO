@@ -1,0 +1,205 @@
+{
+  "benchmark_manifest_digest": "sha256:542ec9f6b722753fad423a096f8b6b5b9d0ee8c78ba3d10f690d96ba94130518",
+  "checkpoint": "../SigLip_LLM/Qwen2_5_3B",
+  "completed_forward_rows": 48,
+  "completed_keys": [
+    {
+      "question_id": "t1_group_leakage_01",
+      "world_id": "t1_group_leakage_01__supported"
+    },
+    {
+      "question_id": "t1_group_leakage_01",
+      "world_id": "t1_group_leakage_01__refuted"
+    },
+    {
+      "question_id": "t1_group_leakage_01",
+      "world_id": "t1_group_leakage_01__insufficient"
+    },
+    {
+      "question_id": "t1_group_leakage_01",
+      "world_id": "t1_group_leakage_01__invalid"
+    },
+    {
+      "question_id": "t1_group_leakage_02",
+      "world_id": "t1_group_leakage_02__supported"
+    },
+    {
+      "question_id": "t1_group_leakage_02",
+      "world_id": "t1_group_leakage_02__refuted"
+    },
+    {
+      "question_id": "t1_group_leakage_02",
+      "world_id": "t1_group_leakage_02__insufficient"
+    },
+    {
+      "question_id": "t1_group_leakage_02",
+      "world_id": "t1_group_leakage_02__invalid"
+    },
+    {
+      "question_id": "t1_group_leakage_03",
+      "world_id": "t1_group_leakage_03__supported"
+    },
+    {
+      "question_id": "t1_group_leakage_03",
+      "world_id": "t1_group_leakage_03__refuted"
+    },
+    {
+      "question_id": "t1_group_leakage_03",
+      "world_id": "t1_group_leakage_03__insufficient"
+    },
+    {
+      "question_id": "t1_group_leakage_03",
+      "world_id": "t1_group_leakage_03__invalid"
+    },
+    {
+      "question_id": "t1_causal_confounding_01",
+      "world_id": "t1_causal_confounding_01__supported"
+    },
+    {
+      "question_id": "t1_causal_confounding_01",
+      "world_id": "t1_causal_confounding_01__refuted"
+    },
+    {
+      "question_id": "t1_causal_confounding_01",
+      "world_id": "t1_causal_confounding_01__insufficient"
+    },
+    {
+      "question_id": "t1_causal_confounding_01",
+      "world_id": "t1_causal_confounding_01__invalid"
+    },
+    {
+      "question_id": "t1_causal_confounding_02",
+      "world_id": "t1_causal_confounding_02__supported"
+    },
+    {
+      "question_id": "t1_causal_confounding_02",
+      "world_id": "t1_causal_confounding_02__refuted"
+    },
+    {
+      "question_id": "t1_causal_confounding_02",
+      "world_id": "t1_causal_confounding_02__insufficient"
+    },
+    {
+      "question_id": "t1_causal_confounding_02",
+      "world_id": "t1_causal_confounding_02__invalid"
+    },
+    {
+      "question_id": "t1_causal_confounding_03",
+      "world_id": "t1_causal_confounding_03__supported"
+    },
+    {
+      "question_id": "t1_causal_confounding_03",
+      "world_id": "t1_causal_confounding_03__refuted"
+    },
+    {
+      "question_id": "t1_causal_confounding_03",
+      "world_id": "t1_causal_confounding_03__insufficient"
+    },
+    {
+      "question_id": "t1_causal_confounding_03",
+      "world_id": "t1_causal_confounding_03__invalid"
+    },
+    {
+      "question_id": "t1_low_sample_variance_01",
+      "world_id": "t1_low_sample_variance_01__supported"
+    },
+    {
+      "question_id": "t1_low_sample_variance_01",
+      "world_id": "t1_low_sample_variance_01__refuted"
+    },
+    {
+      "question_id": "t1_low_sample_variance_01",
+      "world_id": "t1_low_sample_variance_01__insufficient"
+    },
+    {
+      "question_id": "t1_low_sample_variance_01",
+      "world_id": "t1_low_sample_variance_01__invalid"
+    },
+    {
+      "question_id": "t1_low_sample_variance_02",
+      "world_id": "t1_low_sample_variance_02__supported"
+    },
+    {
+      "question_id": "t1_low_sample_variance_02",
+      "world_id": "t1_low_sample_variance_02__refuted"
+    },
+    {
+      "question_id": "t1_low_sample_variance_02",
+      "world_id": "t1_low_sample_variance_02__insufficient"
+    },
+    {
+      "question_id": "t1_low_sample_variance_02",
+      "world_id": "t1_low_sample_variance_02__invalid"
+    },
+    {
+      "question_id": "t1_low_sample_variance_03",
+      "world_id": "t1_low_sample_variance_03__supported"
+    },
+    {
+      "question_id": "t1_low_sample_variance_03",
+      "world_id": "t1_low_sample_variance_03__refuted"
+    },
+    {
+      "question_id": "t1_low_sample_variance_03",
+      "world_id": "t1_low_sample_variance_03__insufficient"
+    },
+    {
+      "question_id": "t1_low_sample_variance_03",
+      "world_id": "t1_low_sample_variance_03__invalid"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_01",
+      "world_id": "t1_subgroup_metric_mismatch_01__supported"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_01",
+      "world_id": "t1_subgroup_metric_mismatch_01__refuted"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_01",
+      "world_id": "t1_subgroup_metric_mismatch_01__insufficient"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_01",
+      "world_id": "t1_subgroup_metric_mismatch_01__invalid"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_02",
+      "world_id": "t1_subgroup_metric_mismatch_02__supported"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_02",
+      "world_id": "t1_subgroup_metric_mismatch_02__refuted"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_02",
+      "world_id": "t1_subgroup_metric_mismatch_02__insufficient"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_02",
+      "world_id": "t1_subgroup_metric_mismatch_02__invalid"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_03",
+      "world_id": "t1_subgroup_metric_mismatch_03__supported"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_03",
+      "world_id": "t1_subgroup_metric_mismatch_03__refuted"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_03",
+      "world_id": "t1_subgroup_metric_mismatch_03__insufficient"
+    },
+    {
+      "question_id": "t1_subgroup_metric_mismatch_03",
+      "world_id": "t1_subgroup_metric_mismatch_03__invalid"
+    }
+  ],
+  "model_row_provenance": "kv_cache_continuation_or_safe_full_prompt_fallback",
+  "refresh_changed_model_rows": false,
+  "reuse_model_rows": false,
+  "schema_version": "pesco_experiment_b_forward_progress_v0.1",
+  "status": "completed",
+  "total_forward_rows": 48
+}

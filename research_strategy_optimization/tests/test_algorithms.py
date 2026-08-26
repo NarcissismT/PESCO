@@ -16,11 +16,13 @@ from research_strategy_optimization.algorithms.preference_reversal_loss import (
     batched_preference_reversal_loss,
     preference_reversal_loss,
 )
+from research_strategy_optimization.algorithms.pesco_trainer import PESCOTrainer, TrainerConfig
+from research_strategy_optimization.algorithms.strategy_policy import TabularStrategyPolicy
 from research_strategy_optimization.environments.tier0_simulator import (
     Tier0ResearchEnvironment,
     default_mvp_worlds,
 )
-from research_strategy_optimization.schemas import ResearchAction
+from research_strategy_optimization.schemas import Observation, ResearchAction
 
 
 class LeaveOneOutTests(unittest.TestCase):
@@ -124,6 +126,59 @@ class PreferenceLossTests(unittest.TestCase):
         batch.backward()
         self.assertTrue(all(example[0].grad is not None for example in examples))
         self.assertAlmostEqual(float(batch.detach()), sum(float(value.detach()) for value in values) / 2.0, places=6)
+
+    def test_tabular_flip_loss_gradient_changes_parameters_and_reduces_loss(self) -> None:
+        policy = TabularStrategyPolicy(seed=3)
+        supported = Observation("q", 0, "method_a", 0.10, 0.04, 0.16, 120, 4, 5)
+        refuted = Observation("q", 0, "method_a", 0.00, -0.05, 0.05, 120, 4, 5)
+        # Materialise both public states and freeze the reference before optimization.
+        policy.probabilities(supported)
+        policy.probabilities(refuted)
+        policy.freeze_reference()
+        before_checksum = policy.parameter_checksum()
+        before = preference_reversal_loss(
+            policy.action_log_ratios(supported),
+            policy.action_log_ratios(refuted),
+            ResearchAction.CONTINUE.value,
+            ResearchAction.SWITCH.value,
+            1.0,
+        )
+        diagnostics = policy.apply_preference_reversal_loss(
+            supported,
+            refuted,
+            ResearchAction.CONTINUE,
+            ResearchAction.SWITCH,
+            beta=1.0,
+            learning_rate=0.2,
+        )
+        after = preference_reversal_loss(
+            policy.action_log_ratios(supported),
+            policy.action_log_ratios(refuted),
+            ResearchAction.CONTINUE.value,
+            ResearchAction.SWITCH.value,
+            1.0,
+        )
+        self.assertTrue(diagnostics["applied"])
+        self.assertGreater(diagnostics["gradient_norm"], 0.0)
+        self.assertGreater(diagnostics["update_norm"], 0.0)
+        self.assertNotEqual(diagnostics["parameter_checksum_before"], diagnostics["parameter_checksum_after"])
+        self.assertNotEqual(before_checksum, policy.parameter_checksum())
+        self.assertAlmostEqual(before, diagnostics["loss_before"], places=8)
+        self.assertAlmostEqual(after, diagnostics["loss_after"], places=8)
+        self.assertLess(after, before)
+
+    def test_trainer_logs_loss_driven_flip_update(self) -> None:
+        trainer = PESCOTrainer(config=TrainerConfig(epochs=1, reversal_learning_rate=0.2))
+        trainer.fit(
+            lambda: Tier0ResearchEnvironment(),
+            [world.world_id for world in default_mvp_worlds()],
+            question_id="q",
+        )
+        epoch = trainer.log.epochs[0]
+        self.assertTrue(epoch["loss_driven_flip_update"])
+        self.assertGreater(float(epoch["flip_gradient_norm"]), 0.0)
+        self.assertGreater(float(epoch["flip_parameter_update_norm"]), 0.0)
+        self.assertLess(float(epoch["flip_loss_after"]), float(epoch["flip_loss_before"]))
 
 
 if __name__ == "__main__":

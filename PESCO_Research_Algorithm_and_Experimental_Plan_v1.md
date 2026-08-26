@@ -4643,7 +4643,7 @@ class PairedWorldPreferenceBuilder:
 ### 20.3 冻结协议文件建议
 
 ~~~yaml
-protocol_version: pesco_v0_1
+protocol_version: pesco_v0_2
 
 task:
   objective: evidence_conditioned_research_strategy

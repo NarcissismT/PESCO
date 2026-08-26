@@ -1,0 +1,43 @@
+{
+  "schema_version": "pesco_experiment_b_current_freshness_status_v0.2",
+  "experiment": "B_zero_shot_failure_diagnosis",
+  "status": "fresh_current",
+  "diagnostic_only": true,
+  "formal_comparison_authorized": false,
+  "historical_artifact": false,
+  "historical_artifact_reference": null,
+  "checkpoint": "../SigLip_LLM/Qwen2_5_3B",
+  "checkpoint_config_digest": "sha256:27467e2fc311a7656c09a43ae9c3d408211e1f212bbddbc93c8596a06423826f",
+  "current_benchmark_manifest_digest": "sha256:542ec9f6b722753fad423a096f8b6b5b9d0ee8c78ba3d10f690d96ba94130518",
+  "protocol_digest": "sha256:9f0b78770c80c7163bcb006db994a2f4b1722f349fd366b86b304c19ca02974c",
+  "row_count": 48,
+  "changed_public_observation_n": 0,
+  "cached_rows_authorized": false,
+  "current_full_forward_completed": true,
+  "benchmark_freshness_match": true,
+  "model_forward_pass_executed_this_run": true,
+  "model_row_provenance": "full_forward_with_kv_cache_continuation",
+  "policy_state_prediction_source": "frozen_model_kv_cache_continuation_logits",
+  "action_accuracy_audit": 0.3541666666666667,
+  "state_accuracy_audit": 0.25,
+  "completed_at": "2026-08-26T11:48:50+08:00",
+  "attempts": [
+    {"mode": "full_forward", "batch_size": 1, "timeout_seconds": 300, "result": "timeout"},
+    {"mode": "full_forward", "batch_size": 8, "timeout_seconds": 600, "result": "terminated_no_artifact"},
+    {"mode": "full_forward", "batch_size": 16, "timeout_seconds": 600, "result": "terminated_no_artifact"},
+    {"mode": "changed_rows_refresh", "batch_size": 4, "timeout_seconds": 600, "result": "terminated_no_artifact"},
+    {"mode": "changed_rows_refresh", "batch_size": 16, "timeout_seconds": 600, "result": "terminated_no_artifact"},
+    {"mode": "full_forward_with_kv_cache", "batch_size": 8, "timeout_seconds": 3600, "result": "completed_48_rows"}
+  ],
+  "fail_closed_reason": null,
+  "freshness_audit": {
+    "status": "fresh_current",
+    "stored_benchmark_manifest_digest": null,
+    "current_benchmark_manifest_digest": "sha256:542ec9f6b722753fad423a096f8b6b5b9d0ee8c78ba3d10f690d96ba94130518",
+    "benchmark_freshness_match": true,
+    "changed_public_observation_n": 0,
+    "current_full_forward_completed": true,
+    "historical_artifact": false
+  },
+  "next_authorized_step": "keep B diagnostic-only; formal promotion/final ID/OOD and external-paper comparison remain closed"
+}

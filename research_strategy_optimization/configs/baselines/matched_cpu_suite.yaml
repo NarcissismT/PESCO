@@ -9,6 +9,7 @@ shared:
   final_splits_accessible: false
 methods:
   - Base
+  - Rule-Based
   - SFT
   - GRPO-Terminal
   - GRPO-FourState
@@ -22,3 +23,8 @@ methods:
   - Search-Only
   - PESCO-Offline
   - PESCO-Full
+comparison_policy:
+  formal_comparison_eligible: false
+  exclusion_reason: no_frozen_multi_question_final_splits_or_genuine_external_implementation
+  transparent_control: Rule-Based
+  oracle_diagnostic: Search-Only

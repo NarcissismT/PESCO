@@ -2,24 +2,35 @@
 
 from .evidence_metrics import evidence_macro_f1, confusion_matrix
 from .strategy_regret import research_regret
-from .preference_reversal import flip_accuracy
-from .refutation_metrics import refutation_acceptance, underpower_handling
-from .replication_metrics import replication_rate, false_discovery_rate
+from .preference_reversal import flip_accuracy, flip_counts
+from .refutation_metrics import conditional_counts, refutation_acceptance, underpower_handling
+from .replication_metrics import replication_counts, replication_rate, false_discovery_rate
 from .novelty_metrics import validated_novel_path_rate, method_family_entropy
 from .multiple_testing import benjamini_hochberg, holm_adjust, paired_permutation_pvalue
 from .statistics import paired_binary_power, paired_binary_required_n, paired_bootstrap_ci, paired_sign_permutation_pvalue
 from .ablations import AblationSpec, CORE_ABLATIONS, ablation_manifest, compare_metric
 from .final_decision import assert_training_allowed
+from .experiment_scaffolds import experiment_b_zero_shot_diagnostic, experiment_c_state_reward_diagnostic
+from .tier1_differentiable_suite import (
+    DEFAULT_METHODS,
+    Tier1SuiteConfig,
+    collect_tier1_v03_dataset,
+    evaluate_differentiable_policy,
+    run_tier1_differentiable_suite,
+)
 
 __all__ = [
     "evidence_macro_f1",
     "confusion_matrix",
     "research_regret",
     "flip_accuracy",
+    "flip_counts",
+    "conditional_counts",
     "refutation_acceptance",
     "underpower_handling",
     "replication_rate",
     "false_discovery_rate",
+    "replication_counts",
     "validated_novel_path_rate",
     "method_family_entropy",
     "holm_adjust",
@@ -34,4 +45,11 @@ __all__ = [
     "ablation_manifest",
     "compare_metric",
     "assert_training_allowed",
+    "experiment_b_zero_shot_diagnostic",
+    "experiment_c_state_reward_diagnostic",
+    "DEFAULT_METHODS",
+    "Tier1SuiteConfig",
+    "collect_tier1_v03_dataset",
+    "evaluate_differentiable_policy",
+    "run_tier1_differentiable_suite",
 ]

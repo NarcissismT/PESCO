@@ -2,4 +2,6 @@
 # Tier-1 NumPy environment and PNG/SVG visualization require:
 numpy>=1.23
 matplotlib>=3.6
-# PyTorch is optional; objective/loss tests use it when available.
+# C/D/E differentiable Tier-1 suite additionally needs a platform-specific
+# PyTorch install; it is intentionally not pinned here because CPU/CUDA wheels
+# differ by platform.  The checked-in suite artifacts were produced with PyTorch.

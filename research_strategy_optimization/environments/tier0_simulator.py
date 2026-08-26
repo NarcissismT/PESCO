@@ -20,6 +20,7 @@ from ..schemas import (
     EvidenceState,
     ExperimentOutput,
     Observation,
+    HypothesisBelief,
     Protocol,
     ResearchAction,
     Verdict,
@@ -54,6 +55,10 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
     """A small statistical experiment with method-A and method-B alternatives."""
 
     world_id_hidden = True
+    # Exposed only as implementation metadata on evaluator outputs.  The policy
+    # still receives the same Observation schema irrespective of backend.
+    BACKEND = "tier0_python"
+    SAMPLE_MINIMUM = 288
 
     QUESTION_TEXT = "Determine whether method A improves group-held-out performance."
 
@@ -74,6 +79,9 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
         self._seed = 0
         self._turn = 0
         self._current_method = "method_a"
+        self._active_hypothesis_id = "H_A"
+        self._hypothesis_beliefs: Dict[str, float] = {"H_A": 0.5, "H_B": 0.5}
+        self._belief_turns: Dict[str, int] = {"H_A": 0, "H_B": 0}
         self._sample_size = 0
         self._seed_count = 0
         self._repaired = False
@@ -99,6 +107,9 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
         self._seed = int(seed)
         self._turn = 0
         self._current_method = "method_a"
+        self._active_hypothesis_id = "H_A"
+        self._hypothesis_beliefs = {"H_A": 0.5, "H_B": 0.5}
+        self._belief_turns = {"H_A": 0, "H_B": 0}
         self._sample_size = self.world.initial_samples
         self._seed_count = 1
         self._repaired = False
@@ -135,18 +146,58 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
             validity_signals=signals,
             history_summary=tuple(self._history[-6:]),
             hypothesis_probability=self._public_belief(),
+            active_hypothesis_id=self._active_hypothesis_id,
+            hypothesis_beliefs=tuple(
+                HypothesisBelief(
+                    hypothesis_id=hypothesis_id,
+                    probability=probability,
+                    turn=self._belief_turns.get(hypothesis_id, self._turn),
+                    committed_before_action=True,
+                )
+                for hypothesis_id, probability in sorted(self._hypothesis_beliefs.items())
+            ),
+            task_family=(self.world.public_task_family or self.world.question_family),
         )
 
     def _public_belief(self) -> float:
-        """A transparent, non-oracle belief update from visible evidence."""
+        """Return the belief for the active hypothesis only.
 
-        if self._last_output is None:
-            return 0.5
-        width = max(1e-6, self._last_output.ci_high - self._last_output.ci_low)
-        # Softly map observed effect to a probability; this is intentionally not the
-        # hidden world truth and serves as the policy's committed forecast.
-        score = self._last_output.effect_estimate / (0.5 * width + 0.02)
-        return 1.0 / (1.0 + math.exp(-score))
+        Beliefs for method A and method B are kept separately.  In particular, an
+        observation after switching to method B cannot overwrite the probability for
+        H_A and then be scored against H_A's truth value.
+        """
+
+        return float(self._hypothesis_beliefs.get(self._active_hypothesis_id, 0.5))
+
+    @staticmethod
+    def _hypothesis_for_method(method: str) -> str:
+        return "H_B" if str(method) == "method_b" else "H_A"
+
+    def _update_public_belief(self, output: ExperimentOutput) -> None:
+        """Update only the hypothesis supported by a valid, observable result.
+
+        Invalid/leaky/confounded outputs remain visible as diagnostics, but cannot
+        create a high-confidence belief that a later repair can harvest as a reward.
+        The trusted verifier still makes the final validity decision independently.
+        """
+
+        hypothesis_id = self._hypothesis_for_method(output.method)
+        self._active_hypothesis_id = hypothesis_id
+        self._belief_turns[hypothesis_id] = self._turn
+        invalid_surface = bool(
+            output.leakage
+            or output.confounding
+            or any(
+                signal in set(output.validity_signals)
+                for signal in ("split_overlap_diagnostic", "treatment_confounder_dependence")
+            )
+        )
+        if invalid_surface:
+            return
+        width = max(1e-6, output.ci_high - output.ci_low)
+        score = output.effect_estimate / (0.5 * width + 0.02)
+        probability = 1.0 / (1.0 + math.exp(-max(-30.0, min(30.0, score))))
+        self._hypothesis_beliefs[hypothesis_id] = float(max(0.001, min(0.999, probability)))
 
     def snapshot(self):
         payload = {
@@ -155,6 +206,9 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
             "seed": self._seed,
             "turn": self._turn,
             "current_method": self._current_method,
+            "active_hypothesis_id": self._active_hypothesis_id,
+            "hypothesis_beliefs": dict(self._hypothesis_beliefs),
+            "belief_turns": dict(self._belief_turns),
             "sample_size": self._sample_size,
             "seed_count": self._seed_count,
             "repaired": self._repaired,
@@ -176,6 +230,19 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
         self._seed = int(payload["seed"])
         self._turn = int(payload["turn"])
         self._current_method = str(payload["current_method"])
+        self._active_hypothesis_id = str(payload.get("active_hypothesis_id", self._hypothesis_for_method(self._current_method)))
+        self._hypothesis_beliefs = {
+            str(key): float(value)
+            for key, value in dict(payload.get("hypothesis_beliefs", {"H_A": 0.5, "H_B": 0.5})).items()
+        }
+        self._belief_turns = {
+            str(key): int(value)
+            for key, value in dict(payload.get("belief_turns", {})).items()
+        }
+        self._hypothesis_beliefs.setdefault("H_A", 0.5)
+        self._hypothesis_beliefs.setdefault("H_B", 0.5)
+        self._belief_turns.setdefault("H_A", self._turn)
+        self._belief_turns.setdefault("H_B", self._turn)
         self._sample_size = int(payload["sample_size"])
         self._seed_count = int(payload["seed_count"])
         self._repaired = bool(payload["repaired"])
@@ -186,7 +253,10 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
         self._budget = BudgetTracker(int(budget["initial"]), int(budget["remaining"]), int(budget["spent"]))
 
     def clone_from_snapshot(self, snapshot):
-        clone = Tier0ResearchEnvironment(self.worlds.values(), self.protocol, self._budget_limit)
+        # Preserve the concrete environment class.  A Tier-1 environment inherits
+        # the snapshot contract, but its clone must continue to execute the NumPy
+        # backend rather than silently falling back to this Tier-0 simulator.
+        clone = type(self)(self.worlds.values(), self.protocol, self._budget_limit)
         clone._world = copy.deepcopy(self.world)
         clone.restore(snapshot)
         return clone
@@ -219,7 +289,7 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
         elif option is ResearchAction.REPAIR:
             self._repaired = True
         elif option is ResearchAction.SAMPLE:
-            self._sample_size = max(self._sample_size * 16, 288)
+            self._sample_size = max(self._sample_size * 16, int(self.SAMPLE_MINIMUM))
             self._seed_count = max(self._seed_count, len(seeds))
         elif option is ResearchAction.REPLICATE:
             self._seed_count += len(seeds)
@@ -233,6 +303,8 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
         output = self._simulate(method=method, option=option, seeds=seeds, confirmation=confirmation)
         self._last_output = output
         self._turn += 1
+        if not confirmation:
+            self._update_public_belief(output)
         self._history.append(f"{option.value}:{method}")
         return output
 
@@ -246,9 +318,13 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
             sample_size=self._sample_size,
             seed_count=len(seeds),
             execution_cost=0.0,
-            dataset_hash=self._hash("dataset"),
+            dataset_hash=self._hash(f"dataset:{'confirmation' if confirmation else 'exploration'}:empty:{self._sample_size}:{tuple(seeds)}"),
             code_hash=self._hash("code:" + self._current_method),
-            split_hash=self._hash("split:repaired" if self._repaired else "split:initial"),
+            split_hash=self._hash(
+                "split:confirmation_hidden"
+                if confirmation
+                else ("split:repaired" if self._repaired else "split:initial")
+            ),
             evaluator_hash=self._hash("trusted-evaluator-v1"),
             seeds=tuple(seeds),
             validity_signals=("no_experiment_executed",),
@@ -257,6 +333,9 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
             leakage=False,
             confounding=False,
             confirmation=confirmation,
+            backend=self.BACKEND,
+            estimator="tier0_closed_form",
+            data_partition="confirmation_hidden" if confirmation else ("repaired" if self._repaired else "random"),
         )
 
     def _simulate(self, method: str, option: ResearchAction, seeds: Sequence[int], confirmation: bool) -> ExperimentOutput:
@@ -301,9 +380,18 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
             sample_size=self._sample_size,
             seed_count=len(seeds),
             execution_cost=1.0 + 0.001 * self._sample_size,
-            dataset_hash=self._hash(f"dataset:{self._sample_size}"),
+            # Confirmation uses a distinct hidden partition namespace.  The random
+            # seed offset alone is not sufficient evidence of independent data; the
+            # resulting dataset and split hashes must differ from exploration.
+            dataset_hash=self._hash(
+                f"dataset:{'confirmation' if confirmation else 'exploration'}:{self._sample_size}:{tuple(seeds)}"
+            ),
             code_hash=self._hash(f"code:{method}"),
-            split_hash=self._hash("split:repaired" if self._repaired else "split:random"),
+            split_hash=self._hash(
+                "split:confirmation_hidden"
+                if confirmation
+                else ("split:repaired" if self._repaired else "split:random")
+            ),
             evaluator_hash=self._hash("trusted-evaluator-v1"),
             seeds=tuple(seeds),
             validity_signals=tuple(signals),
@@ -312,6 +400,9 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
             leakage=leakage_active,
             confounding=world.confounding and not self._repaired,
             confirmation=confirmation,
+            backend=self.BACKEND,
+            estimator="tier0_closed_form",
+            data_partition="confirmation_hidden" if confirmation else ("repaired" if self._repaired else "random"),
         )
 
     def _hash(self, value: str) -> str:
@@ -403,33 +494,57 @@ class TrustedVerifier:
             reasons.append("exploration_confirmation_seed_overlap")
         if output.evaluator_hash != env._hash("trusted-evaluator-v1"):
             reasons.append("evaluator_hash_mismatch")
+        expected_backend = getattr(env, "BACKEND", None)
+        if expected_backend is not None and str(output.backend) != str(expected_backend):
+            reasons.append("backend_mismatch")
         if output.method not in {"method_a", "method_b"}:
             reasons.append("unknown_method")
         try:
             ResearchAction(output.action)
         except (TypeError, ValueError):
             reasons.append("unknown_action")
-        expected_codes = {
-            env._hash(f"code:{output.method}"),
-            env._hash(f"tier1-code:{output.method}"),
-        }
-        if output.code_hash not in expected_codes:
-            reasons.append("code_hash_mismatch")
-        expected_splits = {
-            env._hash("split:random"),
-            env._hash("split:repaired"),
-            env._hash("split:group"),
-        }
-        if output.split_hash not in expected_splits:
-            reasons.append("split_hash_mismatch")
+        # Tier-0 has a compact closed-form provenance hash.  Concrete Tier-1
+        # backends may bind hashes to generated arrays and split masks, so they expose
+        # an explicit evaluator-side provenance hook instead of being forced through
+        # Tier-0's hash vocabulary.
+        if hasattr(env, "validate_output_provenance"):
+            try:
+                provenance_ok = bool(env.validate_output_provenance(output))
+            except Exception:  # pragma: no cover - defensive verifier boundary
+                provenance_ok = False
+            if not provenance_ok:
+                reasons.append("provenance_hash_mismatch")
+        else:
+            expected_codes = {
+                env._hash(f"code:{output.method}"),
+                env._hash(f"tier1-code:{output.method}"),
+            }
+            if output.code_hash not in expected_codes:
+                reasons.append("code_hash_mismatch")
+            expected_splits = {
+                env._hash("split:random"),
+                env._hash("split:repaired"),
+                env._hash("split:group"),
+            }
+            if output.confirmation:
+                expected_splits.add(env._hash("split:confirmation_hidden"))
+            if output.split_hash not in expected_splits:
+                reasons.append("split_hash_mismatch")
         if output.sample_size <= 0:
             reasons.append("empty_sample")
         if output.seed_count != len(output.seeds):
             reasons.append("seed_count_mismatch")
-        if output.split_hash == env._hash("split:random") and output.leakage:
+        if output.leakage or "split_overlap_diagnostic" in set(output.validity_signals):
             reasons.append("group_overlap_or_data_leakage")
-        if output.confounding:
+        invalid_signals = set(output.validity_signals)
+        if output.confounding or "treatment_confounder_dependence" in invalid_signals:
             reasons.append("uncontrolled_confounding")
+        if "variance_estimator_unstable" in invalid_signals:
+            reasons.append("unstable_variance_protocol")
+        if "metric_scope_mismatch" in invalid_signals:
+            reasons.append("metric_scope_mismatch")
+        if any(signal in invalid_signals for signal in ("metric_mismatch_diagnostic", "protocol_invalid_diagnostic")):
+            reasons.append("invalid_protocol_or_metric")
         if len(set(output.seeds)) != len(output.seeds):
             reasons.append("non_independent_seeds")
         if set(output.seeds) & set(self.protocol.confirmation_seeds) and not output.confirmation:
@@ -444,6 +559,9 @@ class TrustedVerifier:
         confirmation_performed = False
         confirmation_passed = False
         confirmation_seeds: Tuple[int, ...] = ()
+        confirmation_dataset_hash = ""
+        confirmation_split_hash = ""
+        confirmation_data_independent = False
         if confirm and decision.state in (EvidenceState.SUPPORTED, EvidenceState.REFUTED):
             confirmation_performed = True
             confirmation_seeds = tuple(self.protocol.confirmation_seeds)
@@ -463,7 +581,7 @@ class TrustedVerifier:
             else:
                 confirmation_output = candidate.execute_option(
                     ResearchAction(output.action), seeds=confirmation_seeds, confirmation=True
-            )
+                )
             conf_reasons: List[str] = []
             if confirmation_output.leakage or confirmation_output.confounding:
                 conf_reasons.append("confirmation_invalid")
@@ -473,6 +591,24 @@ class TrustedVerifier:
                 conf_reasons.append("confirmation_method_mismatch")
             if confirmation_output.evaluator_hash != env._hash("trusted-evaluator-v1"):
                 conf_reasons.append("confirmation_evaluator_hash_mismatch")
+            if not confirmation_output.confirmation:
+                conf_reasons.append("confirmation_flag_missing")
+            if confirmation_output.dataset_hash == output.dataset_hash:
+                conf_reasons.append("confirmation_dataset_not_independent")
+            if confirmation_output.split_hash == output.split_hash:
+                conf_reasons.append("confirmation_split_not_independent")
+            if confirmation_output.backend != output.backend:
+                conf_reasons.append("confirmation_backend_mismatch")
+            confirmation_dataset_hash = str(confirmation_output.dataset_hash)
+            confirmation_split_hash = str(confirmation_output.split_hash)
+            confirmation_data_independent = not any(
+                reason in conf_reasons
+                for reason in (
+                    "confirmation_dataset_not_independent",
+                    "confirmation_split_not_independent",
+                    "confirmation_flag_missing",
+                )
+            )
             conf_decision = classify_evidence(
                 validity_pass=not conf_reasons,
                 effect_estimate=confirmation_output.effect_estimate,
@@ -501,6 +637,9 @@ class TrustedVerifier:
             confirmation_seeds=confirmation_seeds,
             invalid_reasons=tuple(reasons),
             method_family="method_a" if output.method == "method_a" else "method_b",
+            confirmation_dataset_hash=confirmation_dataset_hash,
+            confirmation_split_hash=confirmation_split_hash,
+            confirmation_data_independent=confirmation_data_independent,
         )
 
 

@@ -1,9 +1,12 @@
 {
   "contamination_audit_pass": true,
+  "expected_protocol_version": "pesco_v0_2",
   "final_split_is_inaccessible": true,
   "pass": true,
-  "protocol_digest": "sha256:883bd108e435bdb3734fe2b4536edcb384f429963d1a4379a89cd41848ffc314",
+  "protocol_digest": "sha256:dc6f34391f1851817c3a82e04f42c0c3e1b0480a663fe94576df61cff639802f",
   "protocol_digest_bound": true,
+  "protocol_version": "pesco_v0_2",
+  "protocol_version_consistent": true,
   "question_manifest_digest": "sha256:70eb6d12d01801d61f4e1b932a8ceb8b39f5211b782b63ff222cb923de0a81b7",
   "question_manifest_digest_bound": true,
   "question_manifest_is_sealed": true,

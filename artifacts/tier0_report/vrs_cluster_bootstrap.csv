@@ -1,2 +1,2 @@
-method,split,vrs_ci_low,vrs_ci_high
-Tier0-BranchRollout,pilot,1.276987500000001,1.276987500000001
+method,split,vrs_ci_low,vrs_ci_high,vrs_cluster_count,vrs_ci_status
+Tier0-BranchRollout,pilot,,,1,NA_single_cluster

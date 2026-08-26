@@ -7,18 +7,37 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence
 
-from .metrics import METRIC_NAMES, aggregate_metrics, bootstrap_ci, confusion_rows, write_csv
+from .metrics import METRIC_NAMES, aggregate_metrics, bootstrap_ci, cluster_count, confusion_rows, write_csv
 from .plots import generate_figures
 
 
 def _fmt(value: Any, *, percent: bool = False) -> str:
     if value is None:
         return "NA"
+    if isinstance(value, bool):
+        return "true" if value else "false"
     try:
         number = float(value)
     except (TypeError, ValueError):
         return str(value)
     return f"{100 * number:.1f}%" if percent else f"{number:.4g}"
+
+
+def _as_bool(value: Any) -> Optional[bool]:
+    """Parse serialized booleans for report labels without truthiness surprises."""
+
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return bool(value)
+    text = str(value).strip().lower()
+    if text in {"1", "true", "yes", "y", "pass", "passed", "ok"}:
+        return True
+    if text in {"0", "false", "no", "n", "fail", "failed", "none", "na", "n/a"}:
+        return False
+    return None
 
 
 def _markdown_table(rows: Sequence[Mapping[str, Any]], columns: Sequence[str], percent_columns: Iterable[str] = ()) -> str:
@@ -51,7 +70,17 @@ def write_report(
     summary_all = aggregate_metrics(records, by_split=False, weights=weights)
     confusion = confusion_rows(records)
     ci = bootstrap_ci(records, "vrs", n_boot=bootstrap, seed=seed, weights=weights)
-    ci_rows = [{"method": method, "split": split, "vrs_ci_low": interval[0], "vrs_ci_high": interval[1]} for (method, split), interval in sorted(ci.items())]
+    ci_rows = []
+    for (method, split), interval in sorted(ci.items()):
+        group = [record for record in records if str(record.get("method", record.get("policy", "Unknown"))) == method and str(record.get("split", record.get("evaluation_split", "all"))) == split]
+        ci_rows.append({
+            "method": method,
+            "split": split,
+            "vrs_ci_low": interval[0],
+            "vrs_ci_high": interval[1],
+            "vrs_cluster_count": cluster_count(group),
+            "vrs_ci_status": "NA_single_cluster" if cluster_count(group) < 2 else "percentile_bootstrap",
+        })
     joined: List[Dict[str, Any]] = []
     for row in summary:
         extra = next((item for item in ci_rows if item["method"] == row["method"] and item["split"] == row["split"]), {})
@@ -88,14 +117,27 @@ def write_report(
     all_methods = sorted({str(row.get("method", "Unknown")) for row in records})
     all_splits = sorted({str(row.get("split", "all")) for row in records})
     implementation_by_method: Dict[str, set[str]] = {}
+    comparison_by_method: Dict[str, set[str]] = {}
     for row in records:
         method = str(row.get("method", "Unknown"))
         status = row.get("implementation_status")
         if status is not None:
             implementation_by_method.setdefault(method, set()).add(str(status))
+        role = row.get("comparison_role")
+        if role is not None:
+            comparison_by_method.setdefault(method, set()).add(str(role))
     implementation_rows = [
-        {"method": method, "implementation_status": "; ".join(sorted(statuses))}
-        for method, statuses in sorted(implementation_by_method.items())
+        {
+            "method": method,
+            "implementation_status": "; ".join(sorted(implementation_by_method.get(method, set()))),
+            "comparison_role": "; ".join(sorted(comparison_by_method.get(method, set()))),
+            "formal_comparison_eligible": any(
+                _as_bool(row.get("formal_comparison_eligible")) is True
+                for row in records
+                if str(row.get("method", "Unknown")) == method
+            ),
+        }
+        for method in sorted(implementation_by_method)
     ]
     report_lines = [
         f"# {title}",
@@ -106,13 +148,13 @@ def write_report(
         f"- Records: **{len(records)}**",
         f"- Methods: `{', '.join(all_methods) if all_methods else 'none'}`",
         f"- Splits: `{', '.join(all_splits) if all_splits else 'none'}`",
-        "- Statistical unit: question/task cluster where `question_id` is available; bootstrap interval uses deterministic pilot resampling.",
+        "- Statistical unit: question/task cluster where `question_id` is available; conditional rates use only eligible denominators; a one-cluster bootstrap interval is reported as `NA` (not a zero-width interval).",
         f"- VRS weights: `{json.dumps(report_metadata['vrs_weights'], sort_keys=True)}`",
         "",
         "## Overall result template (§26.1)",
         "",
     ]
-    columns = ["method", "vrs", "state_macro_f1", "flip_accuracy", "effective_switch_rate", "invalid_claim_rate", "fdr", "replication_rate", "cost"]
+    columns = ["method", "comparison_role", "formal_comparison_eligible", "vrs", "state_macro_f1", "flip_accuracy", "flip_eligible_n", "effective_switch_rate", "required_switch_n", "invalid_repair_rate", "invalid_repair_n", "underpower_handling", "insufficient_handling_n", "invalid_claim_rate", "fdr", "replication_rate", "confirmation_eligible_n", "cost"]
     report_lines.append(_markdown_table(summary_all, columns, {"state_macro_f1", "flip_accuracy", "effective_switch_rate", "invalid_claim_rate", "replication_rate"}))
     report_lines += [
         "## Evidence-state breakdown (§17.2)",
@@ -147,7 +189,7 @@ def write_report(
         marker = "Named external methods in the CPU pilot are labelled adapters/reference policies; this is not an external-paper or LLM-checkpoint reimplementation."
         marker_index = report_lines.index(marker) + 1
         report_lines.insert(marker_index, "")
-        report_lines.insert(marker_index + 1, _markdown_table(implementation_rows, ["method", "implementation_status"]).rstrip("\n"))
+        report_lines.insert(marker_index + 1, _markdown_table(implementation_rows, ["method", "implementation_status", "comparison_role", "formal_comparison_eligible"]).rstrip("\n"))
     for path in sorted(figure_paths):
         report_lines.append(f"- [{path.name}]({path.name})")
     report_lines += [

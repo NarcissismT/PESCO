@@ -22,14 +22,14 @@ try:
         TrustedVerifier,
         default_mvp_worlds,
     )
-    from research_strategy_optimization.schemas import Protocol, ResearchAction
+    from research_strategy_optimization.schemas import EvidenceState, Protocol, ResearchAction
 except ImportError:  # pragma: no cover - package-style invocation fallback
     from ..research_strategy_optimization.environments.tier0_simulator import (
         Tier0ResearchEnvironment,
         TrustedVerifier,
         default_mvp_worlds,
     )
-    from ..research_strategy_optimization.schemas import Protocol, ResearchAction
+    from ..research_strategy_optimization.schemas import EvidenceState, Protocol, ResearchAction
 
 
 WORLD_STATE = {
@@ -104,6 +104,13 @@ def run_tier0_records(
                     "switch_beneficial": action is ResearchAction.SWITCH and action_correct,
                     "effective_switch": action is ResearchAction.SWITCH and action_correct,
                     "unnecessary_switch": action is ResearchAction.SWITCH and not action_correct,
+                    "flip_eligible": world.kind in {"supported", "refuted"},
+                    "required_switch": world.kind == "refuted",
+                    "switch_required": world.kind == "refuted",
+                    "invalid_repair_eligible": world.kind == "invalid",
+                    "invalid_initial": world.kind == "invalid",
+                    "insufficient_handling_eligible": world.kind == "insufficient",
+                    "insufficient_initial": world.kind == "insufficient",
                     "persisted": action is ResearchAction.CONTINUE,
                     "current_strategy_optimal": action_correct and action is ResearchAction.CONTINUE,
                     "persistence_correct": action_correct and action is ResearchAction.CONTINUE,
@@ -113,7 +120,12 @@ def run_tier0_records(
                     "invalid_claim": state == "Invalid" and predicted == "Supported",
                     "independent_confirmed": confirmed,
                     "entered_confirmation": bool(verdict.independent_confirmation_performed),
+                    "confirmation_eligible": verdict.evidence_state in {EvidenceState.SUPPORTED, EvidenceState.REFUTED},
                     "new_path_verified": False,
+                    "new_path_announced": False,
+                    "discovery_opportunity": False,
+                    "discovery_eligible": False,
+                    "discovery_bonus_policy": "disabled_fixed_action_space",
                     "turn": 1,
                     "effect_estimate": float(output.effect_estimate),
                     "ci_low": float(output.ci_low),

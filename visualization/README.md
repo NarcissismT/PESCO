@@ -70,6 +70,13 @@ fields are:
   "seed": 103,
   "true_state": "Refuted",
   "predicted_state": "Refuted",
+  "policy_predicted_state": "Refuted",
+  "evaluator_diagnostic_state": "Refuted",
+  "state_prediction_source": "policy_output",
+  "active_hypothesis_id": "H_A",
+  "hypothesis_beliefs": {"H_A": 0.39, "H_B": 0.50},
+  "beliefs_before": {"H_A": 0.39},
+  "beliefs_after": {"H_A": 0.10},
   "selected_action": "switch_to_alternative_method",
   "valid_claim": true,
   "belief_score": 0.91,
@@ -85,6 +92,30 @@ fields are:
   "utility": 0.74
 }
 ```
+
+Conditional rates use evaluator-defined denominators rather than all episode rows:
+
+* `flip_accuracy` is computed only on eligible Supported/Refuted world pairs
+  (`flip_eligible_n`);
+* `effective_switch_rate` is computed only where a switch is required
+  (`required_switch_n`);
+* `invalid_repair_rate` is computed only for initially Invalid experiments
+  (`invalid_repair_n`);
+* `underpower_handling` is computed only for initially Insufficient experiments
+  (`insufficient_handling_n`); and
+* `replication_rate` is computed only for confirmation-eligible episodes
+  (`confirmation_eligible_n`).
+
+Each aggregate row also contains `<metric>_numerator`,
+`<metric>_denominator`, and `<metric>_eligible_n`.  No eligible observations yields
+`NA`, not zero.  A cluster bootstrap with fewer than two independent question/task
+clusters reports `vrs_ci_low`/`vrs_ci_high` as `NA`; a zero-width interval would
+incorrectly imply certainty from one cluster.
+
+The fixed four-action MVP disables discovery utility for every method.  The pilot
+records `discovery_bonus_policy=disabled_fixed_action_space`; autonomous discovery
+certificates are reserved for a future open-ended candidate protocol in which all
+methods receive the same evaluation path.
 
 The visualizer is an **offline post-evaluation consumer**, not a policy prompt
 builder. `true_state`, `world_id`, `hidden_outputs`, and trusted verdict fields

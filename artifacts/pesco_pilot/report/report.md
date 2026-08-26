@@ -2,31 +2,32 @@
 
 > This report is generated from executable result records. `--demo` values are a pipeline smoke test; `--tier0` values are a deterministic pilot diagnostic. Neither is a trained-model scientific claim.
 
-- Generated (UTC): `2026-08-25T11:23:25.828375+00:00`
-- Records: **112**
-- Methods: `Base, CVT-RL, DiscoPO, Ecpo, Evidence-Gated SMOPD, GDPO, GRPO-FourState, GRPO-Terminal, PESCO-Full, PESCO-Offline, SFT, SMOPD, Search-Only, TCPO`
+- Generated (UTC): `2026-08-25T16:48:22.563515+00:00`
+- Records: **120**
+- Methods: `Base, CVT-RL, DiscoPO, Ecpo, Evidence-Gated SMOPD, GDPO, GRPO-FourState, GRPO-Terminal, PESCO-Full, PESCO-Offline, Rule-Based, SFT, SMOPD, Search-Only, TCPO`
 - Splits: `pilot_id, pilot_ood`
-- Statistical unit: question/task cluster where `question_id` is available; bootstrap interval uses deterministic pilot resampling.
+- Statistical unit: question/task cluster where `question_id` is available; conditional rates use only eligible denominators; a one-cluster bootstrap interval is reported as `NA` (not a zero-width interval).
 - VRS weights: `{"alpha": 1.0, "beta": 1.0, "eta": 1.0, "gamma": 1.0, "lambda": 0.1}`
 
 ## Overall result template (§26.1)
 
-| method | vrs | state_macro_f1 | flip_accuracy | effective_switch_rate | invalid_claim_rate | fdr | replication_rate | cost |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Base | 0.5311 | 100.0% | 0.0% | 0.0% | 0.0% | NA | 100.0% | 2.189 |
-| CVT-RL | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| DiscoPO | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| Ecpo | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| Evidence-Gated SMOPD | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| GDPO | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| GRPO-FourState | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| GRPO-Terminal | 0.5311 | 100.0% | 0.0% | 0.0% | 0.0% | NA | 100.0% | 2.189 |
-| PESCO-Full | 3.107 | 100.0% | 50.0% | 25.0% | 0.0% | 0 | 100.0% | 2.256 |
-| PESCO-Offline | 0.3622 | 100.0% | 50.0% | 25.0% | 0.0% | 0 | 100.0% | 2.189 |
-| SFT | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| SMOPD | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
-| Search-Only | 2.508 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 5.743 |
-| TCPO | 2.857 | 100.0% | 50.0% | 25.0% | 0.0% | NA | 100.0% | 2.256 |
+| method | comparison_role | formal_comparison_eligible | vrs | state_macro_f1 | flip_accuracy | flip_eligible_n | effective_switch_rate | required_switch_n | invalid_repair_rate | invalid_repair_n | underpower_handling | insufficient_handling_n | invalid_claim_rate | fdr | replication_rate | confirmation_eligible_n | cost |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Base | diagnostic_reference | false | 0.5311 | NA | 0.0% | 2 | 0.0% | 2 | 0 | 2 | 0 | 2 | 0.0% | NA | 100.0% | 4 | 2.189 |
+| CVT-RL | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| DiscoPO | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| Ecpo | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| Evidence-Gated SMOPD | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| GDPO | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| GRPO-FourState | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| GRPO-Terminal | external_name_adapter_excluded | false | 0.5311 | NA | 0.0% | 2 | 0.0% | 2 | 0 | 2 | 0 | 2 | 0.0% | NA | 100.0% | 4 | 2.189 |
+| PESCO-Full | diagnostic_pesco_reference | false | 1.727 | NA | 100.0% | 2 | 100.0% | 2 | 0 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| PESCO-Offline | diagnostic_pesco_reference | false | 1.334 | NA | 100.0% | 2 | 100.0% | 2 | 0 | 2 | 0 | 2 | 0.0% | NA | 100.0% | 6 | 2.189 |
+| Rule-Based | diagnostic_control | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| SFT | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| SMOPD | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
+| Search-Only | diagnostic_oracle_upper_bound | false | 1.786 | NA | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 5.743 |
+| TCPO | external_name_adapter_excluded | false | 2.135 | 100.0% | 100.0% | 2 | 100.0% | 2 | 1 | 2 | 1 | 2 | 0.0% | NA | 100.0% | 8 | 2.256 |
 
 ## Evidence-state breakdown (§17.2)
 
@@ -36,22 +37,23 @@ See [evidence_confusion.csv](evidence_confusion.csv) and [evidence_confusion_mat
 
 Named external methods in the CPU pilot are labelled adapters/reference policies; this is not an external-paper or LLM-checkpoint reimplementation.
 
-| method | implementation_status |
-| --- | --- |
-| Base | fixed_policy_reference |
-| CVT-RL | reference_cpu_adapter |
-| DiscoPO | reference_cpu_adapter |
-| Ecpo | reference_cpu_adapter |
-| Evidence-Gated SMOPD | reference_cpu_adapter |
-| GDPO | reference_cpu_adapter |
-| GRPO-FourState | reference_cpu_adapter |
-| GRPO-Terminal | fixed_policy_reference |
-| PESCO-Full | tabular_pesco_reference |
-| PESCO-Offline | tabular_pesco_reference |
-| SFT | reference_cpu_adapter |
-| SMOPD | reference_cpu_adapter |
-| Search-Only | oracle_search_diagnostic |
-| TCPO | reference_cpu_adapter |
+| method | implementation_status | comparison_role | formal_comparison_eligible |
+| --- | --- | --- | --- |
+| Base | fixed_policy_reference | diagnostic_reference | false |
+| CVT-RL | reference_cpu_adapter | external_name_adapter_excluded | false |
+| DiscoPO | reference_cpu_adapter | external_name_adapter_excluded | false |
+| Ecpo | reference_cpu_adapter | external_name_adapter_excluded | false |
+| Evidence-Gated SMOPD | reference_cpu_adapter | external_name_adapter_excluded | false |
+| GDPO | reference_cpu_adapter | external_name_adapter_excluded | false |
+| GRPO-FourState | reference_cpu_adapter | external_name_adapter_excluded | false |
+| GRPO-Terminal | fixed_policy_reference | external_name_adapter_excluded | false |
+| PESCO-Full | tabular_pesco_reference | diagnostic_pesco_reference | false |
+| PESCO-Offline | tabular_pesco_reference | diagnostic_pesco_reference | false |
+| Rule-Based | transparent_rule_based_control | diagnostic_control | false |
+| SFT | reference_cpu_adapter | external_name_adapter_excluded | false |
+| SMOPD | reference_cpu_adapter | external_name_adapter_excluded | false |
+| Search-Only | oracle_search_diagnostic | diagnostic_oracle_upper_bound | false |
+| TCPO | reference_cpu_adapter | external_name_adapter_excluded | false |
 
 ## Strategy correction and discovery (§17.5–§17.12)
 

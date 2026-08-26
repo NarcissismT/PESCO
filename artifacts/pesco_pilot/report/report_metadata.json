@@ -13,7 +13,7 @@
     "eta": 1.0,
     "lambda": 0.1
   },
-  "record_count": 112,
-  "source": "PESCO/artifacts/pesco_pilot/results.json",
+  "record_count": 120,
+  "source": "artifacts/pesco_pilot/results.json",
   "input_mode": "file"
 }

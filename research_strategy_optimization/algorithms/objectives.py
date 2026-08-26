@@ -31,6 +31,11 @@ class ObjectiveWeights:
     reference: float = 0.02
     constraint: float = 1.0
 
+    def __post_init__(self) -> None:
+        values = (self.flip, self.state, self.reference, self.constraint)
+        if any(not math.isfinite(float(value)) or float(value) < 0.0 for value in values):
+            raise ValueError("objective weights must be finite and non-negative")
+
 
 def clipped_option_loss(log_ratio: Any, advantage: Any, clip_epsilon: float = 0.2) -> Any:
     """PPO clipped surrogate loss using log-probability ratios."""
@@ -139,3 +144,46 @@ def pesco_objective(
             return value if _is_tensor(value) else torch.as_tensor(value, dtype=base.dtype, device=base.device)
         return base + weights.flip * as_like(flip_loss) + weights.state * as_like(state_loss) + weights.reference * as_like(reference_loss) + weights.constraint * as_like(constraint_loss)
     return float(option_loss) + weights.flip * float(flip_loss) + weights.state * float(state_loss) + weights.reference * float(reference_loss) + weights.constraint * float(constraint_loss)
+
+
+def objective_breakdown(
+    option_loss: Any,
+    flip_loss: Any = 0.0,
+    state_loss: Any = 0.0,
+    reference_loss: Any = 0.0,
+    constraint_loss: Any = 0.0,
+    weights: ObjectiveWeights = ObjectiveWeights(),
+) -> dict[str, Any]:
+    """Return named weighted components and the composed PESCO objective.
+
+    Keeping this decomposition next to :func:`pesco_objective` makes training logs
+    auditable: a runner can show whether a reported decrease came from the option
+    term, the cross-world flip term, or a regulariser.  Tensor values remain attached
+    to the autograd graph; scalar callers receive ordinary floats.
+    """
+
+    values = {
+        "option_loss": option_loss,
+        "flip_loss": flip_loss,
+        "state_loss": state_loss,
+        "reference_loss": reference_loss,
+        "constraint_loss": constraint_loss,
+    }
+    weighted = {
+        "option_loss_weighted": option_loss,
+        "flip_loss_weighted": weights.flip * flip_loss,
+        "state_loss_weighted": weights.state * state_loss,
+        "reference_loss_weighted": weights.reference * reference_loss,
+        "constraint_loss_weighted": weights.constraint * constraint_loss,
+    }
+    weighted["total_loss"] = pesco_objective(
+        option_loss,
+        flip_loss,
+        state_loss,
+        reference_loss,
+        constraint_loss,
+        weights,
+    )
+    if any(_is_tensor(value) for value in values.values()):
+        return {**values, **weighted}
+    return {key: float(value) for key, value in {**values, **weighted}.items()}

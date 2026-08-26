@@ -1,0 +1,82 @@
+{
+  "experiment": "B_zero_shot_failure_diagnosis",
+  "formal_comparison_authorized": false,
+  "gates": {
+    "base_oracle_gap_observed": true,
+    "policy_state_separated_from_evaluator_diagnostic": true,
+    "real_model_zero_shot_completed": false,
+    "required_methods_present": true,
+    "tier1_backend_verified": false
+  },
+  "methods": [
+    "Base",
+    "Rule-Based",
+    "Search-Only"
+  ],
+  "objective": "measure whether a real model has research-strategy failures before RL",
+  "pass": false,
+  "reason": "CPU pilot has no frozen real-model checkpoint; Rule-Based is transparent control and Search-Only is an oracle diagnostic.",
+  "schema_version": "pesco_experiment_b_v0.1",
+  "state_prediction_sources": {
+    "Base": {
+      "evaluator_diagnostic_rows": 8,
+      "policy_output_rows": 0,
+      "separated": true
+    },
+    "Rule-Based": {
+      "evaluator_diagnostic_rows": 8,
+      "policy_output_rows": 8,
+      "separated": true
+    },
+    "Search-Only": {
+      "evaluator_diagnostic_rows": 8,
+      "policy_output_rows": 0,
+      "separated": true
+    }
+  },
+  "status": "diagnostic_only",
+  "summaries": {
+    "Base": {
+      "budget_normalized_scientific_value": 0.5310999999999999,
+      "confounding_repair_rate": null,
+      "erroneous_persistence_rate": 1.0,
+      "evaluator_diagnostic_state_rows": 8,
+      "insufficient_handling_rate": 0.0,
+      "leakage_repair_rate": 0.0,
+      "n": 8,
+      "policy_predicted_state_rows": 0,
+      "required_switch_rate": 0.0,
+      "state_accuracy": null,
+      "state_macro_f1": null,
+      "state_prediction_rows": 0
+    },
+    "Rule-Based": {
+      "budget_normalized_scientific_value": 2.13495905738923,
+      "confounding_repair_rate": null,
+      "erroneous_persistence_rate": 0.0,
+      "evaluator_diagnostic_state_rows": 8,
+      "insufficient_handling_rate": 1.0,
+      "leakage_repair_rate": 1.0,
+      "n": 8,
+      "policy_predicted_state_rows": 8,
+      "required_switch_rate": 1.0,
+      "state_accuracy": 1.0,
+      "state_macro_f1": 1.0,
+      "state_prediction_rows": 8
+    },
+    "Search-Only": {
+      "budget_normalized_scientific_value": 1.78635905738923,
+      "confounding_repair_rate": null,
+      "erroneous_persistence_rate": 0.0,
+      "evaluator_diagnostic_state_rows": 8,
+      "insufficient_handling_rate": 1.0,
+      "leakage_repair_rate": 1.0,
+      "n": 8,
+      "policy_predicted_state_rows": 0,
+      "required_switch_rate": 1.0,
+      "state_accuracy": null,
+      "state_macro_f1": null,
+      "state_prediction_rows": 0
+    }
+  }
+}

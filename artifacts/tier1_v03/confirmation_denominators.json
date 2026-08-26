@@ -1,0 +1,9 @@
+{
+  "data_independent_given_performed_rate": 1.0,
+  "data_independent_n": 118,
+  "eligible_n": 118,
+  "passed_given_performed_rate": 0.9745762711864406,
+  "passed_n": 115,
+  "performed_given_eligible_rate": 1.0,
+  "performed_n": 118
+}

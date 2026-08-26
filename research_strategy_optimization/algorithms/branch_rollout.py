@@ -13,7 +13,7 @@ import math
 from dataclasses import dataclass
 from typing import Any, Callable, Iterable, Mapping, Optional, Sequence
 
-from ..schemas import BranchRecord, EvidenceState, ExperimentOutput, ResearchAction, Trajectory, Verdict
+from ..schemas import BranchRecord, ExperimentOutput, ResearchAction, Trajectory, Verdict
 from ..environments.snapshot_manager import SnapshotManager
 from .leave_one_out_advantage import assign_leave_one_out_advantages
 
@@ -165,54 +165,29 @@ class BranchRolloutManager:
         # win a branch comparison.  Adapters may provide a richer registered task
         # utility through ``utility_fn``.
         if isinstance(verdict, Verdict):
-            # In the synthetic worlds the trusted task evaluator has a registered
-            # oracle action for the latent mechanism.  It is used only on the evaluator
-            # side to score a branch; the observation/policy never receives ``world.kind``.
-            world_kind = getattr(getattr(branch_env, "world", None), "kind", None)
-            oracle_action = {
-                "supported": ResearchAction.CONTINUE,
-                "refuted": ResearchAction.SWITCH,
-                "insufficient": ResearchAction.SAMPLE,
-                "invalid": ResearchAction.REPAIR,
-            }.get(world_kind)
-            if oracle_action is not None:
-                action = ResearchAction(getattr(output, "action", ResearchAction.CONTINUE))
-                if not verdict.validity_pass:
-                    task = 0.0
-                elif action is oracle_action:
-                    task = 1.0
-                elif world_kind == "refuted" and action is ResearchAction.REPLICATE:
-                    task = 0.25
-                elif world_kind == "supported" and action is ResearchAction.REPLICATE:
-                    task = 0.75
-                elif world_kind == "insufficient" and action is ResearchAction.REPLICATE:
-                    task = 0.50
-                else:
-                    task = 0.10
-                cost = float(getattr(output, "execution_cost", 0.0))
-                confirmation = 0.10 if verdict.independent_confirmation_passed else 0.0
-                return _finite(task + confirmation - 0.05 * cost)
-            preferred = {
-                EvidenceState.SUPPORTED: ResearchAction.CONTINUE,
-                EvidenceState.REFUTED: ResearchAction.SWITCH,
-                EvidenceState.INSUFFICIENT: ResearchAction.SAMPLE,
-                EvidenceState.INVALID: ResearchAction.REPAIR,
-            }[verdict.evidence_state]
-            action = ResearchAction(getattr(output, "action", ResearchAction.CONTINUE))
+            # A generic rollout manager must not turn the four evidence labels into a
+            # hidden ``state -> preferred action`` oracle.  Tier-1 callers provide an
+            # explicit evaluator-owned utility callback; this fallback is deliberately
+            # action-agnostic and rewards only observed protocol transitions,
+            # confirmation, precision, and cost.
             if not verdict.validity_pass:
-                task = 0.0
-            elif action is preferred:
-                task = 1.0
-            elif verdict.evidence_state is EvidenceState.REFUTED and action is ResearchAction.REPLICATE:
-                task = 0.25
-            elif verdict.evidence_state is EvidenceState.SUPPORTED and action is ResearchAction.REPLICATE:
-                task = 0.75
-            elif verdict.evidence_state is EvidenceState.INSUFFICIENT and action is ResearchAction.REPLICATE:
-                task = 0.50
-            else:
-                task = 0.10
-            cost = float(getattr(output, "execution_cost", 0.0))
+                return _finite(-0.30 - 0.05 * float(getattr(output, "execution_cost", 0.0)))
+            signals = set(getattr(output, "validity_signals", ()))
+            task = 0.20
+            if "split_protocol_updated" in signals:
+                task += 0.25
+            if "group_held_out_split" in signals and "split_overlap_diagnostic" not in signals:
+                task += 0.35
+            if any(
+                token in signal
+                for signal in signals
+                for token in ("adjusted", "controlled", "subgroup_metric_estimator")
+            ):
+                task += 0.30
+            if "sample_count_below_precision_target" not in signals and int(getattr(output, "sample_size", 0)) >= 60:
+                task += 0.10
             confirmation = 0.10 if verdict.independent_confirmation_passed else 0.0
+            cost = float(getattr(output, "execution_cost", 0.0))
             return _finite(task + confirmation - 0.05 * cost)
         if verdict is not None:
             for key in ("utility", "quality_score", "vds_score"):
@@ -307,6 +282,15 @@ class BranchRolloutManager:
             if require_equivalent_snapshot and branch_digest != source_digest:
                 raise ValueError("restored branch does not match source snapshot")
             initial = branch_env.visible_observation() if hasattr(branch_env, "visible_observation") else None
+            # Expose the public decision state to an evaluator-side utility callback.
+            # This is deliberately not part of ``Observation.to_dict`` or policy
+            # inputs; it lets a transition-aware utility score an action against the
+            # state from which it was selected (e.g. switch after a refutation).
+            if initial is not None:
+                try:
+                    setattr(branch_env, "_branch_initial_observation", initial)
+                except Exception:
+                    pass
             output = branch_env.execute_option(option, seeds=seeds)
             verdict = self._evaluate(output, branch_env, verifier)
             utility = self._utility(output, verdict, branch_env, utility_fn)

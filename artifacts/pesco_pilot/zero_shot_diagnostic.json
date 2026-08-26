@@ -1,0 +1,224 @@
+{
+  "diagnostic_only": true,
+  "model_checkpoint": null,
+  "pass": false,
+  "policy_class": "BasePolicy",
+  "protocol_version": "pesco_v0_2",
+  "question_id": "rq_tier0_001",
+  "real_model_zero_shot_completed": false,
+  "reason": "no frozen model/checkpoint is available in the CPU pilot",
+  "records": [
+    {
+      "action_correct_for_audit": true,
+      "evaluator_diagnostic_state": "supported",
+      "model_inference": false,
+      "policy_input": {
+        "active_hypothesis_id": "H_A",
+        "belief_records": [
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_A",
+            "probability": 0.9715305210324511,
+            "turn": 1
+          },
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_B",
+            "probability": 0.5,
+            "turn": 0
+          }
+        ],
+        "confidence_interval": [
+          0.08387929725318413,
+          0.09437596538056278
+        ],
+        "current_method": "method_a",
+        "effect_estimate": 0.08912763131687346,
+        "history_summary": [
+          "registered_hypothesis: method A has positive practical effect",
+          "continue_current_method:method_a"
+        ],
+        "hypothesis_beliefs": {
+          "H_A": 0.9715305210324511,
+          "H_B": 0.5
+        },
+        "hypothesis_probability": 0.9715305210324511,
+        "metric_name": "group_held_out_accuracy_delta",
+        "question_id": "rq_tier0_001",
+        "remaining_budget": 5,
+        "sample_size": 120,
+        "seed_count": 4,
+        "task_family": "group_generalization",
+        "turn": 1,
+        "validity_signals": []
+      },
+      "policy_predicted_state": null,
+      "predicted_state": null,
+      "question_id": "rq_tier0_001",
+      "selected_action": "continue_current_method",
+      "state_prediction_source": "evaluator_diagnostic",
+      "trusted_state_for_audit": "supported",
+      "world_id": "world_01"
+    },
+    {
+      "action_correct_for_audit": false,
+      "evaluator_diagnostic_state": "refuted",
+      "model_inference": false,
+      "policy_input": {
+        "active_hypothesis_id": "H_A",
+        "belief_records": [
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_A",
+            "probability": 0.3939789428612389,
+            "turn": 1
+          },
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_B",
+            "probability": 0.5,
+            "turn": 0
+          }
+        ],
+        "confidence_interval": [
+          -0.01612070274681586,
+          -0.005624034619437201
+        ],
+        "current_method": "method_a",
+        "effect_estimate": -0.010872368683126531,
+        "history_summary": [
+          "registered_hypothesis: method A has positive practical effect",
+          "continue_current_method:method_a"
+        ],
+        "hypothesis_beliefs": {
+          "H_A": 0.3939789428612389,
+          "H_B": 0.5
+        },
+        "hypothesis_probability": 0.3939789428612389,
+        "metric_name": "group_held_out_accuracy_delta",
+        "question_id": "rq_tier0_001",
+        "remaining_budget": 5,
+        "sample_size": 120,
+        "seed_count": 4,
+        "task_family": "group_generalization",
+        "turn": 1,
+        "validity_signals": []
+      },
+      "policy_predicted_state": null,
+      "predicted_state": null,
+      "question_id": "rq_tier0_001",
+      "selected_action": "continue_current_method",
+      "state_prediction_source": "evaluator_diagnostic",
+      "trusted_state_for_audit": "refuted",
+      "world_id": "world_02"
+    },
+    {
+      "action_correct_for_audit": false,
+      "evaluator_diagnostic_state": "insufficient",
+      "model_inference": false,
+      "policy_input": {
+        "active_hypothesis_id": "H_A",
+        "belief_records": [
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_A",
+            "probability": 0.4754410967393677,
+            "turn": 1
+          },
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_B",
+            "probability": 0.5,
+            "turn": 0
+          }
+        ],
+        "confidence_interval": [
+          -0.08983147273296242,
+          0.07016852726703758
+        ],
+        "current_method": "method_a",
+        "effect_estimate": -0.009831472732962416,
+        "history_summary": [
+          "registered_hypothesis: method A has positive practical effect",
+          "continue_current_method:method_a"
+        ],
+        "hypothesis_beliefs": {
+          "H_A": 0.4754410967393677,
+          "H_B": 0.5
+        },
+        "hypothesis_probability": 0.4754410967393677,
+        "metric_name": "group_held_out_accuracy_delta",
+        "question_id": "rq_tier0_001",
+        "remaining_budget": 5,
+        "sample_size": 18,
+        "seed_count": 4,
+        "task_family": "group_generalization",
+        "turn": 1,
+        "validity_signals": [
+          "sample_count_below_precision_target"
+        ]
+      },
+      "policy_predicted_state": null,
+      "predicted_state": null,
+      "question_id": "rq_tier0_001",
+      "selected_action": "continue_current_method",
+      "state_prediction_source": "evaluator_diagnostic",
+      "trusted_state_for_audit": "insufficient",
+      "world_id": "world_03"
+    },
+    {
+      "action_correct_for_audit": false,
+      "evaluator_diagnostic_state": "invalid",
+      "model_inference": false,
+      "policy_input": {
+        "active_hypothesis_id": "H_A",
+        "belief_records": [
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_A",
+            "probability": 0.5,
+            "turn": 1
+          },
+          {
+            "committed_before_action": true,
+            "hypothesis_id": "H_B",
+            "probability": 0.5,
+            "turn": 0
+          }
+        ],
+        "confidence_interval": [
+          0.18387929725318414,
+          0.19437596538056282
+        ],
+        "current_method": "method_a",
+        "effect_estimate": 0.1891276313168735,
+        "history_summary": [
+          "registered_hypothesis: method A has positive practical effect",
+          "continue_current_method:method_a"
+        ],
+        "hypothesis_beliefs": {
+          "H_A": 0.5,
+          "H_B": 0.5
+        },
+        "hypothesis_probability": 0.5,
+        "metric_name": "group_held_out_accuracy_delta",
+        "question_id": "rq_tier0_001",
+        "remaining_budget": 5,
+        "sample_size": 120,
+        "seed_count": 4,
+        "task_family": "group_generalization",
+        "turn": 1,
+        "validity_signals": [
+          "split_overlap_diagnostic"
+        ]
+      },
+      "policy_predicted_state": null,
+      "predicted_state": null,
+      "question_id": "rq_tier0_001",
+      "selected_action": "continue_current_method",
+      "state_prediction_source": "evaluator_diagnostic",
+      "trusted_state_for_audit": "invalid",
+      "world_id": "world_04"
+    }
+  ]
+}

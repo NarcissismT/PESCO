@@ -2,18 +2,18 @@
 
 > This report is generated from executable result records. `--demo` values are a pipeline smoke test; `--tier0` values are a deterministic pilot diagnostic. Neither is a trained-model scientific claim.
 
-- Generated (UTC): `2026-08-25T11:22:07.965418+00:00`
+- Generated (UTC): `2026-08-26T02:40:37.655969+00:00`
 - Records: **64**
 - Methods: `Tier0-BranchRollout`
 - Splits: `pilot`
-- Statistical unit: question/task cluster where `question_id` is available; bootstrap interval uses deterministic pilot resampling.
+- Statistical unit: question/task cluster where `question_id` is available; conditional rates use only eligible denominators; a one-cluster bootstrap interval is reported as `NA` (not a zero-width interval).
 - VRS weights: `{"alpha": 1.0, "beta": 1.0, "eta": 1.0, "gamma": 1.0, "lambda": 0.1}`
 
 ## Overall result template (§26.1)
 
-| method | vrs | state_macro_f1 | flip_accuracy | effective_switch_rate | invalid_claim_rate | fdr | replication_rate | cost |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Tier0-BranchRollout | 1.277 | 68.0% | NA | 6.2% | 6.2% | NA | 87.0% | 1.449 |
+| method | comparison_role | formal_comparison_eligible | vrs | state_macro_f1 | flip_accuracy | flip_eligible_n | effective_switch_rate | required_switch_n | invalid_repair_rate | invalid_repair_n | underpower_handling | insufficient_handling_n | invalid_claim_rate | fdr | replication_rate | confirmation_eligible_n | cost |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Tier0-BranchRollout | NA | false | 1.277 | 68.0% | 0.0% | 1 | 25.0% | 16 | 0.25 | 16 | 0.25 | 16 | 6.2% | NA | 87.0% | 46 | 1.449 |
 
 ## Evidence-state breakdown (§17.2)
 

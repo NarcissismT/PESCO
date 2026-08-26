@@ -39,6 +39,12 @@ class ResearchAction(str, Enum):
         return tuple(cls)
 
 
+# ``pesco_v0_2`` is the checked-in frozen CPU-reference protocol.  Keeping the
+# default in one place prevents a runner from silently creating v0.1 records while
+# reading the v0.2 freeze manifest.
+DEFAULT_PROTOCOL_VERSION = "pesco_v0_2"
+
+
 @dataclass(frozen=True)
 class Protocol:
     """Pre-registered decision rules.
@@ -48,7 +54,7 @@ class Protocol:
     interval crossing the threshold is *insufficient*, never automatically refuted.
     """
 
-    protocol_version: str = "pesco_v0_1"
+    protocol_version: str = DEFAULT_PROTOCOL_VERSION
     delta_min: float = 0.02
     confidence_level: float = 0.95
     invalid_precedence: bool = True
@@ -61,6 +67,8 @@ class Protocol:
     max_budget: int = 6
 
     def __post_init__(self) -> None:
+        if not isinstance(self.protocol_version, str) or not self.protocol_version.strip():
+            raise ValueError("protocol_version must be a non-empty string")
         if not 0.0 < float(self.confidence_level) < 1.0:
             raise ValueError("confidence_level must lie in (0, 1)")
         if not math.isfinite(float(self.delta_min)) or float(self.delta_min) < 0.0:
@@ -113,6 +121,14 @@ class WorldSpec:
     confounding: bool = False
     seed_offset: int = 0
     question_family: str = "group_generalization"
+    # Optional public task token.  When supplied, this is a separate public context
+    # label; the concrete mechanism remains in ``question_family`` for evaluator
+    # registration and is not exposed unless the environment explicitly chooses it.
+    public_task_family: str = ""
+    # Evaluator-owned mechanism flags for the multi-family Tier-1 benchmark.  They
+    # are deliberately absent from policy-visible observations.
+    metric_mismatch: bool = False
+    protocol_invalid: bool = False
 
     def __post_init__(self) -> None:
         if not str(self.world_id):
@@ -124,6 +140,42 @@ class WorldSpec:
             raise ValueError("world effect/noise parameters must be finite")
         if isinstance(self.initial_samples, bool) or int(self.initial_samples) != self.initial_samples or int(self.initial_samples) <= 0:
             raise ValueError("initial_samples must be a positive integer")
+        if not isinstance(self.metric_mismatch, bool) or not isinstance(self.protocol_invalid, bool):
+            raise ValueError("world mechanism flags must be booleans")
+        if not isinstance(self.public_task_family, str):
+            raise ValueError("public_task_family must be a string")
+
+
+@dataclass(frozen=True)
+class HypothesisBelief:
+    """A probability committed for one explicitly named hypothesis.
+
+    A single scalar belief is not enough once a research agent changes methods:
+    evidence about method B must not be scored as if it were evidence about method A.
+    This small record keeps the hypothesis identity and the decision turn attached to
+    every policy-visible probability while remaining JSON serialisable.
+    """
+
+    hypothesis_id: str
+    probability: float
+    turn: int = 0
+    committed_before_action: bool = True
+
+    def __post_init__(self) -> None:
+        if not str(self.hypothesis_id):
+            raise ValueError("hypothesis_id must be non-empty")
+        if not math.isfinite(float(self.probability)) or not 0.0 <= float(self.probability) <= 1.0:
+            raise ValueError("hypothesis belief probability must lie in [0, 1]")
+        if isinstance(self.turn, bool) or int(self.turn) != self.turn or int(self.turn) < 0:
+            raise ValueError("hypothesis belief turn must be a non-negative integer")
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "hypothesis_id": str(self.hypothesis_id),
+            "probability": float(self.probability),
+            "turn": int(self.turn),
+            "committed_before_action": bool(self.committed_before_action),
+        }
 
 
 @dataclass(frozen=True)
@@ -143,6 +195,12 @@ class Observation:
     validity_signals: Tuple[str, ...] = ()
     history_summary: Tuple[str, ...] = ()
     hypothesis_probability: float = 0.5
+    active_hypothesis_id: str = "H_A"
+    hypothesis_beliefs: Tuple[HypothesisBelief, ...] = ()
+    # Public task context.  A research question may announce its mechanism family
+    # (for example leakage versus confounding); this is not a hidden world label and
+    # lets a policy learn that the same evidence state can require different actions.
+    task_family: str = "group_generalization"
 
     def __post_init__(self) -> None:
         values = (self.effect_estimate, self.ci_low, self.ci_high, self.hypothesis_probability)
@@ -152,6 +210,21 @@ class Observation:
             raise ValueError("observation confidence interval must be ordered")
         if not 0.0 <= float(self.hypothesis_probability) <= 1.0:
             raise ValueError("hypothesis_probability must lie in [0, 1]")
+        if not str(self.active_hypothesis_id):
+            raise ValueError("active_hypothesis_id must be non-empty")
+        if not str(self.task_family).strip():
+            raise ValueError("task_family must be a non-empty public identifier")
+        beliefs = tuple(
+            belief if isinstance(belief, HypothesisBelief) else HypothesisBelief(**dict(belief))
+            for belief in self.hypothesis_beliefs
+        )
+        if len({belief.hypothesis_id for belief in beliefs}) != len(beliefs):
+            raise ValueError("hypothesis_beliefs must have unique hypothesis IDs")
+        if beliefs and self.active_hypothesis_id not in {belief.hypothesis_id for belief in beliefs}:
+            raise ValueError("active_hypothesis_id must be present in hypothesis_beliefs")
+        if not beliefs:
+            beliefs = (HypothesisBelief(self.active_hypothesis_id, self.hypothesis_probability, self.turn),)
+        object.__setattr__(self, "hypothesis_beliefs", beliefs)
         counters = (self.turn, self.sample_size, self.seed_count, self.remaining_budget)
         if any(isinstance(raw, bool) or int(raw) != raw or int(raw) < 0 for raw in counters):
             raise ValueError("observation counters must be non-negative")
@@ -176,7 +249,23 @@ class Observation:
             "validity_signals": list(self.validity_signals),
             "history_summary": list(self.history_summary),
             "hypothesis_probability": float(self.hypothesis_probability),
+            "active_hypothesis_id": str(self.active_hypothesis_id),
+            "hypothesis_beliefs": {
+                belief.hypothesis_id: float(belief.probability)
+                for belief in self.hypothesis_beliefs
+            },
+            "belief_records": [belief.to_dict() for belief in self.hypothesis_beliefs],
+            "task_family": str(self.task_family),
         }
+
+    @property
+    def hypothesis_id(self) -> str:
+        """Backward/forward-compatible alias for the active hypothesis ID."""
+
+        return self.active_hypothesis_id
+
+    def belief_map(self) -> Dict[str, float]:
+        return {belief.hypothesis_id: float(belief.probability) for belief in self.hypothesis_beliefs}
 
 
 @dataclass(frozen=True)
@@ -206,6 +295,23 @@ class ExperimentOutput:
     leakage: bool = False
     confounding: bool = False
     confirmation: bool = False
+    # Public implementation metadata.  This is deliberately optional so older
+    # Tier-0/third-party executors can continue constructing the schema without
+    # changes, while Tier-1 can prove which backend actually produced a result.
+    backend: str = "unknown"
+    estimator: str = "unknown"
+    treatment_confounder_correlation: float = 0.0
+    group_overlap_count: int = 0
+    data_partition: str = "unknown"
+    # Tier-1 leakage audits run an actual held-out prediction check in addition to
+    # checking the treatment contrast.  These fields are evaluator-visible metadata;
+    # they default to neutral values for legacy Tier-0 executors.
+    hidden_validation_metric: float = 0.0
+    hidden_validation_baseline: float = 0.0
+    hidden_validation_n: int = 0
+    hidden_validation_overlap_count: int = 0
+    hidden_validation_split: str = "not_run"
+    hidden_validation_partition_hash: str = ""
 
     def __post_init__(self) -> None:
         values = (self.effect_estimate, self.ci_low, self.ci_high, self.execution_cost, self.latent_effect)
@@ -219,6 +325,29 @@ class ExperimentOutput:
             raise ValueError("sample_size and seed_count must be non-negative")
         if len(tuple(self.seeds)) != int(self.seed_count):
             raise ValueError("seed_count must match the seeds tuple length")
+        if not str(self.backend).strip():
+            raise ValueError("backend must be a non-empty identifier")
+        if not str(self.estimator).strip():
+            raise ValueError("estimator must be a non-empty identifier")
+        if not math.isfinite(float(self.treatment_confounder_correlation)):
+            raise ValueError("treatment_confounder_correlation must be finite")
+        if isinstance(self.group_overlap_count, bool) or int(self.group_overlap_count) != self.group_overlap_count or int(self.group_overlap_count) < 0:
+            raise ValueError("group_overlap_count must be a non-negative integer")
+        if not str(self.data_partition).strip():
+            raise ValueError("data_partition must be a non-empty identifier")
+        if any(
+            not math.isfinite(float(value))
+            for value in (self.hidden_validation_metric, self.hidden_validation_baseline)
+        ):
+            raise ValueError("hidden validation metrics must be finite")
+        for value, name in (
+            (self.hidden_validation_n, "hidden_validation_n"),
+            (self.hidden_validation_overlap_count, "hidden_validation_overlap_count"),
+        ):
+            if isinstance(value, bool) or int(value) != value or int(value) < 0:
+                raise ValueError(f"{name} must be a non-negative integer")
+        if not str(self.hidden_validation_split).strip():
+            raise ValueError("hidden_validation_split must be a non-empty identifier")
 
     def public_dict(self) -> Dict[str, Any]:
         return {
@@ -230,6 +359,17 @@ class ExperimentOutput:
             "seed_count": int(self.seed_count),
             "execution_cost": float(self.execution_cost),
             "validity_signals": list(self.validity_signals),
+            "backend": str(self.backend),
+            "estimator": str(self.estimator),
+            "data_partition": str(self.data_partition),
+            "hidden_validation": {
+                "metric": float(self.hidden_validation_metric),
+                "baseline": float(self.hidden_validation_baseline),
+                "n": int(self.hidden_validation_n),
+                "group_overlap_count": int(self.hidden_validation_overlap_count),
+                "split": str(self.hidden_validation_split),
+                "partition_hash": str(self.hidden_validation_partition_hash),
+            },
         }
 
 
@@ -249,6 +389,9 @@ class Verdict:
     method_family: str = "method_a"
     autonomous_candidate: bool = False
     discovered_gain: float = 0.0
+    confirmation_dataset_hash: str = ""
+    confirmation_split_hash: str = ""
+    confirmation_data_independent: bool = False
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -260,6 +403,9 @@ class Verdict:
                 "performed": self.independent_confirmation_performed,
                 "passed": self.independent_confirmation_passed,
                 "confirmation_seeds": list(self.confirmation_seeds),
+                "dataset_hash": self.confirmation_dataset_hash,
+                "split_hash": self.confirmation_split_hash,
+                "data_independent": self.confirmation_data_independent,
             },
             "scientific_claim_consistency": self.scientific_claim_consistency,
             "audit_signature": self.audit_signature,

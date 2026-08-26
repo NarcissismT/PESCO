@@ -1,0 +1,29 @@
+{
+  "contamination_audit": "diagnostic_question_level_separation_only",
+  "diagnostic_dev_question_ids": [
+    "t1_group_leakage_03",
+    "t1_causal_confounding_03"
+  ],
+  "diagnostic_ood_question_ids": [
+    "t1_low_sample_variance_03",
+    "t1_subgroup_metric_mismatch_03"
+  ],
+  "diagnostic_train_question_ids": [
+    "t1_group_leakage_01",
+    "t1_group_leakage_02",
+    "t1_causal_confounding_01",
+    "t1_causal_confounding_02",
+    "t1_low_sample_variance_01",
+    "t1_low_sample_variance_02",
+    "t1_subgroup_metric_mismatch_01",
+    "t1_subgroup_metric_mismatch_02"
+  ],
+  "final_split_status": "locked_inaccessible_reserved",
+  "formal_final_access": false,
+  "formal_final_id_question_ids": [],
+  "formal_final_ood_question_ids": [],
+  "formal_promotion_question_ids": [],
+  "protocol_digest": "sha256:9f0b78770c80c7163bcb006db994a2f4b1722f349fd366b86b304c19ca02974c",
+  "protocol_version": "pesco_v0_2",
+  "schema_version": "pesco_tier1_split_manifest_v0.3"
+}

@@ -79,7 +79,10 @@ def _save(fig: plt.Figure, output_dir: Path, stem: str, formats: Sequence[str] =
 
 def _bar_axis(ax: plt.Axes, labels: Sequence[str], values: Sequence[Optional[float]], *, ylabel: str, title: str,
               ylim: Optional[Tuple[float, float]] = None, percentage: bool = False) -> None:
-    clean = [0.0 if value is None else float(value) for value in values]
+    # Missing/undefined metrics are NA, not zero.  NaN bars stay invisible and are
+    # explicitly labelled so an ineligible denominator cannot look like a measured
+    # zero in the figure.
+    clean = [float("nan") if value is None else float(value) for value in values]
     colors = [PALETTE.get(label, "#4c78a8") for label in labels]
     bars = ax.bar(range(len(labels)), clean, color=colors, alpha=0.9)
     ax.set_xticks(range(len(labels)), labels, rotation=30, ha="right")
@@ -92,6 +95,9 @@ def _bar_axis(ax: plt.Axes, labels: Sequence[str], values: Sequence[Optional[flo
         if value is not None:
             label = f"{100 * value:.1f}%" if percentage else f"{value:.3g}"
             ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), label, ha="center", va="bottom", fontsize=8)
+        else:
+            index = bar.get_x() + bar.get_width() / 2
+            ax.text(index, 0.02 if percentage else 0.0, "NA", ha="center", va="bottom", fontsize=8, color="#555555")
 
 
 def plot_overview(summary: Sequence[Mapping[str, Any]], output_dir: Path, formats: Sequence[str]) -> List[Path]:

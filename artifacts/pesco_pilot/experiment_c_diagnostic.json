@@ -1,0 +1,84 @@
+{
+  "experiment": "C_state_reward_sufficiency",
+  "formal_comparison_authorized": false,
+  "gates": {
+    "formal_splits_unopened": true,
+    "genuine_sft_or_preference_training": false,
+    "required_methods_present": false,
+    "same_state_different_optimal_actions": false,
+    "tier1_backend_verified": false
+  },
+  "interpretation": {
+    "cannot_claim_pesco_advantage": true,
+    "mvp_state_to_action_mapping_is_fixed": true,
+    "next_required_task": "mechanism-diverse Tier-1 worlds with same visible state and different optimal actions"
+  },
+  "methods": [
+    "SFT",
+    "GRPO-Terminal",
+    "GRPO-FourState",
+    "StateGateOnly"
+  ],
+  "objective": "test whether ordinary state rewards already solve the research-action task",
+  "pass": false,
+  "schema_version": "pesco_experiment_c_v0.1",
+  "status": "diagnostic_only",
+  "summaries": {
+    "GRPO-FourState": {
+      "budget_normalized_scientific_value": 2.13495905738923,
+      "confounding_repair_rate": null,
+      "erroneous_persistence_rate": 0.0,
+      "evaluator_diagnostic_state_rows": 8,
+      "insufficient_handling_rate": 1.0,
+      "leakage_repair_rate": 1.0,
+      "n": 8,
+      "policy_predicted_state_rows": 8,
+      "required_switch_rate": 1.0,
+      "state_accuracy": 1.0,
+      "state_macro_f1": 1.0,
+      "state_prediction_rows": 8
+    },
+    "GRPO-Terminal": {
+      "budget_normalized_scientific_value": 0.5310999999999999,
+      "confounding_repair_rate": null,
+      "erroneous_persistence_rate": 1.0,
+      "evaluator_diagnostic_state_rows": 8,
+      "insufficient_handling_rate": 0.0,
+      "leakage_repair_rate": 0.0,
+      "n": 8,
+      "policy_predicted_state_rows": 0,
+      "required_switch_rate": 0.0,
+      "state_accuracy": null,
+      "state_macro_f1": null,
+      "state_prediction_rows": 0
+    },
+    "SFT": {
+      "budget_normalized_scientific_value": 2.13495905738923,
+      "confounding_repair_rate": null,
+      "erroneous_persistence_rate": 0.0,
+      "evaluator_diagnostic_state_rows": 8,
+      "insufficient_handling_rate": 1.0,
+      "leakage_repair_rate": 1.0,
+      "n": 8,
+      "policy_predicted_state_rows": 8,
+      "required_switch_rate": 1.0,
+      "state_accuracy": 1.0,
+      "state_macro_f1": 1.0,
+      "state_prediction_rows": 8
+    },
+    "StateGateOnly": {
+      "budget_normalized_scientific_value": null,
+      "confounding_repair_rate": null,
+      "erroneous_persistence_rate": null,
+      "evaluator_diagnostic_state_rows": 0,
+      "insufficient_handling_rate": null,
+      "leakage_repair_rate": null,
+      "n": 0,
+      "policy_predicted_state_rows": 0,
+      "required_switch_rate": null,
+      "state_accuracy": null,
+      "state_macro_f1": null,
+      "state_prediction_rows": 0
+    }
+  }
+}

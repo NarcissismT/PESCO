@@ -16,7 +16,7 @@
   "$defs": {
     "record": {
       "type": "object",
-      "required": ["method", "question_id", "true_state", "predicted_state"],
+      "required": ["method", "question_id", "true_state"],
       "properties": {
         "method": {"type": "string"},
         "split": {"type": "string"},
@@ -27,7 +27,10 @@
         "branch_id": {"type": "string"},
         "seed": {"type": "integer"},
         "true_state": {"enum": ["Supported", "Refuted", "Insufficient", "Invalid"]},
-        "predicted_state": {"enum": ["Supported", "Refuted", "Insufficient", "Invalid"]},
+        "predicted_state": {"type": ["string", "null"], "enum": ["Supported", "Refuted", "Insufficient", "Invalid", null]},
+        "policy_predicted_state": {"type": ["string", "null"], "enum": ["Supported", "Refuted", "Insufficient", "Invalid", null]},
+        "evaluator_diagnostic_state": {"enum": ["Supported", "Refuted", "Insufficient", "Invalid"]},
+        "state_prediction_source": {"type": "string"},
         "selected_action": {"type": "string"},
         "valid_claim": {"type": "boolean"},
         "belief_score": {"type": "number"},
@@ -37,8 +40,24 @@
         "cost": {"type": "number"},
         "switch": {"type": "boolean"},
         "switch_beneficial": {"type": "boolean"},
+        "flip_eligible": {"type": "boolean"},
+        "required_switch": {"type": "boolean"},
+        "switch_required": {"type": "boolean"},
+        "invalid_repair_eligible": {"type": "boolean"},
+        "invalid_initial": {"type": "boolean"},
+        "leakage_repair_eligible": {"type": "boolean"},
+        "confounding_repair_eligible": {"type": "boolean"},
+        "insufficient_handling_eligible": {"type": "boolean"},
+        "insufficient_initial": {"type": "boolean"},
+        "confirmation_eligible": {"type": "boolean"},
         "independent_confirmed": {"type": "boolean"},
         "new_path_verified": {"type": "boolean"},
+        "new_path_announced": {"type": "boolean"},
+        "discovery_bonus_policy": {"type": "string"},
+        "active_hypothesis_id": {"type": "string"},
+        "hypothesis_beliefs": {"type": "object"},
+        "beliefs_before": {"type": "object"},
+        "beliefs_after": {"type": "object"},
         "turn": {"type": "number"},
         "utility": {"type": "number"}
       },
@@ -46,4 +65,3 @@
     }
   }
 }
-

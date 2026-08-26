@@ -1,0 +1,38 @@
+schema_version: pesco_tier1_differentiable_suite_v0.3
+implementation_status: genuine_cpu_differentiable_reference_not_llm
+benchmark: tier1_v0_3
+question_count: 12
+split_counts:
+  train: 8
+  dev: 2
+  diagnostic_ood: 2
+exploration_seeds: [17, 29, 41, 53]
+confirmation_seeds: [103, 107, 109, 113]
+matched_compute:
+  max_optimizer_steps: 128
+  same_candidate_actions: true
+  same_environment_branch_stream: true
+  final_id_ood_access: false
+methods:
+  - SFT
+  - GRPO-Terminal
+  - GRPO-FourState
+  - StateGateOnly
+  - PESCO-NoBranch
+  - PESCO-BranchOnly
+  - PESCO-NoFlipLoss
+  - PESCO-Full
+  - Evidence-Gated SMOPD
+objective:
+  option_loss: true
+  state_loss: true
+  belief_loss: true
+  leave_one_out_branch_advantage: true
+  preference_reversal_loss: true
+  reference_kl: true
+  entropy_logging: true
+  gradient_logging: true
+boundaries:
+  llm_claim: false
+  external_paper_reimplementation: false
+  formal_final_split_claim: false

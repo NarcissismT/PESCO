@@ -13,7 +13,13 @@ def infer_visible_state(observation: Observation, delta_min: float = 0.02) -> Op
     """Infer a state from public evidence only (never reads world/verifier labels)."""
 
     signals = set(observation.validity_signals)
-    if "split_overlap_diagnostic" in signals:
+    if signals.intersection({
+        "split_overlap_diagnostic",
+        "metric_scope_mismatch",
+        "variance_estimator_unstable",
+        "treatment_confounder_dependence",
+        "protocol_invalid_diagnostic",
+    }):
         return EvidenceState.INVALID
     width = observation.ci_high - observation.ci_low
     if width > 0.30 or "sample_count_below_precision_target" in signals:

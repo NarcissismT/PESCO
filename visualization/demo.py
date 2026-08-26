@@ -71,8 +71,12 @@ def generate_demo_records(seed: int = 17, *, questions: int = 8) -> List[Dict[st
                 invalid_repaired = world_name == "invalid" and action == "repair_data_split"
                 valid_claim = not (world_name == "invalid" and predicted == "Supported")
                 replication = bool(local.random() < ({"PESCO-Full": .92, "PESCO-Offline": .81, "GRPO-FourState": .67, "Base": .6}[method]))
-                discovery = bool(method == "PESCO-Full" and world_name == "refuted" and local.random() < .48)
-                announced = bool(method == "PESCO-Full" and world_name == "refuted" and local.random() < .63)
+                # The demo uses the same fixed four-action MVP as the pilot.  A
+                # method-name-specific discovery bonus would make this visualization
+                # smoke test encode an unfair comparison, so discovery is disabled
+                # for every method until an open-ended candidate protocol exists.
+                discovery = False
+                announced = False
                 # Synthetic paired-world annotation used only to exercise the
                 # FlipAcc chart.  A real runner should emit this field only
                 # after the paired-world reversal has passed its statistical
@@ -113,6 +117,14 @@ def generate_demo_records(seed: int = 17, *, questions: int = 8) -> List[Dict[st
                     "underpower_handled": world_name != "insufficient" or action in {"add_samples_or_seeds", "stop_and_report_insufficient", "stop"},
                     "invalid_repaired": invalid_repaired,
                     "invalid_claim": world_name == "invalid" and predicted == "Supported",
+                    "flip_eligible": world_name in {"supported", "refuted"},
+                    "required_switch": world_name == "refuted",
+                    "switch_required": world_name == "refuted",
+                    "invalid_repair_eligible": world_name == "invalid",
+                    "invalid_initial": world_name == "invalid",
+                    "insufficient_handling_eligible": world_name == "insufficient",
+                    "insufficient_initial": world_name == "insufficient",
+                    "confirmation_eligible": world_name in {"supported", "refuted"},
                     "valid_claim": valid_claim,
                     "new_path_verified": discovery,
                     "new_path_announced": announced,
@@ -120,7 +132,9 @@ def generate_demo_records(seed: int = 17, *, questions: int = 8) -> List[Dict[st
                     "candidate_rank": {"PESCO-Full": 1, "PESCO-Offline": 2, "GRPO-FourState": 3, "Base": 4}[method],
                     "candidate_success": discovery,
                     "candidate_utility": 1.0 if discovery else utility,
-                    "discovery_opportunity": world_name == "refuted",
+                    "discovery_opportunity": False,
+                    "discovery_eligible": False,
+                    "discovery_bonus_policy": "disabled_fixed_action_space",
                     "independent_confirmed": replication,
                     "entered_confirmation": True,
                     "belief_score": 0.93 if predicted == world["true_state"] else 0.25,

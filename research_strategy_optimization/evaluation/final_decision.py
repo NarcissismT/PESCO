@@ -22,6 +22,15 @@ def freeze_check(manifest: Mapping[str, object]) -> dict:
             digest = str(manifest.get(field, ""))
             checks[field] = digest
             checks[f"{field}_bound"] = digest.startswith("sha256:") and len(digest) > len("sha256:")
+    # A frozen run must not mix a v0.1 runtime protocol with the checked-in v0.2
+    # manifests.  The expected value is supplied by the runner/config rather than
+    # hidden in this generic gate so older external callers remain compatible.
+    if "expected_protocol_version" in manifest or "protocol_version" in manifest:
+        actual = str(manifest.get("protocol_version", ""))
+        expected = str(manifest.get("expected_protocol_version", actual))
+        checks["protocol_version"] = actual
+        checks["expected_protocol_version"] = expected
+        checks["protocol_version_consistent"] = bool(actual and actual == expected)
     checks["pass"] = all(checks.values())
     return checks
 
@@ -54,7 +63,13 @@ def mvp_gate(results: Mapping[str, object]) -> dict:
 
 
 def stage_status(stage: str, evidence: Mapping[str, object]) -> dict:
-    return {"stage": stage, "status": "GO" if bool(evidence.get("pass", False)) else "NO-GO", "evidence": dict(evidence)}
+    passed = bool(evidence.get("pass", False))
+    # Diagnostic-only records (for example a CPU BasePolicy run without a frozen
+    # model) cannot open a model-dependent stage even if a caller accidentally leaves
+    # a stale ``pass: true`` field in the payload.
+    if bool(evidence.get("diagnostic_only", False)) and not bool(evidence.get("real_model_zero_shot_completed", False)):
+        passed = False
+    return {"stage": stage, "status": "GO" if passed else "NO-GO", "evidence": dict(evidence)}
 
 
 def assert_training_allowed(

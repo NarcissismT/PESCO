@@ -63,7 +63,7 @@
       "delta_min": 0.02,
       "estimand": "group_held_out_accuracy_delta",
       "hypothesis_id": "h_rq_tier0_001",
-      "protocol_version": "pesco_v0_1",
+      "protocol_version": "pesco_v0_2",
       "question_id": "rq_tier0_001",
       "registered_before_confirmation": true,
       "timestamp": "2026-08-25T00:00:00+00:00"

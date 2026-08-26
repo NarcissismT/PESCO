@@ -1,0 +1,770 @@
+[
+  {
+    "evidence": {
+      "absolute_bias": 0.009397677026743712,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": 0.009397677026743712,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.08444390281770181,
+        -0.05676074312881077
+      ],
+      "confidence_width": 0.02768315968889104,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:e98b29fafa4ccfe26f50daa94efffadd4037c718cf7d6ac9f53d5ba501d140e7",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:98792df0533bf7a5fabba7c7ef01adf0fc5ccae68d290ab7af456cd7e81e7662"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:02d2456c78ec15c33da2d8e6c04112693b0bf05e3b7453ca10e3a547a4fbbc14",
+      "effect_estimate": -0.07060232297325629,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 115,
+      "hidden_validation": {
+        "baseline": 0.016547394581871683,
+        "group_overlap_count": 115,
+        "metric": 0.015029297276439644,
+        "n": 1056,
+        "partition_hash": "sha256:3376d7760bf2ffc11a7b7e4ba2f0260e90248437d7e41aced1910681626ff35e",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:5f9fab6395e3d94d14add4e9a2f81847c5059bfd3128ff499736933670c0b1bb",
+      "treatment_confounder_correlation": 0.02908460742621455,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_01",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_group_leakage_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.003008587712830371,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": -0.003008587712830371,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.09598791055374967,
+        -0.07002926487191108
+      ],
+      "confidence_width": 0.025958645681838588,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:a5002815915fe86df97e7fc847338fb0b43100d114e6bf3bf76699b37ef4f343",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:ce5d5794a458816f151bae188d4a124ee5096bab75cdd17b56405fc36782c12b"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:bc5192c3834f752397166582d50c7b6e128ef91ba6cc7d9ff550e3b2277fa791",
+      "effect_estimate": -0.08300858771283037,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 113,
+      "hidden_validation": {
+        "baseline": 0.016545132201230713,
+        "group_overlap_count": 113,
+        "metric": 0.015020828189029129,
+        "n": 1018,
+        "partition_hash": "sha256:67d981933dceeaa5783c9f34fdcba847f7d5372ffee2ce2ccc322ea73ba19fee",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:6f2247b38367f7db5e39f257d6500bac0b2003f80d6ccfe4ef852bdcdc07f895",
+      "treatment_confounder_correlation": 0.006660683592724175,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_02",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_group_leakage_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.0011181643442722267,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": 0.0011181643442722267,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.09489008606718055,
+        -0.062873585244275
+      ],
+      "confidence_width": 0.03201650082290555,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:016dced1bb7c78059ac997b2c41c8c9f61a2598443e017796f39a8d11eb466cf",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:91866f0ddd3f5bb0dcd76947d27584180d9562813c629befff5b0e47d2b28c73"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:955ea6c7a11ff81950158faba05c1374099e91ffef71f9b7f218a27e4d6b64e4",
+      "effect_estimate": -0.07888183565572778,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 108,
+      "hidden_validation": {
+        "baseline": 0.018454264726318545,
+        "group_overlap_count": 108,
+        "metric": 0.016963256031797345,
+        "n": 995,
+        "partition_hash": "sha256:c6028feb702ccd2e9e740995536f29247d922066ae148f8c5ef752260d374d1e",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:408a678e5240c1779914f9f295fbfb3ee620d4f222cddd1094e3b8c3080916e0",
+      "treatment_confounder_correlation": 0.002542851238199201,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "group_leakage",
+    "question_id": "t1_group_leakage_03",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_group_leakage_03__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.006911600773581245,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": 0.006911600773581245,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.08178523240022138,
+        -0.06439156605261613
+      ],
+      "confidence_width": 0.017393666347605252,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:3cb382792bcbff036b876ea862d2122889dd8f78343a0ba453d743175ccedc05",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:864b8ab7c79b7c202bc8e786f3a7977b12b3ee231525f475bdfacf1e7fc8c077"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:8824ea90763da75554b3db8f7a8e0689ebee38bff9c229ddfe8a4aabb9dfbb07",
+      "effect_estimate": -0.07308839922641876,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 109,
+      "hidden_validation": {
+        "baseline": 0.017023124602259118,
+        "group_overlap_count": 109,
+        "metric": 0.0155759389252529,
+        "n": 1028,
+        "partition_hash": "sha256:2ed4fd42457ee43a336e4df9f9de71c9e603227388104800b917ff80fe837cad",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:7a9c00d11617b4c5f155b105a923037569bf25b5be76fc8770eb89c15ecc733f",
+      "treatment_confounder_correlation": 0.02705844224568706,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_01",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_causal_confounding_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.01060170521894585,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": -0.01060170521894585,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.10652012827279088,
+        -0.07468328216510083
+      ],
+      "confidence_width": 0.03183684610769005,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:022b2f1021389ed3d7b83bba94d5c6f33cbcb8680dd07f8cd50f2a5e183a21aa",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:01c7159c1485418551547acd7f9faacce6bf132152956bf33af0bf9a8d4d2d25"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:f14dc3872d9d0416a779a8441a669bafe18f642c42fe83aa6bbfc3769e6aca0e",
+      "effect_estimate": -0.09060170521894585,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 112,
+      "hidden_validation": {
+        "baseline": 0.018566969677649547,
+        "group_overlap_count": 112,
+        "metric": 0.01711522478854809,
+        "n": 984,
+        "partition_hash": "sha256:ad6af5001dce66d6688140365e7d8fe2abe94b2ab3c70b941b0b053485211bcc",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:7c700be729bb6d85b85214a8b2aa1d5dc05fd1c6b6bc1b672a414a0fd3614a37",
+      "treatment_confounder_correlation": -0.016223683145654002,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_02",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_causal_confounding_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.0038555617324326774,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": 0.0038555617324326774,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.092656375167383,
+        -0.05963250136775165
+      ],
+      "confidence_width": 0.03302387379963134,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:64b2a2610c9800b01fc2b156d602621d942fbbbcb7333c94e9df2b4135f2d4f3",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:40ce2a6e2ed8f43ebae0f1b6c2d7ea50144d7e74a90b31de8ee473c41ee49e4c"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:eff0353c4840d5d17a99c707d4bf5396cb9423c5f51f5d6c50a6d9f4aa61ad60",
+      "effect_estimate": -0.07614443826756732,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 111,
+      "hidden_validation": {
+        "baseline": 0.01706914488024786,
+        "group_overlap_count": 111,
+        "metric": 0.01534637244561827,
+        "n": 999,
+        "partition_hash": "sha256:2d5db34a2957a901d3ded560aa08a72d151e06e663deb3274070f589df406a25",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:f9d768e838396fb08e9e26c6411c4543bbc0f95100925212fe8e6d4466321e9f",
+      "treatment_confounder_correlation": 0.015855090656792498,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "causal_confounding",
+    "question_id": "t1_causal_confounding_03",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_causal_confounding_03__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.018946329006523155,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": -0.018946329006523155,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.1212723727644122,
+        -0.07662028524863411
+      ],
+      "confidence_width": 0.044652087515778094,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:12662975772df28f20b7b4f49a98f8d7aa3c91b920f7798c8d3f6dd47a8a6518",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:f7d1c00ac3872de78f67764d6a2dab9519b364f8b2c78052c50d97b384363ecb"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:c84752ee6e2f69bb917bdc5dd885105033f1e757965b07f6001bf76e4d75214a",
+      "effect_estimate": -0.09894632900652316,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 114,
+      "hidden_validation": {
+        "baseline": 0.016993647625028016,
+        "group_overlap_count": 114,
+        "metric": 0.01535877127993816,
+        "n": 1022,
+        "partition_hash": "sha256:964b594f93cc56f4580e7a3ac3d189ed60c9b703c9b065da3517f415bbbcfaf7",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:945a233ba7998ff35665c0f7fe659d1b234f32f14748045d9ff0b20aeba4d2d4",
+      "treatment_confounder_correlation": -0.010495736017714488,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_01",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_low_sample_variance_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.009309131426612285,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": 0.009309131426612285,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.0857207734459323,
+        -0.05566096370084313
+      ],
+      "confidence_width": 0.030059809745089178,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:c483f1bfd6401679d107424e92d126f2a64d224ab1f715bb111ee2accba42b1a",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:e3720d7bacdee2f7a71a539e7caf9516b45c0022105af0c4eaf164f3d859c958"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:a331d034e7802cd8403d031a276b600c07530d3edb7989c1318fcdc69178544b",
+      "effect_estimate": -0.07069086857338772,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 114,
+      "hidden_validation": {
+        "baseline": 0.018053145363326244,
+        "group_overlap_count": 114,
+        "metric": 0.016400771193246736,
+        "n": 992,
+        "partition_hash": "sha256:965ed2e0d202b72be51bb64f3434c466bb2f62a11f8ff4debaca8c6e9b517e25",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:d519627ee2cf25718ee089b068b7d84f5bd8134e56a8621d681361a4adfc8a70",
+      "treatment_confounder_correlation": 0.02628185504321143,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_02",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_low_sample_variance_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.001293923202304953,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": 0.001293923202304953,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.08776312575104452,
+        -0.06964902784434558
+      ],
+      "confidence_width": 0.018114097906698934,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:a5c698fbd806985f93b0c92c8d668afd3a7b1c0c8e57f19b668409eac529ddab",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:5169c121c7ecf59237247bd8cba6ddd948c38f19370df391409debd7f0aa3693"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:68c873bdfd5bf54d04e9ce3aa908f71f70e41341c1c60f8f9c573f3470bcb445",
+      "effect_estimate": -0.07870607679769505,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 115,
+      "hidden_validation": {
+        "baseline": 0.017547895950017246,
+        "group_overlap_count": 115,
+        "metric": 0.01614265336669754,
+        "n": 1062,
+        "partition_hash": "sha256:1a84d43fd9d19345b984ce7b10dc301a2af76cff4d0ccedc4eea942be2abfd07",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:eec46a13121aa12a30d5b0cb89eb6c9d2de6913d430d02fc75ba2e532fb979ff",
+      "treatment_confounder_correlation": -0.0031096627596458267,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "low_sample_variance",
+    "question_id": "t1_low_sample_variance_03",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_low_sample_variance_03__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.01323573757179465,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": -0.01323573757179465,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.10059910202316476,
+        -0.08587237312042455
+      ],
+      "confidence_width": 0.01472672890274021,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:885cff5acf632defe5fb6651e2e877541ac8015dccd270782655b6f191d5bd6c",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:0b9eded8ab3fb9b4d01cae22448271d8829e0a700cfce4141989af90105ce7d3"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:331b97e4a494736dfcf8a0a169cf1a863a24e8fa0513f9c38ba3678059d45fed",
+      "effect_estimate": -0.09323573757179465,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 112,
+      "hidden_validation": {
+        "baseline": 0.016462702170579407,
+        "group_overlap_count": 112,
+        "metric": 0.014937667064644776,
+        "n": 1039,
+        "partition_hash": "sha256:f788bcf1be612058792a0261c8fbbe52979c36ae4278cd5c59a61865aaad0ef4",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:244c6010eca47b855d10a4c6e8e8817f425a305999918c804cfc1faed8e19900",
+      "treatment_confounder_correlation": -0.005401695376641155,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_subgroup_metric_mismatch_01__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.0101071941166129,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": -0.0101071941166129,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.11132112177428449,
+        -0.06889326645894131
+      ],
+      "confidence_width": 0.04242785531534318,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:f38a8f55b3a94ef634445d24c6dc9e94c3a4e9252885c1fa60d91eb93c55bf63",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:2c27f7fd195d41b79b95f03e5d584b36636c6d7e8b9ca8c1cbb7910224db777f"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:4b972f037530ffd846d32478c8d85210f1b0f795f2c688d1c362972428594fc3",
+      "effect_estimate": -0.0901071941166129,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 112,
+      "hidden_validation": {
+        "baseline": 0.017627161063852308,
+        "group_overlap_count": 112,
+        "metric": 0.016205940579125274,
+        "n": 1023,
+        "partition_hash": "sha256:2f000d3a8a7447c515be4eb68a3552f9a26b3117b34b66f9a92de943cc1e2578",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:8aa5a1b34662502a1a8856390a7628dd6ca4da0b4f6d1e68f249350937a808bf",
+      "treatment_confounder_correlation": -0.012269579458636565,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_subgroup_metric_mismatch_02__refuted",
+    "world_kind": "refuted"
+  },
+  {
+    "evidence": {
+      "absolute_bias": 0.012435415515583331,
+      "action": "continue_current_method",
+      "backend": "tier1_numpy",
+      "bias": 0.012435415515583331,
+      "code_hash": "sha256:40149f42a0ca1b83a03f24211b686cc96a70242e916fb8f1db2ff5272cb0014b",
+      "confidence_interval": [
+        -0.07842282297105517,
+        -0.05670634599777817
+      ],
+      "confidence_width": 0.021716476973277,
+      "confirmation": {
+        "data_independent": true,
+        "dataset_hash": "sha256:ecc46ffccf7894ebe50fa1fdf73136d21240ebbed5a8c9c53a9d2c088e217105",
+        "eligible": true,
+        "passed": true,
+        "performed": true,
+        "seeds": [
+          103,
+          107,
+          109,
+          113
+        ],
+        "split_hash": "sha256:1f1b6c49180b9358112468a8e905fc33354fea9a48fd7bb5211b67f18a838ff3"
+      },
+      "data_partition": "row_random_v1",
+      "dataset_hash": "sha256:c489db8aabeed40a1303e32c4a40cfdd5c410089c5eeb43685ff7d47368da7ac",
+      "effect_estimate": -0.06756458448441667,
+      "estimator": "difference_in_means_v1",
+      "evidence_state": "refuted",
+      "group_overlap_count": 113,
+      "hidden_validation": {
+        "baseline": 0.016653272065890245,
+        "group_overlap_count": 113,
+        "metric": 0.01514311157287937,
+        "n": 1001,
+        "partition_hash": "sha256:8dcebf1f8a7115d912ea914277b81d667fc0e4153c3859ab275f4fa5c0192b5d",
+        "split": "row_random_v1"
+      },
+      "method": "method_a",
+      "sample_size": 1000,
+      "seed_count": 4,
+      "split_hash": "sha256:55ee02ed6a13171b619b7308d88dd2c95145a21176b9d7563bfc917c552bb71b",
+      "treatment_confounder_correlation": 0.0051046407555850005,
+      "true_effect": -0.08,
+      "validity_pass": true,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "family": "subgroup_metric_mismatch",
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "reliable_negative": {
+      "confirmation_data_independent": true,
+      "confirmation_passed": true,
+      "confirmation_performed": true,
+      "negative_true_effect": true,
+      "valid_refutation": true
+    },
+    "world_id": "t1_subgroup_metric_mismatch_03__refuted",
+    "world_kind": "refuted"
+  }
+]

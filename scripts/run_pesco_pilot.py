@@ -52,9 +52,19 @@ from research_strategy_optimization.environments.tier0_simulator import (
 from research_strategy_optimization.evaluation.compute_accounting import ComputeLedger
 from research_strategy_optimization.evaluation.final_decision import freeze_check, mvp_gate, stage_status
 from research_strategy_optimization.evaluation.ablations import ablation_manifest
+from research_strategy_optimization.evaluation.experiment_scaffolds import (
+    experiment_b_zero_shot_diagnostic,
+    experiment_c_state_reward_diagnostic,
+)
 from research_strategy_optimization.evidence.proper_scoring import belief_delta, log_score
 from research_strategy_optimization.evidence.hypothesis_registry import HypothesisRegistry
-from research_strategy_optimization.schemas import EvidenceState, Hypothesis, Protocol, ResearchAction
+from research_strategy_optimization.schemas import (
+    DEFAULT_PROTOCOL_VERSION,
+    EvidenceState,
+    Hypothesis,
+    Protocol,
+    ResearchAction,
+)
 from research_strategy_optimization.utils.ledger import AuditLedger, canonical_digest
 from research_strategy_optimization.utils.public_view import assert_public_observation, policy_observation
 
@@ -74,6 +84,7 @@ BEST_ACTION = {
 
 BASELINE_NAMES = [
     "Base",
+    "Rule-Based",
     "SFT",
     "GRPO-Terminal",
     "GRPO-FourState",
@@ -94,6 +105,7 @@ BASELINE_NAMES = [
 # papers or checkpoints; this status is written into every result row.
 BASELINE_IMPLEMENTATION_STATUS = {
     "Base": "fixed_policy_reference",
+    "Rule-Based": "transparent_rule_based_control",
     "SFT": "reference_cpu_adapter",
     "GRPO-Terminal": "fixed_policy_reference",
     "GRPO-FourState": "reference_cpu_adapter",
@@ -107,6 +119,28 @@ BASELINE_IMPLEMENTATION_STATUS = {
     "Search-Only": "oracle_search_diagnostic",
     "PESCO-Offline": "tabular_pesco_reference",
     "PESCO-Full": "tabular_pesco_reference",
+}
+
+# The CPU pilot intentionally does not claim to reproduce external papers.  The
+# transparent Rule-Based control is a valid diagnostic comparator; named external
+# methods are retained only as adapter smoke tests and are excluded from formal
+# algorithm comparisons until genuine implementations/checkpoints are supplied.
+BASELINE_COMPARISON_ROLE = {
+    "Base": "diagnostic_reference",
+    "Rule-Based": "diagnostic_control",
+    "Search-Only": "diagnostic_oracle_upper_bound",
+    "PESCO-Offline": "diagnostic_pesco_reference",
+    "PESCO-Full": "diagnostic_pesco_reference",
+    "SFT": "external_name_adapter_excluded",
+    "GRPO-Terminal": "external_name_adapter_excluded",
+    "GRPO-FourState": "external_name_adapter_excluded",
+    "GDPO": "external_name_adapter_excluded",
+    "SMOPD": "external_name_adapter_excluded",
+    "Evidence-Gated SMOPD": "external_name_adapter_excluded",
+    "DiscoPO": "external_name_adapter_excluded",
+    "Ecpo": "external_name_adapter_excluded",
+    "TCPO": "external_name_adapter_excluded",
+    "CVT-RL": "external_name_adapter_excluded",
 }
 
 
@@ -136,6 +170,23 @@ def _policy_for_name(name: str, offline: Optional[TabularStrategyPolicy], full: 
     return EvidenceHeuristicPolicy(name=name)
 
 
+def _policy_predicted_state(policy: Any, observation, delta_min: float) -> Optional[EvidenceState]:
+    """Return a state only when the policy actually exposes a state decision.
+
+    Base/Search/PESCO tabular policies currently emit actions only, so their state
+    prediction is NA.  The evaluator's trusted diagnostic state is recorded in a
+    separate field and must not be mistaken for model recognition.
+    """
+
+    if isinstance(policy, EvidenceHeuristicPolicy):
+        return infer_visible_state(observation, delta_min)
+    predictor = getattr(policy, "predict_evidence_state", None)
+    if callable(predictor):
+        value = predictor(observation)
+        return value if isinstance(value, EvidenceState) else EvidenceState(value)
+    return None
+
+
 def _oracle_utility(output, verdict, env) -> float:
     kind = env.world.kind
     action = ResearchAction(output.action)
@@ -152,6 +203,52 @@ def _initial_state(env: Tier0ResearchEnvironment, question_id: str, world_id: st
     baseline_output = env.execute_option(ResearchAction.CONTINUE, seeds=protocol.exploration_seeds)
     baseline_verdict = TrustedVerifier(protocol).evaluate(baseline_output, env)
     return env.visible_observation(), baseline_output, baseline_verdict, env.snapshot()
+
+
+def _zero_shot_diagnostic(protocol: Protocol, worlds, question_id: str) -> Dict[str, Any]:
+    """Run the available CPU policy as an explicitly non-model diagnostic.
+
+    The pilot does not have a frozen language model/checkpoint, so this artifact must
+    remain ``pass: false``.  We still execute the same public-observation path and
+    record its outputs, making stage 3 evidence-driven and ready to consume a real
+    model report later instead of silently hard-coding a GO flag.
+    """
+
+    policy = BasePolicy()
+    rows: List[Dict[str, Any]] = []
+    for world in worlds:
+        env = Tier0ResearchEnvironment(worlds=worlds, protocol=protocol)
+        observation, _, trusted_verdict, _ = _initial_state(env, question_id, world.world_id, 0, protocol)
+        action = policy.choose(observation)
+        diagnostic_state = infer_visible_state(observation, protocol.delta_min)
+        rows.append({
+            "question_id": question_id,
+            "world_id": world.world_id,
+            "policy_input": observation.to_dict(),
+            "selected_action": action.value,
+            # No frozen model/checkpoint is available: this row has no policy state
+            # output.  Keep the public-observation rule diagnostic under a separate
+            # evaluator field so it cannot be reported as model recognition.
+            "predicted_state": None,
+            "policy_predicted_state": None,
+            "evaluator_diagnostic_state": diagnostic_state.value if diagnostic_state is not None else None,
+            "state_prediction_source": "evaluator_diagnostic",
+            "trusted_state_for_audit": trusted_verdict.evidence_state.value,
+            "action_correct_for_audit": action.value == BEST_ACTION[world.kind],
+            "model_inference": False,
+        })
+    return {
+        "protocol_version": protocol.protocol_version,
+        "question_id": question_id,
+        "policy_class": type(policy).__name__,
+        "model_checkpoint": None,
+        "real_model_zero_shot_completed": False,
+        "diagnostic_only": True,
+        "records": rows,
+        "reason": "no frozen model/checkpoint is available in the CPU pilot",
+        # A stage can only pass after a real model report is supplied and audited.
+        "pass": False,
+    }
 
 
 def _run_action(
@@ -278,7 +375,15 @@ def _evaluate_suite(
                 branch_records = None
                 decision_probs = _policy_probs(method_name, base_obs, policy)
                 if isinstance(policy, OracleSearchPolicy):
-                    manager = BranchRolloutManager(environment=base_env, verifier=TrustedVerifier(protocol))
+                    # Search-Only is an explicitly evaluator-side oracle diagnostic.
+                    # Give it the registered oracle utility so it can select the
+                    # utility-maximising branch; ordinary policies continue to use
+                    # only public observations and the generic transition utility.
+                    manager = BranchRolloutManager(
+                        environment=base_env,
+                        verifier=TrustedVerifier(protocol),
+                        utility_fn=_oracle_utility,
+                    )
                     hidden_branch_records = manager.execute_paired_options(
                         snapshot=snapshot,
                         environment=base_env,
@@ -304,66 +409,102 @@ def _evaluate_suite(
                         base_env, snapshot, action, protocol, protocol.exploration_seeds
                     )
                 public_final = branch.visible_observation()
-                # Evidence recognition is scored from the public decision observation,
-                # never by copying the trusted verifier label.  The branch may
-                # legitimately change the dynamic state, so retain that post-action
-                # state separately.
-                predicted_state = infer_visible_state(base_obs, protocol.delta_min) or EvidenceState.INSUFFICIENT
-                final_predicted_state = infer_visible_state(public_final, protocol.delta_min)
+                # Keep policy output separate from the evaluator diagnostic.  The
+                # latter is useful for environment sanity checks but is not a model
+                # state-recognition prediction.  Only an explicit policy state head or
+                # the transparent Rule-Based adapter gets a policy_predicted_state.
+                policy_predicted_state = _policy_predicted_state(policy, base_obs, protocol.delta_min)
+                evaluator_diagnostic_state = infer_visible_state(base_obs, protocol.delta_min) or EvidenceState.INSUFFICIENT
+                evaluator_final_diagnostic_state = infer_visible_state(public_final, protocol.delta_min)
                 truth = WORLD_STATE[world.kind]
                 action_correct = action.value == BEST_ACTION[world.kind]
-                state_correct = predicted_state.value.title() == truth
-                valid_claim = bool(verdict.validity_pass and final_predicted_state is not None)
-                # Confirmed new-path certificate is deliberately restricted to PESCO
-                # policies and is post-evaluation metadata, not policy input.
+                state_correct = policy_predicted_state is not None and policy_predicted_state.value.title() == truth
+                valid_claim = bool(verdict.validity_pass)
+                # The MVP action space contains a fixed ``switch`` option; choosing it
+                # is not autonomous method discovery.  Discovery is therefore disabled
+                # for *every* method in this pilot.  This avoids the previous
+                # method-name-specific bonus (PESCO rows received a certificate that
+                # identical baseline actions could never earn).  The certificate
+                # implementation remains available for a future open-ended runner
+                # where all methods submit comparable candidates.
                 discovery = False
-                if method_name.startswith("PESCO") and action is ResearchAction.SWITCH:
-                    certificate = make_discovery_certificate(
-                        method_family="alternative_method_family",
-                        proposed_without_method_hint=True,
-                        structurally_distinct=True,
-                        actually_executed=True,
-                        verdict=verdict,
-                        lower_confidence_gain=0.10 if action_correct else -0.02,
-                        discovery_margin=protocol.discovery_margin,
-                    )
-                    discovery = certificate.certificate_pass
-                    _json_dump(output_dir / f"certificate_{method_name.replace(' ', '_')}_{question_id}_{world.world_id}.json", certificate.to_dict())
                 p = public_final.hypothesis_probability
-                truth_bit = int(world.true_effect_a > protocol.delta_min)
+                # Bind score identities to the environment's policy-visible
+                # Observation, rather than synthesising a second ID namespace in the
+                # evaluator.  The initial Tier-0 observation carries H_A/H_B; a
+                # switch activates the existing H_B record and leaves H_A untouched.
+                hypothesis_a_id = str(base_obs.active_hypothesis_id)
+                belief_ids = tuple(base_obs.belief_map())
+                hypothesis_b_id = next((item for item in belief_ids if item != hypothesis_a_id), "H_B")
                 belief_before = float(base_obs.hypothesis_probability)
-                belief_delta_value = float(belief_delta(belief_before, p, truth_bit, protocol.probability_clip))
+                # A switch changes the active estimand.  Score the post-switch
+                # probability against H_B's truth and B's own prior rather than
+                # reusing method B evidence as if it were evidence about H_A.
+                active_hypothesis_id = str(public_final.active_hypothesis_id)
+                prior_active = float(base_obs.belief_map().get(active_hypothesis_id, 0.5))
+                truth_bit = int((world.true_effect_b if active_hypothesis_id == hypothesis_b_id else world.true_effect_a) > protocol.delta_min)
+                belief_delta_value = float(belief_delta(prior_active, p, truth_bit, protocol.probability_clip))
                 belief_score = float(log_score(p, truth_bit, protocol.probability_clip))
                 replication = bool(verdict.independent_confirmation_passed)
                 cost = float(base_output.execution_cost + action_cost)
                 valid_gate = 1.0 if valid_claim else 0.0
                 vrs = valid_gate * (belief_delta_value + float(action_correct) + float(replication) + float(discovery)) - 0.1 * cost
+                # Preserve the exact belief maps emitted by the environment at the
+                # action boundary and after execution.  This prevents an evaluator
+                # from silently inventing a second hypothesis namespace or dropping
+                # the untouched H_A belief after a method switch.
+                beliefs_before = {str(key): float(value) for key, value in base_obs.belief_map().items()}
+                beliefs_after = {str(key): float(value) for key, value in public_final.belief_map().items()}
+                hypothesis_beliefs = dict(beliefs_after)
                 records.append({
                     "record_type": "policy_episode",
                     "schema_version": "pesco_results_v0.2",
                     "method": method_name,
                     "implementation_status": BASELINE_IMPLEMENTATION_STATUS[method_name],
+                    "comparison_role": BASELINE_COMPARISON_ROLE[method_name],
+                    "formal_comparison_eligible": False,
+                    "formal_comparison_exclusion_reason": "cpu_pilot_diagnostic_only",
                     "split": split,
                     "question_id": question_id,
                     "world_id": world.world_id,
                     "world_pair_id": f"{question_id}:supported_refuted",
                     "world_kind": world.kind,
                     "true_state": truth,
-                    "predicted_state": predicted_state.value.title(),
-                    "final_predicted_state": final_predicted_state.value.title() if final_predicted_state else None,
+                    "predicted_state": policy_predicted_state.value.title() if policy_predicted_state else None,
+                    "policy_predicted_state": policy_predicted_state.value.title() if policy_predicted_state else None,
+                    "evaluator_diagnostic_state": evaluator_diagnostic_state.value.title(),
+                    "evaluator_final_diagnostic_state": evaluator_final_diagnostic_state.value.title() if evaluator_final_diagnostic_state else None,
+                    "state_prediction_source": "policy_output" if policy_predicted_state else "not_emitted",
+                    "state_metric_eligible": policy_predicted_state is not None,
+                    "final_predicted_state": evaluator_final_diagnostic_state.value.title() if evaluator_final_diagnostic_state else None,
                     "initial_state_trusted": base_verdict.evidence_state.value,
                     "final_state_trusted": verdict.evidence_state.value,
                     "selected_action": action.value,
                     "best_action": BEST_ACTION[world.kind],
                     "action_correct": action_correct,
+                    "state_correct": state_correct,
                     "valid_claim": valid_claim,
                     "belief_score": belief_score,
+                    "belief_submission_source": "environment_public_observation_diagnostic",
+                    "belief_submitted_before_action": False,
+                    "belief_score_formal_eligible": False,
                     "belief_before": belief_before,
+                    "belief_before_active": prior_active,
                     "belief_after": p,
                     "belief_log_score_delta": belief_delta_value,
+                    "active_hypothesis_id": active_hypothesis_id,
+                    "active_hypothesis_id_before": hypothesis_a_id,
+                    "new_hypothesis_id": active_hypothesis_id if active_hypothesis_id != hypothesis_a_id else None,
+                    "observation_hypothesis_ids": list(belief_ids),
+                    "hypothesis_beliefs": hypothesis_beliefs,
+                    "beliefs_before": beliefs_before,
+                    "beliefs_after": beliefs_after,
+                    "belief_target": bool(truth_bit),
+                    "belief_score_estimand": active_hypothesis_id,
                     "task_utility": float(action_correct),
                     "replication_utility": float(replication),
                     "discovery_utility": float(discovery),
+                    "discovery_bonus_policy": "disabled_fixed_action_space",
                     "vrs": vrs,
                     "cost": cost,
                     "utility": vrs,
@@ -390,13 +531,29 @@ def _evaluate_suite(
                     "persisted": action is ResearchAction.CONTINUE,
                     "current_strategy_optimal": world.kind == "supported",
                     "persistence_correct": action is ResearchAction.CONTINUE and world.kind == "supported",
-                    "refutation_accept": world.kind == "refuted" and predicted_state is EvidenceState.REFUTED,
+                    "refutation_accept": world.kind == "refuted" and policy_predicted_state is EvidenceState.REFUTED,
                     "underpower_handled": world.kind != "insufficient" or action is ResearchAction.SAMPLE,
                     "invalid_repaired": world.kind == "invalid" and action is ResearchAction.REPAIR and valid_claim,
-                    "invalid_claim": world.kind == "invalid" and predicted_state is EvidenceState.SUPPORTED,
-                    "new_path_announced": bool(discovery),
-                    "new_path_verified": bool(discovery),
-                    "discovery_opportunity": world.kind == "refuted",
+                    "invalid_claim": world.kind == "invalid" and policy_predicted_state is EvidenceState.SUPPORTED,
+                    "flip_eligible": world.kind in {"supported", "refuted"},
+                    "required_switch": world.kind == "refuted",
+                    "switch_required": world.kind == "refuted",
+                    "invalid_repair_eligible": world.kind == "invalid",
+                    "invalid_initial": world.kind == "invalid",
+                    "leakage_repair_eligible": bool(world.leakage),
+                    "confounding_repair_eligible": bool(world.confounding),
+                    "insufficient_handling_eligible": world.kind == "insufficient",
+                    "insufficient_initial": world.kind == "insufficient",
+                    # Eligibility is determined by the trusted final evidence state,
+                    # not by whether this particular runner happened to execute the
+                    # confirmation call.  Thus a method that skips an eligible
+                    # confirmation remains in the denominator and cannot improve its
+                    # rate by omitting the attempt.
+                    "confirmation_eligible": verdict.evidence_state in {EvidenceState.SUPPORTED, EvidenceState.REFUTED},
+                    "new_path_announced": False,
+                    "new_path_verified": False,
+                    "discovery_opportunity": False,
+                    "discovery_eligible": False,
                     "method_family": "method_b" if action is ResearchAction.SWITCH else "method_a",
                     "flip_correct": False,  # filled after both paired observations are collected
                     "turn": public_final.turn,
@@ -404,27 +561,60 @@ def _evaluate_suite(
                 })
                 ledger.add(environment_runs=2 if isinstance(policy, OracleSearchPolicy) else 2, confirmation_runs=int(verdict.independent_confirmation_performed))
 
-    # Compute the actual policy probability reversal after all paired public states are
-    # available.  This uses no hidden labels: only each policy's public observation.
-    for method_name, policy in policies.items():
-        by_world = {r["world_id"]: r for r in records if r["method"] == method_name and r["question_id"] == question_ids[0][0]}
-        if worlds[0].world_id in by_world and worlds[1].world_id in by_world:
-            # Use the exact public observation at the decision point, not a post-action
-            # state (which may have legitimately changed after repair/sample/switch).
-            probs_a = by_world[worlds[0].world_id]["decision_action_probabilities"]
-            probs_b = by_world[worlds[1].world_id]["decision_action_probabilities"]
-            flip = probs_a[ResearchAction.CONTINUE.value] > probs_a[ResearchAction.SWITCH.value] and probs_b[ResearchAction.SWITCH.value] > probs_b[ResearchAction.CONTINUE.value]
-            for row in records:
-                if row["method"] == method_name and row["world_id"] in {worlds[0].world_id, worlds[1].world_id}:
-                    row["flip_correct"] = flip
+    # Compute the actual policy probability reversal after all paired public states
+    # are available.  This uses no hidden labels: only each policy's public
+    # observation.  Pair outcomes are calculated independently per question/split;
+    # reusing the first question's probabilities would silently leak one task's
+    # decision into every other task's FlipAcc row.
+    supported_world = next((world for world in worlds if world.kind == "supported"), None)
+    refuted_world = next((world for world in worlds if world.kind == "refuted"), None)
+    if supported_world is not None and refuted_world is not None:
+        for method_name in policies:
+            for question_id, _split in question_ids:
+                by_world = {
+                    r["world_id"]: r
+                    for r in records
+                    if r["method"] == method_name and r["question_id"] == question_id
+                }
+                if supported_world.world_id not in by_world or refuted_world.world_id not in by_world:
+                    continue
+                # Use the exact public observation at the decision point, not a
+                # post-action state (which may have legitimately changed after
+                # repair/sample/switch).
+                probs_a = by_world[supported_world.world_id].get("decision_action_probabilities", {})
+                probs_b = by_world[refuted_world.world_id].get("decision_action_probabilities", {})
+                continue_a = float(probs_a.get(ResearchAction.CONTINUE.value, 0.0))
+                switch_a = float(probs_a.get(ResearchAction.SWITCH.value, 0.0))
+                continue_b = float(probs_b.get(ResearchAction.CONTINUE.value, 0.0))
+                switch_b = float(probs_b.get(ResearchAction.SWITCH.value, 0.0))
+                flip = continue_a > switch_a and switch_b > continue_b
+                for row in records:
+                    if (
+                        row["method"] == method_name
+                        and row["question_id"] == question_id
+                        and row["world_id"] in {supported_world.world_id, refuted_world.world_id}
+                    ):
+                        row["flip_correct"] = flip
     return records, ledger
 
 
 def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    protocol = Protocol()
+    protocol = Protocol(protocol_version=DEFAULT_PROTOCOL_VERSION)
     worlds = list(default_mvp_worlds())
     question_id = "rq_tier0_001"
+    # Fixed-action MVP fairness rule: no method receives an autonomous-discovery
+    # utility or certificate bonus.  Keep this machine-readable next to results so a
+    # report cannot accidentally interpret stale certificate files as current scores.
+    _json_dump(output_dir / "discovery_policy.json", {
+        "status": "disabled",
+        "reason": "fixed_mvp_action_space_switch_is_not_open_ended_discovery",
+        "applies_to": "all_methods",
+        "discovery_utility": 0.0,
+        "new_path_announced": False,
+        "new_path_verified": False,
+        "formal_open_ended_certificate_authorized": False,
+    })
     audit_ledger = AuditLedger()
     hypothesis_registry = HypothesisRegistry()
     hypothesis_registry.register_before_experiment(Hypothesis(
@@ -455,6 +645,8 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
         "verifier_immutable": True,
         "contamination_audit_pass": True,
         "resource_budget_defined": True,
+        "protocol_version": protocol.protocol_version,
+        "expected_protocol_version": DEFAULT_PROTOCOL_VERSION,
         "protocol_digest": canonical_digest(protocol.__dict__),
         "verifier_digest": canonical_digest({"version": TrustedVerifier(protocol).version}),
         "question_manifest_digest": _content_digest(PESCO_ROOT / "data/manifests/questions_v0_2.json"),
@@ -605,7 +797,15 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
         "shared_exploration_seeds": list(protocol.exploration_seeds),
         "shared_confirmation_seeds": list(protocol.confirmation_seeds),
         "methods": [
-            {"name": name, "implementation_status": BASELINE_IMPLEMENTATION_STATUS[name]}
+            {
+                "name": name,
+                "implementation_status": BASELINE_IMPLEMENTATION_STATUS[name],
+                "comparison_role": BASELINE_COMPARISON_ROLE[name],
+                "formal_comparison_eligible": False,
+                "formal_comparison_exclusion_reason": (
+                    "no_frozen_multi_question_final_splits_or_genuine_external_implementation"
+                ),
+            }
             for name in BASELINE_NAMES
         ],
     })
@@ -621,7 +821,34 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
         "tier2_claim": False,
         "records": records,
     })
+    # Experiments B/C are intentionally diagnostic-only in this CPU pilot.  Their
+    # machine-readable gates prevent the report from treating adapter rows as a real
+    # model zero-shot study or as evidence that ordinary state rewards are sufficient.
+    _json_dump(output_dir / "experiment_b_diagnostic.json", experiment_b_zero_shot_diagnostic(records))
+    _json_dump(output_dir / "experiment_c_diagnostic.json", experiment_c_state_reward_diagnostic(records))
     _json_dump(output_dir / "compute_ledger.json", ledger.to_dict())
+
+    # Offline stage status is tied to measured pilot evidence rather than merely the
+    # existence of a reversal pair.  This is still a CPU diagnostic (not a formal
+    # promotion/final-split claim), but a future run whose PESCO-Offline VRS regresses
+    # against Base will correctly close the stage.
+    id_records = [row for row in records if row["split"] == "pilot_id"]
+    def _mean_method_vrs(method_name: str) -> float:
+        values = [float(row["vrs"]) for row in id_records if row["method"] == method_name]
+        return sum(values) / len(values) if values else float("nan")
+    base_vrs = _mean_method_vrs("Base")
+    offline_vrs = _mean_method_vrs("PESCO-Offline")
+    offline_training_evidence = {
+        "loss_driven_update": any(bool(epoch.get("loss_driven_flip_update", False)) for epoch in offline.log.epochs),
+        "confirmed_reversal": bool(reversal_rows and reversal_rows[0]["paired_confidence"]["confirmed_reversal"]),
+        "base_vrs": base_vrs,
+        "pesco_offline_vrs": offline_vrs,
+        "offline_improves_base": bool(math.isfinite(offline_vrs) and math.isfinite(base_vrs) and offline_vrs > base_vrs),
+    }
+    offline_training_evidence["pass"] = all(
+        bool(offline_training_evidence[key])
+        for key in ("loss_driven_update", "confirmed_reversal", "offline_improves_base")
+    )
 
     # Gate checks are based on actual branch/verifier evidence, not expected labels.
     public_payloads = []
@@ -642,7 +869,6 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
     r1 = replay_env.clone_from_snapshot(replay_snapshot).execute_option(ResearchAction.CONTINUE, seeds=protocol.exploration_seeds)
     r2 = replay_env.clone_from_snapshot(replay_snapshot).execute_option(ResearchAction.CONTINUE, seeds=protocol.exploration_seeds)
     replay_ok = r1.public_dict() == r2.public_dict()
-    id_records = [row for row in records if row["split"] == "pilot_id"]
     base_rows = [row for row in id_records if row["method"] == "Base"]
     oracle_rows = [row for row in id_records if row["method"] == "Search-Only"]
     base_accuracy = sum(bool(row["action_correct"]) for row in base_rows) / len(base_rows) if base_rows else 0.0
@@ -679,6 +905,8 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
         )
     )
     _json_dump(output_dir / "tier0_go.json", tier0_go)
+    zero_shot = _zero_shot_diagnostic(protocol, worlds, question_id)
+    _json_dump(output_dir / "zero_shot_diagnostic.json", zero_shot)
     mvp = mvp_gate({
         "all_worlds_execute": len(branch_rows) == 16,
         "branch_group_count_16": branch_groups == 16,
@@ -694,6 +922,7 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
     })
     _json_dump(output_dir / "mvp_gate.json", mvp)
     _json_dump(output_dir / "stage_status.json", {
+        "protocol_version": protocol.protocol_version,
         "stage_0_freeze": stage_status("stage_0_freeze", freeze),
         "stage_1_tier0": stage_status("stage_1_tier0", tier0_go),
         "stage_2_verifier": stage_status("stage_2_verifier", {
@@ -705,8 +934,8 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
             ),
             "negative_controls": negative_controls,
         }),
-        "stage_3_zero_shot": stage_status("stage_3_zero_shot", {"pass": True, "status": "diagnostic_only"}),
-        "stage_4_offline": stage_status("stage_4_offline", {"pass": bool(reversal_rows and reversal_rows[0]["paired_confidence"]["confirmed_reversal"])}),
+        "stage_3_zero_shot": stage_status("stage_3_zero_shot", zero_shot),
+        "stage_4_offline": stage_status("stage_4_offline", offline_training_evidence),
         "stage_5_online": stage_status("stage_5_online", {"pass": False, "reason": "Tier-2 online LLM RL not authorised in CPU pilot"}),
         "tier2_scientific_hard_gate": {"status": "NO-GO", "reason": "no frozen model/executor bundle and no final ID/OOD access"},
     })
@@ -727,12 +956,19 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
     })
     _json_dump(output_dir / "hypothesis_registry.json", hypothesis_registry.records())
     audit_ledger.append("freeze_check", freeze)
+    audit_ledger.append("discovery_policy", {
+        "status": "disabled",
+        "applies_to": "all_methods",
+        "reason": "fixed_mvp_action_space_switch_is_not_open_ended_discovery",
+    })
     audit_ledger.append("mvp_counts", {
         "branch_groups": branch_groups,
         "exploration_experiments": exploration_experiments,
         "confirmation_experiments": confirmation_experiments,
     })
     audit_ledger.append("negative_controls", negative_controls)
+    audit_ledger.append("experiment_b_diagnostic", experiment_b_zero_shot_diagnostic(records))
+    audit_ledger.append("experiment_c_diagnostic", experiment_c_state_reward_diagnostic(records))
     for branch_row in branch_rows:
         audit_ledger.append("same_state_branch", branch_row)
     for record in records:
