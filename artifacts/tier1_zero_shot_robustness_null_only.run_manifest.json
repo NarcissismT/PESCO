@@ -1,0 +1,339 @@
+{
+  "checkpoint": {
+    "available": true,
+    "config_digest": "sha256:16a1ec5114cb00a3ed8ff246c60da37c92dbea811cf91f2f04d684ef8791a3ef",
+    "file_count": 25,
+    "files": [
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/.gitignore",
+        "role": "checkpoint",
+        "sha256": "sha256:684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "size_bytes": 1
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/.gitattributes.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:daf3073787b7584adfc8bad29e6f79d2b70b0792eed9824dc2e9a1418151d407",
+        "size_bytes": 101
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/LICENSE.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:817ea6c294fdd4649dfc4df55e91570bbf68c00f57f4096bf51cf313baf9e865",
+        "size_bytes": 100
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/README.md.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:34b8fba49f966cfa42a74f1681ce1bbcff0ae59cf1bc5f08b002e4fb52c52eeb",
+        "size_bytes": 99
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/config.json.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:9170840b79a47ab2e6aff21c77dc2de8ee5bdd0d5943233fb3959d5e24e7ea0a",
+        "size_bytes": 101
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/generation_config.json.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:285db42732b019ddf94b995ec4f4f8a34dcf76527940c26434a4cc834e99c14a",
+        "size_bytes": 101
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/merges.txt.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:3fe381ef022fee48bbb6b594bb3bf43f87a4c3623e04d039528d721580034da1",
+        "size_bytes": 101
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/model-00001-of-00002.safetensors.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:3a5c02f63c1c6bff93d53bfbedd7b7a8e7f4e8c04ac3b7cd25a2324f24abb3d1",
+        "size_bytes": 124
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/model-00002-of-00002.safetensors.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:b2c1ba4238e18cdaf7361573baac372a8195433abccf5d729355cf0b0e688179",
+        "size_bytes": 124
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/model.safetensors.index.json.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:0e3e9a59b8d1fb40453c8f314db41059788b6c3b96e0793544a93bf69aa01b04",
+        "size_bytes": 101
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/tokenizer.json.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:005ec2319abad33bc78382524ad933ddd716e773a232ddab30e64803f2440d5a",
+        "size_bytes": 100
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/tokenizer_config.json.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:cbaec69584a0d76b53b703b4fc279da3fe281ecf89fb3c0bb116de5b7e3942ae",
+        "size_bytes": 101
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/vocab.json.metadata",
+        "role": "checkpoint",
+        "sha256": "sha256:64d26eae5a3e11faa5dbafde1d84e50abd9abbc2484ce1f948c5114267334c54",
+        "size_bytes": 101
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.gitattributes",
+        "role": "checkpoint",
+        "sha256": "sha256:11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+        "size_bytes": 1519
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/LICENSE",
+        "role": "checkpoint",
+        "sha256": "sha256:ef52482bb785733093dc9a2e8edd8e764c77d12d8e9d8f10a80c9b547d32d0f9",
+        "size_bytes": 7388
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/README.md",
+        "role": "checkpoint",
+        "sha256": "sha256:75c779862cc82558878509bd0d6ba493612568b02868bc474e74fcbeee6f7810",
+        "size_bytes": 3840
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/config.json",
+        "role": "checkpoint",
+        "sha256": "sha256:27467e2fc311a7656c09a43ae9c3d408211e1f212bbddbc93c8596a06423826f",
+        "size_bytes": 683
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/generation_config.json",
+        "role": "checkpoint",
+        "sha256": "sha256:8c970692323e3ea0e9b8b0a4dca79388d31226e41f83c9fd6014804280ebf6e8",
+        "size_bytes": 138
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/merges.txt",
+        "role": "checkpoint",
+        "sha256": "sha256:599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "size_bytes": 1671839
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/model-00001-of-00002.safetensors",
+        "role": "checkpoint",
+        "sha256": "sha256:f9558df91d3b89b4826e4db37439edb52f1d62a4fd602685013e7ca6b9f60f8f",
+        "size_bytes": 3968658944
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/model-00002-of-00002.safetensors",
+        "role": "checkpoint",
+        "sha256": "sha256:51410930d5cf19a998fdb17ef0c46e4d9ace72c97a975a3331395a8a500f5edb",
+        "size_bytes": 2203268048
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/model.safetensors.index.json",
+        "role": "checkpoint",
+        "sha256": "sha256:bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+        "size_bytes": 35581
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/tokenizer.json",
+        "role": "checkpoint",
+        "sha256": "sha256:c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "size_bytes": 7031645
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/tokenizer_config.json",
+        "role": "checkpoint",
+        "sha256": "sha256:c91efca15ceff6e9ee9424db58a6f59cd41294e550a86cbd07e3c1fb500b34f9",
+        "size_bytes": 7228
+      },
+      {
+        "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/vocab.json",
+        "role": "checkpoint",
+        "sha256": "sha256:ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "size_bytes": 2776833
+      }
+    ],
+    "full_checkpoint_digest": "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c",
+    "full_tokenizer_digest": "sha256:da3d978c386a49fbe3b8aa4668b406833d43582d29b746b3842a2262d2b080ee",
+    "full_weights_digest": "sha256:2f220d595a452e643bd75be362018dbe1680880e02ff40078b5c7fed59831291",
+    "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B",
+    "reason": null,
+    "supplied": true,
+    "tokenizer_digest": "sha256:da3d978c386a49fbe3b8aa4668b406833d43582d29b746b3842a2262d2b080ee",
+    "tokenizer_file_count": 4,
+    "weights_digest": "sha256:2f220d595a452e643bd75be362018dbe1680880e02ff40078b5c7fed59831291",
+    "weights_file_count": 2
+  },
+  "checkpoint_full_digest": "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c",
+  "checkpoint_tokenizer_digest": "sha256:da3d978c386a49fbe3b8aa4668b406833d43582d29b746b3842a2262d2b080ee",
+  "checkpoint_weights_digest": "sha256:2f220d595a452e643bd75be362018dbe1680880e02ff40078b5c7fed59831291",
+  "command": {
+    "argv": [
+      "scripts/run_tier1_zero_shot_robustness.py",
+      "--checkpoint",
+      "../SigLip_LLM/Qwen2_5_3B",
+      "--output",
+      "artifacts/tier1_zero_shot_robustness_null_only.json",
+      "--question-limit",
+      "0",
+      "--max-configs",
+      "1",
+      "--generation-control-limit",
+      "0"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/run_tier1_zero_shot_robustness.py --checkpoint ../SigLip_LLM/Qwen2_5_3B --output artifacts/tier1_zero_shot_robustness_null_only.json --question-limit 0 --max-configs 1 --generation-control-limit 0"
+  },
+  "command_line": "scripts/run_tier1_zero_shot_robustness.py --checkpoint ../SigLip_LLM/Qwen2_5_3B --output artifacts/tier1_zero_shot_robustness_null_only.json --question-limit 0 --max-configs 1 --generation-control-limit 0",
+  "data": {
+    "available": true,
+    "digest": "sha256:6454aff4568bf61f7b3e19c5ed6f71be95610ad37cfad3fafa1e0ceddf2f1d1c",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "artifacts/tier1_v03/benchmark_manifest.json",
+        "role": "data",
+        "sha256": "sha256:d60e13ca6fc3dc3fe7a1d63ba342b60caaf55e22606f93d24c4bd657ae443b6a",
+        "size_bytes": 35673
+      }
+    ]
+  },
+  "data_digest": "sha256:6454aff4568bf61f7b3e19c5ed6f71be95610ad37cfad3fafa1e0ceddf2f1d1c",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "chat_template_inventory": {
+      "checkpoint_declarations": [
+        {
+          "checkpoint_digest": "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c",
+          "declared_in_tokenizer_config": true
+        }
+      ],
+      "jinja2_version": "3.0.3",
+      "manual_fallback_is_not_native": true,
+      "native_apply_chat_template_runtime_available": false,
+      "native_runtime_requirement": "jinja2>=3.1"
+    },
+    "checkpoint_requirement": {
+      "duplicate_requested_paths": [],
+      "instruction_checkpoint_count": 0,
+      "instruction_role_labels_complete": false,
+      "minimum_unique_checkpoints": 3,
+      "note": "Only distinct full_checkpoint_digest values count; every formal checkpoint must be explicitly labelled instruction/instruct/chat/sft.",
+      "passed": false,
+      "status": "insufficient_checkpoints_or_instruction_roles",
+      "unique_available_checkpoints": 1
+    },
+    "configuration_count": 1,
+    "full_benchmark_coverage": false,
+    "full_configuration_coverage": false,
+    "null_prior_count": 1,
+    "prompt_leak_free": true,
+    "row_count_per_configuration": 0,
+    "runtime_error_count": 0
+  },
+  "experiment": "B_zero_shot_format_prior_robustness",
+  "generated_at_utc": "2026-08-26T08:09:57.360491+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+    "status_available": true,
+    "status_digest": "sha256:d0e805ba9aa0ab2af89545340e146b1fc0fe3af90459c274d5d8c132adb7e50a"
+  },
+  "git_sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+  "manifest_digest": "sha256:7a510289e2b49b52d7e395e514c1c0fea01533997a84c59e2f7b456784a10eb7",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      29,
+      41,
+      53,
+      103,
+      107,
+      109,
+      113
+    ],
+    "confirmation": [
+      103,
+      107,
+      109,
+      113
+    ],
+    "exploration": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "inference": [
+      17
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:56ee450eda8fbeb4c311374677ea4242e21450e754bc5f95307486a6e609e123",
+    "file_count": 3,
+    "files": [
+      {
+        "path": "research_strategy_optimization/environments/tier1_tabular_env.py",
+        "role": "source",
+        "sha256": "sha256:0a87202ea332c78a03e2f48a7e642ea60fee32c96a79ea927a4d7efbd3879c77",
+        "size_bytes": 33359
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_zero_shot_robustness.py",
+        "role": "source",
+        "sha256": "sha256:4abc8481a090cc4af7a61ade43431ed3bf58faf2bc87e6feaf25ce2dcbdae58c",
+        "size_bytes": 12574
+      },
+      {
+        "path": "scripts/run_tier1_zero_shot_robustness.py",
+        "role": "source",
+        "sha256": "sha256:2df93a6c7c68374986e4d8868ed0458251269dff0f88122640c22dc7ce0d7d80",
+        "size_bytes": 31074
+      }
+    ]
+  },
+  "source_digest": "sha256:56ee450eda8fbeb4c311374677ea4242e21450e754bc5f95307486a6e609e123",
+  "status": "completed_single_checkpoint_robustness",
+  "training_seed": null
+}

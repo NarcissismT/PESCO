@@ -1,0 +1,309 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/run_tier1_differentiable_suite.py",
+      "--output",
+      "artifacts/tier1_differentiable_suite",
+      "--epochs",
+      "16",
+      "--max-optimizer-steps",
+      "128"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/run_tier1_differentiable_suite.py --output artifacts/tier1_differentiable_suite --epochs 16 --max-optimizer-steps 128"
+  },
+  "command_line": "scripts/run_tier1_differentiable_suite.py --output artifacts/tier1_differentiable_suite --epochs 16 --max-optimizer-steps 128",
+  "data": {
+    "available": true,
+    "digest": "sha256:2f27bdddf68e71aac0a1bbd1d506bb38e83a5af61108c1a57b4e6aa0e1005a7a",
+    "file_count": 16,
+    "files": [
+      {
+        "path": "artifacts/tier1_differentiable_suite/dataset.json",
+        "role": "data",
+        "sha256": "sha256:45c8a6b970e7864c03b8b82a952f0dfdfed895293b283ca42a4c6afebd038483",
+        "size_bytes": 574428
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/dataset_public.json",
+        "role": "data",
+        "sha256": "sha256:115fa4f91267cc4d9941370a93b4bbb33ac3ac6ec796e2dc7fcad9b9dda8597b",
+        "size_bytes": 75502
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/experiment_c_state_reward.json",
+        "role": "data",
+        "sha256": "sha256:0698519a36e48d70c9459fed1b4da3295b6e98830089105429d9100fcfeebe70",
+        "size_bytes": 37893
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/experiment_d_branch_ablation.json",
+        "role": "data",
+        "sha256": "sha256:ce6a230f4398f62ad92873631523d0d3791fcb0d84ba4b193dffe90fbf1b6ed2",
+        "size_bytes": 47749
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/experiment_e_flip_ablation.json",
+        "role": "data",
+        "sha256": "sha256:e47fae96c78d9098566ef4ee04bb746c98f6e69e62c18b9165c834684e6d74ba",
+        "size_bytes": 164072
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/experiment_f_discovery_boundary.json",
+        "role": "data",
+        "sha256": "sha256:2886e1377b44da1efcfde650e067f5115fe88cdb34c5a12dffd2b5bb98f3067f",
+        "size_bytes": 1147
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_Evidence-Gated_SMOPD.pt",
+        "role": "data",
+        "sha256": "sha256:f4a1d11a3b64983b6e13d998e5f82a11a8bfe9ebe44cd3c6f0a52cf70c5afcfb",
+        "size_bytes": 25541
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_GRPO-FourState.pt",
+        "role": "data",
+        "sha256": "sha256:aa65765a7976a7137e669ffa170aa21b0e2be24b40dcbbdeae6b9bd68dd2e2ea",
+        "size_bytes": 25381
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_GRPO-Terminal.pt",
+        "role": "data",
+        "sha256": "sha256:253b9ac13ffa13ced6f12ff8e560eac188a2778e1c111b9ef3c691d9458e2992",
+        "size_bytes": 25365
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_PESCO-BranchOnly.pt",
+        "role": "data",
+        "sha256": "sha256:9b229869644e2457fd74101606a78b5487946b5970f554961dbfc173a7d9513f",
+        "size_bytes": 25477
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_PESCO-Full.pt",
+        "role": "data",
+        "sha256": "sha256:ccb51042059af0f67b58da89ea14672a4486111a90f16698dea98e66ef126ef4",
+        "size_bytes": 25317
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_PESCO-NoBranch.pt",
+        "role": "data",
+        "sha256": "sha256:99e8d2478e9a35a7c948c37a19f3bc1f838ff69b612045898401bb6c737ec82e",
+        "size_bytes": 25381
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_PESCO-NoFlipLoss.pt",
+        "role": "data",
+        "sha256": "sha256:38c61015da65c1ea77d5252303899c5ae283f3b76e74dff6aef935f49cebee37",
+        "size_bytes": 25477
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_SFT.pt",
+        "role": "data",
+        "sha256": "sha256:5a3269295797b5244fefd9433e0c5738df7904c989b93e45640d601a061a2d29",
+        "size_bytes": 25205
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/policy_StateGateOnly.pt",
+        "role": "data",
+        "sha256": "sha256:d4b7bc05684c228c08f2d2697b9144445ace40a8887b03f2f0a7db42ffa1deac",
+        "size_bytes": 25365
+      },
+      {
+        "path": "artifacts/tier1_differentiable_suite/suite.json",
+        "role": "data",
+        "sha256": "sha256:7d53af6fb80af0568a95365c598ad0e79dc4d2d2578a820aa1da8bb0b9e5736b",
+        "size_bytes": 1712018
+      }
+    ]
+  },
+  "data_digest": "sha256:2f27bdddf68e71aac0a1bbd1d506bb38e83a5af61108c1a57b4e6aa0e1005a7a",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "action_level_branch_rows": 192,
+    "artifact_status": "genuine_cpu_differentiable_reference_not_llm",
+    "branch_groups": 48,
+    "capture_mode": "in_run",
+    "experiments": [
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "formal_final_splits_opened": false,
+    "llm_claim": false,
+    "methods": [
+      "SFT",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "StateGateOnly",
+      "PESCO-NoBranch",
+      "PESCO-BranchOnly",
+      "PESCO-NoFlipLoss",
+      "PESCO-Full",
+      "Evidence-Gated SMOPD"
+    ],
+    "optimizer_step_cap": 128,
+    "protocol_digest": "sha256:9f0b78770c80c7163bcb006db994a2f4b1722f349fd366b86b304c19ca02974c",
+    "protocol_version": "pesco_v0_2",
+    "reversal_count": 8,
+    "seed_level_executions": 768,
+    "tier2_claim": false
+  },
+  "experiment": "C_D_E_F_differentiable_suite",
+  "generated_at_utc": "2026-08-26T09:56:39.338924+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+    "status_available": true,
+    "status_digest": "sha256:074129991ab86cda285c2fd53173410ca1588ea6636de2c427c8a3907229d12b"
+  },
+  "git_sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+  "manifest_digest": "sha256:951b81020724280c2ae1ff97d932dc422632aa72c1bdf1e0a3e273eafe2b8e7f",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      29,
+      41,
+      53,
+      103,
+      107,
+      109,
+      113
+    ],
+    "confirmation": [
+      103,
+      107,
+      109,
+      113
+    ],
+    "exploration": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "inference": [
+      17
+    ],
+    "training": [
+      17
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:5d1956dc5a40384df3c0b71c9d417d52f3d14e238a4a323c4710f3e2ff3ab152",
+    "file_count": 8,
+    "files": [
+      {
+        "path": "research_strategy_optimization/algorithms/branch_rollout.py",
+        "role": "source",
+        "sha256": "sha256:8747556b5927c3657a64d1c5b5711e161ddc03da9f54645eb31316748f7e88dd",
+        "size_bytes": 15516
+      },
+      {
+        "path": "research_strategy_optimization/algorithms/differentiable_strategy.py",
+        "role": "source",
+        "sha256": "sha256:400578e2626a183a0837e990eb69f267b44bcd2f4256da083c8b0db05a840c82",
+        "size_bytes": 51407
+      },
+      {
+        "path": "research_strategy_optimization/environments/tier0_simulator.py",
+        "role": "source",
+        "sha256": "sha256:3ec773bb6e7f4704b6ddc0babfb69859cc85c2ef064aae2805ea074b72e4bc5c",
+        "size_bytes": 31144
+      },
+      {
+        "path": "research_strategy_optimization/environments/tier1_benchmark.py",
+        "role": "source",
+        "sha256": "sha256:60c33ae868aba736490941a791271ace955d03e9767ceb6b78e50b60bdfb9338",
+        "size_bytes": 23319
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_differentiable_suite.py",
+        "role": "source",
+        "sha256": "sha256:5e109e56c0648e423f9688bec7c767f7846d0a4f28cfbd3d480fbc98d303c6cb",
+        "size_bytes": 87186
+      },
+      {
+        "path": "research_strategy_optimization/schemas.py",
+        "role": "source",
+        "sha256": "sha256:542a49ccdae65c9c782678f25c3eafc62360490911187d225ceea13e070a0b6e",
+        "size_bytes": 25753
+      },
+      {
+        "path": "research_strategy_optimization/utils/run_manifest.py",
+        "role": "source",
+        "sha256": "sha256:b45612a66508c0502249fa0de4e5afe2262233a1c72b6aab820673b5046321b9",
+        "size_bytes": 15383
+      },
+      {
+        "path": "scripts/run_tier1_differentiable_suite.py",
+        "role": "source",
+        "sha256": "sha256:fac105d6bfaccb9882110770991941e76bdbf7bb306d6dd8e218eb4d684e9064",
+        "size_bytes": 2759
+      }
+    ]
+  },
+  "source_digest": "sha256:5d1956dc5a40384df3c0b71c9d417d52f3d14e238a4a323c4710f3e2ff3ab152",
+  "status": "completed",
+  "training_seed": [
+    17
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "artifact_scope": "legacy_certificate_evidence",
+  "certificate_count": 4,
+  "certificate_pass_true_count": 4,
+  "discovery_policy_ref": "discovery_policy.json",
+  "discovery_policy_status": "disabled",
+  "files": [
+    {
+      "artifact_scope": "legacy_certificate_evidence",
+      "autonomous": true,
+      "certificate_pass": true,
+      "current_formal_claim_authorized": false,
+      "legacy": true,
+      "path": "certificate_PESCO-Full_rq_tier0_001_world_02.json"
+    },
+    {
+      "artifact_scope": "legacy_certificate_evidence",
+      "autonomous": true,
+      "certificate_pass": true,
+      "current_formal_claim_authorized": false,
+      "legacy": true,
+      "path": "certificate_PESCO-Full_rq_tier0_ood_001_world_02.json"
+    },
+    {
+      "artifact_scope": "legacy_certificate_evidence",
+      "autonomous": true,
+      "certificate_pass": true,
+      "current_formal_claim_authorized": false,
+      "legacy": true,
+      "path": "certificate_PESCO-Offline_rq_tier0_001_world_02.json"
+    },
+    {
+      "artifact_scope": "legacy_certificate_evidence",
+      "autonomous": true,
+      "certificate_pass": true,
+      "current_formal_claim_authorized": false,
+      "legacy": true,
+      "path": "certificate_PESCO-Offline_rq_tier0_ood_001_world_02.json"
+    }
+  ],
+  "interpretation": "Historical certificate outputs are retained for implementation evidence. Their pass/autonomous fields do not authorize current fixed-action discovery claims.",
+  "legacy": true,
+  "schema_version": "pesco_legacy_certificate_manifest_v0.1",
+  "scope": {
+    "artifact_scope": "legacy_certificate_evidence",
+    "certificate_pass_interpretation": "historical_only_not_current_discovery",
+    "current_formal_claim_authorized": false,
+    "discovery_policy_id": "fixed_mvp_action_space_v1",
+    "discovery_policy_ref": "discovery_policy.json",
+    "discovery_policy_status": "disabled",
+    "is_legacy": true,
+    "status": "legacy_out_of_current_discovery_scope"
+  }
+}

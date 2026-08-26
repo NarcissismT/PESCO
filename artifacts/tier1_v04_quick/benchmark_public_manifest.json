@@ -1,0 +1,166 @@
+{
+  "counts_by_split": {
+    "dev": 2,
+    "diagnostic_ood": 2,
+    "train": 8
+  },
+  "diagnostic_only": true,
+  "dual_tracks": {
+    "oracle_state": {
+      "input": "trusted_initial_evidence_state_plus_public_task_family",
+      "state_label_is_evaluator_side_upper_bound": true,
+      "target_action_visible": false,
+      "world_id_visible": false
+    },
+    "raw_evidence": {
+      "input": "raw_public_observation_and_experiment_output",
+      "target_action_visible": false,
+      "trusted_evidence_state_visible": false,
+      "world_id_visible": false
+    }
+  },
+  "formal_comparison_authorized": false,
+  "manifest_digest": "sha256:0edd280ae50b09062b82e40b389ace6e30b1ae928565b39048a6d0a9c22affd1",
+  "mechanism_families": [
+    "group_leakage",
+    "causal_confounding",
+    "low_sample_variance",
+    "subgroup_metric_mismatch"
+  ],
+  "mechanism_family_count": 4,
+  "parent_environment_schema_version": "pesco_tier1_benchmark_v0.3",
+  "posterior": {
+    "candidate_pool": "leave_one_question_out",
+    "method_b_hindsight_excluded": true,
+    "posterior_expected_utility": "sum_h posterior(h|evidence) * branch_utility(h, action)",
+    "prior": "uniform_over_same_family_other_questions",
+    "target_action_source": "argmax_expected_utility_plus_value_of_information",
+    "value_of_information": "E_h[max_a EU(a|post_action_evidence)] - max_a EU(a|current_evidence)"
+  },
+  "protocol_version": "pesco_v0_2",
+  "question_count": 12,
+  "questions": [
+    {
+      "description": "Group-held-out evaluation with row-overlap leakage in the invalid world.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_group_leakage_01",
+      "seed_offset": 11000,
+      "split": "train",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Group-held-out evaluation with row-overlap leakage in the invalid world.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_group_leakage_02",
+      "seed_offset": 12000,
+      "split": "train",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Group-held-out evaluation with row-overlap leakage in the invalid world.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_group_leakage_03",
+      "seed_offset": 13000,
+      "split": "dev",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Observational treatment assignment is confounded; adjusted OLS repair is required for validity.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_causal_confounding_01",
+      "seed_offset": 21000,
+      "split": "train",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Observational treatment assignment is confounded; adjusted OLS repair is required for validity.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_causal_confounding_02",
+      "seed_offset": 22000,
+      "split": "train",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Observational treatment assignment is confounded; adjusted OLS repair is required for validity.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_causal_confounding_03",
+      "seed_offset": 23000,
+      "split": "dev",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "High-variance measurement protocol where added samples stabilize an otherwise invalid estimate.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_low_sample_variance_01",
+      "seed_offset": 31000,
+      "split": "train",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "High-variance measurement protocol where added samples stabilize an otherwise invalid estimate.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_low_sample_variance_02",
+      "seed_offset": 32000,
+      "split": "train",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "High-variance measurement protocol where added samples stabilize an otherwise invalid estimate.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_low_sample_variance_03",
+      "seed_offset": 33000,
+      "split": "diagnostic_ood",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Overall metric is mismatched to a subgroup estimand; the alternative estimator is subgroup-aware.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_subgroup_metric_mismatch_01",
+      "seed_offset": 41000,
+      "split": "train",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Overall metric is mismatched to a subgroup estimand; the alternative estimator is subgroup-aware.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_subgroup_metric_mismatch_02",
+      "seed_offset": 42000,
+      "split": "train",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Overall metric is mismatched to a subgroup estimand; the alternative estimator is subgroup-aware.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_public_question",
+      "question_id": "t1_subgroup_metric_mismatch_03",
+      "seed_offset": 43000,
+      "split": "diagnostic_ood",
+      "variant": 3,
+      "world_count": 4
+    }
+  ],
+  "schema_version": "pesco_tier1_benchmark_v0.4",
+  "world_count": 48
+}

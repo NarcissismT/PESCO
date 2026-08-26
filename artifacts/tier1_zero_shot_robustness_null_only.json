@@ -1,0 +1,353 @@
+{
+  "chat_template_inventory": {
+    "checkpoint_declarations": [
+      {
+        "checkpoint_digest": "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c",
+        "declared_in_tokenizer_config": true
+      }
+    ],
+    "jinja2_version": "3.0.3",
+    "manual_fallback_is_not_native": true,
+    "native_apply_chat_template_runtime_available": false,
+    "native_runtime_requirement": "jinja2>=3.1"
+  },
+  "checkpoint_full_digests": [
+    "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c"
+  ],
+  "checkpoint_inventories": [
+    {
+      "available": true,
+      "checkpoint_role": "unknown",
+      "config_digest": "sha256:16a1ec5114cb00a3ed8ff246c60da37c92dbea811cf91f2f04d684ef8791a3ef",
+      "file_count": 25,
+      "files": [
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/.gitignore",
+          "role": "checkpoint",
+          "sha256": "sha256:684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+          "size_bytes": 1
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/.gitattributes.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:daf3073787b7584adfc8bad29e6f79d2b70b0792eed9824dc2e9a1418151d407",
+          "size_bytes": 101
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/LICENSE.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:817ea6c294fdd4649dfc4df55e91570bbf68c00f57f4096bf51cf313baf9e865",
+          "size_bytes": 100
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/README.md.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:34b8fba49f966cfa42a74f1681ce1bbcff0ae59cf1bc5f08b002e4fb52c52eeb",
+          "size_bytes": 99
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/config.json.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:9170840b79a47ab2e6aff21c77dc2de8ee5bdd0d5943233fb3959d5e24e7ea0a",
+          "size_bytes": 101
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/generation_config.json.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:285db42732b019ddf94b995ec4f4f8a34dcf76527940c26434a4cc834e99c14a",
+          "size_bytes": 101
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/merges.txt.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:3fe381ef022fee48bbb6b594bb3bf43f87a4c3623e04d039528d721580034da1",
+          "size_bytes": 101
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/model-00001-of-00002.safetensors.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:3a5c02f63c1c6bff93d53bfbedd7b7a8e7f4e8c04ac3b7cd25a2324f24abb3d1",
+          "size_bytes": 124
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/model-00002-of-00002.safetensors.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:b2c1ba4238e18cdaf7361573baac372a8195433abccf5d729355cf0b0e688179",
+          "size_bytes": 124
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/model.safetensors.index.json.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:0e3e9a59b8d1fb40453c8f314db41059788b6c3b96e0793544a93bf69aa01b04",
+          "size_bytes": 101
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/tokenizer.json.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:005ec2319abad33bc78382524ad933ddd716e773a232ddab30e64803f2440d5a",
+          "size_bytes": 100
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/tokenizer_config.json.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:cbaec69584a0d76b53b703b4fc279da3fe281ecf89fb3c0bb116de5b7e3942ae",
+          "size_bytes": 101
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.cache/huggingface/download/vocab.json.metadata",
+          "role": "checkpoint",
+          "sha256": "sha256:64d26eae5a3e11faa5dbafde1d84e50abd9abbc2484ce1f948c5114267334c54",
+          "size_bytes": 101
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/.gitattributes",
+          "role": "checkpoint",
+          "sha256": "sha256:11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "size_bytes": 1519
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/LICENSE",
+          "role": "checkpoint",
+          "sha256": "sha256:ef52482bb785733093dc9a2e8edd8e764c77d12d8e9d8f10a80c9b547d32d0f9",
+          "size_bytes": 7388
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/README.md",
+          "role": "checkpoint",
+          "sha256": "sha256:75c779862cc82558878509bd0d6ba493612568b02868bc474e74fcbeee6f7810",
+          "size_bytes": 3840
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/config.json",
+          "role": "checkpoint",
+          "sha256": "sha256:27467e2fc311a7656c09a43ae9c3d408211e1f212bbddbc93c8596a06423826f",
+          "size_bytes": 683
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/generation_config.json",
+          "role": "checkpoint",
+          "sha256": "sha256:8c970692323e3ea0e9b8b0a4dca79388d31226e41f83c9fd6014804280ebf6e8",
+          "size_bytes": 138
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/merges.txt",
+          "role": "checkpoint",
+          "sha256": "sha256:599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+          "size_bytes": 1671839
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/model-00001-of-00002.safetensors",
+          "role": "checkpoint",
+          "sha256": "sha256:f9558df91d3b89b4826e4db37439edb52f1d62a4fd602685013e7ca6b9f60f8f",
+          "size_bytes": 3968658944
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/model-00002-of-00002.safetensors",
+          "role": "checkpoint",
+          "sha256": "sha256:51410930d5cf19a998fdb17ef0c46e4d9ace72c97a975a3331395a8a500f5edb",
+          "size_bytes": 2203268048
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/model.safetensors.index.json",
+          "role": "checkpoint",
+          "sha256": "sha256:bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+          "size_bytes": 35581
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/tokenizer.json",
+          "role": "checkpoint",
+          "sha256": "sha256:c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+          "size_bytes": 7031645
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/tokenizer_config.json",
+          "role": "checkpoint",
+          "sha256": "sha256:c91efca15ceff6e9ee9424db58a6f59cd41294e550a86cbd07e3c1fb500b34f9",
+          "size_bytes": 7228
+        },
+        {
+          "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B/vocab.json",
+          "role": "checkpoint",
+          "sha256": "sha256:ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "size_bytes": 2776833
+        }
+      ],
+      "full_checkpoint_digest": "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c",
+      "full_tokenizer_digest": "sha256:da3d978c386a49fbe3b8aa4668b406833d43582d29b746b3842a2262d2b080ee",
+      "full_weights_digest": "sha256:2f220d595a452e643bd75be362018dbe1680880e02ff40078b5c7fed59831291",
+      "path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/SigLip_LLM/Qwen2_5_3B",
+      "reason": null,
+      "requested_path": "../SigLip_LLM/Qwen2_5_3B",
+      "supplied": true,
+      "tokenizer_digest": "sha256:da3d978c386a49fbe3b8aa4668b406833d43582d29b746b3842a2262d2b080ee",
+      "tokenizer_file_count": 4,
+      "unique_checkpoint_index": 0,
+      "weights_digest": "sha256:2f220d595a452e643bd75be362018dbe1680880e02ff40078b5c7fed59831291",
+      "weights_file_count": 2
+    }
+  ],
+  "checkpoint_requirement": {
+    "duplicate_requested_paths": [],
+    "instruction_checkpoint_count": 0,
+    "instruction_role_labels_complete": false,
+    "minimum_unique_checkpoints": 3,
+    "note": "Only distinct full_checkpoint_digest values count; every formal checkpoint must be explicitly labelled instruction/instruct/chat/sft.",
+    "passed": false,
+    "status": "insufficient_checkpoints_or_instruction_roles",
+    "unique_available_checkpoints": 1
+  },
+  "checkpoint_tokenizer_digests": [
+    "sha256:da3d978c386a49fbe3b8aa4668b406833d43582d29b746b3842a2262d2b080ee"
+  ],
+  "checkpoint_weights_digests": [
+    "sha256:2f220d595a452e643bd75be362018dbe1680880e02ff40078b5c7fed59831291"
+  ],
+  "configuration_count": 1,
+  "configuration_protocol": {
+    "action_letter_rotations": {
+      "canonical": {
+        "A": "continue_current_method",
+        "B": "add_samples_or_seeds",
+        "C": "repair_data_split",
+        "D": "switch_to_alternative_method"
+      },
+      "cyclic_1": {
+        "A": "add_samples_or_seeds",
+        "B": "repair_data_split",
+        "C": "switch_to_alternative_method",
+        "D": "continue_current_method"
+      },
+      "cyclic_2": {
+        "A": "repair_data_split",
+        "B": "switch_to_alternative_method",
+        "C": "continue_current_method",
+        "D": "add_samples_or_seeds"
+      },
+      "reverse": {
+        "A": "switch_to_alternative_method",
+        "B": "repair_data_split",
+        "C": "add_samples_or_seeds",
+        "D": "continue_current_method"
+      }
+    },
+    "constrained_generation": {
+      "generate_prefix_allowed_tokens_control": true,
+      "generation_control_limit_per_checkpoint": 0,
+      "masked_next_token_scoring": true
+    },
+    "null_prompt_prior_calibration": true,
+    "prompt_templates": [
+      "compact_json",
+      "prose",
+      "schema"
+    ],
+    "renderings": [
+      "plain_text",
+      "chat_template"
+    ]
+  },
+  "diagnostic_only": true,
+  "expected_configuration_count": 24,
+  "experiment": "B_zero_shot_format_prior_robustness",
+  "formal_comparison_authorized": false,
+  "full_benchmark_coverage": false,
+  "full_configuration_coverage": false,
+  "null_prior_calibration": [
+    {
+      "chat": false,
+      "checkpoint_digest": "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c",
+      "checkpoint_index": 0,
+      "letter_probabilities": {
+        "A": 0.4859184614426073,
+        "B": 0.31467763183679615,
+        "C": 0.03468972102794187,
+        "D": 0.16471418569265459
+      },
+      "mapping": {
+        "A": "continue_current_method",
+        "B": "add_samples_or_seeds",
+        "C": "repair_data_split",
+        "D": "switch_to_alternative_method"
+      },
+      "mapping_checksum": "sha256:9bd3f70dc4ba61b494ac573337e63847c9e220e3368d40dcb5e55550c7dfc024",
+      "prompt": "Use PUBLIC evidence only. Choose one action letter using this mapping: A=continue_current_method; B=add_samples_or_seeds; C=repair_data_split; D=switch_to_alternative_method. Choose one state letter S=supported R=refuted I=insufficient V=invalid. Return exactly ACTION=<letter> STATE=<letter>. PUBLIC={\"active_hypothesis_id\":null,\"confidence_interval\":null,\"current_method\":null,\"effect_estimate\":null,\"history_summary\":null,\"hypothesis_beliefs\":null,\"remaining_budget\":null,\"sample_size\":null,\"seed_count\":null,\"task_family\":null,\"validity_signals\":null} ACTION=",
+      "rendering": {
+        "chat_rendering": "plain_text",
+        "chat_requested": false,
+        "native_chat_template": false,
+        "prompt_template": "compact_json"
+      },
+      "rotation": "canonical",
+      "semantic_action_probabilities": {
+        "add_samples_or_seeds": 0.31467763183679615,
+        "continue_current_method": 0.4859184614426073,
+        "repair_data_split": 0.03468972102794187,
+        "switch_to_alternative_method": 0.16471418569265459
+      },
+      "semantic_entropy": 1.1281988850532396,
+      "semantic_max_probability": 0.4859184614426073,
+      "semantic_prior_winner": "continue_current_method",
+      "state_prior": {
+        "insufficient": 0.3709184052480083,
+        "invalid": 0.0658061355064306,
+        "refuted": 0.25801641279732207,
+        "supported": 0.30525904644823904
+      },
+      "template": "compact_json"
+    }
+  ],
+  "pass": false,
+  "prompt_leak_free": true,
+  "provenance": {
+    "checkpoint_full_digest": "sha256:773d308a143c28a45ca2b377b0bd02745a24be446dfe5807e2a92e8465aa5e4c",
+    "checkpoint_tokenizer_digest": "sha256:da3d978c386a49fbe3b8aa4668b406833d43582d29b746b3842a2262d2b080ee",
+    "checkpoint_weights_digest": "sha256:2f220d595a452e643bd75be362018dbe1680880e02ff40078b5c7fed59831291",
+    "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "git_sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+    "manifest_digest": "sha256:7a510289e2b49b52d7e395e514c1c0fea01533997a84c59e2f7b456784a10eb7",
+    "source_digest": "sha256:56ee450eda8fbeb4c311374677ea4242e21450e754bc5f95307486a6e609e123"
+  },
+  "question_limit": 0,
+  "requirements_audit": {
+    "action_letter_rotation": {
+      "executed": false,
+      "implemented": true
+    },
+    "chat_template_control": {
+      "executed": false,
+      "implemented": true,
+      "native_runtime_available": false
+    },
+    "constrained_generation_control": {
+      "executed": false,
+      "implemented": true
+    },
+    "full_checkpoint_tokenizer_code_dependency_hashes": {
+      "executed": true,
+      "implemented": true
+    },
+    "instruction_checkpoint_panel": {
+      "executed": false,
+      "implemented": true
+    },
+    "null_prompt_prior_calibration": {
+      "executed": true,
+      "implemented": true
+    },
+    "prompt_templates": {
+      "executed": false,
+      "implemented": true
+    }
+  },
+  "row_count_per_configuration": 0,
+  "rows": [],
+  "run_manifest": "artifacts/tier1_zero_shot_robustness_null_only.run_manifest.json",
+  "runtime_errors": [],
+  "schema_version": "pesco_experiment_b_zero_shot_robustness_v0.1",
+  "status": "completed_single_checkpoint_robustness",
+  "summaries": {
+    "by_checkpoint_template_rotation_chat": {},
+    "null_prior_count": 1
+  }
+}

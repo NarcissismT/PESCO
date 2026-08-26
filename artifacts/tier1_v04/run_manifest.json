@@ -1,0 +1,239 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "python",
+      "scripts/run_tier1_v04.py",
+      "--output",
+      "artifacts/tier1_v04"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "python scripts/run_tier1_v04.py --output artifacts/tier1_v04"
+  },
+  "command_line": "python scripts/run_tier1_v04.py --output artifacts/tier1_v04",
+  "data": {
+    "available": true,
+    "digest": "sha256:12f2785a7fe83ef3f92b93a46ef03eb3f41c8af220cbdb81ead4cc1644ccc412",
+    "file_count": 7,
+    "files": [
+      {
+        "path": "artifacts/tier1_v04/benchmark_manifest.json",
+        "role": "data",
+        "sha256": "sha256:a1752009e370c57171d4ede605b1070c0797601f63cd9d7282dd7cd00f7ed59a",
+        "size_bytes": 30995
+      },
+      {
+        "path": "artifacts/tier1_v04/benchmark_public_manifest.json",
+        "role": "data",
+        "sha256": "sha256:8d3317a92078392d027c3191c7ff8d477ec1293120749fed1a7f74bd70f2b72c",
+        "size_bytes": 5917
+      },
+      {
+        "path": "artifacts/tier1_v04/candidate_pool_audit.json",
+        "role": "data",
+        "sha256": "sha256:3618b661c8bedf9a0b0e5ca385363ec62fe2734688ea0c0ce4bf15d458e1c87b",
+        "size_bytes": 2840
+      },
+      {
+        "path": "artifacts/tier1_v04/decisions.json",
+        "role": "data",
+        "sha256": "sha256:955dfc7e8a6d5fb3f645cd05ae3c02cfd3d2ee5d2c3877b35b2e32e9e4e40563",
+        "size_bytes": 350299
+      },
+      {
+        "path": "artifacts/tier1_v04/initial_rows.json",
+        "role": "data",
+        "sha256": "sha256:00f3eb0f624ffaf381c39cfa345393e2fc6efc4ba80518f13c79b60d7d155489",
+        "size_bytes": 89984
+      },
+      {
+        "path": "artifacts/tier1_v04/summary.json",
+        "role": "data",
+        "sha256": "sha256:7fe0d115e1f436d65c61276b1acfd9e7f41fa5f7b1402f356e334f4ec9690bf2",
+        "size_bytes": 3800
+      },
+      {
+        "path": "artifacts/tier1_v04/tier1_v04_go.json",
+        "role": "data",
+        "sha256": "sha256:6e7d96002c27e3498132d6e978519b886d2a7f2c1744d6b2a34d8033551a46b4",
+        "size_bytes": 38243
+      }
+    ]
+  },
+  "data_digest": "sha256:12f2785a7fe83ef3f92b93a46ef03eb3f41c8af220cbdb81ead4cc1644ccc412",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "artifact_pass": true,
+    "artifact_status": "completed_cpu_diagnostic",
+    "benchmark_manifest_digest": "sha256:7e71168d6552fcacbe467ff44f35432bf4c1a0a120e715cd3c7922fdbf86cba1",
+    "capture_mode": "posthoc_existing_artifact",
+    "decision_count": 96,
+    "diagnostic_only": true,
+    "formal_comparison_authorized": false,
+    "formal_final_splits_opened": false,
+    "llm_claim": false,
+    "protocol_digest": "sha256:9f0b78770c80c7163bcb006db994a2f4b1722f349fd366b86b304c19ca02974c",
+    "protocol_version": "pesco_v0_2",
+    "public_manifest_digest": "sha256:0edd280ae50b09062b82e40b389ace6e30b1ae928565b39048a6d0a9c22affd1",
+    "question_count": 12,
+    "tier2_claim": false,
+    "tracks": [
+      "oracle_state",
+      "raw_evidence"
+    ],
+    "world_count": 48
+  },
+  "experiment": "P1_tier1_v04_benchmark_hardening",
+  "generated_at_utc": "2026-08-26T05:19:04.162907+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+    "status_available": true,
+    "status_digest": "sha256:02f4971a5b00fe7d6e84172317ac88fb39712034a6b1275112ea0544510cfd38"
+  },
+  "git_sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+  "manifest_digest": "sha256:8512abd9f7c1709e911bdbb1ef13162a3f9161fb6990854c25cd9013fda7449c",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      29,
+      41,
+      53,
+      103,
+      107,
+      109,
+      113
+    ],
+    "confirmation": [
+      103,
+      107,
+      109,
+      113
+    ],
+    "environment_reset": [
+      17
+    ],
+    "exploration": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "inference": [
+      17
+    ],
+    "training": [
+      17
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:737ea6134b57f24ce225aa6ea95c3c0981f63dea923a18916c93d4ff24e3bed6",
+    "file_count": 7,
+    "files": [
+      {
+        "path": "research_strategy_optimization/environments/tier0_simulator.py",
+        "role": "source",
+        "sha256": "sha256:3ec773bb6e7f4704b6ddc0babfb69859cc85c2ef064aae2805ea074b72e4bc5c",
+        "size_bytes": 31144
+      },
+      {
+        "path": "research_strategy_optimization/environments/tier1_benchmark.py",
+        "role": "source",
+        "sha256": "sha256:ac4cd5c4500db7343f900daf2e0bfff4924e059608a4021b9776e336df4b0275",
+        "size_bytes": 21598
+      },
+      {
+        "path": "research_strategy_optimization/environments/tier1_tabular_env.py",
+        "role": "source",
+        "sha256": "sha256:0a87202ea332c78a03e2f48a7e642ea60fee32c96a79ea927a4d7efbd3879c77",
+        "size_bytes": 33359
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_v04.py",
+        "role": "source",
+        "sha256": "sha256:5f0503d87a475d802dabb73f4523f557197636c25d72f18e554fca1ee4536d88",
+        "size_bytes": 23065
+      },
+      {
+        "path": "research_strategy_optimization/schemas.py",
+        "role": "source",
+        "sha256": "sha256:542a49ccdae65c9c782678f25c3eafc62360490911187d225ceea13e070a0b6e",
+        "size_bytes": 25753
+      },
+      {
+        "path": "research_strategy_optimization/utils/run_manifest.py",
+        "role": "source",
+        "sha256": "sha256:b45612a66508c0502249fa0de4e5afe2262233a1c72b6aab820673b5046321b9",
+        "size_bytes": 15383
+      },
+      {
+        "path": "scripts/run_tier1_v04.py",
+        "role": "source",
+        "sha256": "sha256:eebd26b085d2320b3d89b057d71acaffb25a4f16a50af01d948caf49c3d0e635",
+        "size_bytes": 16044
+      }
+    ]
+  },
+  "source_digest": "sha256:737ea6134b57f24ce225aa6ea95c3c0981f63dea923a18916c93d4ff24e3bed6",
+  "status": "completed",
+  "training_seed": [
+    17
+  ]
+}

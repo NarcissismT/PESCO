@@ -45,15 +45,15 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "repair_data_split",
+    "empirical_winner": "continue_current_method",
     "family": "group_leakage",
     "question_id": "t1_group_leakage_01",
     "target_action": "repair_data_split",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
       "add_samples_or_seeds": -1.3155000000000001,
       "continue_current_method": -0.40499999999999997,
-      "repair_data_split": 1.9375000000000002,
+      "repair_data_split": -0.4125,
       "switch_to_alternative_method": -0.414
     },
     "world_id": "t1_group_leakage_01__invalid",
@@ -105,15 +105,15 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "repair_data_split",
+    "empirical_winner": "continue_current_method",
     "family": "group_leakage",
     "question_id": "t1_group_leakage_02",
     "target_action": "repair_data_split",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
       "add_samples_or_seeds": -1.3155000000000001,
       "continue_current_method": -0.40499999999999997,
-      "repair_data_split": 1.9375000000000002,
+      "repair_data_split": -0.4125,
       "switch_to_alternative_method": -0.414
     },
     "world_id": "t1_group_leakage_02__invalid",
@@ -165,15 +165,15 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "repair_data_split",
+    "empirical_winner": "continue_current_method",
     "family": "group_leakage",
     "question_id": "t1_group_leakage_03",
     "target_action": "repair_data_split",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
       "add_samples_or_seeds": -1.3155000000000001,
       "continue_current_method": -0.40499999999999997,
-      "repair_data_split": 1.9375000000000002,
+      "repair_data_split": -0.4125,
       "switch_to_alternative_method": -0.414
     },
     "world_id": "t1_group_leakage_03__invalid",
@@ -225,15 +225,15 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "repair_data_split",
+    "empirical_winner": "continue_current_method",
     "family": "causal_confounding",
     "question_id": "t1_causal_confounding_01",
     "target_action": "repair_data_split",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
       "add_samples_or_seeds": -1.3155000000000001,
       "continue_current_method": -0.40499999999999997,
-      "repair_data_split": 1.7874999999999999,
+      "repair_data_split": -0.4125,
       "switch_to_alternative_method": -0.414
     },
     "world_id": "t1_causal_confounding_01__invalid",
@@ -285,15 +285,15 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "repair_data_split",
+    "empirical_winner": "continue_current_method",
     "family": "causal_confounding",
     "question_id": "t1_causal_confounding_02",
     "target_action": "repair_data_split",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
       "add_samples_or_seeds": -1.3155000000000001,
       "continue_current_method": -0.40499999999999997,
-      "repair_data_split": 1.7874999999999999,
+      "repair_data_split": -0.4125,
       "switch_to_alternative_method": -0.414
     },
     "world_id": "t1_causal_confounding_02__invalid",
@@ -345,15 +345,15 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "repair_data_split",
+    "empirical_winner": "continue_current_method",
     "family": "causal_confounding",
     "question_id": "t1_causal_confounding_03",
     "target_action": "repair_data_split",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
       "add_samples_or_seeds": -1.3155000000000001,
       "continue_current_method": -0.40499999999999997,
-      "repair_data_split": 1.7874999999999999,
+      "repair_data_split": -0.4125,
       "switch_to_alternative_method": -0.414
     },
     "world_id": "t1_causal_confounding_03__invalid",
@@ -405,13 +405,13 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "add_samples_or_seeds",
+    "empirical_winner": "continue_current_method",
     "family": "low_sample_variance",
     "question_id": "t1_low_sample_variance_01",
     "target_action": "add_samples_or_seeds",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
-      "add_samples_or_seeds": 0.7137800000000001,
+      "add_samples_or_seeds": -0.38622,
       "continue_current_method": -0.34608,
       "repair_data_split": -0.35358,
       "switch_to_alternative_method": -0.35508
@@ -465,13 +465,13 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "add_samples_or_seeds",
+    "empirical_winner": "continue_current_method",
     "family": "low_sample_variance",
     "question_id": "t1_low_sample_variance_02",
     "target_action": "add_samples_or_seeds",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
-      "add_samples_or_seeds": 0.7137800000000001,
+      "add_samples_or_seeds": -0.38622,
       "continue_current_method": -0.34608,
       "repair_data_split": -0.35358,
       "switch_to_alternative_method": -0.35508
@@ -525,13 +525,13 @@
     "world_kind": "insufficient"
   },
   {
-    "empirical_winner": "add_samples_or_seeds",
+    "empirical_winner": "continue_current_method",
     "family": "low_sample_variance",
     "question_id": "t1_low_sample_variance_03",
     "target_action": "add_samples_or_seeds",
-    "target_matches": true,
+    "target_matches": false,
     "utilities": {
-      "add_samples_or_seeds": 0.7137800000000001,
+      "add_samples_or_seeds": -0.38622,
       "continue_current_method": -0.34608,
       "repair_data_split": -0.35358,
       "switch_to_alternative_method": -0.35508

@@ -1,0 +1,698 @@
+{
+  "confirmation_seeds": [
+    103,
+    107,
+    109,
+    113,
+    127,
+    131,
+    137,
+    139
+  ],
+  "counts_by_split": {
+    "dev": 20,
+    "diagnostic_ood": 20,
+    "train": 24
+  },
+  "diagnostic_only": true,
+  "dual_tracks": {
+    "oracle_state": "trusted initial state plus public evidence",
+    "raw_evidence": "numeric correlations/overlap/CI/sample/replication/log receipts only"
+  },
+  "exploration_seeds": [
+    17,
+    29,
+    41,
+    53,
+    67,
+    71,
+    83,
+    97
+  ],
+  "formal_comparison_authorized": false,
+  "manifest_digest": "sha256:4e613545ebbba70622c63f2a170a6a5b480d719d1e9652a12215d4798e0eef2b",
+  "mechanism_families": [
+    "group_leakage",
+    "causal_confounding",
+    "low_sample_variance",
+    "subgroup_metric_mismatch",
+    "confounding_underpower",
+    "leakage_metric_mismatch",
+    "protocol_drift",
+    "replication_instability"
+  ],
+  "mechanism_family_count": 8,
+  "ood_protocol_holdout": {
+    "additional_clusters": "replication_instability variants 1-4",
+    "whole_families": [
+      "leakage_metric_mismatch",
+      "protocol_drift"
+    ]
+  },
+  "protocol_version": "pesco_v0_2",
+  "question_count": 64,
+  "questions": [
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_01",
+      "seed_offset": 10100,
+      "split": "dev",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_02",
+      "seed_offset": 10200,
+      "split": "dev",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_03",
+      "seed_offset": 10300,
+      "split": "dev",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_04",
+      "seed_offset": 10400,
+      "split": "dev",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_05",
+      "seed_offset": 10500,
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_06",
+      "seed_offset": 10600,
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_07",
+      "seed_offset": 10700,
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 group_leakage mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_group_leakage_08",
+      "seed_offset": 10800,
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_01",
+      "seed_offset": 20100,
+      "split": "dev",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_02",
+      "seed_offset": 20200,
+      "split": "dev",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_03",
+      "seed_offset": 20300,
+      "split": "dev",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_04",
+      "seed_offset": 20400,
+      "split": "dev",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_05",
+      "seed_offset": 20500,
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_06",
+      "seed_offset": 20600,
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_07",
+      "seed_offset": 20700,
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 causal_confounding mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_causal_confounding_08",
+      "seed_offset": 20800,
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_01",
+      "seed_offset": 30100,
+      "split": "dev",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_02",
+      "seed_offset": 30200,
+      "split": "dev",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_03",
+      "seed_offset": 30300,
+      "split": "dev",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_04",
+      "seed_offset": 30400,
+      "split": "dev",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_05",
+      "seed_offset": 30500,
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_06",
+      "seed_offset": 30600,
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_07",
+      "seed_offset": 30700,
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 low_sample_variance mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_low_sample_variance_08",
+      "seed_offset": 30800,
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_01",
+      "seed_offset": 40100,
+      "split": "dev",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_02",
+      "seed_offset": 40200,
+      "split": "dev",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_03",
+      "seed_offset": 40300,
+      "split": "dev",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_04",
+      "seed_offset": 40400,
+      "split": "dev",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_05",
+      "seed_offset": 40500,
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_06",
+      "seed_offset": 40600,
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_07",
+      "seed_offset": 40700,
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 subgroup_metric_mismatch mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_subgroup_metric_mismatch_08",
+      "seed_offset": 40800,
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_01",
+      "seed_offset": 50100,
+      "split": "train",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_02",
+      "seed_offset": 50200,
+      "split": "train",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_03",
+      "seed_offset": 50300,
+      "split": "train",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_04",
+      "seed_offset": 50400,
+      "split": "train",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_05",
+      "seed_offset": 50500,
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_06",
+      "seed_offset": 50600,
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_07",
+      "seed_offset": 50700,
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 confounding_underpower mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "confounding_underpower",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_confounding_underpower_08",
+      "seed_offset": 50800,
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_01",
+      "seed_offset": 60100,
+      "split": "diagnostic_ood",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_02",
+      "seed_offset": 60200,
+      "split": "diagnostic_ood",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_03",
+      "seed_offset": 60300,
+      "split": "diagnostic_ood",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_04",
+      "seed_offset": 60400,
+      "split": "diagnostic_ood",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_05",
+      "seed_offset": 60500,
+      "split": "diagnostic_ood",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_06",
+      "seed_offset": 60600,
+      "split": "diagnostic_ood",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_07",
+      "seed_offset": 60700,
+      "split": "diagnostic_ood",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 leakage_metric_mismatch mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "leakage_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_leakage_metric_mismatch_08",
+      "seed_offset": 60800,
+      "split": "diagnostic_ood",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_01",
+      "seed_offset": 70100,
+      "split": "diagnostic_ood",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_02",
+      "seed_offset": 70200,
+      "split": "diagnostic_ood",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_03",
+      "seed_offset": 70300,
+      "split": "diagnostic_ood",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_04",
+      "seed_offset": 70400,
+      "split": "diagnostic_ood",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_05",
+      "seed_offset": 70500,
+      "split": "diagnostic_ood",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_06",
+      "seed_offset": 70600,
+      "split": "diagnostic_ood",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_07",
+      "seed_offset": 70700,
+      "split": "diagnostic_ood",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 protocol_drift mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "protocol_drift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_protocol_drift_08",
+      "seed_offset": 70800,
+      "split": "diagnostic_ood",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 1; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_01",
+      "seed_offset": 80100,
+      "split": "diagnostic_ood",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 2; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_02",
+      "seed_offset": 80200,
+      "split": "diagnostic_ood",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 3; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_03",
+      "seed_offset": 80300,
+      "split": "diagnostic_ood",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 4; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_04",
+      "seed_offset": 80400,
+      "split": "diagnostic_ood",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 5; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_05",
+      "seed_offset": 80500,
+      "split": "dev",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 6; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_06",
+      "seed_offset": 80600,
+      "split": "dev",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 7; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_07",
+      "seed_offset": 80700,
+      "split": "dev",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Tier-1 v0.4 replication_instability mechanism/protocol variant 8; paired worlds share the question.",
+      "family": "replication_instability",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_v04_replication_instability_08",
+      "seed_offset": 80800,
+      "split": "dev",
+      "variant": 8,
+      "world_count": 4
+    }
+  ],
+  "schema_version": "pesco_tier1_benchmark_v0.4_extended",
+  "world_count": 256
+}

@@ -1,0 +1,2861 @@
+[
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.15905862196007875,
+      0.18425500665256
+    ],
+    "initial_dataset_hash": "sha256:de18a2bb41412968c47c9c9448d418a4ac2cdba275f2512ea824880f6c8cb746",
+    "initial_effect_estimate": 0.17165681430631938,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.994861480143688,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.15905862196007875,
+        0.18425500665256
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.17165681430631938,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.994861480143688,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.994861480143688,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__supported"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.08444390281770181,
+      -0.05676074312881077
+    ],
+    "initial_dataset_hash": "sha256:02d2456c78ec15c33da2d8e6c04112693b0bf05e3b7453ca10e3a547a4fbbc14",
+    "initial_effect_estimate": -0.07060232297325629,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.11043949975271491,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.08444390281770181,
+        -0.05676074312881077
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.07060232297325629,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.11043949975271491,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.11043949975271491,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__refuted"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.6386021134305507,
+      0.8613978865694493
+    ],
+    "initial_dataset_hash": "sha256:7efd50b7b159349eab4a5b70888e97262cb213bea480c51afd708aa680b76ac7",
+    "initial_effect_estimate": 0.11139788656944924,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5361051930050402,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.6386021134305507,
+        0.8613978865694493
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.11139788656944924,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5361051930050402,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5361051930050402,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__insufficient"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.6297425767807309,
+      0.6931554382898238
+    ],
+    "initial_dataset_hash": "sha256:ccc3f3b403e3d61d81d0c44e161b3394296372a87d39be7e181f453e7d3d5ef5",
+    "initial_effect_estimate": 0.6614490075352774,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.6297425767807309,
+        0.6931554382898238
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.6614490075352774,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "split_overlap_diagnostic",
+        "leaky_row_split",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "repair_data_split",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__invalid"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.16489526674941735,
+      0.1997504340225283
+    ],
+    "initial_dataset_hash": "sha256:48bc9676c1e53bc73e38f6f4b59a251bef4267ddf9588d371a2dc0cfc7ade979",
+    "initial_effect_estimate": 0.18232285038597282,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.9923952601267473,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.16489526674941735,
+        0.1997504340225283
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.18232285038597282,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.9923952601267473,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.9923952601267473,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_02",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_02__supported"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.09598791055374967,
+      -0.07002926487191108
+    ],
+    "initial_dataset_hash": "sha256:bc5192c3834f752397166582d50c7b6e128ef91ba6cc7d9ff550e3b2277fa791",
+    "initial_effect_estimate": -0.08300858771283037,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.07467574750238679,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.09598791055374967,
+        -0.07002926487191108
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.08300858771283037,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.07467574750238679,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.07467574750238679,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_02",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_02__refuted"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.7554079279937057,
+      0.7445920720062943
+    ],
+    "initial_dataset_hash": "sha256:2367b4ca74ca18b73df14e265137b241c7d99f236d1396abf16bccda8860f31e",
+    "initial_effect_estimate": -0.00540792799370568,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.4982441864401626,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.7554079279937057,
+        0.7445920720062943
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.00540792799370568,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.4982441864401626,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.4982441864401626,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_02",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_02__insufficient"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.6198961785388762,
+      0.7911689410391115
+    ],
+    "initial_dataset_hash": "sha256:f4dc2f3bf49d8d01b5ba8c6d142863cb4fb320c07d542f12b4eae9655a94adc3",
+    "initial_effect_estimate": 0.7055325597889939,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.6198961785388762,
+        0.7911689410391115
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.7055325597889939,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "split_overlap_diagnostic",
+        "leaky_row_split",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "repair_data_split",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_02",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_02__invalid"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.13027130724912073,
+      0.16977925013132777
+    ],
+    "initial_dataset_hash": "sha256:968d8315c4fb110f3edbc9b1320f9a2015fd1e89e99a3c85b6380e545afebe58",
+    "initial_effect_estimate": 0.15002527869022425,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.9775518647590036,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.13027130724912073,
+        0.16977925013132777
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.15002527869022425,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.9775518647590036,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.9775518647590036,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_03",
+    "split": "dev",
+    "world_id_audit": "t1_group_leakage_03__supported"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.09489008606718055,
+      -0.062873585244275
+    ],
+    "initial_dataset_hash": "sha256:955ea6c7a11ff81950158faba05c1374099e91ffef71f9b7f218a27e4d6b64e4",
+    "initial_effect_estimate": -0.07888183565572778,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.10059236073788733,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.09489008606718055,
+        -0.062873585244275
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.07888183565572778,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.10059236073788733,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.10059236073788733,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_03",
+    "split": "dev",
+    "world_id_audit": "t1_group_leakage_03__refuted"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.5705885706179319,
+      0.9294114293820681
+    ],
+    "initial_dataset_hash": "sha256:5764924c798a32b569b508d5762984e33fb80476ffec515ea10a8a447203333c",
+    "initial_effect_estimate": 0.17941142938206808,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.557988352838697,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.5705885706179319,
+        0.9294114293820681
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.17941142938206808,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.557988352838697,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.557988352838697,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_03",
+    "split": "dev",
+    "world_id_audit": "t1_group_leakage_03__insufficient"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.6405886867931826,
+      0.8023754918375058
+    ],
+    "initial_dataset_hash": "sha256:7e18c925c41627c5f5d10d04dceaa0a178f7c0db0f9e50a942b4733fe2e5d5b9",
+    "initial_effect_estimate": 0.7214820893153442,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.6405886867931826,
+        0.8023754918375058
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.7214820893153442,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "split_overlap_diagnostic",
+        "leaky_row_split",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "repair_data_split",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_03",
+    "split": "dev",
+    "world_id_audit": "t1_group_leakage_03__invalid"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.17482568814505994,
+      0.18331906359392158
+    ],
+    "initial_dataset_hash": "sha256:749d96b19dab23de9f067b83bf8ace66581e50700d6fd3a9d802c576f37e9757",
+    "initial_effect_estimate": 0.17907237586949076,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.999,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.17482568814505994,
+        0.18331906359392158
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.17907237586949076,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.999,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.999,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_01",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_01__supported"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.08178523240022138,
+      -0.06439156605261613
+    ],
+    "initial_dataset_hash": "sha256:8824ea90763da75554b3db8f7a8e0689ebee38bff9c229ddfe8a4aabb9dfbb07",
+    "initial_effect_estimate": -0.07308839922641876,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.07263400173991343,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.08178523240022138,
+        -0.06439156605261613
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.07308839922641876,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.07263400173991343,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.07263400173991343,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_01",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_01__refuted"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.6526092020794613,
+      0.8473907979205387
+    ],
+    "initial_dataset_hash": "sha256:6d00ae39029c5fbab968256bf3e0acd96832681f0d1b69ec04f8ac27741e2f40",
+    "initial_effect_estimate": 0.09739079792053872,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.531578302110518,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.6526092020794613,
+        0.8473907979205387
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.09739079792053872,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.531578302110518,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.531578302110518,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_01",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_01__insufficient"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.15145539548124537,
+      0.15926673606959835
+    ],
+    "initial_dataset_hash": "sha256:618ca83993c7f61fc0b5e599574a372f505c14bffc484c13772b98bc14b6b099",
+    "initial_effect_estimate": 0.15536106577542186,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.15145539548124537,
+        0.15926673606959835
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.15536106577542186,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_confounder_dependence"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "repair_data_split",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_01",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_01__invalid"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.1425086293077503,
+      0.17147627289884546
+    ],
+    "initial_dataset_hash": "sha256:05776a5d1e2bae47900e1c535dd8fb5cca3b82dacd1b6c2a1a1a64492681dd6a",
+    "initial_effect_estimate": 0.15699245110329788,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.9895705829088465,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.1425086293077503,
+        0.17147627289884546
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.15699245110329788,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.9895705829088465,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.9895705829088465,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_02",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_02__supported"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.10652012827279088,
+      -0.07468328216510083
+    ],
+    "initial_dataset_hash": "sha256:f14dc3872d9d0416a779a8441a669bafe18f642c42fe83aa6bbfc3769e6aca0e",
+    "initial_effect_estimate": -0.09060170521894585,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.07430064171413799,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.10652012827279088,
+        -0.07468328216510083
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.09060170521894585,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.07430064171413799,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.07430064171413799,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_02",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_02__refuted"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.7952584868544099,
+      0.7047415131455901
+    ],
+    "initial_dataset_hash": "sha256:f0beda67c38775581a25622f46e30c8b2ff7c87b30a76b238c7f03855bd1b3ca",
+    "initial_effect_estimate": -0.04525848685440988,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.4853099150762949,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.7952584868544099,
+        0.7047415131455901
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.04525848685440988,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.4853099150762949,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.4853099150762949,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_02",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_02__insufficient"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.13636024443749986,
+      0.1540202315154975
+    ],
+    "initial_dataset_hash": "sha256:0c40142ee683f38a75710cfc30925e50f8d45af4ca1e98125d0b8064bbea6632",
+    "initial_effect_estimate": 0.1451902379764987,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.13636024443749986,
+        0.1540202315154975
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.1451902379764987,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_confounder_dependence"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "repair_data_split",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_02",
+    "split": "train",
+    "world_id_audit": "t1_causal_confounding_02__invalid"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.18626142153258912,
+      0.19232193263011105
+    ],
+    "initial_dataset_hash": "sha256:ce72918efefa10e23c542f5c909f3073ed0b3ca9cc85174620aa7f2c2c95bdce",
+    "initial_effect_estimate": 0.18929167708135008,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.999,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.18626142153258912,
+        0.19232193263011105
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.18929167708135008,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.999,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.999,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_03",
+    "split": "dev",
+    "world_id_audit": "t1_causal_confounding_03__supported"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.092656375167383,
+      -0.05963250136775165
+    ],
+    "initial_dataset_hash": "sha256:eff0353c4840d5d17a99c707d4bf5396cb9423c5f51f5d6c50a6d9f4aa61ad60",
+    "initial_effect_estimate": -0.07614443826756732,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.11051740047031423,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.092656375167383,
+        -0.05963250136775165
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.07614443826756732,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.11051740047031423,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.11051740047031423,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_03",
+    "split": "dev",
+    "world_id_audit": "t1_causal_confounding_03__refuted"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.7482025303862492,
+      0.7517974696137508
+    ],
+    "initial_dataset_hash": "sha256:56b0dee1228b0689d6cc4930d50592872c6272fab1cf78259d800283a8411871",
+    "initial_effect_estimate": 0.001797469613750824,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5005835937654233,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.7482025303862492,
+        0.7517974696137508
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.001797469613750824,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5005835937654233,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5005835937654233,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_03",
+    "split": "dev",
+    "world_id_audit": "t1_causal_confounding_03__insufficient"
+  },
+  {
+    "family": "causal_confounding",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.1446673787567574,
+      0.16933572623029958
+    ],
+    "initial_dataset_hash": "sha256:e7eaf5913b64ed2f576b87197992e50f5e8781c5fdb8bbd446c360ac14d6de51",
+    "initial_effect_estimate": 0.15700155249352848,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.1446673787567574,
+        0.16933572623029958
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.15700155249352848,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "causal_confounding",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_confounder_dependence"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "repair_data_split",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_causal_confounding_03",
+    "split": "dev",
+    "world_id_audit": "t1_causal_confounding_03__invalid"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.17812556565811422,
+      0.19400205651026814
+    ],
+    "initial_dataset_hash": "sha256:a4bd49851be9ab5c2bdb1f2f5fa7d52cbd9fb6cfa85116b89d218f30556bb7ea",
+    "initial_effect_estimate": 0.18606381108419118,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.9987202685663915,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.17812556565811422,
+        0.19400205651026814
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.18606381108419118,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.9987202685663915,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.9987202685663915,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_01",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_01__supported"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.1212723727644122,
+      -0.07662028524863411
+    ],
+    "initial_dataset_hash": "sha256:c84752ee6e2f69bb917bdc5dd885105033f1e757965b07f6001bf76e4d75214a",
+    "initial_effect_estimate": -0.09894632900652316,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.08804702327657761,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.1212723727644122,
+        -0.07662028524863411
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.09894632900652316,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.08804702327657761,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.08804702327657761,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_01",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_01__refuted"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.3218742496957256,
+      1.1781257503042744
+    ],
+    "initial_dataset_hash": "sha256:2aaa3a0155774b4aa5763b3ccb16f79537ea6ac5d997026185b03d6ffd640f2a",
+    "initial_effect_estimate": 0.4281257503042744,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.6355282430777857,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.3218742496957256,
+        1.1781257503042744
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.4281257503042744,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.6355282430777857,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.6355282430777857,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_01",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_01__insufficient"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.6415021093313975,
+      0.8584978906686025
+    ],
+    "initial_dataset_hash": "sha256:e3fe0e267495bf77f0e9d42cb6a52942d71820fdfd6bf0ec5a60ae7fb71f65fb",
+    "initial_effect_estimate": 0.1084978906686025,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5351684192175614,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.6415021093313975,
+        0.8584978906686025
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.1084978906686025,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5351684192175614,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5351684192175614,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "variance_estimator_unstable",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_01",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_01__invalid"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.1850034898118756,
+      0.20610044207680062
+    ],
+    "initial_dataset_hash": "sha256:52681fb5247917033ff1cf8b5b242c2cd2ed594eb7ff1b307a9bf5386c546b67",
+    "initial_effect_estimate": 0.1955519659443381,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.9983434589745337,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.1850034898118756,
+        0.20610044207680062
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.1955519659443381,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.9983434589745337,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.9983434589745337,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_02",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_02__supported"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.0857207734459323,
+      -0.05566096370084313
+    ],
+    "initial_dataset_hash": "sha256:a331d034e7802cd8403d031a276b600c07530d3edb7989c1318fcdc69178544b",
+    "initial_effect_estimate": -0.07069086857338772,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.11732441466649127,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.0857207734459323,
+        -0.05566096370084313
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.07069086857338772,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.11732441466649127,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.11732441466649127,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_02",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_02__refuted"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.8779331563370139,
+      0.6220668436629861
+    ],
+    "initial_dataset_hash": "sha256:48dc610a2b4a6064f95df0ea77c8888946c2495250ec499ceb79f82243c1ba3c",
+    "initial_effect_estimate": -0.12793315633701385,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.458558549050042,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.8779331563370139,
+        0.6220668436629861
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.12793315633701385,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.458558549050042,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.458558549050042,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_02",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_02__insufficient"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.517643262127522,
+      0.982356737872478
+    ],
+    "initial_dataset_hash": "sha256:7cb3f954030f6a6bed3f0ec5ed39c33f3f91adaf2dbd421e1e99681ae69de3ed",
+    "initial_effect_estimate": 0.23235673787247807,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5748731950789956,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.517643262127522,
+        0.982356737872478
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.23235673787247807,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5748731950789956,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5748731950789956,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "variance_estimator_unstable",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_02",
+    "split": "train",
+    "world_id_audit": "t1_low_sample_variance_02__invalid"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.1577185583439068,
+      0.17675153097641044
+    ],
+    "initial_dataset_hash": "sha256:d9a284f3a2aeb6b246956612340e0876e636f457bd2587e97a2ad5b121170566",
+    "initial_effect_estimate": 0.16723504466015862,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.9965496324236705,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.1577185583439068,
+        0.17675153097641044
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.16723504466015862,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.9965496324236705,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.9965496324236705,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_low_sample_variance_03__supported"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.08776312575104452,
+      -0.06964902784434558
+    ],
+    "initial_dataset_hash": "sha256:68c873bdfd5bf54d04e9ce3aa908f71f70e41341c1c60f8f9c573f3470bcb445",
+    "initial_effect_estimate": -0.07870607679769505,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.06246345163661187,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.08776312575104452,
+        -0.06964902784434558
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.07870607679769505,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.06246345163661187,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.06246345163661187,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_low_sample_variance_03__refuted"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.7903143999637008,
+      0.7096856000362992
+    ],
+    "initial_dataset_hash": "sha256:b448042489f9470d1d6cf7f780f2614cccd66945e9522c4738a3677ab8e04d1a",
+    "initial_effect_estimate": -0.040314399963700745,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.48691389825577047,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.7903143999637008,
+        0.7096856000362992
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.040314399963700745,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.48691389825577047,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.48691389825577047,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_low_sample_variance_03__insufficient"
+  },
+  {
+    "family": "low_sample_variance",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.880819305599073,
+      0.619180694400927
+    ],
+    "initial_dataset_hash": "sha256:b42f065d470d049e77f43d7009019a3b895555fd11665cc2228c15bab4e28653",
+    "initial_effect_estimate": -0.13081930559907298,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.45762807043880416,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.880819305599073,
+        0.619180694400927
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.13081930559907298,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.45762807043880416,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.45762807043880416,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "low_sample_variance",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "variance_estimator_unstable",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_low_sample_variance_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_low_sample_variance_03__invalid"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.1717143809861982,
+      0.1814258852408324
+    ],
+    "initial_dataset_hash": "sha256:624039276896c0fa02be73179ca76fbcf04a8b2d5b7df933ca798cf71d53f046",
+    "initial_effect_estimate": 0.1765701331135153,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.999,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.1717143809861982,
+        0.1814258852408324
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.1765701331135153,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.999,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.999,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_01__supported"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.10059910202316476,
+      -0.08587237312042455
+    ],
+    "initial_dataset_hash": "sha256:331b97e4a494736dfcf8a0a169cf1a863a24e8fa0513f9c38ba3678059d45fed",
+    "initial_effect_estimate": -0.09323573757179465,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.03206747976463407,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.10059910202316476,
+        -0.08587237312042455
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.09323573757179465,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.03206747976463407,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.03206747976463407,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_01__refuted"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.7444489528875151,
+      0.7555510471124849
+    ],
+    "initial_dataset_hash": "sha256:bb461b56d6710cac273d04e441235221a5d6139bcc059442f4ccefdb0d2c36a7",
+    "initial_effect_estimate": 0.005551047112484879,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5018022802178841,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.7444489528875151,
+        0.7555510471124849
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.005551047112484879,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5018022802178841,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5018022802178841,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_01__insufficient"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.00889477200976129,
+      0.024778681701673737
+    ],
+    "initial_dataset_hash": "sha256:0811fe8274c95182fd28d61ca0d15c07326fb36760c60039a0da7d4af0993ae8",
+    "initial_effect_estimate": 0.007941954845956225,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5536918866366156,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.00889477200976129,
+        0.024778681701673737
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.007941954845956225,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5536918866366156,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5536918866366156,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "metric_scope_mismatch",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_01__invalid"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.14462912858410942,
+      0.16647463633013942
+    ],
+    "initial_dataset_hash": "sha256:8d787de85c08c65a5a2b046bb79dfa3eb4fc16b3be16d5d35d11b8e0b97fb609",
+    "initial_effect_estimate": 0.15555188245712442,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.9935058443795498,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.14462912858410942,
+        0.16647463633013942
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.15555188245712442,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.9935058443795498,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.9935058443795498,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_02__supported"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.11132112177428449,
+      -0.06889326645894131
+    ],
+    "initial_dataset_hash": "sha256:4b972f037530ffd846d32478c8d85210f1b0f795f2c688d1c362972428594fc3",
+    "initial_effect_estimate": -0.0901071941166129,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.10098490907837875,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.11132112177428449,
+        -0.06889326645894131
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.0901071941166129,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.10098490907837875,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.10098490907837875,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_02__refuted"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.17085768147780467,
+      1.3291423185221953
+    ],
+    "initial_dataset_hash": "sha256:069d93ce7708377abb922e2622fcfbab3fcc0c21b42737551df70431311acd55",
+    "initial_effect_estimate": 0.5791423185221953,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.679643265592637,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.17085768147780467,
+        1.3291423185221953
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.5791423185221953,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.679643265592637,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.679643265592637,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_02__insufficient"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.029118800827327367,
+      0.0030880271849353935
+    ],
+    "initial_dataset_hash": "sha256:228bffb1598e55e83c7a56c0eda64ac70cdfd2989941e44d6d73ea259a515878",
+    "initial_effect_estimate": -0.013015386821195987,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.41083782428716964,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.029118800827327367,
+        0.0030880271849353935
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.013015386821195987,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.41083782428716964,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.41083782428716964,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "metric_scope_mismatch",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "split": "train",
+    "world_id_audit": "t1_subgroup_metric_mismatch_02__invalid"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.20473058156974042,
+      0.2232471506824152
+    ],
+    "initial_dataset_hash": "sha256:f4cddb4df153606da9f0a5fccf33847a6ef63fb7b39b062e809b5216ca656fd0",
+    "initial_effect_estimate": 0.21398886612607781,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.999,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.20473058156974042,
+        0.2232471506824152
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.21398886612607781,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.999,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.999,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_subgroup_metric_mismatch_03__supported"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.07842282297105517,
+      -0.05670634599777817
+    ],
+    "initial_dataset_hash": "sha256:c489db8aabeed40a1303e32c4a40cfdd5c410089c5eeb43685ff7d47368da7ac",
+    "initial_effect_estimate": -0.06756458448441667,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.10069598009352373,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.07842282297105517,
+        -0.05670634599777817
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.06756458448441667,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.10069598009352373,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.10069598009352373,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_subgroup_metric_mismatch_03__refuted"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.5268634925231235,
+      0.9731365074768765
+    ],
+    "initial_dataset_hash": "sha256:269bc9e42e7a1989209c579d018fe72ed82e9384c6f67888a78ddebddf489f20",
+    "initial_effect_estimate": 0.22313650747687658,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5719441507389164,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.5268634925231235,
+        0.9731365074768765
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.22313650747687658,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5719441507389164,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5719441507389164,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_subgroup_metric_mismatch_03__insufficient"
+  },
+  {
+    "family": "subgroup_metric_mismatch",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.006268890245893595,
+      0.01070586316626528
+    ],
+    "initial_dataset_hash": "sha256:4a24dbd5f4877363124e51fadb909cf20c3afe3e9c9a2da6b357e23f66f68098",
+    "initial_effect_estimate": 0.002218486460185843,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5194591973121465,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.006268890245893595,
+        0.01070586316626528
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.002218486460185843,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5194591973121465,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5194591973121465,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "subgroup_metric_mismatch",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "metric_scope_mismatch",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "world_id_audit": "t1_subgroup_metric_mismatch_03__invalid"
+  }
+]

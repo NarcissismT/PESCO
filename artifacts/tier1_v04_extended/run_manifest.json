@@ -1,0 +1,311 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/run_tier1_v04_extended.py",
+      "--output",
+      "artifacts/tier1_v04_extended",
+      "--decision-questions",
+      "8"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/run_tier1_v04_extended.py --output artifacts/tier1_v04_extended --decision-questions 8"
+  },
+  "command_line": "scripts/run_tier1_v04_extended.py --output artifacts/tier1_v04_extended --decision-questions 8",
+  "data": {
+    "available": true,
+    "digest": "sha256:5cd71f0c5e6e8af420b127b3192b6f298713a4607c46bcbd3f06964a0b778452",
+    "file_count": 12,
+    "files": [
+      {
+        "path": "artifacts/tier1_v04_extended/README.md",
+        "role": "data",
+        "sha256": "sha256:49190c3013094f9543c8197375a5ddccda993cca6f8a1f8c6a1508f2a42a1e05",
+        "size_bytes": 1689
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/audit_oracle_state.json",
+        "role": "data",
+        "sha256": "sha256:0de713ed2ff984fe8b48fbe17e17d24b73ec524d7e3cae80cb3d7d8772783f64",
+        "size_bytes": 436488
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/audit_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:a47c73bf3c33a1d5a26c529eea8336714e1753e4201ed493eba7c7b760d91c48",
+        "size_bytes": 436390
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/benchmark_manifest.json",
+        "role": "data",
+        "sha256": "sha256:90152ac0342cff17e3abf27d36406f94d2c1aefca3a345b43fa0c9b33ef893c7",
+        "size_bytes": 179828
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/benchmark_public_manifest.json",
+        "role": "data",
+        "sha256": "sha256:4a32a0975bbca7470c85e0412911ae02bf93743c893fefdc225c4eb876e84068",
+        "size_bytes": 26260
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/dataset_oracle_state.json",
+        "role": "data",
+        "sha256": "sha256:60054075671d816387b70b868db39fbbfeb00bd47557de4f5014e1d5827784d5",
+        "size_bytes": 12421440
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/dataset_oracle_state_public.json",
+        "role": "data",
+        "sha256": "sha256:a6c84ac08b78719bb5742e825ec88c685708b07de278179d798cbbd9b5b88af8",
+        "size_bytes": 299349
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:3f1e1cb7bd5a3926e1b5441bfd11a4fcacf6a45bea06162506411e60a09f6d1d",
+        "size_bytes": 12525033
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/dataset_raw_evidence_public.json",
+        "role": "data",
+        "sha256": "sha256:d919d6544fe158b992012cfc5f56f6eb85d7bdd5494494911e628aa8d6351c0d",
+        "size_bytes": 403101
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/decisions.json",
+        "role": "data",
+        "sha256": "sha256:5465fb38cf41ce059c4b3744035c460dcd416a2e989b1a6da436bf465c808a52",
+        "size_bytes": 391200
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/tier1_v04_extended_go.json",
+        "role": "data",
+        "sha256": "sha256:601e33059203e699326eab40ada105dc58778b3f374345ded12aab0dfec1a72d",
+        "size_bytes": 2416
+      },
+      {
+        "path": "artifacts/tier1_v04_extended/trajectories.json",
+        "role": "data",
+        "sha256": "sha256:8c0680e760813ad3d9db28faeed24419925bb01153c1874cea0306d7f5aac03e",
+        "size_bytes": 141916
+      }
+    ]
+  },
+  "data_digest": "sha256:5cd71f0c5e6e8af420b127b3192b6f298713a4607c46bcbd3f06964a0b778452",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "artifact_pass": true,
+    "artifact_status": "completed_cpu_diagnostic",
+    "capture_mode": "in_run",
+    "decision_count": 64,
+    "formal_comparison_authorized": false,
+    "formal_final_splits_opened": false,
+    "formal_gate_status": "OPEN",
+    "gates": {
+      "candidate_pool_hindsight_blocked": true,
+      "composite_families_present": true,
+      "exploration_seed_count_at_least_8": true,
+      "formal_dev_cluster_minimum_20": true,
+      "formal_dev_pair_minimum_30": true,
+      "formal_ood_cluster_minimum_20": true,
+      "formal_ood_pair_minimum_30": true,
+      "independent_confirmation_not_copied": true,
+      "mechanism_family_count_at_least_8": true,
+      "multi_step_trajectories_present": true,
+      "question_count_at_least_64": true,
+      "raw_track_hides_structured_state": true,
+      "same_question_pairs_only": true,
+      "world_count_at_least_256": true
+    },
+    "llm_claim": false,
+    "mechanism_families": [
+      "group_leakage",
+      "causal_confounding",
+      "low_sample_variance",
+      "subgroup_metric_mismatch",
+      "confounding_underpower",
+      "leakage_metric_mismatch",
+      "protocol_drift",
+      "replication_instability"
+    ],
+    "protocol_digest": "sha256:24740ae2eaa420b0bcfc29770697d72da9364048c560f6612ddc9b209741f8d9",
+    "protocol_version": "pesco_v0_2",
+    "question_count": 64,
+    "tier2_claim": false,
+    "tracks": [
+      "oracle_state",
+      "raw_evidence"
+    ],
+    "trajectory_count": 64,
+    "world_count": 256
+  },
+  "experiment": "tier1_v04_extended_diagnostic",
+  "generated_at_utc": "2026-08-26T09:45:56.202917+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+    "status_available": true,
+    "status_digest": "sha256:a7a428f32245d3c8847b041aac145af5a10217d59d9773f1aa5569032140aa91"
+  },
+  "git_sha": "6e3ffd7e86569f65a62f6014bbf9af208a281b34",
+  "manifest_digest": "sha256:6bcb86ed0a8329a40429ef3b90071fc233cb764e27109f337d098956a226e4eb",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      29,
+      41,
+      53,
+      67,
+      71,
+      83,
+      97,
+      103,
+      107,
+      109,
+      113,
+      127,
+      131,
+      137,
+      139
+    ],
+    "confirmation": [
+      103,
+      107,
+      109,
+      113,
+      127,
+      131,
+      137,
+      139
+    ],
+    "environment_reset": [
+      17
+    ],
+    "exploration": [
+      17,
+      29,
+      41,
+      53,
+      67,
+      71,
+      83,
+      97
+    ],
+    "inference": [
+      17
+    ],
+    "training": [
+      17
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:03641ffff42faa4516b2449d1fd95f7c39d2def094a8ce39d54e1895ff2e18e8",
+    "file_count": 7,
+    "files": [
+      {
+        "path": "research_strategy_optimization/environments/tier0_simulator.py",
+        "role": "source",
+        "sha256": "sha256:3ec773bb6e7f4704b6ddc0babfb69859cc85c2ef064aae2805ea074b72e4bc5c",
+        "size_bytes": 31144
+      },
+      {
+        "path": "research_strategy_optimization/environments/tier1_tabular_env.py",
+        "role": "source",
+        "sha256": "sha256:0a87202ea332c78a03e2f48a7e642ea60fee32c96a79ea927a4d7efbd3879c77",
+        "size_bytes": 33359
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_v04.py",
+        "role": "source",
+        "sha256": "sha256:d2400f9c98808f335911afb1bbc55d48d4e6b6096a2f127903089b52c7f576b4",
+        "size_bytes": 23947
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_v04_extended.py",
+        "role": "source",
+        "sha256": "sha256:60aa4baa2e20064311b8b7124dac5538ab39ff8af534b734024f770b02a7dd2b",
+        "size_bytes": 53018
+      },
+      {
+        "path": "research_strategy_optimization/schemas.py",
+        "role": "source",
+        "sha256": "sha256:542a49ccdae65c9c782678f25c3eafc62360490911187d225ceea13e070a0b6e",
+        "size_bytes": 25753
+      },
+      {
+        "path": "research_strategy_optimization/utils/run_manifest.py",
+        "role": "source",
+        "sha256": "sha256:b45612a66508c0502249fa0de4e5afe2262233a1c72b6aab820673b5046321b9",
+        "size_bytes": 15383
+      },
+      {
+        "path": "scripts/run_tier1_v04_extended.py",
+        "role": "source",
+        "sha256": "sha256:6be96532f76eb7f88d58bc3ec857ffab77dc53fc795b4073e906dec9c02d5e03",
+        "size_bytes": 21492
+      }
+    ]
+  },
+  "source_digest": "sha256:03641ffff42faa4516b2449d1fd95f7c39d2def094a8ce39d54e1895ff2e18e8",
+  "status": "completed_diagnostic",
+  "training_seed": [
+    17
+  ]
+}

@@ -28,7 +28,7 @@ import hashlib
 import json
 from dataclasses import asdict, dataclass
 from types import MappingProxyType
-from typing import Iterable, Mapping, Optional, Sequence, Tuple
+from typing import Dict, Iterable, Mapping, Optional, Sequence, Tuple
 
 from ..schemas import EvidenceState, Protocol, ResearchAction, Verdict, ExperimentOutput, WorldSpec
 from .tier1_tabular_env import Tier1TabularEnvironment
@@ -43,6 +43,23 @@ MECHANISM_FAMILIES = (
     FAMILY_CAUSAL_CONFOUNDING,
     FAMILY_LOW_SAMPLE_VARIANCE,
     FAMILY_SUBGROUP_METRIC,
+)
+
+# Stable evaluator-side reward receipt schema. Every branch returns every term,
+# including zero-valued terms, so P2 perturbation audits can compare the same
+# atomic decomposition across actions, worlds, and benchmark profiles.
+TIER1_REWARD_COMPONENT_NAMES: Tuple[str, ...] = (
+    "validity_gate",
+    "confirmation_bonus",
+    "repair_protocol_bonus",
+    "heldout_split_bonus",
+    "mechanism_transition_bonus",
+    "switch_success_bonus",
+    "switch_failure_penalty",
+    "sample_precision_bonus",
+    "state_resolution_bonus",
+    "replicate_bonus",
+    "execution_cost_penalty",
 )
 
 
@@ -219,7 +236,7 @@ class Tier1Benchmark:
         return payload
 
 
-def tier1_scientific_utility(
+def tier1_scientific_utility_components(
     question: Tier1QuestionSpec,
     world: WorldSpec,
     action: ResearchAction,
@@ -227,32 +244,37 @@ def tier1_scientific_utility(
     verdict: Verdict,
     protocol: Protocol,
     initial_observation: object | None = None,
-) -> float:
-    """Score one evaluator-side branch without consulting the target-action table.
+) -> Dict[str, float]:
+    """Return fixed atomic evaluator-side reward terms for one branch.
 
-    The score combines evaluator-visible validity, evidence transition, protocol
-    signals, independent confirmation, and action cost.  It deliberately does not
-    read ``world.kind`` or ``output.latent_effect``; those fields remain available
-    only to the post-hoc calibration/audit layer.
+    The decomposition combines evaluator-visible validity, evidence transition,
+    protocol signals, independent confirmation, and action cost. It deliberately
+    does not read ``world.kind`` or ``output.latent_effect``; those fields remain
+    available only to the post-hoc calibration/audit layer.
     """
 
     cost = float(output.execution_cost)
     signals = set(output.validity_signals)
+    components: Dict[str, float] = {
+        name: 0.0 for name in TIER1_REWARD_COMPONENT_NAMES
+    }
+    components["execution_cost_penalty"] = -0.03 * cost
     # Invalid branches cannot win merely because their surface estimate is large.
     # Every positive term below is tied to an evaluator-observable protocol transition
     # or result, never to ``world.kind`` or the target-action table.
     if not verdict.validity_pass:
-        return float(-0.30 - 0.03 * cost)
+        components["validity_gate"] = -0.30
+        return components
 
-    score = 0.25
+    components["validity_gate"] = 0.25
     before = _public_state(initial_observation, protocol.delta_min)
     after = verdict.evidence_state
     if verdict.independent_confirmation_passed:
-        score += 0.20
+        components["confirmation_bonus"] = 0.20
     if before is EvidenceState.INVALID and "split_protocol_updated" in signals:
-        score += 0.45
+        components["repair_protocol_bonus"] = 0.45
     if "group_held_out_split" in signals and "split_overlap_diagnostic" not in signals:
-        score += 0.80
+        components["heldout_split_bonus"] = 0.80
     mechanism_transition = any(
         marker in signal
         for signal in signals
@@ -263,26 +285,49 @@ def tier1_scientific_utility(
         and output.method == "method_b"
         and output.effect_estimate <= max(0.08, protocol.delta_min)
     ):
-        score += 0.65
+        components["mechanism_transition_bonus"] = 0.65
     # A method switch earns value only when the executed alternative produces a
     # materially positive, valid observed estimate.  This is a measured transition
     # criterion, not a family/state→action lookup, and creates genuine preference
     # reversals when the alternative estimand differs across worlds.
     if action is ResearchAction.SWITCH and output.method == "method_b" and output.effect_estimate > max(0.08, protocol.delta_min):
-        score += 0.55
+        components["switch_success_bonus"] = 0.55
     elif action is ResearchAction.SWITCH and output.method == "method_b":
         # Switching to an alternative that produces no practically meaningful
         # observed effect incurs its execution cost without an evidence gain.
-        score -= 0.20
+        components["switch_failure_penalty"] = -0.20
     if output.sample_size >= 60 and "sample_count_below_precision_target" not in signals:
         # This is a property of the executed data protocol, not a reward for the
         # action name SAMPLE itself.
-        score += 0.35
+        components["sample_precision_bonus"] = 0.35
     if before is EvidenceState.INSUFFICIENT and after is not EvidenceState.INSUFFICIENT:
-        score += 0.30
+        components["state_resolution_bonus"] = 0.30
     if action is ResearchAction.REPLICATE:
-        score += 0.10
-    return float(score - 0.03 * cost)
+        components["replicate_bonus"] = 0.10
+    return components
+
+
+def tier1_scientific_utility(
+    question: Tier1QuestionSpec,
+    world: WorldSpec,
+    action: ResearchAction,
+    output: ExperimentOutput,
+    verdict: Verdict,
+    protocol: Protocol,
+    initial_observation: object | None = None,
+) -> float:
+    """Score one evaluator-side branch as the sum of fixed atomic terms."""
+
+    components = tier1_scientific_utility_components(
+        question,
+        world,
+        action,
+        output,
+        verdict,
+        protocol,
+        initial_observation=initial_observation,
+    )
+    return float(sum(components.values()))
 
 
 def _world(
@@ -493,5 +538,7 @@ __all__ = [
     "Tier1Benchmark",
     "build_tier1_v03_questions",
     "build_tier1_v03_benchmark",
+    "TIER1_REWARD_COMPONENT_NAMES",
+    "tier1_scientific_utility_components",
     "tier1_scientific_utility",
 ]

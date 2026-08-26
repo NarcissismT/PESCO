@@ -1,0 +1,31 @@
+{
+  "action_counts": {
+    "continue_current_method": 11,
+    "repair_data_split": 6,
+    "switch_to_alternative_method": 15
+  },
+  "benchmark_schema_version": "pesco_tier1_benchmark_v0.4_extended",
+  "decision_count": 32,
+  "decision_question_count": 8,
+  "diagnostic_only": true,
+  "exploration_seed_count": 8,
+  "formal_comparison_authorized": false,
+  "formal_final_access": false,
+  "llm_claim": false,
+  "mechanism_family_count": 8,
+  "paired_question_count": 64,
+  "protocol_digest": "sha256:e02fcc594899e8b1a17407cb32f63872c9214c5c8dca8a92c2590bb955332b2d",
+  "protocol_version": "pesco_v0_2",
+  "question_count": 64,
+  "schema_version": "pesco_tier1_v04_extended_summary_v0.1",
+  "split_counts": {
+    "dev": 8,
+    "final_id": 8,
+    "final_ood": 8,
+    "promotion": 8,
+    "train": 32
+  },
+  "tier2_claim": false,
+  "trajectory_count": 32,
+  "world_count": 256
+}

@@ -1,0 +1,28 @@
+{
+  "promotion_status": "NO-GO",
+  "gates": {
+    "ten_training_seeds": true,
+    "promotion_regret_ci_entirely_below_zero": false,
+    "heldout_same_question_flip_ci_entirely_above_zero": true,
+    "at_least_8_of_10_seeds_same_regret_direction": false,
+    "reward_perturbation_winner_stability_90_percent": true,
+    "no_worse_validity_replication_false_discovery": true,
+    "beats_sft": true,
+    "promotion_pair_count_minimum": true,
+    "promotion_cluster_count_minimum": true
+  },
+  "primary_delta_regret": {
+    "point": -0.03453580442608191,
+    "lower": -0.0877189334366957,
+    "upper": 0.004605541624145384,
+    "n": 10,
+    "status": "estimable"
+  },
+  "heldout_flip_accuracy_delta": {
+    "point": 0.0465648854961832,
+    "lower": 0.016030534351145036,
+    "upper": 0.08091603053435113,
+    "n": 10,
+    "status": "estimable"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "benchmark_manifest_digest": "sha256:e54249b1ae118e9df3c123a70a7fb1e23883e66fa291e856c49a85275e362c80",
+  "cluster_counts_by_split": {
+    "dev": 20,
+    "diagnostic_ood": 20,
+    "train": 24
+  },
+  "confirmation_seeds": [
+    103,
+    107,
+    109,
+    113,
+    127,
+    131,
+    137,
+    139
+  ],
+  "decision_count": 64,
+  "diagnostic_only": true,
+  "diagnostic_structure_pass": true,
+  "exploration_seeds": [
+    17,
+    29,
+    41,
+    53,
+    67,
+    71,
+    83,
+    97
+  ],
+  "formal_comparison_authorized": false,
+  "formal_gate_status": "OPEN",
+  "gates": {
+    "candidate_pool_hindsight_blocked": true,
+    "composite_families_present": true,
+    "exploration_seed_count_at_least_8": true,
+    "formal_dev_cluster_minimum_20": true,
+    "formal_dev_pair_minimum_30": true,
+    "formal_ood_cluster_minimum_20": true,
+    "formal_ood_pair_minimum_30": true,
+    "independent_confirmation_not_copied": true,
+    "mechanism_family_count_at_least_8": true,
+    "multi_step_trajectories_present": true,
+    "question_count_at_least_64": true,
+    "raw_track_hides_structured_state": true,
+    "same_question_pairs_only": true,
+    "world_count_at_least_256": true
+  },
+  "llm_claim": false,
+  "mechanism_families": [
+    "group_leakage",
+    "causal_confounding",
+    "low_sample_variance",
+    "subgroup_metric_mismatch",
+    "confounding_underpower",
+    "leakage_metric_mismatch",
+    "protocol_drift",
+    "replication_instability"
+  ],
+  "pass": true,
+  "protocol_digest": "sha256:24740ae2eaa420b0bcfc29770697d72da9364048c560f6612ddc9b209741f8d9",
+  "public_manifest_digest": "sha256:4e613545ebbba70622c63f2a170a6a5b480d719d1e9652a12215d4798e0eef2b",
+  "question_count": 64,
+  "reversal_counts_by_split": {
+    "dev": 142,
+    "diagnostic_ood": 131,
+    "train": 178
+  },
+  "schema_version": "pesco_tier1_v04_extended_result_v0.1",
+  "status": "completed_cpu_diagnostic",
+  "tier2_claim": false,
+  "tracks": [
+    "oracle_state",
+    "raw_evidence"
+  ],
+  "trajectory_count": 64,
+  "world_count": 256
+}

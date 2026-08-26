@@ -1,0 +1,989 @@
+{
+  "benchmark_manifest": {
+    "counts_by_split": {
+      "dev": 2,
+      "diagnostic_ood": 2,
+      "train": 8
+    },
+    "diagnostic_only": true,
+    "dual_tracks": {
+      "oracle_state": {
+        "input": "trusted_initial_evidence_state_plus_public_task_family",
+        "state_label_is_evaluator_side_upper_bound": true,
+        "target_action_visible": false,
+        "world_id_visible": false
+      },
+      "raw_evidence": {
+        "input": "raw_public_observation_and_experiment_output",
+        "target_action_visible": false,
+        "trusted_evidence_state_visible": false,
+        "world_id_visible": false
+      }
+    },
+    "formal_comparison_authorized": false,
+    "manifest_digest": "sha256:7e71168d6552fcacbe467ff44f35432bf4c1a0a120e715cd3c7922fdbf86cba1",
+    "mechanism_families": [
+      "group_leakage",
+      "causal_confounding",
+      "low_sample_variance",
+      "subgroup_metric_mismatch"
+    ],
+    "mechanism_family_count": 4,
+    "parent_environment_schema_version": "pesco_tier1_benchmark_v0.3",
+    "posterior": {
+      "candidate_pool": "leave_one_question_out",
+      "method_b_hindsight_excluded": true,
+      "posterior_expected_utility": "sum_h posterior(h|evidence) * branch_utility(h, action)",
+      "prior": "uniform_over_same_family_other_questions",
+      "target_action_source": "argmax_expected_utility_plus_value_of_information",
+      "value_of_information": "E_h[max_a EU(a|post_action_evidence)] - max_a EU(a|current_evidence)"
+    },
+    "protocol_version": "pesco_v0_2",
+    "question_count": 12,
+    "questions": [
+      {
+        "description": "Group-held-out evaluation with row-overlap leakage in the invalid world.",
+        "family": "group_leakage",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_group_leakage_01",
+        "seed_offset": 11000,
+        "split": "train",
+        "variant": 1,
+        "world_ids": [
+          "t1_group_leakage_01__supported",
+          "t1_group_leakage_01__refuted",
+          "t1_group_leakage_01__insufficient",
+          "t1_group_leakage_01__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 11001,
+            "true_effect_a": 0.18,
+            "true_effect_b": 0.025,
+            "world_id": "t1_group_leakage_01__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 11002,
+            "true_effect_a": -0.08,
+            "true_effect_b": 0.16,
+            "world_id": "t1_group_leakage_01__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.43,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 11003,
+            "true_effect_a": 0.08,
+            "true_effect_b": 0.02,
+            "world_id": "t1_group_leakage_01__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": true,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": true,
+            "question_family": "group_leakage",
+            "seed_offset": 11004,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.14,
+            "world_id": "t1_group_leakage_01__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Group-held-out evaluation with row-overlap leakage in the invalid world.",
+        "family": "group_leakage",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_group_leakage_02",
+        "seed_offset": 12000,
+        "split": "train",
+        "variant": 2,
+        "world_ids": [
+          "t1_group_leakage_02__supported",
+          "t1_group_leakage_02__refuted",
+          "t1_group_leakage_02__insufficient",
+          "t1_group_leakage_02__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.04,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 12001,
+            "true_effect_a": 0.19440000000000002,
+            "true_effect_b": 0.025,
+            "world_id": "t1_group_leakage_02__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 12002,
+            "true_effect_a": -0.08,
+            "true_effect_b": 0.1728,
+            "world_id": "t1_group_leakage_02__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.44,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 12003,
+            "true_effect_a": 0.0864,
+            "true_effect_b": 0.02,
+            "world_id": "t1_group_leakage_02__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": true,
+            "metric_mismatch": false,
+            "noise_scale": 0.04,
+            "protocol_invalid": true,
+            "question_family": "group_leakage",
+            "seed_offset": 12004,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.15120000000000003,
+            "world_id": "t1_group_leakage_02__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Group-held-out evaluation with row-overlap leakage in the invalid world.",
+        "family": "group_leakage",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_group_leakage_03",
+        "seed_offset": 13000,
+        "split": "dev",
+        "variant": 3,
+        "world_ids": [
+          "t1_group_leakage_03__supported",
+          "t1_group_leakage_03__refuted",
+          "t1_group_leakage_03__insufficient",
+          "t1_group_leakage_03__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.032,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 13001,
+            "true_effect_a": 0.162,
+            "true_effect_b": 0.025,
+            "world_id": "t1_group_leakage_03__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 13002,
+            "true_effect_a": -0.08,
+            "true_effect_b": 0.14400000000000002,
+            "world_id": "t1_group_leakage_03__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.44999999999999996,
+            "protocol_invalid": false,
+            "question_family": "group_leakage",
+            "seed_offset": 13003,
+            "true_effect_a": 0.07200000000000001,
+            "true_effect_b": 0.02,
+            "world_id": "t1_group_leakage_03__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": true,
+            "metric_mismatch": false,
+            "noise_scale": 0.032,
+            "protocol_invalid": true,
+            "question_family": "group_leakage",
+            "seed_offset": 13004,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.12600000000000003,
+            "world_id": "t1_group_leakage_03__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Observational treatment assignment is confounded; adjusted OLS repair is required for validity.",
+        "family": "causal_confounding",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_causal_confounding_01",
+        "seed_offset": 21000,
+        "split": "train",
+        "variant": 1,
+        "world_ids": [
+          "t1_causal_confounding_01__supported",
+          "t1_causal_confounding_01__refuted",
+          "t1_causal_confounding_01__insufficient",
+          "t1_causal_confounding_01__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 21011,
+            "true_effect_a": 0.18,
+            "true_effect_b": 0.025,
+            "world_id": "t1_causal_confounding_01__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 21012,
+            "true_effect_a": -0.08,
+            "true_effect_b": -0.08,
+            "world_id": "t1_causal_confounding_01__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.35000000000000003,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 21013,
+            "true_effect_a": 0.015,
+            "true_effect_b": 0.18,
+            "world_id": "t1_causal_confounding_01__insufficient"
+          },
+          {
+            "confounding": true,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": true,
+            "question_family": "causal_confounding",
+            "seed_offset": 21014,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.06,
+            "world_id": "t1_causal_confounding_01__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Observational treatment assignment is confounded; adjusted OLS repair is required for validity.",
+        "family": "causal_confounding",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_causal_confounding_02",
+        "seed_offset": 22000,
+        "split": "train",
+        "variant": 2,
+        "world_ids": [
+          "t1_causal_confounding_02__supported",
+          "t1_causal_confounding_02__refuted",
+          "t1_causal_confounding_02__insufficient",
+          "t1_causal_confounding_02__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.04,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 22011,
+            "true_effect_a": 0.1656,
+            "true_effect_b": 0.025,
+            "world_id": "t1_causal_confounding_02__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 22012,
+            "true_effect_a": -0.08,
+            "true_effect_b": -0.08,
+            "world_id": "t1_causal_confounding_02__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.36000000000000004,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 22013,
+            "true_effect_a": 0.015,
+            "true_effect_b": 0.1656,
+            "world_id": "t1_causal_confounding_02__insufficient"
+          },
+          {
+            "confounding": true,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.04,
+            "protocol_invalid": true,
+            "question_family": "causal_confounding",
+            "seed_offset": 22014,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.06,
+            "world_id": "t1_causal_confounding_02__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Observational treatment assignment is confounded; adjusted OLS repair is required for validity.",
+        "family": "causal_confounding",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_causal_confounding_03",
+        "seed_offset": 23000,
+        "split": "dev",
+        "variant": 3,
+        "world_ids": [
+          "t1_causal_confounding_03__supported",
+          "t1_causal_confounding_03__refuted",
+          "t1_causal_confounding_03__insufficient",
+          "t1_causal_confounding_03__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.032,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 23011,
+            "true_effect_a": 0.2016,
+            "true_effect_b": 0.025,
+            "world_id": "t1_causal_confounding_03__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 23012,
+            "true_effect_a": -0.08,
+            "true_effect_b": 0.18,
+            "world_id": "t1_causal_confounding_03__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.37,
+            "protocol_invalid": false,
+            "question_family": "causal_confounding",
+            "seed_offset": 23013,
+            "true_effect_a": 0.015,
+            "true_effect_b": 0.2016,
+            "world_id": "t1_causal_confounding_03__insufficient"
+          },
+          {
+            "confounding": true,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.032,
+            "protocol_invalid": true,
+            "question_family": "causal_confounding",
+            "seed_offset": 23014,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.06,
+            "world_id": "t1_causal_confounding_03__invalid"
+          }
+        ]
+      },
+      {
+        "description": "High-variance measurement protocol where added samples stabilize an otherwise invalid estimate.",
+        "family": "low_sample_variance",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_low_sample_variance_01",
+        "seed_offset": 31000,
+        "split": "train",
+        "variant": 1,
+        "world_ids": [
+          "t1_low_sample_variance_01__supported",
+          "t1_low_sample_variance_01__refuted",
+          "t1_low_sample_variance_01__insufficient",
+          "t1_low_sample_variance_01__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.04,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 31021,
+            "true_effect_a": 0.18,
+            "true_effect_b": 0.025,
+            "world_id": "t1_low_sample_variance_01__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 31022,
+            "true_effect_a": -0.08,
+            "true_effect_b": -0.08,
+            "world_id": "t1_low_sample_variance_01__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.43,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 31023,
+            "true_effect_a": 0.14,
+            "true_effect_b": 0.02,
+            "world_id": "t1_low_sample_variance_01__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.43,
+            "protocol_invalid": true,
+            "question_family": "low_sample_variance",
+            "seed_offset": 31024,
+            "true_effect_a": 0.14,
+            "true_effect_b": 0.02,
+            "world_id": "t1_low_sample_variance_01__invalid"
+          }
+        ]
+      },
+      {
+        "description": "High-variance measurement protocol where added samples stabilize an otherwise invalid estimate.",
+        "family": "low_sample_variance",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_low_sample_variance_02",
+        "seed_offset": 32000,
+        "split": "train",
+        "variant": 2,
+        "world_ids": [
+          "t1_low_sample_variance_02__supported",
+          "t1_low_sample_variance_02__refuted",
+          "t1_low_sample_variance_02__insufficient",
+          "t1_low_sample_variance_02__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.045000000000000005,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 32021,
+            "true_effect_a": 0.207,
+            "true_effect_b": 0.025,
+            "world_id": "t1_low_sample_variance_02__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 32022,
+            "true_effect_a": -0.08,
+            "true_effect_b": -0.08,
+            "world_id": "t1_low_sample_variance_02__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.44,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 32023,
+            "true_effect_a": 0.161,
+            "true_effect_b": 0.02,
+            "world_id": "t1_low_sample_variance_02__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.44,
+            "protocol_invalid": true,
+            "question_family": "low_sample_variance",
+            "seed_offset": 32024,
+            "true_effect_a": 0.161,
+            "true_effect_b": 0.02,
+            "world_id": "t1_low_sample_variance_02__invalid"
+          }
+        ]
+      },
+      {
+        "description": "High-variance measurement protocol where added samples stabilize an otherwise invalid estimate.",
+        "family": "low_sample_variance",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_low_sample_variance_03",
+        "seed_offset": 33000,
+        "split": "diagnostic_ood",
+        "variant": 3,
+        "world_ids": [
+          "t1_low_sample_variance_03__supported",
+          "t1_low_sample_variance_03__refuted",
+          "t1_low_sample_variance_03__insufficient",
+          "t1_low_sample_variance_03__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.05,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 33021,
+            "true_effect_a": 0.153,
+            "true_effect_b": 0.025,
+            "world_id": "t1_low_sample_variance_03__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 33022,
+            "true_effect_a": -0.08,
+            "true_effect_b": -0.08,
+            "world_id": "t1_low_sample_variance_03__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.44999999999999996,
+            "protocol_invalid": false,
+            "question_family": "low_sample_variance",
+            "seed_offset": 33023,
+            "true_effect_a": 0.11900000000000001,
+            "true_effect_b": 0.02,
+            "world_id": "t1_low_sample_variance_03__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.44999999999999996,
+            "protocol_invalid": true,
+            "question_family": "low_sample_variance",
+            "seed_offset": 33024,
+            "true_effect_a": 0.11900000000000001,
+            "true_effect_b": 0.02,
+            "world_id": "t1_low_sample_variance_03__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Overall metric is mismatched to a subgroup estimand; the alternative estimator is subgroup-aware.",
+        "family": "subgroup_metric_mismatch",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_subgroup_metric_mismatch_01",
+        "seed_offset": 41000,
+        "split": "train",
+        "variant": 1,
+        "world_ids": [
+          "t1_subgroup_metric_mismatch_01__supported",
+          "t1_subgroup_metric_mismatch_01__refuted",
+          "t1_subgroup_metric_mismatch_01__insufficient",
+          "t1_subgroup_metric_mismatch_01__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.04,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 41031,
+            "true_effect_a": 0.18,
+            "true_effect_b": 0.03,
+            "world_id": "t1_subgroup_metric_mismatch_01__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 41032,
+            "true_effect_a": -0.08,
+            "true_effect_b": 0.18,
+            "world_id": "t1_subgroup_metric_mismatch_01__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.35000000000000003,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 41033,
+            "true_effect_a": 0.015,
+            "true_effect_b": 0.18,
+            "world_id": "t1_subgroup_metric_mismatch_01__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": true,
+            "noise_scale": 0.04,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 41034,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.18,
+            "world_id": "t1_subgroup_metric_mismatch_01__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Overall metric is mismatched to a subgroup estimand; the alternative estimator is subgroup-aware.",
+        "family": "subgroup_metric_mismatch",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_subgroup_metric_mismatch_02",
+        "seed_offset": 42000,
+        "split": "train",
+        "variant": 2,
+        "world_ids": [
+          "t1_subgroup_metric_mismatch_02__supported",
+          "t1_subgroup_metric_mismatch_02__refuted",
+          "t1_subgroup_metric_mismatch_02__insufficient",
+          "t1_subgroup_metric_mismatch_02__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.045000000000000005,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 42031,
+            "true_effect_a": 0.15839999999999999,
+            "true_effect_b": 0.03,
+            "world_id": "t1_subgroup_metric_mismatch_02__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 42032,
+            "true_effect_a": -0.08,
+            "true_effect_b": 0.15839999999999999,
+            "world_id": "t1_subgroup_metric_mismatch_02__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.36000000000000004,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 42033,
+            "true_effect_a": 0.015,
+            "true_effect_b": 0.15839999999999999,
+            "world_id": "t1_subgroup_metric_mismatch_02__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": true,
+            "noise_scale": 0.045000000000000005,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 42034,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.15839999999999999,
+            "world_id": "t1_subgroup_metric_mismatch_02__invalid"
+          }
+        ]
+      },
+      {
+        "description": "Overall metric is mismatched to a subgroup estimand; the alternative estimator is subgroup-aware.",
+        "family": "subgroup_metric_mismatch",
+        "policy_question_id": "tier1_public_question",
+        "question_id": "t1_subgroup_metric_mismatch_03",
+        "seed_offset": 43000,
+        "split": "diagnostic_ood",
+        "variant": 3,
+        "world_ids": [
+          "t1_subgroup_metric_mismatch_03__supported",
+          "t1_subgroup_metric_mismatch_03__refuted",
+          "t1_subgroup_metric_mismatch_03__insufficient",
+          "t1_subgroup_metric_mismatch_03__invalid"
+        ],
+        "worlds": [
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "supported",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.05,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 43031,
+            "true_effect_a": 0.207,
+            "true_effect_b": 0.03,
+            "world_id": "t1_subgroup_metric_mismatch_03__supported"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "refuted",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.035,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 43032,
+            "true_effect_a": -0.08,
+            "true_effect_b": 0.207,
+            "world_id": "t1_subgroup_metric_mismatch_03__refuted"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 18,
+            "kind": "insufficient",
+            "leakage": false,
+            "metric_mismatch": false,
+            "noise_scale": 0.37,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 43033,
+            "true_effect_a": 0.015,
+            "true_effect_b": 0.207,
+            "world_id": "t1_subgroup_metric_mismatch_03__insufficient"
+          },
+          {
+            "confounding": false,
+            "initial_samples": 1000,
+            "kind": "invalid",
+            "leakage": false,
+            "metric_mismatch": true,
+            "noise_scale": 0.05,
+            "protocol_invalid": false,
+            "question_family": "subgroup_metric_mismatch",
+            "seed_offset": 43034,
+            "true_effect_a": 0.0,
+            "true_effect_b": 0.207,
+            "world_id": "t1_subgroup_metric_mismatch_03__invalid"
+          }
+        ]
+      }
+    ],
+    "schema_version": "pesco_tier1_benchmark_v0.4",
+    "world_count": 48
+  },
+  "diagnostic_only": true,
+  "formal_comparison_authorized": false,
+  "gates": {
+    "backend_verified": true,
+    "both_tracks_present": true,
+    "candidate_leave_one_question_out": true,
+    "causal_method_b_hindsight_blocked": true,
+    "clone_type_preserved": true,
+    "formal_comparison_authorized": false,
+    "formal_final_splits_closed": true,
+    "posterior_expected_utility_recorded": true,
+    "question_count": false,
+    "value_of_information_recorded": true,
+    "world_count": false
+  },
+  "llm_claim": false,
+  "manifest_digest": "sha256:7e71168d6552fcacbe467ff44f35432bf4c1a0a120e715cd3c7922fdbf86cba1",
+  "pass": false,
+  "public_manifest_digest": "sha256:0edd280ae50b09062b82e40b389ace6e30b1ae928565b39048a6d0a9c22affd1",
+  "schema_version": "pesco_tier1_v04_go_v0.1",
+  "status": "completed_cpu_diagnostic",
+  "summary": {
+    "action_counts": {
+      "oracle_state": {
+        "add_samples_or_seeds": 1,
+        "repair_data_split": 2,
+        "switch_to_alternative_method": 1
+      },
+      "raw_evidence": {
+        "continue_current_method": 2,
+        "repair_data_split": 1,
+        "switch_to_alternative_method": 1
+      }
+    },
+    "all_candidate_pools_exclude_current_question": true,
+    "all_choices_use_posterior_eu_or_voi": true,
+    "backend_verified": true,
+    "benchmark_schema_version": "pesco_tier1_benchmark_v0.4",
+    "causal_confounding_refuted_audit": [],
+    "clone_type_preserved": true,
+    "decision_count": 8,
+    "diagnostic_only": true,
+    "formal_comparison_authorized": false,
+    "llm_claim": false,
+    "oracle_state_vs_raw_evidence_action_disagreement_n": 3,
+    "positive_voi_decision_n": {
+      "oracle_state": 2,
+      "raw_evidence": 1
+    },
+    "protocol_digest": "sha256:9f0b78770c80c7163bcb006db994a2f4b1722f349fd366b86b304c19ca02974c",
+    "protocol_version": "pesco_v0_2",
+    "question_count": 1,
+    "schema_version": "pesco_tier1_v04_summary_v0.1",
+    "tier2_claim": false,
+    "tracks": [
+      "oracle_state",
+      "raw_evidence"
+    ],
+    "world_count": 4
+  },
+  "tier2_claim": false,
+  "tracks": {
+    "oracle_state": "evaluator-side state upper bound; not a raw model result",
+    "raw_evidence": "public raw evidence only; state label withheld"
+  }
+}

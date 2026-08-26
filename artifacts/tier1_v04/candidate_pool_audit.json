@@ -1,0 +1,110 @@
+[
+  {
+    "candidate_pool_question_ids": [
+      "t1_group_leakage_02",
+      "t1_group_leakage_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_group_leakage_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_group_leakage_01",
+      "t1_group_leakage_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_group_leakage_02"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_group_leakage_01",
+      "t1_group_leakage_02"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_group_leakage_03"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_causal_confounding_02",
+      "t1_causal_confounding_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_causal_confounding_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_causal_confounding_01",
+      "t1_causal_confounding_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_causal_confounding_02"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_causal_confounding_01",
+      "t1_causal_confounding_02"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_causal_confounding_03"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_low_sample_variance_02",
+      "t1_low_sample_variance_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_low_sample_variance_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_low_sample_variance_01",
+      "t1_low_sample_variance_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_low_sample_variance_02"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_low_sample_variance_01",
+      "t1_low_sample_variance_02"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_low_sample_variance_03"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_subgroup_metric_mismatch_02",
+      "t1_subgroup_metric_mismatch_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_subgroup_metric_mismatch_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_subgroup_metric_mismatch_01",
+      "t1_subgroup_metric_mismatch_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_subgroup_metric_mismatch_02"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1_subgroup_metric_mismatch_01",
+      "t1_subgroup_metric_mismatch_02"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_subgroup_metric_mismatch_03"
+  }
+]

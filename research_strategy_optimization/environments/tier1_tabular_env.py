@@ -60,17 +60,12 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
 
         family = self.mechanism_family
         signals: list[str] = []
-        if (
-            family == self.FAMILY_LOW_SAMPLE_VARIANCE
-            and self.world.protocol_invalid
-            and self._sample_size < 60
-        ):
+        # v0.4 composite protocols reuse the same executable failure receipts.  The
+        # flag is latent; the public signal is emitted only after the concrete
+        # sample/estimator protocol actually exhibits the instability.
+        if self.world.protocol_invalid and self._sample_size < 60:
             signals.append("variance_estimator_unstable")
-        if (
-            family == self.FAMILY_SUBGROUP_METRIC
-            and self.world.metric_mismatch
-            and method == "method_a"
-        ):
+        if self.world.metric_mismatch and method == "method_a":
             signals.append("metric_scope_mismatch")
         return signals
 
@@ -428,10 +423,14 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
 
             if (
                 method == "method_b"
-                and self.mechanism_family in {
-                    self.FAMILY_CAUSAL_CONFOUNDING,
-                    self.FAMILY_SUBGROUP_METRIC,
-                }
+                and (
+                    self.mechanism_family in {
+                        self.FAMILY_CAUSAL_CONFOUNDING,
+                        self.FAMILY_SUBGROUP_METRIC,
+                    }
+                    or "confounding" in self.mechanism_family
+                    or "metric" in self.mechanism_family
+                )
                 and not world.confounding
             ):
                 # Registered alternatives in the causal/subgroup families use a
@@ -442,7 +441,7 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
                     latent
                     + data_rng.normal(scale=effective_noise / math.sqrt(max(1, n * 16)))
                 )
-                estimator_name = "randomized_alternative_v1" if self.mechanism_family == self.FAMILY_CAUSAL_CONFOUNDING else "subgroup_metric_estimator_v1"
+                estimator_name = "randomized_alternative_v1" if "confounding" in self.mechanism_family else "subgroup_metric_estimator_v1"
             elif method == "method_a" and world.confounding and self._repaired:
                 estimate = self._adjusted_effect(eval_treatment, eval_confounder, eval_outcome)
                 estimator_name = self.ESTIMATOR_ADJUSTED
@@ -515,6 +514,11 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
         signals = ["tier1_numpy_backend"]
         family_invalid_signals = self._family_invalid_signals(method)
         signals.extend(family_invalid_signals)
+        if world.protocol_invalid and self._sample_size >= 60:
+            # Composite/protocol-drift worlds have a concrete registered protocol
+            # failure even when their sample size is large enough for a narrow CI.
+            # The verifier consumes this receipt; it is not a hidden family label.
+            signals.append("protocol_invalid_diagnostic")
         if self._sample_size < 60:
             signals.append("sample_count_below_precision_target")
         if observed_leakage:

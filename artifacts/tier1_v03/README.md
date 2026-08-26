@@ -2,8 +2,10 @@
 
 This directory is a diagnostic environment artifact, not a formal model-comparison
 result. It contains 12 independent question instances (three variants in each of
-four mechanism families), 48 hidden worlds, 48 same-state branch groups (192
-action-level rows), and 768 seed-level exploration observations (`12 × 4 × 4 × 4`).
+four mechanism families), 48 hidden worlds, 48 `question_world_group` records,
+192 action-level rows, and 768 seed-level exploration observations
+(`12 × 4 × 4 × 4`). The count fields use these names explicitly; the historical
+`branch_groups` key is now the 48-group count, not the 192-row count.
 
 The four families are:
 
@@ -20,7 +22,9 @@ Useful files:
 
 - `benchmark_manifest.json`: frozen question/world metadata and digest;
 - `initial_calibration.json`: four-state calibration for all 48 worlds;
-- `branch_groups.json`: common-snapshot branch records and held-out confirmations;
+- `question_world_groups.json`: canonical index of the 48 question/world groups;
+- `action_level_branches.json`: canonical 192 common-snapshot action rows;
+- `branch_groups.json`: backward-compatible alias containing the same action-level rows;
 - `seed_level_results.jsonl`: the 768 seed-level records;
 - `paired_repair_evidence.json`: evaluator-paired confounding/leakage repair records
   with before/after estimates, confidence intervals, bias, estimator/provenance,
@@ -32,12 +36,20 @@ Useful files:
   counts and conditional rates (non-eligible rows are never counted as passes);
 - `target_agreement.json`: empirical branch winner vs pre-registered family target;
 - `tier1_go.json`: machine-readable diagnostic gate;
+- `count_semantics_audit.json`: metadata-only check that every A/C/D/E artifact
+  agrees on 48 question-world groups, 192 action rows, and 768 seed observations;
 - `summary.json`: counts and gate summary.
 
 Reproduce with:
 
 ```bash
 PYTHONPATH=PESCO python PESCO/scripts/run_tier1_v03.py PESCO/artifacts/tier1_v03
+```
+
+Recheck only the count boundary without rerunning NumPy branches:
+
+```bash
+python PESCO/scripts/audit_tier1_count_semantics.py
 ```
 
 The artifact deliberately sets `diagnostic_only=true` and

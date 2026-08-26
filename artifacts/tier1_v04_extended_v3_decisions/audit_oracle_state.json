@@ -1,0 +1,18 @@
+{
+  "cluster_counts_by_split": {
+    "dev": 20,
+    "diagnostic_ood": 20,
+    "train": 24
+  },
+  "derived_from_raw_execution": true,
+  "reused_frozen_dataset": true,
+  "reversal_counts_by_split": {
+    "dev": 142,
+    "diagnostic_ood": 131,
+    "train": 178
+  },
+  "same_example_count": true,
+  "same_question_reversal_count": 451,
+  "same_reversal_count": 451,
+  "track": "oracle_state"
+}

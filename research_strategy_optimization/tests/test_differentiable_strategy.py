@@ -14,8 +14,9 @@ from research_strategy_optimization.environments.tier1_benchmark import build_ti
 from research_strategy_optimization.evaluation.tier1_differentiable_suite import (
     collect_tier1_v03_dataset,
     evaluate_differentiable_policy,
+    is_invalid_local_optimization,
 )
-from research_strategy_optimization.schemas import HypothesisBelief, Observation, Protocol
+from research_strategy_optimization.schemas import EvidenceState, HypothesisBelief, Observation, Protocol
 from research_strategy_optimization.schemas import ResearchAction
 
 
@@ -28,7 +29,10 @@ class DifferentiableStrategyTests(unittest.TestCase):
     def test_tier1_dataset_has_independent_questions_and_matched_branches(self):
         self.assertEqual(len(self.dataset.examples), 48)
         self.assertEqual(self.dataset.provenance["branch_groups"], 48)
+        self.assertEqual(self.dataset.provenance["question_world_group_count"], 48)
+        self.assertEqual(self.dataset.provenance["action_level_row_count"], 192)
         self.assertEqual(self.dataset.provenance["exploration_seed_observations"], 768)
+        self.assertEqual(self.dataset.provenance["seed_level_observation_count"], 768)
         self.assertEqual(len({example.question_id for example in self.dataset.examples}), 12)
         self.assertEqual(sum(example.split == "train" for example in self.dataset.examples), 32)
         self.assertEqual(sum(example.split == "dev" for example in self.dataset.examples), 8)
@@ -152,6 +156,39 @@ class DifferentiableStrategyTests(unittest.TestCase):
             metrics["invalid_local_optimization_n"],
             metrics["invalid_local_optimization_eligible_n"],
         )
+
+    def test_invalid_switch_correct_action_is_not_local_optimization(self):
+        """Invalid→SWITCH is valid for the subgroup-metric family."""
+        self.assertFalse(is_invalid_local_optimization(
+            EvidenceState.INVALID,
+            ResearchAction.SWITCH,
+            ResearchAction.SWITCH,
+        ))
+        self.assertTrue(is_invalid_local_optimization(
+            EvidenceState.INVALID,
+            ResearchAction.SWITCH,
+            ResearchAction.REPAIR,
+        ))
+        self.assertFalse(is_invalid_local_optimization(
+            EvidenceState.SUPPORTED,
+            ResearchAction.SWITCH,
+            ResearchAction.CONTINUE,
+        ))
+        subgroup_invalid = [
+            example for example in self.dataset.examples
+            if example.metadata.get("family") == "subgroup_metric_mismatch"
+            and example.state_target is EvidenceState.INVALID
+            and example.best_action is ResearchAction.SWITCH
+        ]
+        self.assertGreater(len(subgroup_invalid), 0)
+        self.assertTrue(all(
+            not is_invalid_local_optimization(
+                example.state_target,
+                ResearchAction.SWITCH,
+                example.best_action,
+            )
+            for example in subgroup_invalid
+        ))
 
     def test_flip_training_does_not_read_dev_or_ood_pairs(self):
         """Held-out reversal annotations must not alter the fitted train policy."""

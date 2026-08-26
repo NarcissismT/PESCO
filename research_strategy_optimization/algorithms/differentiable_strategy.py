@@ -48,6 +48,9 @@ _SIGNAL_VOCAB = (
     "alternative_method_evaluated",
     "independent_confirmation_partition",
 )
+_ORACLE_STATE_VOCAB = tuple(
+    f"oracle_state:{state.value}" for state in STATE_SET
+)
 _HISTORY_ACTIONS = tuple(action.value for action in ACTION_SET)
 _TASK_FAMILIES = (
     "group_generalization",
@@ -55,6 +58,18 @@ _TASK_FAMILIES = (
     "causal_confounding",
     "low_sample_variance",
     "subgroup_metric_mismatch",
+)
+_RAW_EVIDENCE_VOCAB = (
+    "treatment_confounder_correlation",
+    "group_overlap_count",
+    "replication_effect_delta",
+    "replication_ci_width",
+    "replication_sample_size",
+    "replication_seed_count",
+    "log_confirmation_pass_rate",
+    "log_validity_count",
+    "log_repeated_runs",
+    "log_protocol_change_count",
 )
 
 
@@ -66,6 +81,7 @@ def observation_to_features(observation: Observation) -> Tensor:
         str(getattr(belief, "hypothesis_id", "")): float(getattr(belief, "probability", 0.5))
         for belief in getattr(observation, "hypothesis_beliefs", ())
     }
+    is_raw_track = str(getattr(observation, "track", "oracle_state")) == "raw_evidence"
     values: List[float] = [
         float(observation.effect_estimate),
         float(observation.ci_low),
@@ -75,20 +91,40 @@ def observation_to_features(observation: Observation) -> Tensor:
         math.log1p(max(0, int(observation.seed_count))) / 4.0,
         float(observation.remaining_budget) / 6.0,
         float(observation.turn) / 6.0,
-        float(observation.hypothesis_probability),
+        float(observation.hypothesis_probability) if not is_raw_track else 0.5,
         1.0 if observation.current_method == "method_b" else 0.0,
-        1.0 if observation.active_hypothesis_id == "H_B" else 0.0,
-        float(belief_map.get("H_A", 0.5)),
-        float(belief_map.get("H_B", 0.5)),
+        1.0 if observation.active_hypothesis_id == "H_B" and not is_raw_track else 0.0,
+        float(belief_map.get("H_A", 0.5)) if not is_raw_track else 0.5,
+        float(belief_map.get("H_B", 0.5)) if not is_raw_track else 0.5,
     ]
-    signals = set(observation.validity_signals)
+    # Raw-evidence track intentionally masks evaluator state tokens, family names,
+    # and history action labels.  It receives only the numeric/raw receipt vector
+    # below; the oracle-state track retains the original structured diagnostic input.
+    signals = set(observation.validity_signals) if not is_raw_track else set()
     values.extend(1.0 if signal in signals else 0.0 for signal in _SIGNAL_VOCAB)
-    history = set(observation.history_summary)
+    values.extend(1.0 if signal in signals else 0.0 for signal in _ORACLE_STATE_VOCAB)
+    history = set(observation.history_summary) if not is_raw_track else set()
     values.extend(
         1.0 if any(action in item for item in history) else 0.0
         for action in _HISTORY_ACTIONS
     )
-    values.extend(1.0 if observation.task_family == family else 0.0 for family in _TASK_FAMILIES)
+    values.extend(
+        1.0 if (not is_raw_track and observation.task_family == family) else 0.0
+        for family in _TASK_FAMILIES
+    )
+    values.append(1.0 if is_raw_track else 0.0)
+    raw_map = {
+        str(key): float(value)
+        for key, value in getattr(observation, "raw_evidence", ())
+    }
+    for key in _RAW_EVIDENCE_VOCAB:
+        raw_value = float(raw_map.get(key, 0.0)) if is_raw_track else 0.0
+        # Keep scales comparable to the existing public numeric fields.
+        if key in {"group_overlap_count", "replication_sample_size", "log_repeated_runs", "log_protocol_change_count"}:
+            raw_value = math.log1p(max(0.0, raw_value)) / 8.0
+        elif key in {"replication_seed_count", "log_validity_count"}:
+            raw_value = math.log1p(max(0.0, raw_value)) / 4.0
+        values.append(raw_value)
     return torch.tensor(values, dtype=torch.float32)
 
 
@@ -222,15 +258,21 @@ class DecisionDataset:
 
     def to_dict(self, include_audit: bool = True) -> dict:
         if not include_audit:
+            split_names = tuple(dict.fromkeys(str(example.split) for example in self.examples))
             split_counts = {
                 split: sum(example.split == split for example in self.examples)
-                for split in ("train", "dev", "diagnostic_ood")
+                for split in split_names
             }
             public_provenance = {
                 "schema_version": self.schema_version,
                 "example_count": len(self.examples),
                 "split_counts": split_counts,
+                "question_world_group_count": self.provenance.get("question_world_group_count"),
                 "branch_groups": self.provenance.get("branch_groups"),
+                "action_level_row_count": self.provenance.get("action_level_row_count"),
+                "action_level_rows": self.provenance.get("action_level_rows"),
+                "seed_level_observation_count": self.provenance.get("seed_level_observation_count"),
+                "seed_level_observations": self.provenance.get("seed_level_observations"),
                 "exploration_seed_observations": self.provenance.get("exploration_seed_observations"),
                 "public_policy_inputs_only": True,
                 "audit_labels_excluded": True,
@@ -311,6 +353,11 @@ class DecisionDataset:
                 active_hypothesis_id=obs_payload.pop("active_hypothesis_id", "H_A"),
                 hypothesis_beliefs=hypothesis_beliefs,
                 task_family=obs_payload.pop("task_family", "group_generalization"),
+                track=obs_payload.pop("track", "oracle_state"),
+                raw_evidence=tuple(
+                    (str(key), float(value))
+                    for key, value in dict(obs_payload.pop("raw_evidence", {})).items()
+                ),
             )
             examples.append(DecisionExample(
                 observation=observation,

@@ -7,8 +7,13 @@ from pathlib import Path
 
 from research_strategy_optimization.environments.tier1_benchmark import (
     MECHANISM_FAMILIES,
+    TIER1_REWARD_COMPONENT_NAMES,
     build_tier1_v03_benchmark,
+    tier1_scientific_utility,
+    tier1_scientific_utility_components,
 )
+from research_strategy_optimization.environments.tier0_simulator import TrustedVerifier
+from research_strategy_optimization.schemas import Protocol
 from research_strategy_optimization.schemas import ResearchAction
 
 
@@ -75,6 +80,82 @@ class Tier1BenchmarkTests(unittest.TestCase):
             self.assertEqual(observation.task_family, question.family)
             self.assertNotIn(question.worlds[0].world_id, payload)
             self.assertNotIn(question.target_action(question.worlds[0].world_id).value, payload)
+
+    def test_scientific_utility_components_are_fixed_and_sum_to_scalar(self) -> None:
+        benchmark = build_tier1_v03_benchmark()
+        question = benchmark.questions[0]
+        protocol = Protocol(
+            protocol_version="pesco_v0_2",
+            exploration_seeds=(17,),
+            confirmation_seeds=(103,),
+        )
+        for kind in ("supported", "invalid"):
+            world = next(item for item in question.worlds if item.kind == kind)
+            env = benchmark.make_environment(question.question_id, protocol=protocol)
+            initial = env.reset(question.policy_question_id, world.world_id, seed=17)
+            output = env.execute_option(ResearchAction.CONTINUE, seeds=(17,))
+            verdict = TrustedVerifier(protocol).evaluate(output, env, confirm=False)
+            components = tier1_scientific_utility_components(
+                question,
+                world,
+                ResearchAction.CONTINUE,
+                output,
+                verdict,
+                protocol,
+                initial_observation=initial,
+            )
+            self.assertEqual(tuple(components), TIER1_REWARD_COMPONENT_NAMES)
+            self.assertTrue(all(isinstance(value, float) for value in components.values()))
+            scalar = tier1_scientific_utility(
+                question,
+                world,
+                ResearchAction.CONTINUE,
+                output,
+                verdict,
+                protocol,
+                initial_observation=initial,
+            )
+            self.assertAlmostEqual(sum(components.values()), scalar, places=12)
+
+    def test_scientific_utility_components_are_available_for_every_action(self) -> None:
+        benchmark = build_tier1_v03_benchmark()
+        question = benchmark.questions[0]
+        world = question.worlds[0]
+        protocol = Protocol(
+            protocol_version="pesco_v0_2",
+            exploration_seeds=(17,),
+            confirmation_seeds=(103,),
+        )
+        env = benchmark.make_environment(question.question_id, protocol=protocol)
+        initial = env.reset(question.policy_question_id, world.world_id, seed=17)
+        verifier = TrustedVerifier(protocol)
+        for action in ResearchAction.mvp_actions():
+            branch = env.clone_from_snapshot(env.snapshot())
+            output = branch.execute_option(action, seeds=(17,))
+            verdict = verifier.evaluate(output, branch, confirm=False)
+            components = tier1_scientific_utility_components(
+                question,
+                world,
+                action,
+                output,
+                verdict,
+                protocol,
+                initial_observation=initial,
+            )
+            self.assertEqual(set(components), set(TIER1_REWARD_COMPONENT_NAMES))
+            self.assertAlmostEqual(
+                sum(components.values()),
+                tier1_scientific_utility(
+                    question,
+                    world,
+                    action,
+                    output,
+                    verdict,
+                    protocol,
+                    initial_observation=initial,
+                ),
+                places=12,
+            )
 
 
 if __name__ == "__main__":

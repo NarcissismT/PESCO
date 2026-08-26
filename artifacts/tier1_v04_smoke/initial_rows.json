@@ -1,0 +1,241 @@
+[
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.15905862196007875,
+      0.18425500665256
+    ],
+    "initial_dataset_hash": "sha256:de18a2bb41412968c47c9c9448d418a4ac2cdba275f2512ea824880f6c8cb746",
+    "initial_effect_estimate": 0.17165681430631938,
+    "initial_evidence_state_audit": "supported",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.994861480143688,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.15905862196007875,
+        0.18425500665256
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.17165681430631938,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.994861480143688,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.994861480143688,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "continue_current_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__supported"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.08444390281770181,
+      -0.05676074312881077
+    ],
+    "initial_dataset_hash": "sha256:02d2456c78ec15c33da2d8e6c04112693b0bf05e3b7453ca10e3a547a4fbbc14",
+    "initial_effect_estimate": -0.07060232297325629,
+    "initial_evidence_state_audit": "refuted",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.11043949975271491,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.08444390281770181,
+        -0.05676074312881077
+      ],
+      "current_method": "method_a",
+      "effect_estimate": -0.07060232297325629,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.11043949975271491,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.11043949975271491,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "switch_to_alternative_method",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__refuted"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      -0.6386021134305507,
+      0.8613978865694493
+    ],
+    "initial_dataset_hash": "sha256:7efd50b7b159349eab4a5b70888e97262cb213bea480c51afd708aa680b76ac7",
+    "initial_effect_estimate": 0.11139788656944924,
+    "initial_evidence_state_audit": "insufficient",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5361051930050402,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        -0.6386021134305507,
+        0.8613978865694493
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.11139788656944924,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5361051930050402,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5361051930050402,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 18,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "sample_count_below_precision_target",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": true,
+    "legacy_target_action_audit": "add_samples_or_seeds",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__insufficient"
+  },
+  {
+    "family": "group_leakage",
+    "initial_backend": "tier1_numpy",
+    "initial_confidence_interval": [
+      0.6297425767807309,
+      0.6931554382898238
+    ],
+    "initial_dataset_hash": "sha256:ccc3f3b403e3d61d81d0c44e161b3394296372a87d39be7e181f453e7d3d5ef5",
+    "initial_effect_estimate": 0.6614490075352774,
+    "initial_evidence_state_audit": "invalid",
+    "initial_public_observation": {
+      "active_hypothesis_id": "H_A",
+      "belief_records": [
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_A",
+          "probability": 0.5,
+          "turn": 1
+        },
+        {
+          "committed_before_action": true,
+          "hypothesis_id": "H_B",
+          "probability": 0.5,
+          "turn": 0
+        }
+      ],
+      "confidence_interval": [
+        0.6297425767807309,
+        0.6931554382898238
+      ],
+      "current_method": "method_a",
+      "effect_estimate": 0.6614490075352774,
+      "history_summary": [
+        "registered_hypothesis: method A has positive practical effect",
+        "continue_current_method:method_a"
+      ],
+      "hypothesis_beliefs": {
+        "H_A": 0.5,
+        "H_B": 0.5
+      },
+      "hypothesis_probability": 0.5,
+      "metric_name": "group_held_out_accuracy_delta",
+      "remaining_budget": 5,
+      "sample_size": 1000,
+      "seed_count": 4,
+      "task_family": "group_leakage",
+      "turn": 1,
+      "validity_signals": [
+        "tier1_numpy_backend",
+        "split_overlap_diagnostic",
+        "leaky_row_split",
+        "treatment_assignment_independent"
+      ]
+    },
+    "initial_validity_pass": false,
+    "legacy_target_action_audit": "repair_data_split",
+    "legacy_target_action_consumed": false,
+    "question_id": "t1_group_leakage_01",
+    "split": "train",
+    "world_id_audit": "t1_group_leakage_01__invalid"
+  }
+]

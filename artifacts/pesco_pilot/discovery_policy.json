@@ -1,9 +1,15 @@
 {
   "applies_to": "all_methods",
+  "current_certificate_claim_authorized": false,
   "discovery_utility": 0.0,
   "formal_open_ended_certificate_authorized": false,
+  "legacy_certificate_artifact_scope": "legacy_certificate_evidence",
+  "legacy_certificate_manifest": "legacy_certificates_manifest.json",
+  "legacy_certificate_pass_interpretation": "historical_only_not_current_discovery",
   "new_path_announced": false,
   "new_path_verified": false,
+  "policy_id": "fixed_mvp_action_space_v1",
   "reason": "fixed_mvp_action_space_switch_is_not_open_ended_discovery",
+  "schema_version": "pesco_discovery_policy_v0.2",
   "status": "disabled"
 }

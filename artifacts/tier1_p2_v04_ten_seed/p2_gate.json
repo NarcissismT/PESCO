@@ -1,0 +1,532 @@
+{
+  "promotion_status": "NO-GO",
+  "gates": {
+    "ten_training_seeds": true,
+    "preregistered_optimizer_step_budget": true,
+    "promotion_regret_ci_entirely_below_zero": true,
+    "heldout_same_question_flip_ci_entirely_above_zero": false,
+    "at_least_8_of_10_seeds_same_regret_direction": false,
+    "reward_perturbation_winner_stability_90_percent": true,
+    "no_worse_validity_replication_false_discovery": false,
+    "beats_sft": true,
+    "promotion_pair_count_minimum": true,
+    "promotion_cluster_count_minimum": true
+  },
+  "primary_delta_regret": {
+    "point": -0.01617079518454905,
+    "lower": -0.028612575125149253,
+    "upper": -0.001516234462950758,
+    "n": 10,
+    "status": "estimable"
+  },
+  "heldout_flip_accuracy_delta": {
+    "point": -0.05801526717557252,
+    "lower": -0.06106870229007633,
+    "upper": -0.05419847328244274,
+    "n": 10,
+    "status": "estimable"
+  },
+  "promotion_delta_regret_vs_sft": {
+    "point": -0.0826562223781671,
+    "lower": -0.10202969828393223,
+    "upper": -0.0605495894205502,
+    "n": 10,
+    "status": "estimable"
+  },
+  "no_worse_safety_metrics": {
+    "status": "estimable_from_evaluation_records",
+    "comparison_splits": [
+      "dev",
+      "diagnostic_ood"
+    ],
+    "orientation": "delta <= 0 means PESCO-Full is non-worse",
+    "definition": {
+      "validity": "PESCO selected-invalid-branch rate versus the lowest baseline rate",
+      "replication": "PESCO independent-confirmation rate versus the highest baseline rate",
+      "false_discovery": "PESCO invalid-local-optimization rate versus the lowest baseline rate",
+      "gate_rule": "all paired receipts present and the bootstrap 95% CI upper bound of each oriented delta is <= 0"
+    },
+    "metrics": {
+      "validity": {
+        "source": "selected_invalid_branch_rate",
+        "direction": "lower",
+        "paired_count": 20,
+        "expected_paired_count": 20,
+        "ci": {
+          "point": -0.012499999999999997,
+          "lower": -0.021249999999999998,
+          "upper": -0.004374999999999999,
+          "n": 20,
+          "status": "estimable"
+        },
+        "gate": true,
+        "paired_rows": [
+          {
+            "seed": 0,
+            "split": "dev",
+            "full": 0.15,
+            "baseline_reference": 0.15,
+            "delta": 0.0
+          },
+          {
+            "seed": 1,
+            "split": "dev",
+            "full": 0.1,
+            "baseline_reference": 0.1,
+            "delta": 0.0
+          },
+          {
+            "seed": 2,
+            "split": "dev",
+            "full": 0.1,
+            "baseline_reference": 0.1,
+            "delta": 0.0
+          },
+          {
+            "seed": 3,
+            "split": "dev",
+            "full": 0.1125,
+            "baseline_reference": 0.15,
+            "delta": -0.03749999999999999
+          },
+          {
+            "seed": 4,
+            "split": "dev",
+            "full": 0.15,
+            "baseline_reference": 0.15,
+            "delta": 0.0
+          },
+          {
+            "seed": 5,
+            "split": "dev",
+            "full": 0.1,
+            "baseline_reference": 0.15,
+            "delta": -0.04999999999999999
+          },
+          {
+            "seed": 6,
+            "split": "dev",
+            "full": 0.1125,
+            "baseline_reference": 0.15,
+            "delta": -0.03749999999999999
+          },
+          {
+            "seed": 7,
+            "split": "dev",
+            "full": 0.1,
+            "baseline_reference": 0.15,
+            "delta": -0.04999999999999999
+          },
+          {
+            "seed": 8,
+            "split": "dev",
+            "full": 0.1,
+            "baseline_reference": 0.15,
+            "delta": -0.04999999999999999
+          },
+          {
+            "seed": 9,
+            "split": "dev",
+            "full": 0.125,
+            "baseline_reference": 0.15,
+            "delta": -0.024999999999999994
+          },
+          {
+            "seed": 0,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 1,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 2,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 3,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 4,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 5,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 6,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 7,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 8,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          },
+          {
+            "seed": 9,
+            "split": "diagnostic_ood",
+            "full": 0.25,
+            "baseline_reference": 0.25,
+            "delta": 0.0
+          }
+        ]
+      },
+      "replication": {
+        "source": "independent_confirmation_rate_proxy",
+        "direction": "higher",
+        "paired_count": 20,
+        "expected_paired_count": 20,
+        "ci": {
+          "point": 0.0,
+          "lower": 0.0,
+          "upper": 0.0,
+          "n": 20,
+          "status": "estimable"
+        },
+        "gate": true,
+        "paired_rows": [
+          {
+            "seed": 0,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 1,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 2,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 3,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 4,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 5,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 6,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 7,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 8,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 9,
+            "split": "dev",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 0,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 1,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 2,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 3,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 4,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 5,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 6,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 7,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 8,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 9,
+            "split": "diagnostic_ood",
+            "full": 1.0,
+            "baseline_reference": 1.0,
+            "delta": 0.0
+          }
+        ]
+      },
+      "false_discovery": {
+        "source": "invalid_local_optimization_rate",
+        "direction": "lower",
+        "paired_count": 20,
+        "expected_paired_count": 20,
+        "ci": {
+          "point": 0.0325,
+          "lower": 0.019999999999999997,
+          "upper": 0.0475,
+          "n": 20,
+          "status": "estimable"
+        },
+        "gate": false,
+        "paired_rows": [
+          {
+            "seed": 0,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 1,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 2,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 3,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 4,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 5,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 6,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 7,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 8,
+            "split": "dev",
+            "full": 0.1,
+            "baseline_reference": 0.0,
+            "delta": 0.1
+          },
+          {
+            "seed": 9,
+            "split": "dev",
+            "full": 0.05,
+            "baseline_reference": 0.0,
+            "delta": 0.05
+          },
+          {
+            "seed": 0,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 1,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 2,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 3,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 4,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 5,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 6,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 7,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          },
+          {
+            "seed": 8,
+            "split": "diagnostic_ood",
+            "full": 0.1,
+            "baseline_reference": 0.0,
+            "delta": 0.1
+          },
+          {
+            "seed": 9,
+            "split": "diagnostic_ood",
+            "full": 0.0,
+            "baseline_reference": 0.0,
+            "delta": 0.0
+          }
+        ]
+      }
+    },
+    "missing_receipts": [],
+    "validity": true,
+    "replication": true,
+    "false_discovery": false
+  },
+  "reward_perturbation_stability": {
+    "non_tie_winner_n": 256,
+    "replicate_n_per_example": 100,
+    "stable_winner_fraction": 0.991875,
+    "stable_winner_threshold": 0.9,
+    "status": "estimable",
+    "authorized": true
+  }
+}

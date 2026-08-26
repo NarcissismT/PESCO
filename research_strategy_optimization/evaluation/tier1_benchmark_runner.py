@@ -1,8 +1,9 @@
 """Executable runner for the frozen Tier-1 v0.3 benchmark.
 
 The runner is intentionally evaluator-side.  It executes the real NumPy backend on
-12 independent questions, 4 hidden worlds, 4 action branches, and 4 common random
-number seeds (768 seed-level experiments).  Branch utility is computed from public
+12 independent questions and 48 question-world branch groups.  Every group has 4
+action-level rows and 4 common-random-number seeds, for 192 action rows and 768
+seed-level observations.  Branch utility is computed from public
 transition/evidence signals and the immutable verifier; the hidden target-action
 table is used only for post-hoc regret and calibration audits.
 """
@@ -91,6 +92,8 @@ def _run_branch(question, world, action: ResearchAction, protocol: Protocol) -> 
     return {
         "record_type": "tier1_v03_branch",
         "schema_version": "pesco_tier1_v03_branch_v1",
+        "record_granularity": "action_level",
+        "question_world_group_id": f"{question.question_id}|{world.world_id}",
         "question_id": question.question_id,
         "split": question.split,
         "mechanism_family": question.family,
@@ -165,6 +168,10 @@ def run_tier1_benchmark(
         for row in group_rows:
             row["empirical_best_action"] = best["action"]
             row["empirical_best_matches_target"] = best["action"] == row["target_action_audit"]
+
+    question_world_group_count = len(groups)
+    action_level_row_count = len(rows)
+    seed_level_observation_count = action_level_row_count * len(protocol.exploration_seeds)
 
     target_by_state_family = {
         family: {
@@ -268,9 +275,21 @@ def run_tier1_benchmark(
             "world_count": len(benchmark.worlds),
             "action_count": len(ResearchAction.mvp_actions()),
             "exploration_seed_count": len(protocol.exploration_seeds),
-            "exploration_seed_experiments": len(rows) * len(protocol.exploration_seeds),
-            "branch_groups": len(rows),
+            "exploration_seed_experiments": seed_level_observation_count,
+            # One branch group is one question/world state.  ``rows`` contains one
+            # action-level record per registered action inside that group.
+            "question_world_group_count": question_world_group_count,
+            "branch_groups": question_world_group_count,
+            "action_level_row_count": action_level_row_count,
+            "action_level_rows": action_level_row_count,
+            "seed_level_observation_count": seed_level_observation_count,
+            "seed_level_observations": seed_level_observation_count,
             "confirmation_branch_count": len(confirmation_rows),
+        },
+        "count_semantics": {
+            "branch_groups": "question_world_group",
+            "action_level_rows": "one row per question_world_group and registered action",
+            "seed_level_observations": "one replay per action_level_row and exploration seed",
         },
         "target_action_by_family_and_state": target_by_state_family,
         "negative_controls": negative_controls,

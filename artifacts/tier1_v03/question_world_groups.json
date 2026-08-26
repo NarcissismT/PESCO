@@ -1,0 +1,962 @@
+[
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_01",
+    "question_world_group_id": "t1_causal_confounding_01|t1_causal_confounding_01__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_01__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_01",
+    "question_world_group_id": "t1_causal_confounding_01|t1_causal_confounding_01__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_01__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_01",
+    "question_world_group_id": "t1_causal_confounding_01|t1_causal_confounding_01__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_01__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_01",
+    "question_world_group_id": "t1_causal_confounding_01|t1_causal_confounding_01__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_01__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_02",
+    "question_world_group_id": "t1_causal_confounding_02|t1_causal_confounding_02__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_02__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_02",
+    "question_world_group_id": "t1_causal_confounding_02|t1_causal_confounding_02__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_02__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_02",
+    "question_world_group_id": "t1_causal_confounding_02|t1_causal_confounding_02__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_02__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_02",
+    "question_world_group_id": "t1_causal_confounding_02|t1_causal_confounding_02__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_02__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_03",
+    "question_world_group_id": "t1_causal_confounding_03|t1_causal_confounding_03__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_03__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_03",
+    "question_world_group_id": "t1_causal_confounding_03|t1_causal_confounding_03__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_03__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_03",
+    "question_world_group_id": "t1_causal_confounding_03|t1_causal_confounding_03__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_03__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_causal_confounding_03",
+    "question_world_group_id": "t1_causal_confounding_03|t1_causal_confounding_03__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_causal_confounding_03__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_01",
+    "question_world_group_id": "t1_group_leakage_01|t1_group_leakage_01__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_01__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_01",
+    "question_world_group_id": "t1_group_leakage_01|t1_group_leakage_01__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_01__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_01",
+    "question_world_group_id": "t1_group_leakage_01|t1_group_leakage_01__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_01__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_01",
+    "question_world_group_id": "t1_group_leakage_01|t1_group_leakage_01__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_01__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_02",
+    "question_world_group_id": "t1_group_leakage_02|t1_group_leakage_02__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_02__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_02",
+    "question_world_group_id": "t1_group_leakage_02|t1_group_leakage_02__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_02__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_02",
+    "question_world_group_id": "t1_group_leakage_02|t1_group_leakage_02__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_02__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_02",
+    "question_world_group_id": "t1_group_leakage_02|t1_group_leakage_02__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_02__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_03",
+    "question_world_group_id": "t1_group_leakage_03|t1_group_leakage_03__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_03__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_03",
+    "question_world_group_id": "t1_group_leakage_03|t1_group_leakage_03__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_03__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_03",
+    "question_world_group_id": "t1_group_leakage_03|t1_group_leakage_03__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_03__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_group_leakage_03",
+    "question_world_group_id": "t1_group_leakage_03|t1_group_leakage_03__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_group_leakage_03__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_01",
+    "question_world_group_id": "t1_low_sample_variance_01|t1_low_sample_variance_01__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_01__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_01",
+    "question_world_group_id": "t1_low_sample_variance_01|t1_low_sample_variance_01__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_01__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_01",
+    "question_world_group_id": "t1_low_sample_variance_01|t1_low_sample_variance_01__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_01__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_01",
+    "question_world_group_id": "t1_low_sample_variance_01|t1_low_sample_variance_01__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_01__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_02",
+    "question_world_group_id": "t1_low_sample_variance_02|t1_low_sample_variance_02__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_02__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_02",
+    "question_world_group_id": "t1_low_sample_variance_02|t1_low_sample_variance_02__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_02__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_02",
+    "question_world_group_id": "t1_low_sample_variance_02|t1_low_sample_variance_02__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_02__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_02",
+    "question_world_group_id": "t1_low_sample_variance_02|t1_low_sample_variance_02__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_02__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_03",
+    "question_world_group_id": "t1_low_sample_variance_03|t1_low_sample_variance_03__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_03__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_03",
+    "question_world_group_id": "t1_low_sample_variance_03|t1_low_sample_variance_03__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_03__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_03",
+    "question_world_group_id": "t1_low_sample_variance_03|t1_low_sample_variance_03__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_03__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_low_sample_variance_03",
+    "question_world_group_id": "t1_low_sample_variance_03|t1_low_sample_variance_03__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_low_sample_variance_03__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_01|t1_subgroup_metric_mismatch_01__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_01__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_01|t1_subgroup_metric_mismatch_01__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_01__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_01|t1_subgroup_metric_mismatch_01__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_01__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_01",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_01|t1_subgroup_metric_mismatch_01__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_01__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_02|t1_subgroup_metric_mismatch_02__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_02__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_02|t1_subgroup_metric_mismatch_02__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_02__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_02|t1_subgroup_metric_mismatch_02__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_02__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_02",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_02|t1_subgroup_metric_mismatch_02__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_02__supported"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_03|t1_subgroup_metric_mismatch_03__insufficient",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_03__insufficient"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_03|t1_subgroup_metric_mismatch_03__invalid",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_03__invalid"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_03|t1_subgroup_metric_mismatch_03__refuted",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_03__refuted"
+  },
+  {
+    "action_level_row_count": 4,
+    "action_values": [
+      "continue_current_method",
+      "add_samples_or_seeds",
+      "repair_data_split",
+      "switch_to_alternative_method"
+    ],
+    "exploration_seeds": [
+      17,
+      29,
+      41,
+      53
+    ],
+    "question_id": "t1_subgroup_metric_mismatch_03",
+    "question_world_group_id": "t1_subgroup_metric_mismatch_03|t1_subgroup_metric_mismatch_03__supported",
+    "record_granularity": "question_world_group",
+    "seed_level_observation_count": 16,
+    "world_id": "t1_subgroup_metric_mismatch_03__supported"
+  }
+]

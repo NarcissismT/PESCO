@@ -1,0 +1,11 @@
+[
+  {
+    "candidate_pool_question_ids": [
+      "t1_group_leakage_02",
+      "t1_group_leakage_03"
+    ],
+    "candidate_pool_size": 8,
+    "current_question_excluded": true,
+    "question_id": "t1_group_leakage_01"
+  }
+]

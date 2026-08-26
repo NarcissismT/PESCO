@@ -1,0 +1,3842 @@
+[
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142856,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.746143942857143,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.010410714285714273,
+          "continue_current_method": 0.012591500000000089,
+          "repair_data_split": 0.004252632653061306,
+          "switch_to_alternative_method": 0.19256740816326556
+        }
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142856,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.746143942857143,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.010410714285714273,
+          "continue_current_method": 0.012591500000000089,
+          "repair_data_split": 0.004252632653061306,
+          "switch_to_alternative_method": 0.19256740816326556
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_causal_confounding_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6530803752886658,
+          "continue_current_method": 0.7480348369688362,
+          "repair_data_split": 0.7405348369688364,
+          "switch_to_alternative_method": 0.34066852517486357
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0017265108611366209,
+          "continue_current_method": -0.004839955206393132,
+          "repair_data_split": -0.004839955206393132,
+          "switch_to_alternative_method": -0.018195082934603368
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6530803752886658,
+          "continue_current_method": 0.7480348369688362,
+          "repair_data_split": 0.7405348369688364,
+          "switch_to_alternative_method": 0.34066852517486357
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0017265108611366209,
+          "continue_current_method": -0.004839955206393132,
+          "repair_data_split": -0.004839955206393132,
+          "switch_to_alternative_method": -0.018195082934603368
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_causal_confounding_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142856,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7461439428571429,
+          "switch_to_alternative_method": 0.8409296571428572
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0066192857142859385,
+          "continue_current_method": 0.008800071428571643,
+          "repair_data_split": 0.000461204081632971,
+          "switch_to_alternative_method": -0.029669081632652916
+        }
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142856,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.746143942857143,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.010410714285714273,
+          "continue_current_method": 0.012591500000000089,
+          "repair_data_split": 0.004252632653061306,
+          "switch_to_alternative_method": 0.19256740816326556
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_causal_confounding_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6523436300850881,
+          "continue_current_method": 0.7492337278734428,
+          "repair_data_split": 0.7417340229270826,
+          "switch_to_alternative_method": 0.8649451200862743
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.004720372536674344,
+          "continue_current_method": -0.006508975548256912,
+          "repair_data_split": -0.006508847851733002,
+          "switch_to_alternative_method": 0.05549061646352438
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.653512949783373,
+          "continue_current_method": 0.7473262704278638,
+          "repair_data_split": 0.7398262704278638,
+          "switch_to_alternative_method": 0.3409195353781986
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0027416043911122623,
+          "continue_current_method": -0.005521033395892827,
+          "repair_data_split": -0.005521033395892827,
+          "switch_to_alternative_method": -0.017256671561991732
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_causal_confounding_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9642225142857146,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.22263674285714297,
+          "switch_to_alternative_method": 0.523136742857143
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.2076678571428573,
+          "continue_current_method": 0.0038683571428572705,
+          "repair_data_split": -0.0044705102040814015,
+          "switch_to_alternative_method": -0.08532700000000004
+        }
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142856,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.746143942857143,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.010410714285714273,
+          "continue_current_method": 0.012591500000000089,
+          "repair_data_split": 0.004252632653061306,
+          "switch_to_alternative_method": 0.19256740816326556
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_causal_confounding_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.8616760546003628,
+          "continue_current_method": 0.36409289148962115,
+          "repair_data_split": 0.3869245371754817,
+          "switch_to_alternative_method": 0.5202076528748018
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.06141687635652304,
+          "continue_current_method": -0.03130493183385441,
+          "repair_data_split": -0.018177672249030552,
+          "switch_to_alternative_method": 0.019736450110762416
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.980920084052433,
+          "continue_current_method": 0.21204343784561877,
+          "repair_data_split": 0.2045434378456188,
+          "switch_to_alternative_method": 0.5299771369672369
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0007113224175374633,
+          "continue_current_method": -0.12913729174834776,
+          "repair_data_split": -0.12913729174834776,
+          "switch_to_alternative_method": -0.07244696023678043
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_causal_confounding_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4113313142857144,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": 1.6924296571428576,
+          "switch_to_alternative_method": -0.3316417714285714
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.02744071428571382,
+          "continue_current_method": -0.025259928571427892,
+          "repair_data_split": -0.83413006122449,
+          "switch_to_alternative_method": -0.024731530612244423
+        }
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142856,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7461439428571429,
+          "switch_to_alternative_method": 0.8409296571428572
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0066192857142859385,
+          "continue_current_method": 0.008800071428571643,
+          "repair_data_split": 0.000461204081632971,
+          "switch_to_alternative_method": -0.029669081632652916
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_causal_confounding_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "causal_confounding",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_causal_confounding_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6694356274827952,
+          "continue_current_method": 0.7212739346081103,
+          "repair_data_split": 0.7137739346081103,
+          "switch_to_alternative_method": 0.3500935239423794
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.040064220202168044,
+          "continue_current_method": 0.022683709750658254,
+          "repair_data_split": 0.022683709750658254,
+          "switch_to_alternative_method": 0.017456492298867476
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6694356274827952,
+          "continue_current_method": 0.7212739346081103,
+          "repair_data_split": 0.7137739346081103,
+          "switch_to_alternative_method": 0.3500935239423794
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.040064220202168044,
+          "continue_current_method": 0.022683709750658254,
+          "repair_data_split": 0.022683709750658254,
+          "switch_to_alternative_method": 0.017456492298867476
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_causal_confounding_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6455687999999998,
+          "continue_current_method": 0.7328335999999998,
+          "repair_data_split": 0.7253336000000001,
+          "switch_to_alternative_method": 0.3404050285714285
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009433643428571337,
+          "continue_current_method": -0.006836467428571358,
+          "repair_data_split": -0.006836467428571358,
+          "switch_to_alternative_method": 0.2435130597551024
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6455687999999998,
+          "continue_current_method": 0.7328335999999998,
+          "repair_data_split": 0.7253336000000001,
+          "switch_to_alternative_method": 0.3404050285714285
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009433643428571337,
+          "continue_current_method": -0.006836467428571358,
+          "repair_data_split": -0.006836467428571358,
+          "switch_to_alternative_method": 0.2435130597551024
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_confounding_underpower_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6535404442622438,
+          "continue_current_method": 0.7474284702819419,
+          "repair_data_split": 0.7399284702819421,
+          "switch_to_alternative_method": 0.34088327073025787
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002687510515956504,
+          "continue_current_method": -0.025690471700261508,
+          "repair_data_split": -0.02569047225261989,
+          "switch_to_alternative_method": -0.019570471126623246
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6535404442622438,
+          "continue_current_method": 0.7474284702819419,
+          "repair_data_split": 0.7399284702819421,
+          "switch_to_alternative_method": 0.34088327073025787
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002687510515956504,
+          "continue_current_method": -0.025690471700261508,
+          "repair_data_split": -0.02569047225261989,
+          "switch_to_alternative_method": -0.019570471126623246
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_confounding_underpower_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6455687999999998,
+          "continue_current_method": 0.7328335999999999,
+          "repair_data_split": 0.7253336000000001,
+          "switch_to_alternative_method": 0.8409764571428572
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.013759357714285603,
+          "continue_current_method": -0.011162181714285624,
+          "repair_data_split": -0.011162181714285624,
+          "switch_to_alternative_method": -0.05463461175510198
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6455687999999998,
+          "continue_current_method": 0.7328335999999998,
+          "repair_data_split": 0.7253336000000001,
+          "switch_to_alternative_method": 0.3404050285714285
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009433643428571337,
+          "continue_current_method": -0.006836467428571358,
+          "repair_data_split": -0.006836467428571358,
+          "switch_to_alternative_method": 0.2435130597551024
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_confounding_underpower_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6518537114133227,
+          "continue_current_method": 0.7487257219651821,
+          "repair_data_split": 0.7412257219651821,
+          "switch_to_alternative_method": 0.8636475791450159
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.007519235755583553,
+          "continue_current_method": -0.012951662991105728,
+          "repair_data_split": -0.012953678068977958,
+          "switch_to_alternative_method": 0.1130002239100325
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6536208149248115,
+          "continue_current_method": 0.7473071424600831,
+          "repair_data_split": 0.7398071424600831,
+          "switch_to_alternative_method": 0.34092612170076086
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0028674943071635983,
+          "continue_current_method": -0.026480370630023065,
+          "repair_data_split": -0.026480371287737725,
+          "switch_to_alternative_method": -0.019404211814131322
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_confounding_underpower_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9925512000000001,
+          "continue_current_method": 0.2093264,
+          "repair_data_split": 0.20182640000000004,
+          "switch_to_alternative_method": 0.523183542857143
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.26915124342857155,
+          "continue_current_method": -0.017225171428571273,
+          "repair_data_split": -0.017225171428571273,
+          "switch_to_alternative_method": -0.12305978138775509
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6455687999999998,
+          "continue_current_method": 0.7328335999999998,
+          "repair_data_split": 0.7253336000000001,
+          "switch_to_alternative_method": 0.3404050285714285
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009433643428571337,
+          "continue_current_method": -0.006836467428571358,
+          "repair_data_split": -0.006836467428571358,
+          "switch_to_alternative_method": 0.2435130597551024
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_confounding_underpower_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.8921429382886414,
+          "continue_current_method": 0.3710310902050088,
+          "repair_data_split": 0.3635310902050089,
+          "switch_to_alternative_method": 0.5342786160761945
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.05271971985232227,
+          "continue_current_method": -0.038660262936958345,
+          "repair_data_split": -0.03868764974129557,
+          "switch_to_alternative_method": 0.004411865812836369
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 1.0137798677325187,
+          "continue_current_method": 0.20392018852345184,
+          "repair_data_split": 0.1964201885234519,
+          "switch_to_alternative_method": 0.5309311124611213
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.0008460104405489943,
+          "continue_current_method": -0.12476751772503658,
+          "repair_data_split": -0.1247675177406603,
+          "switch_to_alternative_method": -0.08705285786500705
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_confounding_underpower_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.35144880000000006,
+          "continue_current_method": -0.3186736000000001,
+          "repair_data_split": -0.32617360000000006,
+          "switch_to_alternative_method": -0.3271021714285714
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.03262664457142861,
+          "continue_current_method": 0.03522382057142864,
+          "repair_data_split": 0.03522382057142864,
+          "switch_to_alternative_method": 0.0362444517551021
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.35144880000000006,
+          "continue_current_method": -0.3186736000000001,
+          "repair_data_split": -0.32617360000000006,
+          "switch_to_alternative_method": -0.3271021714285714
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.03262664457142861,
+          "continue_current_method": 0.03522382057142864,
+          "repair_data_split": 0.03522382057142864,
+          "switch_to_alternative_method": 0.0362444517551021
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_confounding_underpower_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "confounding_underpower",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_confounding_underpower_03",
+    "split": "train",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.8911148238306172,
+          "continue_current_method": 0.37200090039364914,
+          "repair_data_split": 0.3645009003936491,
+          "switch_to_alternative_method": 0.5391253783783928
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.054427426464584316,
+          "continue_current_method": -0.03664451469859764,
+          "repair_data_split": -0.036672871844747545,
+          "switch_to_alternative_method": 0.007606777646670393
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6523422632244049,
+          "continue_current_method": 0.7492365853764594,
+          "repair_data_split": 0.7417365853764595,
+          "switch_to_alternative_method": 0.34024117648871816
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 5.06642925579559e-06,
+          "continue_current_method": -0.02882280730389819,
+          "repair_data_split": -0.02882280730389819,
+          "switch_to_alternative_method": -0.022023860084048552
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_confounding_underpower_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7479296571428573,
+          "switch_to_alternative_method": 0.33971537142857144
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.012100714285714131,
+          "continue_current_method": 0.01454078571428552,
+          "repair_data_split": 0.00493714285714264,
+          "switch_to_alternative_method": 0.2504833163265303
+        }
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7479296571428573,
+          "switch_to_alternative_method": 0.33971537142857144
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.012100714285714131,
+          "continue_current_method": 0.01454078571428552,
+          "repair_data_split": 0.00493714285714264,
+          "switch_to_alternative_method": 0.2504833163265303
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_group_leakage_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.653089716190155,
+          "continue_current_method": 0.7481088710911483,
+          "repair_data_split": 0.7406088710911486,
+          "switch_to_alternative_method": 0.3405040810924418
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0016798503679489318,
+          "continue_current_method": -0.0012763881595405646,
+          "repair_data_split": -0.0012763881595405646,
+          "switch_to_alternative_method": -0.02167505126729896
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.653089716190155,
+          "continue_current_method": 0.7481088710911483,
+          "repair_data_split": 0.7406088710911486,
+          "switch_to_alternative_method": 0.3405040810924418
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0016798503679489318,
+          "continue_current_method": -0.0012763881595405646,
+          "repair_data_split": -0.0012763881595405646,
+          "switch_to_alternative_method": -0.02167505126729896
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_group_leakage_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7479296571428573,
+          "switch_to_alternative_method": 0.8402867999999999
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.008406428571428481,
+          "continue_current_method": 0.01084649999999987,
+          "repair_data_split": 0.0012428571428569901,
+          "switch_to_alternative_method": -0.02545619387755116
+        }
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7479296571428573,
+          "switch_to_alternative_method": 0.33971537142857144
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.012100714285714131,
+          "continue_current_method": 0.01454078571428552,
+          "repair_data_split": 0.00493714285714264,
+          "switch_to_alternative_method": 0.2504833163265303
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_group_leakage_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6517809879485573,
+          "continue_current_method": 0.7486429531753379,
+          "repair_data_split": 0.7423248546193186,
+          "switch_to_alternative_method": 0.8611546805690776
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.009344122449607695,
+          "continue_current_method": -0.008214266875351539,
+          "repair_data_split": -0.007687789410950385,
+          "switch_to_alternative_method": 0.016067433331596104
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6538805361116458,
+          "continue_current_method": 0.746915727223318,
+          "repair_data_split": 0.7394157272233212,
+          "switch_to_alternative_method": 0.34078467796559303
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0034517997388607835,
+          "continue_current_method": -0.0009712090128044526,
+          "repair_data_split": -0.0009712090128028983,
+          "switch_to_alternative_method": -0.02122680594933346
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_group_leakage_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9919368000000002,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.22442245714285725,
+          "switch_to_alternative_method": 0.46077960000000023
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.23190642857142874,
+          "continue_current_method": 0.004780499999999854,
+          "repair_data_split": -0.004823142857143026,
+          "switch_to_alternative_method": -0.026987663265306328
+        }
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7479296571428573,
+          "switch_to_alternative_method": 0.33971537142857144
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.012100714285714131,
+          "continue_current_method": 0.01454078571428552,
+          "repair_data_split": 0.00493714285714264,
+          "switch_to_alternative_method": 0.2504833163265303
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_group_leakage_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.87729065793466,
+          "continue_current_method": 0.36558282637300354,
+          "repair_data_split": 0.39440215676547014,
+          "switch_to_alternative_method": 0.4894807110726757
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.06715957268163752,
+          "continue_current_method": -0.029434597619855674,
+          "repair_data_split": -0.013256168300595839,
+          "switch_to_alternative_method": -0.025572167987630845
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 1.0137799947273094,
+          "continue_current_method": 0.20392000795512946,
+          "repair_data_split": 0.1964200079551337,
+          "switch_to_alternative_method": 0.46615067470645555
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -5.201913011454451e-08,
+          "continue_current_method": -0.13883953566943363,
+          "repair_data_split": -0.13883953566943186,
+          "switch_to_alternative_method": -0.1407731701213758
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_group_leakage_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "repair_data_split",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": 1.8656439428571432,
+          "switch_to_alternative_method": -0.33228462857142854
+        },
+        "posterior_optimal_action": "repair_data_split",
+        "state": "insufficient",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.032607857142856966,
+          "continue_current_method": -0.03016778571428591,
+          "repair_data_split": -0.9617211428571434,
+          "switch_to_alternative_method": -0.028472112244897874
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9919368000000002,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.22442245714285725,
+          "switch_to_alternative_method": 0.46077960000000023
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.23190642857142874,
+          "continue_current_method": 0.004780499999999854,
+          "repair_data_split": -0.004823142857143026,
+          "switch_to_alternative_method": -0.026987663265306328
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_group_leakage_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "group_leakage",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_group_leakage_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6575696842072902,
+          "continue_current_method": 0.7403248807158984,
+          "repair_data_split": 0.7336657946414467,
+          "switch_to_alternative_method": 0.3420034418795354
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.013054952865613756,
+          "continue_current_method": 0.007247534562303648,
+          "repair_data_split": 0.007622119290629947,
+          "switch_to_alternative_method": -0.013251834930202544
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6575696842072902,
+          "continue_current_method": 0.7403248807158984,
+          "repair_data_split": 0.7336657946414467,
+          "switch_to_alternative_method": 0.3420034418795354
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.013054952865613756,
+          "continue_current_method": 0.007247534562303648,
+          "repair_data_split": 0.007622119290629947,
+          "switch_to_alternative_method": -0.013251834930202544
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_group_leakage_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.22198904081632698
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.22198904081632698
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6534250517636038,
+          "continue_current_method": 0.7476029359569266,
+          "repair_data_split": 0.7401029359569267,
+          "switch_to_alternative_method": 0.34082198384700957
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0024312124702251525,
+          "continue_current_method": -0.0027083417527564713,
+          "repair_data_split": -0.0027083417527564713,
+          "switch_to_alternative_method": -0.017776682497350538
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6534250517636038,
+          "continue_current_method": 0.7476029359569266,
+          "repair_data_split": 0.7401029359569267,
+          "switch_to_alternative_method": 0.34082198384700957
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0024312124702251525,
+          "continue_current_method": -0.0027083417527564713,
+          "repair_data_split": -0.0027083417527564713,
+          "switch_to_alternative_method": -0.017776682497350538
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.8409296571428572
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.013804285714285602,
+          "continue_current_method": -0.011212785714285634,
+          "repair_data_split": -0.011212785714285634,
+          "switch_to_alternative_method": -0.0549041836734695
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.22198904081632698
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6523412813033969,
+          "continue_current_method": 0.7492380668345519,
+          "repair_data_split": 0.7417380668345518,
+          "switch_to_alternative_method": 0.8676314960620682
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0027611457452972887,
+          "continue_current_method": -0.0041976710336739664,
+          "repair_data_split": -0.0041976710349933555,
+          "switch_to_alternative_method": -0.013255069207083636
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6536104257470825,
+          "continue_current_method": 0.7473232542928315,
+          "repair_data_split": 0.7398232542928317,
+          "switch_to_alternative_method": 0.3409206019653488
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0028465693643384693,
+          "continue_current_method": -0.001778454729277068,
+          "repair_data_split": -0.001778454729277068,
+          "switch_to_alternative_method": -0.017436140390578614
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9919368000000002,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.20177960000000003,
+          "switch_to_alternative_method": 0.523136742857143
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.26862857142857166,
+          "continue_current_method": -0.017253071428571354,
+          "repair_data_split": -0.017253071428571354,
+          "switch_to_alternative_method": -0.12307312244897972
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.22198904081632698
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.889181985341127,
+          "continue_current_method": 0.3867803897804502,
+          "repair_data_split": 0.37928038978045026,
+          "switch_to_alternative_method": 0.5694255126916187
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.05920759451319013,
+          "continue_current_method": -0.021151879318420108,
+          "repair_data_split": -0.021980182432393858,
+          "switch_to_alternative_method": -0.05546374521684472
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 1.0137799989650935,
+          "continue_current_method": 0.2039199996072081,
+          "repair_data_split": 0.19641999960720813,
+          "switch_to_alternative_method": 0.5309454344604139
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -2.135725303720193e-06,
+          "continue_current_method": -0.11831732538822204,
+          "repair_data_split": -0.11831732570400022,
+          "switch_to_alternative_method": -0.16461185713873117
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.3316417714285714
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0327614285714285,
+          "continue_current_method": 0.03535292857142852,
+          "repair_data_split": 0.03535292857142852,
+          "switch_to_alternative_method": 0.03615459183673464
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.3316417714285714
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0327614285714285,
+          "continue_current_method": 0.03535292857142852,
+          "repair_data_split": 0.03535292857142852,
+          "switch_to_alternative_method": 0.03615459183673464
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "leakage_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_leakage_metric_mismatch_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6620860772121234,
+          "continue_current_method": 0.7341792982487851,
+          "repair_data_split": 0.7266792982487849,
+          "switch_to_alternative_method": 0.3458607622463983
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.022415335534353154,
+          "continue_current_method": 0.01405270167090078,
+          "repair_data_split": 0.013995114720666502,
+          "switch_to_alternative_method": -0.0012878384544892096
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6620860772121234,
+          "continue_current_method": 0.7341792982487851,
+          "repair_data_split": 0.7266792982487849,
+          "switch_to_alternative_method": 0.3458607622463983
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.022415335534353154,
+          "continue_current_method": 0.01405270167090078,
+          "repair_data_split": 0.013995114720666502,
+          "switch_to_alternative_method": -0.0012878384544892096
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_leakage_metric_mismatch_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3426439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009455714285714012,
+          "continue_current_method": -0.006864214285714154,
+          "repair_data_split": -0.006864214285714154,
+          "switch_to_alternative_method": 0.24255716326530663
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3426439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009455714285714012,
+          "continue_current_method": -0.006864214285714154,
+          "repair_data_split": -0.006864214285714154,
+          "switch_to_alternative_method": 0.24255716326530663
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_low_sample_variance_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6534837400985803,
+          "continue_current_method": 0.747514390353702,
+          "repair_data_split": 0.7400143903537023,
+          "switch_to_alternative_method": 0.34158269250535384
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0025608194466197887,
+          "continue_current_method": -0.00040306137927292873,
+          "repair_data_split": -0.00040306137927292873,
+          "switch_to_alternative_method": -0.29987472893030975
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6534837400985803,
+          "continue_current_method": 0.747514390353702,
+          "repair_data_split": 0.7400143903537023,
+          "switch_to_alternative_method": 0.34158269250535384
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0025608194466197887,
+          "continue_current_method": -0.00040306137927292873,
+          "repair_data_split": -0.00040306137927292873,
+          "switch_to_alternative_method": -0.29987472893030975
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_low_sample_variance_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.8432153714285713
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.013872857142857131,
+          "continue_current_method": -0.011281357142857162,
+          "repair_data_split": -0.011281357142857162,
+          "switch_to_alternative_method": -0.05607744897959188
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3426439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009455714285714012,
+          "continue_current_method": -0.006864214285714154,
+          "repair_data_split": -0.006864214285714154,
+          "switch_to_alternative_method": 0.24255716326530663
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_low_sample_variance_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.652353152948955,
+          "continue_current_method": 0.7492171546883966,
+          "repair_data_split": 0.7417171546883965,
+          "switch_to_alternative_method": 0.859126797627903
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.010327517786659968,
+          "continue_current_method": -0.1468131312404558,
+          "repair_data_split": -0.1468131312404558,
+          "switch_to_alternative_method": -0.2206970129417002
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6523400000000001,
+          "continue_current_method": 0.74924,
+          "repair_data_split": 0.7417400000000001,
+          "switch_to_alternative_method": 0.8719740356041885
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.002459088969586576,
+          "continue_current_method": -0.16004805436383063,
+          "repair_data_split": -0.16004805436383063,
+          "switch_to_alternative_method": -0.23645499318819074
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_low_sample_variance_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9919368000000002,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.20177960000000003,
+          "switch_to_alternative_method": 0.7448510285714286
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.26860571428571456,
+          "continue_current_method": -0.01723021428571403,
+          "repair_data_split": -0.01723021428571403,
+          "switch_to_alternative_method": -0.1587551224489797
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3426439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009455714285714012,
+          "continue_current_method": -0.006864214285714154,
+          "repair_data_split": -0.006864214285714154,
+          "switch_to_alternative_method": 0.24255716326530663
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_low_sample_variance_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.8728552589459584,
+          "continue_current_method": 0.36911614219419286,
+          "repair_data_split": 0.36161614219419297,
+          "switch_to_alternative_method": 0.6945188405599393
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.05277221945837951,
+          "continue_current_method": -0.061627396127789,
+          "repair_data_split": -0.061627396127789,
+          "switch_to_alternative_method": -0.05274444122351685
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 1.0096181445916657,
+          "continue_current_method": 0.21019915581941118,
+          "repair_data_split": 0.20269915581941111,
+          "switch_to_alternative_method": 0.7554954684021074
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0004973238442878003,
+          "continue_current_method": -0.1343076653589408,
+          "repair_data_split": -0.1343076653589408,
+          "switch_to_alternative_method": -0.056620388195767424
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_low_sample_variance_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.3293560571428571
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.032784285714285655,
+          "continue_current_method": 0.03537578571428568,
+          "repair_data_split": 0.03537578571428568,
+          "switch_to_alternative_method": 0.036013163265306125
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.3293560571428571
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.032784285714285655,
+          "continue_current_method": 0.03537578571428568,
+          "repair_data_split": 0.03537578571428568,
+          "switch_to_alternative_method": 0.036013163265306125
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_low_sample_variance_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "low_sample_variance",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_low_sample_variance_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4332590863808352,
+          "continue_current_method": -0.3452926354660581,
+          "repair_data_split": -0.3527926354660582,
+          "switch_to_alternative_method": -0.34869564812871795
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.007973087477878671,
+          "continue_current_method": 0.1518164521891146,
+          "repair_data_split": 0.1518164521891146,
+          "switch_to_alternative_method": 0.7506513724725237
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6541594217818556,
+          "continue_current_method": 0.7464949604745424,
+          "repair_data_split": 0.7389949604745424,
+          "switch_to_alternative_method": 0.3423732586116378
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.00407362568928471,
+          "continue_current_method": 0.00047805869192663053,
+          "repair_data_split": 0.00047805869192663053,
+          "switch_to_alternative_method": -0.286701288698049
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_low_sample_variance_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.18718889795918403
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.18718889795918403
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_protocol_drift_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6532101825088936,
+          "continue_current_method": 0.7479271183993195,
+          "repair_data_split": 0.7404271183993196,
+          "switch_to_alternative_method": 0.34073437281292995
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.001949760042221249,
+          "continue_current_method": -0.004575094451515049,
+          "repair_data_split": -0.004575094451515049,
+          "switch_to_alternative_method": -0.21377820985920937
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6532101825088936,
+          "continue_current_method": 0.7479271183993195,
+          "repair_data_split": 0.7404271183993196,
+          "switch_to_alternative_method": 0.34073437281292995
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.001949760042221249,
+          "continue_current_method": -0.004575094451515049,
+          "repair_data_split": -0.004575094451515049,
+          "switch_to_alternative_method": -0.21377820985920937
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_protocol_drift_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.840929657142857
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.013804285714285491,
+          "continue_current_method": -0.011212785714285523,
+          "repair_data_split": -0.011212785714285523,
+          "switch_to_alternative_method": -0.054163755102040745
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.18718889795918403
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_protocol_drift_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6523268901497883,
+          "continue_current_method": 0.7492251792818083,
+          "repair_data_split": 0.7417251792818086,
+          "switch_to_alternative_method": 0.8650332176967476
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.005380419606589526,
+          "continue_current_method": -0.0057757201805869185,
+          "repair_data_split": -0.0057757201805869185,
+          "switch_to_alternative_method": -0.24224239453962382
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6523268901497883,
+          "continue_current_method": 0.7492251792818083,
+          "repair_data_split": 0.7417251792818086,
+          "switch_to_alternative_method": 0.8650332176967476
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.005380419606589526,
+          "continue_current_method": -0.0057757201805869185,
+          "repair_data_split": -0.0057757201805869185,
+          "switch_to_alternative_method": -0.24224239453962382
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_protocol_drift_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9919368000000002,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.20177960000000003,
+          "switch_to_alternative_method": 0.5231367428571431
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.26862857142857166,
+          "continue_current_method": -0.017253071428571354,
+          "repair_data_split": -0.017253071428571354,
+          "switch_to_alternative_method": -0.01571097959183676
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3403582285714286
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009478571428571336,
+          "continue_current_method": -0.0068870714285713674,
+          "repair_data_split": -0.0068870714285713674,
+          "switch_to_alternative_method": 0.18718889795918403
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_protocol_drift_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.8768742346507884,
+          "continue_current_method": 0.3658645759647983,
+          "repair_data_split": 0.3583645759647986,
+          "switch_to_alternative_method": 0.5337310471945739
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.049825803940591995,
+          "continue_current_method": -0.044956425303691816,
+          "repair_data_split": -0.044956425303691816,
+          "switch_to_alternative_method": -0.11114768798011632
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 1.0137797476315114,
+          "continue_current_method": 0.20391990421542563,
+          "repair_data_split": 0.19641990421542574,
+          "switch_to_alternative_method": 0.5296399392730873
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -5.8894399528330865e-06,
+          "continue_current_method": -0.13767399398110547,
+          "repair_data_split": -0.13767399398110547,
+          "switch_to_alternative_method": -0.13233627665879233
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_protocol_drift_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.33164177142857143
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0327614285714285,
+          "continue_current_method": 0.03535292857142852,
+          "repair_data_split": 0.03535292857142852,
+          "switch_to_alternative_method": 0.036895020408163226
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.33164177142857143
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0327614285714285,
+          "continue_current_method": 0.03535292857142852,
+          "repair_data_split": 0.03535292857142852,
+          "switch_to_alternative_method": 0.036895020408163226
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_protocol_drift_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "protocol_drift",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_protocol_drift_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.1378251308295904,
+          "continue_current_method": -0.23316420049303616,
+          "repair_data_split": -0.2406642004930361,
+          "switch_to_alternative_method": -0.17069861718308937
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0763553269630134,
+          "continue_current_method": 0.06943297194315456,
+          "repair_data_split": 0.06943297194315456,
+          "switch_to_alternative_method": 0.39428651500552625
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6534779357062726,
+          "continue_current_method": 0.7475231476888433,
+          "repair_data_split": 0.7400231476888434,
+          "switch_to_alternative_method": 0.3408984350311298
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0025496971528032875,
+          "continue_current_method": -0.001201397252888814,
+          "repair_data_split": -0.001201397252888814,
+          "switch_to_alternative_method": -0.3050374417326402
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_protocol_drift_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142857,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3386439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009495714285714052,
+          "continue_current_method": -0.007181357142856726,
+          "repair_data_split": -0.007181357142856726,
+          "switch_to_alternative_method": 0.18445416326530661
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142857,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3386439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009495714285714052,
+          "continue_current_method": -0.007181357142856726,
+          "repair_data_split": -0.007181357142856726,
+          "switch_to_alternative_method": 0.18445416326530661
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_replication_instability_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6542969226354047,
+          "continue_current_method": 0.7457340529802461,
+          "repair_data_split": 0.7382340529802462,
+          "switch_to_alternative_method": 0.34092354284799853
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.004946983372171365,
+          "continue_current_method": -0.0035459885140721736,
+          "repair_data_split": -0.0035459885140721736,
+          "switch_to_alternative_method": -0.2863218900998161
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6542969226354047,
+          "continue_current_method": 0.7457340529802461,
+          "repair_data_split": 0.7382340529802462,
+          "switch_to_alternative_method": 0.34092354284799853
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.004946983372171365,
+          "continue_current_method": -0.0035459885140721736,
+          "repair_data_split": -0.0035459885140721736,
+          "switch_to_alternative_method": -0.2863218900998161
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_replication_instability_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142857,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.8392153714285713
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.013752857142857122,
+          "continue_current_method": -0.011438499999999796,
+          "repair_data_split": -0.011438499999999796,
+          "switch_to_alternative_method": -0.054029265306122176
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142857,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3386439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009495714285714052,
+          "continue_current_method": -0.007181357142856726,
+          "repair_data_split": -0.007181357142856726,
+          "switch_to_alternative_method": 0.18445416326530661
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_replication_instability_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.5156550373262883,
+          "continue_current_method": 0.6125159804330639,
+          "repair_data_split": 0.6050159804330641,
+          "switch_to_alternative_method": 0.6988322413778406
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.01671942199562082,
+          "continue_current_method": 0.060078390663124814,
+          "repair_data_split": 0.060078390663124814,
+          "switch_to_alternative_method": -0.07164210094006185
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.5156550373262883,
+          "continue_current_method": 0.6125159804330639,
+          "repair_data_split": 0.6050159804330641,
+          "switch_to_alternative_method": 0.6988322413778406
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "refuted",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.01671942199562082,
+          "continue_current_method": 0.060078390663124814,
+          "repair_data_split": 0.060078390663124814,
+          "switch_to_alternative_method": -0.07164210094006185
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_replication_instability_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9642225142857144,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.20177960000000003,
+          "switch_to_alternative_method": 0.3568510285714287
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.24093142857142869,
+          "continue_current_method": -0.016438785714285364,
+          "repair_data_split": -0.016438785714285364,
+          "switch_to_alternative_method": -0.04698155102040791
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6446686857142857,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3386439428571429
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "insufficient",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.009495714285714052,
+          "continue_current_method": -0.007181357142856726,
+          "repair_data_split": -0.007181357142856726,
+          "switch_to_alternative_method": 0.18445416326530661
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_replication_instability_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.8588569388357054,
+          "continue_current_method": 0.36509421127960273,
+          "repair_data_split": 0.3575942112796028,
+          "switch_to_alternative_method": 0.4151535722442433
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.041070582811976175,
+          "continue_current_method": -0.03476713365571005,
+          "repair_data_split": -0.03476713365571005,
+          "switch_to_alternative_method": -0.10730465425332292
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9862417801553698,
+          "continue_current_method": 0.20366528506097153,
+          "repair_data_split": 0.19616528506097156,
+          "switch_to_alternative_method": 0.3526434574039502
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.01266907539760731,
+          "continue_current_method": -0.12993887891427203,
+          "repair_data_split": -0.12993887891427203,
+          "switch_to_alternative_method": -0.13413370757021803
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_replication_instability_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4113313142857144,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.3333560571428571
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.032744285714285615,
+          "continue_current_method": 0.035058642857142774,
+          "repair_data_split": 0.035058642857142774,
+          "switch_to_alternative_method": 0.0362556326530612
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4113313142857144,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": -0.3333560571428571
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.032744285714285615,
+          "continue_current_method": 0.035058642857142774,
+          "repair_data_split": 0.035058642857142774,
+          "switch_to_alternative_method": 0.0362556326530612
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_replication_instability_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "replication_instability",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_replication_instability_03",
+    "split": "diagnostic_ood",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.32859231224444846,
+          "continue_current_method": 0.42512491633912963,
+          "repair_data_split": 0.41762491633912957,
+          "switch_to_alternative_method": 0.5011211454095432
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.007721802144223022,
+          "continue_current_method": 0.13658352853256273,
+          "repair_data_split": 0.13658352853256273,
+          "switch_to_alternative_method": 0.08246578951699957
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.7189605205232452,
+          "continue_current_method": 0.5995993660108033,
+          "repair_data_split": 0.5920993660108036,
+          "switch_to_alternative_method": 0.3351997153120523
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "invalid",
+        "valid": false,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.07038528261252275,
+          "continue_current_method": 0.04278942876855263,
+          "repair_data_split": 0.04278942876855263,
+          "switch_to_alternative_method": -0.1521520955968313
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_replication_instability_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3530010857142857
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002415714285714299,
+          "continue_current_method": 0.005007214285714268,
+          "repair_data_split": 0.005007214285714268,
+          "switch_to_alternative_method": 0.253348897959184
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3530010857142857
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002415714285714299,
+          "continue_current_method": 0.005007214285714268,
+          "repair_data_split": 0.005007214285714268,
+          "switch_to_alternative_method": 0.253348897959184
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "supported",
+        "valid": true
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6537833498639192,
+          "continue_current_method": 0.747062356275475,
+          "repair_data_split": 0.739562356275475,
+          "switch_to_alternative_method": 0.34114795902547995
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0032248488442336853,
+          "continue_current_method": -0.015345873671262722,
+          "repair_data_split": -0.015345873671262722,
+          "switch_to_alternative_method": -0.01689216711289132
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6537833498639192,
+          "continue_current_method": 0.747062356275475,
+          "repair_data_split": 0.739562356275475,
+          "switch_to_alternative_method": 0.34114795902547995
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0032248488442336853,
+          "continue_current_method": -0.015345873671262722,
+          "repair_data_split": -0.015345873671262722,
+          "switch_to_alternative_method": -0.01689216711289132
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__supported"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.8535725142857145
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.00241571428571441,
+          "continue_current_method": 0.000175785714285559,
+          "repair_data_split": 0.000175785714285559,
+          "switch_to_alternative_method": -0.04996122448979623
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3530010857142857
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002415714285714299,
+          "continue_current_method": 0.005007214285714268,
+          "repair_data_split": 0.005007214285714268,
+          "switch_to_alternative_method": 0.253348897959184
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "refuted",
+        "valid": true
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6522104580663887,
+          "continue_current_method": 0.7488201249233658,
+          "repair_data_split": 0.7413201249233657,
+          "switch_to_alternative_method": 0.8503400664345474
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.018583545622986808,
+          "continue_current_method": 0.006121350005368287,
+          "repair_data_split": 0.006121350005368287,
+          "switch_to_alternative_method": 0.1213572682572559
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6536528987040169,
+          "continue_current_method": 0.7472591735245837,
+          "repair_data_split": 0.7397591735245839,
+          "switch_to_alternative_method": 0.3410686991423827
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.0029333285233178463,
+          "continue_current_method": -0.01738413679448947,
+          "repair_data_split": -0.01738413679448947,
+          "switch_to_alternative_method": -0.017168694707515586
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__refuted"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.9919368000000002,
+          "continue_current_method": 0.20927959999999998,
+          "repair_data_split": 0.20177960000000003,
+          "switch_to_alternative_method": 0.5769224571428573
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.256734285714286,
+          "continue_current_method": -0.00535878571428583,
+          "repair_data_split": -0.00535878571428583,
+          "switch_to_alternative_method": -0.1313984897959185
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3530010857142857
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "insufficient",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002415714285714299,
+          "continue_current_method": 0.005007214285714268,
+          "repair_data_split": 0.005007214285714268,
+          "switch_to_alternative_method": 0.253348897959184
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "insufficient",
+        "valid": true
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.8730008891996123,
+          "continue_current_method": 0.3689855736291976,
+          "repair_data_split": 0.3614855736291976,
+          "switch_to_alternative_method": 0.5921543009847767
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.07231463406636773,
+          "continue_current_method": -0.022911071517140114,
+          "repair_data_split": -0.022911071517140114,
+          "switch_to_alternative_method": 0.052847596868699664
+        }
+      },
+      {
+        "action": "add_samples_or_seeds",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 1.013772955352872,
+          "continue_current_method": 0.20391732625029196,
+          "repair_data_split": 0.19641732625029196,
+          "switch_to_alternative_method": 0.5733983397528601
+        },
+        "posterior_optimal_action": "add_samples_or_seeds",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.0024211696982379127,
+          "continue_current_method": -0.13848479149248283,
+          "repair_data_split": -0.13848479149248283,
+          "switch_to_alternative_method": -0.05513094489733994
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__insufficient"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.4110456000000001,
+          "continue_current_method": -0.3232132000000001,
+          "repair_data_split": -0.3307132,
+          "switch_to_alternative_method": 0.8535725142857143
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": -0.002415714285714299,
+          "continue_current_method": 0.00017578571428567002,
+          "repair_data_split": 0.00017578571428567002,
+          "switch_to_alternative_method": -0.11622081632653092
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6449543999999999,
+          "continue_current_method": 0.7327867999999997,
+          "repair_data_split": 0.7252868000000003,
+          "switch_to_alternative_method": 0.3530010857142857
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002415714285714299,
+          "continue_current_method": 0.005007214285714268,
+          "repair_data_split": 0.005007214285714268,
+          "switch_to_alternative_method": 0.253348897959184
+        }
+      }
+    ],
+    "track": "oracle_state",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__invalid"
+  },
+  {
+    "diagnose_retest_replicate_present": true,
+    "diagnostic_only": true,
+    "family": "subgroup_metric_mismatch",
+    "formal_comparison_authorized": false,
+    "question_id": "t1_v04_subgroup_metric_mismatch_03",
+    "split": "dev",
+    "steps": [
+      {
+        "action": "continue_current_method",
+        "phase": "diagnose",
+        "state": "invalid",
+        "valid": false
+      },
+      {
+        "action": "switch_to_alternative_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "retest",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": -0.12509651799121835,
+          "continue_current_method": -0.1961816028144437,
+          "repair_data_split": -0.2036816028144437,
+          "switch_to_alternative_method": 0.8067971866984279
+        },
+        "posterior_optimal_action": "switch_to_alternative_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.08293325913481564,
+          "continue_current_method": 0.03638288787903954,
+          "repair_data_split": 0.03638288787903954,
+          "switch_to_alternative_method": 0.06968681831841739
+        }
+      },
+      {
+        "action": "continue_current_method",
+        "candidate_pool_excludes_current_question": true,
+        "method_b_hindsight_excluded": true,
+        "phase": "replicate",
+        "posterior_expected_utility": {
+          "add_samples_or_seeds": 0.6536162339985829,
+          "continue_current_method": 0.7473144911351615,
+          "repair_data_split": 0.7398144911351615,
+          "switch_to_alternative_method": 0.34104519693479374
+        },
+        "posterior_optimal_action": "continue_current_method",
+        "state": "supported",
+        "valid": true,
+        "value_of_information": {
+          "add_samples_or_seeds": 0.002851418053585131,
+          "continue_current_method": -0.017465700074281054,
+          "repair_data_split": -0.017465700074281054,
+          "switch_to_alternative_method": -0.017247257616543443
+        }
+      }
+    ],
+    "track": "raw_evidence",
+    "world_id_audit": "t1_v04_subgroup_metric_mismatch_03__invalid"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "schema_version": "pesco_tier1_p3_small_model_gate_v0.1",
+  "status": "no_go_prerequisites_not_met",
+  "experiment_executed": false,
+  "promotion_prerequisites": {
+    "p2_result": "artifacts/tier1_p2_v04_ten_seed_v3/p2_result.json",
+    "p2_promotion_status": "NO-GO",
+    "p2_gates": {
+      "ten_training_seeds": true,
+      "promotion_regret_ci_entirely_below_zero": false,
+      "heldout_same_question_flip_ci_entirely_above_zero": true,
+      "at_least_8_of_10_seeds_same_regret_direction": false,
+      "reward_perturbation_winner_stability_90_percent": true,
+      "no_worse_validity_replication_false_discovery": true,
+      "beats_sft": true,
+      "promotion_pair_count_minimum": true,
+      "promotion_cluster_count_minimum": true
+    },
+    "formal_comparison_authorized": false
+  },
+  "capability_audit": {
+    "transformers": "5.8.1",
+    "peft": null,
+    "bitsandbytes": null,
+    "accelerate": "1.13.0",
+    "torch": {
+      "installed": true,
+      "version": "2.12.0+cu130",
+      "cuda_available": false,
+      "device_count": 0
+    },
+    "python": "3.10.12"
+  },
+  "planned_methods": [
+    "SFT offline LoRA",
+    "Branch advantage offline LoRA",
+    "NoFlip offline LoRA",
+    "PESCO-Full offline LoRA",
+    "compute-matched inference-time branch search"
+  ],
+  "parameter_internalization_test": {
+    "search_budget_conditions": [
+      1.0,
+      0.5,
+      0.25
+    ],
+    "primary_metric": "normalized research regret",
+    "must_be_run_only_after_promotion": true
+  },
+  "blocking_reasons": [
+    "p2_promotion_gate_not_passed",
+    "formal_cpu_comparison_not_authorized",
+    "peft_not_installed",
+    "no_cuda_device_for_qlora"
+  ],
+  "online_rl_or_7b_authorized": false,
+  "diagnostic_only": true
+}

@@ -53,8 +53,11 @@ def main(argv=None) -> int:
     print(json.dumps({
         "output": str(args.output),
         "methods": list(config.methods),
+        "question_world_group_count": payload["dataset_provenance"]["question_world_group_count"],
         "branch_groups": payload["dataset_provenance"]["branch_groups"],
+        "action_level_row_count": payload["dataset_provenance"]["action_level_row_count"],
         "exploration_seed_observations": payload["dataset_provenance"]["exploration_seed_observations"],
+        "seed_level_observation_count": payload["dataset_provenance"]["seed_level_observation_count"],
         "reversal_count": payload["dataset_provenance"]["reversal_count"],
         "tier2_claim": payload["tier2_claim"],
     }, indent=2, ensure_ascii=False))

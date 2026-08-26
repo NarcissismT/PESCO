@@ -137,24 +137,19 @@
       ],
       "confidence_width": 0.12298951914715689,
       "confirmation": {
-        "data_independent": true,
-        "dataset_hash": "sha256:13466141071fa0709b6c21f728a2aa6bb52ab8129ff2c1c5b4013bbb5a2eb279",
-        "eligible": true,
-        "passed": true,
-        "performed": true,
-        "seeds": [
-          103,
-          107,
-          109,
-          113
-        ],
-        "split_hash": "sha256:1da1132d24e558a98ee5bcc16387590013d6266a7bfe360287399286fc380ab1"
+        "data_independent": false,
+        "dataset_hash": "",
+        "eligible": false,
+        "passed": false,
+        "performed": false,
+        "seeds": [],
+        "split_hash": ""
       },
       "data_partition": "row_random_v1",
       "dataset_hash": "sha256:6c937439a659691082194890f3d2653da3748e0815839794d4fbe3f4338b8bbc",
       "effect_estimate": 0.09833682900408158,
       "estimator": "difference_in_means_v1",
-      "evidence_state": "supported",
+      "evidence_state": "invalid",
       "group_overlap_count": 59,
       "hidden_validation": {
         "baseline": 0.05417291793101067,
@@ -170,9 +165,10 @@
       "split_hash": "sha256:c635a9c2eb6378517959df61972eea804e70c83c76b693d65d1390109cc3850c",
       "treatment_confounder_correlation": 0.050459070217009905,
       "true_effect": 0.14,
-      "validity_pass": true,
+      "validity_pass": false,
       "validity_signals": [
         "tier1_numpy_backend",
+        "protocol_invalid_diagnostic",
         "treatment_assignment_independent"
       ]
     },
@@ -229,21 +225,16 @@
     "sample_effect": {
       "confidence_width_reduced": true,
       "confirmation_after": {
-        "data_independent": true,
-        "dataset_hash": "sha256:13466141071fa0709b6c21f728a2aa6bb52ab8129ff2c1c5b4013bbb5a2eb279",
-        "eligible": true,
-        "passed": true,
-        "performed": true,
-        "seeds": [
-          103,
-          107,
-          109,
-          113
-        ],
-        "split_hash": "sha256:1da1132d24e558a98ee5bcc16387590013d6266a7bfe360287399286fc380ab1"
+        "data_independent": false,
+        "dataset_hash": "",
+        "eligible": false,
+        "passed": false,
+        "performed": false,
+        "seeds": [],
+        "split_hash": ""
       },
       "sample_size_increased": true,
-      "validity_restored": true,
+      "validity_restored": false,
       "width_reduction": 1.3770104808528432
     },
     "true_effect": 0.14,
@@ -388,24 +379,19 @@
       ],
       "confidence_width": 0.06870559599028508,
       "confirmation": {
-        "data_independent": true,
-        "dataset_hash": "sha256:6136c3ac6f8a55100ebddf02fa10486d2ab1a1f0665719f21ef6e279a87a727d",
-        "eligible": true,
-        "passed": true,
-        "performed": true,
-        "seeds": [
-          103,
-          107,
-          109,
-          113
-        ],
-        "split_hash": "sha256:fb2f65081e97845a3641e7e060c9f35f2a9f9daceb571ca7759e23689f193223"
+        "data_independent": false,
+        "dataset_hash": "",
+        "eligible": false,
+        "passed": false,
+        "performed": false,
+        "seeds": [],
+        "split_hash": ""
       },
       "data_partition": "row_random_v1",
       "dataset_hash": "sha256:9655e2812e33bcbfd04a1e04d6aefb4cc1f1ac7841f260e24d82899cbbebbb53",
       "effect_estimate": 0.16383227777659168,
       "estimator": "difference_in_means_v1",
-      "evidence_state": "supported",
+      "evidence_state": "invalid",
       "group_overlap_count": 57,
       "hidden_validation": {
         "baseline": 0.057611319766009965,
@@ -421,9 +407,10 @@
       "split_hash": "sha256:a6db690db80d555c12f1c7622f6c105ad107ff56944a04e07d25e16f1103377a",
       "treatment_confounder_correlation": -0.0036747058491951243,
       "true_effect": 0.161,
-      "validity_pass": true,
+      "validity_pass": false,
       "validity_signals": [
         "tier1_numpy_backend",
+        "protocol_invalid_diagnostic",
         "treatment_assignment_independent"
       ]
     },
@@ -480,21 +467,16 @@
     "sample_effect": {
       "confidence_width_reduced": true,
       "confirmation_after": {
-        "data_independent": true,
-        "dataset_hash": "sha256:6136c3ac6f8a55100ebddf02fa10486d2ab1a1f0665719f21ef6e279a87a727d",
-        "eligible": true,
-        "passed": true,
-        "performed": true,
-        "seeds": [
-          103,
-          107,
-          109,
-          113
-        ],
-        "split_hash": "sha256:fb2f65081e97845a3641e7e060c9f35f2a9f9daceb571ca7759e23689f193223"
+        "data_independent": false,
+        "dataset_hash": "",
+        "eligible": false,
+        "passed": false,
+        "performed": false,
+        "seeds": [],
+        "split_hash": ""
       },
       "sample_size_increased": true,
-      "validity_restored": true,
+      "validity_restored": false,
       "width_reduction": 1.4312944040097149
     },
     "true_effect": 0.161,
@@ -639,24 +621,19 @@
       ],
       "confidence_width": 0.08580476619863778,
       "confirmation": {
-        "data_independent": true,
-        "dataset_hash": "sha256:9a4fbe53e73d0a95c810ca25b0da62fdc94292a9ffdcb5ad051aedb297421b4a",
-        "eligible": true,
-        "passed": true,
-        "performed": true,
-        "seeds": [
-          103,
-          107,
-          109,
-          113
-        ],
-        "split_hash": "sha256:ae76423a22ed19a6ab567c84385294d288fba60f92f8a7c5a60b1620d69d5f0c"
+        "data_independent": false,
+        "dataset_hash": "",
+        "eligible": false,
+        "passed": false,
+        "performed": false,
+        "seeds": [],
+        "split_hash": ""
       },
       "data_partition": "row_random_v1",
       "dataset_hash": "sha256:913510696f278a6804f295ddde7b60acb55510700a1cdfd539f1281c3adf6590",
       "effect_estimate": 0.10926116415449431,
       "estimator": "difference_in_means_v1",
-      "evidence_state": "supported",
+      "evidence_state": "invalid",
       "group_overlap_count": 57,
       "hidden_validation": {
         "baseline": 0.057920468704765235,
@@ -672,9 +649,10 @@
       "split_hash": "sha256:4480cca82d1b7a88b70ad733df60c1c198e18b509b5d9dc03e58b1ab97d68e25",
       "treatment_confounder_correlation": -0.0253755464817549,
       "true_effect": 0.11900000000000001,
-      "validity_pass": true,
+      "validity_pass": false,
       "validity_signals": [
         "tier1_numpy_backend",
+        "protocol_invalid_diagnostic",
         "treatment_assignment_independent"
       ]
     },
@@ -731,21 +709,16 @@
     "sample_effect": {
       "confidence_width_reduced": true,
       "confirmation_after": {
-        "data_independent": true,
-        "dataset_hash": "sha256:9a4fbe53e73d0a95c810ca25b0da62fdc94292a9ffdcb5ad051aedb297421b4a",
-        "eligible": true,
-        "passed": true,
-        "performed": true,
-        "seeds": [
-          103,
-          107,
-          109,
-          113
-        ],
-        "split_hash": "sha256:ae76423a22ed19a6ab567c84385294d288fba60f92f8a7c5a60b1620d69d5f0c"
+        "data_independent": false,
+        "dataset_hash": "",
+        "eligible": false,
+        "passed": false,
+        "performed": false,
+        "seeds": [],
+        "split_hash": ""
       },
       "sample_size_increased": true,
-      "validity_restored": true,
+      "validity_restored": false,
       "width_reduction": 1.4141952338013621
     },
     "true_effect": 0.11900000000000001,

@@ -1,0 +1,9 @@
+{
+  "allow_final_access": true,
+  "freeze_check_pass": true,
+  "contamination_audit_pass": true,
+  "model_frozen": true,
+  "hyperparameters_frozen": true,
+  "purpose": "user_requested_formal_environment_receipt_collection",
+  "claims_authorized": false
+}

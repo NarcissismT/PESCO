@@ -1,8 +1,9 @@
 """Tier-1 v0.3 collector, matched algorithm suite, and evaluator.
 
-The collector executes one common public decision state and four same-state branches
-for every question/world in the 12-question benchmark (48 groups × 4 actions × 4
-exploration seeds = 768 seed observations).  It then trains the small differentiable
+The collector executes one common public decision state and four same-state action
+branches for every question/world in the 12-question benchmark: 48
+question-world branch groups × 4 action-level rows = 192 rows × 4 exploration
+seeds = 768 seed-level observations.  It then trains the small differentiable
 policies from :mod:`algorithms.differentiable_strategy` on the exact same frozen
 dataset and optimizer-step budget.
 
@@ -47,6 +48,7 @@ from ..environments.tier1_benchmark import (
 from ..algorithms.paired_world_sampler import identify_confirmed_reversal
 from .cluster_bootstrap import clustered_bootstrap
 from ..schemas import EvidenceState, Protocol, ResearchAction
+from ..utils.run_manifest import build_run_manifest, write_run_manifest
 
 
 DEFAULT_METHODS = (
@@ -60,6 +62,39 @@ DEFAULT_METHODS = (
     "PESCO-Full",
     "Evidence-Gated SMOPD",
 )
+
+
+# ``invalid_local_optimization`` is deliberately a narrow diagnostic rather than a
+# synonym for "any action other than REPAIR".  It flags persistence/switching while
+# the trusted pre-action state is Invalid *only when that action loses to the
+# evaluator-owned public branch-utility winner*.  This preserves legitimate
+# Invalid→SWITCH cases (the subgroup-metric family) and does not read the hidden
+# target-action audit field.
+INVALID_LOCAL_OPTIMIZATION_ACTIONS = frozenset({
+    ResearchAction.CONTINUE,
+    ResearchAction.SWITCH,
+})
+
+
+def is_invalid_local_optimization(
+    state_target: EvidenceState,
+    selected_action: ResearchAction,
+    public_best_action: ResearchAction,
+) -> bool:
+    """Return the evaluator-side Invalid-state local-optimization flag.
+
+    The denominator is every example whose trusted pre-action state is Invalid.
+    The numerator contains only CONTINUE/SWITCH selections that are *not* the
+    public branch-utility winner.  In particular, an Invalid example whose
+    correct action is SWITCH is not counted.  Hidden ``target_action`` metadata
+    is intentionally not consulted.
+    """
+
+    return bool(
+        state_target is EvidenceState.INVALID
+        and selected_action in INVALID_LOCAL_OPTIMIZATION_ACTIONS
+        and selected_action is not public_best_action
+    )
 
 
 @dataclass(frozen=True)
@@ -196,31 +231,74 @@ def collect_tier1_v03_dataset(
             # reversal confidence gate; the vector branch above remains the canonical
             # four-seed estimate used for ordinary action training.
             branch_seed_utilities: Dict[str, List[float]] = {}
-            branch_by_action = {branch.option.value: branch for branch in branches}
+            branch_seed_confirmations: Dict[str, List[dict]] = {}
             for action in ACTION_SET:
                 values: List[float] = []
+                confirmation_audits: List[dict] = []
                 for seed in protocol.exploration_seeds:
                     seed_env = env.clone_from_snapshot(snapshot)
                     seed_initial = seed_env.visible_observation()
                     setattr(seed_env, "_branch_initial_observation", seed_initial)
                     seed_output = seed_env.execute_option(action, seeds=(int(seed),))
                     seed_verdict = TrustedVerifier(protocol).evaluate(seed_output, seed_env, confirm=False)
+                    # Confirmation must be an independent receipt for this exact
+                    # one-seed replicate.  Never copy the vector branch's
+                    # confirmation bonus into all seed utilities: doing so makes
+                    # the seed-level reversal variance spuriously optimistic.
+                    confirmation_seed = int(protocol.confirmation_seeds[
+                        list(protocol.exploration_seeds).index(seed) % len(protocol.confirmation_seeds)
+                    ])
+                    confirmation_passed = None
+                    confirmation_performed = False
+                    if (
+                        seed_verdict.evidence_state in {EvidenceState.SUPPORTED, EvidenceState.REFUTED}
+                        and bool(getattr(seed_verdict, "validity_pass", False))
+                    ):
+                        confirmation_performed = True
+                        candidate = seed_env.clone_from_snapshot(seed_env.snapshot())
+                        if hasattr(candidate, "_simulate"):
+                            confirmation_output = candidate._simulate(  # noqa: SLF001 - verifier boundary
+                                method=seed_output.method,
+                                option=action,
+                                seeds=(confirmation_seed,),
+                                confirmation=True,
+                            )
+                        else:
+                            confirmation_output = candidate.execute_option(
+                                action, seeds=(confirmation_seed,), confirmation=True
+                            )
+                        confirmation_verdict = TrustedVerifier(protocol).evaluate(
+                            confirmation_output, candidate, confirm=False
+                        )
+                        confirmation_passed = bool(
+                            confirmation_verdict.validity_pass
+                            and confirmation_verdict.evidence_state is seed_verdict.evidence_state
+                            and confirmation_output.dataset_hash != seed_output.dataset_hash
+                            and confirmation_output.split_hash != seed_output.split_hash
+                        )
+                    from dataclasses import replace
+                    utility_verdict = replace(
+                        seed_verdict,
+                        independent_confirmation_performed=confirmation_performed,
+                        independent_confirmation_passed=bool(confirmation_passed),
+                    )
                     values.append(float(benchmark_action_utility(
                         seed_output,
-                        seed_verdict,
+                        utility_verdict,
                         seed_env,
                         benchmark,
                         question=question,
                         world=world,
                         initial_observation=observation,
                     )))
-                # The vector branch's independent confirmation is part of the
-                # pre-registered utility.  Carry that same evaluator bonus to every
-                # seed replicate so reversal deltas are not spuriously erased merely
-                # because a one-seed interval is too wide to trigger confirmation.
-                if bool(getattr(branch_by_action[action.value].verdict, "independent_confirmation_passed", False)):
-                    values = [value + 0.20 for value in values]
+                    confirmation_audits.append({
+                        "exploration_seed": int(seed),
+                        "confirmation_seed": confirmation_seed,
+                        "performed": confirmation_performed,
+                        "passed": confirmation_passed,
+                    })
                 branch_seed_utilities[action.value] = values
+                branch_seed_confirmations[action.value] = confirmation_audits
             branch_states = tuple(branch.verdict.evidence_state for branch in branches)
             confirmation_results = [
                 bool(getattr(branch.verdict, "independent_confirmation_passed", False))
@@ -238,6 +316,8 @@ def collect_tier1_v03_dataset(
             metadata = {
                 "family": question.family,
                 "variant": int(question.variant),
+                "question_world_group_id": f"{question.question_id}|{world.world_id}",
+                "record_granularity": "question_world_group",
                 "target_action": question.target_action(world.world_id).value,
                 "backend": getattr(branches[0].output, "backend", "unknown"),
                 "initial_trusted_state": initial_verdict.evidence_state.value,
@@ -270,15 +350,15 @@ def collect_tier1_v03_dataset(
                     for branch in branches
                 },
                 "branch_seed_utilities": branch_seed_utilities,
+                "branch_seed_confirmations": branch_seed_confirmations,
                 "seed_utility_observation_count": sum(len(values) for values in branch_seed_utilities.values()),
+                "action_level_row_count": len(ACTION_SET),
+                "seed_level_observation_count": len(ACTION_SET) * len(protocol.exploration_seeds),
                 "seed_utility_confirmation_bonus_source": {
-                    "type": "vector_branch_certificate_reapplied_to_seed_replicates",
-                    "not_independent_per_seed_confirmation": True,
-                    "vector_confirmation_passed_by_action": {
-                        action.value: bool(getattr(branch_by_action[action.value].verdict, "independent_confirmation_passed", False))
-                        for action in ACTION_SET
-                    },
-                    "bonus": 0.20,
+                    "type": "independent_per_seed_confirmation_receipts",
+                    "not_independent_per_seed_confirmation": False,
+                    "vector_confirmation_bonus_copied": False,
+                    "bonus": 0.0,
                 },
             }
             if include_seed_audit:
@@ -385,8 +465,17 @@ def collect_tier1_v03_dataset(
         "benchmark_protocol_version": benchmark.protocol_version,
         "question_count": len(benchmark.questions),
         "world_count": len(benchmark.worlds),
+        # A branch group is one question/world public state.  Each group has one
+        # vector utility for every registered action and one seed-level replay per
+        # action/seed pair.  Keep explicit names alongside compatibility aliases so
+        # artifact readers cannot confuse 48, 192, and 768.
+        "question_world_group_count": branch_groups,
         "branch_groups": branch_groups,
+        "action_level_row_count": branch_groups * len(ACTION_SET),
+        "action_level_rows": branch_groups * len(ACTION_SET),
         "exploration_seed_count": len(protocol.exploration_seeds),
+        "seed_level_observation_count": seed_observations,
+        "seed_level_observations": seed_observations,
         "exploration_seed_observations": seed_observations,
         "seed_utility_array_count": len(seed_utility_arrays),
         "seed_utility_varying_array_count": varying_seed_utility_arrays,
@@ -517,15 +606,20 @@ def evaluate_differentiable_policy(
         # These are deliberately public-state conditional diagnostics.  An
         # erroneous repair is a repair selected while the trusted pre-action
         # state is not INVALID.  An invalid local optimisation is a CONTINUE or
-        # SWITCH selected while that state is INVALID.  Neither denominator uses
-        # the hidden target-action audit field.
+        # SWITCH selected while that state is INVALID *and* the selected action
+        # loses to the evaluator-owned public branch-utility winner.  Thus a
+        # scientifically correct Invalid+SWITCH row is not mislabeled.  Neither
+        # denominator uses the hidden target-action audit field.
         erroneous_repair_flags.append(
             example.state_target is not EvidenceState.INVALID
             and action is ResearchAction.REPAIR
         )
         invalid_local_optimization_flags.append(
-            example.state_target is EvidenceState.INVALID
-            and action in {ResearchAction.CONTINUE, ResearchAction.SWITCH}
+            is_invalid_local_optimization(
+                example.state_target,
+                action,
+                example.best_action,
+            )
         )
         validity_map = example.metadata.get("branch_validity", {})
         selected_invalid_branch_flags.append(
@@ -568,6 +662,8 @@ def evaluate_differentiable_policy(
             ),
             "erroneous_repair_action": bool(erroneous_repair_flags[-1]),
             "invalid_local_optimization": bool(invalid_local_optimization_flags[-1]),
+            "invalid_local_optimization_definition": "invalid_state_and_continue_or_switch_not_public_best_action",
+            "invalid_local_optimization_reference": "public_branch_utility_best_action",
             "selected_branch_invalid": bool(selected_invalid_branch_flags[-1]),
             "predicted_state": predicted_state.value,
             "true_state": example.state_target.value,
@@ -750,6 +846,23 @@ def evaluate_differentiable_policy(
             )
             if any(example.state_target is EvidenceState.INVALID for example in examples)
             else None
+        ),
+        "invalid_local_optimization_definition": {
+            "eligible_state": EvidenceState.INVALID.value,
+            "candidate_actions": [
+                action.value for action in ACTION_SET
+                if action in INVALID_LOCAL_OPTIMIZATION_ACTIONS
+            ],
+            "correct_action_reference": "public_branch_utility_best_action",
+            "hidden_target_action_used": False,
+            "correct_invalid_switch_excluded": True,
+        },
+        "invalid_correct_switch_n": sum(
+            example.state_target is EvidenceState.INVALID
+            and example.best_action is ResearchAction.SWITCH
+            and predicted_actions.get(index) is ResearchAction.SWITCH
+            for index, example in enumerate(dataset.examples)
+            if index in split_indices
         ),
         "selected_invalid_branch_n": sum(selected_invalid_branch_flags),
         "selected_invalid_branch_rate": sum(selected_invalid_branch_flags) / len(examples),
@@ -1131,7 +1244,8 @@ def run_tier1_differentiable_suite(
                         "action_accuracy_ci", "mean_regret_ci", "state_macro_f1_ci", "pair_flip_accuracy_ci",
                         "erroneous_repair_n", "erroneous_repair_eligible_n", "erroneous_repair_rate",
                         "invalid_local_optimization_n", "invalid_local_optimization_eligible_n",
-                        "invalid_local_optimization_rate", "selected_invalid_branch_n",
+                        "invalid_local_optimization_rate", "invalid_correct_switch_n",
+                        "invalid_local_optimization_definition", "selected_invalid_branch_n",
                         "selected_invalid_branch_rate", "state_macro_f1", "state_accuracy",
                         "mean_belief_log_loss",
                         "mean_best_action_probability", "flip_eligible_n", "flip_correct_n",
@@ -1257,7 +1371,9 @@ def run_tier1_differentiable_suite(
                     "research_regret": metrics[method][split].get("research_regret"),
                     "erroneous_repair_action_rate": metrics[method][split].get("erroneous_repair_rate"),
                     "invalid_local_optimization_n": metrics[method][split].get("invalid_local_optimization_n"),
+                    "invalid_correct_switch_n": metrics[method][split].get("invalid_correct_switch_n"),
                     "invalid_local_optimization_rate": metrics[method][split].get("invalid_local_optimization_rate"),
+                    "invalid_local_optimization_definition": metrics[method][split].get("invalid_local_optimization_definition"),
                     "utility_per_cost": metrics[method][split].get("utility_per_cost"),
                     "selected_invalid_branch_rate": metrics[method][split].get("selected_invalid_branch_rate"),
                 }
@@ -1512,6 +1628,64 @@ def run_tier1_differentiable_suite(
     (output / "experiment_d_branch_ablation.json").write_text(json.dumps(experiment_d, indent=2, ensure_ascii=False), encoding="utf-8")
     (output / "experiment_e_flip_ablation.json").write_text(json.dumps(experiment_e, indent=2, ensure_ascii=False), encoding="utf-8")
     (output / "experiment_f_discovery_boundary.json").write_text(json.dumps(experiment_f, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # The suite is an executable C/D/E/F runner, so provenance belongs beside its
+    # artifacts instead of being recoverable only through a later metadata pass.
+    repo_root = Path(__file__).resolve().parents[2]
+    source_paths = [
+        Path(__file__).resolve(),
+        repo_root / "scripts/run_tier1_differentiable_suite.py",
+        repo_root / "research_strategy_optimization/algorithms/differentiable_strategy.py",
+        repo_root / "research_strategy_optimization/algorithms/branch_rollout.py",
+        repo_root / "research_strategy_optimization/environments/tier0_simulator.py",
+        repo_root / "research_strategy_optimization/environments/tier1_benchmark.py",
+        repo_root / "research_strategy_optimization/schemas.py",
+        repo_root / "research_strategy_optimization/utils/run_manifest.py",
+    ]
+    data_paths = [
+        output / "dataset.json",
+        output / "dataset_public.json",
+        output / "suite.json",
+        output / "experiment_c_state_reward.json",
+        output / "experiment_d_branch_ablation.json",
+        output / "experiment_e_flip_ablation.json",
+        output / "experiment_f_discovery_boundary.json",
+        *sorted(output.glob("policy_*.pt")),
+    ]
+    manifest = build_run_manifest(
+        experiment="C_D_E_F_differentiable_suite",
+        repo_root=repo_root,
+        # The library API may be called directly; the CLI wrapper supplies the
+        # exact argv through its post-hoc companion when needed.
+        command=None,
+        runner_paths=source_paths,
+        data_paths=data_paths,
+        seeds={
+            "training": [int(config.trainer.seed)],
+            "inference": [int(config.trainer.seed)],
+            "exploration": list(config.exploration_seeds),
+            "confirmation": list(config.confirmation_seeds),
+        },
+        checkpoint=None,
+        status="completed",
+        diagnostics={
+            "capture_mode": "in_run",
+            "artifact_status": payload["implementation_status"],
+            "protocol_version": protocol.protocol_version,
+            "protocol_digest": protocol_digest,
+            "experiments": ["C", "D", "E", "F"],
+            "methods": list(config.methods),
+            "optimizer_step_cap": config.trainer.max_optimizer_steps,
+            "branch_groups": dataset.provenance.get("question_world_group_count"),
+            "action_level_branch_rows": dataset.provenance.get("action_level_row_count"),
+            "seed_level_executions": dataset.provenance.get("seed_level_observation_count"),
+            "reversal_count": dataset.provenance.get("reversal_count"),
+            "formal_final_splits_opened": False,
+            "tier2_claim": payload["tier2_claim"],
+            "llm_claim": payload["llm_claim"],
+        },
+    )
+    write_run_manifest(output / "run_manifest.json", manifest)
     return payload
 
 
@@ -1521,5 +1695,6 @@ __all__ = [
     "benchmark_action_utility",
     "collect_tier1_v03_dataset",
     "evaluate_differentiable_policy",
+    "is_invalid_local_optimization",
     "run_tier1_differentiable_suite",
 ]

@@ -1,0 +1,69 @@
+{
+  "authorization_receipt": {
+    "allow_final_access": true,
+    "claims_authorized": false,
+    "contamination_audit_pass": true,
+    "freeze_check_pass": true,
+    "hyperparameters_frozen": true,
+    "model_frozen": true,
+    "purpose": "user_requested_formal_environment_receipt_collection"
+  },
+  "cluster_counts_by_split": {
+    "dev": 24,
+    "final_id": 24,
+    "final_ood": 20,
+    "train": 24
+  },
+  "counts_by_split": {
+    "dev": 24,
+    "final_id": 24,
+    "final_ood": 20,
+    "train": 24
+  },
+  "formal_comparison_authorized": false,
+  "formal_evaluation_completed": true,
+  "gates": {
+    "final_access_locked": true,
+    "final_id_confirmed_reversal_minimum_30": true,
+    "final_id_question_count_at_least_20": true,
+    "final_id_world_count_at_least_80": true,
+    "final_ood_confirmed_reversal_minimum_30": true,
+    "final_ood_question_count_at_least_20": true,
+    "final_ood_world_count_at_least_80": true,
+    "final_question_ids_disjoint_from_diagnostic": true,
+    "final_world_ids_disjoint_from_diagnostic": true,
+    "independent_confirmation_not_copied": true,
+    "multi_step_trajectories_complete": true,
+    "public_manifest_omits_family_labels": true,
+    "public_manifest_omits_legacy_targets": true,
+    "raw_track_hides_structured_state": true,
+    "same_question_pair_scope": true,
+    "whole_family_ood_holdout": true
+  },
+  "llm_claim": false,
+  "mechanism_families_id": [
+    "group_leakage",
+    "causal_confounding",
+    "low_sample_variance",
+    "subgroup_metric_mismatch",
+    "confounding_underpower",
+    "replication_instability"
+  ],
+  "mechanism_families_ood": [
+    "leakage_metric_mismatch",
+    "protocol_drift"
+  ],
+  "oracle_dataset": "dataset_oracle_state.json",
+  "pair_counts_by_split": {
+    "dev": 188,
+    "final_id": 196,
+    "final_ood": 114,
+    "train": 186
+  },
+  "pass": true,
+  "raw_dataset": "dataset_raw_evidence.json",
+  "schema_version": "pesco_tier1_v04_formal_final_result_v0.1",
+  "status": "completed_cpu_formal_final",
+  "tier2_claim": false,
+  "whole_family_ood_holdout": true
+}

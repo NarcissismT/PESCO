@@ -1,0 +1,15 @@
+{
+  "cluster_counts_by_split": {
+    "dev": 20,
+    "diagnostic_ood": 20,
+    "train": 24
+  },
+  "reused_frozen_dataset": true,
+  "reversal_counts_by_split": {
+    "dev": 116,
+    "diagnostic_ood": 65,
+    "train": 120
+  },
+  "same_question_reversal_count": 301,
+  "track": "raw_evidence"
+}

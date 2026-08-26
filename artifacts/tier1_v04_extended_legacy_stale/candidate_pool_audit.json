@@ -1,0 +1,114 @@
+[
+  {
+    "candidate_pool_question_ids": [
+      "t1e_causal_confounding_02",
+      "t1e_causal_confounding_03",
+      "t1e_causal_confounding_04",
+      "t1e_causal_confounding_05",
+      "t1e_causal_confounding_06",
+      "t1e_causal_confounding_07",
+      "t1e_causal_confounding_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_causal_confounding_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1e_composite_confounding_metric_02",
+      "t1e_composite_confounding_metric_03",
+      "t1e_composite_confounding_metric_04",
+      "t1e_composite_confounding_metric_05",
+      "t1e_composite_confounding_metric_06",
+      "t1e_composite_confounding_metric_07",
+      "t1e_composite_confounding_metric_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_composite_confounding_metric_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1e_composite_leakage_confounding_02",
+      "t1e_composite_leakage_confounding_03",
+      "t1e_composite_leakage_confounding_04",
+      "t1e_composite_leakage_confounding_05",
+      "t1e_composite_leakage_confounding_06",
+      "t1e_composite_leakage_confounding_07",
+      "t1e_composite_leakage_confounding_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_composite_leakage_confounding_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1e_composite_leakage_confounding_metric_02",
+      "t1e_composite_leakage_confounding_metric_03",
+      "t1e_composite_leakage_confounding_metric_04",
+      "t1e_composite_leakage_confounding_metric_05",
+      "t1e_composite_leakage_confounding_metric_06",
+      "t1e_composite_leakage_confounding_metric_07",
+      "t1e_composite_leakage_confounding_metric_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_composite_leakage_confounding_metric_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1e_composite_variance_leakage_02",
+      "t1e_composite_variance_leakage_03",
+      "t1e_composite_variance_leakage_04",
+      "t1e_composite_variance_leakage_05",
+      "t1e_composite_variance_leakage_06",
+      "t1e_composite_variance_leakage_07",
+      "t1e_composite_variance_leakage_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_composite_variance_leakage_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1e_group_leakage_02",
+      "t1e_group_leakage_03",
+      "t1e_group_leakage_04",
+      "t1e_group_leakage_05",
+      "t1e_group_leakage_06",
+      "t1e_group_leakage_07",
+      "t1e_group_leakage_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_group_leakage_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1e_low_sample_variance_02",
+      "t1e_low_sample_variance_03",
+      "t1e_low_sample_variance_04",
+      "t1e_low_sample_variance_05",
+      "t1e_low_sample_variance_06",
+      "t1e_low_sample_variance_07",
+      "t1e_low_sample_variance_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_low_sample_variance_01"
+  },
+  {
+    "candidate_pool_question_ids": [
+      "t1e_subgroup_metric_mismatch_02",
+      "t1e_subgroup_metric_mismatch_03",
+      "t1e_subgroup_metric_mismatch_04",
+      "t1e_subgroup_metric_mismatch_05",
+      "t1e_subgroup_metric_mismatch_06",
+      "t1e_subgroup_metric_mismatch_07",
+      "t1e_subgroup_metric_mismatch_08"
+    ],
+    "candidate_pool_size": 28,
+    "current_question_excluded": true,
+    "question_id": "t1e_subgroup_metric_mismatch_01"
+  }
+]

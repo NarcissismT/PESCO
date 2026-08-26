@@ -201,6 +201,13 @@ class Observation:
     # (for example leakage versus confounding); this is not a hidden world label and
     # lets a policy learn that the same evidence state can require different actions.
     task_family: str = "group_generalization"
+    # v0.4 dual-track provenance.  ``oracle_state`` is the evaluator-side diagnostic
+    # upper bound; ``raw_evidence`` deliberately withholds the trusted state and
+    # carries only numeric/public receipts (correlations, overlap, CI/sample and
+    # replication summaries).  Keeping these fields on the public schema makes the
+    # track boundary auditable without leaking world IDs or target actions.
+    track: str = "oracle_state"
+    raw_evidence: Tuple[Tuple[str, float], ...] = ()
 
     def __post_init__(self) -> None:
         values = (self.effect_estimate, self.ci_low, self.ci_high, self.hypothesis_probability)
@@ -214,6 +221,23 @@ class Observation:
             raise ValueError("active_hypothesis_id must be non-empty")
         if not str(self.task_family).strip():
             raise ValueError("task_family must be a non-empty public identifier")
+        if str(self.track) not in {"oracle_state", "raw_evidence"}:
+            raise ValueError("track must be oracle_state or raw_evidence")
+        raw_pairs = []
+        if isinstance(self.raw_evidence, Mapping):
+            raw_iterable = self.raw_evidence.items()
+        else:
+            raw_iterable = self.raw_evidence
+        for item in raw_iterable:
+            try:
+                key, value = item
+            except (TypeError, ValueError):
+                raise ValueError("raw_evidence entries must be (name, finite value) pairs")
+            numeric = float(value)
+            if not math.isfinite(numeric):
+                raise ValueError("raw_evidence values must be finite")
+            raw_pairs.append((str(key), numeric))
+        raw_pairs = tuple(sorted(raw_pairs, key=lambda pair: pair[0]))
         beliefs = tuple(
             belief if isinstance(belief, HypothesisBelief) else HypothesisBelief(**dict(belief))
             for belief in self.hypothesis_beliefs
@@ -225,6 +249,7 @@ class Observation:
         if not beliefs:
             beliefs = (HypothesisBelief(self.active_hypothesis_id, self.hypothesis_probability, self.turn),)
         object.__setattr__(self, "hypothesis_beliefs", beliefs)
+        object.__setattr__(self, "raw_evidence", raw_pairs)
         counters = (self.turn, self.sample_size, self.seed_count, self.remaining_budget)
         if any(isinstance(raw, bool) or int(raw) != raw or int(raw) < 0 for raw in counters):
             raise ValueError("observation counters must be non-negative")
@@ -256,6 +281,8 @@ class Observation:
             },
             "belief_records": [belief.to_dict() for belief in self.hypothesis_beliefs],
             "task_family": str(self.task_family),
+            "track": str(self.track),
+            "raw_evidence": {key: float(value) for key, value in self.raw_evidence},
         }
 
     @property

@@ -52,6 +52,12 @@ from research_strategy_optimization.environments.tier0_simulator import (
 from research_strategy_optimization.evaluation.compute_accounting import ComputeLedger
 from research_strategy_optimization.evaluation.final_decision import freeze_check, mvp_gate, stage_status
 from research_strategy_optimization.evaluation.ablations import ablation_manifest
+from research_strategy_optimization.evaluation.legacy_certificates import (
+    DISCOVERY_POLICY_ID,
+    LEGACY_CERTIFICATE_ARTIFACT_SCOPE,
+    annotate_legacy_certificate,
+    build_legacy_certificate_manifest,
+)
 from research_strategy_optimization.evaluation.experiment_scaffolds import (
     experiment_b_zero_shot_diagnostic,
     experiment_c_state_reward_diagnostic,
@@ -607,6 +613,8 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
     # utility or certificate bonus.  Keep this machine-readable next to results so a
     # report cannot accidentally interpret stale certificate files as current scores.
     _json_dump(output_dir / "discovery_policy.json", {
+        "schema_version": "pesco_discovery_policy_v0.2",
+        "policy_id": DISCOVERY_POLICY_ID,
         "status": "disabled",
         "reason": "fixed_mvp_action_space_switch_is_not_open_ended_discovery",
         "applies_to": "all_methods",
@@ -614,7 +622,36 @@ def run(output_dir: Path, *, epochs: int = 8) -> Dict[str, Any]:
         "new_path_announced": False,
         "new_path_verified": False,
         "formal_open_ended_certificate_authorized": False,
+        "current_certificate_claim_authorized": False,
+        "legacy_certificate_artifact_scope": LEGACY_CERTIFICATE_ARTIFACT_SCOPE,
+        "legacy_certificate_manifest": "legacy_certificates_manifest.json",
+        "legacy_certificate_pass_interpretation": "historical_only_not_current_discovery",
     })
+    # A few certificates were produced by an older pilot before the fixed-action
+    # boundary was encoded.  Preserve their historical pass/autonomous values but
+    # attach an explicit machine-readable scope and manifest so they cannot be
+    # mistaken for current discovery evidence.
+    for certificate_path in sorted(output_dir.glob("certificate_*.json")):
+        try:
+            certificate_payload = json.loads(certificate_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        # Preserve an explicitly scoped current/open-ended certificate emitted by a
+        # future runner.  Only unscoped historical files (the conflict this pilot
+        # needs to quarantine) receive the legacy marker.
+        if certificate_payload.get("artifact_scope") not in (None, LEGACY_CERTIFICATE_ARTIFACT_SCOPE):
+            continue
+        _json_dump(
+            certificate_path,
+            annotate_legacy_certificate(
+                certificate_payload,
+                discovery_policy_ref="discovery_policy.json",
+            ),
+        )
+    _json_dump(
+        output_dir / "legacy_certificates_manifest.json",
+        build_legacy_certificate_manifest(output_dir),
+    )
     audit_ledger = AuditLedger()
     hypothesis_registry = HypothesisRegistry()
     hypothesis_registry.register_before_experiment(Hypothesis(

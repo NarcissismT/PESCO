@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "action_file_has_192_records": true,
+    "action_rows_are_explicit": true,
+    "counts_action_rows_is_192": true,
+    "counts_branch_groups_is_48": true,
+    "counts_question_world_groups_is_48": true,
+    "counts_seed_observations_is_768": true,
+    "group_index_has_48_records": true,
+    "seed_file_has_768_records": true,
+    "seed_rows_are_explicit": true,
+    "suite_action_level_row_count": true,
+    "suite_question_world_group_count": true,
+    "suite_seed_level_observation_count": true
+  },
+  "expected": {
+    "action_level_row_count": 192,
+    "question_world_group_count": 48,
+    "seed_level_observation_count": 768
+  },
+  "schema_version": "pesco_tier1_count_semantics_audit_v0.1",
+  "sources": [
+    "counts.json",
+    "question_world_groups.json",
+    "action_level_branches.json",
+    "branch_groups.json",
+    "seed_level_results.jsonl",
+    "../tier1_differentiable_suite/dataset.json",
+    "../tier1_differentiable_suite/suite.json"
+  ],
+  "status": "pass"
+}

@@ -1,0 +1,40 @@
+{
+  "counts_by_split": {
+    "dev": 24,
+    "final_id": 24,
+    "final_ood": 20,
+    "train": 24
+  },
+  "final_id_families": [
+    "causal_confounding",
+    "confounding_underpower",
+    "group_leakage",
+    "low_sample_variance",
+    "replication_instability",
+    "subgroup_metric_mismatch"
+  ],
+  "final_ood_families": [
+    "leakage_metric_mismatch",
+    "protocol_drift"
+  ],
+  "mechanism_families_id": [
+    "group_leakage",
+    "causal_confounding",
+    "low_sample_variance",
+    "subgroup_metric_mismatch",
+    "confounding_underpower",
+    "replication_instability"
+  ],
+  "mechanism_families_ood": [
+    "leakage_metric_mismatch",
+    "protocol_drift"
+  ],
+  "question_id_overlap_with_diagnostic": [],
+  "schema_version": "pesco_tier1_v04_formal_final_holdout_audit_v0.1",
+  "train_dev_final_id_excludes_final_ood_families": true,
+  "world_counts_by_final_split": {
+    "final_id": 96,
+    "final_ood": 80
+  },
+  "world_id_overlap_with_diagnostic": []
+}

@@ -1,8 +1,21 @@
 {
   "actually_executed": true,
+  "artifact_scope": "legacy_certificate_evidence",
   "autonomous": true,
   "certificate_pass": true,
+  "current_formal_claim_authorized": false,
   "independently_confirmed": true,
+  "legacy": true,
+  "legacy_scope": {
+    "artifact_scope": "legacy_certificate_evidence",
+    "certificate_pass_interpretation": "historical_only_not_current_discovery",
+    "current_formal_claim_authorized": false,
+    "discovery_policy_id": "fixed_mvp_action_space_v1",
+    "discovery_policy_ref": "discovery_policy.json",
+    "discovery_policy_status": "disabled",
+    "is_legacy": true,
+    "status": "legacy_out_of_current_discovery_scope"
+  },
   "lower_confidence_gain": 0.1,
   "method_family": "alternative_method_family",
   "proposal_source": "policy_on_policy",

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Run the diagnostic Tier-1 v0.3 benchmark.
 
-The benchmark has exactly 12 independent questions x 4 hidden worlds x 4 MVP
-actions x 4 exploration seeds = 768 seed-level observations.  In addition it records
-192 same-state action groups (one group for each question/world/action combination),
-initial-state calibration, and held-out confirmation metadata.  It is intentionally a
-CPU diagnostic; it does not train or evaluate a formal LLM method.
+The benchmark has exactly 12 independent questions x 4 hidden worlds = 48
+question-world branch groups.  Each group has 4 MVP action-level rows and 4
+exploration seeds, yielding 192 action-level rows and 768 seed-level observations.
+It also records initial-state calibration and held-out confirmation metadata.  It is
+intentionally a CPU diagnostic; it does not train or evaluate a formal LLM method.
 """
 
 from __future__ import annotations
@@ -29,6 +29,7 @@ from research_strategy_optimization.environments.tier1_benchmark import (
     tier1_scientific_utility,
 )
 from research_strategy_optimization.schemas import EvidenceState, Protocol, ResearchAction
+from research_strategy_optimization.utils.run_manifest import build_run_manifest, write_run_manifest
 
 
 def _dump(path: Path, value: Any) -> None:
@@ -193,6 +194,8 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
             initial_output = initial_branch.execute_option(ResearchAction.CONTINUE, seeds=seeds)
             initial_verdict = verifier.evaluate(initial_output, initial_branch)
             initial_rows.append({
+                "record_granularity": "question_world_group",
+                "question_world_group_id": f"{question.question_id}|{world.world_id}",
                 "question_id": question.question_id,
                 "world_id": world.world_id,
                 "world_kind": world.kind,
@@ -234,6 +237,8 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
                 )
                 backend_ok = backend_ok and vector_output.backend == "tier1_numpy"
                 branch_rows.append({
+                    "record_granularity": "action_level",
+                    "question_world_group_id": f"{question.question_id}|{world.world_id}",
                     "question_id": question.question_id,
                     "world_id": world.world_id,
                     "world_kind": world.kind,
@@ -255,6 +260,8 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
                     one_seed_verdict = verifier.evaluate(one_seed_output, one_seed_branch, confirm=False)
                     backend_ok = backend_ok and one_seed_output.backend == "tier1_numpy"
                     seed_rows.append({
+                        "record_granularity": "seed_level",
+                        "question_world_group_id": f"{question.question_id}|{world.world_id}",
                         "question_id": question.question_id,
                         "world_id": world.world_id,
                         "world_kind": world.kind,
@@ -296,6 +303,31 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
                 "target_matches": winner["action"] == target,
                 "utilities": {row["action"]: row["utility"] for row in group_slice},
             })
+
+    # Canonical index for the three experiment granularities.  The historical
+    # ``branch_groups.json`` filename contains action-level rows; this index makes
+    # the 48 question/world groups explicit without changing that compatibility
+    # artifact's row shape.
+    group_index_rows: list[dict] = []
+    grouped_action_rows: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    grouped_seed_rows: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for row in branch_rows:
+        grouped_action_rows[(row["question_id"], row["world_id"])].append(row)
+    for row in seed_rows:
+        grouped_seed_rows[(row["question_id"], row["world_id"])].append(row)
+    for key in sorted(grouped_action_rows):
+        action_group = grouped_action_rows[key]
+        seed_group = grouped_seed_rows[key]
+        group_index_rows.append({
+            "record_granularity": "question_world_group",
+            "question_world_group_id": f"{key[0]}|{key[1]}",
+            "question_id": key[0],
+            "world_id": key[1],
+            "action_level_row_count": len(action_group),
+            "seed_level_observation_count": len(seed_group),
+            "action_values": [row["action"] for row in action_group],
+            "exploration_seeds": sorted({row["exploration_seed"] for row in seed_group}),
+        })
 
     # Build explicit evaluator-side evidence for the transitions that the feedback
     # requires.  These records are derived from the already executed common-snapshot
@@ -492,6 +524,11 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
     }
     _dump(output_dir / "split_manifest.json", split_manifest)
     _dump(output_dir / "initial_calibration.json", initial_rows)
+    _dump(output_dir / "question_world_groups.json", group_index_rows)
+    _dump(output_dir / "action_level_branches.json", branch_rows)
+    # Compatibility path retained for readers of the original A artifact.  Its
+    # records are action-level rows; ``question_world_groups.json`` is the canonical
+    # 48-group index and ``action_level_branches.json`` is the canonical row file.
     _dump(output_dir / "branch_groups.json", branch_rows)
     _dump(output_dir / "target_agreement.json", target_agreement_rows)
     _dump(output_dir / "paired_repair_evidence.json", paired_repair_evidence)
@@ -518,10 +555,21 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
         "world_count": len(benchmark.worlds),
         "action_count": len(actions),
         "exploration_seed_count": len(seeds),
-        "branch_groups": len(branch_rows),
+        "question_world_group_count": len(group_index_rows),
+        "branch_groups": len(group_index_rows),
+        "action_level_row_count": len(branch_rows),
+        "action_level_rows": len(branch_rows),
+        "seed_level_observation_count": len(seed_rows),
+        "seed_level_observations": len(seed_rows),
+        # Backward-compatible alias used by earlier A reports.
         "seed_level_experiments": len(seed_rows),
         "expected_seed_level_experiments": 12 * 4 * 4 * 4,
         "confirmation_seed_count": len(protocol.confirmation_seeds),
+    }
+    counts["count_semantics"] = {
+        "branch_groups": "question_world_group",
+        "action_level_rows": "one row per question_world_group and registered action",
+        "seed_level_observations": "one replay per action_level_row and exploration seed",
     }
     _dump(output_dir / "counts.json", counts)
 
@@ -546,6 +594,9 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
         "benchmark_protocol_version": benchmark.protocol_version,
         "protocol_version_consistent": protocol.protocol_version == benchmark.protocol_version,
         "protocol_digest": protocol_digest,
+        "question_world_group_count": len(group_index_rows),
+        "action_level_row_count": len(branch_rows),
+        "seed_level_observation_count": len(seed_rows),
         "tier1_clone_preserves_subclass": bool(clone_ok),
         "tier1_numpy_backend_actually_executed": bool(backend_ok),
         "supported_world_calibrated": all(row["initial_state"] == "supported" for row in initial_rows if row["world_kind"] == "supported"),
@@ -663,7 +714,12 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
         "backend": "tier1_numpy",
         "question_count": len(benchmark.questions),
         "world_count": len(benchmark.worlds),
-        "branch_groups": len(branch_rows),
+        "question_world_group_count": len(group_index_rows),
+        "branch_groups": len(group_index_rows),
+        "action_level_row_count": len(branch_rows),
+        "action_level_rows": len(branch_rows),
+        "seed_level_observation_count": len(seed_rows),
+        "seed_level_observations": len(seed_rows),
         "seed_level_experiments": len(seed_rows),
         "expected_seed_level_experiments": 768,
         "four_state_calibration": {
@@ -720,6 +776,9 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
         "pass": bool(tier1_go["pass"]),
         "evidence": [
             "initial_calibration.json",
+            "question_world_groups.json",
+            "action_level_branches.json",
+            "count_semantics_audit.json",
             "branch_groups.json",
             "seed_level_results.jsonl",
             "paired_repair_evidence.json",
@@ -733,6 +792,53 @@ def run(output_dir: Path, *, protocol: Protocol | None = None) -> dict:
     _dump(output_dir / "experiment_a_environment_correctness.json", experiment_a)
     summary = {"counts": counts, "tier1_go": tier1_go}
     _dump(output_dir / "summary.json", summary)
+    manifest = build_run_manifest(
+        experiment="A_environment_correctness",
+        repo_root=PESCO_ROOT,
+        command=sys.argv,
+        runner_paths=[
+            Path(__file__).resolve(),
+            PESCO_ROOT / "research_strategy_optimization/schemas.py",
+            PESCO_ROOT / "research_strategy_optimization/environments/tier0_simulator.py",
+            PESCO_ROOT / "research_strategy_optimization/environments/tier1_benchmark.py",
+            PESCO_ROOT / "research_strategy_optimization/utils/run_manifest.py",
+        ],
+        data_paths=[
+            output_dir / "benchmark_manifest.json",
+            output_dir / "split_manifest.json",
+            output_dir / "question_world_groups.json",
+            output_dir / "action_level_branches.json",
+            output_dir / "branch_groups.json",
+            output_dir / "seed_level_results.jsonl",
+            output_dir / "confirmation_denominators.json",
+            output_dir / "experiment_a_environment_correctness.json",
+            output_dir / "tier1_go.json",
+            output_dir / "summary.json",
+        ],
+        seeds={
+            "training": [17],
+            "inference": [17],
+            "exploration": list(protocol.exploration_seeds),
+            "confirmation": list(protocol.confirmation_seeds),
+        },
+        checkpoint=None,
+        status="completed" if tier1_go["pass"] else "completed_with_failed_gates",
+        diagnostics={
+            "capture_mode": "in_run",
+            "artifact_status": experiment_a["status"],
+            "artifact_pass": bool(experiment_a["pass"]),
+            "protocol_version": protocol.protocol_version,
+            "protocol_digest": protocol_digest,
+            "benchmark_manifest_digest": experiment_a["benchmark_manifest_digest"],
+            "question_world_group_count": len(group_index_rows),
+            "action_level_branch_rows": len(branch_rows),
+            "seed_level_executions": len(seed_rows),
+            "confirmation_eligible_n": confirmation_denominators.get("eligible_n"),
+            "formal_comparison_authorized": False,
+            "diagnostic_only": True,
+        },
+    )
+    write_run_manifest(output_dir / "run_manifest.json", manifest)
     return summary
 
 

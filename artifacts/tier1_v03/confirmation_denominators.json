@@ -1,9 +1,9 @@
 {
   "data_independent_given_performed_rate": 1.0,
-  "data_independent_n": 118,
-  "eligible_n": 118,
-  "passed_given_performed_rate": 0.9745762711864406,
-  "passed_n": 115,
+  "data_independent_n": 109,
+  "eligible_n": 109,
+  "passed_given_performed_rate": 0.9724770642201835,
+  "passed_n": 106,
   "performed_given_eligible_rate": 1.0,
-  "performed_n": 118
+  "performed_n": 109
 }

@@ -22,8 +22,15 @@ module:
   (`loss_before`, `loss_after`, `gradient_norm`, `parameter_update_norm`), while
   `zero_shot_diagnostic.json` is explicitly a no-checkpoint CPU diagnostic and
   therefore keeps `stage_3_zero_shot` closed.
+  The fixed-action discovery boundary is also explicit in `discovery_policy.json`.
+  Historical `certificate_*.json` files with `certificate_pass=true` are retained
+  only as `legacy_certificate_evidence`: each has `legacy=true`, an
+  `artifact_scope`, and a nested `legacy_scope`; `legacy_certificates_manifest.json`
+  is the machine-readable inventory. Their historical pass/autonomous values do
+  not authorize current discovery claims.
 * `tier1_differentiable_suite/` contains the 12-question Tier-1 v0.3 mechanism
-  experiment: 48 question-world branch groups (192 action-level rows), 768 exploration-seed observations, eight confirmed
+  experiment: 48 `question_world_group` records (192 action-level rows), 768 seed-level
+  observations, eight confirmed
   reversal pairs, shared train/dev/diagnostic_ood data, and genuine small PyTorch
   CPU policy updates for the registered C/D/E method ablations. C is the ordinary
   state-reward sufficiency comparison, D is the branch ablation, and E is the
@@ -31,6 +38,9 @@ module:
   final-OOD result. D also records research regret, erroneous-repair and invalid-local-optimization
   rates, while E records pair-level FlipAcc, unseen-world, noise and nested sample-efficiency
   diagnostics; all remain diagnostic-only and formal final ID/OOD access is closed.
+  `invalid_local_optimization` is defined as Invalid-state CONTINUE/SWITCH that
+  loses to the public branch-utility winner; a correct Invalid→SWITCH row is
+  therefore excluded.
   The suite also records seed-level utility variability explicitly: 7 of 192
   action-level arrays vary across exploration seeds and 185 are constant
   protocol/cost terms, with `formal_seed_variance_claim_authorized=false`.
@@ -38,8 +48,8 @@ module:
   variance or generalization claims.
 * `tier1_v03/` is the independent Tier-1 v0.3 benchmark/calibration snapshot
   (`benchmark_manifest.json`, `summary.json`, `tier1_go.json`, target agreement,
-  and seed-level audit rows) used to verify the question/world/seed counts before
-  interpreting the C/D/E suite.
+  `count_semantics_audit.json`, and seed-level audit rows) used to verify the
+  question/world/seed counts before interpreting the C/D/E suite.
 
 The A/B/C/D/E/F files are generated respectively by
 `scripts/run_tier1_v03.py`, `scripts/run_tier1_zero_shot.py`, and
@@ -47,9 +57,46 @@ The A/B/C/D/E/F files are generated respectively by
 boundary record). Their JSON artifacts are audit inputs, not visualization-only
 reports.
 
-The independent A environment artifact records 192 action-level branch rows and
-768 seed observations. This is the same 48 question-world groups used by the C/D/E
-dataset; the different counts are a grouping distinction, not a duplicated run.
+Each completed run carries a machine-readable `run_manifest.json`.  The A, B,
+and C--F records are at `tier1_v03/run_manifest.json`,
+`tier1_zero_shot_run_manifest.json`, and
+`tier1_differentiable_suite/run_manifest.json`; the v0.4 and P2 runners write
+the same record next to their outputs.  A manifest binds the Git SHA and dirty
+status, exact command, Python/NumPy/PyTorch versions, semantic training and
+inference seeds, source/data digests, and (when a local checkpoint is supplied)
+the complete checkpoint, full weight, and tokenizer digests.  Missing external
+checkpoints are represented explicitly rather than as an empty digest.
+
+The canonical feedback follow-up artifacts are `tier1_v04_extended/`,
+`tier1_v04_formal_final/`, `tier1_p2_v04_ten_seed/`, and
+`tier1_p3_small_model_gate/`.  The extended v0.4
+run contains 8 mechanism families, 64 questions, 256 worlds, dual raw/oracle
+tracks, 451 confirmed same-question reversals, and 64 family-stratified posterior
+EU/VOI decisions with 64 multi-step audit trajectories.  P2 is a real ten-seed
+CPU comparison whose promotion gate is NO-GO: although the extended promotion
+regret CI is below zero, held-out FlipAcc is reversed, only 7/10 seeds agree, the
+false-discovery safety gate fails, and the newly recorded atomic-receipt reward
+stability is 0.991875 (above the 0.90 threshold).  The formal final-ID/final-OOD
+64-step P2 is also NO-GO because its promotion regret CI is positive and its
+held-out FlipAcc delta is negative.  P3 is fail-closed and records that no LoRA/QLoRA experiment was
+authorized or executed.  `decisions.json`/`trajectories.json` are evaluator-only
+audit records; public datasets and manifests exclude the legacy target-action
+table.
+
+The formal final environment artifact contains train/dev 24/24 clusters, final-ID
+24 clusters from six ID families, and final-OOD 20 clusters from two whole held-out
+families; confirmed reversals are 196 and 114 on final ID/OOD.  Its raw/oracle
+receipts and multi-step audits pass the structural gates, while formal model
+comparison remains locked.  `benchmark_public_manifest.json` and the public
+`final_id_manifest.json`/`final_ood_manifest.json` omit family/world/target fields;
+the corresponding `*_audit_hidden.json` files are evaluator-only.
+
+The independent A environment artifact records 48 question-world groups, 192
+action-level branch rows, and 768 seed-level observations. `question_world_groups.json`
+is the canonical 48-group index; `action_level_branches.json` is the canonical row
+file, while the historical `branch_groups.json` path remains an action-level
+compatibility alias. This is the same 48 groups used by the C/D/E dataset; the
+different counts are a grouping distinction, not a duplicated run.
 The F boundary artifact records `fixed_action_mvp_discovery_utility=0` and
 `candidate_generation_executed=false`; open-ended discovery is intentionally not
 claimed by this fixed-action benchmark.

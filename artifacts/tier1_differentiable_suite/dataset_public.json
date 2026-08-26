@@ -8,7 +8,12 @@
       "dev": 8,
       "diagnostic_ood": 8
     },
+    "question_world_group_count": 48,
     "branch_groups": 48,
+    "action_level_row_count": 192,
+    "action_level_rows": 192,
+    "seed_level_observation_count": 768,
+    "seed_level_observations": 768,
     "exploration_seed_observations": 768,
     "public_policy_inputs_only": true,
     "audit_labels_excluded": true
@@ -56,7 +61,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -106,7 +113,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -157,7 +166,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -181,6 +192,7 @@
         "metric_name": "group_held_out_accuracy_delta",
         "validity_signals": [
           "tier1_numpy_backend",
+          "protocol_invalid_diagnostic",
           "split_overlap_diagnostic",
           "leaky_row_split",
           "treatment_assignment_independent"
@@ -209,7 +221,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -259,7 +273,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -309,7 +325,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -360,7 +378,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -384,6 +404,7 @@
         "metric_name": "group_held_out_accuracy_delta",
         "validity_signals": [
           "tier1_numpy_backend",
+          "protocol_invalid_diagnostic",
           "split_overlap_diagnostic",
           "leaky_row_split",
           "treatment_assignment_independent"
@@ -412,7 +433,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -462,7 +485,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -512,7 +537,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -563,7 +590,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -587,6 +616,7 @@
         "metric_name": "group_held_out_accuracy_delta",
         "validity_signals": [
           "tier1_numpy_backend",
+          "protocol_invalid_diagnostic",
           "split_overlap_diagnostic",
           "leaky_row_split",
           "treatment_assignment_independent"
@@ -615,7 +645,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "group_leakage"
+        "task_family": "group_leakage",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -665,7 +697,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -715,7 +749,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -766,7 +802,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -790,6 +828,7 @@
         "metric_name": "group_held_out_accuracy_delta",
         "validity_signals": [
           "tier1_numpy_backend",
+          "protocol_invalid_diagnostic",
           "treatment_confounder_dependence"
         ],
         "history_summary": [
@@ -816,7 +855,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -866,7 +907,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -916,7 +959,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -967,7 +1012,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -991,6 +1038,7 @@
         "metric_name": "group_held_out_accuracy_delta",
         "validity_signals": [
           "tier1_numpy_backend",
+          "protocol_invalid_diagnostic",
           "treatment_confounder_dependence"
         ],
         "history_summary": [
@@ -1017,7 +1065,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1067,7 +1117,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -1117,7 +1169,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -1168,7 +1222,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -1192,6 +1248,7 @@
         "metric_name": "group_held_out_accuracy_delta",
         "validity_signals": [
           "tier1_numpy_backend",
+          "protocol_invalid_diagnostic",
           "treatment_confounder_dependence"
         ],
         "history_summary": [
@@ -1218,7 +1275,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "causal_confounding"
+        "task_family": "causal_confounding",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "dev",
@@ -1268,7 +1327,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1318,7 +1379,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1369,7 +1432,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1421,7 +1486,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1471,7 +1538,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1521,7 +1590,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1572,7 +1643,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1624,7 +1697,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1674,7 +1749,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",
@@ -1724,7 +1801,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",
@@ -1775,7 +1854,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",
@@ -1827,7 +1908,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "low_sample_variance"
+        "task_family": "low_sample_variance",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",
@@ -1877,7 +1960,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1927,7 +2012,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -1978,7 +2065,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -2029,7 +2118,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -2079,7 +2170,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -2129,7 +2222,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -2180,7 +2275,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -2231,7 +2328,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "train",
@@ -2281,7 +2380,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",
@@ -2331,7 +2432,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",
@@ -2382,7 +2485,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",
@@ -2433,7 +2538,9 @@
             "committed_before_action": true
           }
         ],
-        "task_family": "subgroup_metric_mismatch"
+        "task_family": "subgroup_metric_mismatch",
+        "track": "oracle_state",
+        "raw_evidence": {}
       },
       "branch_count": 4,
       "split": "diagnostic_ood",

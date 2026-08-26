@@ -1,0 +1,39 @@
+{
+  "action_counts": {
+    "oracle_state": {
+      "add_samples_or_seeds": 1,
+      "repair_data_split": 2,
+      "switch_to_alternative_method": 1
+    },
+    "raw_evidence": {
+      "continue_current_method": 2,
+      "repair_data_split": 1,
+      "switch_to_alternative_method": 1
+    }
+  },
+  "all_candidate_pools_exclude_current_question": true,
+  "all_choices_use_posterior_eu_or_voi": true,
+  "backend_verified": true,
+  "benchmark_schema_version": "pesco_tier1_benchmark_v0.4",
+  "causal_confounding_refuted_audit": [],
+  "clone_type_preserved": true,
+  "decision_count": 8,
+  "diagnostic_only": true,
+  "formal_comparison_authorized": false,
+  "llm_claim": false,
+  "oracle_state_vs_raw_evidence_action_disagreement_n": 3,
+  "positive_voi_decision_n": {
+    "oracle_state": 2,
+    "raw_evidence": 1
+  },
+  "protocol_digest": "sha256:9f0b78770c80c7163bcb006db994a2f4b1722f349fd366b86b304c19ca02974c",
+  "protocol_version": "pesco_v0_2",
+  "question_count": 1,
+  "schema_version": "pesco_tier1_v04_summary_v0.1",
+  "tier2_claim": false,
+  "tracks": [
+    "oracle_state",
+    "raw_evidence"
+  ],
+  "world_count": 4
+}

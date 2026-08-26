@@ -1,10 +1,20 @@
 {
   "action_count": 4,
-  "branch_groups": 192,
+  "action_level_row_count": 192,
+  "action_level_rows": 192,
+  "branch_groups": 48,
   "confirmation_seed_count": 4,
+  "count_semantics": {
+    "action_level_rows": "one row per question_world_group and registered action",
+    "branch_groups": "question_world_group",
+    "seed_level_observations": "one replay per action_level_row and exploration seed"
+  },
   "expected_seed_level_experiments": 768,
   "exploration_seed_count": 4,
   "question_count": 12,
+  "question_world_group_count": 48,
   "seed_level_experiments": 768,
+  "seed_level_observation_count": 768,
+  "seed_level_observations": 768,
   "world_count": 48
 }
