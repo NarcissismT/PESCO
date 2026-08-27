@@ -1,0 +1,164 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/run_tier1_p21_shortcut_probe.py",
+      "--output",
+      "artifacts/tier1_p21_shortcut_probe",
+      "--bootstrap-replicates",
+      "1000",
+      "--seed",
+      "7"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/run_tier1_p21_shortcut_probe.py --output artifacts/tier1_p21_shortcut_probe --bootstrap-replicates 1000 --seed 7"
+  },
+  "command_line": "scripts/run_tier1_p21_shortcut_probe.py --output artifacts/tier1_p21_shortcut_probe --bootstrap-replicates 1000 --seed 7",
+  "data": {
+    "available": true,
+    "digest": "sha256:e4cb44c96bc1a5f5dd15f0a33ce4606ecd34ded95a2f8035556680e0c88783ca",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "artifacts/tier1_p21_shortcut_probe/audit_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:b76bb30db52d5ccdb9c6365a1998b75baba2ef75f4b6880f3f235b3ab49b332f",
+        "size_bytes": 410340
+      },
+      {
+        "path": "artifacts/tier1_p21_shortcut_probe/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:06fcd4c7244ff5e2fae05f2ff494a6095822092a04d495819e5f0ca207495b7d",
+        "size_bytes": 12946561
+      }
+    ]
+  },
+  "data_digest": "sha256:e4cb44c96bc1a5f5dd15f0a33ce4606ecd34ded95a2f8035556680e0c88783ca",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "dataset_example_count": 256,
+    "dataset_reversal_count": 395,
+    "dataset_schema": "pesco_decision_dataset_p21_fresh_diagnostic",
+    "fallback_used": true,
+    "result_schema": "pesco_shortcut_probe_v0.1",
+    "splits": {
+      "promotion": 80,
+      "train": 96,
+      "tune": 80
+    }
+  },
+  "experiment": "tier1_p21_shortcut_probes",
+  "generated_at_utc": "2026-08-26T18:25:17.542904+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "363b62d4bea1c62f39ecc0b4bab0a155d8c6f89a",
+    "status_available": true,
+    "status_digest": "sha256:804a042eceb327ec840e762ca64752c327aea06b516059d92714db36da0352d7"
+  },
+  "git_sha": "363b62d4bea1c62f39ecc0b4bab0a155d8c6f89a",
+  "manifest_digest": "sha256:cd5a73018ebe56e521ce5cdcad09b196a093ab5b34bbd7f50bab451a9f237e5a",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      7,
+      1000
+    ],
+    "bootstrap": 1000,
+    "probe": 7
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:029f60a09fa4fcff4b22bbfe5cfa83211f0af3bd2affb3ae1795eba9138373b7",
+    "file_count": 5,
+    "files": [
+      {
+        "path": "requirements-optional.txt",
+        "role": "source",
+        "sha256": "sha256:2a6e3c49cbfdf65e6b31c455d17da6a216f2279cd9962215469d99d3c65c9784",
+        "size_bytes": 657
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/shortcut_probes.py",
+        "role": "source",
+        "sha256": "sha256:ce37c72d1e1c4d7d956fd30d56acaac7453ee8224f6bc21d64b1c38751b3b397",
+        "size_bytes": 43981
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p21_dataset.py",
+        "role": "source",
+        "sha256": "sha256:270266d30b9fb4dbd8bf730123ba6ad7e7ac57c80a8dfbd7eabdd6cb1c9d1b88",
+        "size_bytes": 8315
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_v04_extended.py",
+        "role": "source",
+        "sha256": "sha256:f1735e055a38006d036bfd3465239617a903879490714b7922de51fe5770f63f",
+        "size_bytes": 62577
+      },
+      {
+        "path": "scripts/run_tier1_p21_shortcut_probe.py",
+        "role": "source",
+        "sha256": "sha256:d40d8f24f994bc2aa75c088a03a321abf3ee7a6d73d10e8dce0e74ca20cfda57",
+        "size_bytes": 6439
+      }
+    ]
+  },
+  "source_digest": "sha256:029f60a09fa4fcff4b22bbfe5cfa83211f0af3bd2affb3ae1795eba9138373b7",
+  "status": "completed_numpy_fallback",
+  "training_seed": null
+}

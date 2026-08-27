@@ -1,0 +1,35 @@
+{
+  "schema_version": "pesco_artifact_consumption_notice_v0.1",
+  "artifact_id": "tier1_p2_v04_ten_seed_v3",
+  "artifact_kind": "v04_p2_diagnostic_ten_seed_legacy_budget",
+  "status": "diagnostic_v04_consumed",
+  "consumed": true,
+  "recorded_at": "2026-08-26",
+  "consumption_scope": "historical_p2_diagnostic_only",
+  "formal_comparison_authorized": false,
+  "model_evaluation_authorized": false,
+  "promotion_status": "NO-GO",
+  "reasons": [
+    "This legacy-budget P2 run consumes a v0.4 diagnostic decision dataset and is not an independent final benchmark.",
+    "Its exact top-1 FlipAcc and seed-only uncertainty are superseded by the P2.1 pairwise/question-macro and seed-by-question evaluator contract.",
+    "The historical primary files and run-manifest digests are retained unchanged; this additive notice changes interpretation, not the historical bytes."
+  ],
+  "allowed_uses": [
+    "historical budget/smoke comparison",
+    "provenance and reproducibility audit"
+  ],
+  "disallowed_uses": [
+    "paper-level model comparison",
+    "post-fix algorithm or hyperparameter selection",
+    "final-ID/final-OOD claim"
+  ],
+  "superseded_by": {
+    "p2_1_diagnostic": "artifacts/tier1_p21_diagnostic/",
+    "v05_boundary": "artifacts/tier1_v05_frozen_final/"
+  },
+  "integrity": {
+    "notice_is_additive": true,
+    "original_artifacts_immutable": true,
+    "historical_manifest_digests_preserved": true
+  }
+}

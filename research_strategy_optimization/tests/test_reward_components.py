@@ -2,6 +2,12 @@ from __future__ import annotations
 
 import unittest
 
+try:
+    import torch as _torch  # noqa: F401 - collector returns the optional DecisionDataset
+    _TORCH_AVAILABLE = True
+except ImportError:  # pragma: no cover - exercised in minimal NumPy/stdlib installs
+    _TORCH_AVAILABLE = False
+
 from research_strategy_optimization.evaluation.tier1_v04_extended import (
     ACTION_SET,
     TIER1_REWARD_COMPONENT_NAMES,
@@ -15,6 +21,9 @@ from research_strategy_optimization.schemas import Protocol
 class RewardComponentReceiptTests(unittest.TestCase):
     def test_bounded_extended_collector_records_atomic_receipts(self) -> None:
         """The one-question smoke exercises aggregation without a full benchmark run."""
+
+        if not _TORCH_AVAILABLE:
+            self.skipTest("PyTorch is an optional dependency for the differentiable collector")
 
         protocol = Protocol(
             protocol_version="pesco_v0_2",
@@ -38,6 +47,8 @@ class RewardComponentReceiptTests(unittest.TestCase):
                 example.metadata["reward_components_aggregation"],
                 "mean_over_independent_replicates",
             )
+            self.assertTrue(example.metadata["pre_action_observation_constructed_before_candidate_branches"])
+            self.assertTrue(example.metadata["cross_candidate_confirmation_feature_excluded"])
             self.assertEqual(set(example.metadata["branch_replicate_confirmation"]), set(action_names))
             for index, action_name in enumerate(action_names):
                 terms = aggregate[action_name]

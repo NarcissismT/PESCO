@@ -21,6 +21,9 @@ venv/
 checkpoints/
 runs/
 
+# v0.5 evaluator-only bundle (hidden worlds/recipes/receipts must not be published)
+artifacts/tier1_v05_evaluator_private/
+
 # 构建与系统文件
 build/
 dist/

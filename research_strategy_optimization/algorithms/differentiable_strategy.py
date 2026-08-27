@@ -66,7 +66,6 @@ _RAW_EVIDENCE_VOCAB = (
     "replication_ci_width",
     "replication_sample_size",
     "replication_seed_count",
-    "log_confirmation_pass_rate",
     "log_validity_count",
     "log_repeated_runs",
     "log_protocol_change_count",

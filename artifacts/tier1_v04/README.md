@@ -1,5 +1,10 @@
 # Tier-1 v0.4 benchmark-hardening diagnostic
 
+> **Consumption status (2026-08-26): `diagnostic_v04_consumed`.**  This early
+> hardening snapshot is retained for historical audit only.  See
+> [`consumption_notice.json`](consumption_notice.json); original result and
+> run-manifest bytes remain unchanged.
+
 This directory is a quick, machine-readable diagnostic for the feedback hardening
 pass.  It reuses the executable NumPy worlds from Tier-1 v0.3 but changes the
 decision/evaluation boundary:

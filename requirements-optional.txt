@@ -1,0 +1,11 @@
+# Optional evaluator dependencies.  The shortcut probe runner records the exact
+# implementation used; without scikit-learn it runs explicitly labelled NumPy
+# fallback models (or fail-closes with --strict-sklearn).
+scikit-learn>=1.2
+
+# Differentiable C/D/E and P2/P3 diagnostics also need PyTorch.  It is deliberately
+# not pinned or installed by this file: the official CPU/CUDA wheels are
+# platform-specific.  Choose the command for the host from the PyTorch install
+# selector, then rerun the tests; without torch these test modules skip cleanly.
+# Example placeholder (select the matching index/build for your platform):
+# python -m pip install torch

@@ -2,7 +2,7 @@
 
 这里是 `PESCO_Research_Algorithm_and_Experimental_Plan_v1.md` 的可运行、CPU 优先参考实现。目录按计划第 20 节拆分为环境、可信证据、策略算法、基线、评价和可视化；所有源码、配置、数据清单、审计记录和图片都保存在本目录。
 
-Tier 0 核心不依赖第三方包；Tier 1 NumPy 环境和 PNG/SVG 图表需要 `numpy`、`matplotlib`（见 [requirements.txt](requirements.txt)）。反馈实验 C/D/E 的真实可微 MLP 更新需要单独安装与平台匹配的 PyTorch；标准 requirements 不强制拉取体积较大的平台专用 wheel。
+Tier 0 核心不依赖第三方包；Tier 1 NumPy 环境和 PNG/SVG 图表需要 `numpy`、`matplotlib`（见 [requirements.txt](requirements.txt)）。反馈实验 C/D/E 与 P2/P3 的真实可微 MLP 更新需要单独安装与平台匹配的 PyTorch；标准 requirements 不强制拉取体积较大的平台专用 wheel，安装提示见 [requirements-optional.txt](requirements-optional.txt)。
 
 ## 当前已实现
 
@@ -18,11 +18,17 @@ Tier 0 核心不依赖第三方包；Tier 1 NumPy 环境和 PNG/SVG 图表需要
 - Tier 1 的硬案例不是把隐藏目标动作塞进输入：相同证据状态在不同注册机制下会产生不同 evaluator branch winner；公开任务族仍是允许的上下文，字节级 Observation collision 不作为门禁。
 - 反馈实验 A/B/C/D/E/F 均有独立 machine-readable 产物：A 环境正确性、B 外部 checkpoint 真实零样本、C state-reward、D branch ablation、E flip ablation，以及 F 固定动作 MVP 的 open-ended discovery 边界；A–E 是诊断性证据，F 明确不宣称开放式发现已完成。
 - 反馈实验 C/D/E 的统一可微 suite 产物位于 `artifacts/tier1_differentiable_suite/suite.json`：C 对比普通 state-reward（SFT/GRPO-Terminal/GRPO-FourState/StateGateOnly），D 是 branch ablation，E 是 confirmed flip-loss ablation 并包含 Evidence-Gated SMOPD teacher-distillation；三者共用冻结 Tier 1 v0.3 branch dataset 和 matched compute，均为机制诊断而非正式 final ID/OOD 结论。
-- 反馈新增的 v0.4 extended 双轨 CPU 诊断位于 `artifacts/tier1_v04_extended/`：8 个机制族、64 个问题、256 个世界、8 个探索/8 个独立确认种子；dev/diagnostic-OOD 同问题确认反转为 142/131，canonical posterior-EU/VOI pass 覆盖每族 variant-3 anchor，并产生 64 个决策和 64 条多步轨迹。其 formal CPU gate 为 OPEN，但不授权 Tier-2 或 LLM 声明。
-- P2 十种子晋级实验位于 `artifacts/tier1_p2_v04_ten_seed/`，在含 atomic reward receipts 的修订 raw-evidence 数据上完成 10 seeds/64 optimizer steps：promotion ΔR CI `[-0.0286126, -0.0015162]` 虽低于 0，但 held-out FlipAcc 增量 CI `[-0.0610687, -0.0541985]` 反向、未达到 ≥8/10 同方向；reward ±20% winner stability 为 `0.991875`（门通过），整体 safety 门仍未通过，因此 promotion 仍为 NO-GO。正式 final-ID/final-OOD 划分的完整 P2 结果位于 `artifacts/tier1_p2_v04_formal_final_ten_seed/`：ΔR CI `[0.0006630, 0.0148329]`、held-out FlipAcc CI `[-0.0482456, -0.0166667]`，同样 NO-GO。P3 小模型门禁位于 `artifacts/tier1_p3_small_model_gate/`，因 P2、依赖和 CUDA 前置条件失败而 fail-closed，未执行 LoRA/QLoRA。
-- 正式 final 环境实验位于 `artifacts/tier1_v04_formal_final/`：train/dev 各 24 clusters、final ID 24 clusters（6 个机制族）、final OOD 20 clusters（2 个整族留出），confirmed reversals 为 196/114。公开 manifest 不含机制族/latent target；环境 receipts 已完成，但 `formal_comparison_authorized=false`。默认命令只生成锁定结构 manifest；全量环境采集需显式 authorization receipt：`PYTHONPATH=. python scripts/run_tier1_v04_formal_final.py --output artifacts/tier1_v04_formal_final --collect-environment-audit --authorization-file artifacts/formal_final_access_authorization.json`。
+- 反馈新增的 v0.4 extended 双轨 CPU 诊断位于 `artifacts/tier1_v04_extended/`（更早的 `artifacts/tier1_v04/` 也已标记 consumed）：8 个机制族、64 个问题、256 个世界、8 个探索/8 个独立确认种子；dev/diagnostic-OOD 同问题确认反转为 142/131，canonical posterior-EU/VOI pass 覆盖每族 variant-3 anchor，并产生 64 个决策和 64 条多步轨迹。该目录现在标记为 `diagnostic_v04_consumed`，仅可用于历史审计/调试；`consumption_notice.json` 说明旧 latent-template 边界与评测器口径已被 P2.1 取代，不能作为修改算法后的 final 或 paper comparison。
+- P2 十种子晋级实验位于 `artifacts/tier1_p2_v04_ten_seed/`，在含 atomic reward receipts 的修订 raw-evidence 数据上完成 10 seeds/64 optimizer steps；其历史 promotion 为 NO-GO。正式 final-ID/final-OOD 划分的完整 P2 结果位于 `artifacts/tier1_p2_v04_formal_final_ten_seed/`，同样是历史 NO-GO。两者及旧 `tier1_p2_v04_ten_seed_v3/` 均有 `status=diagnostic_v04_consumed` 的消费通知；旧 exact top-1 FlipAcc/seed-only CI 不再用于算法选择。P3 小模型门禁位于 `artifacts/tier1_p3_small_model_gate/`，因 P2、依赖和 CUDA 前置条件失败而 fail-closed，未执行 LoRA/QLoRA。
+- 旧 formal final 环境位于 `artifacts/tier1_v04_formal_final/`：train/dev 各 24 clusters、final ID 24 clusters（6 个机制族）、final OOD 20 clusters（2 个整族留出），confirmed reversals 为 196/114。环境 receipts 保留用于审计，但 latent-template overlap 使其标记为 `diagnostic_v04_consumed`，`formal_comparison_authorized=false`；不得再作为独立 clean final。默认命令只生成锁定结构 manifest；全量环境采集需显式 authorization receipt：`PYTHONPATH=. python scripts/run_tier1_v04_formal_final.py --output artifacts/tier1_v04_formal_final --collect-environment-audit --authorization-file artifacts/formal_final_access_authorization.json`。
+- P2.1 fresh diagnostic 位于 `artifacts/tier1_p21_diagnostic/`：64 个问题、256 个世界、8 个 exploration/8 个 confirmation seeds、395 个同问题 reversal、按 question 归一化权重，以及 256/256 counterfactual raw-observation leakage audit；该产物保持 `diagnostic_only=true` 和 `formal_comparison_authorized=false`。`artifacts/tier1_p21_shortcut_probe/` 已完成 Logistic、Random Forest、GBDT shortcut probes，并在无 scikit-learn 时明确记录 NumPy fallback。
+- P2.1 algorithm diagnostic 位于 `artifacts/tier1_p21_algorithm_diagnostic/`：在 fresh train/tune/promotion split 上隔离运行七个注册方法（SFT、GRPO-Terminal、GRPO-FourState、BranchOnly、NoFlipLoss、Full、SMOPD-inspired adapter），并额外运行 PESCO-Constrained-PCGrad、branch/state↔flip gradient-cosine probes 与 shortcut baselines；baseline 在 tune split 锁定。shortcut strict mode 在 sklearn 不可用时明确 `fail_closed`，结果保持 `diagnostic_only=true`，不打开 formal comparison、LoRA 或在线 RL。
+- 另有一个隔离的 3-seed×4-method bounded sweep 位于 `artifacts/tier1_p21_seed_sweep_diagnostic/`（seeds 17/23/29，32 optimizer steps）；它用 seed→question 两层 bootstrap 和 mechanism-family leave-one-out 检查方向稳定性。该补充仍是 diagnostic-only：Full−tune-selected baseline 的 normalized-regret CI 为 `[-0.0506, 0.0000]`，Full−NoFlip 的 PairRankAcc CI 为 `[0.0766, 0.1779]`，不能替代预注册的 10-seed/final gate。
+- 另完成一组 10-seed×4-method 的补充扫参（seeds 17/23/29/31/37/41/43/47/53/59，32 optimizer steps，40/40 workers 无失败），位于 `artifacts/tier1_p21_seed_sweep_10seed_diagnostic/`：Full−tune-selected normalized-regret 点估计 `-0.00802`，95% CI `[-0.02359, 0.00268]`；Full−NoFlip PairRankAcc 点估计 `+0.13803`，95% CI `[0.10503, 0.17402]`。它仍明确是 diagnostic-only，不替代正式冻结门禁。
+- `artifacts/tier1_p21_sensitivity_audit/` 记录了保留逐题逐世界策略记录上的全局 atomic-reward 权重 `±20%` 扰动（1000 次共享权重抽样）、top1−top2 tie/non-tie 稳定性、family-wise 方向和 selected-action confirmation/validity 分母；该审计是诊断性二次分析，不重新训练策略，也不打开 formal comparison。
+- v0.5 final 边界已准备于 `artifacts/tier1_v05_frozen_final/`（私有 evaluator bundle 仅在受控工作区的 `artifacts/tier1_v05_evaluator_private/` 提供，不纳入公开提交）：final-ID/OOD 各 48 clusters、384 worlds、4 个开发阶段未出现的新 OOD 机制族，latent/generator signature 审计通过；独立审计结果持久化在 `independent_audit.json`，40/40 structural gates 通过。对 evaluator atomic reward 做全局 ±20% 权重扰动的稳定性诊断也已完成（非 tie 世界稳定率 `0.9972`，整体 `0.9986`），但它不含策略重训，仍是 structural diagnostic。当前 `freeze_receipt.json` 为 `status=pending_clean_commit_tag`，算法超参/基线选择尚未签署，未执行模型评测，故不宣称 v0.5 formal comparison。v0.5 baseline receipt 只接受在未打开 final 数据前的 `dev` split 选择，禁止在 promotion/final 上回挑；receipt 还必须绑定非空 dev manifest、实际 candidate-metrics 选择文件及可重算 digest，空占位或伪造 hash 会 fail-closed。
 - PESCO-Full 的 CPU 参考循环会对确认的跨世界 flip loss 直接执行表格 logits 的解析梯度更新，并在 `training_log_full.json` 中记录更新前后 loss、梯度范数、参数更新范数和参数 checksum；这不是 LLM autograd 训练的替代品，而是可验证的机制参考。
-- 计划指标：VRS、状态 Macro-F1/混淆矩阵、FlipAcc、遗憾、有效/无效切换、负结果接受、不足处理、无效修复、VNPR、FDR、复现率、成本和聚类 bootstrap。Flip/switch/repair/insufficient/confirmation 指标均使用显式条件分母并输出 numerator/denominator；少于 2 个独立问题 cluster 时置信区间为 `NA`，不会伪装成零宽区间。
+- 计划指标：VRS、状态 Macro-F1/混淆矩阵、Pairwise Reversal Ranking Accuracy（主要 flip-loss 对齐指标）、普通 action exact top-1、遗憾、有效/无效切换、负结果接受、不足处理、无效修复、VNPR、FDR、selected-action 复现率、成本和聚类 bootstrap。Pair/switch/repair/insufficient/confirmation 指标均使用显式条件分母；reversal 按 question macro 归一化，CI 使用 seed×question 两层 bootstrap 并报告 family LOO，不把 exact top-1 冲突写成 FlipAcc。
 - PNG/SVG/CSV/Markdown 报告流水线，支持 demo、实际 Tier 0 pilot 和 JSON/JSONL 输入。
 
 ## 一键运行最小实验
@@ -94,7 +100,9 @@ PYTHONPATH=PESCO python -m unittest discover \
 python -m compileall -q PESCO/research_strategy_optimization PESCO/visualization
 ```
 
-当前测试覆盖快照隔离、共同 seed、LOO 优势、反转置信门槛、解析 flip-loss 更新、四状态转移、严格评分、隐藏字段白名单、假设/证据哈希链、发现证书、目标函数、多重比较校正、Tier 1 多问题数据集、可微方法训练、atomic reward receipts 和 zero-shot robustness provenance；当前全量 stdlib suite 为 84 项，全部通过。
+当前测试覆盖快照隔离、共同 seed、LOO 优势、反转置信门槛、解析 flip-loss 更新、四状态转移、严格评分、隐藏字段白名单、假设/证据哈希链、发现证书、目标函数、多重比较校正、Tier 1 多问题数据集、可微方法训练、atomic reward receipts、P2.1 counterfactual leakage/PairRank/selected-receipt 边界、shortcut probes 和 v0.5 signature provenance；测试集合会随可选 extra 展开，运行上述命令即可得到当前环境的通过/跳过明细。
+
+其中可微训练与 P2/P3 诊断测试属于可选 PyTorch extra：请按主机 CPU/CUDA 平台从 PyTorch 官方安装选择器安装对应 wheel（不要直接假设某个 CUDA 版本），再运行上述测试即可；未安装 PyTorch 的干净环境会将这些模块标记为 skipped，不会因模块导入失败而中断标准 unittest discovery。快捷模型探针的 scikit-learn 依赖见 [requirements-optional.txt](requirements-optional.txt)，缺少该依赖时仅运行明确标注的 NumPy fallback（`--strict-sklearn` 可改为 fail-closed）。
 
 ## 明确的阶段边界
 
@@ -121,8 +129,15 @@ python -m compileall -q PESCO/research_strategy_optimization PESCO/visualization
 - [C state-reward](artifacts/tier1_differentiable_suite/experiment_c_state_reward.json) · [D branch ablation](artifacts/tier1_differentiable_suite/experiment_d_branch_ablation.json)
 - [E flip-loss/SMOPD](artifacts/tier1_differentiable_suite/experiment_e_flip_ablation.json) · [F discovery boundary](artifacts/tier1_differentiable_suite/experiment_f_discovery_boundary.json) · [C–E 合并 suite](artifacts/tier1_differentiable_suite/suite.json)
 - [v0.4 extended 双轨 benchmark](artifacts/tier1_v04_extended/tier1_v04_extended_go.json) · [v0.4 raw dataset](artifacts/tier1_v04_extended/dataset_raw_evidence.json) · [v0.4 posterior/VOI decisions](artifacts/tier1_v04_extended/decisions.json) · [v0.4 run manifest](artifacts/tier1_v04_extended/run_manifest.json)
-- [formal final 环境 gate](artifacts/tier1_v04_formal_final/formal_final_go.json) · [whole-family holdout audit](artifacts/tier1_v04_formal_final/whole_family_holdout_audit.json) · [formal run manifest](artifacts/tier1_v04_formal_final/run_manifest.json)
-- [P2 extended ten-seed gate](artifacts/tier1_p2_v04_ten_seed/p2_result.json) · [P2 formal final-ID/final-OOD ten-seed gate](artifacts/tier1_p2_v04_formal_final_ten_seed/p2_result.json) · [P3 fail-closed gate](artifacts/tier1_p3_small_model_gate/small_model_gate.json)
+- [v0.4 consumed notice](artifacts/tier1_v04_extended/consumption_notice.json) · [formal v0.4 consumed notice](artifacts/tier1_v04_formal_final/consumption_notice.json)
+- [P2.1 fresh diagnostic](artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json) · [counterfactual leakage audit](artifacts/tier1_p21_diagnostic/counterfactual_leakage_audit.json) · [shortcut probes](artifacts/tier1_p21_shortcut_probe/shortcut_probe_result.json)
+- [P2.1 algorithm diagnostic](artifacts/tier1_p21_algorithm_diagnostic/p21_algorithm_diagnostic.json) · [algorithm diagnostic README](artifacts/tier1_p21_algorithm_diagnostic/README.md)
+- [P2.1 isolated seed sweep](artifacts/tier1_p21_seed_sweep_diagnostic/seed_sweep_result.json)
+- [P2.1 ten-seed supplementary sweep](artifacts/tier1_p21_seed_sweep_10seed_diagnostic/seed_sweep_result.json) · [reward-weight/family sensitivity audit](artifacts/tier1_p21_sensitivity_audit/sensitivity_audit.json)
+- [P2.1 constrained-PCGrad receipt](artifacts/tier1_p21_constrained_diagnostic/constrained_result.json)
+- [formal final historical gate](artifacts/tier1_v04_formal_final/formal_final_go.json) · [whole-family holdout audit](artifacts/tier1_v04_formal_final/whole_family_holdout_audit.json) · [formal consumed notice](artifacts/tier1_v04_formal_final/consumption_notice.json)
+- [P2 extended historical gate](artifacts/tier1_p2_v04_ten_seed/p2_result.json) · [P2 formal historical gate](artifacts/tier1_p2_v04_formal_final_ten_seed/p2_result.json) · [P3 fail-closed gate](artifacts/tier1_p3_small_model_gate/small_model_gate.json)
+- [v0.5 freeze audit](artifacts/tier1_v05_frozen_final/v05_freeze_audit.json) · [v0.5 independent audit](artifacts/tier1_v05_frozen_final/independent_audit.json) · [v0.5 reward sensitivity summary](artifacts/tier1_v05_frozen_final/reward_sensitivity_summary.json) · [v0.5 pending freeze receipt](artifacts/tier1_v05_frozen_final/freeze_receipt.json) · public evaluator contract (private hidden bundle is not published)
 - [demo 可视化报告](artifacts/demo_report/report.md)
 - [可视化输入契约](visualization/schema.json)
 - [冻结协议](research_strategy_optimization/configs/freeze/pesco_v0_2.yaml)

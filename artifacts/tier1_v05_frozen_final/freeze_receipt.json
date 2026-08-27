@@ -1,0 +1,28 @@
+{
+  "algorithm_hyperparameters_frozen": false,
+  "baseline_evidence_files_valid": false,
+  "baseline_selection": {},
+  "baseline_selection_valid": false,
+  "created_at_utc": "2026-08-27T03:50:59.567761+00:00",
+  "evaluator_version": "pesco_v0.5_independent_evaluator_v1",
+  "final_cluster_counts": {
+    "final_id": 48,
+    "final_ood": 48
+  },
+  "formal_comparison_authorized": false,
+  "generator_version": "pesco_v0.5_latent_generator_20260826_r1",
+  "git": {
+    "clean_before_receipt": false,
+    "head": null,
+    "status_available": false,
+    "tag_at_head": null
+  },
+  "model_evaluation_completed": false,
+  "public_manifest_audit_pass": true,
+  "receipt_digest": "sha256:364c9f7ed735ac8eff45a59cd59d74ab11bbeb69d1cfba6575e72adaa2f57ca0",
+  "schema_version": "pesco_v05_clean_freeze_receipt_v0.1",
+  "signature_algorithm": "sha256-canonical-json",
+  "signature_audit_pass": true,
+  "signed": false,
+  "status": "pending_clean_commit_tag"
+}

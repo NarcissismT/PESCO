@@ -1,0 +1,495 @@
+{
+  "confirmation_seeds": [
+    103,
+    107,
+    109,
+    113,
+    127,
+    131,
+    137,
+    139
+  ],
+  "counts_by_split": {
+    "promotion": 20,
+    "train": 24,
+    "tune": 20
+  },
+  "diagnostic_only": true,
+  "exploration_seeds": [
+    17,
+    29,
+    41,
+    53,
+    67,
+    71,
+    83,
+    97
+  ],
+  "formal_comparison_authorized": false,
+  "generator_version": "pesco_p21_latent_generator_20260826_r1",
+  "manifest_digest": "sha256:0911137b53d2677b7787be4bb8d2c70cceab31e2d6ff241ecf21d10b3779fbdf",
+  "mechanism_families": [
+    "group_leakage",
+    "causal_confounding",
+    "low_sample_variance",
+    "subgroup_metric_mismatch",
+    "confounding_underpower",
+    "leakage_metric_mismatch",
+    "protocol_drift",
+    "replication_instability"
+  ],
+  "protocol_version": "pesco_v0_2",
+  "question_count": 64,
+  "questions": [
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_01",
+      "split": "tune",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_02",
+      "split": "tune",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_03",
+      "split": "tune",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_04",
+      "split": "tune",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_05",
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_06",
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_07",
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_group_leakage_08",
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_01",
+      "split": "tune",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_02",
+      "split": "tune",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_03",
+      "split": "tune",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_04",
+      "split": "tune",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_05",
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_06",
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_07",
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_causal_confounding_08",
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_01",
+      "split": "tune",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_02",
+      "split": "tune",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_03",
+      "split": "tune",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_04",
+      "split": "tune",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_05",
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_06",
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_07",
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_low_sample_variance_08",
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_01",
+      "split": "tune",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_02",
+      "split": "tune",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_03",
+      "split": "tune",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_04",
+      "split": "tune",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_05",
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_06",
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_07",
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_subgroup_metric_mismatch_08",
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_01",
+      "split": "train",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_02",
+      "split": "train",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_03",
+      "split": "train",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_04",
+      "split": "train",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_05",
+      "split": "train",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_06",
+      "split": "train",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_07",
+      "split": "train",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_confounding_underpower_08",
+      "split": "train",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_01",
+      "split": "promotion",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_02",
+      "split": "promotion",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_03",
+      "split": "promotion",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_04",
+      "split": "promotion",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_05",
+      "split": "promotion",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_06",
+      "split": "promotion",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_07",
+      "split": "promotion",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_leakage_metric_mismatch_08",
+      "split": "promotion",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_01",
+      "split": "promotion",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_02",
+      "split": "promotion",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_03",
+      "split": "promotion",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_04",
+      "split": "promotion",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_05",
+      "split": "promotion",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_06",
+      "split": "promotion",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_07",
+      "split": "promotion",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_protocol_drift_08",
+      "split": "promotion",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_01",
+      "split": "promotion",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_02",
+      "split": "promotion",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_03",
+      "split": "promotion",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_04",
+      "split": "promotion",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_05",
+      "split": "tune",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_06",
+      "split": "tune",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_07",
+      "split": "tune",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "t1_p21_replication_instability_08",
+      "split": "tune",
+      "variant": 8,
+      "world_count": 4
+    }
+  ],
+  "schema_version": "pesco_tier1_benchmark_p2.1_fresh_diagnostic",
+  "world_count": 256
+}

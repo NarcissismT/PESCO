@@ -1,0 +1,60 @@
+{
+  "counts_by_split": {
+    "final_id": 48,
+    "final_ood": 48
+  },
+  "evaluator_version": "pesco_v0.5_independent_evaluator_v1",
+  "formal_comparison_authorized": false,
+  "generator_version": "pesco_v0.5_latent_generator_20260826_r1",
+  "model_evaluation_completed": false,
+  "public_manifest_audit": {
+    "gates": {
+      "locked": true,
+      "manifest_digest_present": true,
+      "no_forbidden_tokens": true,
+      "question_fields_opaque": true
+    },
+    "pass": true,
+    "schema_version": "pesco_v05_public_manifest_audit_v0.1"
+  },
+  "schema_version": "pesco_v05_frozen_final_audit_v0.1",
+  "signature_summary": {
+    "development_manifest_count": 2,
+    "final_generator_signature_count": 96,
+    "final_latent_signature_count": 384,
+    "final_question_count": 96,
+    "final_world_count": 384,
+    "gates": {
+      "all_final_clusters_have_generator_signature": true,
+      "all_worlds_have_latent_signature": true,
+      "development_generator_evidence_available": true,
+      "development_latent_evidence_available": true,
+      "development_manifest_evidence_available": true,
+      "generator_signatures_disjoint": true,
+      "id_ood_families_disjoint": true,
+      "latent_outputs_disjoint": true,
+      "ood_family_names_unseen": true,
+      "ood_has_at_least_three_new_families": true,
+      "question_ids_disjoint": true,
+      "world_ids_disjoint": true
+    },
+    "generator_signature_overlap_count": 0,
+    "generator_version": "pesco_v0.5_latent_generator_20260826_r1",
+    "latent_overlap_count": 0,
+    "new_ood_family_count": 4,
+    "pass": true,
+    "question_id_overlap_count": 0,
+    "schema_version": "pesco_v05_public_signature_summary_v0.1",
+    "world_id_overlap_count": 0
+  },
+  "structural_gates": {
+    "all_structural_gates_pass": true,
+    "final_id_clusters_at_least_40": true,
+    "final_ood_clusters_at_least_40": true,
+    "public_boundary_audit_pass": true,
+    "public_manifest_locked": true,
+    "signature_audit_pass": true,
+    "whole_family_ood_holdout": true
+  },
+  "world_count": 384
+}

@@ -1,0 +1,17 @@
+{
+  "action_seed_receipt_count": 12288,
+  "formal_comparison_authorized": false,
+  "generator_version": "pesco_v0.5_latent_generator_20260826_r1",
+  "independent_confirmation_not_copied": true,
+  "model_evaluation_completed": false,
+  "question_count_collected": 96,
+  "question_limit": null,
+  "receipt_counts_by_split": {
+    "final_id": 6144,
+    "final_ood": 6144
+  },
+  "receipt_digest": "sha256:54c83e5588a711a2aee5890b7d011a432de9237a70bd01885947ecf61af9d5cb",
+  "rows_hidden_in_evaluator_bundle": true,
+  "schema_version": "pesco_v05_environment_receipts_v0.1",
+  "world_count_collected": 384
+}

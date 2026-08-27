@@ -19,6 +19,7 @@ import json
 import hashlib
 import math
 import copy
+import random
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
@@ -295,21 +296,53 @@ def collect_tier1_v03_dataset(
                         "exploration_seed": int(seed),
                         "confirmation_seed": confirmation_seed,
                         "performed": confirmation_performed,
+                        # A receipt exists for every executed seed, but only a
+                        # state-valid seed on which an independent confirmation was
+                        # attempted belongs to the replication-rate denominator.
+                        # Failed attempted confirmations retain ``passed=False``;
+                        # ineligible/unevaluable seeds remain explicit audit rows.
+                        "confirmation_eligible": bool(confirmation_passed is not None),
                         "passed": confirmation_passed,
                     })
                 branch_seed_utilities[action.value] = values
                 branch_seed_confirmations[action.value] = confirmation_audits
             branch_states = tuple(branch.verdict.evidence_state for branch in branches)
-            confirmation_results = [
-                bool(getattr(branch.verdict, "independent_confirmation_passed", False))
-                for branch in branches
-                if getattr(branch.verdict, "independent_confirmation_performed", False)
+            all_confirmation_receipts = [
+                receipt
+                for receipts in branch_seed_confirmations.values()
+                for receipt in receipts
+                if isinstance(receipt, Mapping)
             ]
-            confirmation_passed = bool(confirmation_results) and all(confirmation_results)
+            confirmation_observed_n = len(all_confirmation_receipts)
+            confirmation_eligible_n = sum(
+                _confirmation_receipt_eligible(receipt)
+                for receipt in all_confirmation_receipts
+            )
+            confirmation_passed_n = sum(
+                _confirmation_receipt_eligible(receipt)
+                and receipt.get("passed") is True
+                for receipt in all_confirmation_receipts
+            )
+            confirmation_passed = bool(confirmation_eligible_n) and (
+                confirmation_passed_n == confirmation_eligible_n
+            )
             branch_confirmation = {
                 branch.option.value: {
                     "eligible": bool(getattr(branch.verdict, "independent_confirmation_performed", False)),
+                    "confirmation_eligible": bool(
+                        sum(
+                            _confirmation_receipt_eligible(receipt)
+                            for receipt in branch_seed_confirmations.get(branch.option.value, ())
+                            if isinstance(receipt, Mapping)
+                        )
+                    ),
                     "passed": bool(getattr(branch.verdict, "independent_confirmation_passed", False)),
+                    "replicate_receipt_n": len(branch_seed_confirmations.get(branch.option.value, ())),
+                    "confirmation_eligible_n": sum(
+                        _confirmation_receipt_eligible(receipt)
+                        for receipt in branch_seed_confirmations.get(branch.option.value, ())
+                        if isinstance(receipt, Mapping)
+                    ),
                 }
                 for branch in branches
             }
@@ -328,8 +361,11 @@ def collect_tier1_v03_dataset(
                 # Keep eligibility and success separate.  A group with no
                 # independently performed confirmation is not a failed
                 # confirmation; it is outside the conditional denominator.
-                "confirmation_eligible": bool(confirmation_results),
-                "confirmation_observed_n": len(confirmation_results),
+                "confirmation_eligible": bool(confirmation_eligible_n),
+                "confirmation_observed_n": confirmation_observed_n,
+                "confirmation_receipt_n": confirmation_observed_n,
+                "confirmation_eligible_n": confirmation_eligible_n,
+                "confirmation_passed_n": confirmation_passed_n,
                 "confirmation_passed": bool(confirmation_passed),
                 "branch_confirmation": branch_confirmation,
                 # Per-branch execution accounting is evaluator output, not a policy
@@ -385,32 +421,46 @@ def collect_tier1_v03_dataset(
     # evaluator labels are independent of policy features; uncertain pairs are not
     # admitted to the flip objective.
     reversals: List[ReversalExample] = []
-    by_family_kind: Dict[str, Dict[str, List[int]]] = {}
+    # Reversal endpoints must come from the same registered question.  Earlier
+    # v0.3 code paired any Supported world with any Refuted world in a family,
+    # creating cross-question constraints and invalid macro denominators.
+    by_question_kind: Dict[str, Dict[str, List[int]]] = {}
     for index, example in enumerate(examples):
-        family = str(example.metadata.get("family", ""))
+        question_id = str(example.question_id)
         kind = example.world_id.rsplit("__", 1)[-1]
-        by_family_kind.setdefault(family, {}).setdefault(kind, []).append(index)
+        by_question_kind.setdefault(question_id, {}).setdefault(kind, []).append(index)
     reversal_statistics: List[dict] = []
-    seen_split_pairs: set[tuple[str, str, str]] = set()
-    for family, by_kind in by_family_kind.items():
+    for question_id, by_kind in by_question_kind.items():
         if not {"supported", "refuted"}.issubset(by_kind):
             continue
         for left_index in by_kind["supported"]:
             for right_index in by_kind["refuted"]:
                 left, right = examples[left_index], examples[right_index]
-                split_key = (family, left.split, right.split)
-                if split_key in seen_split_pairs:
-                    continue
                 for action_left in ACTION_SET:
                     for action_right in ACTION_SET:
                         if action_left is action_right:
                             continue
-                        left_confirmation = left.metadata.get("branch_confirmation", {}).get(action_left.value, {})
-                        right_confirmation = right.metadata.get("branch_confirmation", {}).get(action_right.value, {})
-                        if not (left_confirmation.get("passed", False) and right_confirmation.get("passed", False)):
+                        left_receipts = left.metadata.get("branch_seed_confirmations", {}).get(action_left.value, ())
+                        right_receipts = right.metadata.get("branch_seed_confirmations", {}).get(action_right.value, ())
+                        left_eligible_receipts = tuple(
+                            receipt for receipt in left_receipts
+                            if isinstance(receipt, Mapping) and _confirmation_receipt_eligible(receipt)
+                        )
+                        right_eligible_receipts = tuple(
+                            receipt for receipt in right_receipts
+                            if isinstance(receipt, Mapping) and _confirmation_receipt_eligible(receipt)
+                        )
+                        left_passed = sum(_confirmation_passed(receipt) for receipt in left_eligible_receipts)
+                        right_passed = sum(_confirmation_passed(receipt) for receipt in right_eligible_receipts)
+                        if (
+                            not left_eligible_receipts
+                            or not right_eligible_receipts
+                            or left_passed < max(1, (len(left_eligible_receipts) + 1) // 2)
+                            or right_passed < max(1, (len(right_eligible_receipts) + 1) // 2)
+                        ):
                             continue
                         pair = identify_confirmed_reversal(
-                            question_id=f"{left.question_id}|{right.question_id}",
+                            question_id=question_id,
                             world_a=left.world_id,
                             world_b=right.world_id,
                             action_left=action_left,
@@ -422,7 +472,7 @@ def collect_tier1_v03_dataset(
                             margin=0.05,
                             confidence=0.95,
                         )
-                        reversal_statistics.append({**pair.to_dict(), "family": family, "left_split": left.split, "right_split": right.split})
+                        reversal_statistics.append({**pair.to_dict(), "question_id": question_id, "left_split": left.split, "right_split": right.split})
                         if pair.confirmed:
                             reversals.append(ReversalExample(
                                 left_index,
@@ -436,12 +486,36 @@ def collect_tier1_v03_dataset(
                                 ucb_right=float(pair.ucb_b),
                                 sample_count=len(left.metadata["branch_seed_utilities"][action_left.value]),
                             ))
-                            seen_split_pairs.add(split_key)
-                            break
-                    if split_key in seen_split_pairs:
-                        break
-                if split_key in seen_split_pairs:
-                    break
+                            # Keep every confirmed action pair.  The evaluator
+                            # applies a question-macro normalization below instead
+                            # of letting a question with many pairs dominate.
+
+    # Normalize reversal-loss weights so each question contributes total weight one.
+    # This is an evaluator/training annotation and never enters policy features.
+    reversal_groups: Dict[str, List[int]] = {}
+    for index, pair in enumerate(reversals):
+        qid = str(examples[pair.left].question_id)
+        reversal_groups.setdefault(qid, []).append(index)
+    for qid, indices in reversal_groups.items():
+        raw_weights = [max(0.0, float(reversals[index].weight)) for index in indices]
+        total_weight = sum(raw_weights)
+        if total_weight <= 0.0:
+            raw_weights = [1.0 for _ in indices]
+            total_weight = float(len(indices))
+        for index, raw_weight in zip(indices, raw_weights):
+            pair = reversals[index]
+            reversals[index] = ReversalExample(
+                left=pair.left,
+                right=pair.right,
+                action_left=pair.action_left,
+                action_right=pair.action_right,
+                margin=pair.margin,
+                confirmed=pair.confirmed,
+                weight=float(raw_weight / total_weight),
+                lcb_left=pair.lcb_left,
+                ucb_right=pair.ucb_right,
+                sample_count=pair.sample_count,
+            )
 
     # Keep the seed-level uncertainty audit explicit.  Most current utility terms
     # are protocol-transition/cost terms and therefore can be identical across the
@@ -535,6 +609,189 @@ def _cluster_ci(
     }
 
 
+def _selected_action_confirmation_receipts(
+    example: DecisionExample,
+    action: ResearchAction,
+) -> tuple[tuple[Mapping[str, Any], ...], Optional[str]]:
+    """Return every replicate receipt for the action actually selected.
+
+    Confirmation is a property of an executed action, not of the question/world
+    group as a whole.  In particular, falling back to ``example.confirmation_passed``
+    silently drops failed attempted confirmations; the per-replicate eligibility bit
+    keeps those failures in the denominator while distinguishing unattempted rows.
+    The v0.4 collector calls the receipt field ``branch_replicate_confirmation``;
+    the frozen v0.3 collector uses ``branch_seed_confirmations``.  Both schemas are
+    accepted here, while a missing schema remains explicitly unestimable.
+    """
+
+    metadata = example.metadata if isinstance(example.metadata, Mapping) else {}
+    for field_name in ("branch_replicate_confirmation", "branch_seed_confirmations"):
+        mapping = metadata.get(field_name)
+        if not isinstance(mapping, Mapping):
+            continue
+        raw = mapping.get(action.value)
+        if raw is None:
+            continue
+        if isinstance(raw, Mapping):
+            raw = (raw,)
+        if isinstance(raw, (str, bytes)) or not isinstance(raw, Sequence):
+            return (), field_name
+        receipts = tuple(item for item in raw if isinstance(item, Mapping))
+        return receipts, field_name
+    return (), None
+
+
+def _confirmation_passed(receipt: Mapping[str, Any]) -> bool:
+    """Read the canonical success bit from either v0.3 or v0.4 receipts."""
+
+    return receipt.get("passed") is True or receipt.get("confirmation_passed") is True
+
+
+def _confirmation_receipt_eligible(receipt: Mapping[str, Any]) -> bool:
+    """Return whether a replicate has an attempted confirmation receipt.
+
+    Collectors emit one audit row for every exploration replicate.  Invalid or
+    insufficient replicates therefore have a receipt with ``passed=None`` but no
+    attempted confirmation and must not be treated as successful confirmations.
+    The canonical ``confirmation_eligible`` flag is preferred; legacy v0.3/v0.4
+    exports are accepted through ``eligible``/``performed`` fallbacks.
+    """
+
+    if "confirmation_eligible" in receipt:
+        return bool(receipt.get("confirmation_eligible"))
+    if "eligible" in receipt:
+        return bool(receipt.get("eligible"))
+    if "performed" in receipt:
+        return bool(receipt.get("performed"))
+    return receipt.get("passed") is not None or receipt.get("confirmation_passed") is not None
+
+
+def _question_macro_bootstrap_ci(
+    rows: Sequence[Mapping[str, Any]],
+    value_key: str,
+    *,
+    seed: int,
+    replicates: int = 500,
+) -> dict:
+    """Bootstrap a reversal statistic with one normalized contribution per question.
+
+    Reversal annotations are often numerous for one question.  Treating each pair
+    as an independent row lets a question with many admissible action pairs dominate
+    the estimate.  This helper first computes a (possibly ``weight``-weighted) pair
+    mean within each question, then averages those question means and resamples the
+    question means.  Thus every question has total weight one before the
+    across-question mean is taken.
+    """
+
+    grouped: Dict[str, list[tuple[float, float]]] = {}
+    for row in rows:
+        try:
+            value = float(row[value_key])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if not math.isfinite(value):
+            continue
+        question_id = str(row.get("question_id", "unknown"))
+        try:
+            weight = float(row.get("weight", 1.0))
+        except (TypeError, ValueError):
+            weight = 1.0
+        if not math.isfinite(weight) or weight < 0.0:
+            weight = 0.0
+        grouped.setdefault(question_id, []).append((value, weight))
+    question_means = []
+    for values in grouped.values():
+        if not values:
+            continue
+        total_weight = sum(weight for _, weight in values)
+        if total_weight > 0.0:
+            question_means.append(
+                sum(value * weight for value, weight in values) / total_weight
+            )
+        else:
+            question_means.append(sum(value for value, _ in values) / len(values))
+    if not question_means:
+        return {
+            "point": None,
+            "lower": None,
+            "upper": None,
+            "cluster_key": "question_id",
+            "cluster_count": 0,
+            "aggregation": "question_macro",
+            "status": "NA_no_eligible_questions",
+        }
+    point = sum(question_means) / len(question_means)
+    if len(question_means) < 2:
+        return {
+            "point": point,
+            "lower": None,
+            "upper": None,
+            "cluster_key": "question_id",
+            "cluster_count": len(question_means),
+            "aggregation": "question_macro",
+            "status": "NA_single_question_cluster",
+        }
+    rng = random.Random(int(seed))
+    draws = []
+    for _ in range(max(100, int(replicates))):
+        draws.append(sum(rng.choice(question_means) for _ in question_means) / len(question_means))
+    draws.sort()
+    lower_index = max(0, int(0.025 * len(draws)) - 1)
+    upper_index = min(len(draws) - 1, int(0.975 * len(draws)))
+    return {
+        "point": point,
+        "lower": float(draws[lower_index]),
+        "upper": float(draws[upper_index]),
+        "cluster_key": "question_id",
+        "cluster_count": len(question_means),
+        "aggregation": "question_macro",
+        "status": "estimable",
+    }
+
+
+def _weighted_pair_mean(rows: Sequence[Mapping[str, Any]], value_key: str) -> float:
+    """Average a pair outcome using its within-question normalized weight."""
+
+    weighted_values: list[tuple[float, float]] = []
+    for row in rows:
+        try:
+            value = float(row[value_key])
+            weight = float(row.get("weight", 1.0))
+        except (KeyError, TypeError, ValueError):
+            continue
+        if not math.isfinite(value):
+            continue
+        if not math.isfinite(weight) or weight < 0.0:
+            weight = 0.0
+        weighted_values.append((value, weight))
+    if not weighted_values:
+        return float("nan")
+    total_weight = sum(weight for _, weight in weighted_values)
+    if total_weight <= 0.0:
+        return sum(value for value, _ in weighted_values) / len(weighted_values)
+    return sum(value * weight for value, weight in weighted_values) / total_weight
+
+
+def _pairwise_reversal_ranking_correct(
+    left_probabilities: Mapping[str, Any],
+    right_probabilities: Mapping[str, Any],
+    action_left: ResearchAction,
+    action_right: ResearchAction,
+) -> bool:
+    """Check the two strict pairwise preferences optimized by flip loss."""
+
+    try:
+        left_margin = float(left_probabilities.get(action_left.value, 0.0)) - float(
+            left_probabilities.get(action_right.value, 0.0)
+        )
+        right_margin = float(right_probabilities.get(action_right.value, 0.0)) - float(
+            right_probabilities.get(action_left.value, 0.0)
+        )
+    except (TypeError, ValueError):
+        return False
+    return bool(math.isfinite(left_margin) and math.isfinite(right_margin) and left_margin > 0.0 and right_margin > 0.0)
+
+
 def evaluate_differentiable_policy(
     policy: DifferentiableStrategyPolicy,
     dataset: DecisionDataset,
@@ -560,6 +817,9 @@ def evaluate_differentiable_policy(
     selected_utilities: List[float] = []
     selected_costs: List[float] = []
     selected_utility_per_cost: List[float] = []
+    selected_confirmation_receipt_counts: List[int] = []
+    selected_confirmation_passed_counts: List[int] = []
+    selected_confirmation_missing: List[bool] = []
     erroneous_repair_flags: List[bool] = []
     invalid_local_optimization_flags: List[bool] = []
     selected_invalid_branch_flags: List[bool] = []
@@ -568,6 +828,7 @@ def evaluate_differentiable_policy(
     # pairs rather than as two independent rows.  A pair is eligible only when both
     # members are in the requested split and the evaluator marked it confirmed.
     predicted_actions: Dict[int, ResearchAction] = {}
+    predicted_probabilities: Dict[int, Mapping[str, float]] = {}
     split_indices = {
         index for index, example in enumerate(dataset.examples) if example.split == split
     }
@@ -603,6 +864,27 @@ def evaluate_differentiable_policy(
         selected_costs.append(selected_cost)
         if selected_cost > 1e-12:
             selected_utility_per_cost.append(selected_utility / selected_cost)
+        confirmation_receipts, confirmation_receipt_source = _selected_action_confirmation_receipts(
+            example, action
+        )
+        # Every exploration replicate is retained in ``confirmation_receipts`` for
+        # audit.  The replication-rate denominator, however, is the subset for
+        # which an independent confirmation was actually attempted.  This preserves
+        # failed attempted confirmations (passed=False) while excluding invalid or
+        # insufficient rows that could not produce a confirmation receipt.
+        eligible_confirmation_receipts = tuple(
+            receipt
+            for receipt in confirmation_receipts
+            if _confirmation_receipt_eligible(receipt)
+        )
+        confirmation_observed_n = len(confirmation_receipts)
+        confirmation_receipt_n = len(eligible_confirmation_receipts)
+        confirmation_passed_n = sum(
+            _confirmation_passed(receipt) for receipt in eligible_confirmation_receipts
+        )
+        selected_confirmation_receipt_counts.append(confirmation_receipt_n)
+        selected_confirmation_passed_counts.append(confirmation_passed_n)
+        selected_confirmation_missing.append(confirmation_receipt_source is None)
         # These are deliberately public-state conditional diagnostics.  An
         # erroneous repair is a repair selected while the trusted pre-action
         # state is not INVALID.  An invalid local optimisation is a CONTINUE or
@@ -633,6 +915,7 @@ def evaluate_differentiable_policy(
         action_correct.append(action is example.best_action)
         audit_action_correct.append(action is audit_target if audit_target is not None else None)
         predicted_actions[dataset_index] = action
+        predicted_probabilities[dataset_index] = probabilities
         regrets.append(float(max(example.branch_utilities) - example.branch_utilities[selected]))
         state_targets.append(STATE_SET.index(example.state_target))
         state_predictions.append(STATE_SET.index(predicted_state))
@@ -660,6 +943,20 @@ def evaluate_differentiable_policy(
             "selected_utility_per_cost": (
                 selected_utility / selected_cost if selected_cost > 1e-12 else None
             ),
+            "selected_confirmation_receipt_source": confirmation_receipt_source,
+            "selected_confirmation_eligible_n": confirmation_receipt_n,
+            "selected_confirmation_receipt_n": confirmation_receipt_n,
+            "selected_confirmation_observed_n": confirmation_observed_n,
+            "selected_confirmation_ineligible_n": confirmation_observed_n - confirmation_receipt_n,
+            "selected_confirmation_passed_n": confirmation_passed_n,
+            "selected_confirmation_rate": (
+                confirmation_passed_n / confirmation_receipt_n
+                if confirmation_receipt_n else None
+            ),
+            "selected_confirmation_receipts": [dict(receipt) for receipt in confirmation_receipts],
+            "selected_confirmation_eligible_receipts": [
+                dict(receipt) for receipt in eligible_confirmation_receipts
+            ],
             "erroneous_repair_action": bool(erroneous_repair_flags[-1]),
             "invalid_local_optimization": bool(invalid_local_optimization_flags[-1]),
             "invalid_local_optimization_definition": "invalid_state_and_continue_or_switch_not_public_best_action",
@@ -677,14 +974,46 @@ def evaluate_differentiable_policy(
             "action_probabilities": probabilities,
             "entropy": entropy,
         })
-    eligible_pairs = [
+    # Only same-question pairs can contribute to the primary reversal statistic.
+    # Cross-question pairs from legacy artifacts are retained for audit but excluded
+    # here because they cannot receive a normalized within-question macro weight.
+    all_split_pairs = [
         pair for pair in dataset.reversals
         if bool(pair.confirmed) and pair.left in split_indices and pair.right in split_indices
     ]
-    flip_correct = sum(
-        predicted_actions.get(pair.left) is pair.action_left
-        and predicted_actions.get(pair.right) is pair.action_right
-        for pair in eligible_pairs
+    eligible_pairs = [
+        pair for pair in all_split_pairs
+        if dataset.examples[pair.left].question_id == dataset.examples[pair.right].question_id
+    ]
+    pair_rows: List[dict] = []
+    for pair in eligible_pairs:
+        left_probabilities = predicted_probabilities.get(pair.left, {})
+        right_probabilities = predicted_probabilities.get(pair.right, {})
+        try:
+            pair_weight = float(pair.weight)
+        except (TypeError, ValueError):
+            pair_weight = 0.0
+        if not math.isfinite(pair_weight) or pair_weight < 0.0:
+            pair_weight = 0.0
+        pair_rows.append({
+            "question_id": str(dataset.examples[pair.left].question_id),
+            "weight": pair_weight,
+            "pairwise_ranking_correct": _pairwise_reversal_ranking_correct(
+                left_probabilities,
+                right_probabilities,
+                pair.action_left,
+                pair.action_right,
+            ),
+            "exact_top1_reversal_correct": bool(
+                predicted_actions.get(pair.left) is pair.action_left
+                and predicted_actions.get(pair.right) is pair.action_right
+            ),
+        })
+    pairwise_ranking_correct = sum(
+        bool(row["pairwise_ranking_correct"]) for row in pair_rows
+    )
+    exact_top1_reversal_correct = sum(
+        bool(row["exact_top1_reversal_correct"]) for row in pair_rows
     )
     # Conditional action metrics use the public branch-utility winner and explicit
     # denominators.  Audit-target variants are reported separately below and are
@@ -715,11 +1044,23 @@ def evaluate_differentiable_policy(
             audit_repair_rows.append(predicted)
         if audit_target is not None and example.state_target is EvidenceState.INSUFFICIENT:
             audit_insufficient_rows.append(predicted is audit_target)
-    confirmation_eligible = [
-        example for example in examples
-        if bool(example.metadata.get("confirmation_eligible", example.confirmation_passed))
-    ]
-    confirmation_passed = [example for example in confirmation_eligible if bool(example.confirmation_passed)]
+    # Confirmation is scored on the receipts for the selected action only.  The
+    # denominator contains attempted/eligible confirmations, including failed
+    # attempts (passed=False), while ineligible invalid/insufficient replicates are
+    # retained in the observed/ineligible audit counts.  This prevents a policy from
+    # obtaining a perfect rate by selecting branches whose failed confirmations are
+    # silently dropped.
+    confirmation_receipt_n = sum(selected_confirmation_receipt_counts)
+    confirmation_observed_n = sum(
+        int(record.get("selected_confirmation_observed_n", 0) or 0)
+        for record in records
+    )
+    confirmation_ineligible_n = sum(
+        int(record.get("selected_confirmation_ineligible_n", 0) or 0)
+        for record in records
+    )
+    confirmation_passed_n = sum(selected_confirmation_passed_counts)
+    confirmation_missing_n = sum(selected_confirmation_missing)
     required_switch_correct = sum(action is ResearchAction.SWITCH for action in required_switch_rows)
     invalid_repair_correct = sum(action is ResearchAction.REPAIR for action in invalid_repair_rows)
     insufficient_correct = sum(insufficient_rows)
@@ -728,12 +1069,8 @@ def evaluate_differentiable_policy(
     audit_action_observed = [value for value in audit_action_correct if value is not None]
     pair_margins: List[float] = []
     for pair in eligible_pairs:
-        left = next((row for row in records if row["world_id"] == dataset.examples[pair.left].world_id), None)
-        right = next((row for row in records if row["world_id"] == dataset.examples[pair.right].world_id), None)
-        if left is None or right is None:
-            continue
-        left_probs = left.get("action_probabilities", {})
-        right_probs = right.get("action_probabilities", {})
+        left_probs = predicted_probabilities.get(pair.left, {})
+        right_probs = predicted_probabilities.get(pair.right, {})
         pair_margins.append(min(
             float(left_probs.get(pair.action_left.value, 0.0)) - float(left_probs.get(pair.action_right.value, 0.0)),
             float(right_probs.get(pair.action_right.value, 0.0)) - float(right_probs.get(pair.action_left.value, 0.0)),
@@ -754,29 +1091,86 @@ def evaluate_differentiable_policy(
             len(STATE_SET),
         ),
     )
-    pair_ci_records = [
-        {
-            "pair_id": f"{dataset.examples[pair.left].question_id}|{dataset.examples[pair.right].question_id}",
-            "pair_correct": bool(
-                predicted_actions.get(pair.left) is pair.action_left
-                and predicted_actions.get(pair.right) is pair.action_right
-            ),
-        }
-        for pair in eligible_pairs
-    ]
-    pair_flip_accuracy_ci = _cluster_ci(
-        pair_ci_records,
-        lambda rows: sum(bool(row.get("pair_correct", False)) for row in rows) / max(1, len(rows)),
-        cluster_key="pair_id",
+    pairwise_ranking_accuracy_ci = _question_macro_bootstrap_ci(
+        pair_rows,
+        "pairwise_ranking_correct",
         seed=23,
-    ) if pair_ci_records else {
-        "point": None,
-        "lower": None,
-        "upper": None,
-        "cluster_key": "pair_id",
-        "cluster_count": 0,
-        "status": "NA_no_eligible_pairs",
+        replicates=500,
+    )
+    exact_top1_reversal_accuracy_ci = _question_macro_bootstrap_ci(
+        pair_rows,
+        "exact_top1_reversal_correct",
+        seed=29,
+        replicates=500,
+    )
+    pairwise_ranking_accuracy = pairwise_ranking_accuracy_ci.get("point")
+    exact_top1_reversal_accuracy = exact_top1_reversal_accuracy_ci.get("point")
+    reversal_question_weights = {
+        question_id: 1.0 / max(
+            1,
+            sum(row["question_id"] == question_id for row in pair_rows),
+        )
+        for question_id in sorted({row["question_id"] for row in pair_rows})
     }
+    reversal_question_macro_weights = {
+        question_id: 1.0 / max(1, len(reversal_question_weights))
+        for question_id in reversal_question_weights
+    }
+    reversal_pair_normalized_weights: Dict[str, List[float]] = {}
+    for question_id in reversal_question_weights:
+        question_rows = [row for row in pair_rows if row["question_id"] == question_id]
+        total_weight = sum(max(0.0, float(row.get("weight", 0.0))) for row in question_rows)
+        if total_weight <= 0.0:
+            total_weight = float(len(question_rows))
+            normalized = [1.0 / total_weight for _ in question_rows]
+        else:
+            normalized = [
+                max(0.0, float(row.get("weight", 0.0))) / total_weight
+                for row in question_rows
+            ]
+        reversal_pair_normalized_weights[question_id] = normalized
+    question_metric_rows: List[dict] = []
+    for question_id in sorted({example.question_id for example in examples}):
+        question_indices = [
+            index for index in sorted(split_indices)
+            if dataset.examples[index].question_id == question_id
+        ]
+        question_pair_rows = [
+            row for row in pair_rows if row["question_id"] == question_id
+        ]
+        question_metric_rows.append({
+            "question_id": str(question_id),
+            "family": str(dataset.examples[question_indices[0]].metadata.get("family", ""))
+            if question_indices else "",
+            "example_count": len(question_indices),
+            "action_accuracy": (
+                sum(bool(action_correct[sorted(split_indices).index(index)]) for index in question_indices)
+                / len(question_indices)
+                if question_indices else None
+            ),
+            "mean_regret": (
+                sum(float(regrets[sorted(split_indices).index(index)]) for index in question_indices)
+                / len(question_indices)
+                if question_indices else None
+            ),
+            "pair_count": len(question_pair_rows),
+            "pairwise_reversal_ranking_accuracy": (
+                _weighted_pair_mean(question_pair_rows, "pairwise_ranking_correct")
+                if question_pair_rows else None
+            ),
+            "exact_top1_reversal_accuracy": (
+                _weighted_pair_mean(question_pair_rows, "exact_top1_reversal_correct")
+                if question_pair_rows else None
+            ),
+            "selected_confirmation_receipt_n": sum(
+                selected_confirmation_receipt_counts[sorted(split_indices).index(index)]
+                for index in question_indices
+            ),
+            "selected_confirmation_passed_n": sum(
+                selected_confirmation_passed_counts[sorted(split_indices).index(index)]
+                for index in question_indices
+            ),
+        })
     return {
         "split": split,
         "example_count": len(examples),
@@ -811,12 +1205,54 @@ def evaluate_differentiable_policy(
         "mean_best_action_probability": sum(best_action_probabilities) / len(best_action_probabilities),
         "mean_belief_log_loss": sum(belief_scores) / len(belief_scores),
         "independent_question_count": len({example.question_id for example in examples}),
+        "question_metric_rows": question_metric_rows,
+        # Keep a dedicated pairwise table for downstream two-level (seed x
+        # question) aggregation.  ``question_metric_rows`` also carries these
+        # fields, but the explicit alias makes it impossible for a consumer to
+        # accidentally average ordinary action rows as reversal pairs.
+        "pairwise_reversal_question_rows": [
+            {
+                "question_id": row["question_id"],
+                "pair_count": row["pair_count"],
+                "pairwise_reversal_ranking_accuracy": row["pairwise_reversal_ranking_accuracy"],
+                "exact_top1_reversal_accuracy": row["exact_top1_reversal_accuracy"],
+            }
+            for row in question_metric_rows
+            if int(row.get("pair_count", 0) or 0) > 0
+        ],
         "confidence_interval_status": "estimable" if len({example.question_id for example in examples}) >= 2 else "not_estimable",
+        # ``pairwise_reversal_ranking_accuracy`` is the metric aligned with the
+        # two pairwise inequalities optimized by flip loss.  Exact two-endpoint
+        # top-1 matching remains available as an ordinary action diagnostic and is
+        # intentionally not called FlipAcc.
+        "reversal_pair_eligible_n": len(eligible_pairs),
+        "pairwise_reversal_ranking_correct_n": int(pairwise_ranking_correct),
+        "pairwise_reversal_ranking_accuracy": pairwise_ranking_accuracy,
+        "pairwise_reversal_ranking_accuracy_ci": pairwise_ranking_accuracy_ci,
+        "exact_top1_reversal_correct_n": int(exact_top1_reversal_correct),
+        "exact_top1_reversal_accuracy": exact_top1_reversal_accuracy,
+        "exact_top1_reversal_accuracy_ci": exact_top1_reversal_accuracy_ci,
+        # Backward-compatible aliases are explicitly marked as deprecated so old
+        # artifact readers cannot silently mistake exact top-1 for the primary rank
+        # metric.
         "flip_eligible_n": len(eligible_pairs),
-        "flip_correct_n": int(flip_correct),
-        "flip_accuracy": (flip_correct / len(eligible_pairs)) if eligible_pairs else None,
-        "pair_flip_accuracy": (flip_correct / len(eligible_pairs)) if eligible_pairs else None,
-        "pair_flip_accuracy_ci": pair_flip_accuracy_ci,
+        "flip_correct_n": int(exact_top1_reversal_correct),
+        "flip_accuracy": (
+            exact_top1_reversal_accuracy
+        ),
+        "pair_flip_accuracy": (
+            pairwise_ranking_accuracy
+        ),
+        "pair_flip_accuracy_ci": pairwise_ranking_accuracy_ci,
+        "flip_metric_alias": "deprecated_exact_top1_alias_and_pair_rank_alias",
+        "reversal_pair_aggregation": "question_macro_equal_weight",
+        # ``reversal_question_weights`` is a legacy pair-uniform audit alias.
+        # Expose the actual question-macro and confidence-weighted pair weights
+        # explicitly so consumers cannot mistake one for the other.
+        "reversal_question_weights": reversal_question_weights,
+        "reversal_question_weights_definition": "legacy pair-uniform 1/pair_count audit weights; not the across-question macro weights",
+        "reversal_question_macro_weights": reversal_question_macro_weights,
+        "reversal_pair_normalized_weights": reversal_pair_normalized_weights,
         "flip_mean_preference_margin": sum(pair_margins) / len(pair_margins) if pair_margins else None,
         "flip_margin_n": len(pair_margins),
         "required_switch_n": len(required_switch_rows),
@@ -885,9 +1321,24 @@ def evaluate_differentiable_policy(
         "insufficient_handling_rate": (
             insufficient_correct / len(insufficient_rows) if insufficient_rows else None
         ),
-        "confirmation_eligible_n": len(confirmation_eligible),
-        "confirmation_passed_n": len(confirmation_passed),
-        "confirmation_rate": len(confirmation_passed) / len(confirmation_eligible) if confirmation_eligible else None,
+        "confirmation_eligible_n": confirmation_receipt_n,
+        # Explicit aliases make the two reported populations unambiguous for
+        # downstream consumers.  ``confirmation_receipt_n`` is retained as the
+        # historical observed-total field; the canonical denominator is the
+        # attempted/eligible subset above.
+        "confirmation_observed_n": confirmation_observed_n,
+        "confirmation_receipt_n": confirmation_observed_n,
+        "confirmation_ineligible_n": confirmation_ineligible_n,
+        "confirmation_passed_n": confirmation_passed_n,
+        "confirmation_rate": (
+            confirmation_passed_n / confirmation_receipt_n
+            if confirmation_receipt_n else None
+        ),
+        "confirmation_missing_receipt_n": confirmation_missing_n,
+        "confirmation_metric_unit": "selected_action_replicate_receipt",
+        "confirmation_denominator_unit": "eligible_selected_action_replicate_receipt",
+        "confirmation_observed_definition": "all replicate receipts observed for the model-selected action, including ineligible/unevaluable rows",
+        "confirmation_denominator_definition": "replicate receipts for the model-selected action where an independent confirmation was attempted",
         "records": records,
     }
 
@@ -926,6 +1377,10 @@ def _cross_split_reversal_diagnostics(
             if pair.left in heldout_indices or pair.right in heldout_indices
         }
     }
+    predicted_probabilities = {
+        index: policy_probabilities(policy, dataset.examples[index].observation)
+        for index in predicted
+    }
     unseen_switch_examples = [
         index for index in sorted(unseen_indices)
         if dataset.examples[index].best_action is ResearchAction.SWITCH
@@ -948,7 +1403,16 @@ def _cross_split_reversal_diagnostics(
         if pair.left not in predicted or pair.right not in predicted:
             continue
         cross_pairs.append(pair)
-    pair_correct = sum(
+    pairwise_pair_correct = sum(
+        _pairwise_reversal_ranking_correct(
+            predicted_probabilities[pair.left],
+            predicted_probabilities[pair.right],
+            pair.action_left,
+            pair.action_right,
+        )
+        for pair in cross_pairs
+    )
+    exact_pair_correct = sum(
         predicted[pair.left] is pair.action_left
         and predicted[pair.right] is pair.action_right
         for pair in cross_pairs
@@ -958,8 +1422,12 @@ def _cross_split_reversal_diagnostics(
         if dataset.examples[pair.left].best_action is not dataset.examples[pair.right].best_action
     ]
     reversal_switch_correct = sum(
-        predicted[pair.left] is pair.action_left
-        and predicted[pair.right] is pair.action_right
+        _pairwise_reversal_ranking_correct(
+            predicted_probabilities[pair.left],
+            predicted_probabilities[pair.right],
+            pair.action_left,
+            pair.action_right,
+        )
         for pair in reversal_switch_pairs
     )
     return {
@@ -975,10 +1443,20 @@ def _cross_split_reversal_diagnostics(
             if unseen_switch_examples else None
         ),
         "cross_split_confirmed_pair_n": len(cross_pairs),
+        "cross_split_pairwise_reversal_ranking_accuracy": (
+            pairwise_pair_correct / len(cross_pairs) if cross_pairs else None
+        ),
+        "cross_split_exact_top1_reversal_accuracy": (
+            exact_pair_correct / len(cross_pairs) if cross_pairs else None
+        ),
         "cross_split_pair_flip_accuracy": (
-            pair_correct / len(cross_pairs) if cross_pairs else None
+            pairwise_pair_correct / len(cross_pairs) if cross_pairs else None
         ),
         "unseen_world_reversal_switch_pair_n": len(reversal_switch_pairs),
+        "unseen_world_reversal_switch_pairwise_reversal_ranking_accuracy": (
+            reversal_switch_correct / len(reversal_switch_pairs)
+            if reversal_switch_pairs else None
+        ),
         "unseen_world_reversal_switch_pair_flip_accuracy": (
             reversal_switch_correct / len(reversal_switch_pairs)
             if reversal_switch_pairs else None
@@ -1148,11 +1626,13 @@ def _sample_efficiency_diagnostics(
                 "dev_action_accuracy": dev_metrics.get("action_accuracy"),
                 "dev_mean_regret": dev_metrics.get("mean_regret"),
                 "dev_utility_per_cost": dev_metrics.get("utility_per_cost"),
-                "dev_pair_flip_accuracy": dev_metrics.get("pair_flip_accuracy"),
+                "dev_pairwise_reversal_ranking_accuracy": dev_metrics.get("pairwise_reversal_ranking_accuracy"),
+                "dev_pair_flip_accuracy": dev_metrics.get("pairwise_reversal_ranking_accuracy"),
                 "diagnostic_ood_action_accuracy": heldout_metrics.get("action_accuracy"),
                 "diagnostic_ood_mean_regret": heldout_metrics.get("mean_regret"),
                 "diagnostic_ood_utility_per_cost": heldout_metrics.get("utility_per_cost"),
-                "diagnostic_ood_pair_flip_accuracy": heldout_metrics.get("pair_flip_accuracy"),
+                "diagnostic_ood_pairwise_reversal_ranking_accuracy": heldout_metrics.get("pairwise_reversal_ranking_accuracy"),
+                "diagnostic_ood_pair_flip_accuracy": heldout_metrics.get("pairwise_reversal_ranking_accuracy"),
             }
     return output
 
@@ -1241,15 +1721,21 @@ def run_tier1_differentiable_suite(
                         "example_count", "action_accuracy", "audit_target_action_accuracy",
                         "mean_regret", "research_regret", "selected_utility_mean", "selected_cost_mean",
                         "utility_per_cost", "mean_utility_per_cost", "utility_per_cost_n",
-                        "action_accuracy_ci", "mean_regret_ci", "state_macro_f1_ci", "pair_flip_accuracy_ci",
+                        "action_accuracy_ci", "mean_regret_ci", "state_macro_f1_ci",
+                        "pairwise_reversal_ranking_accuracy_ci", "exact_top1_reversal_accuracy_ci",
                         "erroneous_repair_n", "erroneous_repair_eligible_n", "erroneous_repair_rate",
                         "invalid_local_optimization_n", "invalid_local_optimization_eligible_n",
                         "invalid_local_optimization_rate", "invalid_correct_switch_n",
                         "invalid_local_optimization_definition", "selected_invalid_branch_n",
                         "selected_invalid_branch_rate", "state_macro_f1", "state_accuracy",
                         "mean_belief_log_loss",
-                        "mean_best_action_probability", "flip_eligible_n", "flip_correct_n",
-                        "flip_accuracy", "pair_flip_accuracy", "pair_flip_accuracy_ci", "flip_mean_preference_margin",
+                        "mean_best_action_probability", "reversal_pair_eligible_n",
+                        "pairwise_reversal_ranking_correct_n", "pairwise_reversal_ranking_accuracy",
+                        "pairwise_reversal_ranking_accuracy_ci", "exact_top1_reversal_correct_n",
+                        "exact_top1_reversal_accuracy", "exact_top1_reversal_accuracy_ci",
+                        "flip_eligible_n", "flip_correct_n", "flip_accuracy", "pair_flip_accuracy",
+                        "pair_flip_accuracy_ci", "flip_metric_alias", "reversal_pair_aggregation",
+                        "reversal_question_weights", "flip_mean_preference_margin",
                         "required_switch_n", "required_switch_rate", "invalid_repair_n",
                         "invalid_repair_rate", "audit_required_switch_n",
                         "audit_required_switch_rate", "audit_invalid_repair_n",
@@ -1422,11 +1908,11 @@ def run_tier1_differentiable_suite(
                 split: metrics["PESCO-Full"][split]["mean_regret"] - metrics["PESCO-NoFlipLoss"][split]["mean_regret"]
                 for split in ("train", "dev", "diagnostic_ood")
             },
-            "full_vs_no_flip_flip_accuracy_delta": {
+            "full_vs_no_flip_pairwise_reversal_ranking_accuracy_delta": {
                 split: (
-                    metrics["PESCO-Full"][split]["pair_flip_accuracy"] - metrics["PESCO-NoFlipLoss"][split]["pair_flip_accuracy"]
-                    if metrics["PESCO-Full"][split]["pair_flip_accuracy"] is not None
-                    and metrics["PESCO-NoFlipLoss"][split]["pair_flip_accuracy"] is not None
+                    metrics["PESCO-Full"][split]["pairwise_reversal_ranking_accuracy"] - metrics["PESCO-NoFlipLoss"][split]["pairwise_reversal_ranking_accuracy"]
+                    if metrics["PESCO-Full"][split]["pairwise_reversal_ranking_accuracy"] is not None
+                    and metrics["PESCO-NoFlipLoss"][split]["pairwise_reversal_ranking_accuracy"] is not None
                     else None
                 )
                 for split in ("train", "dev", "diagnostic_ood")

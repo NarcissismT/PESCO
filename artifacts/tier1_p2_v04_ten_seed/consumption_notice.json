@@ -1,0 +1,37 @@
+{
+  "schema_version": "pesco_artifact_consumption_notice_v0.1",
+  "artifact_id": "tier1_p2_v04_ten_seed",
+  "artifact_kind": "v04_p2_diagnostic_ten_seed",
+  "status": "diagnostic_v04_consumed",
+  "consumed": true,
+  "recorded_at": "2026-08-26",
+  "consumption_scope": "historical_p2_diagnostic_only",
+  "formal_comparison_authorized": false,
+  "model_evaluation_authorized": false,
+  "promotion_status": "NO-GO",
+  "reasons": [
+    "This P2 run consumes the v0.4 extended dataset and is therefore downstream of the consumed latent-template boundary.",
+    "Its historical promotion decision used the superseded exact top-1 FlipAcc and seed-only uncertainty convention; it must not be used to reject or select the corrected P2.1 algorithm.",
+    "The historical primary files and run-manifest digests are retained unchanged; this additive notice changes interpretation, not the historical bytes."
+  ],
+  "allowed_uses": [
+    "historical ten-seed CPU audit",
+    "debugging atomic reward receipts and the original promotion gate",
+    "documenting why P3 remained fail-closed"
+  ],
+  "disallowed_uses": [
+    "paper-level algorithm ranking",
+    "post-fix metric or hyperparameter selection",
+    "formal superiority or final generalization claim"
+  ],
+  "superseded_by": {
+    "p2_1_diagnostic": "artifacts/tier1_p21_diagnostic/",
+    "shortcut_probe": "artifacts/tier1_p21_shortcut_probe/",
+    "v05_boundary": "artifacts/tier1_v05_frozen_final/"
+  },
+  "integrity": {
+    "notice_is_additive": true,
+    "original_artifacts_immutable": true,
+    "historical_manifest_digests_preserved": true
+  }
+}

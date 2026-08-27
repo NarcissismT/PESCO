@@ -1,5 +1,12 @@
 # Tier-1 formal final-ID/final-OOD P2 ten-seed experiment
 
+> **Consumption status (2026-08-26): `diagnostic_v04_consumed`.**  The formal
+> environment receipts are retained for historical audit, but latent-template
+> overlap and the superseded exact-FlipAcc/seed-only evaluator prevent use as an
+> independent clean final.  See
+> [`consumption_notice.json`](consumption_notice.json); original result/manifest
+> bytes remain unchanged.
+
 This is the complete preregistered CPU P2 run on the locked formal environment
 dataset. It uses 10 training seeds, 64 optimizer steps, 8 epochs, promotion split
 `final_id`, and held-out split `final_ood`. The dataset contains evaluator-side

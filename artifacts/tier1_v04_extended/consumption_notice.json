@@ -1,0 +1,36 @@
+{
+  "schema_version": "pesco_artifact_consumption_notice_v0.1",
+  "artifact_id": "tier1_v04_extended",
+  "artifact_kind": "v04_extended_diagnostic",
+  "status": "diagnostic_v04_consumed",
+  "consumed": true,
+  "recorded_at": "2026-08-26",
+  "consumption_scope": "historical_diagnostic_only",
+  "formal_comparison_authorized": false,
+  "model_evaluation_authorized": false,
+  "reasons": [
+    "The v0.4 benchmark is retained for mechanism and audit diagnostics, but its latent mechanism templates were reused across diagnostic and formal boundaries and are not an independent final benchmark.",
+    "The artifact predates the P2.1 evaluator boundary: pre-action raw observations, Pairwise Reversal Ranking Accuracy, selected-action confirmation receipts, question-macro weighting, and seed-by-question/family-LOO uncertainty.",
+    "The historical primary files and run-manifest digests are retained unchanged; this additive notice changes interpretation, not the historical bytes."
+  ],
+  "allowed_uses": [
+    "historical audit and reproducibility checks",
+    "debugging the v0.4 data-generation and trajectory protocol",
+    "comparison against the fresh P2.1 diagnostic only when explicitly labelled historical"
+  ],
+  "disallowed_uses": [
+    "paper-level final model comparison",
+    "post-fix algorithm selection or hyperparameter tuning",
+    "formal superiority, generalization, or clean-final claims"
+  ],
+  "superseded_by": {
+    "p2_1_diagnostic": "artifacts/tier1_p21_diagnostic/",
+    "shortcut_probe": "artifacts/tier1_p21_shortcut_probe/",
+    "v05_boundary": "artifacts/tier1_v05_frozen_final/"
+  },
+  "integrity": {
+    "notice_is_additive": true,
+    "original_artifacts_immutable": true,
+    "historical_manifest_digests_preserved": true
+  }
+}

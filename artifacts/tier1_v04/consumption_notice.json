@@ -1,0 +1,35 @@
+{
+  "schema_version": "pesco_artifact_consumption_notice_v0.1",
+  "artifact_id": "tier1_v04",
+  "artifact_kind": "v04_benchmark_hardening_diagnostic",
+  "status": "diagnostic_v04_consumed",
+  "consumed": true,
+  "recorded_at": "2026-08-26",
+  "consumption_scope": "historical_diagnostic_only",
+  "formal_comparison_authorized": false,
+  "model_evaluation_authorized": false,
+  "reasons": [
+    "This early v0.4 hardening diagnostic is retained for provenance, but it predates the P2.1 pre-action/evaluator corrections and is not an independent final benchmark.",
+    "Its derived posterior/VOI records must not be used for post-fix algorithm selection or paper-level comparison.",
+    "The historical primary files and run-manifest digests are retained unchanged; this additive notice changes interpretation, not the historical bytes."
+  ],
+  "allowed_uses": [
+    "historical benchmark-boundary audit",
+    "reproducibility and debugging of the v0.4 hardening pass"
+  ],
+  "disallowed_uses": [
+    "paper-level final model comparison",
+    "post-fix algorithm or hyperparameter selection",
+    "clean final or generalization claim"
+  ],
+  "superseded_by": {
+    "v04_extended": "artifacts/tier1_v04_extended/",
+    "p2_1_diagnostic": "artifacts/tier1_p21_diagnostic/",
+    "v05_boundary": "artifacts/tier1_v05_frozen_final/"
+  },
+  "integrity": {
+    "notice_is_additive": true,
+    "original_artifacts_immutable": true,
+    "historical_manifest_digests_preserved": true
+  }
+}

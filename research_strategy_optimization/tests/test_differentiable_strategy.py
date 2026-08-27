@@ -3,6 +3,11 @@ from __future__ import annotations
 import unittest
 import copy
 
+try:
+    import torch as _torch  # noqa: F401 - presence check for the optional suite
+except ImportError:  # pragma: no cover - exercised in minimal NumPy/stdlib installs
+    raise unittest.SkipTest("PyTorch is an optional dependency for differentiable tests")
+
 from research_strategy_optimization.algorithms.differentiable_strategy import (
     DecisionDataset,
     DifferentiableStrategyTrainer,
@@ -138,6 +143,28 @@ class DifferentiableStrategyTests(unittest.TestCase):
         self.assertGreater(metrics["flip_eligible_n"], 0)
         self.assertLessEqual(metrics["flip_correct_n"], metrics["flip_eligible_n"])
         self.assertLessEqual(metrics["confirmation_passed_n"], metrics["confirmation_eligible_n"])
+
+    def test_reversal_pairs_are_same_question_and_question_normalized(self):
+        by_question = {}
+        for pair in self.dataset.reversals:
+            left = self.dataset.examples[pair.left]
+            right = self.dataset.examples[pair.right]
+            self.assertEqual(left.question_id, right.question_id)
+            by_question.setdefault(left.question_id, 0.0)
+            by_question[left.question_id] += float(pair.weight)
+        self.assertTrue(by_question)
+        for total in by_question.values():
+            self.assertAlmostEqual(total, 1.0, places=8)
+
+    def test_metrics_expose_pairrank_and_exact_top1_separately(self):
+        policy, _ = DifferentiableStrategyTrainer(
+            DifferentiableTrainerConfig(epochs=1, batch_size=16, max_optimizer_steps=2, seed=31)
+        ).fit(self.dataset, "PESCO-Full")
+        metrics = evaluate_differentiable_policy(policy, self.dataset, "train")
+        self.assertIn("pairwise_reversal_ranking_accuracy", metrics)
+        self.assertIn("exact_top1_reversal_accuracy", metrics)
+        self.assertIn("pairwise_reversal_question_rows", metrics)
+        self.assertEqual(metrics["reversal_pair_aggregation"], "question_macro_equal_weight")
 
     def test_d_metrics_expose_cost_and_invalid_local_optimization_diagnostics(self):
         policy, _ = DifferentiableStrategyTrainer(

@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from dataclasses import replace
 from pathlib import Path
 
 from research_strategy_optimization.environments.tier1_benchmark import (
@@ -19,9 +20,20 @@ from research_strategy_optimization.evaluation.tier1_v04 import (
 from research_strategy_optimization.evaluation.tier1_v04_extended import (
     V04_EXTENDED_FAMILIES,
     V04_EXTENDED_EXPLORATION_SEEDS,
+    build_pre_action_raw_observation,
     build_tier1_v04_extended_benchmark,
+    pre_action_observation_hash,
 )
-from scripts.run_tier1_v04_extended import _select_decision_questions
+try:
+    from research_strategy_optimization.algorithms.differentiable_strategy import observation_to_features
+    _TORCH_AVAILABLE = True
+except ImportError:  # pragma: no cover - only the feature-boundary test needs PyTorch
+    observation_to_features = None
+    _TORCH_AVAILABLE = False
+try:
+    from scripts.run_tier1_v04_extended import _select_decision_questions
+except ImportError:  # pragma: no cover - runner imports the optional differentiable dataset
+    _select_decision_questions = None
 from research_strategy_optimization.schemas import ResearchAction
 
 
@@ -112,12 +124,48 @@ class Tier1V04HardeningTests(unittest.TestCase):
         self.assertNotIn("true_effect_b", encoded)
 
     def test_bounded_decision_subset_is_family_stratified(self) -> None:
+        if _select_decision_questions is None:
+            self.skipTest("PyTorch is optional for the v0.4 decision-subset runner")
         benchmark = build_tier1_v04_extended_benchmark()
         selected = _select_decision_questions(benchmark.questions, 16)
         self.assertEqual(len(selected), 16)
         self.assertEqual({question.family for question in selected}, set(V04_EXTENDED_FAMILIES))
         self.assertTrue(any(question.split == "diagnostic_ood" for question in selected))
         self.assertTrue(any(question.family == FAMILY_CAUSAL_CONFOUNDING for question in selected))
+
+    def test_raw_features_exclude_cross_candidate_confirmation_summary(self) -> None:
+        """A post-hoc all-candidate confirmation rate cannot enter policy inputs."""
+
+        if not _TORCH_AVAILABLE:
+            self.skipTest("PyTorch is optional for the feature-boundary assertion")
+
+        benchmark = build_tier1_v04_extended_benchmark()
+        question = benchmark.questions[0]
+        world = question.worlds[0]
+        baseline = build_pre_action_raw_observation(question, world)
+        altered_raw = dict(baseline.raw_evidence)
+        # This key was the historical leakage channel.  Even if a caller injects it
+        # into a serialized observation, the feature encoder's fixed vocabulary must
+        # ignore it.
+        altered_raw["log_confirmation_pass_rate"] = 1.0
+        altered = replace(baseline, raw_evidence=tuple(sorted(altered_raw.items())))
+        self.assertNotIn("log_confirmation_pass_rate", dict(baseline.raw_evidence))
+        self.assertTrue((observation_to_features(baseline) == observation_to_features(altered)).all())
+
+    def test_counterfactual_unselected_method_b_does_not_change_pre_action_hash(self) -> None:
+        """Changing hidden method-B efficacy leaves the decision-before hash fixed."""
+
+        benchmark = build_tier1_v04_extended_benchmark()
+        question = benchmark.questions[0]
+        world = question.worlds[0]
+        counterfactual = replace(world, true_effect_b=float(world.true_effect_b) + 1.234567)
+        original_observation = build_pre_action_raw_observation(question, world)
+        counterfactual_observation = build_pre_action_raw_observation(question, counterfactual)
+        self.assertEqual(
+            pre_action_observation_hash(original_observation),
+            pre_action_observation_hash(counterfactual_observation),
+        )
+        self.assertEqual(original_observation.to_dict(), counterfactual_observation.to_dict())
 
 
 if __name__ == "__main__":

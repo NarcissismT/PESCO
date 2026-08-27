@@ -1,0 +1,2569 @@
+{
+  "generator_version": "pesco_p21_latent_generator_20260826_r1",
+  "pass": true,
+  "pass_count": 256,
+  "row_count": 256,
+  "rows": [
+    {
+      "counterfactual_hash": "sha256:e1a56b9d4108ac783b51c74c066bc3317832908747552c7c1d491ea07697d3ae",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e1a56b9d4108ac783b51c74c066bc3317832908747552c7c1d491ea07697d3ae",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:4f1013cf57e17c03b4fbd31bfdf4ee54a0137b8f26b4cbeefab9fb5b013c2326",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4f1013cf57e17c03b4fbd31bfdf4ee54a0137b8f26b4cbeefab9fb5b013c2326",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:6e51338a7fe1aaf8dd41cd1f10bd7cb3e3e5c15b1cf1e879ab01f4b55dbd8b63",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6e51338a7fe1aaf8dd41cd1f10bd7cb3e3e5c15b1cf1e879ab01f4b55dbd8b63",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:01678202fd51bda56c21088faeac403995d1116da2f3e92fd158707492a470a7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:01678202fd51bda56c21088faeac403995d1116da2f3e92fd158707492a470a7",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:39e9ee355b0ca3a5033e90ec7486565e94534f74c4ef66a25dd5c565e09aa410",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:39e9ee355b0ca3a5033e90ec7486565e94534f74c4ef66a25dd5c565e09aa410",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:63114a91543b5006b9593fc17b4f350018301b5ca75a619a643ba5f9d23ffda5",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:63114a91543b5006b9593fc17b4f350018301b5ca75a619a643ba5f9d23ffda5",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:189046eeadbc084e92fc86c7a9dbe51bffb32faf0d9b43748e32ee554d204ea5",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:189046eeadbc084e92fc86c7a9dbe51bffb32faf0d9b43748e32ee554d204ea5",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:5db05977fd222b0a4d80467749316703ac5e02fd592e66835bfa7f60cfedd921",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5db05977fd222b0a4d80467749316703ac5e02fd592e66835bfa7f60cfedd921",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:b64799caae1bc5544dbaadd59c8260ddc40a99b14ba39cec18baa1943f6e2565",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b64799caae1bc5544dbaadd59c8260ddc40a99b14ba39cec18baa1943f6e2565",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:a33da95cdca7060e354ffe273dfbaa87be5781425200c2de1011ed78d474c1e7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a33da95cdca7060e354ffe273dfbaa87be5781425200c2de1011ed78d474c1e7",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:87e6d5ce70838fb1d19a3150e1746ed029445eba47a3b33c65fd59bd790a3241",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:87e6d5ce70838fb1d19a3150e1746ed029445eba47a3b33c65fd59bd790a3241",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:cf714b075df9d29c955a065aa07db0ea7110f524c6572172f75e3ae0a1f538dd",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cf714b075df9d29c955a065aa07db0ea7110f524c6572172f75e3ae0a1f538dd",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:70f10cd2775e1cb581f75c6604d64e8903fd2b50b7e0667bee42c57a5a85367a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:70f10cd2775e1cb581f75c6604d64e8903fd2b50b7e0667bee42c57a5a85367a",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:cc8d443d3d4927d8cbbbe525eaec355fd65772fe5f716f8dcf83ed63d6fd8e69",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cc8d443d3d4927d8cbbbe525eaec355fd65772fe5f716f8dcf83ed63d6fd8e69",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:a760b5baed28a907f44f0e8d3afcc274cd8e99192dc6d4dda00e618577300cc5",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a760b5baed28a907f44f0e8d3afcc274cd8e99192dc6d4dda00e618577300cc5",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:8d411099a557aa788b3d10bc8ffd133ad08fb294bbd61e5e432df6c6b0d55005",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8d411099a557aa788b3d10bc8ffd133ad08fb294bbd61e5e432df6c6b0d55005",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:250b4b2c03ece597b662d0a3cb1a66a0beb0dcd14af3d9fe1ac943d8375eaf15",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:250b4b2c03ece597b662d0a3cb1a66a0beb0dcd14af3d9fe1ac943d8375eaf15",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:c71ea2df9ec550a398841c278fbc74b17d307185e21ce43158d46126b712127c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c71ea2df9ec550a398841c278fbc74b17d307185e21ce43158d46126b712127c",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:4b121b87e3400e955adc3ea458d25a11a0bb133f3a14058b0ca76f0aeee5a31c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4b121b87e3400e955adc3ea458d25a11a0bb133f3a14058b0ca76f0aeee5a31c",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:d455eb6a919fd66db9409429a9465d851d567367f80bc2cb566c174393ee4f7e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d455eb6a919fd66db9409429a9465d851d567367f80bc2cb566c174393ee4f7e",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:61a54722f3c3c68137865789cf8b6205e2631e2b5b01255e77cb5330369aa5a1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:61a54722f3c3c68137865789cf8b6205e2631e2b5b01255e77cb5330369aa5a1",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:c8d87f11eb47709f9fd0e6a64bd279b8de501b2da0f4181fd0fe9a8a079f8968",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c8d87f11eb47709f9fd0e6a64bd279b8de501b2da0f4181fd0fe9a8a079f8968",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:4815833b16d269fccd43a263b5cf539bc6af51b9218da2aeebecf44a0f23fcb1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4815833b16d269fccd43a263b5cf539bc6af51b9218da2aeebecf44a0f23fcb1",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:5a70530a0d820e50774da668d9c9dd95354837d7dfabc0a7974ac71a9d4473f7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5a70530a0d820e50774da668d9c9dd95354837d7dfabc0a7974ac71a9d4473f7",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:d126545f927746e292b380047a2fff2711bd6befe3592bc30292f991551400c7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d126545f927746e292b380047a2fff2711bd6befe3592bc30292f991551400c7",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:8982864cfcccf04620cf296e08591155c6ecc988a166143013f85070e1d7aa3a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8982864cfcccf04620cf296e08591155c6ecc988a166143013f85070e1d7aa3a",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:afc78b94f7ab560827992cf52bbd230f9d707f3a37c6b93aae87330f6cb075df",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:afc78b94f7ab560827992cf52bbd230f9d707f3a37c6b93aae87330f6cb075df",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:e9161f066cfc143b5dfcc12379f74dafb0893b98b26baa82ad616114c25b34f2",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e9161f066cfc143b5dfcc12379f74dafb0893b98b26baa82ad616114c25b34f2",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:3f7dbaa91a856893445908212702ea80d15be84a53ce42556daf4d015ea959da",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3f7dbaa91a856893445908212702ea80d15be84a53ce42556daf4d015ea959da",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:0b46c1944b82356e5c7f6eaba38d5cc4a17ade8cca132553c84e0be6d3e72d2c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:0b46c1944b82356e5c7f6eaba38d5cc4a17ade8cca132553c84e0be6d3e72d2c",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:a8d5df67b39aa024825ae1d2f08b97b27654b6f95ea590c0656df0412bfa2781",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a8d5df67b39aa024825ae1d2f08b97b27654b6f95ea590c0656df0412bfa2781",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:30d95e4ee016a6c3e2d9a9aa2e884bff95b29852c2db5450aa13965bbe9bd824",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:30d95e4ee016a6c3e2d9a9aa2e884bff95b29852c2db5450aa13965bbe9bd824",
+      "pass": true,
+      "question_id": "t1_p21_group_leakage_08",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:bdb2bab64d232b620873c652643ddb73e182d28b23961d43d68ab96f40700dc7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:bdb2bab64d232b620873c652643ddb73e182d28b23961d43d68ab96f40700dc7",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:3817857d98d6defd250056027ea845c6495433ce03716f25861839f868828f30",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3817857d98d6defd250056027ea845c6495433ce03716f25861839f868828f30",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:69421402f2785809445d6ff59d3367f27aa509b8f005fa986bf394719f08de5d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:69421402f2785809445d6ff59d3367f27aa509b8f005fa986bf394719f08de5d",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:0158114bb4cbe3e544cfe47e62daa29eb215d76ce46e1114bfde86147d513c34",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:0158114bb4cbe3e544cfe47e62daa29eb215d76ce46e1114bfde86147d513c34",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:78ac309c2a72e76a8d8097161c25949fd55b8f4b40e0d89cbb78cee794a1e085",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:78ac309c2a72e76a8d8097161c25949fd55b8f4b40e0d89cbb78cee794a1e085",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:48ae10986866ba5c85b07826c89115c5086466d0c4514464177fc14ea6cf89ce",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:48ae10986866ba5c85b07826c89115c5086466d0c4514464177fc14ea6cf89ce",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:92975125b4905fd090b90173e11c7b70af4609e7fa6e217a5f2a692736762c19",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:92975125b4905fd090b90173e11c7b70af4609e7fa6e217a5f2a692736762c19",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:3be7c292e36178201502259b2ef855a7d9b368299b553dca22cb2d3faeda7ff1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3be7c292e36178201502259b2ef855a7d9b368299b553dca22cb2d3faeda7ff1",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:4f9e20bb0fa3d00b05d04f43d10c51fb4b868d1821ec5aa9c49878343b55beec",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4f9e20bb0fa3d00b05d04f43d10c51fb4b868d1821ec5aa9c49878343b55beec",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:e7f303719c24c7c31473d9e79f14851b0919c3eecd45272a5f50aef025c32465",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e7f303719c24c7c31473d9e79f14851b0919c3eecd45272a5f50aef025c32465",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:cee97aaf33f9e7f691dec27b3ec39271934f96f42bc492c1958e1809b182d37e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cee97aaf33f9e7f691dec27b3ec39271934f96f42bc492c1958e1809b182d37e",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:8a1cda67733f13ad945c565a04aae548f43fb37e6f0daae9fbe24d04906ce9c7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8a1cda67733f13ad945c565a04aae548f43fb37e6f0daae9fbe24d04906ce9c7",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:5582cbd195fdc6ecb7ed0fc7abe82cf58f1395e766af63daa449265cb18c176f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5582cbd195fdc6ecb7ed0fc7abe82cf58f1395e766af63daa449265cb18c176f",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:f460e5c41116367e3c134c23436e2c38cc51fef294c1ad87d36ccb9cb2acb0be",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f460e5c41116367e3c134c23436e2c38cc51fef294c1ad87d36ccb9cb2acb0be",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:8a5dc1b3ffb1e2908f2e7badc793abd09a920076e5fb6653b8cc53f1a742555b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8a5dc1b3ffb1e2908f2e7badc793abd09a920076e5fb6653b8cc53f1a742555b",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:fd0a646045a2506cafce73a42863218b36f393e72215391226567cf8fdc419ff",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fd0a646045a2506cafce73a42863218b36f393e72215391226567cf8fdc419ff",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:68323691cbca6859be703dd87ac9c4e5a101c23910e1737f6cc55938c7ab2034",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:68323691cbca6859be703dd87ac9c4e5a101c23910e1737f6cc55938c7ab2034",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:2ed38567c3143f3f32ce507861ba933716cc85359bf70d704e1891ad972ac44e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:2ed38567c3143f3f32ce507861ba933716cc85359bf70d704e1891ad972ac44e",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:af9cd3b335d81dc24c80ebde5e946b16880ba2258895403b30ffdf97d67f8683",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:af9cd3b335d81dc24c80ebde5e946b16880ba2258895403b30ffdf97d67f8683",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:471978df248fdfe1b0a956f3ecdf564ab9a78521ce048c96ff48d299741603e2",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:471978df248fdfe1b0a956f3ecdf564ab9a78521ce048c96ff48d299741603e2",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:822c22448e393cda49ee784066e048428208a9a9b76256a8cba8a3e5f38e9553",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:822c22448e393cda49ee784066e048428208a9a9b76256a8cba8a3e5f38e9553",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:3c34acb43b76de1663b20c58e41a01115a1fcaef043a5020c6fc4d7ea9462ac4",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3c34acb43b76de1663b20c58e41a01115a1fcaef043a5020c6fc4d7ea9462ac4",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:e9eeb8dec6bfbdcbdd5d58ca882d99e5968926b198392bc15f0ecf7e21a7a8af",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e9eeb8dec6bfbdcbdd5d58ca882d99e5968926b198392bc15f0ecf7e21a7a8af",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:a99f9d25d3a76a00394d2dfe07689cd2cbd5b40fbaa6d6462cd658e0f2dc6b72",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a99f9d25d3a76a00394d2dfe07689cd2cbd5b40fbaa6d6462cd658e0f2dc6b72",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:a92985fb6d38d110cad5eeddfc7b0eca627fe229b0b95cb1884cba3e70195c82",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a92985fb6d38d110cad5eeddfc7b0eca627fe229b0b95cb1884cba3e70195c82",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:5007c5b26ea38108c2de91fbf6e3191d6c168fad060a8c802b978a05feb685f3",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5007c5b26ea38108c2de91fbf6e3191d6c168fad060a8c802b978a05feb685f3",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:471c5fc7d1df1e0b0c055251611b7987a2c17b89627b867c8a7ca1f70df816b6",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:471c5fc7d1df1e0b0c055251611b7987a2c17b89627b867c8a7ca1f70df816b6",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:7e5e3d9bae37712dc4b1cf3512603b537b293d96c282b296bde377590a1ea6bb",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:7e5e3d9bae37712dc4b1cf3512603b537b293d96c282b296bde377590a1ea6bb",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:6f78ab8b7987fb46c25062a58ffbf1e13b1b21118cd5c2f29347718ae275e180",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6f78ab8b7987fb46c25062a58ffbf1e13b1b21118cd5c2f29347718ae275e180",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:755268bb68b3c8d88a5624c49d54dfe61c21520289221c11d0703a15ebbd9342",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:755268bb68b3c8d88a5624c49d54dfe61c21520289221c11d0703a15ebbd9342",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:8a9f8132fc7bdd87330f910fb4fa3238511afbefa6df043929cde931ddf39ce4",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8a9f8132fc7bdd87330f910fb4fa3238511afbefa6df043929cde931ddf39ce4",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:fd6b50664edaf3e19f78d2b140e60fbe9f702f759606a1c7fd5606071b21e701",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fd6b50664edaf3e19f78d2b140e60fbe9f702f759606a1c7fd5606071b21e701",
+      "pass": true,
+      "question_id": "t1_p21_causal_confounding_08",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:411220cfc5e31b98c766bb17a86ef15dc3626ad2038350dd776e7323a17915e4",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:411220cfc5e31b98c766bb17a86ef15dc3626ad2038350dd776e7323a17915e4",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:69502a7eae8d36ef82a0a9a850a2fd2a56d270f6baa5ad4a4f48b004e72117d2",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:69502a7eae8d36ef82a0a9a850a2fd2a56d270f6baa5ad4a4f48b004e72117d2",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:1d4847e7cc7957e8c21b0981ff4eb77bf97db801da1f8309ffcd55f2c7e7cfb9",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1d4847e7cc7957e8c21b0981ff4eb77bf97db801da1f8309ffcd55f2c7e7cfb9",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:2a181a4cf1ec62bfdd396202c77c1873b985e07bea2a3f1e5273b6381ffda43f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:2a181a4cf1ec62bfdd396202c77c1873b985e07bea2a3f1e5273b6381ffda43f",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:138f6e4cf4815df7bc7758c204d342606f376259089fb2fbf4d0c1336d8608b6",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:138f6e4cf4815df7bc7758c204d342606f376259089fb2fbf4d0c1336d8608b6",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:d8db0687cf7b6550a63c2f4ea71b678f7ffeec7dba133768eb40585347e148d8",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d8db0687cf7b6550a63c2f4ea71b678f7ffeec7dba133768eb40585347e148d8",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:ef5e4616bbad0930a6a49a6699184c55bdfb03c7a10d64704219a3a13a5f0091",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ef5e4616bbad0930a6a49a6699184c55bdfb03c7a10d64704219a3a13a5f0091",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:f42d646eaa5bb58087f6c3f34c7d65d60f0110f22736530ae08fd3bd7a80b065",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f42d646eaa5bb58087f6c3f34c7d65d60f0110f22736530ae08fd3bd7a80b065",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:4ee10c684d708b288b89b1adffb2d4dc05a95c870c32c6737b9310f1ddb8c6d5",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4ee10c684d708b288b89b1adffb2d4dc05a95c870c32c6737b9310f1ddb8c6d5",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:1336151ffc5755d14b495abdf92c3bc5e1b6e1f9bafbf71f076d04d1082d1222",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1336151ffc5755d14b495abdf92c3bc5e1b6e1f9bafbf71f076d04d1082d1222",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:22cf19e6ccec6696ad11f6dfa055a4aa43030b9fd53983cda91647828301ff83",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:22cf19e6ccec6696ad11f6dfa055a4aa43030b9fd53983cda91647828301ff83",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:66e0036261288fb4e6d859347afb326b08bc5eac3fc6a6289f90a89859272df9",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:66e0036261288fb4e6d859347afb326b08bc5eac3fc6a6289f90a89859272df9",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:78be4e26040e66ce319f48e20f4886086286c31c2843d05a4b1de7ed0d9ba32f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:78be4e26040e66ce319f48e20f4886086286c31c2843d05a4b1de7ed0d9ba32f",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:8c8390fcbbded990882b4a0dbc75be758dae4ccbcaa685dd97104d4f01e7d97a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8c8390fcbbded990882b4a0dbc75be758dae4ccbcaa685dd97104d4f01e7d97a",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:2a740caf6d03dab0f0ad7d724cb527cef870b1e28f09cab49b1ee66a6a63daed",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:2a740caf6d03dab0f0ad7d724cb527cef870b1e28f09cab49b1ee66a6a63daed",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:adebc2334e2a8711d68a7f8b9d16183b5e72f1f293bbcff554d4c8461c0e4b9b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:adebc2334e2a8711d68a7f8b9d16183b5e72f1f293bbcff554d4c8461c0e4b9b",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:d02cd182d096b1e92689f7af77637577c69c4991eb726853dc1a38ed34094321",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d02cd182d096b1e92689f7af77637577c69c4991eb726853dc1a38ed34094321",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:1c3c87c92303be877fa59befc2db6cdb6a6e1c1d91709bd7334226681737ef67",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1c3c87c92303be877fa59befc2db6cdb6a6e1c1d91709bd7334226681737ef67",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:1d3c2886172b0e6d0593ef66045f03e979422b97027c79ad3061f26403eb90a9",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1d3c2886172b0e6d0593ef66045f03e979422b97027c79ad3061f26403eb90a9",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:4cfb00104d5b853168053c6c9ee8c4c9a7a97898ac2780158a53fa7b01216a25",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4cfb00104d5b853168053c6c9ee8c4c9a7a97898ac2780158a53fa7b01216a25",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:6856211717d6c119eb5123acc8de045db6685fd5fcd10c57426699d29cbb04f5",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6856211717d6c119eb5123acc8de045db6685fd5fcd10c57426699d29cbb04f5",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:cc56d651b398be1347f45fb5b91d40cfb5c15e7d18676262cfb6c0bdbcb6b9a8",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cc56d651b398be1347f45fb5b91d40cfb5c15e7d18676262cfb6c0bdbcb6b9a8",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:9dbd24f32e450a795173662213f7f9a41ca24fd058d96298234a46712e92e30f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:9dbd24f32e450a795173662213f7f9a41ca24fd058d96298234a46712e92e30f",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:1cf829de82642aa9bab247c63c6c38137e646afc32e4e37b85a111a83936be5b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1cf829de82642aa9bab247c63c6c38137e646afc32e4e37b85a111a83936be5b",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:0f1e61b4004206ff36fb33e6a77143505f685fe4ce4b3b0660608f87d0b9ee79",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:0f1e61b4004206ff36fb33e6a77143505f685fe4ce4b3b0660608f87d0b9ee79",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:d4c69f4a30ebe418695075454886b607ab5fb21e1d631a34e4302de89877c9d2",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d4c69f4a30ebe418695075454886b607ab5fb21e1d631a34e4302de89877c9d2",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:58e59dd721ef596ce3edaf134fcbc6d28c137cfcc73cb45d6bd67f202a716d33",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:58e59dd721ef596ce3edaf134fcbc6d28c137cfcc73cb45d6bd67f202a716d33",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:98f1fc1910a2cc5daf6d819004e88cabd3804d74c5a094702bec3010b4e3028e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:98f1fc1910a2cc5daf6d819004e88cabd3804d74c5a094702bec3010b4e3028e",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:b828dcfaed1cdc5624bd9da625588eee7cc906cf0f36acd9185a54d645aac34d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b828dcfaed1cdc5624bd9da625588eee7cc906cf0f36acd9185a54d645aac34d",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:5dcbaf72e450b4a89e3b0359da1f2c86b522f21b4230d7b370abaaeb43224d33",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5dcbaf72e450b4a89e3b0359da1f2c86b522f21b4230d7b370abaaeb43224d33",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:674c16e5de8ac60fc74963bd2f3448a5b64f179653d999f6a2ba4dca5e5bb6d1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:674c16e5de8ac60fc74963bd2f3448a5b64f179653d999f6a2ba4dca5e5bb6d1",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:e314aced0e97b87bd4cd38f03feb7802b3a71f559825839457e3080a48a19f9b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e314aced0e97b87bd4cd38f03feb7802b3a71f559825839457e3080a48a19f9b",
+      "pass": true,
+      "question_id": "t1_p21_low_sample_variance_08",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:bf9b213111ba2698392a52d57bc5ffffcec7fcc4c783760e927fa68ef91326a3",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:bf9b213111ba2698392a52d57bc5ffffcec7fcc4c783760e927fa68ef91326a3",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:cce66481ca958e45f80f03156ba8a84784868568b698ff236851b667be1dcf59",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cce66481ca958e45f80f03156ba8a84784868568b698ff236851b667be1dcf59",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:fb66fcc82a1e9949d44426f2fe011a2576d2ce845fdb69ef6e8fc3f1f4743f27",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fb66fcc82a1e9949d44426f2fe011a2576d2ce845fdb69ef6e8fc3f1f4743f27",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:5097fb343156a7a8c7232259332560628aa6fbf5c8e1d1cae2e92d039ccf0b67",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5097fb343156a7a8c7232259332560628aa6fbf5c8e1d1cae2e92d039ccf0b67",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:174d407fb5faad3c9d0a61422418db608ac50e6c6450bd01bdac3b6a97368a6b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:174d407fb5faad3c9d0a61422418db608ac50e6c6450bd01bdac3b6a97368a6b",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:7f6d5850e63fe6bb1466a8f60445255a5cebf0936ba1578ef5b2bc40e3a9d1d9",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:7f6d5850e63fe6bb1466a8f60445255a5cebf0936ba1578ef5b2bc40e3a9d1d9",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:fa788ca508ffbc12c3b04728b4e8763997e93c46416e98a679946caf8cf2af4e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fa788ca508ffbc12c3b04728b4e8763997e93c46416e98a679946caf8cf2af4e",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:c9b3f11f7b4966f147377d3a18edadaa182d5768823267a4239b7671ebfdd21a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c9b3f11f7b4966f147377d3a18edadaa182d5768823267a4239b7671ebfdd21a",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:5662c1f59c75b98b955d7d44fba20d2d1749bdb660d738e670b60d0ed0dfbe97",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5662c1f59c75b98b955d7d44fba20d2d1749bdb660d738e670b60d0ed0dfbe97",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:5c1f446f2e9f1df9ddb0bddf0915ccb9de37ca354eced05f3fdf24cac97a36e0",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5c1f446f2e9f1df9ddb0bddf0915ccb9de37ca354eced05f3fdf24cac97a36e0",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:1edeb7252e24e5884b7791e183f570c1764b792908a416b6bd7e7bcf47c7c51b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1edeb7252e24e5884b7791e183f570c1764b792908a416b6bd7e7bcf47c7c51b",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:7b6589fc786fc203b8a676a04d2e3ad921927882c6c8b734a07ac9ca4111829a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:7b6589fc786fc203b8a676a04d2e3ad921927882c6c8b734a07ac9ca4111829a",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:58d74d123af7fe5a9fca517659c3bfd03218db63668f9c2d35e7d42e3eaa1e18",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:58d74d123af7fe5a9fca517659c3bfd03218db63668f9c2d35e7d42e3eaa1e18",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:bc2f585b92d739cb61d70269b9d55bbc3fd6e2ce8d31091a1b7c1ef44c30109d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:bc2f585b92d739cb61d70269b9d55bbc3fd6e2ce8d31091a1b7c1ef44c30109d",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:fdb732b725687f1ea8746f4036ff26f1204ba42312615046677d093a57e71510",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fdb732b725687f1ea8746f4036ff26f1204ba42312615046677d093a57e71510",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:52d158f9bd55b788df15a1d4bed75509906c020d4fa5800db3ad6256ecfd9d4f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:52d158f9bd55b788df15a1d4bed75509906c020d4fa5800db3ad6256ecfd9d4f",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:6e1aeb1761b4b28369ff1e26664e86a6d340400f29da281d4b1d48f790a18f52",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6e1aeb1761b4b28369ff1e26664e86a6d340400f29da281d4b1d48f790a18f52",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:ac8f43a1c200d03a237d6918c468fa8d58ebc6291a84a351f961641ae4c29017",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ac8f43a1c200d03a237d6918c468fa8d58ebc6291a84a351f961641ae4c29017",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:fcf341340ee0ccee79c2d7609998301df0be756c25c23e2a4b0038f84679eb0c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fcf341340ee0ccee79c2d7609998301df0be756c25c23e2a4b0038f84679eb0c",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:427da581ecb84fc9ba0457b8e8ebb8e24d39f710fa809885a1c7da37de386ae8",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:427da581ecb84fc9ba0457b8e8ebb8e24d39f710fa809885a1c7da37de386ae8",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:77c550ecb1923f643dda4ec19d344dd0ea2d6c43345923eaf64ddb0e332afaf7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:77c550ecb1923f643dda4ec19d344dd0ea2d6c43345923eaf64ddb0e332afaf7",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:29be2ce7dd06296bef0a1f2a7de2b38bc3da80e5a16dfe0531e02407755999fa",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:29be2ce7dd06296bef0a1f2a7de2b38bc3da80e5a16dfe0531e02407755999fa",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:ddbaaca3031b8a8bab59f7331ce4397860a56cf72f3f6c61cfceec5b6a15c91b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ddbaaca3031b8a8bab59f7331ce4397860a56cf72f3f6c61cfceec5b6a15c91b",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:81e0c22c1e4d8628096edc01823ade6794d2ad5160aabe924979e7fcc606ae04",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:81e0c22c1e4d8628096edc01823ade6794d2ad5160aabe924979e7fcc606ae04",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:1be29d40081031593db0a60b851a9fb207337b28c767ef02081940bba67f4a72",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1be29d40081031593db0a60b851a9fb207337b28c767ef02081940bba67f4a72",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:23d82d897d5781a0c684daeb23688b832af33dc0f5f214879ecf2c59cdd64a5d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:23d82d897d5781a0c684daeb23688b832af33dc0f5f214879ecf2c59cdd64a5d",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:cd23f705b32695b12b3ae44455335f74a202434ab549a49a298b27a92068ef3e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cd23f705b32695b12b3ae44455335f74a202434ab549a49a298b27a92068ef3e",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:342dd806d36fa5319a76c357229be7c7f6210908b37647ad0ed3587e690b941a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:342dd806d36fa5319a76c357229be7c7f6210908b37647ad0ed3587e690b941a",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:1e3caa47002311ece1ca40e6621815527f4cbe399d271e1eff88c848102a8e52",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1e3caa47002311ece1ca40e6621815527f4cbe399d271e1eff88c848102a8e52",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:01c413448c74565a4e0d5028996446fe88a1adf485fd1c8de6d646999113efbe",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:01c413448c74565a4e0d5028996446fe88a1adf485fd1c8de6d646999113efbe",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:b1f58e385c86e00229640a38d725b2f18d15275fa0a22910ac71d91b6b02e8df",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b1f58e385c86e00229640a38d725b2f18d15275fa0a22910ac71d91b6b02e8df",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:6629b0cff327591c48d0e74cd5e7fd9b20abdb0671c7ef677d7e1000b8327779",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6629b0cff327591c48d0e74cd5e7fd9b20abdb0671c7ef677d7e1000b8327779",
+      "pass": true,
+      "question_id": "t1_p21_subgroup_metric_mismatch_08",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:4ebcc5b641b34ebbc8340e10a97542e9fd37a0827f6a8e55078c33de5cc4c0ce",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4ebcc5b641b34ebbc8340e10a97542e9fd37a0827f6a8e55078c33de5cc4c0ce",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:715ff56c0bebce3bc9023291e821712554872999de9fe548daf223188e2a824b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:715ff56c0bebce3bc9023291e821712554872999de9fe548daf223188e2a824b",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:3df27ec23e626623aa9bbbe28d8c118d978686954320977ea1ab7e8c45054eb2",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3df27ec23e626623aa9bbbe28d8c118d978686954320977ea1ab7e8c45054eb2",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:75224bc8df15c37fd46bc5be99df64318aa5f5fbfbdefe5b2a830b22e196d0cb",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:75224bc8df15c37fd46bc5be99df64318aa5f5fbfbdefe5b2a830b22e196d0cb",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:08e074501b8c85410c53808c18e47ef3301e677bce3ba9d317a18cae446f56b5",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:08e074501b8c85410c53808c18e47ef3301e677bce3ba9d317a18cae446f56b5",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:94029030875e70364d811882a06232ff62cba08fa4f82b0856b550d6807bcffe",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:94029030875e70364d811882a06232ff62cba08fa4f82b0856b550d6807bcffe",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:e70932bdc28a1cfe964da24b222a6bebe011b54ed0e471e71085a54f4e6c819e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e70932bdc28a1cfe964da24b222a6bebe011b54ed0e471e71085a54f4e6c819e",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:c563bd6afe8551e96ac9a0551e36ef0bff5c2e4eb6c75721d5f915ec16154484",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c563bd6afe8551e96ac9a0551e36ef0bff5c2e4eb6c75721d5f915ec16154484",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:a752c794069ac2e2b47d623f64b289bfa31582c83394d6bc031b49a40ed6179a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a752c794069ac2e2b47d623f64b289bfa31582c83394d6bc031b49a40ed6179a",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:dbd87b6d7589276f94a740dd0373ed9b3a8f421f2548d18363793125784bb988",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:dbd87b6d7589276f94a740dd0373ed9b3a8f421f2548d18363793125784bb988",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:d1a37aa96e77c36ad53d79f2f04dc3c65ee99228120b41cae0800dc0fc173cc9",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d1a37aa96e77c36ad53d79f2f04dc3c65ee99228120b41cae0800dc0fc173cc9",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:f6f126fe7b623d700f50bd48ac19f89f69a5f339f10c287c87db611463d12216",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f6f126fe7b623d700f50bd48ac19f89f69a5f339f10c287c87db611463d12216",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:fbf97b03da1121cba3a5ccb42b46839d73d8f674140391cf8dbe4c74c85c3c63",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fbf97b03da1121cba3a5ccb42b46839d73d8f674140391cf8dbe4c74c85c3c63",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:6648decf5c8c8b4a16631982cb2e941a03cae9f6c408e3b1087f1592e069ea31",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6648decf5c8c8b4a16631982cb2e941a03cae9f6c408e3b1087f1592e069ea31",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:1a980de702bf85159826655a181d0611bb24fc3b5bff811ebd740b323ed7b46e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1a980de702bf85159826655a181d0611bb24fc3b5bff811ebd740b323ed7b46e",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:ad8566fa6fe4d58a5931dda9d4e57fc71e3111ec23882198b0f73aa516e1d0d6",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ad8566fa6fe4d58a5931dda9d4e57fc71e3111ec23882198b0f73aa516e1d0d6",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:ac6dc114223658a230e8db03e0628d6584285af48cb807275113150925348f87",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ac6dc114223658a230e8db03e0628d6584285af48cb807275113150925348f87",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:f50c1e8c33dcaa39d85e10f01ddf6045024d83294285d5d5520bd607c2717560",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f50c1e8c33dcaa39d85e10f01ddf6045024d83294285d5d5520bd607c2717560",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:ec539f32adbb11d6eef6a24f0410cceabd2340e48f6baac463fe36d04c4b7c9d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ec539f32adbb11d6eef6a24f0410cceabd2340e48f6baac463fe36d04c4b7c9d",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:2588e4a5a6a047ce71f710c69438043b1e7c08cf3a826f1fb4d51fc7be39f295",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:2588e4a5a6a047ce71f710c69438043b1e7c08cf3a826f1fb4d51fc7be39f295",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:1c9717a7ea7ffab416a32c7c4866c08a072f8de7ede42cdfc722079cb698d764",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1c9717a7ea7ffab416a32c7c4866c08a072f8de7ede42cdfc722079cb698d764",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:c4edc2259d6901f33009894a1a8b5343296421aadd862a1567b756a1463ef58d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c4edc2259d6901f33009894a1a8b5343296421aadd862a1567b756a1463ef58d",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:91a70af46b689ee44c4459f50724090b0ae4b3054bdaed9fd918d8440a2f289e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:91a70af46b689ee44c4459f50724090b0ae4b3054bdaed9fd918d8440a2f289e",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:c18728fefb5e3efd86d4eac27d88df7a1c36cc6453d475100cb5b42ad0eff29c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c18728fefb5e3efd86d4eac27d88df7a1c36cc6453d475100cb5b42ad0eff29c",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:c8dde5b979c34a121c0fb0847c03842bb738c534b08711909cfc75541cc6e190",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c8dde5b979c34a121c0fb0847c03842bb738c534b08711909cfc75541cc6e190",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:b34b999598064ef5f30ba2458f9af550fc7c501f371a66b728e3865600eff1d3",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b34b999598064ef5f30ba2458f9af550fc7c501f371a66b728e3865600eff1d3",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:d891f72657963fc3e30fca73d2ccb2b2f9811d8497bf57d969dd2fc842f6032e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d891f72657963fc3e30fca73d2ccb2b2f9811d8497bf57d969dd2fc842f6032e",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:98cfdbfa72d9ae16364659f22c4c5a234b8c68bba901170b35ba34b3a91ebed1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:98cfdbfa72d9ae16364659f22c4c5a234b8c68bba901170b35ba34b3a91ebed1",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:1682e5c0953c5976df523a192d55a5f7d4a8c8f0226fb95162401a51ea331ed1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1682e5c0953c5976df523a192d55a5f7d4a8c8f0226fb95162401a51ea331ed1",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:609f6461950a529dcdfaf07ae9dd9c5083d022193451b7a1892e86c11e0aa83a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:609f6461950a529dcdfaf07ae9dd9c5083d022193451b7a1892e86c11e0aa83a",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:f180fa2261589f5e2666739d51466bb2da82bec5be291a8497d7816607ebb9a1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f180fa2261589f5e2666739d51466bb2da82bec5be291a8497d7816607ebb9a1",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:28942d8a911fbe25431131064dc6f109e256a573a5a83556854c37669710b3f6",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:28942d8a911fbe25431131064dc6f109e256a573a5a83556854c37669710b3f6",
+      "pass": true,
+      "question_id": "t1_p21_confounding_underpower_08",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:3f1f2603d26edaadf905c98b5b35e3c1a0075b7c5ada5421c02b0bf09f24dc48",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3f1f2603d26edaadf905c98b5b35e3c1a0075b7c5ada5421c02b0bf09f24dc48",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:dcb1179f33884c672ea6c7ec053d49e158c184bedda2a7d877812ea304390b4a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:dcb1179f33884c672ea6c7ec053d49e158c184bedda2a7d877812ea304390b4a",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:340da81692f309676fb31ad9b031bfb46f39deba46637eec9ee736519b850902",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:340da81692f309676fb31ad9b031bfb46f39deba46637eec9ee736519b850902",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:a19854df73599ecab1e7a620fdb0b22be20c5a7639ceda5ff0bd5bc5f9d10556",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a19854df73599ecab1e7a620fdb0b22be20c5a7639ceda5ff0bd5bc5f9d10556",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:0e0035e436d7a38d55ad0fb2ee644b2f506bf0ea3ae5f15150311eb9c9124041",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:0e0035e436d7a38d55ad0fb2ee644b2f506bf0ea3ae5f15150311eb9c9124041",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:f98700bd582be77b124a785419a2e385b82068f25f56fe48336813f202078bad",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f98700bd582be77b124a785419a2e385b82068f25f56fe48336813f202078bad",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:805558d2a393bdb14f1907b9d69ff200f84e31a68f2b2621d85a3860192907d1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:805558d2a393bdb14f1907b9d69ff200f84e31a68f2b2621d85a3860192907d1",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:148f1f8e84b0d67197f8970f7444a012da60872b9aec42107355a18f18309cfe",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:148f1f8e84b0d67197f8970f7444a012da60872b9aec42107355a18f18309cfe",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:f75c633366c8ff4e920fb36b1eab93189ebdc6236ded3b3750025da3e34137ab",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f75c633366c8ff4e920fb36b1eab93189ebdc6236ded3b3750025da3e34137ab",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:4a03b7f79d86ab018bdbab4705f056e81253dc5ace00f56ac19cca305feb15ac",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4a03b7f79d86ab018bdbab4705f056e81253dc5ace00f56ac19cca305feb15ac",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:3f86ace2b244c8d54f6d2f6bfacf59f9ec658405448acd7d1b7f8df271726067",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3f86ace2b244c8d54f6d2f6bfacf59f9ec658405448acd7d1b7f8df271726067",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:844a84152a165e9ab54a2e6b0eba0dcaf1bcec0e74b61c887adba793432828b3",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:844a84152a165e9ab54a2e6b0eba0dcaf1bcec0e74b61c887adba793432828b3",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:549a98848314cf88b8f5348cd6b487f61609db32dacbcb60dd2237df93afb3e4",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:549a98848314cf88b8f5348cd6b487f61609db32dacbcb60dd2237df93afb3e4",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:c0a91579e3438bafbed44e060b186acfe3a57a3b544bb365994ce8bb040e8169",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c0a91579e3438bafbed44e060b186acfe3a57a3b544bb365994ce8bb040e8169",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:6c74537a57144d51a040ef39f15a51ea028e37a4ea384c03bb5ebc6ef86719cc",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6c74537a57144d51a040ef39f15a51ea028e37a4ea384c03bb5ebc6ef86719cc",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:3ae585fa946f88e345f99142fed1ab9bf36059d81a250154f021cc5bfae0080b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3ae585fa946f88e345f99142fed1ab9bf36059d81a250154f021cc5bfae0080b",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:78284c30248ff37b49b379c3948be8b04ab5e9c5768ac51c66a546060ce847d9",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:78284c30248ff37b49b379c3948be8b04ab5e9c5768ac51c66a546060ce847d9",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:16ebef064c7de5fec9670805d6d0b5722cac734b635e216c5a16c3976e946aba",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:16ebef064c7de5fec9670805d6d0b5722cac734b635e216c5a16c3976e946aba",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:741975b9c54e6dc17a85a4c59a276fe231353eafffbf968002e94fea61e8e657",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:741975b9c54e6dc17a85a4c59a276fe231353eafffbf968002e94fea61e8e657",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:6e4dac1e53006b8a56b33eec4c8788af53a2f197b1f79d03b78da3feceb9372e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:6e4dac1e53006b8a56b33eec4c8788af53a2f197b1f79d03b78da3feceb9372e",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:f0639b2142938d57632a3ca4bb9771e14f00ebd6b429a1a66511353a7bab77cd",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f0639b2142938d57632a3ca4bb9771e14f00ebd6b429a1a66511353a7bab77cd",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:49faae221401c9dd6a1835d776f731423424ab77dfc5d300190b32d12475865c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:49faae221401c9dd6a1835d776f731423424ab77dfc5d300190b32d12475865c",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:e5d4148c0957a6125b5700807f2b9843504571229ffc91b99464035d3d5ab4ab",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e5d4148c0957a6125b5700807f2b9843504571229ffc91b99464035d3d5ab4ab",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:3e88aa2d56789230111aec7578087e3d22a5734850cc6936d069beb7496faeca",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3e88aa2d56789230111aec7578087e3d22a5734850cc6936d069beb7496faeca",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:fbefcc4bca1f4f0e33938f0dd1161c90c8911d7ce5a1fe49bfbce8c703a39ad3",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fbefcc4bca1f4f0e33938f0dd1161c90c8911d7ce5a1fe49bfbce8c703a39ad3",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:e79d035a548a4d4b78173084b0fcb08a2958a13572b5ab6d2cab12343f08a364",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e79d035a548a4d4b78173084b0fcb08a2958a13572b5ab6d2cab12343f08a364",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:dd8f20e58eb91f9316bfd884c79a9cb881fb43c5bf5b4b7649d4979f1853a050",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:dd8f20e58eb91f9316bfd884c79a9cb881fb43c5bf5b4b7649d4979f1853a050",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:88c5f0329aff2340cbd9ca58416bb074a965e443adf013f9a64b1fc1a49de1dc",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:88c5f0329aff2340cbd9ca58416bb074a965e443adf013f9a64b1fc1a49de1dc",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:c6eb8c9db82489eba0587ae6432c15e4b1186851a6e606adc7223b97c527474c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c6eb8c9db82489eba0587ae6432c15e4b1186851a6e606adc7223b97c527474c",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:674b055f2561cd633a2074ab5312f659db82b5c5a3f9e2320fbeed7028572162",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:674b055f2561cd633a2074ab5312f659db82b5c5a3f9e2320fbeed7028572162",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:dd3cad295ad21dca1f1e5de3952964e8107fa9752ad8c71f9fc1ea3ee3d0eaa5",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:dd3cad295ad21dca1f1e5de3952964e8107fa9752ad8c71f9fc1ea3ee3d0eaa5",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:97e8b86ad24b15f5a910d44c21ce1a57ad6d445b7ad79933fffd3bd04746201d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:97e8b86ad24b15f5a910d44c21ce1a57ad6d445b7ad79933fffd3bd04746201d",
+      "pass": true,
+      "question_id": "t1_p21_leakage_metric_mismatch_08",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:65e8f20135d419434493b73e5013ffd5fd147bf722cde85444b6c1b4a704c1d1",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:65e8f20135d419434493b73e5013ffd5fd147bf722cde85444b6c1b4a704c1d1",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:93540ee3ecae813239d024e73ab54dead76798debca4b6f54367b8e64530eaf7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:93540ee3ecae813239d024e73ab54dead76798debca4b6f54367b8e64530eaf7",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:dada88fa481b82bbb4129c586391f96cfc379299fe315837efb1f75f308aff23",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:dada88fa481b82bbb4129c586391f96cfc379299fe315837efb1f75f308aff23",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:cc6439304ca845847135f3fa6c792f9415a57c067419a1bb49e954ae76127b7a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cc6439304ca845847135f3fa6c792f9415a57c067419a1bb49e954ae76127b7a",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:eb8ade32707e5feab16d256a6ebc05e385c03e1c398e1069ded9ca0d5e675cc2",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:eb8ade32707e5feab16d256a6ebc05e385c03e1c398e1069ded9ca0d5e675cc2",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:b6f70cab537d61d5c1b7e876da7adb122745ca4697ef79a54dfb7816b7ec4eb9",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b6f70cab537d61d5c1b7e876da7adb122745ca4697ef79a54dfb7816b7ec4eb9",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:c6a2aef3cdea0cdf4d8bc243c58ec94f7ebc3a46ad11ca4d5296f00e006bed49",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c6a2aef3cdea0cdf4d8bc243c58ec94f7ebc3a46ad11ca4d5296f00e006bed49",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:ec267544e6e752c74d44e7324dc5b8d033287ee4f798d8a0bc4d8108c8f1d9fb",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ec267544e6e752c74d44e7324dc5b8d033287ee4f798d8a0bc4d8108c8f1d9fb",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:04f7d2be338c1051cc0ba1f400a6da27872d662da63cc3439de0ec6e8f491898",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:04f7d2be338c1051cc0ba1f400a6da27872d662da63cc3439de0ec6e8f491898",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:37245794b4cdede68ec59ff203fa86fdd939c4e3eb54d6f420cf364315b7da2c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:37245794b4cdede68ec59ff203fa86fdd939c4e3eb54d6f420cf364315b7da2c",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:0d885ae1ba2310b4868ed1937d2745c0b2d3d37c2842833d6ad11e959df60565",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:0d885ae1ba2310b4868ed1937d2745c0b2d3d37c2842833d6ad11e959df60565",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:9e5392f269fa91d31b2d438900033e4bf73af33968424bed6e5e7e81c20f2981",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:9e5392f269fa91d31b2d438900033e4bf73af33968424bed6e5e7e81c20f2981",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:70289d95715ca9759ceb862401decdfb509a4712f0adaa1a8ea0da8baf475d87",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:70289d95715ca9759ceb862401decdfb509a4712f0adaa1a8ea0da8baf475d87",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:0451d42b10e06cd40ec395629fb7c53c2d4eb0dc49879f3fac9c8c0b87418c05",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:0451d42b10e06cd40ec395629fb7c53c2d4eb0dc49879f3fac9c8c0b87418c05",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:5b8971b2e6d091d9615ae7bb8baf4d0bcc468c635c2a229cc560f769790d654d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5b8971b2e6d091d9615ae7bb8baf4d0bcc468c635c2a229cc560f769790d654d",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:f840b7d80b72ed70da83b6b50a8a656a7ab591901fbe5d7dc0df809ba317782c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f840b7d80b72ed70da83b6b50a8a656a7ab591901fbe5d7dc0df809ba317782c",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:5bede609638b5e12a4f9314c0234235daaf13e582878d1045a4a1efeecf0e045",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5bede609638b5e12a4f9314c0234235daaf13e582878d1045a4a1efeecf0e045",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:cc6ce36097b0ac1fe448ec57d974e8f46278fb251004c31e6b977e90abda2e1a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cc6ce36097b0ac1fe448ec57d974e8f46278fb251004c31e6b977e90abda2e1a",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:956645ac763d36d4f36ee531aab55d48da390933a4d6beac31ca2236fd6960b0",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:956645ac763d36d4f36ee531aab55d48da390933a4d6beac31ca2236fd6960b0",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:4a4fa4509dc75af5f86fe7207cefe7cb7c0ae06b9e406cec6b743b58f281dedd",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:4a4fa4509dc75af5f86fe7207cefe7cb7c0ae06b9e406cec6b743b58f281dedd",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:f512c011cea2f89344b25d48fc06465719e9d60432189e75f868beb34642b43b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:f512c011cea2f89344b25d48fc06465719e9d60432189e75f868beb34642b43b",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:d4c64716673914087a258d100d56f4c131981ddffb1f940a790cd1dc1089c3c3",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d4c64716673914087a258d100d56f4c131981ddffb1f940a790cd1dc1089c3c3",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:60aeb74043ab8295bfec531ac1390bda254d47cf35b8b9e77cb7ecb3eea83a5b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:60aeb74043ab8295bfec531ac1390bda254d47cf35b8b9e77cb7ecb3eea83a5b",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:63161a371eef4c376ebb4bef5036af23b693bcde18879c6b02d3eea800abaaa0",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:63161a371eef4c376ebb4bef5036af23b693bcde18879c6b02d3eea800abaaa0",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:8fa56f062cc0f95a6810c0b062ff142c380a725e242443f61b96cca3aa9f085b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8fa56f062cc0f95a6810c0b062ff142c380a725e242443f61b96cca3aa9f085b",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:18ca8dfaadac85aae05720b6277e848d2c7391ceae361df72867414a183254cb",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:18ca8dfaadac85aae05720b6277e848d2c7391ceae361df72867414a183254cb",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:24415e341caf1d29697fff41d11038bb8e082220c494b4a61f57dd42a1b6043e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:24415e341caf1d29697fff41d11038bb8e082220c494b4a61f57dd42a1b6043e",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:83b41439512a6380ac835448f104ec5d5ecbbeb0643bc4e96127d81855befa9b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:83b41439512a6380ac835448f104ec5d5ecbbeb0643bc4e96127d81855befa9b",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:fc6e82909a766242f14053b167fb7d90c2a21a8776cdeee4f0e5c3718e3d20e0",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fc6e82909a766242f14053b167fb7d90c2a21a8776cdeee4f0e5c3718e3d20e0",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:e6bfe94d8bf72b8a996d8e5eb967e55cb1a1184a2a739e5f0c556e8efd8462dd",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:e6bfe94d8bf72b8a996d8e5eb967e55cb1a1184a2a739e5f0c556e8efd8462dd",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:a872ec900800d23a30487af0ee5eb527fadb6c640e549c965a7318c87f943a29",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a872ec900800d23a30487af0ee5eb527fadb6c640e549c965a7318c87f943a29",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:b968e48c9eba1d6d228af301bb4fef56658f0cf89193e8c1db8a50d80b65614c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b968e48c9eba1d6d228af301bb4fef56658f0cf89193e8c1db8a50d80b65614c",
+      "pass": true,
+      "question_id": "t1_p21_protocol_drift_08",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:7794472f2bd269d17c155d9c99c326b65c3f5d34147c3100b2075e5f7c692729",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:7794472f2bd269d17c155d9c99c326b65c3f5d34147c3100b2075e5f7c692729",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_01",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:fc9b89b6510c0377c537409c5cbfb6b639c7069c4e84a18598eb6b93cf55982c",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fc9b89b6510c0377c537409c5cbfb6b639c7069c4e84a18598eb6b93cf55982c",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_01",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:03d18b584c670a616db52af278a181169aeb544bf554ab965fc0603fcc6a1e97",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:03d18b584c670a616db52af278a181169aeb544bf554ab965fc0603fcc6a1e97",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_01",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:84c679d17ec7add6687501d6822be1b76ada19ae15a52df55f85c061d731d901",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:84c679d17ec7add6687501d6822be1b76ada19ae15a52df55f85c061d731d901",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_01",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:a79ef2f74711f89709e9982951cbdce26c1e3acedc072f9f7713e2f63e983f12",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:a79ef2f74711f89709e9982951cbdce26c1e3acedc072f9f7713e2f63e983f12",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_02",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:8e99c5e9b26e4439227a87c33eda4e9ed7f26df90a0aca996baf4389a532626a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8e99c5e9b26e4439227a87c33eda4e9ed7f26df90a0aca996baf4389a532626a",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_02",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:cf4e431c9926e4bdb47afb9dff30f0f9ce2d15ab3f88411b2f99fd49fe95e616",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cf4e431c9926e4bdb47afb9dff30f0f9ce2d15ab3f88411b2f99fd49fe95e616",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_02",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:843e299b3bade36545bd3e16d2cdc1d97b0747eba7fc23c87408d960fbb0d7a8",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:843e299b3bade36545bd3e16d2cdc1d97b0747eba7fc23c87408d960fbb0d7a8",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_02",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:59592315f57a0354c5becf30c03dbc20aaa2586868222f3101bed0db3b31e91f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:59592315f57a0354c5becf30c03dbc20aaa2586868222f3101bed0db3b31e91f",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_03",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:d3d6a062b68c890d2b080cddae7771438ec11c5f3d2ace768a54e1a490b4d8a4",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:d3d6a062b68c890d2b080cddae7771438ec11c5f3d2ace768a54e1a490b4d8a4",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_03",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:8f02f48ec4f6d56e173d156bbe46a9db51b80cf8a800c3fe7f2405bbd5521545",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:8f02f48ec4f6d56e173d156bbe46a9db51b80cf8a800c3fe7f2405bbd5521545",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_03",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:b6efd6cce4b68a49bfbe86731701fc56f742dcad6cee4ebb0023d8e7e946652a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b6efd6cce4b68a49bfbe86731701fc56f742dcad6cee4ebb0023d8e7e946652a",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_03",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:5898dac26d5882d6e08f2ce19f1d88a5348bee040f353a8e46524fa2f0d5c719",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5898dac26d5882d6e08f2ce19f1d88a5348bee040f353a8e46524fa2f0d5c719",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_04",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:ab2d54e078477c0d2fbc77b08b20fea72809f2b8bb6b1d84be5f04158e830831",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ab2d54e078477c0d2fbc77b08b20fea72809f2b8bb6b1d84be5f04158e830831",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_04",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:5bdbb87b1ae4f6b38356585c59c27e71bfee9f59c6ee45915725c6722f3d719f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:5bdbb87b1ae4f6b38356585c59c27e71bfee9f59c6ee45915725c6722f3d719f",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_04",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:07a0c42287ea77fe8b856416c538cda0310a45f113b47c80f21335d2202bcaf6",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:07a0c42287ea77fe8b856416c538cda0310a45f113b47c80f21335d2202bcaf6",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_04",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:7994a033381e643e5a097a4a63042eacfa99404eafa32321e40ebcbbba56e1f0",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:7994a033381e643e5a097a4a63042eacfa99404eafa32321e40ebcbbba56e1f0",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_05",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:53bd4433c1f9665bcf96e9aa904c2ffaa3c5d69177ac130551e018572067bd2e",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:53bd4433c1f9665bcf96e9aa904c2ffaa3c5d69177ac130551e018572067bd2e",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_05",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:b5fde323f47e9f40f44bd0545b11328244ab4a4a7b8cebf21cd59eb1c9210b58",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:b5fde323f47e9f40f44bd0545b11328244ab4a4a7b8cebf21cd59eb1c9210b58",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_05",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:28b5dfdace33e4d43ba2303908e5f48ae87cf3bacc0c0bb54ff1408376528167",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:28b5dfdace33e4d43ba2303908e5f48ae87cf3bacc0c0bb54ff1408376528167",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_05",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:ec4e9d96948ffa1e4f9f82aa57f87e09baa7f18136abe0d9a1d2a960fb348381",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:ec4e9d96948ffa1e4f9f82aa57f87e09baa7f18136abe0d9a1d2a960fb348381",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_06",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:1da572e115ebcf28539d22a2fa4fbb32cd74e25c5d22881aa48682ca9bcf2e1b",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1da572e115ebcf28539d22a2fa4fbb32cd74e25c5d22881aa48682ca9bcf2e1b",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_06",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:cc670da7a3065d1f0d8a3778d85964dfc8d9810d231b1ca19a42b183f3e38f7a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:cc670da7a3065d1f0d8a3778d85964dfc8d9810d231b1ca19a42b183f3e38f7a",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_06",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:1f00be7e2cdc6e853ce6abe06882666cee40c66b90a11b28a9e8913f37c97d54",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1f00be7e2cdc6e853ce6abe06882666cee40c66b90a11b28a9e8913f37c97d54",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_06",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:02a8b26aed6fb98a4d9fb4d4d7ac0de08fbc5e9d27bc7dea85c76574e4547dac",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:02a8b26aed6fb98a4d9fb4d4d7ac0de08fbc5e9d27bc7dea85c76574e4547dac",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_07",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:1140b3fba77f16db4478b2301d0b61d274643f83b9393839463e85f9df50c4d7",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1140b3fba77f16db4478b2301d0b61d274643f83b9393839463e85f9df50c4d7",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_07",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:35bd33dde63f71634b3bb0cf852590b7bf5cbf5bc45f4789b22c14d553caf46d",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:35bd33dde63f71634b3bb0cf852590b7bf5cbf5bc45f4789b22c14d553caf46d",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_07",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:c55ba326fd7988a5aead7d9db1cc1d09e7f3f2695a1ddc6c24668dfb168b2586",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:c55ba326fd7988a5aead7d9db1cc1d09e7f3f2695a1ddc6c24668dfb168b2586",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_07",
+      "world_kind": "invalid"
+    },
+    {
+      "counterfactual_hash": "sha256:1dc919cbad9ca2350d1655e9fb959de61174027002260cba0d966bd434d2ee4f",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:1dc919cbad9ca2350d1655e9fb959de61174027002260cba0d966bd434d2ee4f",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_08",
+      "world_kind": "supported"
+    },
+    {
+      "counterfactual_hash": "sha256:fa81b495b8a20116dbcb0ee18746669edede636543e0e9524493461a0cf0c869",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:fa81b495b8a20116dbcb0ee18746669edede636543e0e9524493461a0cf0c869",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_08",
+      "world_kind": "refuted"
+    },
+    {
+      "counterfactual_hash": "sha256:3a0e91e3e02e0176c8a0562a931c3285346114cd6b38eb42d7effa2500d85959",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:3a0e91e3e02e0176c8a0562a931c3285346114cd6b38eb42d7effa2500d85959",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_08",
+      "world_kind": "insufficient"
+    },
+    {
+      "counterfactual_hash": "sha256:7aaac2dccb77cb285e90f3f3dc3b8b809b10c9c059ab0ab9f550503c12554c3a",
+      "decision_boundary": "baseline_method_a_before_candidate_branches",
+      "method_b_delta": 1.234567,
+      "observation_equal": true,
+      "original_hash": "sha256:7aaac2dccb77cb285e90f3f3dc3b8b809b10c9c059ab0ab9f550503c12554c3a",
+      "pass": true,
+      "question_id": "t1_p21_replication_instability_08",
+      "world_kind": "invalid"
+    }
+  ],
+  "schema_version": "pesco_p21_counterfactual_leakage_audit_v0.1"
+}

@@ -1,0 +1,11 @@
+{
+  "container_isolation_verified": false,
+  "evaluator_version": "pesco_v0.5_independent_evaluator_v1",
+  "formal_comparison_authorized": false,
+  "hidden_manifest_not_in_public_bundle": true,
+  "independent_process_required_for_claim": true,
+  "model_evaluation_completed": false,
+  "private_bundle_digest": "sha256:820427be784f12d8a465b33b05c03ce9def5062d20952bc25ec45fd6bc15782a",
+  "public_bundle_path": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/artifacts/tier1_v05_frozen_final",
+  "schema_version": "pesco_v05_independent_evaluator_contract_v0.1"
+}

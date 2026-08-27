@@ -1,0 +1,38 @@
+{
+  "schema_version": "pesco_artifact_consumption_notice_v0.1",
+  "artifact_id": "tier1_v04_formal_final",
+  "artifact_kind": "v04_formal_environment",
+  "status": "diagnostic_v04_consumed",
+  "consumed": true,
+  "recorded_at": "2026-08-26",
+  "consumption_scope": "historical_environment_audit_only",
+  "formal_environment_receipts_retained": true,
+  "formal_comparison_authorized": false,
+  "model_evaluation_authorized": false,
+  "reasons": [
+    "The formal-ID/final-OOD environment receipts are retained as an execution audit, but hidden-generator review found latent-template overlap with the earlier v0.4 diagnostic benchmark.",
+    "The split therefore is not a genuinely unseen final after the feedback audit and must not be reused for modified-algorithm paper evaluation.",
+    "The artifact predates the P2.1 evaluator boundary: pre-action raw observations, Pairwise Reversal Ranking Accuracy, selected-action confirmation receipts, question-macro weighting, and seed-by-question/family-LOO uncertainty.",
+    "The historical primary files and run-manifest digests are retained unchanged; this additive notice changes interpretation, not the historical bytes."
+  ],
+  "allowed_uses": [
+    "historical environment and whole-family holdout audit",
+    "receipt/provenance debugging",
+    "verification that formal comparison remained locked"
+  ],
+  "disallowed_uses": [
+    "paper final-ID/final-OOD model comparison",
+    "post-fix algorithm selection or hyperparameter tuning",
+    "claim of an independent clean final benchmark"
+  ],
+  "superseded_by": {
+    "p2_1_diagnostic": "artifacts/tier1_p21_diagnostic/",
+    "v05_boundary": "artifacts/tier1_v05_frozen_final/",
+    "v05_private_evaluator": "artifacts/tier1_v05_evaluator_private/"
+  },
+  "integrity": {
+    "notice_is_additive": true,
+    "original_artifacts_immutable": true,
+    "historical_manifest_digests_preserved": true
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "action_count": 4,
+  "by_split": {
+    "final_id": {
+      "non_tie_perturbation_count": 119000,
+      "non_tie_stable_winner_count": 118457,
+      "non_tie_stable_winner_fraction": 0.995436974789916,
+      "non_tie_world_count": 119,
+      "perturbation_count": 192000,
+      "stable_winner_count": 191457,
+      "stable_winner_fraction": 0.997171875,
+      "tie_perturbation_count": 73000,
+      "tie_stable_winner_count": 73000,
+      "tie_stable_winner_fraction": 1.0,
+      "tie_world_count": 73,
+      "world_count": 192
+    },
+    "final_ood": {
+      "non_tie_perturbation_count": 72000,
+      "non_tie_stable_winner_count": 72000,
+      "non_tie_stable_winner_fraction": 1.0,
+      "non_tie_world_count": 72,
+      "perturbation_count": 192000,
+      "stable_winner_count": 192000,
+      "stable_winner_fraction": 1.0,
+      "tie_perturbation_count": 120000,
+      "tie_stable_winner_count": 120000,
+      "tie_stable_winner_fraction": 1.0,
+      "tie_world_count": 120,
+      "world_count": 192
+    }
+  },
+  "component_names": [
+    "confirmation_bonus",
+    "execution_cost_penalty",
+    "heldout_split_bonus",
+    "mechanism_transition_bonus",
+    "repair_protocol_bonus",
+    "replicate_bonus",
+    "sample_precision_bonus",
+    "state_resolution_bonus",
+    "switch_failure_penalty",
+    "switch_success_bonus",
+    "validity_gate"
+  ],
+  "diagnostic_only": true,
+  "expected_world_count": 384,
+  "exploration_seed_count": 8,
+  "formal_comparison_authorized": false,
+  "gate_readout": {
+    "is_structural_diagnostic_only": true,
+    "non_tie_fraction_meets_threshold": true,
+    "threshold": 0.9
+  },
+  "limitations": [
+    "Aggregates the eight evaluator exploration receipts per action/world; it does not retrain a policy under perturbed rewards.",
+    "This audit does not select a baseline, open final model comparison, or authorize Tier-2 scaling."
+  ],
+  "non_tie_definition": "mean action top1-minus-top2 utility gap > tolerance",
+  "overall": {
+    "non_tie_perturbation_count": 191000,
+    "non_tie_stable_winner_count": 190457,
+    "non_tie_stable_winner_fraction": 0.9971570680628272,
+    "non_tie_world_count": 191,
+    "perturbation_count": 384000,
+    "stable_winner_count": 383457,
+    "stable_winner_fraction": 0.9985859375,
+    "tie_perturbation_count": 193000,
+    "tie_stable_winner_count": 193000,
+    "tie_stable_winner_fraction": 1.0,
+    "tie_world_count": 193,
+    "world_count": 384
+  },
+  "replicates_per_world": 1000,
+  "result_digest": "sha256:6b24c78d2cacfb6e5204f7852f316f79264fed5b4bb7d5c1607eebf512a2987c",
+  "schema_version": "pesco_v05_reward_sensitivity_audit_v0.1",
+  "seed": 202629,
+  "source_receipt_digest": "sha256:713af31bb926c97ac993accdf6199b58dc0b23b8a48e3cdd3517508b632ff203",
+  "status": "completed_evaluator_diagnostic",
+  "tie_tolerance": 0.02,
+  "weight_range": [
+    0.8,
+    1.2
+  ],
+  "world_count": 384
+}

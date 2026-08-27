@@ -1,0 +1,153 @@
+{
+  "checkpoint": {
+    "available": false,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false
+  },
+  "command_line": "scripts/prepare_tier1_v05_frozen_final.py --output artifacts/tier1_v05_frozen_final --evaluator-output artifacts/tier1_v05_evaluator_private --collect-environment-receipts",
+  "data": {
+    "available": true,
+    "digest": "sha256:06cf2d90cf1ea51c4ef41987b33e82b1becd8eadabc316fbc1057495212ac22b",
+    "file_count": 10,
+    "files": [
+      {
+        "path": "artifacts/tier1_v05_frozen_final/README.md",
+        "role": "data",
+        "sha256": "sha256:e07ac85a626ad3149ed2133688fa16b717eb76333e6f63fd4a4959aa3dcbaca2",
+        "size_bytes": 1853
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/benchmark_public_manifest.json",
+        "role": "data",
+        "sha256": "sha256:4153a387f76f7d0353944ccd77e4c3fb16fb809722e3db5fb4af4dcd424b7c22",
+        "size_bytes": 26604
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/environment_receipt_summary.json",
+        "role": "data",
+        "sha256": "sha256:68c6a7ce339063162d21f780c6701c782687c9142b679eca1b700218647b735a",
+        "size_bytes": 602
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/evaluator_contract.json",
+        "role": "data",
+        "sha256": "sha256:57e4d0ea83f3bc20836633eac36810521d0b716b3041248c982d300541b1cf8d",
+        "size_bytes": 566
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/final_id_manifest.json",
+        "role": "data",
+        "sha256": "sha256:709cf846ab36cc553378a5f6d73c389c4bb19c1280fd9b7ddab441797cbba9ca",
+        "size_bytes": 13217
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/final_ood_manifest.json",
+        "role": "data",
+        "sha256": "sha256:eb982bb6783b1e97bb5c4473764419fb3d013b74a0fbd44b3175927576d59611",
+        "size_bytes": 13266
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/freeze_receipt.json",
+        "role": "data",
+        "sha256": "sha256:8b81a93a1409b1d462fca905b26afc1cfde6d9ef7bb5f777f996d9f5cb239761",
+        "size_bytes": 948
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/reward_sensitivity_summary.json",
+        "role": "data",
+        "sha256": "sha256:482824d42a197aaf18975aa1f81ba6bba6723453dcb4dad0a7015b9b1415581f",
+        "size_bytes": 2877
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/signature_audit_summary.json",
+        "role": "data",
+        "sha256": "sha256:ed201d2ca34cfe22d4d5c401c2115b796969b84e58dcc80f7cf60891d7cd0b5c",
+        "size_bytes": 1034
+      },
+      {
+        "path": "artifacts/tier1_v05_frozen_final/v05_freeze_audit.json",
+        "role": "data",
+        "sha256": "sha256:ed9449b092cf4e31a8a42d66525890a08d3313bb551fa30589310590b863ac4e",
+        "size_bytes": 2042
+      }
+    ]
+  },
+  "data_digest": "sha256:06cf2d90cf1ea51c4ef41987b33e82b1becd8eadabc316fbc1057495212ac22b",
+  "diagnostics": {
+    "container_isolation_verified": false,
+    "evaluator_bundle_separate": true,
+    "final_id_cluster_count": 48,
+    "final_ood_cluster_count": 48,
+    "formal_comparison_authorized": false,
+    "model_evaluation_completed": false,
+    "source_inventory_digest": "sha256:17aa97ab3b9499d3b078fc426af9daaa078b22058ba068b945a8a50e088bf35a"
+  },
+  "experiment": "tier1_v05_frozen_final_prepare",
+  "generated_at_utc": "2026-08-27T03:51:02.831434+00:00",
+  "git": {
+    "dirty": null,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "363b62d4bea1c62f39ecc0b4bab0a155d8c6f89a",
+    "status_available": false,
+    "status_reason": "bounded_manifest_writer; see freeze_receipt for strict clean check"
+  },
+  "git_sha": "363b62d4bea1c62f39ecc0b4bab0a155d8c6f89a",
+  "manifest_digest": "sha256:ca78eff4b5462e14e823bac412746ff5e0fa9512b548a9703964741a7864a5f6",
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "confirmation": [
+      103,
+      107,
+      109,
+      113,
+      127,
+      131,
+      137,
+      139
+    ],
+    "exploration": [
+      17,
+      29,
+      41,
+      53,
+      67,
+      71,
+      83,
+      97
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:17aa97ab3b9499d3b078fc426af9daaa078b22058ba068b945a8a50e088bf35a",
+    "file_count": 4,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_v05_frozen_final.py",
+        "role": "source",
+        "sha256": "sha256:839a5408ad6ee1e46633bdca7eeb9d10e741e77b86a0dbaf63880ce6b6e4fdaa",
+        "size_bytes": 60620
+      },
+      {
+        "path": "scripts/audit_tier1_v05_frozen_final.py",
+        "role": "source",
+        "sha256": "sha256:8f22fc242b2811a19d685f0a8e9ca061f16478df483789029fa435eeaba092fc",
+        "size_bytes": 42376
+      },
+      {
+        "path": "scripts/prepare_tier1_v05_frozen_final.py",
+        "role": "source",
+        "sha256": "sha256:49a38747cb732b748954e68db0c3b7cd3b6ee6df24aab4113703b82cad80cdb7",
+        "size_bytes": 18551
+      },
+      {
+        "path": "scripts/record_v05_baseline_selection.py",
+        "role": "source",
+        "sha256": "sha256:9f24f38dc2f3fa6a180c88e8ede1ef2cd2d75168cd7a7185e0243ce190d7b46c",
+        "size_bytes": 2255
+      }
+    ]
+  },
+  "source_digest": "sha256:17aa97ab3b9499d3b078fc426af9daaa078b22058ba068b945a8a50e088bf35a",
+  "status": "prepared_locked",
+  "training_seed": null
+}

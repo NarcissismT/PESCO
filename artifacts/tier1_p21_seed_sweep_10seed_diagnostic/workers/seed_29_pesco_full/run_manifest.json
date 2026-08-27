@@ -1,0 +1,162 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/scripts/run_tier1_p21_diagnostics.py",
+      "--dataset",
+      "artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json",
+      "--output-dir",
+      "artifacts/tier1_p21_seed_sweep_10seed_diagnostic/workers/seed_29_pesco_full",
+      "--method",
+      "PESCO-Full",
+      "--no-gradient",
+      "--no-constrained",
+      "--max-optimizer-steps",
+      "32",
+      "--epochs",
+      "4",
+      "--batch-size",
+      "16",
+      "--seed",
+      "29"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/scripts/run_tier1_p21_diagnostics.py --dataset artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json --output-dir artifacts/tier1_p21_seed_sweep_10seed_diagnostic/workers/seed_29_pesco_full --method PESCO-Full --no-gradient --no-constrained --max-optimizer-steps 32 --epochs 4 --batch-size 16 --seed 29"
+  },
+  "command_line": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/scripts/run_tier1_p21_diagnostics.py --dataset artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json --output-dir artifacts/tier1_p21_seed_sweep_10seed_diagnostic/workers/seed_29_pesco_full --method PESCO-Full --no-gradient --no-constrained --max-optimizer-steps 32 --epochs 4 --batch-size 16 --seed 29",
+  "data": {
+    "available": true,
+    "digest": "sha256:76aef22d94e0e1956fb1c6c68f11c04881acebdd7281786fd54da260ea9b9709",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:06fcd4c7244ff5e2fae05f2ff494a6095822092a04d495819e5f0ca207495b7d",
+        "size_bytes": 12946561
+      },
+      {
+        "path": "artifacts/tier1_p21_shortcut_probe/shortcut_probe_result.json",
+        "role": "data",
+        "sha256": "sha256:81ed49fa6bee0504588a5ffbfb6b7b971c5f7387d34d8fd22fbc3ab8db895d87",
+        "size_bytes": 40657
+      }
+    ]
+  },
+  "data_digest": "sha256:76aef22d94e0e1956fb1c6c68f11c04881acebdd7281786fd54da260ea9b9709",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "dataset_schema": "pesco_decision_dataset_p21_fresh_diagnostic",
+    "diagnostic_only": true,
+    "formal_comparison_authorized": false,
+    "optimizer_step_cap": 32,
+    "selected_baseline": "PESCO-Full",
+    "selection_split": "tune"
+  },
+  "experiment": "tier1_p21_fresh_algorithm_diagnostic",
+  "generated_at_utc": "2026-08-27T02:50:29.379137+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "363b62d4bea1c62f39ecc0b4bab0a155d8c6f89a",
+    "status_available": true,
+    "status_digest": "sha256:9fb514a7e6bd83e9b3954883d3f9a0309969339dbdbccbb6919f9400fa0549dd"
+  },
+  "git_sha": "363b62d4bea1c62f39ecc0b4bab0a155d8c6f89a",
+  "manifest_digest": "sha256:ba6ee135b47de8d2415dfd5235d9962d7259b90815aa5d4895afd33fbcd71437",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      29
+    ],
+    "training": 29
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:871a9924b050215888938755a22bad770da95db4903560bacdd4061f0fae7b01",
+    "file_count": 4,
+    "files": [
+      {
+        "path": "research_strategy_optimization/algorithms/differentiable_strategy.py",
+        "role": "source",
+        "sha256": "sha256:ba8064018d7289b5acefb1af74317164e36c9627e775634918a70e9c4f428b08",
+        "size_bytes": 51373
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_differentiable_suite.py",
+        "role": "source",
+        "sha256": "sha256:65589b42d3d78e3a147c2c86fb5505339f56dc243499ef3ce8ca649b7188749a",
+        "size_bytes": 111130
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p21_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:f6296dd919b0116a8f2ca371cf3e0340eea43051571fbe331abb2d49024d97ee",
+        "size_bytes": 26716
+      },
+      {
+        "path": "scripts/run_tier1_p21_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:18ecad66991f6b94e02273269b72f8ffa78a24ca95844051d0982df1126e686a",
+        "size_bytes": 8155
+      }
+    ]
+  },
+  "source_digest": "sha256:871a9924b050215888938755a22bad770da95db4903560bacdd4061f0fae7b01",
+  "status": "completed_diagnostic",
+  "training_seed": 29
+}

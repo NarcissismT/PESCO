@@ -1,0 +1,44 @@
+{
+  "comparisons": {},
+  "config": {
+    "bootstrap_replicates": 1000,
+    "eval_splits": [
+      "tune",
+      "promotion"
+    ],
+    "feature_sets": [
+      "all_raw",
+      "without_confirmation"
+    ],
+    "max_examples": null,
+    "models": [
+      "logistic_regression",
+      "random_forest",
+      "gradient_boosting"
+    ],
+    "seed": 7,
+    "strict_sklearn": true,
+    "train_split": "train"
+  },
+  "dependency": {
+    "numpy": "2.2.6",
+    "sklearn": {
+      "available": false,
+      "import_error": "ModuleNotFoundError: No module named 'sklearn'",
+      "version": null
+    }
+  },
+  "error": "ModuleNotFoundError: No module named 'sklearn'",
+  "fallback_results_diagnostic_only": true,
+  "fallback_used": false,
+  "feature_policy": "public_observation_numeric_only; optional_confirmation_summary_is_ablated_and_never_a_label",
+  "feature_sets": {},
+  "formal_comparison_authorized": false,
+  "input_dataset_digest": "sha256:06fcd4c7244ff5e2fae05f2ff494a6095822092a04d495819e5f0ca207495b7d",
+  "input_dataset_schema": "pesco_decision_dataset_p21_fresh_diagnostic",
+  "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+  "models": {},
+  "schema_version": "pesco_shortcut_probe_v0.1",
+  "sklearn_required_for_formal_claim": true,
+  "status": "fail_closed_sklearn_unavailable"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "pesco_artifact_consumption_notice_v0.1",
+  "artifact_id": "tier1_p2_v04_formal_final_ten_seed",
+  "artifact_kind": "v04_p2_formal_environment_ten_seed",
+  "status": "diagnostic_v04_consumed",
+  "consumed": true,
+  "recorded_at": "2026-08-26",
+  "consumption_scope": "historical_p2_diagnostic_only",
+  "formal_environment_receipts_retained": true,
+  "formal_comparison_authorized": false,
+  "model_evaluation_authorized": false,
+  "promotion_status": "NO-GO",
+  "reasons": [
+    "This P2 run consumes the v0.4 formal environment, which is now marked diagnostic_v04_consumed because its latent templates overlap the earlier diagnostic benchmark.",
+    "Its historical exact top-1 FlipAcc and seed-only regret interval cannot support a post-fix paper final; corrected Pairwise Reversal Ranking Accuracy and seed-by-question/family-LOO uncertainty belong to P2.1 and the fresh v0.5 boundary.",
+    "The historical primary files and run-manifest digests are retained unchanged; this additive notice changes interpretation, not the historical bytes."
+  ],
+  "allowed_uses": [
+    "historical formal-environment receipt audit",
+    "documenting the original NO-GO and P3 fail-closed decision"
+  ],
+  "disallowed_uses": [
+    "paper final-ID/final-OOD model comparison",
+    "post-fix algorithm or hyperparameter selection",
+    "independent clean-final or superiority claim"
+  ],
+  "superseded_by": {
+    "p2_1_diagnostic": "artifacts/tier1_p21_diagnostic/",
+    "v05_boundary": "artifacts/tier1_v05_frozen_final/",
+    "v05_private_evaluator": "artifacts/tier1_v05_evaluator_private/"
+  },
+  "integrity": {
+    "notice_is_additive": true,
+    "original_artifacts_immutable": true,
+    "historical_manifest_digests_preserved": true
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "final_access": {
+    "authorization_required": true,
+    "formal_comparison_authorized": false,
+    "locked": true,
+    "model_evaluation_completed": false
+  },
+  "manifest_digest": "sha256:a0fd0a6cc19fb8a794627acd2e6acf6c952a6532ea5fdd458a28f3b292185909",
+  "profile": "frozen_final_v0.5",
+  "question_count": 48,
+  "questions": [
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:b3690e5552331743f151fee3a2d858a3489098d9c5587067a46e2ff05eafcc6a",
+      "question_id": "v05f_q_0001",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:ff34146f5a62ae074ef2d99bdd5bf38f0bd779e82f1b11a2fe58d78aa9088868",
+      "question_id": "v05f_q_0002",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:52e97679fe16eea614341cf8a7d4d14aeed8f929fc1577ef06287305df32affa",
+      "question_id": "v05f_q_0003",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:44aef1d9502854e907bde944e8681ffd60ebc26f37e2bc43ee45efa40ed14506",
+      "question_id": "v05f_q_0004",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:28b70f979c3d8d03ee75f39bef854d4b47ccbdea83604c9d94beeefbe59cbe80",
+      "question_id": "v05f_q_0005",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:eb0f99ebc59b85f82f9846217abaee08464e8fef4874cfa02fa431a882b0946f",
+      "question_id": "v05f_q_0006",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:775937dd01eefa990d440fa3591928bb2effdf31a9afe1ba72e18a4dcdec5d48",
+      "question_id": "v05f_q_0007",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:c4be5f634c72352e8322b9eec66f2397a333b3f2a79a57eefcb1d557e06d5cbf",
+      "question_id": "v05f_q_0008",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:1a49e25ed390291fa240493aa497d76577a78bbd0251a7b961ec14b8b65f5315",
+      "question_id": "v05f_q_0009",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:7ebe13202568c5b5c27be368ddf4e52d9b02815f7335eb417fd964c1e2bf85a5",
+      "question_id": "v05f_q_0010",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:e48bcf5a27959f45ad160be0ba75cd0aab3845dd45e86ab555da3ca9a327e8cc",
+      "question_id": "v05f_q_0011",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:4899b79dfd5ffd8908e53954335584013cea7b58efd8c90a964c832726e003b3",
+      "question_id": "v05f_q_0012",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:388160e3be5cc8f2cd534b351485487a1d92e8c9faa40077335c0b71912d7965",
+      "question_id": "v05f_q_0013",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:3d0fa16d9281becabd86140eb386cbfd294e3712722fdc1a6e59c725ce8299af",
+      "question_id": "v05f_q_0014",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:9329313c4141194da163ab64aae50ba435acc695ea22d8bafdb47e2ed9196a13",
+      "question_id": "v05f_q_0015",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:b6b89497487e2dfcbe4b3a05548f061df2398754c8f65a349c3f2f1590360f87",
+      "question_id": "v05f_q_0016",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:9fd43aa5b0395389b6a7da42049d985270c1d9867828c2829ccf4d148d9c30c7",
+      "question_id": "v05f_q_0017",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:0c058c4572d5062ffad9b330aacfc5258adc683b33c3e262eb87a304a1b72491",
+      "question_id": "v05f_q_0018",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:d9aa847a71322951e8ea721699e5c95c8f6c26335957f08fee1519554a23eac8",
+      "question_id": "v05f_q_0019",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:c5b9645df8f63b68dbb0f3b01f5b6dd42ec98ed681599935a63b8ab8df3eb022",
+      "question_id": "v05f_q_0020",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:3a82e02918b9f1ee332e0ac7f9618dc15281ad8eeb437c49abee6365c265e80b",
+      "question_id": "v05f_q_0021",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:10033bf7ca918694bd0ad583aa24a05f094d1d6caf4faaa16810d2a1649c37a3",
+      "question_id": "v05f_q_0022",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:33d2e8c7a95f757e43a2fb174b65e6068b65b42de7c26e23e2fcad1172d704e5",
+      "question_id": "v05f_q_0023",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:5e01ec3f81017f231ad8ae61a25e398770272c527322bb7c8b8c32d0fb14db7a",
+      "question_id": "v05f_q_0024",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:83e7ed1d52c4b1458d7d1dc12fc778b4eedef5c0fb7602876fc120e5180f7b42",
+      "question_id": "v05f_q_0025",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:147fc401ae4e6fb5a2490afca1fc0498f9d6fdd82a869a1b3524777356fd5408",
+      "question_id": "v05f_q_0026",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:0bd9155af9b11984bb9907f0e833dfbcc0d494065dcac5919912b65e44d0c53e",
+      "question_id": "v05f_q_0027",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:ca7c711d9e98d368b506596c94e6bce81c2047837d856cd93638da95743f53fe",
+      "question_id": "v05f_q_0028",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:b579f65fdb6cc165e0438fcbd9e1f53ec9fb57bda3d362f54acdaf1374fe14d8",
+      "question_id": "v05f_q_0029",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:7c6ae50a4cfc347228257e036a67aeb666654735988cd8376f0df57877be7625",
+      "question_id": "v05f_q_0030",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:6ca12352b2cd5c690d60e9bbe7ad765f6d2c1fa2bc7e041d1fece7a59c93cdf3",
+      "question_id": "v05f_q_0031",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:52928768847e43ca2f819628f50a3dfdf1ac3733c8319a4da3e858ebde54982b",
+      "question_id": "v05f_q_0032",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:0ee0ae8c0a63a79fdf522c4d20cf4e41abaea018ea72e2f59cd316440b3aba38",
+      "question_id": "v05f_q_0033",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:793a79480faa0982512173dd33e0f563f9ff45fe1314cc8f7ccbab545b7f8cc0",
+      "question_id": "v05f_q_0034",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:41a8594b0ab4913b76a062946427c50a94d395e82c1c27a487913f2a98ce69f8",
+      "question_id": "v05f_q_0035",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:8a3519ba53f1fcedfbc3173554edab49b45f06110981a173fed7fc3b83d2b426",
+      "question_id": "v05f_q_0036",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:dee7dea67d356b59828f09dec0d5bbc626a027ae9bcdc7c4f82eddb8ce50ac73",
+      "question_id": "v05f_q_0037",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:e2475d5e9a8063a70c675e981a6d6e9775f68e5b265782a8a6b08ef34378fa64",
+      "question_id": "v05f_q_0038",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:a2fa721d6ec07cd65d5734649685de240db98460c5abd552c864e0801282026b",
+      "question_id": "v05f_q_0039",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:46eff302f493371cfa4beb08988ecdb257b6041c708cc66da59ec33f874ed7ed",
+      "question_id": "v05f_q_0040",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:1b5c4021470107955e151e88ee2210c983925e09e1a879b2324032666a48b631",
+      "question_id": "v05f_q_0041",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:a95bd5f7d4e50e5d8e3987d8a1b92dcf93d8c2067bdd67413a72b065139b9d4e",
+      "question_id": "v05f_q_0042",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:67a7ad93d48ba55d79d9825662cb6058c9237aa46a02925fc770aaa8a686a460",
+      "question_id": "v05f_q_0043",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:f4ef1f46dfdad1d340fa1b3556abb0e6aed93ea7dd7d1cb92c29ffd8c00a2526",
+      "question_id": "v05f_q_0044",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:346b97d6508108acc44fbedd32c486a5213ffbb4149631dbaafea42d48d00ac1",
+      "question_id": "v05f_q_0045",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:1df5f6ce13b15741836970f5bef9fc71f9f956d964b15205201ff7570e39b370",
+      "question_id": "v05f_q_0046",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:dec19a8ac0fe4b43296beb1e3e85e57ad90686b7e9f3c816e4197554ac8a313b",
+      "question_id": "v05f_q_0047",
+      "split": "final_id",
+      "world_count": 4
+    },
+    {
+      "policy_question_id": "pesco_v05_final_public_question",
+      "question_commitment": "sha256:b5069b03eea1d444e18a46e0017f16996a62e122729e4ad14c656caaf77d1ae8",
+      "question_id": "v05f_q_0048",
+      "split": "final_id",
+      "world_count": 4
+    }
+  ],
+  "schema_version": "pesco_tier1_benchmark_v0.5_frozen_final",
+  "split": "final_id",
+  "world_count": 192
+}

@@ -1,0 +1,581 @@
+{
+  "baseline_ranking": {
+    "normalized_regret": [
+      "SFT",
+      "PESCO-BranchOnly",
+      "PESCO-Full",
+      "PESCO-NoFlipLoss"
+    ],
+    "normalized_regret_values": {
+      "PESCO-BranchOnly": 0.1732733082549929,
+      "PESCO-Full": 0.18577330825499289,
+      "PESCO-NoFlipLoss": 0.18577330825499289,
+      "SFT": 0.15413687705580564
+    },
+    "raw_regret": [
+      "SFT",
+      "PESCO-BranchOnly",
+      "PESCO-Full",
+      "PESCO-NoFlipLoss"
+    ],
+    "raw_regret_values": {
+      "PESCO-BranchOnly": 0.09934687500000003,
+      "PESCO-Full": 0.10456762500000003,
+      "PESCO-NoFlipLoss": 0.10456762500000003,
+      "SFT": 0.09903637499999995
+    }
+  },
+  "component_names": [
+    "confirmation_bonus",
+    "execution_cost_penalty",
+    "heldout_split_bonus",
+    "mechanism_transition_bonus",
+    "repair_protocol_bonus",
+    "replicate_bonus",
+    "sample_precision_bonus",
+    "state_resolution_bonus",
+    "switch_failure_penalty",
+    "switch_success_bonus",
+    "validity_gate"
+  ],
+  "diagnostic_only": true,
+  "environment_reward_winner_stability": {
+    "authorized": true,
+    "non_tie_definition": "top1_minus_top2 > tolerance",
+    "non_tie_perturbation_n": 11800,
+    "non_tie_stable_winner_fraction": 0.991864406779661,
+    "non_tie_winner_n": 118,
+    "overall_stable_winner_fraction": 0.9912890625,
+    "replicate_n_per_example": 100,
+    "stable_winner_fraction": 0.991864406779661,
+    "stable_winner_threshold": 0.9,
+    "status": "estimable",
+    "tie_perturbation_n": 13800,
+    "tie_stable_winner_fraction": 0.9907971014492754,
+    "tie_winner_n": 138
+  },
+  "example_count": 80,
+  "family_direction_audit": {
+    "PESCO-Full_minus_PESCO-NoFlipLoss_normalized_regret": {
+      "leakage_metric_mismatch": {
+        "full_better_question_n": 0,
+        "full_worse_question_n": 0,
+        "mean_delta": 0.0,
+        "question_count": 8,
+        "tie_question_n": 8
+      },
+      "protocol_drift": {
+        "full_better_question_n": 0,
+        "full_worse_question_n": 0,
+        "mean_delta": 0.0,
+        "question_count": 8,
+        "tie_question_n": 8
+      },
+      "replication_instability": {
+        "full_better_question_n": 0,
+        "full_worse_question_n": 0,
+        "mean_delta": 0.0,
+        "question_count": 4,
+        "tie_question_n": 4
+      }
+    },
+    "PESCO-Full_minus_SFT_normalized_regret": {
+      "leakage_metric_mismatch": {
+        "full_better_question_n": 0,
+        "full_worse_question_n": 8,
+        "mean_delta": 0.02717254756126448,
+        "question_count": 8,
+        "tie_question_n": 0
+      },
+      "protocol_drift": {
+        "full_better_question_n": 0,
+        "full_worse_question_n": 8,
+        "mean_delta": 0.034438479527126344,
+        "question_count": 8,
+        "tie_question_n": 0
+      },
+      "replication_instability": {
+        "full_better_question_n": 0,
+        "full_worse_question_n": 4,
+        "mean_delta": 0.03496010181915426,
+        "question_count": 4,
+        "tie_question_n": 0
+      }
+    }
+  },
+  "formal_comparison_authorized": false,
+  "global_weight_rank_stability": {
+    "definition": "one shared independent uniform weight draw per atomic reward term, applied to every method",
+    "normalized_regret_exact_rank_fraction": 1.0,
+    "pair_count_per_replicate": 6,
+    "pairwise_normalized_order_agreement": 1.0,
+    "pairwise_raw_order_agreement": 0.9346666666666666,
+    "raw_regret_exact_rank_fraction": 0.608
+  },
+  "input_dataset_digest": "sha256:06fcd4c7244ff5e2fae05f2ff494a6095822092a04d495819e5f0ca207495b7d",
+  "limitations": [
+    "Policy actions are frozen from one retained CPU diagnostic run; this is not retraining under perturbed rewards.",
+    "The analysis is diagnostic-only and does not open v0.5 final comparison or model scaling.",
+    "Safety snapshot is descriptive; preregistered non-inferiority requires paired multi-seed formal receipts."
+  ],
+  "methods": [
+    "PESCO-BranchOnly",
+    "PESCO-Full",
+    "PESCO-NoFlipLoss",
+    "SFT"
+  ],
+  "question_count": 20,
+  "replicates": 1000,
+  "safety_receipt_snapshot": {
+    "PESCO-BranchOnly": {
+      "erroneous_repair_n": 41,
+      "invalid_local_optimization_n": 0,
+      "row_count": 80,
+      "selected_confirmation_eligible_n": 480,
+      "selected_confirmation_observed_n": 640,
+      "selected_confirmation_passed_n": 421,
+      "selected_confirmation_rate": 0.8770833333333333,
+      "selected_invalid_branch_n": 20
+    },
+    "PESCO-Full": {
+      "erroneous_repair_n": 42,
+      "invalid_local_optimization_n": 0,
+      "row_count": 80,
+      "selected_confirmation_eligible_n": 480,
+      "selected_confirmation_observed_n": 640,
+      "selected_confirmation_passed_n": 417,
+      "selected_confirmation_rate": 0.86875,
+      "selected_invalid_branch_n": 20
+    },
+    "PESCO-NoFlipLoss": {
+      "erroneous_repair_n": 42,
+      "invalid_local_optimization_n": 0,
+      "row_count": 80,
+      "selected_confirmation_eligible_n": 480,
+      "selected_confirmation_observed_n": 640,
+      "selected_confirmation_passed_n": 417,
+      "selected_confirmation_rate": 0.86875,
+      "selected_invalid_branch_n": 20
+    },
+    "SFT": {
+      "erroneous_repair_n": 0,
+      "invalid_local_optimization_n": 0,
+      "row_count": 80,
+      "selected_confirmation_eligible_n": 480,
+      "selected_confirmation_observed_n": 640,
+      "selected_confirmation_passed_n": 417,
+      "selected_confirmation_rate": 0.86875,
+      "selected_invalid_branch_n": 20
+    }
+  },
+  "sample_replicates": [
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.16437364589614561,
+        "PESCO-Full": 0.17687364589614563,
+        "PESCO-NoFlipLoss": 0.17687364589614563,
+        "SFT": 0.149581899750753
+      },
+      "raw_rank": [
+        "PESCO-BranchOnly",
+        "SFT",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.07988439282244122,
+        "PESCO-Full": 0.08505038648405994,
+        "PESCO-NoFlipLoss": 0.08505038648405994,
+        "SFT": 0.08060676187037
+      },
+      "replicate": 0,
+      "weights": {
+        "confirmation_bonus": 0.8370636061355283,
+        "execution_cost_penalty": 0.8033671617970394,
+        "heldout_split_bonus": 0.8382156596209978,
+        "mechanism_transition_bonus": 0.8115264532900183,
+        "repair_protocol_bonus": 0.8690910009272166,
+        "replicate_bonus": 1.0330383405488157,
+        "sample_precision_bonus": 1.0158686466527422,
+        "state_resolution_bonus": 0.8123736061773097,
+        "switch_failure_penalty": 1.1254302611652456,
+        "switch_success_bonus": 0.8447258897711858,
+        "validity_gate": 1.167995913719621
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.18213040575876552,
+        "PESCO-Full": 0.1946304057587655,
+        "PESCO-NoFlipLoss": 0.1946304057587655,
+        "SFT": 0.16004896756118914
+      },
+      "raw_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.10690677212605264,
+        "PESCO-Full": 0.11157764337045466,
+        "PESCO-NoFlipLoss": 0.11157764337045466,
+        "SFT": 0.10582203408361075
+      },
+      "replicate": 1,
+      "weights": {
+        "confirmation_bonus": 1.0468750824975532,
+        "execution_cost_penalty": 1.040562130954843,
+        "heldout_split_bonus": 0.9201473797380397,
+        "mechanism_transition_bonus": 0.8805518420058256,
+        "repair_protocol_bonus": 1.1082482571520016,
+        "replicate_bonus": 1.1600506967737623,
+        "sample_precision_bonus": 0.8646684874785313,
+        "state_resolution_bonus": 0.9258812891990413,
+        "switch_failure_penalty": 0.8634175229140421,
+        "switch_success_bonus": 1.0280096004086459,
+        "validity_gate": 1.163063241341927
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.1611358757611376,
+        "PESCO-Full": 0.17363587576113762,
+        "PESCO-NoFlipLoss": 0.17363587576113762,
+        "SFT": 0.1431062721360822
+      },
+      "raw_rank": [
+        "PESCO-BranchOnly",
+        "SFT",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.07629233420444531,
+        "PESCO-Full": 0.08224187777579905,
+        "PESCO-NoFlipLoss": 0.08224187777579905,
+        "SFT": 0.07704933127195675
+      },
+      "replicate": 2,
+      "weights": {
+        "confirmation_bonus": 0.9741225916706929,
+        "execution_cost_penalty": 0.9387654696211971,
+        "heldout_split_bonus": 0.8438519228717505,
+        "mechanism_transition_bonus": 1.1586151773821625,
+        "repair_protocol_bonus": 0.8725978361178709,
+        "replicate_bonus": 0.9427628665389434,
+        "sample_precision_bonus": 1.1683168623679423,
+        "state_resolution_bonus": 0.9330019435697529,
+        "switch_failure_penalty": 0.9881758107702142,
+        "switch_success_bonus": 0.8085147873545749,
+        "validity_gate": 1.113500654627554
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.17663884489290033,
+        "PESCO-Full": 0.18913884489290034,
+        "PESCO-NoFlipLoss": 0.18913884489290034,
+        "SFT": 0.15668126127919924
+      },
+      "raw_rank": [
+        "PESCO-BranchOnly",
+        "SFT",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.09909855340400098,
+        "PESCO-Full": 0.10440105668495292,
+        "PESCO-NoFlipLoss": 0.10440105668495292,
+        "SFT": 0.09918313689250041
+      },
+      "replicate": 3,
+      "weights": {
+        "confirmation_bonus": 1.186434981616435,
+        "execution_cost_penalty": 0.9433527308388854,
+        "heldout_split_bonus": 1.0241090267361708,
+        "mechanism_transition_bonus": 1.1796039555379114,
+        "repair_protocol_bonus": 0.8506043181941494,
+        "replicate_bonus": 0.9120851664415104,
+        "sample_precision_bonus": 0.9601851189424055,
+        "state_resolution_bonus": 0.9300683630748671,
+        "switch_failure_penalty": 0.8636888647786525,
+        "switch_success_bonus": 0.9770866634766896,
+        "validity_gate": 0.9892531479652691
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.1855400296587888,
+        "PESCO-Full": 0.1980400296587888,
+        "PESCO-NoFlipLoss": 0.1980400296587888,
+        "SFT": 0.16820179529889956
+      },
+      "raw_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.12483881427014118,
+        "PESCO-Full": 0.12910956776315965,
+        "PESCO-NoFlipLoss": 0.12910956776315965,
+        "SFT": 0.12386448153514987
+      },
+      "replicate": 4,
+      "weights": {
+        "confirmation_bonus": 0.8962928545732776,
+        "execution_cost_penalty": 0.9482641768153309,
+        "heldout_split_bonus": 0.9471346155245812,
+        "mechanism_transition_bonus": 1.1862093265582203,
+        "repair_protocol_bonus": 1.1266110707119614,
+        "replicate_bonus": 1.1076365288091237,
+        "sample_precision_bonus": 0.8077081641781618,
+        "state_resolution_bonus": 1.0613928105121917,
+        "switch_failure_penalty": 1.1450153668099174,
+        "switch_success_bonus": 1.1939210127836644,
+        "validity_gate": 0.9277964703588467
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.18060632357357229,
+        "PESCO-Full": 0.1931063235735723,
+        "PESCO-NoFlipLoss": 0.1931063235735723,
+        "SFT": 0.15939000687327315
+      },
+      "raw_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.10976066607932974,
+        "PESCO-Full": 0.11442917371008703,
+        "PESCO-NoFlipLoss": 0.11442917371008703,
+        "SFT": 0.10863627505556535
+      },
+      "replicate": 5,
+      "weights": {
+        "confirmation_bonus": 0.9554987256262103,
+        "execution_cost_penalty": 1.0473037115519523,
+        "heldout_split_bonus": 0.9745000864291575,
+        "mechanism_transition_bonus": 0.8028574971575111,
+        "repair_protocol_bonus": 0.9498943454518347,
+        "replicate_bonus": 0.8968635142763499,
+        "sample_precision_bonus": 0.8908586855130051,
+        "state_resolution_bonus": 1.0919572006010958,
+        "switch_failure_penalty": 0.9274447809153538,
+        "switch_success_bonus": 1.066291237775584,
+        "validity_gate": 0.9335365608465749
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.163221479356417,
+        "PESCO-Full": 0.17572147935641702,
+        "PESCO-NoFlipLoss": 0.17572147935641702,
+        "SFT": 0.14048895728608507
+      },
+      "raw_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.0781247495548871,
+        "PESCO-Full": 0.08364917847546417,
+        "PESCO-NoFlipLoss": 0.08364917847546417,
+        "SFT": 0.07744617460899807
+      },
+      "replicate": 6,
+      "weights": {
+        "confirmation_bonus": 0.977806236768944,
+        "execution_cost_penalty": 1.1214470267057242,
+        "heldout_split_bonus": 1.002436612203315,
+        "mechanism_transition_bonus": 1.0490077464910927,
+        "repair_protocol_bonus": 1.091423532738604,
+        "replicate_bonus": 0.99318637234429,
+        "sample_precision_bonus": 1.0869751051798118,
+        "state_resolution_bonus": 1.1229173341128542,
+        "switch_failure_penalty": 0.8803063392078511,
+        "switch_success_bonus": 0.8054440454269508,
+        "validity_gate": 0.9205746932758829
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.17704835065730185,
+        "PESCO-Full": 0.18954835065730186,
+        "PESCO-NoFlipLoss": 0.18954835065730186,
+        "SFT": 0.1603655699346199
+      },
+      "raw_rank": [
+        "PESCO-BranchOnly",
+        "SFT",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.11777225371420641,
+        "PESCO-Full": 0.12320142702984702,
+        "PESCO-NoFlipLoss": 0.12320142702984702,
+        "SFT": 0.1178376480074584
+      },
+      "replicate": 7,
+      "weights": {
+        "confirmation_bonus": 1.0633322039752273,
+        "execution_cost_penalty": 0.9697227611098178,
+        "heldout_split_bonus": 0.849449042093439,
+        "mechanism_transition_bonus": 0.9660166298218082,
+        "repair_protocol_bonus": 0.9240336088002995,
+        "replicate_bonus": 0.9056574025460834,
+        "sample_precision_bonus": 1.0267470827086238,
+        "state_resolution_bonus": 1.1883825019864644,
+        "switch_failure_penalty": 1.1727188198554928,
+        "switch_success_bonus": 1.169726747612056,
+        "validity_gate": 1.0679716922784201
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.17202111208147675,
+        "PESCO-Full": 0.18452111208147676,
+        "PESCO-NoFlipLoss": 0.18452111208147676,
+        "SFT": 0.15179691410987445
+      },
+      "raw_rank": [
+        "PESCO-BranchOnly",
+        "SFT",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.09721522002169851,
+        "PESCO-Full": 0.10295772203513794,
+        "PESCO-NoFlipLoss": 0.10295772203513794,
+        "SFT": 0.09793662063065953
+      },
+      "replicate": 8,
+      "weights": {
+        "confirmation_bonus": 0.9142151391594151,
+        "execution_cost_penalty": 0.9077697454424384,
+        "heldout_split_bonus": 0.8619753569099369,
+        "mechanism_transition_bonus": 1.106959534397263,
+        "repair_protocol_bonus": 0.9786701706176252,
+        "replicate_bonus": 1.1702474694074974,
+        "sample_precision_bonus": 1.1352454877909193,
+        "state_resolution_bonus": 1.1380202742940086,
+        "switch_failure_penalty": 0.8550381841764945,
+        "switch_success_bonus": 1.0204970744335848,
+        "validity_gate": 0.9043211474422372
+      }
+    },
+    {
+      "normalized_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "normalized_regret": {
+        "PESCO-BranchOnly": 0.1853954412711467,
+        "PESCO-Full": 0.19789544127114672,
+        "PESCO-NoFlipLoss": 0.19789544127114672,
+        "SFT": 0.16506166540269415
+      },
+      "raw_rank": [
+        "SFT",
+        "PESCO-BranchOnly",
+        "PESCO-Full",
+        "PESCO-NoFlipLoss"
+      ],
+      "raw_regret": {
+        "PESCO-BranchOnly": 0.12098036499671357,
+        "PESCO-Full": 0.12547563905067913,
+        "PESCO-NoFlipLoss": 0.12547563905067913,
+        "SFT": 0.11952298394881497
+      },
+      "replicate": 9,
+      "weights": {
+        "confirmation_bonus": 0.927324408657496,
+        "execution_cost_penalty": 1.0761862331053682,
+        "heldout_split_bonus": 1.1113483145163354,
+        "mechanism_transition_bonus": 0.9242140948600721,
+        "repair_protocol_bonus": 1.123657720248967,
+        "replicate_bonus": 1.1593483697069522,
+        "sample_precision_bonus": 0.8619809892289223,
+        "state_resolution_bonus": 0.8910206077211777,
+        "switch_failure_penalty": 1.0243522623994892,
+        "switch_success_bonus": 1.1607828684835821,
+        "validity_gate": 0.8763008082989974
+      }
+    }
+  ],
+  "schema_version": "pesco_tier1_p21_sensitivity_audit_v0.1",
+  "seed": 202629,
+  "split": "promotion",
+  "status": "completed_cpu_diagnostic",
+  "weight_range": [
+    0.8,
+    1.2
+  ]
+}

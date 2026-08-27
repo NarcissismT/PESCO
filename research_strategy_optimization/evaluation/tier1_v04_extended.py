@@ -16,7 +16,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from types import MappingProxyType
 from typing import Any, Dict, Iterable, Mapping, Optional, Sequence, Tuple
 
@@ -530,7 +530,7 @@ def build_tier1_v04_formal_final_benchmark() -> V04FormalFinalBenchmark:
     return V04FormalFinalBenchmark(tuple(questions))
 
 
-def _raw_evidence(output: ExperimentOutput, observation: Observation, *, confirmation_rate: float = 0.0, repeated_runs: int = 0) -> Tuple[Tuple[str, float], ...]:
+def _raw_evidence(output: ExperimentOutput, observation: Observation, *, repeated_runs: int = 0) -> Tuple[Tuple[str, float], ...]:
     """Serialize only policy-observable raw experiment receipts.
 
     The Tier-1 environment also records ``hidden_validation_*`` fields for the
@@ -545,14 +545,13 @@ def _raw_evidence(output: ExperimentOutput, observation: Observation, *, confirm
         "replication_ci_width": float(output.ci_high - output.ci_low),
         "replication_sample_size": float(output.sample_size),
         "replication_seed_count": float(output.seed_count),
-        "log_confirmation_pass_rate": float(confirmation_rate),
         "log_validity_count": float(len(output.validity_signals)),
         "log_repeated_runs": float(repeated_runs),
         "log_protocol_change_count": float(sum(signal in {"split_protocol_updated", "confounder_adjusted_estimator", "group_held_out_split"} for signal in output.validity_signals)),
     }.items()))
 
 
-def _track_observation(track: str, observation: Observation, output: ExperimentOutput, verdict: Verdict, *, confirmation_rate: float = 0.0, repeated_runs: int = 0) -> Observation:
+def _track_observation(track: str, observation: Observation, output: ExperimentOutput, verdict: Verdict, *, repeated_runs: int = 0) -> Observation:
     if track == TRACK_ORACLE_STATE:
         return Observation(
             question_id=observation.question_id,
@@ -592,8 +591,142 @@ def _track_observation(track: str, observation: Observation, output: ExperimentO
         hypothesis_beliefs=(),
         task_family="raw_evidence",
         track=TRACK_RAW_EVIDENCE,
-        raw_evidence=_raw_evidence(output, observation, confirmation_rate=confirmation_rate, repeated_runs=repeated_runs),
+        raw_evidence=_raw_evidence(output, observation, repeated_runs=repeated_runs),
     )
+
+
+def build_pre_action_raw_observation(
+    question: Any,
+    world: WorldSpec,
+    protocol: Optional[Protocol] = None,
+) -> Observation:
+    """Construct the policy-visible raw observation before candidate branches.
+
+    The helper intentionally executes only the registered baseline (method A) and
+    returns immediately.  It is used by the counterfactual leakage audit: changing a
+    hidden method-B effect must not alter this observation or its canonical hash.
+    No confirmation or candidate-action receipt is consulted.
+    """
+
+    protocol = protocol or Protocol(protocol_version="pesco_v0_2")
+    environment = Tier1TabularEnvironment(
+        worlds=(world,),
+        protocol=protocol,
+        budget=protocol.max_budget,
+    )
+    environment.reset(
+        getattr(question, "policy_question_id", "tier1_v04_extended_public_question"),
+        world.world_id,
+        seed=17,
+    )
+    baseline = environment.execute_option(
+        ResearchAction.CONTINUE,
+        seeds=protocol.exploration_seeds,
+    )
+    verifier = TrustedVerifier(protocol)
+    verdict = verifier.evaluate(baseline, environment, confirm=False)
+    return _track_observation(
+        TRACK_RAW_EVIDENCE,
+        environment.visible_observation(),
+        baseline,
+        verdict,
+        repeated_runs=len(protocol.exploration_seeds),
+    )
+
+
+def pre_action_observation_hash(observation: Observation) -> str:
+    """Return the canonical digest used by the counterfactual leakage audit."""
+
+    encoded = json.dumps(
+        observation.to_dict(),
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ).encode("utf-8")
+    return "sha256:" + hashlib.sha256(encoded).hexdigest()
+
+
+def audit_counterfactual_raw_observation_leakage(
+    benchmark: Any,
+    protocol: Optional[Protocol] = None,
+    *,
+    world_limit: Optional[int] = None,
+    effect_delta: float = 1.234567,
+) -> dict:
+    """Verify that an unselected method-B effect cannot change pre-action inputs.
+
+    For each audited world, only ``true_effect_b`` is changed in a counterfactual
+    copy.  The two baseline/raw observations are hashed before any candidate branch
+    is executed.  A mismatch is a hard leakage finding rather than a statistical
+    tolerance failure.
+    """
+
+    protocol = protocol or Protocol(protocol_version="pesco_v0_2")
+    rows: list[dict] = []
+    audited = 0
+    for question in benchmark.questions:
+        for world in question.worlds:
+            if world_limit is not None and audited >= max(0, int(world_limit)):
+                break
+            counterfactual = replace(world, true_effect_b=float(world.true_effect_b) + float(effect_delta))
+            original = build_pre_action_raw_observation(question, world, protocol)
+            altered = build_pre_action_raw_observation(question, counterfactual, protocol)
+            original_hash = pre_action_observation_hash(original)
+            altered_hash = pre_action_observation_hash(altered)
+            rows.append({
+                "question_id": str(question.question_id),
+                "world_id": str(world.world_id),
+                "original_hash": original_hash,
+                "counterfactual_hash": altered_hash,
+                "unchanged": original_hash == altered_hash,
+            })
+            audited += 1
+        if world_limit is not None and audited >= max(0, int(world_limit)):
+            break
+    return {
+        "schema_version": "pesco_counterfactual_raw_leakage_audit_v0.1",
+        "audited_world_count": len(rows),
+        "effect_delta": float(effect_delta),
+        "all_hashes_unchanged": bool(rows) and all(row["unchanged"] for row in rows),
+        "rows": rows,
+        "decision_before_candidate_branches": True,
+        "feature_removed": "log_confirmation_pass_rate",
+        "status": "pass" if rows and all(row["unchanged"] for row in rows) else "fail",
+    }
+
+
+def counterfactual_raw_observation_audit(
+    question: Any,
+    world: WorldSpec,
+    protocol: Optional[Protocol] = None,
+    *,
+    method_b_delta: float = 1.234567,
+) -> dict:
+    """Verify that an unselected method-B latent change is invisible pre-decision.
+
+    The two observations execute only the common method-A baseline.  The hidden
+    method-B efficacy is changed in a counterfactual world with all public identity
+    fields held fixed; equal canonical observations and hashes are therefore a
+    direct information-boundary test rather than a post-hoc feature assertion.
+    """
+
+    from dataclasses import replace
+
+    altered = replace(world, true_effect_b=float(world.true_effect_b) + float(method_b_delta))
+    original_observation = build_pre_action_raw_observation(question, world, protocol)
+    altered_observation = build_pre_action_raw_observation(question, altered, protocol)
+    original_hash = pre_action_observation_hash(original_observation)
+    altered_hash = pre_action_observation_hash(altered_observation)
+    return {
+        "question_id": str(getattr(question, "question_id", "")),
+        "world_kind": str(world.kind),
+        "method_b_delta": float(method_b_delta),
+        "original_hash": original_hash,
+        "counterfactual_hash": altered_hash,
+        "observation_equal": original_observation.to_dict() == altered_observation.to_dict(),
+        "pass": bool(original_hash == altered_hash and original_observation.to_dict() == altered_observation.to_dict()),
+        "decision_boundary": "baseline_method_a_before_candidate_branches",
+    }
 
 
 def _independent_replicate_confirmations(
@@ -661,6 +794,14 @@ def _independent_replicate_confirmations(
         audits.append({
             "exploration_seed": int(seed),
             "confirmation_seed": confirmation_seed,
+            # A receipt is emitted for every exploration replicate, while the
+            # denominator for the replication-rate metric contains only receipts
+            # for which an independent confirmation was actually attempted.  Keep
+            # this canonical field separate from the receipt's ``passed`` result so
+            # failed confirmations remain in the denominator rather than being
+            # silently dropped.  ``eligible`` is retained as a legacy alias used by
+            # reversal-label construction.
+            "confirmation_eligible": bool(passed is not None),
             "eligible": passed is not None,
             "passed": bool(passed) if passed is not None else None,
             "state": verdict.evidence_state.value,
@@ -677,6 +818,21 @@ def _independent_replicate_confirmations(
             },
         })
     return values, audits
+
+
+def _confirmation_receipt_eligible(receipt: Mapping[str, Any]) -> bool:
+    """Read the canonical attempted-confirmation bit from a receipt.
+
+    ``confirmation_eligible`` is the current schema.  ``eligible`` remains a
+    compatibility alias for older v0.4/v0.3 exports, but must not override the
+    canonical field when both are present.  This distinction is important for
+    audits that deliberately construct a receipt with inconsistent legacy and
+    current fields.
+    """
+
+    if "confirmation_eligible" in receipt:
+        return bool(receipt.get("confirmation_eligible"))
+    return bool(receipt.get("eligible", False))
 
 
 def _utility_for_branch(question: V04ExtendedQuestion, world: WorldSpec, action: ResearchAction, output: ExperimentOutput, verdict: Verdict, initial_observation: Observation, protocol: Protocol) -> float:
@@ -718,6 +874,17 @@ def collect_tier1_v04_extended(
             initial_verdict = verifier.evaluate(baseline, env, confirm=False)
             initial_observation = env.visible_observation()
             pre_action_snapshot = env.snapshot()
+            # Materialize the raw-evidence track before *any* candidate branch or
+            # confirmation is executed.  This makes the information boundary
+            # auditable and prevents a future metadata field from accidentally
+            # depending on an unselected action.
+            track_observation = _track_observation(
+                track,
+                initial_observation,
+                baseline,
+                initial_verdict,
+                repeated_runs=len(protocol.exploration_seeds),
+            )
             branch_utilities: list[float] = []
             branch_states: list[EvidenceState] = []
             seed_utility_map: dict[str, list[float]] = {}
@@ -806,12 +973,12 @@ def collect_tier1_v04_extended(
                 "diagnose_repair_retest_replicate_complete": [row["phase"] for row in trajectory] == ["diagnose", "repair_or_change", "retest", "replicate"] or [row["phase"] for row in trajectory] == ["diagnose", "retest", "replicate"],
             })
             eligible_confirmation_count = sum(
-                bool(item.get("eligible"))
+                _confirmation_receipt_eligible(item)
                 for values in replicate_confirmation_map.values()
                 for item in values
             )
             passed_confirmation_count = sum(
-                item.get("passed") is True
+                _confirmation_receipt_eligible(item) and item.get("passed") is True
                 for values in replicate_confirmation_map.values()
                 for item in values
             )
@@ -820,19 +987,6 @@ def collect_tier1_v04_extended(
                 and passed_confirmation_count == eligible_confirmation_count
             )
             raw_source_output = env._last_output if env._last_output is not None else baseline
-            track_observation = _track_observation(
-                track,
-                initial_observation,
-                baseline,
-                initial_verdict,
-                confirmation_rate=sum(
-                    bool(item.get("passed"))
-                    for values in replicate_confirmation_map.values()
-                    for item in values
-                    if item.get("eligible")
-                ) / max(1, sum(item.get("eligible", False) for values in replicate_confirmation_map.values() for item in values)),
-                repeated_runs=len(protocol.exploration_seeds),
-            )
             metadata = {
                 "family": question.family,
                 "variant": int(question.variant),
@@ -843,6 +997,9 @@ def collect_tier1_v04_extended(
                 "reward_source": "independent_per_replicate_public_transition_utility",
                 "policy_features_exclude_hidden_world": True,
                 "track": track,
+                "pre_action_observation_hash": pre_action_observation_hash(track_observation),
+                "pre_action_observation_constructed_before_candidate_branches": True,
+                "cross_candidate_confirmation_feature_excluded": True,
                 "branch_costs": branch_costs,
                 "branch_validity": branch_validity,
                 "branch_evidence_states": branch_evidence,
@@ -855,13 +1012,14 @@ def collect_tier1_v04_extended(
                 "exploration_seed_count": len(protocol.exploration_seeds),
                 "confirmation_seed_count": len(protocol.confirmation_seeds),
                 "independent_replicate_confirmation_count": sum(len(values) for values in replicate_confirmation_map.values()),
+                "independent_replicate_confirmation_receipt_count": sum(len(values) for values in replicate_confirmation_map.values()),
                 "independent_replicate_confirmation_eligible_count": sum(
-                    item.get("eligible", False)
+                    _confirmation_receipt_eligible(item)
                     for values in replicate_confirmation_map.values()
                     for item in values
                 ),
                 "independent_replicate_confirmation_passed_count": sum(
-                    item.get("passed", False) is True
+                    _confirmation_receipt_eligible(item) and item.get("passed", False) is True
                     for values in replicate_confirmation_map.values()
                     for item in values
                 ),
@@ -907,10 +1065,16 @@ def collect_tier1_v04_extended(
                     # replicated pair.  Require at least half of the eight eligible
                     # replicate confirmations on each endpoint; failed/unevaluable
                     # rows remain in the audit denominator.
-                    left_passed = sum(item.get("passed") is True for item in left_audit)
-                    right_passed = sum(item.get("passed") is True for item in right_audit)
-                    left_eligible = sum(bool(item.get("eligible")) for item in left_audit)
-                    right_eligible = sum(bool(item.get("eligible")) for item in right_audit)
+                    left_passed = sum(
+                        _confirmation_receipt_eligible(item) and item.get("passed") is True
+                        for item in left_audit
+                    )
+                    right_passed = sum(
+                        _confirmation_receipt_eligible(item) and item.get("passed") is True
+                        for item in right_audit
+                    )
+                    left_eligible = sum(_confirmation_receipt_eligible(item) for item in left_audit)
+                    right_eligible = sum(_confirmation_receipt_eligible(item) for item in right_audit)
                     if left_eligible < 4 or right_eligible < 4 or left_passed < 4 or right_passed < 4:
                         continue
                     pair = identify_confirmed_reversal(
@@ -943,6 +1107,34 @@ def collect_tier1_v04_extended(
                             ucb_right=float(pair.ucb_b),
                             sample_count=len(left.metadata["branch_seed_utilities"][action_left.value]),
                         ))
+    # Normalize the reversal-loss weights within each question so that a question
+    # with many admissible action pairs contributes exactly one unit of weight.
+    # The confidence/effect magnitude remains available in the relative weights,
+    # while the question macro boundary is explicit and deterministic.
+    reversal_groups: dict[str, list[int]] = {}
+    for index, pair in enumerate(reversals):
+        question_id = str(examples[pair.left].question_id)
+        reversal_groups.setdefault(question_id, []).append(index)
+    for question_id, indices in reversal_groups.items():
+        raw_weights = [max(0.0, float(reversals[index].weight)) for index in indices]
+        total_weight = sum(raw_weights)
+        if total_weight <= 0.0:
+            raw_weights = [1.0 for _ in indices]
+            total_weight = float(len(indices))
+        for index, raw_weight in zip(indices, raw_weights):
+            pair = reversals[index]
+            reversals[index] = ReversalExample(
+                left=pair.left,
+                right=pair.right,
+                action_left=pair.action_left,
+                action_right=pair.action_right,
+                margin=pair.margin,
+                confirmed=pair.confirmed,
+                weight=float(raw_weight / total_weight),
+                lcb_left=pair.lcb_left,
+                ucb_right=pair.ucb_right,
+                sample_count=pair.sample_count,
+            )
     seed_arrays = [
         tuple(float(value) for value in values)
         for example in examples
@@ -964,6 +1156,8 @@ def collect_tier1_v04_extended(
     gate_splits = (
         ("final_id", "final_ood")
         if {"final_id", "final_ood"}.issubset(split_names)
+        else ("tune", "promotion")
+        if {"tune", "promotion"}.issubset(split_names)
         else ("dev", "diagnostic_ood")
     )
     provenance = {
@@ -983,6 +1177,7 @@ def collect_tier1_v04_extended(
         "seed_level_execution_count": len(examples) * len(ACTION_SET) * len(protocol.exploration_seeds),
         "seed_level_observation_count": len(examples) * len(ACTION_SET) * len(protocol.exploration_seeds),
         "independent_replicate_confirmation_count": sum(int(example.metadata["independent_replicate_confirmation_count"]) for example in examples),
+        "independent_replicate_confirmation_receipt_count": sum(int(example.metadata["independent_replicate_confirmation_receipt_count"]) for example in examples),
         "independent_replicate_confirmation_eligible_count": sum(int(example.metadata["independent_replicate_confirmation_eligible_count"]) for example in examples),
         "independent_replicate_confirmation_passed_count": sum(int(example.metadata["independent_replicate_confirmation_passed_count"]) for example in examples),
         "confirmation_bonus_copied_to_seed": False,
@@ -990,7 +1185,14 @@ def collect_tier1_v04_extended(
         "seed_utility_varying_array_count": sum(len(set(round(value, 12) for value in values)) > 1 for values in seed_arrays),
         "same_question_reversal_count": len(reversals),
         "reversal_count": len(reversals),
+        "reversal_weighting": "question_macro_equal_total_weight_one",
+        "reversal_weight_sum_by_question": {
+            question_id: sum(float(reversals[index].weight) for index in indices)
+            for question_id, indices in sorted(reversal_groups.items())
+        },
         "reversal_pair_scope": "same_question_world_pairs_only",
+        "raw_observation_pre_action": True,
+        "cross_candidate_confirmation_feature_excluded": True,
         "trajectory_count": len(trajectory_rows),
         "trajectory_complete_count": sum(bool(row["diagnose_repair_retest_replicate_complete"]) for row in trajectory_rows),
         "formal_split_pair_minimum": 30,
@@ -1005,6 +1207,8 @@ def collect_tier1_v04_extended(
         schema_version=(
             "pesco_decision_dataset_v0.4_formal_final"
             if {"final_id", "final_ood"}.issubset(split_names)
+            else "pesco_decision_dataset_p21_fresh_diagnostic"
+            if {"tune", "promotion"}.issubset(split_names)
             else "pesco_decision_dataset_v0.4_extended"
         ),
         provenance=provenance,
@@ -1060,5 +1264,9 @@ __all__ = [
     "V04FormalFinalBenchmark",
     "build_tier1_v04_extended_benchmark",
     "build_tier1_v04_formal_final_benchmark",
+    "build_pre_action_raw_observation",
+    "pre_action_observation_hash",
+    "audit_counterfactual_raw_observation_leakage",
+    "counterfactual_raw_observation_audit",
     "collect_tier1_v04_extended",
 ]

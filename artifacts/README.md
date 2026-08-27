@@ -36,7 +36,8 @@ module:
   state-reward sufficiency comparison, D is the branch ablation, and E is the
   confirmed flip-loss ablation plus Evidence-Gated SMOPD teacher distillation. It is not an LLM or formal
   final-OOD result. D also records research regret, erroneous-repair and invalid-local-optimization
-  rates, while E records pair-level FlipAcc, unseen-world, noise and nested sample-efficiency
+  rates, while the historical E snapshot records a legacy pair-level FlipAcc alias,
+  unseen-world, noise and nested sample-efficiency
   diagnostics; all remain diagnostic-only and formal final ID/OOD access is closed.
   `invalid_local_optimization` is defined as Invalid-state CONTINUE/SWITCH that
   loses to the public branch-utility winner; a correct Invalid→SWITCH row is
@@ -50,6 +51,21 @@ module:
   (`benchmark_manifest.json`, `summary.json`, `tier1_go.json`, target agreement,
   `count_semantics_audit.json`, and seed-level audit rows) used to verify the
   question/world/seed counts before interpreting the C/D/E suite.
+
+* `tier1_p21_diagnostic/` is the fresh post-feedback train/tune/promotion
+  evaluator diagnostic (64 questions / 256 worlds) with pre-action raw-evidence
+  hashes, same-question reversal receipts, and the counterfactual leakage audit.
+  `tier1_p21_algorithm_diagnostic/` joins the isolated CPU method,
+  gradient-conflict, constrained-PCGrad, and shortcut-probe diagnostics.  The
+  bounded `tier1_p21_seed_sweep_diagnostic/` adds three independent training
+  seeds and question-cluster/family-LOO uncertainty.  The supplementary
+  `tier1_p21_seed_sweep_10seed_diagnostic/` adds ten seeds × four methods (40
+  successful workers), and `tier1_p21_sensitivity_audit/` audits shared ±20%
+  atomic-reward weight perturbations, top1−top2 tie/non-tie stability, family
+  directions, and selected-action receipt denominators.  All P2.1 artifacts are
+  diagnostic-only.
+  `tier1_p21_constrained_diagnostic/` contains the standalone constrained-PCGrad
+  receipt, also diagnostic-only and not a formal promotion result.
 
 The A/B/C/D/E/F files are generated respectively by
 `scripts/run_tier1_v03.py`, `scripts/run_tier1_zero_shot.py`, and
@@ -67,29 +83,63 @@ inference seeds, source/data digests, and (when a local checkpoint is supplied)
 the complete checkpoint, full weight, and tokenizer digests.  Missing external
 checkpoints are represented explicitly rather than as an empty digest.
 
-The canonical feedback follow-up artifacts are `tier1_v04_extended/`,
-`tier1_v04_formal_final/`, `tier1_p2_v04_ten_seed/`, and
-`tier1_p3_small_model_gate/`.  The extended v0.4
+The original v0.4/P2 feedback artifacts are retained as **historical** CPU
+diagnostics: `tier1_v04/`, `tier1_v04_extended/`, `tier1_v04_formal_final/`,
+`tier1_p2_v04_ten_seed/`, `tier1_p2_v04_ten_seed_v3/`, and
+`tier1_p2_v04_formal_final_ten_seed/` (with `tier1_p3_small_model_gate/` as the
+fail-closed downstream gate).  Each consumed directory now has an additive
+`consumption_notice.json` whose `status=diagnostic_v04_consumed` is authoritative
+for interpretation.  The original JSON files and historical run-manifest
+digests are intentionally unchanged.  The extended v0.4
 run contains 8 mechanism families, 64 questions, 256 worlds, dual raw/oracle
 tracks, 451 confirmed same-question reversals, and 64 family-stratified posterior
 EU/VOI decisions with 64 multi-step audit trajectories.  P2 is a real ten-seed
 CPU comparison whose promotion gate is NO-GO: although the extended promotion
-regret CI is below zero, held-out FlipAcc is reversed, only 7/10 seeds agree, the
+regret CI is below zero, the historical held-out exact-top1 flip alias is reversed, only 7/10 seeds agree, the
 false-discovery safety gate fails, and the newly recorded atomic-receipt reward
 stability is 0.991875 (above the 0.90 threshold).  The formal final-ID/final-OOD
 64-step P2 is also NO-GO because its promotion regret CI is positive and its
-held-out FlipAcc delta is negative.  P3 is fail-closed and records that no LoRA/QLoRA experiment was
+held-out exact-top1 flip alias delta is negative.  P3 is fail-closed and records that no LoRA/QLoRA experiment was
 authorized or executed.  `decisions.json`/`trajectories.json` are evaluator-only
 audit records; public datasets and manifests exclude the legacy target-action
 table.
 
-The formal final environment artifact contains train/dev 24/24 clusters, final-ID
-24 clusters from six ID families, and final-OOD 20 clusters from two whole held-out
-families; confirmed reversals are 196 and 114 on final ID/OOD.  Its raw/oracle
-receipts and multi-step audits pass the structural gates, while formal model
-comparison remains locked.  `benchmark_public_manifest.json` and the public
-`final_id_manifest.json`/`final_ood_manifest.json` omit family/world/target fields;
-the corresponding `*_audit_hidden.json` files are evaluator-only.
+The consumed formal-final environment artifact contains train/dev 24/24 clusters,
+final-ID 24 clusters from six ID families, and final-OOD 20 clusters from two
+whole held-out families; confirmed reversals are 196 and 114 on final ID/OOD.
+Its raw/oracle receipts and multi-step audits pass structural checks, but the
+latent-template overlap audit means it is not an independent clean final and
+formal model comparison remains locked.  `benchmark_public_manifest.json` and
+the public `final_id_manifest.json`/`final_ood_manifest.json` omit
+family/world/target fields; the corresponding `*_audit_hidden.json` files are
+evaluator-only.
+
+## P2.1 and v0.5 status boundary
+
+The fresh P2.1 diagnostic is in `tier1_p21_diagnostic/`: 64 questions, 256
+worlds, eight exploration and eight confirmation seeds, 395 same-question
+reversals, normalized per-question weights, pre-action raw observations, and a
+256/256 counterfactual leakage audit.  The isolated algorithm comparison and
+gradient-conflict diagnostic is in `tier1_p21_algorithm_diagnostic/`; it keeps
+the best-non-Full baseline selection on the tune split and remains
+diagnostic-only.  Its strict shortcut mode is fail-closed when scikit-learn is
+unavailable, so the NumPy fallback cannot support a formal claim.  Neither
+bundle opens formal model comparison.
+`tier1_p21_shortcut_probe/` records the required Logistic/Random-Forest/GBDT
+shortcut probes (with an explicitly labelled NumPy fallback when scikit-learn
+is unavailable).
+
+The v0.5 public/private boundary is prepared in `tier1_v05_frozen_final/` and
+`tier1_v05_evaluator_private/`: 48 final-ID and 48 final-OOD clusters, 384
+worlds, four previously unseen OOD mechanism families, disjoint generator and
+latent signatures, and an independent evaluator contract.  Structural/signature
+audits pass, but `freeze_receipt.json` remains
+`status=pending_clean_commit_tag`; the independent audit currently reports 40/40
+structural gates passing.  `reward_sensitivity_summary.json` records an
+evaluator-side global ±20% atomic-term perturbation diagnostic (non-tie winner
+stability 0.9972; overall 0.9986); it does not retrain a policy or authorize a
+formal comparison.  No model evaluation or formal comparison is claimed until a
+clean commit/tag and baseline-selection receipt are recorded.
 
 The independent A environment artifact records 48 question-world groups, 192
 action-level branch rows, and 768 seed-level observations. `question_world_groups.json`

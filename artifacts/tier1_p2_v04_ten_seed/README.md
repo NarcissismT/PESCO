@@ -1,5 +1,11 @@
 # Tier-1 P2 ten-seed CPU promotion experiment
 
+> **Consumption status (2026-08-26): `diagnostic_v04_consumed`.**  This is a
+> historical audit of the v0.4 dataset.  Read
+> [`consumption_notice.json`](consumption_notice.json) before interpreting any
+> metric; the original result/manifest bytes remain unchanged, and this run is
+> not valid for post-fix algorithm selection or a paper final comparison.
+
 This is the canonical P2 result on the frozen v0.4 extended raw-evidence dataset,
 including the evaluator-side atomic reward receipts used by the perturbation gate.
 Seven registered training methods and the evaluator-only inference-time branch

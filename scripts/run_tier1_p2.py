@@ -26,6 +26,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--bootstrap-replicates", type=int, default=2000)
     parser.add_argument("--promotion-split", default="dev")
     parser.add_argument("--heldout-split", default="diagnostic_ood")
+    parser.add_argument("--baseline-selection-split", default=None)
     args = parser.parse_args(argv)
     dataset = DecisionDataset.from_json(args.dataset)
     seeds = tuple(range(int(args.seed_start), int(args.seed_start) + 10))
@@ -33,6 +34,7 @@ def main(argv: list[str] | None = None) -> int:
         seeds=seeds,
         promotion_split=str(args.promotion_split),
         heldout_split=str(args.heldout_split),
+        baseline_selection_split=(str(args.baseline_selection_split) if args.baseline_selection_split else None),
         bootstrap_replicates=max(100, int(args.bootstrap_replicates)),
         trainer=DifferentiableTrainerConfig(
             epochs=max(1, int(args.epochs)),
@@ -54,6 +56,7 @@ def main(argv: list[str] | None = None) -> int:
         "status": result["status"],
         "promotion_status": result["promotion_status"],
         "primary_delta_regret": result["primary_delta_regret"],
+        "heldout_pairwise_reversal_ranking_accuracy_delta": result["heldout_pairwise_reversal_ranking_accuracy_delta"],
         "heldout_flip_accuracy_delta": result["heldout_flip_accuracy_delta"],
         "gates": result["gates"],
     }, ensure_ascii=False, indent=2))
