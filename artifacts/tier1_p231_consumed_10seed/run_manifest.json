@@ -1,0 +1,213 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/run_tier1_p231_dev.py",
+      "--output-dir",
+      "artifacts/tier1_p231_consumed_10seed",
+      "--sft-steps",
+      "16",
+      "--finetune-steps",
+      "16",
+      "--batch-size",
+      "32",
+      "--hidden-dim",
+      "24",
+      "--learning-rate",
+      "0.005",
+      "--minibatch-epochs",
+      "4",
+      "--clip-epsilon",
+      "0.05",
+      "--seeds",
+      "17",
+      "23",
+      "29",
+      "31",
+      "37",
+      "41",
+      "43",
+      "47",
+      "53",
+      "59"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/run_tier1_p231_dev.py --output-dir artifacts/tier1_p231_consumed_10seed --sft-steps 16 --finetune-steps 16 --batch-size 32 --hidden-dim 24 --learning-rate 0.005 --minibatch-epochs 4 --clip-epsilon 0.05 --seeds 17 23 29 31 37 41 43 47 53 59"
+  },
+  "command_line": "scripts/run_tier1_p231_dev.py --output-dir artifacts/tier1_p231_consumed_10seed --sft-steps 16 --finetune-steps 16 --batch-size 32 --hidden-dim 24 --learning-rate 0.005 --minibatch-epochs 4 --clip-epsilon 0.05 --seeds 17 23 29 31 37 41 43 47 53 59",
+  "data": {
+    "available": true,
+    "digest": "sha256:04b2b60fada9ea7c8a62d7ce621a7e51f63e876cc8745d64f880644ebd859d5b",
+    "file_count": 4,
+    "files": [
+      {
+        "path": "artifacts/tier1_p231_consumed_10seed/canonical_reversal_ids.json",
+        "role": "data",
+        "sha256": "sha256:ffa31f8359f6e604e5155bef71913258f1a66dbd910ec35a1aa65a4aee757193",
+        "size_bytes": 57269
+      },
+      {
+        "path": "artifacts/tier1_p231_consumed_10seed/p231_result.json",
+        "role": "data",
+        "sha256": "sha256:de3b56b718a060e14fa9c87aca65cc521295626f0ea429c2e9316bb9c019a4ff",
+        "size_bytes": 21950353
+      },
+      {
+        "path": "artifacts/tier1_p231_consumed_10seed/reward_tensor_audit.json",
+        "role": "data",
+        "sha256": "sha256:2cdee80a33d38880f67bb717965cd7b63d1eb9341688a89a9d852d5d5edec53d",
+        "size_bytes": 434942
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:beef3347c59e6a515d34df9c7d2ecb73ac4db9d06b1177f1909a228b4408fffc",
+        "size_bytes": 61784371
+      }
+    ]
+  },
+  "data_digest": "sha256:04b2b60fada9ea7c8a62d7ce621a7e51f63e876cc8745d64f880644ebd859d5b",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "canonical_pair_digest": "sha256:735c23b42b9aac9021f4b1280ec21955195654d386dacab78ea2bb6e9bbacd20",
+    "consumed_input": true,
+    "diagnostic_only": true,
+    "eval_split": "tune",
+    "formal_comparison_authorized": false,
+    "methods": [
+      "RLOO",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "GRPO-MatchedAtomic",
+      "GRPO+State",
+      "GRPO+Branch",
+      "GRPO+Flip",
+      "GRPO+Branch+Flip"
+    ]
+  },
+  "experiment": "tier1_p231_dev_optimizer_authenticity",
+  "generated_at_utc": "2026-08-27T16:22:19.988246+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "a58f37be476a0d789eb1fe96f31336c8ee5558ea",
+    "status_available": true,
+    "status_digest": "sha256:ec1600e0ff2428df1ebb99213c385c8c2886e2461d2cc3e82c8b6f2cc245e38b"
+  },
+  "git_sha": "a58f37be476a0d789eb1fe96f31336c8ee5558ea",
+  "manifest_digest": "sha256:e19d9eb51ae88d82b10e097167d89e72ea37dac5b85b069d8af65bc96a227c5f",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59
+    ],
+    "training": [
+      17,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:4f6ca712afb77dfe938a77b99ae9a05deb9d9dc347a71a42194c335eb43afaec",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p231_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:d7ba8f2f9040fe83174c0ed53635d059c934569939e62f55be3106e95fdbc53e",
+        "size_bytes": 24362
+      },
+      {
+        "path": "scripts/run_tier1_p231_dev.py",
+        "role": "source",
+        "sha256": "sha256:7e6d355ba58c0b86b1b457bf7eab1095bae5e21f61524431918e3fdeb4287bc1",
+        "size_bytes": 3517
+      }
+    ]
+  },
+  "source_digest": "sha256:4f6ca712afb77dfe938a77b99ae9a05deb9d9dc347a71a42194c335eb43afaec",
+  "status": "completed_diagnostic",
+  "training_seed": [
+    17,
+    23,
+    29,
+    31,
+    37,
+    41,
+    43,
+    47,
+    53,
+    59
+  ]
+}

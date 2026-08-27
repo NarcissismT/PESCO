@@ -1,0 +1,1477 @@
+{
+  "available_raw_feature_names": [
+    "treatment_confounder_correlation",
+    "group_overlap_count",
+    "replication_effect_delta",
+    "replication_ci_width",
+    "replication_sample_size",
+    "replication_seed_count",
+    "log_validity_count",
+    "log_repeated_runs",
+    "log_protocol_change_count"
+  ],
+  "available_splits": [
+    "train",
+    "tune",
+    "promotion"
+  ],
+  "comparisons": {
+    "gradient_boosting": {
+      "promotion": {
+        "without_confirmation_minus_all_action_accuracy": 0.0,
+        "without_confirmation_minus_all_regret": 0.0
+      },
+      "tune": {
+        "without_confirmation_minus_all_action_accuracy": 0.0,
+        "without_confirmation_minus_all_regret": 0.0
+      }
+    },
+    "logistic_regression": {
+      "promotion": {
+        "without_confirmation_minus_all_action_accuracy": 0.0,
+        "without_confirmation_minus_all_regret": 0.0
+      },
+      "tune": {
+        "without_confirmation_minus_all_action_accuracy": 0.0,
+        "without_confirmation_minus_all_regret": 0.0
+      }
+    },
+    "random_forest": {
+      "promotion": {
+        "without_confirmation_minus_all_action_accuracy": 0.0,
+        "without_confirmation_minus_all_regret": 0.0
+      },
+      "tune": {
+        "without_confirmation_minus_all_action_accuracy": 0.0,
+        "without_confirmation_minus_all_regret": 0.0
+      }
+    }
+  },
+  "config": {
+    "bootstrap_replicates": 1000,
+    "eval_splits": [
+      "tune",
+      "promotion"
+    ],
+    "feature_sets": [
+      "all_raw",
+      "without_confirmation"
+    ],
+    "max_examples": null,
+    "models": [
+      "logistic_regression",
+      "random_forest",
+      "gradient_boosting"
+    ],
+    "seed": 0,
+    "strict_sklearn": true,
+    "train_split": "train"
+  },
+  "dependency": {
+    "numpy": "2.2.6",
+    "sklearn": {
+      "available": true,
+      "import_error": null,
+      "version": "1.7.2"
+    }
+  },
+  "eval_splits": [
+    "tune",
+    "promotion"
+  ],
+  "failed_models": {},
+  "fallback_results_diagnostic_only": true,
+  "fallback_used": false,
+  "feature_policy": "public_observation_numeric_only; optional_confirmation_summary_is_ablated_and_never_a_label",
+  "feature_sets": {
+    "all_raw": {
+      "confirmation_feature_included": false,
+      "feature_count": 20,
+      "feature_names": [
+        "effect_estimate",
+        "ci_low",
+        "ci_high",
+        "ci_width",
+        "log_sample_size",
+        "log_seed_count",
+        "remaining_budget",
+        "turn",
+        "hypothesis_probability",
+        "current_method_is_method_b",
+        "active_hypothesis_is_h_b",
+        "treatment_confounder_correlation",
+        "group_overlap_count",
+        "replication_effect_delta",
+        "replication_ci_width",
+        "replication_sample_size",
+        "replication_seed_count",
+        "log_validity_count",
+        "log_repeated_runs",
+        "log_protocol_change_count"
+      ],
+      "train_row_count": 640
+    },
+    "without_confirmation": {
+      "confirmation_feature_included": false,
+      "feature_count": 20,
+      "feature_names": [
+        "effect_estimate",
+        "ci_low",
+        "ci_high",
+        "ci_width",
+        "log_sample_size",
+        "log_seed_count",
+        "remaining_budget",
+        "turn",
+        "hypothesis_probability",
+        "current_method_is_method_b",
+        "active_hypothesis_is_h_b",
+        "treatment_confounder_correlation",
+        "group_overlap_count",
+        "replication_effect_delta",
+        "replication_ci_width",
+        "replication_sample_size",
+        "replication_seed_count",
+        "log_validity_count",
+        "log_repeated_runs",
+        "log_protocol_change_count"
+      ],
+      "train_row_count": 640
+    }
+  },
+  "formal_comparison_authorized": false,
+  "input_dataset_digest": "sha256:beef3347c59e6a515d34df9c7d2ecb73ac4db9d06b1177f1909a228b4408fffc",
+  "input_dataset_schema": "pesco_decision_dataset_p2.3_promotion_v2",
+  "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+  "models": {
+    "all_raw:gradient_boosting": {
+      "feature_set": "all_raw",
+      "implementation": "sklearn",
+      "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+      "metrics_by_split": {
+        "promotion": {
+          "action_accuracy": 0.75625,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 49,
+            "continue_current_method": 170,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 81
+          },
+          "best_utility": 0.7960155625,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.7,
+              "mean_regret": 0.161204,
+              "normalized_regret": 0.220280711236107,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.925,
+              "mean_regret": 0.017940999999999978,
+              "normalized_regret": 0.01711111111111109,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "group_leakage": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.06024349999999999,
+              "normalized_regret": 0.11130450354670571,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.725,
+              "mean_regret": 0.10748500000000001,
+              "normalized_regret": 0.15453883872857305,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.7,
+              "mean_regret": 0.08494750000000002,
+              "normalized_regret": 0.1770745818754608,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.775,
+              "mean_regret": 0.0465115,
+              "normalized_regret": 0.10526134952187745,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "replication_instability": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.06047600000000001,
+              "normalized_regret": 0.14331210558365512,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.575,
+              "mean_regret": 0.35414599999999996,
+              "normalized_regret": 0.3236749490732153,
+              "question_cluster_count": 10,
+              "row_count": 40
+            }
+          },
+          "mean_regret": 0.11161931250000001,
+          "normalized_regret": 0.15656976883458817,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.12376615470375192,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1565697688345882,
+            "replicates": 1000,
+            "upper": 0.19053685449455193
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 60,
+            "continue_current_method": 185,
+            "repair_data_split": 19,
+            "switch_to_alternative_method": 56
+          },
+          "question_cluster_count": 80,
+          "question_macro_action_accuracy": 0.75625,
+          "question_macro_normalized_regret": 0.1565697688345882,
+          "question_macro_regret": 0.11161931249999998,
+          "regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.08182033359375002,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.11161931249999998,
+            "replicates": 1000,
+            "upper": 0.14793609453124998
+          },
+          "row_count": 320,
+          "selected_utility": 0.68439625,
+          "status": "completed"
+        },
+        "tune": {
+          "action_accuracy": 0.71484375,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 40,
+            "continue_current_method": 136,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 64
+          },
+          "best_utility": 0.7934299609375001,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.09752124999999999,
+              "normalized_regret": 0.19372253567252062,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.65625,
+              "mean_regret": 0.139475,
+              "normalized_regret": 0.23526628037809605,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "group_leakage": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.08669156250000001,
+              "normalized_regret": 0.17077223313395018,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.06510999999999997,
+              "normalized_regret": 0.10688789727148659,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.06010406249999999,
+              "normalized_regret": 0.17307348649677481,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.78125,
+              "mean_regret": 0.0690565625,
+              "normalized_regret": 0.14750050388353272,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "replication_instability": {
+              "action_accuracy": 0.84375,
+              "mean_regret": 0.04901625,
+              "normalized_regret": 0.1163954067902386,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.46875,
+              "mean_regret": 0.423616875,
+              "normalized_regret": 0.4160352620921965,
+              "question_cluster_count": 8,
+              "row_count": 32
+            }
+          },
+          "mean_regret": 0.12382394531249999,
+          "normalized_regret": 0.1949567007148495,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.15772256142532864,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1949567007148495,
+            "replicates": 1000,
+            "upper": 0.23609394740971712
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 46,
+            "continue_current_method": 145,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 49
+          },
+          "question_cluster_count": 64,
+          "question_macro_action_accuracy": 0.71484375,
+          "question_macro_normalized_regret": 0.1949567007148495,
+          "question_macro_regret": 0.1238239453125,
+          "regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.09174440917968749,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1238239453125,
+            "replicates": 1000,
+            "upper": 0.15891163671874997
+          },
+          "row_count": 256,
+          "selected_utility": 0.6696060156250001,
+          "status": "completed"
+        }
+      },
+      "model": "gradient_boosting",
+      "parameters": {
+        "class": "GradientBoostingClassifier",
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 100
+      },
+      "status": "completed",
+      "train_row_count": 640
+    },
+    "all_raw:logistic_regression": {
+      "feature_set": "all_raw",
+      "implementation": "sklearn",
+      "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+      "metrics_by_split": {
+        "promotion": {
+          "action_accuracy": 0.69375,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 49,
+            "continue_current_method": 170,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 81
+          },
+          "best_utility": 0.7960155625,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.7,
+              "mean_regret": 0.10362249999999999,
+              "normalized_regret": 0.1911812558057013,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.85,
+              "mean_regret": 0.04426249999999997,
+              "normalized_regret": 0.05073412288625049,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "group_leakage": {
+              "action_accuracy": 0.725,
+              "mean_regret": 0.32999975000000004,
+              "normalized_regret": 0.21019241713048978,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.65,
+              "mean_regret": 0.09708499999999998,
+              "normalized_regret": 0.16925240479451148,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.8,
+              "mean_regret": 0.07235375,
+              "normalized_regret": 0.14028874114326823,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.05427799999999999,
+              "normalized_regret": 0.0771066092062271,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "replication_instability": {
+              "action_accuracy": 0.55,
+              "mean_regret": 0.09370524999999999,
+              "normalized_regret": 0.2505723760600184,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.45,
+              "mean_regret": 0.4265475,
+              "normalized_regret": 0.41346736675632617,
+              "question_cluster_count": 10,
+              "row_count": 40
+            }
+          },
+          "mean_regret": 0.15273178124999998,
+          "normalized_regret": 0.18784941172284914,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.15248763992139366,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1878494117228491,
+            "replicates": 1000,
+            "upper": 0.22449773952735147
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 77,
+            "continue_current_method": 192,
+            "repair_data_split": 18,
+            "switch_to_alternative_method": 33
+          },
+          "question_cluster_count": 80,
+          "question_macro_action_accuracy": 0.69375,
+          "question_macro_normalized_regret": 0.1878494117228491,
+          "question_macro_regret": 0.15273178124999998,
+          "regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.1082315265625,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.15273178124999998,
+            "replicates": 1000,
+            "upper": 0.19537727812499997
+          },
+          "row_count": 320,
+          "selected_utility": 0.6432837812500001,
+          "status": "completed"
+        },
+        "tune": {
+          "action_accuracy": 0.71484375,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 40,
+            "continue_current_method": 136,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 64
+          },
+          "best_utility": 0.7934299609375001,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.78125,
+              "mean_regret": 0.06194499999999997,
+              "normalized_regret": 0.11884372186094137,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.10692874999999998,
+              "normalized_regret": 0.1676497317548315,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "group_leakage": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.33245,
+              "normalized_regret": 0.23614823113331626,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.07357,
+              "normalized_regret": 0.1192698081386496,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.6875,
+              "mean_regret": 0.07550749999999998,
+              "normalized_regret": 0.19285114392578118,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.0605446875,
+              "normalized_regret": 0.11385036175223577,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "replication_instability": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.043109999999999996,
+              "normalized_regret": 0.12036872742580657,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.5625,
+              "mean_regret": 0.38307,
+              "normalized_regret": 0.31164616031940695,
+              "question_cluster_count": 8,
+              "row_count": 32
+            }
+          },
+          "mean_regret": 0.1421407421875,
+          "normalized_regret": 0.17257848578887114,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.1373583880693774,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.17257848578887114,
+            "replicates": 1000,
+            "upper": 0.2085327213067017
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 64,
+            "continue_current_method": 147,
+            "repair_data_split": 14,
+            "switch_to_alternative_method": 31
+          },
+          "question_cluster_count": 64,
+          "question_macro_action_accuracy": 0.71484375,
+          "question_macro_normalized_regret": 0.17257848578887114,
+          "question_macro_regret": 0.1421407421875,
+          "regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.096618576171875,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1421407421875,
+            "replicates": 1000,
+            "upper": 0.18969967675781246
+          },
+          "row_count": 256,
+          "selected_utility": 0.6512892187500001,
+          "status": "completed"
+        }
+      },
+      "model": "logistic_regression",
+      "parameters": {
+        "class": "LogisticRegression",
+        "max_iter": 1000,
+        "multi_class": "multinomial",
+        "solver": "lbfgs"
+      },
+      "status": "completed",
+      "train_row_count": 640
+    },
+    "all_raw:random_forest": {
+      "feature_set": "all_raw",
+      "implementation": "sklearn",
+      "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+      "metrics_by_split": {
+        "promotion": {
+          "action_accuracy": 0.78125,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 49,
+            "continue_current_method": 170,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 81
+          },
+          "best_utility": 0.7960155625,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.725,
+              "mean_regret": 0.09839749999999998,
+              "normalized_regret": 0.1661812558057013,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.875,
+              "mean_regret": 0.03848849999999997,
+              "normalized_regret": 0.04490659517823338,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "group_leakage": {
+              "action_accuracy": 0.875,
+              "mean_regret": 0.0468835,
+              "normalized_regret": 0.08861417205842027,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.75,
+              "mean_regret": 0.09263099999999999,
+              "normalized_regret": 0.13637236366558841,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.775,
+              "mean_regret": 0.06265050000000003,
+              "normalized_regret": 0.14535363383603844,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.85,
+              "mean_regret": 0.0408365,
+              "normalized_regret": 0.07611741851107881,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "replication_instability": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.04960125,
+              "normalized_regret": 0.11974921896486637,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.575,
+              "mean_regret": 0.3821115,
+              "normalized_regret": 0.3349360757208117,
+              "question_cluster_count": 10,
+              "row_count": 40
+            }
+          },
+          "mean_regret": 0.10145003125,
+          "normalized_regret": 0.13902884171759236,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.10927115695082701,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.13902884171759233,
+            "replicates": 1000,
+            "upper": 0.17209097276396373
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 72,
+            "continue_current_method": 191,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 37
+          },
+          "question_cluster_count": 80,
+          "question_macro_action_accuracy": 0.78125,
+          "question_macro_normalized_regret": 0.13902884171759233,
+          "question_macro_regret": 0.10145003124999999,
+          "regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.073335821875,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.10145003124999999,
+            "replicates": 1000,
+            "upper": 0.13372983437499997
+          },
+          "row_count": 320,
+          "selected_utility": 0.6945655312500001,
+          "status": "completed"
+        },
+        "tune": {
+          "action_accuracy": 0.73046875,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 40,
+            "continue_current_method": 136,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 64
+          },
+          "best_utility": 0.7934299609375001,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.6875,
+              "mean_regret": 0.104735,
+              "normalized_regret": 0.20060260243456163,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.10546499999999998,
+              "normalized_regret": 0.1917644696381154,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "group_leakage": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.11752812500000001,
+              "normalized_regret": 0.1467041943098254,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.75,
+              "mean_regret": 0.09167249999999999,
+              "normalized_regret": 0.13821767737595014,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.75,
+              "mean_regret": 0.07135999999999998,
+              "normalized_regret": 0.149332319782977,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.78125,
+              "mean_regret": 0.07745093749999998,
+              "normalized_regret": 0.1396969448435062,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "replication_instability": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.0677790625,
+              "normalized_regret": 0.1476454067902386,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.53125,
+              "mean_regret": 0.38736000000000004,
+              "normalized_regret": 0.36627319422450266,
+              "question_cluster_count": 8,
+              "row_count": 32
+            }
+          },
+          "mean_regret": 0.127918828125,
+          "normalized_regret": 0.18502960117495965,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.15307101258369,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.18502960117495962,
+            "replicates": 1000,
+            "upper": 0.22097268770586634
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 58,
+            "continue_current_method": 151,
+            "repair_data_split": 15,
+            "switch_to_alternative_method": 32
+          },
+          "question_cluster_count": 64,
+          "question_macro_action_accuracy": 0.73046875,
+          "question_macro_normalized_regret": 0.18502960117495962,
+          "question_macro_regret": 0.127918828125,
+          "regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.09590208789062499,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.127918828125,
+            "replicates": 1000,
+            "upper": 0.16719381835937497
+          },
+          "row_count": 256,
+          "selected_utility": 0.6655111328125001,
+          "status": "completed"
+        }
+      },
+      "model": "random_forest",
+      "parameters": {
+        "class": "RandomForestClassifier",
+        "max_depth": 6,
+        "min_samples_leaf": 2,
+        "n_estimators": 128
+      },
+      "status": "completed",
+      "train_row_count": 640
+    },
+    "without_confirmation:gradient_boosting": {
+      "feature_set": "without_confirmation",
+      "implementation": "sklearn",
+      "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+      "metrics_by_split": {
+        "promotion": {
+          "action_accuracy": 0.75625,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 49,
+            "continue_current_method": 170,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 81
+          },
+          "best_utility": 0.7960155625,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.7,
+              "mean_regret": 0.161204,
+              "normalized_regret": 0.220280711236107,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.925,
+              "mean_regret": 0.017940999999999978,
+              "normalized_regret": 0.01711111111111109,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "group_leakage": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.06024349999999999,
+              "normalized_regret": 0.11130450354670571,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.725,
+              "mean_regret": 0.10748500000000001,
+              "normalized_regret": 0.15453883872857305,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.7,
+              "mean_regret": 0.08494750000000002,
+              "normalized_regret": 0.1770745818754608,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.775,
+              "mean_regret": 0.0465115,
+              "normalized_regret": 0.10526134952187745,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "replication_instability": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.06047600000000001,
+              "normalized_regret": 0.14331210558365512,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.575,
+              "mean_regret": 0.35414599999999996,
+              "normalized_regret": 0.3236749490732153,
+              "question_cluster_count": 10,
+              "row_count": 40
+            }
+          },
+          "mean_regret": 0.11161931250000001,
+          "normalized_regret": 0.15656976883458817,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.12376615470375192,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1565697688345882,
+            "replicates": 1000,
+            "upper": 0.19053685449455193
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 60,
+            "continue_current_method": 185,
+            "repair_data_split": 19,
+            "switch_to_alternative_method": 56
+          },
+          "question_cluster_count": 80,
+          "question_macro_action_accuracy": 0.75625,
+          "question_macro_normalized_regret": 0.1565697688345882,
+          "question_macro_regret": 0.11161931249999998,
+          "regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.08182033359375002,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.11161931249999998,
+            "replicates": 1000,
+            "upper": 0.14793609453124998
+          },
+          "row_count": 320,
+          "selected_utility": 0.68439625,
+          "status": "completed"
+        },
+        "tune": {
+          "action_accuracy": 0.71484375,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 40,
+            "continue_current_method": 136,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 64
+          },
+          "best_utility": 0.7934299609375001,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.09752124999999999,
+              "normalized_regret": 0.19372253567252062,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.65625,
+              "mean_regret": 0.139475,
+              "normalized_regret": 0.23526628037809605,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "group_leakage": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.08669156250000001,
+              "normalized_regret": 0.17077223313395018,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.06510999999999997,
+              "normalized_regret": 0.10688789727148659,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.06010406249999999,
+              "normalized_regret": 0.17307348649677481,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.78125,
+              "mean_regret": 0.0690565625,
+              "normalized_regret": 0.14750050388353272,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "replication_instability": {
+              "action_accuracy": 0.84375,
+              "mean_regret": 0.04901625,
+              "normalized_regret": 0.1163954067902386,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.46875,
+              "mean_regret": 0.423616875,
+              "normalized_regret": 0.4160352620921965,
+              "question_cluster_count": 8,
+              "row_count": 32
+            }
+          },
+          "mean_regret": 0.12382394531249999,
+          "normalized_regret": 0.1949567007148495,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.15772256142532864,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1949567007148495,
+            "replicates": 1000,
+            "upper": 0.23609394740971712
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 46,
+            "continue_current_method": 145,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 49
+          },
+          "question_cluster_count": 64,
+          "question_macro_action_accuracy": 0.71484375,
+          "question_macro_normalized_regret": 0.1949567007148495,
+          "question_macro_regret": 0.1238239453125,
+          "regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.09174440917968749,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1238239453125,
+            "replicates": 1000,
+            "upper": 0.15891163671874997
+          },
+          "row_count": 256,
+          "selected_utility": 0.6696060156250001,
+          "status": "completed"
+        }
+      },
+      "model": "gradient_boosting",
+      "parameters": {
+        "class": "GradientBoostingClassifier",
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 100
+      },
+      "status": "completed",
+      "train_row_count": 640
+    },
+    "without_confirmation:logistic_regression": {
+      "feature_set": "without_confirmation",
+      "implementation": "sklearn",
+      "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+      "metrics_by_split": {
+        "promotion": {
+          "action_accuracy": 0.69375,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 49,
+            "continue_current_method": 170,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 81
+          },
+          "best_utility": 0.7960155625,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.7,
+              "mean_regret": 0.10362249999999999,
+              "normalized_regret": 0.1911812558057013,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.85,
+              "mean_regret": 0.04426249999999997,
+              "normalized_regret": 0.05073412288625049,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "group_leakage": {
+              "action_accuracy": 0.725,
+              "mean_regret": 0.32999975000000004,
+              "normalized_regret": 0.21019241713048978,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.65,
+              "mean_regret": 0.09708499999999998,
+              "normalized_regret": 0.16925240479451148,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.8,
+              "mean_regret": 0.07235375,
+              "normalized_regret": 0.14028874114326823,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.05427799999999999,
+              "normalized_regret": 0.0771066092062271,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "replication_instability": {
+              "action_accuracy": 0.55,
+              "mean_regret": 0.09370524999999999,
+              "normalized_regret": 0.2505723760600184,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.45,
+              "mean_regret": 0.4265475,
+              "normalized_regret": 0.41346736675632617,
+              "question_cluster_count": 10,
+              "row_count": 40
+            }
+          },
+          "mean_regret": 0.15273178124999998,
+          "normalized_regret": 0.18784941172284914,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.15248763992139366,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1878494117228491,
+            "replicates": 1000,
+            "upper": 0.22449773952735147
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 77,
+            "continue_current_method": 192,
+            "repair_data_split": 18,
+            "switch_to_alternative_method": 33
+          },
+          "question_cluster_count": 80,
+          "question_macro_action_accuracy": 0.69375,
+          "question_macro_normalized_regret": 0.1878494117228491,
+          "question_macro_regret": 0.15273178124999998,
+          "regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.1082315265625,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.15273178124999998,
+            "replicates": 1000,
+            "upper": 0.19537727812499997
+          },
+          "row_count": 320,
+          "selected_utility": 0.6432837812500001,
+          "status": "completed"
+        },
+        "tune": {
+          "action_accuracy": 0.71484375,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 40,
+            "continue_current_method": 136,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 64
+          },
+          "best_utility": 0.7934299609375001,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.78125,
+              "mean_regret": 0.06194499999999997,
+              "normalized_regret": 0.11884372186094137,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.10692874999999998,
+              "normalized_regret": 0.1676497317548315,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "group_leakage": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.33245,
+              "normalized_regret": 0.23614823113331626,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.07357,
+              "normalized_regret": 0.1192698081386496,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.6875,
+              "mean_regret": 0.07550749999999998,
+              "normalized_regret": 0.19285114392578118,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.0605446875,
+              "normalized_regret": 0.11385036175223577,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "replication_instability": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.043109999999999996,
+              "normalized_regret": 0.12036872742580657,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.5625,
+              "mean_regret": 0.38307,
+              "normalized_regret": 0.31164616031940695,
+              "question_cluster_count": 8,
+              "row_count": 32
+            }
+          },
+          "mean_regret": 0.1421407421875,
+          "normalized_regret": 0.17257848578887114,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.1373583880693774,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.17257848578887114,
+            "replicates": 1000,
+            "upper": 0.2085327213067017
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 64,
+            "continue_current_method": 147,
+            "repair_data_split": 14,
+            "switch_to_alternative_method": 31
+          },
+          "question_cluster_count": 64,
+          "question_macro_action_accuracy": 0.71484375,
+          "question_macro_normalized_regret": 0.17257848578887114,
+          "question_macro_regret": 0.1421407421875,
+          "regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.096618576171875,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.1421407421875,
+            "replicates": 1000,
+            "upper": 0.18969967675781246
+          },
+          "row_count": 256,
+          "selected_utility": 0.6512892187500001,
+          "status": "completed"
+        }
+      },
+      "model": "logistic_regression",
+      "parameters": {
+        "class": "LogisticRegression",
+        "max_iter": 1000,
+        "multi_class": "multinomial",
+        "solver": "lbfgs"
+      },
+      "status": "completed",
+      "train_row_count": 640
+    },
+    "without_confirmation:random_forest": {
+      "feature_set": "without_confirmation",
+      "implementation": "sklearn",
+      "label_source": "argmax_evaluator_branch_utility_not_hidden_target_action",
+      "metrics_by_split": {
+        "promotion": {
+          "action_accuracy": 0.78125,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 49,
+            "continue_current_method": 170,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 81
+          },
+          "best_utility": 0.7960155625,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.725,
+              "mean_regret": 0.09839749999999998,
+              "normalized_regret": 0.1661812558057013,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.875,
+              "mean_regret": 0.03848849999999997,
+              "normalized_regret": 0.04490659517823338,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "group_leakage": {
+              "action_accuracy": 0.875,
+              "mean_regret": 0.0468835,
+              "normalized_regret": 0.08861417205842027,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.75,
+              "mean_regret": 0.09263099999999999,
+              "normalized_regret": 0.13637236366558841,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.775,
+              "mean_regret": 0.06265050000000003,
+              "normalized_regret": 0.14535363383603844,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.85,
+              "mean_regret": 0.0408365,
+              "normalized_regret": 0.07611741851107881,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "replication_instability": {
+              "action_accuracy": 0.825,
+              "mean_regret": 0.04960125,
+              "normalized_regret": 0.11974921896486637,
+              "question_cluster_count": 10,
+              "row_count": 40
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.575,
+              "mean_regret": 0.3821115,
+              "normalized_regret": 0.3349360757208117,
+              "question_cluster_count": 10,
+              "row_count": 40
+            }
+          },
+          "mean_regret": 0.10145003125,
+          "normalized_regret": 0.13902884171759236,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.10927115695082701,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.13902884171759233,
+            "replicates": 1000,
+            "upper": 0.17209097276396373
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 72,
+            "continue_current_method": 191,
+            "repair_data_split": 20,
+            "switch_to_alternative_method": 37
+          },
+          "question_cluster_count": 80,
+          "question_macro_action_accuracy": 0.78125,
+          "question_macro_normalized_regret": 0.13902884171759233,
+          "question_macro_regret": 0.10145003124999999,
+          "regret_ci_question_cluster": {
+            "cluster_count": 80,
+            "lower": 0.073335821875,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.10145003124999999,
+            "replicates": 1000,
+            "upper": 0.13372983437499997
+          },
+          "row_count": 320,
+          "selected_utility": 0.6945655312500001,
+          "status": "completed"
+        },
+        "tune": {
+          "action_accuracy": 0.73046875,
+          "best_action_distribution": {
+            "add_samples_or_seeds": 40,
+            "continue_current_method": 136,
+            "repair_data_split": 16,
+            "switch_to_alternative_method": 64
+          },
+          "best_utility": 0.7934299609375001,
+          "family_metrics": {
+            "causal_confounding": {
+              "action_accuracy": 0.6875,
+              "mean_regret": 0.104735,
+              "normalized_regret": 0.20060260243456163,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "confounding_underpower": {
+              "action_accuracy": 0.71875,
+              "mean_regret": 0.10546499999999998,
+              "normalized_regret": 0.1917644696381154,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "group_leakage": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.11752812500000001,
+              "normalized_regret": 0.1467041943098254,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "leakage_metric_mismatch": {
+              "action_accuracy": 0.75,
+              "mean_regret": 0.09167249999999999,
+              "normalized_regret": 0.13821767737595014,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "low_sample_variance": {
+              "action_accuracy": 0.75,
+              "mean_regret": 0.07135999999999998,
+              "normalized_regret": 0.149332319782977,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "protocol_drift": {
+              "action_accuracy": 0.78125,
+              "mean_regret": 0.07745093749999998,
+              "normalized_regret": 0.1396969448435062,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "replication_instability": {
+              "action_accuracy": 0.8125,
+              "mean_regret": 0.0677790625,
+              "normalized_regret": 0.1476454067902386,
+              "question_cluster_count": 8,
+              "row_count": 32
+            },
+            "subgroup_metric_mismatch": {
+              "action_accuracy": 0.53125,
+              "mean_regret": 0.38736000000000004,
+              "normalized_regret": 0.36627319422450266,
+              "question_cluster_count": 8,
+              "row_count": 32
+            }
+          },
+          "mean_regret": 0.127918828125,
+          "normalized_regret": 0.18502960117495965,
+          "normalized_regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.15307101258369,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.18502960117495962,
+            "replicates": 1000,
+            "upper": 0.22097268770586634
+          },
+          "predicted_action_distribution": {
+            "add_samples_or_seeds": 58,
+            "continue_current_method": 151,
+            "repair_data_split": 15,
+            "switch_to_alternative_method": 32
+          },
+          "question_cluster_count": 64,
+          "question_macro_action_accuracy": 0.73046875,
+          "question_macro_normalized_regret": 0.18502960117495962,
+          "question_macro_regret": 0.127918828125,
+          "regret_ci_question_cluster": {
+            "cluster_count": 64,
+            "lower": 0.09590208789062499,
+            "method": "question_cluster_bootstrap_percentile_95",
+            "point": 0.127918828125,
+            "replicates": 1000,
+            "upper": 0.16719381835937497
+          },
+          "row_count": 256,
+          "selected_utility": 0.6655111328125001,
+          "status": "completed"
+        }
+      },
+      "model": "random_forest",
+      "parameters": {
+        "class": "RandomForestClassifier",
+        "max_depth": 6,
+        "min_samples_leaf": 2,
+        "n_estimators": 128
+      },
+      "status": "completed",
+      "train_row_count": 640
+    }
+  },
+  "raw_feature_schema": {
+    "available_names": [
+      "treatment_confounder_correlation",
+      "group_overlap_count",
+      "replication_effect_delta",
+      "replication_ci_width",
+      "replication_sample_size",
+      "replication_seed_count",
+      "log_validity_count",
+      "log_repeated_runs",
+      "log_protocol_change_count"
+    ],
+    "confirmation_summary_present": false,
+    "heldout_only_names": [],
+    "omitted_names": [
+      "log_confirmation_pass_rate"
+    ],
+    "registered_names": [
+      "treatment_confounder_correlation",
+      "group_overlap_count",
+      "replication_effect_delta",
+      "replication_ci_width",
+      "replication_sample_size",
+      "replication_seed_count",
+      "log_confirmation_pass_rate",
+      "log_validity_count",
+      "log_repeated_runs",
+      "log_protocol_change_count"
+    ],
+    "schema_frozen_from_split": "train"
+  },
+  "schema_version": "pesco_shortcut_probe_v0.1",
+  "sklearn_required_for_formal_claim": true,
+  "split_boundary_pass": true,
+  "split_cluster_overlap_with_train": {
+    "promotion": {
+      "count": 0,
+      "question_ids_hidden_audit": []
+    },
+    "tune": {
+      "count": 0,
+      "question_ids_hidden_audit": []
+    }
+  },
+  "status": "completed_sklearn"
+}

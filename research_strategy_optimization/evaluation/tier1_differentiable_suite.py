@@ -808,6 +808,8 @@ def evaluate_differentiable_policy(
     # it must never be the optimization target or be silently presented as policy
     # performance.
     action_correct: List[bool] = []
+    non_tie_action_correct: List[bool] = []
+    tie_flags: List[bool] = []
     audit_action_correct: List[Optional[bool]] = []
     regrets: List[float] = []
     state_targets: List[int] = []
@@ -913,7 +915,13 @@ def evaluate_differentiable_policy(
             audit_target = ResearchAction(audit_target_raw) if audit_target_raw is not None else None
         except (TypeError, ValueError):
             audit_target = None
+        row_gap_values = sorted((float(value) for value in example.branch_utilities), reverse=True)
+        row_gap = row_gap_values[0] - row_gap_values[1] if len(row_gap_values) >= 2 else 0.0
+        is_non_tie = row_gap > 0.02
+        tie_flags.append(not is_non_tie)
         action_correct.append(action is example.best_action)
+        if is_non_tie:
+            non_tie_action_correct.append(action is example.best_action)
         audit_action_correct.append(action is audit_target if audit_target is not None else None)
         predicted_actions[dataset_index] = action
         predicted_probabilities[dataset_index] = probabilities
@@ -936,6 +944,8 @@ def evaluate_differentiable_policy(
             # schema; callers must use the explicit audit field above for clarity.
             "target_action": audit_target.value if audit_target is not None else None,
             "action_correct": bool(action_correct[-1]),
+            "top1_minus_top2_gap": float(row_gap),
+            "non_tie": bool(is_non_tie),
             "utility_winner_correct": bool(action_correct[-1]),
             "audit_target_action_correct": audit_action_correct[-1],
             "regret": regrets[-1],
@@ -984,7 +994,8 @@ def evaluate_differentiable_policy(
             records.append({
                 key: full_record[key]
                 for key in (
-                    "question_id", "world_id", "split", "selected_action", "action_correct", "utility_winner_correct",
+                    "question_id", "world_id", "split", "selected_action", "best_action", "action_correct", "utility_winner_correct",
+                    "top1_minus_top2_gap", "non_tie",
                     "audit_target_action_correct", "regret", "selected_confirmation_observed_n",
                     "selected_confirmation_ineligible_n", "predicted_state", "true_state",
                 )
@@ -1190,6 +1201,13 @@ def evaluate_differentiable_policy(
         "split": split,
         "example_count": len(examples),
         "action_accuracy": sum(action_correct) / len(action_correct),
+        "action_accuracy_non_tie": (
+            sum(non_tie_action_correct) / len(non_tie_action_correct)
+            if non_tie_action_correct else None
+        ),
+        "action_non_tie_n": len(non_tie_action_correct),
+        "action_tie_n": sum(tie_flags),
+        "action_tie_definition": "top1_minus_top2 <= 0.02",
         "utility_winner_accuracy": sum(action_correct) / len(action_correct),
         "audit_target_action_n": len(audit_action_observed),
         "audit_target_action_accuracy": (

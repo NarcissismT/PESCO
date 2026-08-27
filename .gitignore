@@ -25,6 +25,13 @@ runs/
 artifacts/tier1_v05_evaluator_private/
 # v0.6 private evaluator bundle (hidden worlds/recipes/receipts must not be published)
 artifacts/tier1_v06_evaluator_private/
+# P2.3.1 full evaluator records can be hundreds of MB because each method retains
+# per-example receipts.  Keep them locally for audit, while committing the compact
+# aggregate/gate receipts and source contracts.
+artifacts/tier1_p231_dev_authenticity_3seed/p231_result.json
+artifacts/tier1_p231_consumed_10seed/p231_result.json
+artifacts/tier1_p231_dev_authenticity_3seed/sft_checkpoints/
+artifacts/tier1_p231_consumed_10seed/sft_checkpoints/
 
 # 构建与系统文件
 build/

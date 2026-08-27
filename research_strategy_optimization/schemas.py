@@ -27,6 +27,7 @@ class ResearchAction(str, Enum):
     REPAIR = "repair_data_split"
     METRIC = "change_or_add_metric"
     REVISE = "revise_hypothesis"
+    REDESIGN = "redesign_protocol"
     SWITCH = "switch_to_alternative_method"
     STOP = "stop_and_report"
 

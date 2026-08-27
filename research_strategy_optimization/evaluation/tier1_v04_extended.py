@@ -1160,13 +1160,14 @@ def collect_tier1_v04_extended(
         if {"tune", "promotion"}.issubset(split_names)
         else ("dev", "diagnostic_ood")
     )
+    mechanism_families = sorted({str(question.family) for question in questions})
     provenance = {
         "schema_version": benchmark.schema_version,
         "benchmark_schema_version": benchmark.schema_version,
         "question_count": len(questions),
         "world_count": len(benchmark.worlds),
-        "mechanism_family_count": len(V04_EXTENDED_FAMILIES),
-        "mechanism_families": list(V04_EXTENDED_FAMILIES),
+        "mechanism_family_count": len(mechanism_families),
+        "mechanism_families": mechanism_families,
         "split_names": list(split_names),
         "counts_by_split": split_counts,
         "question_world_group_count": len(examples),

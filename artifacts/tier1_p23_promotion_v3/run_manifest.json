@@ -1,0 +1,173 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/prepare_tier1_p23_promotion_v3.py",
+      "--output-dir",
+      "artifacts/tier1_p23_promotion_v3"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/prepare_tier1_p23_promotion_v3.py --output-dir artifacts/tier1_p23_promotion_v3"
+  },
+  "command_line": "scripts/prepare_tier1_p23_promotion_v3.py --output-dir artifacts/tier1_p23_promotion_v3",
+  "data": {
+    "available": true,
+    "digest": "sha256:f446e75405f5d2285c39e45005a41b758d482961ddf641987debc9c35f10941f",
+    "file_count": 3,
+    "files": [
+      {
+        "path": "artifacts/tier1_p23_promotion_v3/benchmark_manifest_hidden.json",
+        "role": "data",
+        "sha256": "sha256:1a2204542cd9b188278f4d80061e1e6ee1e77d243c366b7b87278d045b522dba",
+        "size_bytes": 348987
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v3/benchmark_manifest_public.json",
+        "role": "data",
+        "sha256": "sha256:b946919185580d2daeefba4c88f4f8e7c2b76d51eb4b072ec94549c50155d08e",
+        "size_bytes": 52295
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v3/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:f1890f3fb68db29287dcb0d207ad4ff9e78efbe453acc3c25ca858925a3e3faf",
+        "size_bytes": 25294168
+      }
+    ]
+  },
+  "data_digest": "sha256:f446e75405f5d2285c39e45005a41b758d482961ddf641987debc9c35f10941f",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "final_access_locked": true,
+    "formal_comparison_authorized": false,
+    "ood_family_count": 3
+  },
+  "experiment": "tier1_p23_promotion_v3_collection",
+  "generated_at_utc": "2026-08-27T16:27:45.345814+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "a58f37be476a0d789eb1fe96f31336c8ee5558ea",
+    "status_available": true,
+    "status_digest": "sha256:ec1600e0ff2428df1ebb99213c385c8c2886e2461d2cc3e82c8b6f2cc245e38b"
+  },
+  "git_sha": "a58f37be476a0d789eb1fe96f31336c8ee5558ea",
+  "manifest_digest": "sha256:cbb0708d1333ed7bbc88988a95a1bcde66fca4d693373a038ea2a740ac50f4cb",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      29,
+      41,
+      53,
+      67,
+      71,
+      83,
+      97,
+      103,
+      107,
+      109,
+      113,
+      127,
+      131,
+      137,
+      139
+    ],
+    "confirmation": [
+      103,
+      107,
+      109,
+      113,
+      127,
+      131,
+      137,
+      139
+    ],
+    "exploration": [
+      17,
+      29,
+      41,
+      53,
+      67,
+      71,
+      83,
+      97
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:4af4f038137c73baa1fab68c75d940480ff0a7174f220342b566d58b63507b4a",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p23_v3_dataset.py",
+        "role": "source",
+        "sha256": "sha256:940797fabb9ae84f9188efb3403304fcec475c5a097d266b66766eda38535d2c",
+        "size_bytes": 8611
+      },
+      {
+        "path": "scripts/prepare_tier1_p23_promotion_v3.py",
+        "role": "source",
+        "sha256": "sha256:99707e551dd055f4f671a9cb6d8d783831135ef48b9125670ac55e8abd1226b0",
+        "size_bytes": 4578
+      }
+    ]
+  },
+  "source_digest": "sha256:4af4f038137c73baa1fab68c75d940480ff0a7174f220342b566d58b63507b4a",
+  "status": "completed_locked_final_dataset",
+  "training_seed": null
+}

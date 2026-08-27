@@ -40,6 +40,9 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
     FAMILY_CAUSAL_CONFOUNDING = "causal_confounding"
     FAMILY_LOW_SAMPLE_VARIANCE = "low_sample_variance"
     FAMILY_SUBGROUP_METRIC = "subgroup_metric_mismatch"
+    FAMILY_HETEROGENEOUS_NOISE = "heterogeneous_noise"
+    FAMILY_NONLINEAR_RESPONSE = "nonlinear_response"
+    FAMILY_MEASUREMENT_SHIFT = "measurement_shift"
 
     def __init__(
         self,
@@ -514,7 +517,16 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
         signals = ["tier1_numpy_backend"]
         family_invalid_signals = self._family_invalid_signals(method)
         signals.extend(family_invalid_signals)
-        if world.protocol_invalid and self._sample_size >= 60:
+        # Low-sample-variance worlds are intentionally repairable by SAMPLE.  The
+        # original composite flag was emitted unconditionally after the sample
+        # threshold, making every branch invalid and violating the benchmark
+        # contract that every world has at least one feasible action.
+        sample_resolves_low_variance = (
+            self.mechanism_family in {self.FAMILY_LOW_SAMPLE_VARIANCE, self.FAMILY_HETEROGENEOUS_NOISE}
+            and option is ResearchAction.SAMPLE
+            and self._sample_size >= int(self.SAMPLE_MINIMUM)
+        )
+        if world.protocol_invalid and self._sample_size >= 60 and not sample_resolves_low_variance:
             # Composite/protocol-drift worlds have a concrete registered protocol
             # failure even when their sample size is large enough for a narrow CI.
             # The verifier consumes this receipt; it is not a hidden family label.

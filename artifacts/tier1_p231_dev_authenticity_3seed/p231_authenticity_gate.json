@@ -1,0 +1,532 @@
+{
+  "diagnostic_only": true,
+  "fallback_shortcut_available": true,
+  "formal_comparison_authorized": false,
+  "gate": {
+    "branch_changes_actions": true,
+    "branch_changes_parameters": true,
+    "common_sft_checkpoint": true,
+    "convergence_logs_finite": true,
+    "flip_changes_actions": true,
+    "flip_changes_parameters": true,
+    "grpo_clip_effective": true,
+    "grpo_ratio_observed": true,
+    "matched_rollout_budget": true,
+    "neural_close_to_shortcut": true,
+    "reward_tensors_differ": true,
+    "rloo_vs_grpo_parameter_updates_differ": true,
+    "strict_shortcut_probe_available": true
+  },
+  "neural_best_tune_normalized_regret": 0.24304521216589042,
+  "per_seed_method": {
+    "17:GRPO+Branch": {
+      "clip_fraction_max": 0.5546875,
+      "final_policy_digest": "sha256:89cfcb4d78f4d903e688e71d470162610ef0b8d48666a7586df1f95bfdece080",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": 0.00937383936252445,
+      "loss_finite": true,
+      "loss_first": -0.002658238518051803,
+      "loss_last": 0.006715600844472647,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.35400378704071045,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "17:GRPO+Branch+Flip": {
+      "clip_fraction_max": 0.56640625,
+      "final_policy_digest": "sha256:fceabbba351a2d4d7f015396f7102aeb0a6c01ca16485454fc516bd7f5121101",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": -0.14985395409166813,
+      "loss_finite": true,
+      "loss_first": 0.18879307806491852,
+      "loss_last": 0.03893912397325039,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.4803396463394165,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "17:GRPO+Flip": {
+      "clip_fraction_max": 0.56640625,
+      "final_policy_digest": "sha256:aedbb7aeb36912b95f006adb990e998ab0ddebccda97f309344d519b337cfd2b",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": -0.14464372023940086,
+      "loss_finite": true,
+      "loss_first": 0.18989171087741852,
+      "loss_last": 0.045247990638017654,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.44650399684906006,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "17:GRPO+State": {
+      "clip_fraction_max": 0.48828125,
+      "final_policy_digest": "sha256:0cd3b7fc2be51ed02bcfd21ddc0d433812bea170b55dd028c81071ab1b13565b",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": -0.10415849089622498,
+      "loss_finite": true,
+      "loss_first": 0.28341134637594223,
+      "loss_last": 0.17925285547971725,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.36669647693634033,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "17:GRPO-FourState": {
+      "clip_fraction_max": 0.525390625,
+      "final_policy_digest": "sha256:76b805ff7554634ecbb4953dd7671624b72ddd18559bd138a20f6649ec6f7030",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": -0.09793421998620033,
+      "loss_finite": true,
+      "loss_first": 0.28340984135866165,
+      "loss_last": 0.18547562137246132,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.4465165138244629,
+      "reward_name": "four_state",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "17:GRPO-MatchedAtomic": {
+      "clip_fraction_max": 0.544921875,
+      "final_policy_digest": "sha256:b1e7354c254968e564cd724d153f8669253e594ca9205d0720531ac2f4a1526c",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": 0.0191413395720883,
+      "loss_finite": true,
+      "loss_first": -0.0019090062621398562,
+      "loss_last": 0.017232333309948444,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.5782238245010376,
+      "reward_name": "atomic",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "17:GRPO-Terminal": {
+      "clip_fraction_max": 0.556640625,
+      "final_policy_digest": "sha256:cd33ad489558d9bf7f317c4d7d2a2749e745998617692c573fe23499a71e0d35",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": 0.01536136245587838,
+      "loss_finite": true,
+      "loss_first": -0.0015416814410127433,
+      "loss_last": 0.013819681014865637,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.530938982963562,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "17:RLOO": {
+      "clip_fraction_max": 0.0,
+      "final_policy_digest": "sha256:aa63fc24f5fdd665b2ea21dd93d659ec2c71a3193f3b8c3c93ce37e1619a858d",
+      "initial_sft_digest": "sha256:156d29e1502df4302d3ce432ec56d35719ae2912a1416c4871b969456b5d2f9b",
+      "loss_delta": 0.17807079199701548,
+      "loss_finite": true,
+      "loss_first": -0.1926266960799694,
+      "loss_last": -0.01455590408295393,
+      "minibatch_epochs": 4,
+      "optimizer": "RLOO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 3.2058587074279785,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:GRPO+Branch": {
+      "clip_fraction_max": 0.625,
+      "final_policy_digest": "sha256:dbe30a33e89bd16a5d87c7d2dca850c16daf91031471783b5d9c2f3dd462d011",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": 0.010503603698452935,
+      "loss_finite": true,
+      "loss_first": -0.002508246776415035,
+      "loss_last": 0.0079953569220379,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.3077658414840698,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:GRPO+Branch+Flip": {
+      "clip_fraction_max": 0.607421875,
+      "final_policy_digest": "sha256:ccb506df58f36a4afe44c052aa90e4266f421556026789286cb0c675f05f7637",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": -0.1818191558122635,
+      "loss_finite": true,
+      "loss_first": 0.2245684377849102,
+      "loss_last": 0.04274928197264671,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.6185717582702637,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:GRPO+Flip": {
+      "clip_fraction_max": 0.658203125,
+      "final_policy_digest": "sha256:e846dbd617bff6f5e3ac3eec1ee546988f658d05315c023bbb74e99b2f803990",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": -0.16758728679269552,
+      "loss_finite": true,
+      "loss_first": 0.22673170641064644,
+      "loss_last": 0.059144419617950916,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.3916921019554138,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:GRPO+State": {
+      "clip_fraction_max": 0.609375,
+      "final_policy_digest": "sha256:924611054e6e17c79fb6559ce466602f55678f8acdc7b1826ea8ea730645dc6e",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": -0.09128129854798317,
+      "loss_finite": true,
+      "loss_first": 0.26713332533836365,
+      "loss_last": 0.17585202679038048,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.5439713001251221,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:GRPO-FourState": {
+      "clip_fraction_max": 0.5546875,
+      "final_policy_digest": "sha256:5393fef9de1cdab44013e3016e794b3234ab4006ef61e9dd6021c76478f889a1",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": -0.0865505114197731,
+      "loss_finite": true,
+      "loss_first": 0.2670777663588524,
+      "loss_last": 0.18052725493907928,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.6658679246902466,
+      "reward_name": "four_state",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:GRPO-MatchedAtomic": {
+      "clip_fraction_max": 0.548828125,
+      "final_policy_digest": "sha256:39cf94061e2bf9844515fa42cf8f7f776f2abe28f01de7ecf084255db51e3d3c",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": 0.01707586996722965,
+      "loss_finite": true,
+      "loss_first": -0.0018094640830531583,
+      "loss_last": 0.015266405884176493,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.6290678977966309,
+      "reward_name": "atomic",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:GRPO-Terminal": {
+      "clip_fraction_max": 0.6484375,
+      "final_policy_digest": "sha256:f8d90c69de8897ca7e0f490d5cbb8e8838481ad60c7a42077290c8deb31557b5",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": 0.019246773178892895,
+      "loss_finite": true,
+      "loss_first": -0.001104641556012198,
+      "loss_last": 0.018142131622880697,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.29126328229904175,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "23:RLOO": {
+      "clip_fraction_max": 0.0,
+      "final_policy_digest": "sha256:2a091dfae3c73e3bd6880fd0831cfd9bda7f5a147492f1fdbce3817097a7a996",
+      "initial_sft_digest": "sha256:7890586985be6abdd0c2776f4b7485ab12a892f25f1f23b2a839442f896ab88d",
+      "loss_delta": 0.23354635247960687,
+      "loss_finite": true,
+      "loss_first": -0.27015355229377747,
+      "loss_last": -0.0366071998141706,
+      "minibatch_epochs": 4,
+      "optimizer": "RLOO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 2.0564301013946533,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:GRPO+Branch": {
+      "clip_fraction_max": 0.615234375,
+      "final_policy_digest": "sha256:1f1c859fdb7291e11d6ab98c6a9a07a4a1ff72263fde0b7e9f2c287615c54745",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": 0.023537319655588362,
+      "loss_finite": true,
+      "loss_first": -0.008877000342181418,
+      "loss_last": 0.014660319313406944,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.32753247022628784,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:GRPO+Branch+Flip": {
+      "clip_fraction_max": 0.509765625,
+      "final_policy_digest": "sha256:4899365057a93a15da6ee33f7b4d4f9163c0922772cdcd0fdf8dec36730ffd28",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": -0.13085028156638145,
+      "loss_finite": true,
+      "loss_first": 0.18580985814332962,
+      "loss_last": 0.054959576576948166,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.4802308678627014,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:GRPO+Flip": {
+      "clip_fraction_max": 0.591796875,
+      "final_policy_digest": "sha256:300d2fba5987d7f86d49430eef2fe8ec323f8b90b1b4542d740b6e1b41ea22ab",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": -0.11390080116689205,
+      "loss_finite": true,
+      "loss_first": 0.18576877936720848,
+      "loss_last": 0.07186797820031643,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.4502447247505188,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:GRPO+State": {
+      "clip_fraction_max": 0.654296875,
+      "final_policy_digest": "sha256:0b4d8396ac522b0c813dc32b16af2831b57afd727e03c3d59d94f77528523600",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": -0.04966931417584419,
+      "loss_finite": true,
+      "loss_first": 0.26919830590486526,
+      "loss_last": 0.21952899172902107,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.38943207263946533,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:GRPO-FourState": {
+      "clip_fraction_max": 0.640625,
+      "final_policy_digest": "sha256:f0c6a554978b6fe3ad15653d99c5a8a4482f1acbe7dc2efa751cfd3d2f50c3fd",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": -0.05722426623106003,
+      "loss_finite": true,
+      "loss_first": 0.26929670572280884,
+      "loss_last": 0.2120724394917488,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.3765918016433716,
+      "reward_name": "four_state",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:GRPO-MatchedAtomic": {
+      "clip_fraction_max": 0.59375,
+      "final_policy_digest": "sha256:b0eeb4be8a9a930881de2ac7bba87ec0bcda287e48cbfec97bd7ba60b2263c88",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": 0.040272828763118024,
+      "loss_finite": true,
+      "loss_first": -0.007316982013871903,
+      "loss_last": 0.03295584674924612,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.3893224596977234,
+      "reward_name": "atomic",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:GRPO-Terminal": {
+      "clip_fraction_max": 0.66015625,
+      "final_policy_digest": "sha256:6e59d2208daed3e440733c245d69f1e84274879d49c60c20efd55889d177f5ff",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": 0.03441793845966459,
+      "loss_finite": true,
+      "loss_first": -0.008631918597966443,
+      "loss_last": 0.02578601986169815,
+      "minibatch_epochs": 4,
+      "optimizer": "GRPO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 0.3538086414337158,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    },
+    "29:RLOO": {
+      "clip_fraction_max": 0.0,
+      "final_policy_digest": "sha256:b7f706f718722d3190b9010e02501fffaa8d3484812d4071a01752efa881893c",
+      "initial_sft_digest": "sha256:0ac40c29b0b43eba4c160e4d43ad65c38e6e2589c421a36f427bf2e79db046d9",
+      "loss_delta": 0.16120072826743126,
+      "loss_finite": true,
+      "loss_first": -0.24177828803658485,
+      "loss_last": -0.0805775597691536,
+      "minibatch_epochs": 4,
+      "optimizer": "RLOO",
+      "optimizer_parameter_delta": true,
+      "ratio_max_abs_delta": 1.1381747722625732,
+      "reward_name": "terminal",
+      "rollout_budget_values": [
+        [
+          128,
+          128
+        ]
+      ],
+      "rollout_frozen": true
+    }
+  },
+  "promotion_v3_authorized": false,
+  "required_rule": "all authenticity gates must pass before any 10-seed or promotion-v3 evaluation",
+  "schema_version": "pesco_tier1_p231_authenticity_gate_v0.1",
+  "shortcut_best_tune_normalized_regret": 0.17257848578887114,
+  "status": "GO_P2_3_1_10SEED_AUTHORIZED"
+}

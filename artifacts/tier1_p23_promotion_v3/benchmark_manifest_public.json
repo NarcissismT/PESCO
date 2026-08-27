@@ -1,0 +1,1287 @@
+{
+  "confirmation_seeds": [
+    103,
+    107,
+    109,
+    113,
+    127,
+    131,
+    137,
+    139
+  ],
+  "counts_by_split": {
+    "final_id": 52,
+    "final_ood": 72
+  },
+  "diagnostic_only": false,
+  "exploration_seeds": [
+    17,
+    29,
+    41,
+    53,
+    67,
+    71,
+    83,
+    97
+  ],
+  "final_access": {
+    "authorization_required": true,
+    "first_access_completed": false,
+    "formal_comparison_authorized": false,
+    "locked": true
+  },
+  "formal_comparison_authorized": false,
+  "generator_version": "pesco_p23_promotion_v3_generator_20260828_r3",
+  "id_families": [],
+  "latent_generator_signature": "sha256:a8fb68a0d8e2ff2517426babd17342f6acb7ff0ff47921b74cfd5f60128591a5",
+  "manifest_digest": "sha256:1851a52f392e14979f9b40f81819f15449056f4c0dff195eee11013e9b241f56",
+  "ood_families": [],
+  "ood_family_count": 3,
+  "profile": "promotion_v3",
+  "question_count": 124,
+  "questions": [
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_001",
+      "seed_offset": 1701000,
+      "split": "final_id",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_002",
+      "seed_offset": 1702000,
+      "split": "final_id",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_003",
+      "seed_offset": 1703000,
+      "split": "final_id",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_004",
+      "seed_offset": 1704000,
+      "split": "final_id",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_005",
+      "seed_offset": 1705000,
+      "split": "final_id",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_006",
+      "seed_offset": 1706000,
+      "split": "final_id",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_007",
+      "seed_offset": 1707000,
+      "split": "final_id",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_008",
+      "seed_offset": 1708000,
+      "split": "final_id",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_009",
+      "seed_offset": 1709000,
+      "split": "final_id",
+      "variant": 9,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_010",
+      "seed_offset": 1710000,
+      "split": "final_id",
+      "variant": 10,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_011",
+      "seed_offset": 1711000,
+      "split": "final_id",
+      "variant": 11,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_012",
+      "seed_offset": 1712000,
+      "split": "final_id",
+      "variant": 12,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "group_leakage",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_013",
+      "seed_offset": 1713000,
+      "split": "final_id",
+      "variant": 13,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_014",
+      "seed_offset": 1781000,
+      "split": "final_id",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_015",
+      "seed_offset": 1782000,
+      "split": "final_id",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_016",
+      "seed_offset": 1783000,
+      "split": "final_id",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_017",
+      "seed_offset": 1784000,
+      "split": "final_id",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_018",
+      "seed_offset": 1785000,
+      "split": "final_id",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_019",
+      "seed_offset": 1786000,
+      "split": "final_id",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_020",
+      "seed_offset": 1787000,
+      "split": "final_id",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_021",
+      "seed_offset": 1788000,
+      "split": "final_id",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_022",
+      "seed_offset": 1789000,
+      "split": "final_id",
+      "variant": 9,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_023",
+      "seed_offset": 1790000,
+      "split": "final_id",
+      "variant": 10,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_024",
+      "seed_offset": 1791000,
+      "split": "final_id",
+      "variant": 11,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_025",
+      "seed_offset": 1792000,
+      "split": "final_id",
+      "variant": 12,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "causal_confounding",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_026",
+      "seed_offset": 1793000,
+      "split": "final_id",
+      "variant": 13,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_027",
+      "seed_offset": 1861000,
+      "split": "final_id",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_028",
+      "seed_offset": 1862000,
+      "split": "final_id",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_029",
+      "seed_offset": 1863000,
+      "split": "final_id",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_030",
+      "seed_offset": 1864000,
+      "split": "final_id",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_031",
+      "seed_offset": 1865000,
+      "split": "final_id",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_032",
+      "seed_offset": 1866000,
+      "split": "final_id",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_033",
+      "seed_offset": 1867000,
+      "split": "final_id",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_034",
+      "seed_offset": 1868000,
+      "split": "final_id",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_035",
+      "seed_offset": 1869000,
+      "split": "final_id",
+      "variant": 9,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_036",
+      "seed_offset": 1870000,
+      "split": "final_id",
+      "variant": 10,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_037",
+      "seed_offset": 1871000,
+      "split": "final_id",
+      "variant": 11,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_038",
+      "seed_offset": 1872000,
+      "split": "final_id",
+      "variant": 12,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "low_sample_variance",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_039",
+      "seed_offset": 1873000,
+      "split": "final_id",
+      "variant": 13,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_040",
+      "seed_offset": 1941000,
+      "split": "final_id",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_041",
+      "seed_offset": 1942000,
+      "split": "final_id",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_042",
+      "seed_offset": 1943000,
+      "split": "final_id",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_043",
+      "seed_offset": 1944000,
+      "split": "final_id",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_044",
+      "seed_offset": 1945000,
+      "split": "final_id",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_045",
+      "seed_offset": 1946000,
+      "split": "final_id",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_046",
+      "seed_offset": 1947000,
+      "split": "final_id",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_047",
+      "seed_offset": 1948000,
+      "split": "final_id",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_048",
+      "seed_offset": 1949000,
+      "split": "final_id",
+      "variant": 9,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_049",
+      "seed_offset": 1950000,
+      "split": "final_id",
+      "variant": 10,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_050",
+      "seed_offset": 1951000,
+      "split": "final_id",
+      "variant": 11,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_051",
+      "seed_offset": 1952000,
+      "split": "final_id",
+      "variant": 12,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_id; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "subgroup_metric_mismatch",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_id_052",
+      "seed_offset": 1953000,
+      "split": "final_id",
+      "variant": 13,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_053",
+      "seed_offset": 2021000,
+      "split": "final_ood",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_054",
+      "seed_offset": 2022000,
+      "split": "final_ood",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_055",
+      "seed_offset": 2023000,
+      "split": "final_ood",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_056",
+      "seed_offset": 2024000,
+      "split": "final_ood",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_057",
+      "seed_offset": 2025000,
+      "split": "final_ood",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_058",
+      "seed_offset": 2026000,
+      "split": "final_ood",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_059",
+      "seed_offset": 2027000,
+      "split": "final_ood",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_060",
+      "seed_offset": 2028000,
+      "split": "final_ood",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_061",
+      "seed_offset": 2029000,
+      "split": "final_ood",
+      "variant": 9,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_062",
+      "seed_offset": 2030000,
+      "split": "final_ood",
+      "variant": 10,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_063",
+      "seed_offset": 2031000,
+      "split": "final_ood",
+      "variant": 11,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_064",
+      "seed_offset": 2032000,
+      "split": "final_ood",
+      "variant": 12,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_065",
+      "seed_offset": 2033000,
+      "split": "final_ood",
+      "variant": 13,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_066",
+      "seed_offset": 2034000,
+      "split": "final_ood",
+      "variant": 14,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_067",
+      "seed_offset": 2035000,
+      "split": "final_ood",
+      "variant": 15,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_068",
+      "seed_offset": 2036000,
+      "split": "final_ood",
+      "variant": 16,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_069",
+      "seed_offset": 2037000,
+      "split": "final_ood",
+      "variant": 17,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_070",
+      "seed_offset": 2038000,
+      "split": "final_ood",
+      "variant": 18,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_071",
+      "seed_offset": 2039000,
+      "split": "final_ood",
+      "variant": 19,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_072",
+      "seed_offset": 2040000,
+      "split": "final_ood",
+      "variant": 20,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_073",
+      "seed_offset": 2041000,
+      "split": "final_ood",
+      "variant": 21,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_074",
+      "seed_offset": 2042000,
+      "split": "final_ood",
+      "variant": 22,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_075",
+      "seed_offset": 2043000,
+      "split": "final_ood",
+      "variant": 23,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "heterogeneous_noise",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_076",
+      "seed_offset": 2044000,
+      "split": "final_ood",
+      "variant": 24,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_077",
+      "seed_offset": 2101000,
+      "split": "final_ood",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_078",
+      "seed_offset": 2102000,
+      "split": "final_ood",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_079",
+      "seed_offset": 2103000,
+      "split": "final_ood",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_080",
+      "seed_offset": 2104000,
+      "split": "final_ood",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_081",
+      "seed_offset": 2105000,
+      "split": "final_ood",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_082",
+      "seed_offset": 2106000,
+      "split": "final_ood",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_083",
+      "seed_offset": 2107000,
+      "split": "final_ood",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_084",
+      "seed_offset": 2108000,
+      "split": "final_ood",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_085",
+      "seed_offset": 2109000,
+      "split": "final_ood",
+      "variant": 9,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_086",
+      "seed_offset": 2110000,
+      "split": "final_ood",
+      "variant": 10,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_087",
+      "seed_offset": 2111000,
+      "split": "final_ood",
+      "variant": 11,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_088",
+      "seed_offset": 2112000,
+      "split": "final_ood",
+      "variant": 12,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_089",
+      "seed_offset": 2113000,
+      "split": "final_ood",
+      "variant": 13,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_090",
+      "seed_offset": 2114000,
+      "split": "final_ood",
+      "variant": 14,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_091",
+      "seed_offset": 2115000,
+      "split": "final_ood",
+      "variant": 15,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_092",
+      "seed_offset": 2116000,
+      "split": "final_ood",
+      "variant": 16,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_093",
+      "seed_offset": 2117000,
+      "split": "final_ood",
+      "variant": 17,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_094",
+      "seed_offset": 2118000,
+      "split": "final_ood",
+      "variant": 18,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_095",
+      "seed_offset": 2119000,
+      "split": "final_ood",
+      "variant": 19,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_096",
+      "seed_offset": 2120000,
+      "split": "final_ood",
+      "variant": 20,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_097",
+      "seed_offset": 2121000,
+      "split": "final_ood",
+      "variant": 21,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_098",
+      "seed_offset": 2122000,
+      "split": "final_ood",
+      "variant": 22,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_099",
+      "seed_offset": 2123000,
+      "split": "final_ood",
+      "variant": 23,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "nonlinear_response",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_100",
+      "seed_offset": 2124000,
+      "split": "final_ood",
+      "variant": 24,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_101",
+      "seed_offset": 2181000,
+      "split": "final_ood",
+      "variant": 1,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_102",
+      "seed_offset": 2182000,
+      "split": "final_ood",
+      "variant": 2,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_103",
+      "seed_offset": 2183000,
+      "split": "final_ood",
+      "variant": 3,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_104",
+      "seed_offset": 2184000,
+      "split": "final_ood",
+      "variant": 4,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_105",
+      "seed_offset": 2185000,
+      "split": "final_ood",
+      "variant": 5,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_106",
+      "seed_offset": 2186000,
+      "split": "final_ood",
+      "variant": 6,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_107",
+      "seed_offset": 2187000,
+      "split": "final_ood",
+      "variant": 7,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_108",
+      "seed_offset": 2188000,
+      "split": "final_ood",
+      "variant": 8,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_109",
+      "seed_offset": 2189000,
+      "split": "final_ood",
+      "variant": 9,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_110",
+      "seed_offset": 2190000,
+      "split": "final_ood",
+      "variant": 10,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_111",
+      "seed_offset": 2191000,
+      "split": "final_ood",
+      "variant": 11,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_112",
+      "seed_offset": 2192000,
+      "split": "final_ood",
+      "variant": 12,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_113",
+      "seed_offset": 2193000,
+      "split": "final_ood",
+      "variant": 13,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_114",
+      "seed_offset": 2194000,
+      "split": "final_ood",
+      "variant": 14,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_115",
+      "seed_offset": 2195000,
+      "split": "final_ood",
+      "variant": 15,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_116",
+      "seed_offset": 2196000,
+      "split": "final_ood",
+      "variant": 16,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_117",
+      "seed_offset": 2197000,
+      "split": "final_ood",
+      "variant": 17,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_118",
+      "seed_offset": 2198000,
+      "split": "final_ood",
+      "variant": 18,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_119",
+      "seed_offset": 2199000,
+      "split": "final_ood",
+      "variant": 19,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_120",
+      "seed_offset": 2200000,
+      "split": "final_ood",
+      "variant": 20,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_121",
+      "seed_offset": 2201000,
+      "split": "final_ood",
+      "variant": 21,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_122",
+      "seed_offset": 2202000,
+      "split": "final_ood",
+      "variant": 22,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_123",
+      "seed_offset": 2203000,
+      "split": "final_ood",
+      "variant": 23,
+      "world_count": 4
+    },
+    {
+      "description": "Frozen promotion-v3 final_ood; generator=pesco_p23_promotion_v3_generator_20260828_r3; latent family held out by construction.",
+      "family": "measurement_shift",
+      "policy_question_id": "tier1_v04_extended_public_question",
+      "question_id": "p23_v3_final_ood_124",
+      "seed_offset": 2204000,
+      "split": "final_ood",
+      "variant": 24,
+      "world_count": 4
+    }
+  ],
+  "schema_version": "pesco_tier1_benchmark_p2.3_promotion_v3",
+  "whole_family_holdout": true,
+  "world_count": 496
+}

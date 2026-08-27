@@ -288,6 +288,20 @@ class Tier0ResearchEnvironment(ResearchEnvironment):
             self._current_method = "method_b"
         elif option is ResearchAction.REPAIR:
             self._repaired = True
+        elif option is ResearchAction.REDESIGN:
+            # Protocol redesign is an explicit, auditable intervention.  It
+            # activates the repaired split/estimator path without silently
+            # changing the selected method, so action-feasibility audits can
+            # count it as a valid alternative to REPAIR.
+            self._repaired = True
+            self._history.append("redesign_protocol")
+        elif option is ResearchAction.REVISE:
+            # Hypothesis revision changes the registered belief turn only; the
+            # hidden world and data remain untouched.  This keeps the action
+            # executable and prevents a policy from receiving a fabricated
+            # post-hoc label.
+            self._turn += 1
+            self._history.append("revise_hypothesis")
         elif option is ResearchAction.SAMPLE:
             self._sample_size = max(self._sample_size * 16, int(self.SAMPLE_MINIMUM))
             self._seed_count = max(self._seed_count, len(seeds))
