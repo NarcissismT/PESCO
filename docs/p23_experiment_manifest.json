@@ -29,5 +29,26 @@
   "p3b_authorized": false,
   "online_rl_authorized": false,
   "new_formal_final_authorized": false,
-  "notes": "The fallback shortcut probe is diagnostic-only because sklearn is unavailable. The raw formal track did not satisfy the preregistered regret, PairRank, required-switch, family-LOO, or shortcut superiority gates."
+  "p231": {
+    "authenticity_3seed": "artifacts/tier1_p231_dev_authenticity_3seed/p231_result.json",
+    "authenticity_3seed_gate": "artifacts/tier1_p231_dev_authenticity_3seed/p231_authenticity_gate.json",
+    "consumed_10seed": "artifacts/tier1_p231_consumed_10seed/p231_result.json",
+    "consumed_10seed_gate": "artifacts/tier1_p231_consumed_10seed/p231_authenticity_gate.json",
+    "strict_shortcut": "artifacts/tier1_p231_shortcut_probe_strict/shortcut_probe_result.json",
+    "canonical_contract": "artifacts/tier1_p231_dev_authenticity_3seed/canonical_contract_audit.json",
+    "action_feasibility": "artifacts/tier1_p231_action_feasibility.json",
+    "relative_reward_stability": "artifacts/tier1_p231_relative_reward_stability.json",
+    "gate_status": "GO_P2_3_1_10SEED_AUTHORIZED"
+  },
+  "promotion_v3": {
+    "dataset": "artifacts/tier1_p23_promotion_v3/dataset_raw_evidence.json",
+    "final_id_question_clusters": 52,
+    "final_ood_question_clusters": 72,
+    "final_ood_new_families": ["heterogeneous_noise", "nonlinear_response", "measurement_shift"],
+    "final_gate": "artifacts/tier1_p23_promotion_v3_final_10seed/promotion_v3_gate.json",
+    "gate_status": "NO_GO_PROMOTION_V3",
+    "lora_authorized": false,
+    "online_rl_authorized": false
+  },
+  "notes": "P2.3 historical fallback shortcut remains diagnostic-only; P2.3.1 strict sklearn Logistic/Random Forest/GBDT probe completed after installing sklearn. P2.3.1 authenticity passed, but promotion-v3 did not satisfy regret, 8/10 seed direction, family-majority, or shortcut superiority gates. LoRA/online RL remain closed."
 }

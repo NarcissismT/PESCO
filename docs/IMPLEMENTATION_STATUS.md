@@ -128,6 +128,40 @@ shortcut 结论。oracle-state 上界轨显示组件可改善部分 regret/PairR
 替代 raw-evidence formal gate。由于 P2.3 gate 未通过，P3a 小模型 LoRA、P3b 计划
 生成、在线 RL 与新的 formal final 均保持关闭。
 
+### P2.3.1 optimizer authenticity 与 promotion-v3
+
+反馈要求的评测器/优化器真实性实验已补齐。`tier1_p231_diagnostics.py` 将
+RLOO 与 GRPO 明确分开：RLOO 使用 leave-one-out baseline，不使用 PPO ratio；
+GRPO 保存 `old_logprob`，使用 importance ratio、clipped surrogate、冻结
+rollout batch 和多 minibatch epoch，并记录 clip fraction/KL/entropy/gradient
+norm。Terminal、FourState、MatchedAtomic 使用不同 reward tensor，人工样例和
+640 个 train rows 的差异审计均通过。所有方法按 seed 共享一次 SFT checkpoint，
+checkpoint digest 与 rollout/environment budget 都相等。
+
+三-seed consumed-data authenticity gate 与随后 10-seed diagnostic 均通过：
+RLOO/GRPO 参数更新不同、GRPO clipping 生效、Branch/Flip 均改变实际动作，
+strict Logistic/Random Forest/GBDT shortcut probe 已安装 sklearn 后重跑成功。
+结果见 `artifacts/tier1_p231_dev_authenticity_3seed/`、
+`artifacts/tier1_p231_consumed_10seed/`，P2.3.1 gate 为
+`GO_P2_3_1_10SEED_AUTHORIZED`。
+
+新的 canonical reversal 文件固定为 `top1_gap_threshold=0.05`，同一 digest 同时
+绑定 training/evaluation/gate/audit；P2.3 consumed 数据在该阈值下只有 21 个
+promotion pairs，因此没有把阈值降到 0。tie-set 使用 top1−top2≤0.02，action
+accuracy 在 non-tie 分母上单独报告。相对 replication/validity/cost/discovery
+权重 ±20% 的稳定性审计，以及 action-feasibility 审计（1216/1216 world 至少一
+个有效动作）均已保存。
+
+在代码和超参冻结 receipt `artifacts/tier1_p231_freeze/promotion_v3_freeze_receipt.json`
+之后，生成了真正独立的新 promotion-v3：final-ID 52 clusters、final-OOD 72
+clusters，OOD 使用 `heterogeneous_noise`、`nonlinear_response`、
+`measurement_shift` 三个开发阶段未出现的 whole-family 机制；两侧 canonical
+pairs 为 32/31。唯一一次 10-seed final evaluator 运行见
+`artifacts/tier1_p23_promotion_v3_final_10seed/`。PairRank CI 通过且 safety/
+relative-weight gate 通过，但 regret CI、8/10 seed 方向、shortcut superiority
+和 family-majority direction 未通过，因此最终状态是
+`NO_GO_PROMOTION_V3`，不进入 LoRA、GSPO/BPO/CBPO 或 online RL。
+
 `mvp_gate.json` 当前应包含：
 
 ```json
