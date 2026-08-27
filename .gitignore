@@ -35,6 +35,11 @@ artifacts/tier1_p231_consumed_10seed/sft_checkpoints/
 artifacts/tier1_p23_promotion_v3/private_evaluator_input.json
 artifacts/tier1_p23_promotion_v3_final_10seed/combined_private_evaluator_input.json
 artifacts/tier1_p23_promotion_v3_final_10seed/p231_result.json
+artifacts/tier1_p231_freeze/
+artifacts/tier1_p23_promotion_v3/private_input_receipt.json
+artifacts/tier1_p23_promotion_v3/relative_reward_stability.json
+artifacts/tier1_p23_promotion_v3/shortcut_probe_strict/
+artifacts/tier1_p23_promotion_v3_final_10seed/
 
 # 构建与系统文件
 build/
