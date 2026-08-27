@@ -35,8 +35,14 @@ def _digest(path: Path) -> str:
 def _load_combined(train_path: Path, final_path: Path) -> DecisionDataset:
     train = DecisionDataset.from_json(train_path)
     final = DecisionDataset.from_json(final_path)
-    examples = [example for example in train.examples if example.split == "train"] + list(final.examples)
-    return DecisionDataset(examples, [], "pesco_decision_dataset_p2.3_promotion_v3_combined_private", {
+    train_indices = [index for index, example in enumerate(train.examples) if example.split == "train"]
+    train_remap = {old: new for new, old in enumerate(train_indices)}
+    from research_strategy_optimization.algorithms.differentiable_strategy import ReversalExample
+    train_pairs = [ReversalExample(train_remap[pair.left], train_remap[pair.right], pair.action_left, pair.action_right, pair.margin, pair.confirmed, pair.weight, pair.lcb_left, pair.ucb_right, pair.sample_count) for pair in train.reversals if pair.left in train_remap and pair.right in train_remap]
+    offset = len(train_indices)
+    final_pairs = [ReversalExample(offset + pair.left, offset + pair.right, pair.action_left, pair.action_right, pair.margin, pair.confirmed, pair.weight, pair.lcb_left, pair.ucb_right, pair.sample_count) for pair in final.reversals]
+    examples = [train.examples[index] for index in train_indices] + list(final.examples)
+    return DecisionDataset(examples, train_pairs + final_pairs, "pesco_decision_dataset_p2.3_promotion_v3_combined_private", {
         "train_source_digest": _digest(train_path), "final_source_digest": _digest(final_path),
         "final_labels_never_used_for_training": True,
     })
