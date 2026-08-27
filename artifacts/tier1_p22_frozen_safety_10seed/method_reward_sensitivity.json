@@ -1,0 +1,294 @@
+{
+  "delta": 0.2,
+  "formal_comparison_authorized": false,
+  "method_count": 3,
+  "method_ranking_available": false,
+  "method_ranking_stable": true,
+  "methods": [
+    "SFT",
+    "SFT→NoFlip",
+    "SFT→Pairwise-Full"
+  ],
+  "normalized_regret_by_scenario": {
+    "base": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "confirmation_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "confirmation_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "execution_cost_penalty_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "execution_cost_penalty_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "heldout_split_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "heldout_split_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "joint_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "joint_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "mechanism_transition_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "mechanism_transition_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "repair_protocol_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "repair_protocol_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "replicate_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "replicate_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "sample_precision_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "sample_precision_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "state_resolution_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "state_resolution_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "switch_failure_penalty_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "switch_failure_penalty_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "switch_success_bonus_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "switch_success_bonus_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "validity_gate_down": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    },
+    "validity_gate_up": {
+      "SFT": null,
+      "SFT→NoFlip": null,
+      "SFT→Pairwise-Full": null
+    }
+  },
+  "ranking_by_scenario": {
+    "base": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "confirmation_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "confirmation_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "execution_cost_penalty_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "execution_cost_penalty_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "heldout_split_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "heldout_split_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "joint_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "joint_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "mechanism_transition_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "mechanism_transition_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "repair_protocol_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "repair_protocol_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "replicate_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "replicate_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "sample_precision_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "sample_precision_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "state_resolution_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "state_resolution_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "switch_failure_penalty_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "switch_failure_penalty_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "switch_success_bonus_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "switch_success_bonus_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "validity_gate_down": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ],
+    "validity_gate_up": [
+      "SFT",
+      "SFT→NoFlip",
+      "SFT→Pairwise-Full"
+    ]
+  },
+  "ranking_stable_by_scenario": {
+    "base": true,
+    "confirmation_bonus_down": true,
+    "confirmation_bonus_up": true,
+    "execution_cost_penalty_down": true,
+    "execution_cost_penalty_up": true,
+    "heldout_split_bonus_down": true,
+    "heldout_split_bonus_up": true,
+    "joint_down": true,
+    "joint_up": true,
+    "mechanism_transition_bonus_down": true,
+    "mechanism_transition_bonus_up": true,
+    "repair_protocol_bonus_down": true,
+    "repair_protocol_bonus_up": true,
+    "replicate_bonus_down": true,
+    "replicate_bonus_up": true,
+    "sample_precision_bonus_down": true,
+    "sample_precision_bonus_up": true,
+    "state_resolution_bonus_down": true,
+    "state_resolution_bonus_up": true,
+    "switch_failure_penalty_down": true,
+    "switch_failure_penalty_up": true,
+    "switch_success_bonus_down": true,
+    "switch_success_bonus_up": true,
+    "validity_gate_down": true,
+    "validity_gate_up": true
+  },
+  "schema_version": "pesco_tier1_p22_method_reward_sensitivity_v0.1"
+}

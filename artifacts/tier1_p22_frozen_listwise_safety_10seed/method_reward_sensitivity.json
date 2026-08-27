@@ -1,0 +1,294 @@
+{
+  "delta": 0.2,
+  "formal_comparison_authorized": false,
+  "method_count": 3,
+  "method_ranking_available": true,
+  "method_ranking_stable": true,
+  "methods": [
+    "SFT",
+    "SFT→Listwise+PCGrad",
+    "SFT→NoFlip"
+  ],
+  "normalized_regret_by_scenario": {
+    "base": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "confirmation_bonus_down": {
+      "SFT": 0.2619834312724552,
+      "SFT→Listwise+PCGrad": 0.1293575692035167,
+      "SFT→NoFlip": 0.1388186793598455
+    },
+    "confirmation_bonus_up": {
+      "SFT": 0.26455632267224005,
+      "SFT→Listwise+PCGrad": 0.13004963329101368,
+      "SFT→NoFlip": 0.1405174435700542
+    },
+    "execution_cost_penalty_down": {
+      "SFT": 0.2674786747908379,
+      "SFT→Listwise+PCGrad": 0.1307914869849832,
+      "SFT→NoFlip": 0.1425797225428867
+    },
+    "execution_cost_penalty_up": {
+      "SFT": 0.25928030659894746,
+      "SFT→Listwise+PCGrad": 0.12869097435369622,
+      "SFT→NoFlip": 0.13693341660845446
+    },
+    "heldout_split_bonus_down": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "heldout_split_bonus_up": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "joint_down": {
+      "SFT": 0.26327671061596686,
+      "SFT→Listwise+PCGrad": 0.12969939811407138,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "joint_up": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "mechanism_transition_bonus_down": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "mechanism_transition_bonus_up": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "repair_protocol_bonus_down": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "repair_protocol_bonus_up": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "replicate_bonus_down": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "replicate_bonus_up": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407136,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "sample_precision_bonus_down": {
+      "SFT": 0.26025686787788094,
+      "SFT→Listwise+PCGrad": 0.13476648599596375,
+      "SFT→NoFlip": 0.14480702740721724
+    },
+    "sample_precision_bonus_up": {
+      "SFT": 0.2663886794985093,
+      "SFT→Listwise+PCGrad": 0.12542470974088135,
+      "SFT→NoFlip": 0.1353297006322461
+    },
+    "state_resolution_bonus_down": {
+      "SFT": 0.2660022240867054,
+      "SFT→Listwise+PCGrad": 0.13068018789854666,
+      "SFT→NoFlip": 0.14064282105499012
+    },
+    "state_resolution_bonus_up": {
+      "SFT": 0.26092550521492763,
+      "SFT→Listwise+PCGrad": 0.1288244804407219,
+      "SFT→NoFlip": 0.13878711359716542
+    },
+    "switch_failure_penalty_down": {
+      "SFT": 0.26085439675178945,
+      "SFT→Listwise+PCGrad": 0.129402589319777,
+      "SFT→NoFlip": 0.13941861846084247
+    },
+    "switch_failure_penalty_up": {
+      "SFT": 0.2656981919238184,
+      "SFT→Listwise+PCGrad": 0.12998818952223373,
+      "SFT→NoFlip": 0.1398974266940553
+    },
+    "switch_success_bonus_down": {
+      "SFT": 0.263554859536214,
+      "SFT→Listwise+PCGrad": 0.12390047565768932,
+      "SFT→NoFlip": 0.1322208521908116
+    },
+    "switch_success_bonus_up": {
+      "SFT": 0.2630683994347769,
+      "SFT→Listwise+PCGrad": 0.135492177848317,
+      "SFT→NoFlip": 0.14666174991170539
+    },
+    "validity_gate_down": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.12969939811407133,
+      "SFT→NoFlip": 0.1396620312705149
+    },
+    "validity_gate_up": {
+      "SFT": 0.2632767106159669,
+      "SFT→Listwise+PCGrad": 0.1296993981140713,
+      "SFT→NoFlip": 0.13966203127051488
+    }
+  },
+  "ranking_by_scenario": {
+    "base": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "confirmation_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "confirmation_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "execution_cost_penalty_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "execution_cost_penalty_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "heldout_split_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "heldout_split_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "joint_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "joint_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "mechanism_transition_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "mechanism_transition_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "repair_protocol_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "repair_protocol_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "replicate_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "replicate_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "sample_precision_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "sample_precision_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "state_resolution_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "state_resolution_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "switch_failure_penalty_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "switch_failure_penalty_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "switch_success_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "switch_success_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "validity_gate_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ],
+    "validity_gate_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→NoFlip",
+      "SFT"
+    ]
+  },
+  "ranking_stable_by_scenario": {
+    "base": true,
+    "confirmation_bonus_down": true,
+    "confirmation_bonus_up": true,
+    "execution_cost_penalty_down": true,
+    "execution_cost_penalty_up": true,
+    "heldout_split_bonus_down": true,
+    "heldout_split_bonus_up": true,
+    "joint_down": true,
+    "joint_up": true,
+    "mechanism_transition_bonus_down": true,
+    "mechanism_transition_bonus_up": true,
+    "repair_protocol_bonus_down": true,
+    "repair_protocol_bonus_up": true,
+    "replicate_bonus_down": true,
+    "replicate_bonus_up": true,
+    "sample_precision_bonus_down": true,
+    "sample_precision_bonus_up": true,
+    "state_resolution_bonus_down": true,
+    "state_resolution_bonus_up": true,
+    "switch_failure_penalty_down": true,
+    "switch_failure_penalty_up": true,
+    "switch_success_bonus_down": true,
+    "switch_success_bonus_up": true,
+    "validity_gate_down": true,
+    "validity_gate_up": true
+  },
+  "schema_version": "pesco_tier1_p22_method_reward_sensitivity_v0.1"
+}

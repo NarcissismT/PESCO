@@ -1,0 +1,29 @@
+{
+  "candidate_summary": {
+    "SFT": {
+      "mean_normalized_regret": 0.39172535955964854,
+      "mean_utility_winner_accuracy": 0.5250000000000001,
+      "question_cluster_count": 200,
+      "seed_count": 10
+    },
+    "SFT→NoFlip": {
+      "mean_normalized_regret": 0.2574232212581161,
+      "mean_utility_winner_accuracy": 0.6325000000000001,
+      "question_cluster_count": 200,
+      "seed_count": 10
+    },
+    "SFT→Pairwise-Full": {
+      "mean_normalized_regret": 0.22619624012473766,
+      "mean_utility_winner_accuracy": 0.66,
+      "question_cluster_count": 200,
+      "seed_count": 10
+    }
+  },
+  "formal_comparison_authorized": false,
+  "promotion_metrics_used": false,
+  "schema_version": "pesco_tier1_p22_global_baseline_selection_v0.1",
+  "selected_baseline": "SFT→Pairwise-Full",
+  "selection_is_global_across_seeds": true,
+  "selection_split": "tune",
+  "status": "selected_for_diagnostic_promotion"
+}

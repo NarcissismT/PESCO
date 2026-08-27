@@ -1,0 +1,43 @@
+{
+  "schema_version": "pesco_tier1_p22_gate_receipt_v0.2",
+  "status": "blocked_screening_gate",
+  "screening_artifact": "artifacts/tier1_p22_screening/p22_matrix_result.json",
+  "screening_seeds": [17, 23, 29],
+  "requested_frozen_seed_count": 10,
+  "frozen_10_seed_executed": false,
+  "screening_compute": {
+    "sft_steps": 32,
+    "finetune_steps": 32,
+    "batch_size": 8,
+    "hidden_dim": 16,
+    "isolated_process_per_seed_method": true,
+    "eval_splits": ["tune", "promotion"]
+  },
+  "reason": "No candidate passed both preregistered screening gates: regret versus SFT requires a seed×question CI upper bound below zero and at least 8/10 positive seeds; PairRankAcc versus SFT→NoFlip requires a CI lower bound above zero. The best candidate passed PairRank only.",
+  "best_screening_candidate": "SFT→Pairwise-Full",
+  "best_screening_metrics": {
+    "normalized_regret_mean": 0.2749332410095841,
+    "regret_delta_vs_sft_point": -0.08320947646642705,
+    "regret_delta_vs_sft_ci": [-0.22921648621559143, 0.06026153266429901],
+    "regret_positive_seed_n_vs_sft": 2,
+    "pairrank_delta_vs_sft_noflip_point": 0.27778343136670564,
+    "pairrank_delta_vs_sft_noflip_ci": [0.23254066705703735, 0.3424561321735382],
+    "required_switch_rate": 0.43137254901960786,
+    "sft_required_switch_rate": 0.0,
+    "erroneous_repair_rate": 0.0,
+    "confirmation_rate": 0.8548611111111111,
+    "validity_rate": 0.75
+  },
+  "gate_checks": {
+    "regret_gate": false,
+    "pairrank_gate": true,
+    "required_switch_gate": false,
+    "safety_gate": false,
+    "strict_shortcut_gate": false,
+    "family_loo_gate": false
+  },
+  "v06_private_final_authorized": false,
+  "formal_comparison_authorized": false,
+  "lora_or_7b_authorized": false,
+  "online_rl_authorized": false
+}

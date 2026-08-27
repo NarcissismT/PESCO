@@ -1,0 +1,61 @@
+{
+  "schema_version": "pesco_tier1_p22_gate_receipt_v0.3",
+  "status": "algorithm_gate_passed_shortcut_gate_pending",
+  "screening_artifact": "artifacts/tier1_p22_frozen_10seed/p22_matrix_result.json",
+  "frozen_config": {
+    "sft_steps": 32,
+    "finetune_steps": 32,
+    "batch_size": 8,
+    "hidden_dim": 16,
+    "learning_rate": 0.001,
+    "pairwise_weight": 0.10,
+    "utility_temperature": 0.25,
+    "entropy_floor": 0.70,
+    "utility_floor_reference": "SFT",
+    "canonical_top1_gap": 0.05
+  },
+  "seed_count": 10,
+  "cell_count": 60,
+  "cell_failures": 0,
+  "best_method": "SFT→Pairwise-Full",
+  "regret_vs_sft": {
+    "point": -0.1483185844680083,
+    "ci95_seed_question": [-0.17834125459194183, -0.10876841843128204],
+    "positive_seeds": 9,
+    "gate": true
+  },
+  "pairrank_vs_sft_noflip": {
+    "point": 0.19342410693142867,
+    "ci95_seed_question": [0.11071550101041794, 0.2632613778114319],
+    "gate": true
+  },
+  "required_switch": {
+    "pairwise_full_rate": 0.3823529411764705,
+    "historical_p21_full_rate": 0.041,
+    "sft_rate": 0.0,
+    "substantially_above_historical": true,
+    "better_than_sft": true,
+    "gate": true
+  },
+  "safety": {
+    "erroneous_repair_rate": 0.0,
+    "confirmation_rate": 0.819142156862745,
+    "sft_confirmation_rate": 0.8705882352941179,
+    "validity_rate": 0.75,
+    "safety_gate": false,
+    "reason": "Selected-action confirmation is 0.0514 below SFT; validity is equal to comparator but confirmation noninferiority is not met."
+  },
+  "strict_shortcut": {
+    "status": "completed_sklearn",
+    "logistic_regression_promotion_normalized_regret": 0.11167633561721205,
+    "gradient_boosting_promotion_normalized_regret": 0.18642358593179145,
+    "pairwise_full_promotion_normalized_regret": 0.20982413300800284,
+    "strict_shortcut_gate": false,
+    "reason": "Pairwise-Full does not beat strict Logistic/GBDT shortcut baselines on the retained P2.2 promotion artifact."
+  },
+  "family_loo_gate": "pending_explicit_recompute",
+  "v06_private_final_authorized": false,
+  "formal_comparison_authorized": false,
+  "lora_or_7b_authorized": false,
+  "online_rl_authorized": false
+}

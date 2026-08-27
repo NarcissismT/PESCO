@@ -1,0 +1,156 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/run_shortcut_probes.py",
+      "--dataset",
+      "artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json",
+      "--output",
+      "artifacts/tier1_p22_strict_shortcut",
+      "--strict-sklearn",
+      "--train-split",
+      "train",
+      "--eval-split",
+      "tune",
+      "--eval-split",
+      "promotion",
+      "--model",
+      "logistic_regression",
+      "--model",
+      "gradient_boosting"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/run_shortcut_probes.py --dataset artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json --output artifacts/tier1_p22_strict_shortcut --strict-sklearn --train-split train --eval-split tune --eval-split promotion --model logistic_regression --model gradient_boosting"
+  },
+  "command_line": "scripts/run_shortcut_probes.py --dataset artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json --output artifacts/tier1_p22_strict_shortcut --strict-sklearn --train-split train --eval-split tune --eval-split promotion --model logistic_regression --model gradient_boosting",
+  "data": {
+    "available": true,
+    "digest": "sha256:6c62d4e6bddbaea14b91315e90c243601af58b31850709aa9a71ed1167830b11",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:06fcd4c7244ff5e2fae05f2ff494a6095822092a04d495819e5f0ca207495b7d",
+        "size_bytes": 12946561
+      }
+    ]
+  },
+  "data_digest": "sha256:6c62d4e6bddbaea14b91315e90c243601af58b31850709aa9a71ed1167830b11",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "fallback_used": false,
+    "feature_sets": [
+      "all_raw",
+      "without_confirmation"
+    ],
+    "models": [
+      "logistic_regression",
+      "gradient_boosting"
+    ],
+    "result_schema": "pesco_shortcut_probe_v0.1",
+    "strict_sklearn": true
+  },
+  "experiment": "tier1_shortcut_probes",
+  "generated_at_utc": "2026-08-27T08:28:31.970902+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "0b64a2e6037fd8c2da9c61f9647d4ad40211540e",
+    "status_available": true,
+    "status_digest": "sha256:200b9e155a9a2cf9055a739e761c1631f4f163064bd93d892964430c608e0e6f"
+  },
+  "git_sha": "0b64a2e6037fd8c2da9c61f9647d4ad40211540e",
+  "manifest_digest": "sha256:e4bac04f3f164eb2e31a00f787935d033549d199ff93d0ebd7afdd109bf4e4aa",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      0,
+      1000
+    ],
+    "bootstrap": 1000,
+    "probe": 0
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:79204f8b7cf22cee2208cf36b1ff8ab6c71b9a52a6d72b76b40bc976b8cd738b",
+    "file_count": 3,
+    "files": [
+      {
+        "path": "requirements-optional.txt",
+        "role": "source",
+        "sha256": "sha256:2a6e3c49cbfdf65e6b31c455d17da6a216f2279cd9962215469d99d3c65c9784",
+        "size_bytes": 657
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/shortcut_probes.py",
+        "role": "source",
+        "sha256": "sha256:bcf83e7c1af919d1db1e34617e1ada2c1b598c3176512382d570b5c0ab6520d0",
+        "size_bytes": 45533
+      },
+      {
+        "path": "scripts/run_shortcut_probes.py",
+        "role": "source",
+        "sha256": "sha256:2f9a6336a002d82c6e473d3e10945d70964a4f6aee48019cd5b89a472e26dfb1",
+        "size_bytes": 4780
+      }
+    ]
+  },
+  "source_digest": "sha256:79204f8b7cf22cee2208cf36b1ff8ab6c71b9a52a6d72b76b40bc976b8cd738b",
+  "status": "completed_sklearn",
+  "training_seed": null
+}

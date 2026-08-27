@@ -1,0 +1,36 @@
+{
+  "baseline": "SFT",
+  "families": {
+    "leakage_metric_mismatch": {
+      "mean_pairrank_delta_vs_noflip": 0.0373430302579814,
+      "mean_regret_delta_vs_sft": -0.15720174985231308,
+      "pairrank_direction_improves": true,
+      "question_count": 80,
+      "regret_direction_improves": true
+    },
+    "protocol_drift": {
+      "mean_pairrank_delta_vs_noflip": 0.02299132237211917,
+      "mean_regret_delta_vs_sft": -0.136401373164461,
+      "pairrank_direction_improves": true,
+      "question_count": 80,
+      "regret_direction_improves": true
+    },
+    "replication_instability": {
+      "mean_pairrank_delta_vs_noflip": 0.02,
+      "mean_regret_delta_vs_sft": -0.09117172113407793,
+      "pairrank_direction_improves": true,
+      "question_count": 40,
+      "regret_direction_improves": true
+    }
+  },
+  "family_count": 3,
+  "gate": {
+    "improving_pairrank_family_count": 3,
+    "improving_regret_family_count": 3,
+    "pairrank_non_single_family": true,
+    "regret_non_single_family": true
+  },
+  "method": "SFT→Pairwise-Full",
+  "pairrank_reference": "SFT→NoFlip",
+  "schema_version": "pesco_tier1_p22_family_loo_v0.1"
+}

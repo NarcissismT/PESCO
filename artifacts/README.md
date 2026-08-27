@@ -114,7 +114,7 @@ the public `final_id_manifest.json`/`final_ood_manifest.json` omit
 family/world/target fields; the corresponding `*_audit_hidden.json` files are
 evaluator-only.
 
-## P2.1 and v0.5 status boundary
+## P2.1, P2.2 and final-boundary status
 
 The fresh P2.1 diagnostic is in `tier1_p21_diagnostic/`: 64 questions, 256
 worlds, eight exploration and eight confirmation seeds, 395 same-question
@@ -129,17 +129,44 @@ bundle opens formal model comparison.
 shortcut probes (with an explicitly labelled NumPy fallback when scikit-learn
 is unavailable).
 
-The v0.5 public/private boundary is prepared in `tier1_v05_frozen_final/` and
-`tier1_v05_evaluator_private/`: 48 final-ID and 48 final-OOD clusters, 384
-worlds, four previously unseen OOD mechanism families, disjoint generator and
-latent signatures, and an independent evaluator contract.  Structural/signature
-audits pass, but `freeze_receipt.json` remains
-`status=pending_clean_commit_tag`; the independent audit currently reports 40/40
-structural gates passing.  `reward_sensitivity_summary.json` records an
-evaluator-side global ±20% atomic-term perturbation diagnostic (non-tie winner
-stability 0.9972; overall 0.9986); it does not retrain a policy or authorize a
-formal comparison.  No model evaluation or formal comparison is claimed until a
-clean commit/tag and baseline-selection receipt are recorded.
+The v0.5 boundary rehearsal is consumed (`tier1_v05_frozen_final/consumption_notice.json`)
+because its public generator was reconstructible; it must not be used as a paper
+final. A v0.6 boundary is private-evaluator-only: the public package exposes only
+commitment/count interfaces and is checked by `scripts/audit_public_final_leakage.py`.
+The private v0.6 bundle contains 40 final-ID and 40 final-OOD question clusters
+(320 worlds), five development-unseen OOD families, unique latent/generator
+signatures, and a commitment/evaluator digest audit in
+`tier1_v06_evaluator_private/private_boundary_audit.json`; its receipt remains
+`pending_clean_commit_tag` and formal comparison is closed.
+The v0.5 rehearsal had 48 final-ID and 48 final-OOD clusters, 384 worlds, four
+previously unseen OOD mechanism families, disjoint generator/latent signatures,
+and an independent evaluator contract. Its structural and reward-sensitivity
+audits remain historical evidence only.
+
+The current P2.2 common-SFT matrix is in
+`tier1_p22_screening_final_objective_v2/p22_matrix_result.json` (six methods,
+three screening seeds) and
+`tier1_p22_frozen_listwise_pcgrad_10seed/p22_matrix_result.json` (the same six
+methods plus the frozen SFT reference, ten seeds, 60/60 isolated cells). Both
+matrices use the SFT checkpoint as the reference/utility floor, canonical
+top-1 reversal filtering, soft utility targets, adaptive KL, and an entropy
+floor. The frozen bundle also records global tune-only baseline selection,
+gradient-cosine diagnostics, family leave-one-out, selected-action receipt
+metrics, structural and method-level atomic-reward ±20% sensitivity, and
+fail-closed gate receipts. The leading Pairwise-Full result has normalized
+regret `0.12760` versus NoFlip;
+Listwise+PCGrad has normalized regret `0.13170` and PairRank delta CI
+`[0.05710, 0.13494]`. With the question-level bootstrap fix, Pairwise-Full's
+PairRank CI is `[0.00728, 0.05339]`; canonical top-1 CIs cross zero and the strict Logistic
+shortcut remains better than either leading method, so the promotion gate is
+blocked and no v0.6 model evaluation is authorized.
+`tier1_p22_power_analysis/power_analysis.json` is a design-only question-cluster
+power projection from the frozen diagnostic effects; it does not authorize or
+replace a private final evaluation.
+The separate `tier1_p22_frozen_listwise_safety_10seed/` receipt is a preregistered
+repair-safety sensitivity run (`repair_safety_weight=0.60`): it reaches zero
+erroneous repairs while preserving the regret/PairRank/switch gates, but its
+canonical top-1 CI still crosses zero and it remains diagnostic-only.
 
 The independent A environment artifact records 48 question-world groups, 192
 action-level branch rows, and 768 seed-level observations. `question_world_groups.json`

@@ -587,16 +587,32 @@ class _NumpyGradientBoosting:
 def _make_model(name: str, *, seed: int, sklearn_modules: dict[str, Any] | None) -> tuple[Any, str, dict[str, Any]]:
     if sklearn_modules is not None:
         if name == "logistic_regression":
-            model = sklearn_modules["make_pipeline"](
-                sklearn_modules["StandardScaler"](),
-                sklearn_modules["LogisticRegression"](
+            # ``multi_class`` was deprecated and removed in recent sklearn
+            # releases (the multinomial solver is now selected implicitly).
+            # Keep the explicitly pinned option for older versions, but fall
+            # back to the current API when its constructor rejects the kwarg.
+            logistic_cls = sklearn_modules["LogisticRegression"]
+            try:
+                logistic = logistic_cls(
                     max_iter=1000,
                     multi_class="multinomial",
                     solver="lbfgs",
                     random_state=int(seed),
-                ),
+                )
+                logistic_params = {"class": "LogisticRegression", "max_iter": 1000, "solver": "lbfgs", "multi_class": "multinomial"}
+            except TypeError as exc:
+                if "multi_class" not in str(exc):
+                    raise
+                logistic = logistic_cls(
+                    max_iter=1000,
+                    solver="lbfgs",
+                    random_state=int(seed),
+                )
+                logistic_params = {"class": "LogisticRegression", "max_iter": 1000, "solver": "lbfgs", "multi_class": "implicit_current_api"}
+            model = sklearn_modules["make_pipeline"](
+                sklearn_modules["StandardScaler"](), logistic
             )
-            return model, "sklearn", {"class": "LogisticRegression", "max_iter": 1000, "solver": "lbfgs"}
+            return model, "sklearn", logistic_params
         if name == "random_forest":
             model = sklearn_modules["RandomForestClassifier"](
                 n_estimators=128,
@@ -897,7 +913,21 @@ def run_shortcut_probe(
     result["available_splits"] = list(available_splits)
     result["eval_splits"] = list(requested_splits)
     result["fallback_used"] = bool(fallback_used)
-    result["status"] = "completed_numpy_fallback" if fallback_used else "completed_sklearn"
+    failed_models = {
+        key: value.get("error", "model failed")
+        for key, value in result["models"].items()
+        if value.get("status") != "completed"
+    }
+    result["failed_models"] = failed_models
+    # A requested model failure must never be reported as a completed probe.
+    # This is deliberately fail-closed for both diagnostic and strict runs so
+    # callers cannot accidentally promote a partial sklearn comparison.
+    if failed_models:
+        result["status"] = "fail_closed_model_error"
+        result["formal_comparison_authorized"] = False
+        result["error"] = "one or more requested shortcut models failed"
+    else:
+        result["status"] = "completed_numpy_fallback" if fallback_used else "completed_sklearn"
     # Feature-ablation deltas make the potential confirmation shortcut explicit.
     for model_name in models:
         model_comparison: dict[str, Any] = {}

@@ -1,0 +1,160 @@
+{
+  "batch_count": 0,
+  "by_seed": {
+    "17": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "23": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "29": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "31": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "37": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "41": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "43": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "47": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "53": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    },
+    "59": {
+      "cos_grad_branch_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      },
+      "cos_grad_state_flip": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "min": null
+      }
+    }
+  },
+  "formal_comparison_authorized": false,
+  "method": "SFT→Pairwise-Full",
+  "overall": {
+    "cos_grad_branch_flip": {
+      "max": null,
+      "mean": null,
+      "min": null
+    },
+    "cos_grad_state_flip": {
+      "max": null,
+      "mean": null,
+      "min": null
+    }
+  },
+  "schema_version": "pesco_tier1_p22_gradient_conflict_summary_v0.1"
+}

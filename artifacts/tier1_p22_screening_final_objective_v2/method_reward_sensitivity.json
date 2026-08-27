@@ -1,0 +1,498 @@
+{
+  "delta": 0.2,
+  "formal_comparison_authorized": false,
+  "method_count": 7,
+  "method_ranking_available": true,
+  "method_ranking_stable": true,
+  "methods": [
+    "SFT",
+    "SFT-Continued",
+    "SFT→BranchOnly",
+    "SFT→Listwise+PCGrad",
+    "SFT→Listwise-Full",
+    "SFT→NoFlip",
+    "SFT→Pairwise-Full"
+  ],
+  "normalized_regret_by_scenario": {
+    "base": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "confirmation_bonus_down": {
+      "SFT": 0.26591258589474664,
+      "SFT-Continued": 0.1688601844020942,
+      "SFT→BranchOnly": 0.14483805727545343,
+      "SFT→Listwise+PCGrad": 0.10372366577406274,
+      "SFT→Listwise-Full": 0.10823852185577115,
+      "SFT→NoFlip": 0.14483805727545343,
+      "SFT→Pairwise-Full": 0.12721331952886053
+    },
+    "confirmation_bonus_up": {
+      "SFT": 0.26859315212585255,
+      "SFT-Continued": 0.17099176316283018,
+      "SFT→BranchOnly": 0.14676910399793627,
+      "SFT→Listwise+PCGrad": 0.10468774437716744,
+      "SFT→Listwise-Full": 0.10920260045887585,
+      "SFT→NoFlip": 0.14676910399793627,
+      "SFT→Pairwise-Full": 0.1287578125187291
+    },
+    "execution_cost_penalty_down": {
+      "SFT": 0.2716099970835101,
+      "SFT-Continued": 0.17367419435109874,
+      "SFT→BranchOnly": 0.14908994112406998,
+      "SFT→Listwise+PCGrad": 0.10586856759473484,
+      "SFT→Listwise-Full": 0.11038342367644326,
+      "SFT→NoFlip": 0.14908994112406998,
+      "SFT→Pairwise-Full": 0.13064578299983562
+    },
+    "execution_cost_penalty_up": {
+      "SFT": 0.26311841299262395,
+      "SFT-Continued": 0.1663817553761093,
+      "SFT→BranchOnly": 0.1427159012488503,
+      "SFT→Listwise+PCGrad": 0.10264745061296734,
+      "SFT→Listwise-Full": 0.10716230669467582,
+      "SFT→NoFlip": 0.1427159012488503,
+      "SFT→Pairwise-Full": 0.12548770543242702
+    },
+    "heldout_split_bonus_down": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "heldout_split_bonus_up": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "joint_down": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.10419967488117991,
+      "SFT→Listwise-Full": 0.10871453096288834,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.1279795358293596
+    },
+    "joint_up": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962662,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.10419967488117989,
+      "SFT→Listwise-Full": 0.10871453096288831,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.1279795358293596
+    },
+    "mechanism_transition_bonus_down": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "mechanism_transition_bonus_up": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "repair_protocol_bonus_down": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "repair_protocol_bonus_up": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "replicate_bonus_down": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "replicate_bonus_up": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "sample_precision_bonus_down": {
+      "SFT": 0.2622370139041236,
+      "SFT-Continued": 0.17028887494799427,
+      "SFT→BranchOnly": 0.15094254657896225,
+      "SFT→Listwise+PCGrad": 0.10934467101788248,
+      "SFT→Listwise-Full": 0.11385952709959093,
+      "SFT→NoFlip": 0.15094254657896225,
+      "SFT→Pairwise-Full": 0.13312453196606222
+    },
+    "sample_precision_bonus_up": {
+      "SFT": 0.2722290211728703,
+      "SFT-Continued": 0.17032522186356067,
+      "SFT→BranchOnly": 0.14146521980399118,
+      "SFT→Listwise+PCGrad": 0.09986734424291142,
+      "SFT→Listwise-Full": 0.10438220032461988,
+      "SFT→NoFlip": 0.14146521980399118,
+      "SFT→Pairwise-Full": 0.12364720519109114
+    },
+    "state_resolution_bonus_down": {
+      "SFT": 0.2708439401479194,
+      "SFT-Continued": 0.17258388573458308,
+      "SFT→BranchOnly": 0.1467783402267352,
+      "SFT→Listwise+PCGrad": 0.10518046466565542,
+      "SFT→Listwise-Full": 0.10969532074736388,
+      "SFT→NoFlip": 0.1467783402267352,
+      "SFT→Pairwise-Full": 0.12896032561383516
+    },
+    "state_resolution_bonus_up": {
+      "SFT": 0.26417627147590084,
+      "SFT-Continued": 0.16761942419638132,
+      "SFT→BranchOnly": 0.1449226327689103,
+      "SFT→Listwise+PCGrad": 0.1033247572078305,
+      "SFT→Listwise-Full": 0.10783961328953896,
+      "SFT→NoFlip": 0.1449226327689103,
+      "SFT→Pairwise-Full": 0.12710461815601024
+    },
+    "switch_failure_penalty_down": {
+      "SFT": 0.2639209965027349,
+      "SFT-Continued": 0.16809034698841696,
+      "SFT→BranchOnly": 0.14555413763258734,
+      "SFT→Listwise+PCGrad": 0.10395626207150753,
+      "SFT→Listwise-Full": 0.10847111815321596,
+      "SFT→NoFlip": 0.14555413763258734,
+      "SFT→Pairwise-Full": 0.12773612301968726
+    },
+    "switch_failure_penalty_up": {
+      "SFT": 0.27060320543316146,
+      "SFT-Continued": 0.17175157273828448,
+      "SFT→BranchOnly": 0.14603294586580018,
+      "SFT→Listwise+PCGrad": 0.10443507030472039,
+      "SFT→Listwise-Full": 0.10894992638642884,
+      "SFT→NoFlip": 0.14603294586580018,
+      "SFT→Pairwise-Full": 0.12821493125290012
+    },
+    "switch_success_bonus_down": {
+      "SFT": 0.26965469669581493,
+      "SFT-Continued": 0.1671026678822712,
+      "SFT→BranchOnly": 0.13805823181413004,
+      "SFT→Listwise+PCGrad": 0.09777574619474032,
+      "SFT→Listwise-Full": 0.10229060227644876,
+      "SFT→NoFlip": 0.13805823181413004,
+      "SFT→Pairwise-Full": 0.12073929486365828
+    },
+    "switch_success_bonus_up": {
+      "SFT": 0.26520354197674784,
+      "SFT-Continued": 0.17306472726616084,
+      "SFT→BranchOnly": 0.15300869288230462,
+      "SFT→Listwise+PCGrad": 0.11047796945046146,
+      "SFT→Listwise-Full": 0.11499282553216991,
+      "SFT→NoFlip": 0.15300869288230462,
+      "SFT→Pairwise-Full": 0.13483673809872024
+    },
+    "validity_gate_down": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    },
+    "validity_gate_up": {
+      "SFT": 0.2672621138086617,
+      "SFT-Continued": 0.16992351724962665,
+      "SFT→BranchOnly": 0.14579755044225967,
+      "SFT→Listwise+PCGrad": 0.1041996748811799,
+      "SFT→Listwise-Full": 0.10871453096288833,
+      "SFT→NoFlip": 0.14579755044225967,
+      "SFT→Pairwise-Full": 0.12797953582935961
+    }
+  },
+  "ranking_by_scenario": {
+    "base": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "confirmation_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "confirmation_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "execution_cost_penalty_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "execution_cost_penalty_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "heldout_split_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "heldout_split_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "joint_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "joint_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "mechanism_transition_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "mechanism_transition_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "repair_protocol_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "repair_protocol_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "replicate_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "replicate_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "sample_precision_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "sample_precision_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "state_resolution_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "state_resolution_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "switch_failure_penalty_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "switch_failure_penalty_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "switch_success_bonus_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "switch_success_bonus_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "validity_gate_down": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ],
+    "validity_gate_up": [
+      "SFT→Listwise+PCGrad",
+      "SFT→Listwise-Full",
+      "SFT→Pairwise-Full",
+      "SFT→BranchOnly",
+      "SFT→NoFlip",
+      "SFT-Continued",
+      "SFT"
+    ]
+  },
+  "ranking_stable_by_scenario": {
+    "base": true,
+    "confirmation_bonus_down": true,
+    "confirmation_bonus_up": true,
+    "execution_cost_penalty_down": true,
+    "execution_cost_penalty_up": true,
+    "heldout_split_bonus_down": true,
+    "heldout_split_bonus_up": true,
+    "joint_down": true,
+    "joint_up": true,
+    "mechanism_transition_bonus_down": true,
+    "mechanism_transition_bonus_up": true,
+    "repair_protocol_bonus_down": true,
+    "repair_protocol_bonus_up": true,
+    "replicate_bonus_down": true,
+    "replicate_bonus_up": true,
+    "sample_precision_bonus_down": true,
+    "sample_precision_bonus_up": true,
+    "state_resolution_bonus_down": true,
+    "state_resolution_bonus_up": true,
+    "switch_failure_penalty_down": true,
+    "switch_failure_penalty_up": true,
+    "switch_success_bonus_down": true,
+    "switch_success_bonus_up": true,
+    "validity_gate_down": true,
+    "validity_gate_up": true
+  },
+  "schema_version": "pesco_tier1_p22_method_reward_sensitivity_v0.1"
+}

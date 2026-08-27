@@ -1,0 +1,53 @@
+{
+  "candidate_summary": {
+    "SFT": {
+      "mean_normalized_regret": 0.37546446781961645,
+      "mean_utility_winner_accuracy": 0.5375,
+      "question_cluster_count": 60,
+      "seed_count": 3
+    },
+    "SFT-Continued": {
+      "mean_normalized_regret": 0.31207849384701647,
+      "mean_utility_winner_accuracy": 0.5708333333333334,
+      "question_cluster_count": 60,
+      "seed_count": 3
+    },
+    "SFT→BranchOnly": {
+      "mean_normalized_regret": 0.28471146640678974,
+      "mean_utility_winner_accuracy": 0.6041666666666666,
+      "question_cluster_count": 60,
+      "seed_count": 3
+    },
+    "SFT→Listwise+PCGrad": {
+      "mean_normalized_regret": 0.23902518884235224,
+      "mean_utility_winner_accuracy": 0.6416666666666666,
+      "question_cluster_count": 60,
+      "seed_count": 3
+    },
+    "SFT→Listwise-Full": {
+      "mean_normalized_regret": 0.23902518884235224,
+      "mean_utility_winner_accuracy": 0.6416666666666666,
+      "question_cluster_count": 60,
+      "seed_count": 3
+    },
+    "SFT→NoFlip": {
+      "mean_normalized_regret": 0.28471146640678974,
+      "mean_utility_winner_accuracy": 0.6041666666666666,
+      "question_cluster_count": 60,
+      "seed_count": 3
+    },
+    "SFT→Pairwise-Full": {
+      "mean_normalized_regret": 0.27319022776881446,
+      "mean_utility_winner_accuracy": 0.6124999999999999,
+      "question_cluster_count": 60,
+      "seed_count": 3
+    }
+  },
+  "formal_comparison_authorized": false,
+  "promotion_metrics_used": false,
+  "schema_version": "pesco_tier1_p22_global_baseline_selection_v0.1",
+  "selected_baseline": "SFT→Listwise+PCGrad",
+  "selection_is_global_across_seeds": true,
+  "selection_split": "tune",
+  "status": "selected_for_diagnostic_promotion"
+}

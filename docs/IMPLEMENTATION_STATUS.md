@@ -1,6 +1,6 @@
 # PESCO 实现状态与逐项验收证据
 
-更新时间：2026-08-26。这里的“完成”仅表示当前 CPU/Tier 0/Tier 1 诊断实现已经有可运行代码和验证证据；不等同于计划中的 Tier 2 真实模型论文实验已经完成。
+更新时间：2026-08-27。这里的“完成”仅表示当前 CPU/Tier 0/Tier 1 诊断实现已经有可运行代码和验证证据；不等同于计划中的 Tier 2 真实模型论文实验已经完成。
 
 完整的机器可读覆盖边界见 [`implementation_manifest.json`](implementation_manifest.json)，可用 `python PESCO/scripts/audit_implementation.py` 校验所有证据路径。
 
@@ -20,9 +20,9 @@
 | R14 v0.4 base/extended | 已完成历史双轨 CPU 诊断，但现标记 `diagnostic_v04_consumed`；latent-template 重用及旧指标边界使其仅可作审计/调试，不作为 post-fix final | `artifacts/tier1_v04/consumption_notice.json`、`artifacts/tier1_v04_extended/consumption_notice.json`、`artifacts/tier1_v04_extended/tier1_v04_extended_go.json`、`artifacts/tier1_v04_extended/run_manifest.json`、`artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json` |
 | R15 P2/P3 | 旧 v0.4 P2（含 formal-final 与 v3 budget）均保留原始 NO-GO 并标记 `diagnostic_v04_consumed`；P3 继续 fail-closed，未执行 LoRA/QLoRA；P2.1 fresh/shortcut/algorithm diagnostics 已完成 | `artifacts/tier1_p2_v04_ten_seed/consumption_notice.json`、`artifacts/tier1_p2_v04_ten_seed_v3/consumption_notice.json`、`artifacts/tier1_p2_v04_formal_final_ten_seed/consumption_notice.json`、`artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json`、`artifacts/tier1_p21_algorithm_diagnostic/p21_algorithm_diagnostic.json`、`artifacts/tier1_p21_shortcut_probe/shortcut_probe_result.json`、`artifacts/tier1_p3_small_model_gate/small_model_gate.json` |
 | R16 zero-shot robustness | 单 checkpoint bounded robustness 仍 fail-closed；不把重复权重或未执行的 rotation/template forward 当作独立证据 | `artifacts/tier1_zero_shot_robustness_null_only.json`、`artifacts/tier1_zero_shot_robustness_null_only.run_manifest.json` |
-| R17 formal final-ID/OOD | v0.4 formal environment receipts 已留存但标记 `diagnostic_v04_consumed`；latent overlap 使其不是独立 clean final，formal model comparison 保持锁定；v0.5 structural boundary 已准备（私有 evaluator bundle 仅在受控工作区提供，不纳入公开 evidence），且 v0.5 baseline receipt 只允许在未打开 final 数据前的 dev split 选择 | `artifacts/tier1_v04_formal_final/consumption_notice.json`、`artifacts/tier1_v04_formal_final/formal_final_go.json`、`artifacts/tier1_v04_formal_final/whole_family_holdout_audit.json`、`artifacts/tier1_v05_frozen_final/v05_freeze_audit.json`、`artifacts/tier1_v05_frozen_final/freeze_receipt.json`、`artifacts/tier1_v05_frozen_final/evaluator_contract.json` |
+| R17 formal final-ID/OOD | v0.4 formal environment receipts 已留存但标记 `diagnostic_v04_consumed`；latent overlap 使其不是独立 clean final，formal model comparison 保持锁定；v0.5 structural boundary 已准备（私有 evaluator bundle 仅在受控工作区提供，不纳入公开 evidence），且 v0.5 baseline receipt 只允许在未打开 final 数据前的 dev split 选择 | `artifacts/tier1_v04_formal_final/consumption_notice.json`、`artifacts/tier1_v04_formal_final/formal_final_go.json`、`artifacts/tier1_v04_formal_final/whole_family_holdout_audit.json`、`artifacts/tier1_v05_frozen_final/v05_freeze_audit.json`、`artifacts/tier1_v05_frozen_final/freeze_receipt.json`、`artifacts/tier1_v05_frozen_final/evaluator_contract.json`、`research_strategy_optimization/evaluation/tier1_v06_frozen_final.py`、`artifacts/tier1_v06_public_leakage_audit.json`、`artifacts/tier1_v06_evaluator_private/private_boundary_audit.json` |
 | R18 P2.1 fresh/algorithm diagnostics | fresh train/tune/promotion diagnostic、counterfactual leakage、question-macro/seed×question/family-LOO、七方法比较、gradient-conflict、dynamic constraint/PCGrad 与 baseline-on-tune selection 均有独立 receipts；shortcut strict mode 在 sklearn 缺失时 fail-closed；保持 diagnostic-only | `artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json`、`artifacts/tier1_p21_diagnostic/collection_audit.json`、`artifacts/tier1_p21_diagnostic/counterfactual_leakage_audit.json`、`artifacts/tier1_p21_algorithm_diagnostic/p21_algorithm_diagnostic.json`、`artifacts/tier1_p21_algorithm_diagnostic/run_manifest.json`、`artifacts/tier1_p21_algorithm_diagnostic/shortcut_probe_strict/shortcut_probe_result.json`、`scripts/run_tier1_p21_diagnostics.py`、`scripts/run_tier1_p21_constrained.py`、`scripts/aggregate_tier1_p21_diagnostics.py` |
-| R19 shortcut/v0.5 freeze | Logistic/Random Forest/GBDT shortcut probes 已完成并显式标注 fallback；v0.5 final-ID/OOD 各 48 clusters、4 个新 OOD families、latent/generator signatures 与独立 evaluator contract 审计通过；baseline receipt 现在还必须绑定非空 dev 数据、实际 candidate-metrics 选择文件及可重算的四类文件 digest。clean commit/tag、算法/基线 freeze 和模型评测仍待完成（私有 evaluator bundle 不纳入公开 evidence） | `artifacts/tier1_p21_shortcut_probe/shortcut_probe_result.json`、`research_strategy_optimization/evaluation/shortcut_probes.py`、`artifacts/tier1_v05_frozen_final/signature_audit_summary.json`、`artifacts/tier1_v05_frozen_final/v05_freeze_audit.json`、`artifacts/tier1_v05_frozen_final/independent_audit.json`、`artifacts/tier1_v05_frozen_final/freeze_receipt.json`、`artifacts/tier1_v05_frozen_final/evaluator_contract.json`、`research_strategy_optimization/tests/test_tier1_v05_frozen_final.py` |
+| R19 shortcut/v0.5 freeze | Logistic/Random Forest/GBDT shortcut probes 已完成并显式标注 fallback；v0.5 final-ID/OOD 各 48 clusters、4 个新 OOD families、latent/generator signatures 与独立 evaluator contract 审计通过；baseline receipt 现在还必须绑定非空 dev 数据、实际 candidate-metrics 选择文件及可重算的四类文件 digest。P2.2 common-SFT screening 与 10-seed frozen matrix、功效分析、safety sensitivity、strict shortcut 与 v0.6 private boundary signature audit 均已执行；clean commit/tag、算法/基线 freeze 和模型评测仍待完成（私有 evaluator bundle 不纳入公开 evidence） | `artifacts/tier1_p21_shortcut_probe/shortcut_probe_result.json`、`research_strategy_optimization/evaluation/shortcut_probes.py`、`artifacts/tier1_v05_frozen_final/signature_audit_summary.json`、`artifacts/tier1_v05_frozen_final/v05_freeze_audit.json`、`artifacts/tier1_v05_frozen_final/independent_audit.json`、`artifacts/tier1_v05_frozen_final/freeze_receipt.json`、`artifacts/tier1_v05_frozen_final/evaluator_contract.json`、`research_strategy_optimization/tests/test_tier1_v05_frozen_final.py`、`artifacts/tier1_p22_screening_final_objective_v2/p22_matrix_result.json`、`artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_matrix_result.json`、`artifacts/tier1_p22_frozen_listwise_safety_10seed/p22_matrix_result.json`、`artifacts/tier1_p22_power_analysis/power_analysis.json`、`artifacts/tier1_p22_strict_shortcut/shortcut_probe_result.json`、`artifacts/tier1_v06_evaluator_private/private_boundary_audit.json` |
 
 ## 公平评分与实验 A–F 边界
 
@@ -67,6 +67,39 @@
 | P3 小模型/LLM | `NO-GO` / fail-closed | 不执行 LoRA/QLoRA、在线 RL 或 7B 评测 |
 
 ## 机器可读 pilot 结果
+
+### P2.2 与 final-boundary 更新
+
+v0.5 已被标记为 `final_boundary_rehearsal_consumed`（见
+`artifacts/tier1_v05_frozen_final/consumption_notice.json`），原因是其公开模块
+仍可重建 final recipes、latent formula、targets、IDs 与 seeds。新增的 v0.6
+公开接口不含这些字段，并由 `scripts/audit_public_final_leakage.py` 做仓库级
+fail-closed 审计。P2.2 的 common-SFT、canonical top-1 reversal、listwise/
+PCGrad、SFT utility floor、adaptive KL 与 entropy floor 结果写入
+`artifacts/tier1_p22_screening_final_objective_v2/`、
+`artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/` 和
+`artifacts/tier1_p22_strict_shortcut/`。六个 common-SFT 方法已完成当前目标
+下的 3-seed screening 与全方法 10-seed frozen validation，并保存了
+global tune-only baseline、梯度冲突、family-LOO、原子奖励敏感性和方法排名
+敏感性审计。全方法 10-seed 中 Pairwise-Full 的 normalized regret 为
+`0.12760`、Listwise+PCGrad 为 `0.13170`，二者的 regret-vs-SFT 和
+PairRank gate 均通过；但 canonical top-1 的 CI 仍跨 0，Pairwise-Full 还高于
+严格 Logistic `0.11168`（GBDT `0.18642`），而 Listwise+PCGrad 的错误修复率
+为 `0.0317`，相对 SFT/NoFlip 的 0 违反 safety noninferiority，所以 P2.2 gate 仍为 blocked。
+安全权重 `0.60` 的独立 10-seed Listwise+PCGrad 敏感性实验将错误修复率降到
+0，并保持 regret/PairRank/required-switch/confirmation 门禁，但 canonical
+top-1 CI 仍为 `[-0.03081, 0.01290]`，且 normalized regret `0.12970` 仍未优于
+严格 Logistic；因此该敏感性配置同样不晋级。v0.6 private commitment 已生成
+（80 clusters/320 worlds，5 个新 OOD families）并通过 repository-wide 泄漏
+审计；另有基于当前 question-level effect 的设计功效分析
+`artifacts/tier1_p22_power_analysis/power_analysis.json`，仅用于规划未来
+private-final 样本量，不构成正式推断。在该 gate 通过前不生成 v0.6 formal model evaluation，也不进入
+LoRA/7B/online RL。
+
+另外，保持其余超参数不变的 `top1_margin_weight=0.10/0.25` 三 seed
+筛选（见 `artifacts/tier1_p22_sweep_top1margin_0_10/` 与
+`artifacts/tier1_p22_sweep_top1margin_0_25/`）没有把 canonical top-1 的
+CI 推到 0 以上，因而没有擅自升级到 10-seed 或重新选择冻结配置。
 
 `mvp_gate.json` 当前应包含：
 

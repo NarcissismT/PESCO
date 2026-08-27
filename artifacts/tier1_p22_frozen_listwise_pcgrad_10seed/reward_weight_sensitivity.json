@@ -1,0 +1,182 @@
+{
+  "component_names": [
+    "confirmation_bonus",
+    "execution_cost_penalty",
+    "heldout_split_bonus",
+    "mechanism_transition_bonus",
+    "repair_protocol_bonus",
+    "replicate_bonus",
+    "sample_precision_bonus",
+    "state_resolution_bonus",
+    "switch_failure_penalty",
+    "switch_success_bonus",
+    "validity_gate"
+  ],
+  "delta": 0.2,
+  "formal_comparison_authorized": false,
+  "method_ranking_available": false,
+  "method_ranking_note": "P2.2 matrix stores evaluator metrics without per-action atomic receipts; this audit is structural and cannot authorize method-ranking claims.",
+  "scenarios": {
+    "confirmation_bonus_down": {
+      "changed_by_family": {
+        "group_leakage": 1
+      },
+      "changed_count": 1,
+      "row_count": 256,
+      "stability_rate": 0.99609375
+    },
+    "confirmation_bonus_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "execution_cost_penalty_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "execution_cost_penalty_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "heldout_split_bonus_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "heldout_split_bonus_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "joint_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "joint_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "mechanism_transition_bonus_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "mechanism_transition_bonus_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "repair_protocol_bonus_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "repair_protocol_bonus_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "replicate_bonus_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "replicate_bonus_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "sample_precision_bonus_down": {
+      "changed_by_family": {
+        "group_leakage": 1
+      },
+      "changed_count": 1,
+      "row_count": 256,
+      "stability_rate": 0.99609375
+    },
+    "sample_precision_bonus_up": {
+      "changed_by_family": {
+        "low_sample_variance": 1,
+        "protocol_drift": 1,
+        "replication_instability": 2
+      },
+      "changed_count": 4,
+      "row_count": 256,
+      "stability_rate": 0.984375
+    },
+    "state_resolution_bonus_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "state_resolution_bonus_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "switch_failure_penalty_down": {
+      "changed_by_family": {
+        "group_leakage": 1
+      },
+      "changed_count": 1,
+      "row_count": 256,
+      "stability_rate": 0.99609375
+    },
+    "switch_failure_penalty_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "switch_success_bonus_down": {
+      "changed_by_family": {
+        "low_sample_variance": 2,
+        "protocol_drift": 2,
+        "replication_instability": 2
+      },
+      "changed_count": 6,
+      "row_count": 256,
+      "stability_rate": 0.9765625
+    },
+    "switch_success_bonus_up": {
+      "changed_by_family": {
+        "group_leakage": 1
+      },
+      "changed_count": 1,
+      "row_count": 256,
+      "stability_rate": 0.99609375
+    },
+    "validity_gate_down": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    },
+    "validity_gate_up": {
+      "changed_by_family": {},
+      "changed_count": 0,
+      "row_count": 256,
+      "stability_rate": 1.0
+    }
+  },
+  "schema_version": "pesco_reward_weight_sensitivity_v0.1"
+}

@@ -1,0 +1,42 @@
+{
+  "design_only": true,
+  "final_evaluation_authorized": false,
+  "formal_comparison_authorized": false,
+  "note": "Run before any future private-final model evaluation; current v0.6 remains private and unevaluated because the P2.2 gate is blocked.",
+  "observed_pairrank_delta_mean": 0.09483519347495918,
+  "observed_question_clusters_per_seed": 20,
+  "observed_regret_delta_mean": -0.13157348976005498,
+  "projection_method": "question-level effect resampling; percentile planning approximation, not a formal inferential claim",
+  "projections": {
+    "100": {
+      "pairrank_ci_lower_above_zero_power": 1.0,
+      "projected_question_clusters": 100,
+      "regret_ci_upper_below_zero_power": 1.0
+    },
+    "20": {
+      "pairrank_ci_lower_above_zero_power": 1.0,
+      "projected_question_clusters": 20,
+      "regret_ci_upper_below_zero_power": 1.0
+    },
+    "40": {
+      "pairrank_ci_lower_above_zero_power": 1.0,
+      "projected_question_clusters": 40,
+      "regret_ci_upper_below_zero_power": 1.0
+    },
+    "60": {
+      "pairrank_ci_lower_above_zero_power": 1.0,
+      "projected_question_clusters": 60,
+      "regret_ci_upper_below_zero_power": 1.0
+    },
+    "80": {
+      "pairrank_ci_lower_above_zero_power": 1.0,
+      "projected_question_clusters": 80,
+      "regret_ci_upper_below_zero_power": 1.0
+    }
+  },
+  "replicates": 1000,
+  "schema_version": "pesco_tier1_p22_power_analysis_v0.1",
+  "seed": 911,
+  "source_stage": "frozen_10_seed",
+  "target_method": "SFT→Listwise+PCGrad"
+}

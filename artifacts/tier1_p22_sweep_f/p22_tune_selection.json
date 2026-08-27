@@ -1,0 +1,21 @@
+{
+  "schema_version": "pesco_tier1_p22_tune_selection_v0.1",
+  "status": "candidate_for_additional_frozen_validation",
+  "selection_split": "tune",
+  "selected_method": "SFT→Pairwise-Full",
+  "selected_config": {
+    "sft_steps": 32,
+    "finetune_steps": 96,
+    "batch_size": 8,
+    "hidden_dim": 32,
+    "learning_rate": 0.0005,
+    "pairwise_weight": 0.10,
+    "utility_temperature": 0.15,
+    "utility_target_weight": 1.0,
+    "branch_loss_weight": 0.10,
+    "entropy_floor": 0.70
+  },
+  "reason": "This configuration retained a large promotion improvement and selected-action confirmation above SFT in the bounded tune/screening run. Strict shortcut superiority and the PairRank CI gate remain to be tested on a frozen 10-seed matrix; promotion is not selected from this artifact.",
+  "promotion_formal_authorized": false,
+  "v06_final_authorized": false
+}

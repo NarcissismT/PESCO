@@ -14,6 +14,7 @@ import json
 import math
 import random
 import gc
+import copy
 from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
@@ -59,6 +60,7 @@ class P21Config:
     seed: int = 17
     pcgrad: bool = True
     max_pairs_per_question: int = 2
+    repair_safety_weight: float = 0.8
 
 
 def _rank_indices(values: Sequence[float]) -> List[int]:
@@ -357,12 +359,18 @@ def train_constrained_pesco(
         max_optimizer_steps=config.max_optimizer_steps,
         seed=config.seed,
     )
-    baseline, baseline_log = DifferentiableStrategyTrainer(trainer_config).fit(dataset, "PESCO-NoFlipLoss")
+    # P2.2 feedback requires the constrained candidate to start from the same
+    # public-winner SFT checkpoint as every other continuation method.  The prior
+    # diagnostic used a NoFlip reference and randomly reinitialized the constrained
+    # policy, which made its utility floor incomparable and allowed early collapse.
+    baseline, baseline_log = DifferentiableStrategyTrainer(trainer_config).fit(dataset, "SFT")
     baseline.eval()
     for parameter in baseline.parameters():
         parameter.requires_grad_(False)
-    policy = DifferentiableStrategyPolicy(seed=config.seed)
-    reference = policy.clone_frozen()
+    policy = copy.deepcopy(baseline)
+    for parameter in policy.parameters():
+        parameter.requires_grad_(True)
+    reference = baseline.clone_frozen()
     optimizer = torch.optim.Adam(policy.parameters(), lr=trainer_config.learning_rate)
     train = [example for example in dataset.examples if example.split == "train"] or list(dataset.examples)
     train_indices = {index for index, example in enumerate(dataset.examples) if example.split == "train"}
@@ -386,7 +394,10 @@ def train_constrained_pesco(
             features, utilities, _, _ = _stack_examples(
                 batch, torch.arange(len(batch), dtype=torch.long)
             )
-            current_prob = F.softmax(policy(features)["action_logits"], dim=-1)
+            policy_outputs = policy(features)
+            current_prob = F.softmax(policy_outputs["action_logits"], dim=-1)
+            non_invalid = (torch.tensor([example.state_target is not EvidenceState.INVALID for example in batch], dtype=current_prob.dtype) > 0).to(current_prob.dtype)
+            safety_loss = (current_prob[:, ACTION_SET.index(ResearchAction.REPAIR)] * non_invalid).mean()
             with torch.no_grad():
                 baseline_prob = F.softmax(baseline(features)["action_logits"], dim=-1)
                 baseline_expected = (baseline_prob * utilities).sum(dim=-1).mean()
@@ -406,6 +417,8 @@ def train_constrained_pesco(
                 denominator = torch.dot(branch_grad, branch_grad).clamp_min(1e-12)
                 projected_flip = flip_grad - torch.minimum(dot, torch.zeros_like(dot)) / denominator * branch_grad
                 combined = branch_grad + float(config.flip_weight) * projected_flip + float(trainer_config.state_loss_weight) * state_grad
+                safety_grad = _flat_gradients(safety_loss, parameters)
+                combined = combined + float(config.repair_safety_weight) * safety_grad
                 if float(lagrange) > 0.0:
                     constraint_grad = _flat_gradients(violation, parameters)
                     combined = combined + float(lagrange) * constraint_grad
@@ -418,7 +431,7 @@ def train_constrained_pesco(
                 torch.nn.utils.clip_grad_norm_(parameters, trainer_config.gradient_clip_norm)
                 optimizer.step()
             else:
-                total = branch_loss + float(config.flip_weight) * flip_loss + float(trainer_config.state_loss_weight) * state_loss + float(lagrange) * violation
+                total = branch_loss + float(config.flip_weight) * flip_loss + float(trainer_config.state_loss_weight) * state_loss + float(config.repair_safety_weight) * safety_loss + float(lagrange) * violation
                 optimizer.zero_grad(set_to_none=True)
                 total.backward()
                 torch.nn.utils.clip_grad_norm_(parameters, trainer_config.gradient_clip_norm)
@@ -432,6 +445,7 @@ def train_constrained_pesco(
                 "current_expected_utility": float(current_expected.detach()),
                 "baseline_expected_utility": float(baseline_expected.detach()),
                 "constraint_violation": float(violation.detach()),
+                "repair_safety_loss": float(safety_loss.detach()),
                 "lagrange": float(lagrange),
             })
             steps += 1
@@ -449,7 +463,7 @@ def train_constrained_pesco(
         "mean_cos_branch_flip": sum(row["cos_branch_flip"] for row in cosine_rows) / max(1, len(cosine_rows)),
         "mean_cos_state_flip": sum(row["cos_state_flip"] for row in cosine_rows) / max(1, len(cosine_rows)),
         "final_lagrange": lagrange,
-        "baseline_method": "PESCO-NoFlipLoss",
+        "baseline_method": "SFT",
         "baseline_optimizer_steps": baseline_log.optimizer_steps,
         "reversal_audit": reversal_audit,
         "train_reversal_count": len(pairs),

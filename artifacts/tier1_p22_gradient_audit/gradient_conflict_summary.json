@@ -1,0 +1,62 @@
+{
+  "batch_count": 24,
+  "by_seed": {
+    "17": {
+      "cos_grad_branch_flip": {
+        "count": 8,
+        "max": 0.3527776896953583,
+        "mean": 0.20517616474535316,
+        "min": -0.004630302079021931
+      },
+      "cos_grad_state_flip": {
+        "count": 8,
+        "max": 0.03530741482973099,
+        "mean": 0.010803657583892345,
+        "min": -0.022987160831689835
+      }
+    },
+    "23": {
+      "cos_grad_branch_flip": {
+        "count": 8,
+        "max": 0.36981698870658875,
+        "mean": 0.25962414243258536,
+        "min": 0.022968383505940437
+      },
+      "cos_grad_state_flip": {
+        "count": 8,
+        "max": 0.09337324649095535,
+        "mean": 0.04059513169340789,
+        "min": -0.02864915132522583
+      }
+    },
+    "29": {
+      "cos_grad_branch_flip": {
+        "count": 8,
+        "max": 0.3379760682582855,
+        "mean": 0.2573991622775793,
+        "min": 0.13260971009731293
+      },
+      "cos_grad_state_flip": {
+        "count": 8,
+        "max": 0.017377877607941628,
+        "mean": -0.007901262128143571,
+        "min": -0.02362392283976078
+      }
+    }
+  },
+  "formal_comparison_authorized": false,
+  "method": "SFT→Pairwise-Full",
+  "overall": {
+    "cos_grad_branch_flip": {
+      "max": 0.36981698870658875,
+      "mean": 0.2407331564851726,
+      "min": -0.004630302079021931
+    },
+    "cos_grad_state_flip": {
+      "max": 0.09337324649095535,
+      "mean": 0.014499175716385556,
+      "min": -0.02864915132522583
+    }
+  },
+  "schema_version": "pesco_tier1_p22_gradient_conflict_summary_v0.1"
+}

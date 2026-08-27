@@ -1,0 +1,41 @@
+{
+  "findings": [],
+  "forbidden_exports": [],
+  "passed": true,
+  "private_evaluator_required": true,
+  "schema_version": "pesco_public_final_leakage_audit_v0.1",
+  "status": "pass",
+  "tracked_public_file_count": 155,
+  "v05_consumption_notice_pass": true,
+  "v05_forbidden_exports": [],
+  "v05_public_contract": {
+    "formal_comparison_authorized": false,
+    "generator_available": false,
+    "public": false,
+    "reason": "v0.5 public source was reconstructible and is consumed",
+    "schema_version": "pesco_tier1_benchmark_v0.5_frozen_final",
+    "status": "final_boundary_rehearsal_consumed"
+  },
+  "v05_public_contract_pass": true,
+  "v05_status": "final_boundary_rehearsal_consumed",
+  "v06_public_contract": {
+    "public_excludes": [
+      "recipes",
+      "coefficients",
+      "latent_parameters",
+      "target_actions",
+      "world_ids",
+      "seeds",
+      "family_labels"
+    ],
+    "public_exposes": [
+      "split_counts",
+      "question_cluster_count",
+      "world_count",
+      "commitment_digest",
+      "evaluator_digest"
+    ],
+    "schema_version": "pesco_tier1_benchmark_v0.6_private_final",
+    "status": "private_evaluator_only"
+  }
+}

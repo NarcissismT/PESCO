@@ -1,0 +1,10 @@
+{
+  "schema_version": "pesco_final_boundary_consumption_notice_v0.1",
+  "artifact": "tier1_v05_frozen_final",
+  "status": "final_boundary_rehearsal_consumed",
+  "formal_comparison_authorized": false,
+  "model_evaluation_authorized": false,
+  "reason": "The public v0.5 module exposes generator recipes, coefficients, latent formulas, target mapping, IDs, and seeds; it is retained only as a boundary rehearsal and cannot serve as a paper final.",
+  "replacement": "tier1_v06_private_final",
+  "signed": false
+}

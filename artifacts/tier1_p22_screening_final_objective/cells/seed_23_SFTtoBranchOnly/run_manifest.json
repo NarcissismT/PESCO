@@ -1,0 +1,185 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/scripts/run_tier1_p22_diagnostics.py",
+      "--dataset",
+      "artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json",
+      "--output-dir",
+      "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/artifacts/tier1_p22_screening_final_objective/cells/seed_23_SFTtoBranchOnly",
+      "--seeds",
+      "23",
+      "--stage",
+      "screening",
+      "--sft-steps",
+      "32",
+      "--finetune-steps",
+      "96",
+      "--batch-size",
+      "8",
+      "--hidden-dim",
+      "32",
+      "--learning-rate",
+      "0.0005",
+      "--pairwise-weight",
+      "0.08",
+      "--listwise-weight",
+      "0.2",
+      "--entropy-floor",
+      "0.7",
+      "--utility-temperature",
+      "0.1",
+      "--utility-target-weight",
+      "1.0",
+      "--utility-hard-weight",
+      "0.12",
+      "--top1-margin-weight",
+      "0.0",
+      "--top1-margin",
+      "0.05",
+      "--branch-loss-weight",
+      "0.1",
+      "--repair-safety-weight",
+      "0.35",
+      "--top1-gap-threshold",
+      "0.05",
+      "--eval-splits",
+      "tune",
+      "promotion",
+      "--method",
+      "SFT→BranchOnly"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/scripts/run_tier1_p22_diagnostics.py --dataset artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json --output-dir /juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/artifacts/tier1_p22_screening_final_objective/cells/seed_23_SFTtoBranchOnly --seeds 23 --stage screening --sft-steps 32 --finetune-steps 96 --batch-size 8 --hidden-dim 32 --learning-rate 0.0005 --pairwise-weight 0.08 --listwise-weight 0.2 --entropy-floor 0.7 --utility-temperature 0.1 --utility-target-weight 1.0 --utility-hard-weight 0.12 --top1-margin-weight 0.0 --top1-margin 0.05 --branch-loss-weight 0.1 --repair-safety-weight 0.35 --top1-gap-threshold 0.05 --eval-splits tune promotion --method 'SFT→BranchOnly'"
+  },
+  "command_line": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/scripts/run_tier1_p22_diagnostics.py --dataset artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json --output-dir /juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO/artifacts/tier1_p22_screening_final_objective/cells/seed_23_SFTtoBranchOnly --seeds 23 --stage screening --sft-steps 32 --finetune-steps 96 --batch-size 8 --hidden-dim 32 --learning-rate 0.0005 --pairwise-weight 0.08 --listwise-weight 0.2 --entropy-floor 0.7 --utility-temperature 0.1 --utility-target-weight 1.0 --utility-hard-weight 0.12 --top1-margin-weight 0.0 --top1-margin 0.05 --branch-loss-weight 0.1 --repair-safety-weight 0.35 --top1-gap-threshold 0.05 --eval-splits tune promotion --method 'SFT→BranchOnly'",
+  "data": {
+    "available": true,
+    "digest": "sha256:6c62d4e6bddbaea14b91315e90c243601af58b31850709aa9a71ed1167830b11",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "artifacts/tier1_p21_diagnostic/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:06fcd4c7244ff5e2fae05f2ff494a6095822092a04d495819e5f0ca207495b7d",
+        "size_bytes": 12946561
+      }
+    ]
+  },
+  "data_digest": "sha256:6c62d4e6bddbaea14b91315e90c243601af58b31850709aa9a71ed1167830b11",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "common_sft_initialization": true,
+    "diagnostic_only": true,
+    "eval_splits": [
+      "tune",
+      "promotion"
+    ],
+    "final_evaluation_authorized": false,
+    "formal_comparison_authorized": false,
+    "methods": [
+      "SFT→BranchOnly"
+    ],
+    "reference_policy": "SFT",
+    "stage": "screening",
+    "utility_floor_reference": "SFT"
+  },
+  "experiment": "tier1_p22_common_sft_objective_diagnostic",
+  "generated_at_utc": "2026-08-27T11:05:22.292911+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "0b64a2e6037fd8c2da9c61f9647d4ad40211540e",
+    "status_available": true,
+    "status_digest": "sha256:21e2f528bb87f0d71c7b2cd80af67716e45b67c7f33311028dc4d469f52e61c7"
+  },
+  "git_sha": "0b64a2e6037fd8c2da9c61f9647d4ad40211540e",
+  "manifest_digest": "sha256:8c767539527f4085b4da453a614a79c1bb6ccd53b56a1aac985ec41b8a11f3cb",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      23
+    ],
+    "training": [
+      23
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:51758a6b7d423c309fb35d99401ba52bbcea65e7ec28a502599d7bbeda4b78d9",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p22_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:44b7624f7e1196db88b8dd2e7efa9d03570a07fae35e06d4dead73f14c78db23",
+        "size_bytes": 31128
+      },
+      {
+        "path": "scripts/run_tier1_p22_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:acf53ae9a2420effa89cb16c5f3af9f4cb85818420dcdcee98556f3b11a01ecb",
+        "size_bytes": 5168
+      }
+    ]
+  },
+  "source_digest": "sha256:51758a6b7d423c309fb35d99401ba52bbcea65e7ec28a502599d7bbeda4b78d9",
+  "status": "completed_diagnostic",
+  "training_seed": [
+    23
+  ]
+}

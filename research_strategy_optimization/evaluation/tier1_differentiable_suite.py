@@ -798,6 +798,7 @@ def evaluate_differentiable_policy(
     split: str,
     *,
     state_gate: bool = False,
+    retain_records: bool = True,
 ) -> dict:
     examples = [example for example in dataset.examples if example.split == split]
     if not examples:
@@ -921,7 +922,7 @@ def evaluate_differentiable_policy(
         state_predictions.append(STATE_SET.index(predicted_state))
         entropies.append(entropy)
         best_action_probabilities.append(float(probabilities[example.best_action.value]))
-        records.append({
+        full_record = {
             "question_id": example.question_id,
             "world_id": example.world_id,
             "split": split,
@@ -973,7 +974,21 @@ def evaluate_differentiable_policy(
             },
             "action_probabilities": probabilities,
             "entropy": entropy,
-        })
+        }
+        if retain_records:
+            records.append(full_record)
+        else:
+            # The evaluator still needs scalar rows for cluster bootstrap and
+            # confirmation denominators, but retaining every receipt/probability
+            # dictionary can consume nearly a gigabyte across a seed matrix.
+            records.append({
+                key: full_record[key]
+                for key in (
+                    "question_id", "world_id", "split", "selected_action", "action_correct", "utility_winner_correct",
+                    "audit_target_action_correct", "regret", "selected_confirmation_observed_n",
+                    "selected_confirmation_ineligible_n", "predicted_state", "true_state",
+                )
+            })
     # Only same-question pairs can contribute to the primary reversal statistic.
     # Cross-question pairs from legacy artifacts are retained for audit but excluded
     # here because they cannot receive a normalized within-question macro weight.

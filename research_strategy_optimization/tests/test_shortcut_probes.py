@@ -4,8 +4,10 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import numpy as np
+import research_strategy_optimization.evaluation.shortcut_probes as shortcut_module
 
 from research_strategy_optimization.evaluation.shortcut_probes import (
     ACTION_NAMES,
@@ -164,6 +166,20 @@ class ShortcutProbeTests(unittest.TestCase):
         self.assertTrue(result["split_boundary_pass"])
         metrics = result["models"]["all_raw:logistic_regression"]["metrics_by_split"]["diagnostic_ood"]
         self.assertEqual(metrics["question_cluster_count"], metrics["row_count"])
+
+    def test_requested_model_failure_is_fail_closed(self) -> None:
+        original = shortcut_module._make_model
+
+        def failing_model(name, *, seed, sklearn_modules):
+            if name == "random_forest":
+                raise RuntimeError("injected model failure")
+            return original(name, seed=seed, sklearn_modules=sklearn_modules)
+
+        with mock.patch.object(shortcut_module, "_make_model", side_effect=failing_model):
+            result = run_shortcut_probe(_toy_payload(), models=("logistic_regression", "random_forest"))
+        self.assertEqual(result["status"], "fail_closed_model_error")
+        self.assertIn("all_raw:random_forest", result["failed_models"])
+        self.assertFalse(result["formal_comparison_authorized"])
 
 
 if __name__ == "__main__":
