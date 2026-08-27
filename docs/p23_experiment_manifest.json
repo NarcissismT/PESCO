@@ -1,0 +1,33 @@
+{
+  "schema_version": "pesco_p23_experiment_manifest_v0.1",
+  "stage": "P2.3 common-protocol promotion-v2",
+  "status": "completed_diagnostic_gate_blocked",
+  "generator_version": "pesco_p23_promotion_v2_generator_20260827_r1",
+  "promotion_v2": {
+    "question_count": 304,
+    "world_count": 1216,
+    "counts_by_split": {"train": 160, "tune": 64, "promotion": 80},
+    "mechanism_family_count": 8,
+    "canonical_promotion_pairs": 75,
+    "canonical_promotion_question_clusters": 75,
+    "max_pairs_per_question": 1,
+    "dual_tracks": ["raw_evidence", "oracle_state"],
+    "counterfactual_leakage_audited_worlds": 1216,
+    "counterfactual_leakage_pass": true
+  },
+  "methods": ["Random", "Rule-Based", "SFT", "SFT-Continued", "DPO", "SimPO", "RLOO", "GRPO-Terminal", "GRPO-FourState", "GRPO-MatchedAtomic", "GRPO+State", "GRPO+Branch", "GRPO+Flip", "GRPO+Branch+Flip", "Search/Oracle"],
+  "artifacts": {
+    "raw_screening": "artifacts/tier1_p23_screening_raw/p23_matrix_result.json",
+    "oracle_screening": "artifacts/tier1_p23_screening_oracle/p23_matrix_result.json",
+    "raw_frozen_10seed": "artifacts/tier1_p23_frozen_raw_10seed/p23_matrix_result.json",
+    "strict_shortcut": "artifacts/tier1_p23_shortcut_probe/shortcut_probe_result.json",
+    "reward_stability": "artifacts/tier1_p23_frozen_raw_10seed/reward_stability.json",
+    "gate_receipt": "artifacts/tier1_p23_frozen_raw_10seed/p23_gate_receipt.json"
+  },
+  "gate_status": "NO_GO_REMAIN_P2_3",
+  "p3a_authorized": false,
+  "p3b_authorized": false,
+  "online_rl_authorized": false,
+  "new_formal_final_authorized": false,
+  "notes": "The fallback shortcut probe is diagnostic-only because sklearn is unavailable. The raw formal track did not satisfy the preregistered regret, PairRank, required-switch, family-LOO, or shortcut superiority gates."
+}

@@ -1,0 +1,52 @@
+{
+  "config": {
+    "adaptive_kl_gain": 0.5,
+    "base_kl_weight": 0.02,
+    "batch_size": 16,
+    "belief_weight": 0.08,
+    "bootstrap_replicates": 2000,
+    "branch_loss_weight": 0.25,
+    "constraint_weight": 0.1,
+    "dpo_beta": 0.1,
+    "entropy_floor": 0.55,
+    "entropy_floor_weight": 0.15,
+    "finetune_steps": 2,
+    "gradient_clip_norm": 5.0,
+    "group_size": 4,
+    "grpo_clip_high": 1.2,
+    "grpo_clip_low": 0.8,
+    "hidden_dim": 12,
+    "lagrange_learning_rate": 0.1,
+    "learning_rate": 0.002,
+    "listwise_weight": 0.65,
+    "max_pairs_per_question": 1,
+    "pairwise_weight": 0.35,
+    "repair_safety_weight": 0.0,
+    "seed": 17,
+    "sft_learning_rate": 0.003,
+    "sft_steps": 2,
+    "simpo_gamma": 0.2,
+    "state_weight": 0.2,
+    "target_kl": 0.05,
+    "top1_gap_threshold": 0.0,
+    "top1_margin": 0.05,
+    "top1_margin_weight": 0.0,
+    "use_atomic_reward": true,
+    "utility_floor_epsilon": 0.0,
+    "utility_hard_weight": 0.0,
+    "utility_target_weight": 1.0,
+    "utility_temperature": 0.25
+  },
+  "dataset": "artifacts/tier1_p23_promotion_v2/dataset_oracle_state.json",
+  "eval_splits": [
+    "tune",
+    "promotion"
+  ],
+  "methods": [
+    "RLOO"
+  ],
+  "seeds": [
+    29
+  ],
+  "stage": "screening"
+}

@@ -1,0 +1,100 @@
+{
+  "checks": {
+    "beats_available_shortcut_diagnostic": false,
+    "family_leave_one_out": false,
+    "global_reward_weight_plus_minus_20_stable": true,
+    "matrix_complete_10_seed": true,
+    "pairrank_vs_grpo_matched_atomic": false,
+    "regret_vs_frozen_baseline": false,
+    "regret_vs_grpo_matched_atomic": false,
+    "required_switch_better_than_sft_and_noflip": false,
+    "seed_direction_8_of_10": false,
+    "selected_action_safety_metrics_present": true,
+    "strict_logistic_gbdt_sklearn": false
+  },
+  "diagnostic_only": true,
+  "fallback_shortcut_diagnostic_best_normalized_regret": 0.16751455446171035,
+  "fallback_shortcut_formal_authorized": false,
+  "formal_final_opened": false,
+  "frozen_best_non_pesco": "Rule-Based",
+  "online_rl_authorized": false,
+  "p3a_authorized": false,
+  "p3b_authorized": false,
+  "schema_version": "pesco_tier1_p23_gate_receipt_v0.1",
+  "small_model_lora_authorized": false,
+  "status": "NO_GO_REMAIN_P2_3",
+  "strict_shortcut_status": "fail_closed_sklearn_unavailable",
+  "target_gate_statistics": {
+    "canonical_top1_delta_vs_grpo_matched_atomic_ci": {
+      "lower": 0.0,
+      "method": "two_layer_seed_then_question_bootstrap_percentile_95",
+      "point": 0.0,
+      "question_count": 80,
+      "replicates": 100,
+      "seed_count": 10,
+      "upper": 0.0
+    },
+    "canonical_top1_gate": false,
+    "family_leave_one_out_gate": false,
+    "family_leave_one_out_regret_delta_vs_grpo_matched_atomic": {
+      "all_better": false,
+      "max": 0.0,
+      "min": 0.0,
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "pairrank_delta_vs_grpo_matched_atomic_ci": {
+      "lower": 0.0,
+      "method": "two_layer_seed_then_question_bootstrap_percentile_95",
+      "point": 0.002253189953779167,
+      "question_count": 80,
+      "replicates": 100,
+      "seed_count": 10,
+      "upper": 0.005873388610780239
+    },
+    "pairrank_gate": false,
+    "regret_delta_vs_grpo_matched_atomic_ci": {
+      "lower": 0.0,
+      "method": "two_layer_seed_then_question_bootstrap_percentile_95",
+      "point": 0.0,
+      "question_count": 80,
+      "replicates": 100,
+      "seed_count": 10,
+      "upper": 0.0
+    },
+    "regret_delta_vs_sft_ci": {
+      "lower": -0.00983389187604189,
+      "method": "two_layer_seed_then_question_bootstrap_percentile_95",
+      "point": -0.0005727461069053614,
+      "question_count": 80,
+      "replicates": 100,
+      "seed_count": 10,
+      "upper": 0.0084198247641325
+    },
+    "regret_gate": false,
+    "regret_positive_seed_n_vs_sft": 1,
+    "regret_vs_grpo_matched_atomic_gate": false,
+    "required_switch_gate_vs_sft_and_noflip": false,
+    "required_switch_noflip": 0.2,
+    "required_switch_sft": 0.2,
+    "required_switch_target": 0.2
+  },
+  "target_method": "GRPO+Branch+Flip",
+  "target_summary": {
+    "confirmation_rate": 0.9311303657414314,
+    "erroneous_repair_rate": 0.2,
+    "mean_regret": 0.47011102477027134,
+    "pairrank_acc": 0.008852107757021574,
+    "required_switch_rate": 0.2,
+    "seed_count": 10,
+    "validity_rate": 0.76875
+  }
+}

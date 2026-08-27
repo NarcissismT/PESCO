@@ -101,6 +101,33 @@ LoRA/7B/online RL。
 `artifacts/tier1_p22_sweep_top1margin_0_25/`）没有把 canonical top-1 的
 CI 推到 0 以上，因而没有擅自升级到 10-seed 或重新选择冻结配置。
 
+### P2.3 common-protocol promotion-v2
+
+P2.2 promotion 与 v0.5 final rehearsal 均保持 consumed，不被修改算法后的结果
+重新当作 final。P2.3 新建独立 `promotion_v2` 生成器（`r1`），包含 8 个机制族、
+304 个问题（train/tune/promotion = 160/64/80）、1216 个问题-world、8+8
+exploration/confirmation seeds，以及双轨数据：`raw_evidence` 是正式算法轨，
+`oracle_state` 是结构化 state 上界诊断。canonical reversal 只保留每个问题一个
+top-candidate pair，并按问题归一化；promotion 上实际得到 75 对/75 个问题簇。
+未选择分支的反事实 latent 变化在 1216/1216 个世界上都保持决策前 observation
+hash 不变。
+
+统一矩阵已运行 Random、Rule-Based、SFT、SFT-Continued、DPO、SimPO、RLOO、
+GRPO-Terminal、GRPO-FourState、GRPO-MatchedAtomic、GRPO+State、GRPO+Branch、
+GRPO+Flip、GRPO+Branch+Flip 与 Search/Oracle；PESCO 的 Base/State/Branch/Flip/
+Branch+Flip 组件映射显式记录为 matched-atomic/state/branch/flip/branch+flip。
+3-seed screening 与 raw-evidence 10-seed frozen matrix 均完成；CI 使用 crossed
+seed×question bootstrap，并记录 family leave-one-out、selected-action confirmation、
+required-switch、erroneous-repair、validity 与 reward ±20% 稳定性。当前 raw formal
+track 的 P2.3 gate 仍为 `NO_GO_REMAIN_P2_3`：GRPO+Branch+Flip 相对 SFT 的
+regret CI 为 `[-0.00983, 0.00842]`，相对 matched atomic 的 CI 为 `[0, 0]`，
+PairRank 相对 matched atomic 的 CI 下界为 `0`，未满足严格正向门禁；其平均 regret
+也未优于 fallback shortcut 的 Random Forest（`0.1675`）。严格 sklearn Logistic/
+GBDT 在当前环境不可用，已生成 fail-closed artifact，不以 NumPy fallback 冒充正式
+shortcut 结论。oracle-state 上界轨显示组件可改善部分 regret/PairRank，但仍不能
+替代 raw-evidence formal gate。由于 P2.3 gate 未通过，P3a 小模型 LoRA、P3b 计划
+生成、在线 RL 与新的 formal final 均保持关闭。
+
 `mvp_gate.json` 当前应包含：
 
 ```json

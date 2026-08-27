@@ -1,0 +1,8 @@
+{
+  "schema_version": "pesco_consumption_notice_v0.1",
+  "artifact": "tier1_p22_frozen_listwise_pcgrad_10seed",
+  "status": "diagnostic_p22_consumed",
+  "reason": "The P2.2 frozen matrix is historical diagnostic evidence only; P2.3 is the current common-protocol promotion boundary.",
+  "superseded_by": "artifacts/tier1_p23_frozen_raw_10seed/p23_matrix_result.json",
+  "formal_comparison_authorized": false
+}

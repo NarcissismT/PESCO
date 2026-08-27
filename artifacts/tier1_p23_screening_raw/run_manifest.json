@@ -1,0 +1,422 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/aggregate_tier1_p23_cells.py",
+      "--output-dir",
+      "artifacts/tier1_p23_screening_raw",
+      "--stage",
+      "screening",
+      "--seeds",
+      "17",
+      "23",
+      "29",
+      "--methods",
+      "Random",
+      "Rule-Based",
+      "SFT-Continued",
+      "DPO",
+      "SimPO",
+      "RLOO",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "GRPO-MatchedAtomic",
+      "GRPO+State",
+      "GRPO+Branch",
+      "GRPO+Flip",
+      "GRPO+Branch+Flip",
+      "Search/Oracle"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/aggregate_tier1_p23_cells.py --output-dir artifacts/tier1_p23_screening_raw --stage screening --seeds 17 23 29 --methods Random Rule-Based SFT-Continued DPO SimPO RLOO GRPO-Terminal GRPO-FourState GRPO-MatchedAtomic GRPO+State GRPO+Branch GRPO+Flip GRPO+Branch+Flip Search/Oracle"
+  },
+  "command_line": "scripts/aggregate_tier1_p23_cells.py --output-dir artifacts/tier1_p23_screening_raw --stage screening --seeds 17 23 29 --methods Random Rule-Based SFT-Continued DPO SimPO RLOO GRPO-Terminal GRPO-FourState GRPO-MatchedAtomic GRPO+State GRPO+Branch GRPO+Flip GRPO+Branch+Flip Search/Oracle",
+  "data": {
+    "available": true,
+    "digest": "sha256:bf764c4460f50561aef723556b3eac7306e307902247246cb3f5d1c2e04c6ad7",
+    "file_count": 42,
+    "files": [
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e1e2dd1a46d805d3c0699840f9e173629972608b81689cca1dbc36382a818236",
+        "size_bytes": 688249
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:b189745fa1555d4b65abe8b7513b74b7ab97b9116a157c5fc6e3a4102e86918f",
+        "size_bytes": 686050
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:8a4d1229c69a8d30f8e661168b136c43269eb91c81dd89c5abb5e3b2266dc93b",
+        "size_bytes": 686439
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:654b3e7bb21db557f53b5d80fa49870bbc0a0e3abe2fc21b37b00cca8c154f1b",
+        "size_bytes": 686002
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:bca2192ca379d10c4da18769d121501a727a6696cc9405d7011bb38f7b88e062",
+        "size_bytes": 686049
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:eb506573e33f7dc24215c033fc198f3ca209e6035f8232e52a16b482237f23c6",
+        "size_bytes": 686135
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:8a84a2c83f7a7d947948d127968001067d1ebcbd89e6830648fb11894a238a62",
+        "size_bytes": 686017
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:a3275f00bb6271ef45f77d8e41ce874ab454ea521ccea26441284319cc724fd6",
+        "size_bytes": 686022
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:89ea51f8be88b0970be51fe464ecf5a1f34ffca2efbf061b868d0d3042682895",
+        "size_bytes": 685940
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:efbc16714056c78d4887a565a0d90ef365504ef9f0b78a594afb38161abec513",
+        "size_bytes": 574998
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f0d376b8163117bf17f1d8585bc799ddc37fbb060424d18b2f339632acbfe7f7",
+        "size_bytes": 575903
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:5cbc82a0e23a6e32148691c831b4f344ba6369340652d309a5b3b0ada2dfcdbd",
+        "size_bytes": 687112
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:de27bcd30142d405ed97db710d64db9225edae63aebc44d56cd80af58b688aa4",
+        "size_bytes": 561900
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_17_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:b243d1412531bb4dcdabc2530d01583f3c4996938715707503cba78aa2168020",
+        "size_bytes": 688260
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2464961b7dc09c94a1620d53a367f5bb4ab3ba8594fd08ed6d046cbd64bfec94",
+        "size_bytes": 684720
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:23271426540fa03d740dce1b8ab393d96ddaf64d171c9b3fb129ef5e246becad",
+        "size_bytes": 685847
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:6a1238190cde271d2f69b55faeeccc21e075e0ae2b89401438be1a9bbf2716b5",
+        "size_bytes": 686228
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0e63286da8c26372736a88bbf6c7c7c8bb450f43c7ee4ac649b3ee3c4e1a99dc",
+        "size_bytes": 685791
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c6379fb4abc2ff16f757f8237e72b9f8de47c437c5340cb8e5b17037d73367bc",
+        "size_bytes": 685854
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3b7b649b0779dc6c2afc3856ac0095cc982b5162fa38ef10c228ee513939f545",
+        "size_bytes": 685936
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:057f04028a2a7ab493f2a12b8892f42b594b6d819afb57781d3cfa5a48433848",
+        "size_bytes": 685818
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:b1907c36458a5f3905ebe9b2340df2f465f9fd49902c7d3f5564247368e3b258",
+        "size_bytes": 685819
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:269c4e24001e5a99b299b7d36cc23eadfb20c1a01075241863b317667e6c192b",
+        "size_bytes": 685729
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:4fcb6f137f533aa105c326bec12f14aaf63cf061d75db2a4a89163eb1c86dd2c",
+        "size_bytes": 575505
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:719571248ab934c9ab5176679f0675e32cc6bb7f528a56f3a479dedb07d01b3f",
+        "size_bytes": 575849
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:addf66b253dd55192f0b591d8bbaccc9b14f9ae5ac75fc6c5d88781fea6d793e",
+        "size_bytes": 686325
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:227bb52999a0c3864e42ce3290f9accb007912381343d8695fc96cdb2d5e715f",
+        "size_bytes": 561846
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_23_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:70899fed79af316e69afe5890ed9009fad9ff9e828e378fa6fe985232751725c",
+        "size_bytes": 684627
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:6f3725287fc168d9d773d2ba157f3324fbcb52398906ebf63c2e64460108b450",
+        "size_bytes": 682125
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:50a82b9c5764cdd4317185d51bd66fe62c990b5f19c3b630391c665e676602d7",
+        "size_bytes": 686046
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:7f9c8c2e08a7b13265423bef86da283465059b172489a9abc5dd223a4a313776",
+        "size_bytes": 686433
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:dc927c3f2198d5117d5a8118b37af71011db9cbd744bdb99e26354a93723a4c4",
+        "size_bytes": 685959
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:9c8aa18517cf3ca74a2e9e059f18a13dbb8f284f83b05343e0fcd50e4d4061b6",
+        "size_bytes": 686000
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:902d018153ea8f935cb4cc65bd831437727193590ef104d0e85df79b08bca8dd",
+        "size_bytes": 686086
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:aa72b40fb2ff15cc93d23a2261e0577fb827103769398bce80e57455646c2788",
+        "size_bytes": 685964
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:26ea4e07d7d52a7df2a1fe9b82bd6a07c82e821ff00096bc3ccc801d9fb464cf",
+        "size_bytes": 685996
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:a6ef20d17b7123bad9250dfbd266d9d0ded900b0393274d54dc2a6b7578f8119",
+        "size_bytes": 685879
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e41b4880cb2839504f6aee1befb03f2eb59b962dec1cffd3b3345a15533a7de4",
+        "size_bytes": 574027
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e9cfabd3c4ad23c82dd13fd1c9fc2362443ab0b8d4b678cc73215a7a4e42935d",
+        "size_bytes": 574383
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e6b78b2cc406d1a9da18b8f413950491c15edae426ea8b1c78f301ae84933cce",
+        "size_bytes": 684020
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:78a84c67103f15cc6b9bd741012d7aa47a04b7b599ee18ce847b6dcd27422a93",
+        "size_bytes": 560380
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_raw/cells/seed_29_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:732631c2bcba50e906c6de9b164f72172e10a47dc793db279d260866a2a28d2e",
+        "size_bytes": 684909
+      }
+    ]
+  },
+  "data_digest": "sha256:bf764c4460f50561aef723556b3eac7306e307902247246cb3f5d1c2e04c6ad7",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "cell_failures": 0,
+    "common_sft_initialization": true,
+    "formal_comparison_authorized": false,
+    "matrix_complete": true,
+    "methods": [
+      "Random",
+      "Rule-Based",
+      "SFT-Continued",
+      "DPO",
+      "SimPO",
+      "RLOO",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "GRPO-MatchedAtomic",
+      "GRPO+State",
+      "GRPO+Branch",
+      "GRPO+Flip",
+      "GRPO+Branch+Flip",
+      "Search/Oracle"
+    ],
+    "stage": "screening"
+  },
+  "experiment": "tier1_p23_common_protocol_matrix",
+  "generated_at_utc": "2026-08-27T14:42:11.314455+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+    "status_available": true,
+    "status_digest": "sha256:f9d4179ee9bd9fdc0d74d0155e2cf5b638c98510d88767092bfba73dbf57794d"
+  },
+  "git_sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+  "manifest_digest": "sha256:d3eb58922d7c1277f6cfcf97ec7d00b173d9d0e02c025321f084798e60680b9b",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      23,
+      29
+    ],
+    "training": [
+      17,
+      23,
+      29
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:95d99fd664d47150b456b0da23307b697546a8eae5c7db20d3a52b4e993aa914",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p23_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:4d134e701a8d31ce138c51abc139e3b617384a4063f29d867bf24323fb5dace9",
+        "size_bytes": 30201
+      },
+      {
+        "path": "scripts/aggregate_tier1_p23_cells.py",
+        "role": "source",
+        "sha256": "sha256:e85782ebd53aa19411734d8893418b83734ec7dbaa245248d9550531e0fb72c7",
+        "size_bytes": 3716
+      }
+    ]
+  },
+  "source_digest": "sha256:95d99fd664d47150b456b0da23307b697546a8eae5c7db20d3a52b4e993aa914",
+  "status": "completed_diagnostic",
+  "training_seed": [
+    17,
+    23,
+    29
+  ]
+}

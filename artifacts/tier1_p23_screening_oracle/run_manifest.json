@@ -1,0 +1,424 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/aggregate_tier1_p23_cells.py",
+      "--output-dir",
+      "artifacts/tier1_p23_screening_oracle",
+      "--stage",
+      "screening",
+      "--seeds",
+      "17",
+      "23",
+      "29",
+      "--methods",
+      "Random",
+      "Rule-Based",
+      "SFT-Continued",
+      "DPO",
+      "SimPO",
+      "RLOO",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "GRPO-MatchedAtomic",
+      "GRPO+State",
+      "GRPO+Branch",
+      "GRPO+Flip",
+      "GRPO+Branch+Flip",
+      "Search/Oracle",
+      "--bootstrap-replicates",
+      "100"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/aggregate_tier1_p23_cells.py --output-dir artifacts/tier1_p23_screening_oracle --stage screening --seeds 17 23 29 --methods Random Rule-Based SFT-Continued DPO SimPO RLOO GRPO-Terminal GRPO-FourState GRPO-MatchedAtomic GRPO+State GRPO+Branch GRPO+Flip GRPO+Branch+Flip Search/Oracle --bootstrap-replicates 100"
+  },
+  "command_line": "scripts/aggregate_tier1_p23_cells.py --output-dir artifacts/tier1_p23_screening_oracle --stage screening --seeds 17 23 29 --methods Random Rule-Based SFT-Continued DPO SimPO RLOO GRPO-Terminal GRPO-FourState GRPO-MatchedAtomic GRPO+State GRPO+Branch GRPO+Flip GRPO+Branch+Flip Search/Oracle --bootstrap-replicates 100",
+  "data": {
+    "available": true,
+    "digest": "sha256:09cf9609985740edb663481f3d8d4f875bb038c505b1640290b9e7841603155c",
+    "file_count": 42,
+    "files": [
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:6fe8fd075b579fbda85e95a4b75b9295f9a6c8c9fbcfb2183c3cba22ae52f3cf",
+        "size_bytes": 687221
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:cdb63ce418540a7c6e5c6fc438fa4a356c83ae77ca621555f7e57dcbd99a738d",
+        "size_bytes": 676299
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ab28f290e07ded1de1ff9db2f5b1ce745ce15a8019960782afda7d47c2046216",
+        "size_bytes": 688016
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:76edae729bb11cd3547f8756d45712347f87787cf2883a805fdb772dc143160b",
+        "size_bytes": 687563
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:46bb2fbaa94142cf16f5c0f3c29d41f31b2929b608f684e437327f59303e83b5",
+        "size_bytes": 676287
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:524df727b0b32c338b450302c58cf83c4e0b1c95616747022d28404e91666ced",
+        "size_bytes": 687898
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:95e2d8b45880333a0f35bd82ad484e8e8b11d5b7a5a1a671dd67323736034cec",
+        "size_bytes": 676264
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:45415ec7cc0400c4711a5868943065bf7f5e180e0713a8ffa563acd02d2a3d8e",
+        "size_bytes": 676271
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:7ef639b18f7877e1c83cd70b542ce127c84347f8e9afc831ebf1c01097b80072",
+        "size_bytes": 676207
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:274f9a44fda152a3a7b53f709d863dc4868164e5b38d2abbba9021efafd4fcf8",
+        "size_bytes": 575082
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:33b6ad4cbfc0fe2a8e9400fc4fa10e89516624a343331aea6f8eb025002df54d",
+        "size_bytes": 574791
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:b4122bccb74542f8c22ff13f3043e7510aa189fc555df3bcfacd4253befb0397",
+        "size_bytes": 690182
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:6ce4b0f918f28170ab758c00c0a95caedef0bb3433a671bdeb8a734fb35de3c4",
+        "size_bytes": 557229
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_17_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e3386baf9f3276b3027244a1a7b1abb06f431e17973b10b9394cef97584b8f0b",
+        "size_bytes": 675235
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:aed6af6e2a472c210d8b4e224d1ec4c571358a9c2540a9491d30c60b7be55419",
+        "size_bytes": 684528
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:88c4311b1c75b47e8d5795f6cb33d72f0ac4a604948b954e89eb8470af8c7e44",
+        "size_bytes": 677525
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1b5d58339fcf1b7eb882020bf1e18c83db2d978599520ad6723c942657e31714",
+        "size_bytes": 686466
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:45a197842a16c8308b7381c9b82f6dccebdcd629a7e01185e1ecf0baeb61794b",
+        "size_bytes": 686029
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ea7ef7f6fe0495bb1f94578f1678e4dcccab9e7c3f97c7f9f6a2e0d1d44b016d",
+        "size_bytes": 677538
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:8d329197036b072608bf7c3c2b74049d66e0111f910bb5039d467faa2add923a",
+        "size_bytes": 686176
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:eff81a807c39bc4bef2d0ebfe2251cf0cf0e0212a44f21628c0f721ed909b8f9",
+        "size_bytes": 677512
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c99353417bb5e89fd601da2eeedd4c66de6e05eac632f84300ee5c9f1a592dbc",
+        "size_bytes": 677497
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:67f68c27d436738adaaf2cb09a0c1cf56794ef76c3086a504acacd146b6898c3",
+        "size_bytes": 677457
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ddce2bc7a466c10ec6eb48850361c392a1a21e1f7f17fe771d90fef66d9e4d32",
+        "size_bytes": 575624
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1c611ffd9d668170a44e6cc2d689019d52019a12b0baa80e4d27dfc4327b9c30",
+        "size_bytes": 574772
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:cbcede94e0290177d56270b429a271f817c52c35b2049dadb049ea70d565ee9e",
+        "size_bytes": 689164
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:94dc378c32ee5c43f74fece1416426cd007603d92bb02ff36a32539d9273870a",
+        "size_bytes": 558088
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_23_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e4ed28286c8c02dc9bf334120d7cc0a45d77ae66dc845da4fb2f7537639d8fae",
+        "size_bytes": 676836
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:4c6077ec4459855b97e0a8abe01670a6511a0370bb6d39124bb0d75a006d46dc",
+        "size_bytes": 681271
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:466cafa41544762bc9d5d6d703e00545ea2ff4352b6bacec9dcbfefe5a519bc6",
+        "size_bytes": 677852
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:bb5bd4dca918fda66f3c7101568bb549b46ca37420ef30fe7dd1aa0f0e16cb86",
+        "size_bytes": 685021
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3a71ebeb54346052704118eec02a527ddf5477ba2a75da1d983214a008b3fe6a",
+        "size_bytes": 684548
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1af5dd2687d4e88ace4a5174846e09adceca82b6f5082e934702abc4ae255ae7",
+        "size_bytes": 677785
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c4be7945b07b91cafca35293ca5a56e0edbc8abb126e27f2a70ac7accdf3fe85",
+        "size_bytes": 684572
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:40d5ae398e83d86416e76841f6677511b34fe33fe03fd8e526585b36b1ed21af",
+        "size_bytes": 677955
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c68d4ba70ab854f23dcd7fac9bbdca567a23f9b43e7605a52cdcd53eb2272359",
+        "size_bytes": 677802
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:a6345ff4291f655c8a47a3ae417e7e6903237668fe750e4b62d5966d3dab8e72",
+        "size_bytes": 677810
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:9dd3950380cb226520f96d7864ed648d72d82a10d32a1fcc3b34942597cebd58",
+        "size_bytes": 573185
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:95279d0a78c1d4411b3b96d0cf38323c630f04b38bf6630bf8d0953adb1be66e",
+        "size_bytes": 572342
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:55b8d94444cdf208befc0b8950a97d0ae2a1dad9fa19ddd54e4e564fb14bd8ae",
+        "size_bytes": 681319
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:52f070a6433ec738aff96257e3c60baa69f96740338f230b5105a609f442cefd",
+        "size_bytes": 558874
+      },
+      {
+        "path": "artifacts/tier1_p23_screening_oracle/cells/seed_29_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:440fc53cb9f028eaad4f8f834d1893860b0318269a30b8520cc64240ba92a2bc",
+        "size_bytes": 679043
+      }
+    ]
+  },
+  "data_digest": "sha256:09cf9609985740edb663481f3d8d4f875bb038c505b1640290b9e7841603155c",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "cell_failures": 0,
+    "common_sft_initialization": true,
+    "formal_comparison_authorized": false,
+    "matrix_complete": true,
+    "methods": [
+      "Random",
+      "Rule-Based",
+      "SFT-Continued",
+      "DPO",
+      "SimPO",
+      "RLOO",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "GRPO-MatchedAtomic",
+      "GRPO+State",
+      "GRPO+Branch",
+      "GRPO+Flip",
+      "GRPO+Branch+Flip",
+      "Search/Oracle"
+    ],
+    "stage": "screening"
+  },
+  "experiment": "tier1_p23_common_protocol_matrix",
+  "generated_at_utc": "2026-08-27T15:10:25.216786+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+    "status_available": true,
+    "status_digest": "sha256:50d9127cbc68c4c611b45b974de5e0da3ba176c2001ed8c2fbe2fe24d255a3de"
+  },
+  "git_sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+  "manifest_digest": "sha256:4e9c12e63445777cea484d9f2bfb18b9ab3615ad2f5755385ecd94c731942be6",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      23,
+      29
+    ],
+    "training": [
+      17,
+      23,
+      29
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:6af0eba666915a46ebaf6d6a07f141c07b6cf45d62790685152e92393407a825",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p23_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:82f42be34e0fa8b9dde934e1b9305ba585d11564ca9fe1fb071d6552ccec3d37",
+        "size_bytes": 30299
+      },
+      {
+        "path": "scripts/aggregate_tier1_p23_cells.py",
+        "role": "source",
+        "sha256": "sha256:710da8f86387c02a20ec4a2c66ecb517c74fc42b1a9bf6c3f9b8e3b943e1df02",
+        "size_bytes": 3903
+      }
+    ]
+  },
+  "source_digest": "sha256:6af0eba666915a46ebaf6d6a07f141c07b6cf45d62790685152e92393407a825",
+  "status": "completed_diagnostic",
+  "training_seed": [
+    17,
+    23,
+    29
+  ]
+}

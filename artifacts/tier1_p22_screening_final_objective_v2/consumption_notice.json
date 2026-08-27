@@ -1,0 +1,8 @@
+{
+  "schema_version": "pesco_consumption_notice_v0.1",
+  "artifact": "tier1_p22_screening_final_objective_v2",
+  "status": "diagnostic_p22_consumed",
+  "reason": "P2.3 promotion-v2 uses an independent generator, split, and common protocol; this P2.2 diagnostic is retained for audit and must not be reused as a final comparison after algorithm changes.",
+  "superseded_by": "artifacts/tier1_p23_promotion_v2/p23_promotion_v2_collection.json",
+  "formal_comparison_authorized": false
+}

@@ -1,0 +1,1040 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/aggregate_tier1_p23_cells.py",
+      "--output-dir",
+      "artifacts/tier1_p23_frozen_raw_10seed",
+      "--stage",
+      "frozen_10_seed",
+      "--seeds",
+      "17",
+      "23",
+      "29",
+      "31",
+      "37",
+      "43",
+      "47",
+      "53",
+      "59",
+      "61",
+      "--methods",
+      "Random",
+      "Rule-Based",
+      "SFT-Continued",
+      "DPO",
+      "SimPO",
+      "RLOO",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "GRPO-MatchedAtomic",
+      "GRPO+State",
+      "GRPO+Branch",
+      "GRPO+Flip",
+      "GRPO+Branch+Flip",
+      "Search/Oracle",
+      "--bootstrap-replicates",
+      "100"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/aggregate_tier1_p23_cells.py --output-dir artifacts/tier1_p23_frozen_raw_10seed --stage frozen_10_seed --seeds 17 23 29 31 37 43 47 53 59 61 --methods Random Rule-Based SFT-Continued DPO SimPO RLOO GRPO-Terminal GRPO-FourState GRPO-MatchedAtomic GRPO+State GRPO+Branch GRPO+Flip GRPO+Branch+Flip Search/Oracle --bootstrap-replicates 100"
+  },
+  "command_line": "scripts/aggregate_tier1_p23_cells.py --output-dir artifacts/tier1_p23_frozen_raw_10seed --stage frozen_10_seed --seeds 17 23 29 31 37 43 47 53 59 61 --methods Random Rule-Based SFT-Continued DPO SimPO RLOO GRPO-Terminal GRPO-FourState GRPO-MatchedAtomic GRPO+State GRPO+Branch GRPO+Flip GRPO+Branch+Flip Search/Oracle --bootstrap-replicates 100",
+  "data": {
+    "available": true,
+    "digest": "sha256:dc7ff8f4fc85b6277bdd66903f85afbd796ff2629a9f185bfd0895f6b08701c8",
+    "file_count": 140,
+    "files": [
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:eba05ebc591f18329546926a155cd9db8247861f889ab3735de0b8738577a3c2",
+        "size_bytes": 383195
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e3b737d13ac36ee37c8f0a6eaec3ab7d950d5a5db0a0dd350f3ff534e837276c",
+        "size_bytes": 383219
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:6fcc6159ca2eae1642479af458738878296e396c4bda5c82ee98ad0d0574a41f",
+        "size_bytes": 383629
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:08b777552dcb2112a9586a231abd156b8bbb953fb130eff67c2a9ced3f974014",
+        "size_bytes": 383186
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c2c70b0d272bcda3f2adefaf7399d15752021cb00153c76ea71899623f5d6492",
+        "size_bytes": 383211
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:a36972136a2f1c553ba9358f2aacb2a59bbf28fa4032567901aae78f403f7108",
+        "size_bytes": 383265
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1ea32c8c8737acfe8cb3c7b3a91101a375588d09ec184ec81010ee6ecd10694e",
+        "size_bytes": 383191
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3e89ea737a888e1d6d15e4291f1dc1e64a32fcaeeed7e6faf235510ac15e3d2d",
+        "size_bytes": 383195
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:6d1fabfa0b7512d8b1b7e678adfad2d045df83edf52ba381e824efaf9e0bf4f8",
+        "size_bytes": 383133
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:95e5e04ae86bb761f878de8a5b88a67b68b2914d6fdc094129f6839c12a58271",
+        "size_bytes": 324595
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:90289f28e64823727e1762ef04d7a9654f5254c9c6530d1abb89d677d89dc63a",
+        "size_bytes": 324937
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c699e442e7323902f67c2d7edb6f86b25b13c3fa1009759b69d0e27de3acf351",
+        "size_bytes": 384081
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:27faca19b9247fe986996593cdd3be3ddb1c204427ca9b23b5cd2abeaa1f4651",
+        "size_bytes": 317287
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_17_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3fb257108f67ecc7e837d73187e589fc0898b553f01df6f65afae801ee370228",
+        "size_bytes": 384383
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1a58c13d584ae5794b4fc28772ec62fb9c63e43cf2cf8db45b933d204d85d3cd",
+        "size_bytes": 382827
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2f95d298fd613558c0b946d91dbb43f82c2584e499d27f171e5e2b1e4b0bd762",
+        "size_bytes": 383399
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:700c21c83f9f5c28a87c4356f640a7b5077ec15830d4dff5759ccee9437c6c2e",
+        "size_bytes": 383829
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:73ce55f7852f52c067a5c2ff510a4cff2cd6d5f83a16c75e981f0540717ef41c",
+        "size_bytes": 383369
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:46db226a15fe17178ec0efa098997509dac11dfa7538ccbe90564b788674098d",
+        "size_bytes": 383390
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f19567c32614ce2b1dea02f3e0cc4be9c3e7eaeab6bb951cc6b137060f939ca4",
+        "size_bytes": 383444
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:374f60aa3e47cef51e33c284e956a9f0ce7fec6ee93379a9d00bd145b09200c7",
+        "size_bytes": 383366
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0fc058456544d0093631e5bf597df6310314132ad64fad4fadecefdde34ad008",
+        "size_bytes": 383375
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2ee70953a8ef89be40d18be385f93b00d9d6606c4c1ea876160ff18bf49cfd6d",
+        "size_bytes": 383316
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:d9cf07785a5067ea0150bcd92a007b70c70b343f3e1415ec587f5a68607c2ed3",
+        "size_bytes": 324919
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:815a2a154db03c05cdef976703c7f81c7f3269a3b0e8ffb02324d19e576236bc",
+        "size_bytes": 324937
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:4a6d9968f4b130dc86fab826c428e7b1b0b9a0ff34d7f87ea6afd0f4fc034207",
+        "size_bytes": 383704
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:56a59b1dcece280812be496c3a816f72bfeae111bc3da144842e9805ef072293",
+        "size_bytes": 317287
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_23_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:6c89035ad56645aea9be1f860f3c27cab3b80f22438e0094d1040ab411e3e93f",
+        "size_bytes": 384220
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1bc43ec7e5f5fbc42ebf38df76d0d56001c8a586054369d122af6f8d5052b799",
+        "size_bytes": 383138
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:bdef9ae78d6b2c4c5ca0369e2895079553107d115a32de95c2044d601cdcc0d9",
+        "size_bytes": 384546
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ef5efe9b76c7b4045b7014cf1abbd64b168d57720d6990d290d1668478069505",
+        "size_bytes": 385208
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:b17474f813f068120ba2a1b470ea25b7c9171ab0323654d7f50d353593e3257f",
+        "size_bytes": 384765
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:43024c67ef6380aac3ecb48884faa43284e00db2525088994e68571bf59d21c0",
+        "size_bytes": 384792
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f6ccae46bc2c9e0d5be1b44b7389cff0068a0281281bb71f8ecfcf734c872d5f",
+        "size_bytes": 384884
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:06272f6539407dbf8e8465884d63ba5c072c9c34055470e9b1f219e2179eab79",
+        "size_bytes": 384771
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:94cfb937ac77db0ff5bc8a22e8e0728c1d25876d069d77c3e050309d2735d460",
+        "size_bytes": 384500
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:448034c6122587a9179970d59a0140c34fe9030c63341ecedf3f59fcc8d1ce3d",
+        "size_bytes": 384694
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e44875305b63f1435e87fe61fbead86f443230a377368bb8b226bd64c3501edb",
+        "size_bytes": 325299
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:8d6f4468c0648da2583e06ed1dbceba2882e6dfa3da1b5e06f848482269b759f",
+        "size_bytes": 325143
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:37bd73c0b5e21bc068db4cf89d68de7c15dc12902ea25d6585136ab17fa770d6",
+        "size_bytes": 385065
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:9ab2ffbbd487abaf267165deff07a298f008e94e832d67d3282a233e7e49240f",
+        "size_bytes": 317493
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_29_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0eb6ae993ac391e6eb3b2b0888f31856680508aca9118ec4a3c92aa7d6182fd9",
+        "size_bytes": 383110
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0b25df683c116255b2a1ed3a0c0c3c1fb5f301c2c7e94328180b26ab29170db5",
+        "size_bytes": 388272
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f491bedb2fbb1d6aca5760595da14b068f677728910ab040a9315d8631d2bf55",
+        "size_bytes": 388843
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:4158c3b4830193d4fb1f744df3c90bfc4465e3722047372b1906284c2a86c2ac",
+        "size_bytes": 389244
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ccdc499309a56617960557037e46a58231bcaa66975d685ea5d139b8ce3049fb",
+        "size_bytes": 388810
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f14995a60871ec79df590ebf480536abf6a0f5463a6a8d11ef5030e6c9a3cc5b",
+        "size_bytes": 388832
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:b0ebaae165289b117f553011dda8557ee3eefca9be404d55f62a6ed193a8c7f0",
+        "size_bytes": 388889
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0108dd53e4d29c0c8991c430560df038616be38ceae551ff3dc38085dd951594",
+        "size_bytes": 388811
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1f8d21278ed518092f7ac476b88c233266b2a1caa956eccf0f1a526840fc4bc4",
+        "size_bytes": 388819
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:80dd33b7ffaba6c9f23410b03f94eb15b8f0bc09c2f9c0c16c6cf430b71c5408",
+        "size_bytes": 388757
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:5cca427e26cc04dd5fedf903e12d25a62b026247ae2b996ef4dad82266281213",
+        "size_bytes": 327440
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0933c77708075a588f2136f9b5dc577e57296f3d259e69edd5aa0e67d94eed87",
+        "size_bytes": 327747
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c22f1e3fbfa54f28563b221817a5150b225490d9f28816f8ca17f46d4a24c4c0",
+        "size_bytes": 389395
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:7fb4827a1fd86976f6ba178c2f9c1121ce544a36f94c9d435424870295c9765a",
+        "size_bytes": 320097
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_31_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:d3223d71278d35692c787af89acc2107e404ffbd1449393d4ca90b614dd920d5",
+        "size_bytes": 388285
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c9f77bd2cbbfff108e627342bab4ffe47a7a906c0749b78c271f50ea1b85b69d",
+        "size_bytes": 384613
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:da3601080b17c0509af219bcd64c7aa162a27ffb1c76113f7bf36c1c9684e6bb",
+        "size_bytes": 383820
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:cb18e248258e0bde0668d70c07596e659ab9516e642142695372c38934601650",
+        "size_bytes": 384408
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:388f6e64a46ed03219d1791a2661977442ef2b2c9b4b9375d121177ec9a7bb1d",
+        "size_bytes": 383948
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:acc5cb713d685431b5b41ca1efd9ff442a93542c09d0b40ad5bc034cb9d2c352",
+        "size_bytes": 384223
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:cfe7905cdbd6996e1b56ab70e99d9bbd513760feb0d00707f1fc495fbe457503",
+        "size_bytes": 384279
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:55907ad4d1c387c9d34ab2af23dc610ae6782bb1c78a830b444a3358f3730ce5",
+        "size_bytes": 384007
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:33afedcc480b494126b9929b3675490c2a886b3aad3efefa18d4e390c8679a4b",
+        "size_bytes": 383796
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0bb49403c49e7a094a9b4dfb37f0d6b789b127fad1fe172c4e526ffdebc41250",
+        "size_bytes": 383895
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:63c9f664050e205ddc82f0aa36a2a852219c5f0f16fd031131142bc901b123e9",
+        "size_bytes": 325072
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:284171c41cd0ebb07754c545fa08fe5f0a007d564e941a248f3354b021354b2e",
+        "size_bytes": 325317
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:615a68ee9f80fb8a0004103e0eb06468fcd0b348ef7b4f4fe6ea8259b09c94a4",
+        "size_bytes": 385649
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:cfcb45573e32f9a57542ae946134ddfdc2911cefe0e197a19b0db254b896d3c0",
+        "size_bytes": 317667
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_37_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:09559aebc1b748d10106850bbdd39b762c6ad2447a6e59efffa332f39cea8613",
+        "size_bytes": 384618
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:a808adab89f8c3826405db8a4936dd13130c21a75620d5a6be5e785b40dc56f5",
+        "size_bytes": 382645
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ea4acd7084de98c8d2fcd1449f7b87340fa53a6f2f6710ce44f7452a2891872f",
+        "size_bytes": 383198
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:b6906a270187f4bc644fa056ad6a37cd68dcac422ebf8f58879d847c96d8da35",
+        "size_bytes": 383608
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e9e2b1d57dd984b6f02164eb50d86111feb0be619a5e18464e9027dab3016d1b",
+        "size_bytes": 383165
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:60c0e2335974e9edab3b2eea61a0ef4e27b06739255a021dc0711aa67eec67a9",
+        "size_bytes": 383182
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:165106f41461e3f17f315f81474f9bc01ed791ea262bc435e1060ff1f604f488",
+        "size_bytes": 383241
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:72832b5f56c118fd796cebc6a32db9b54cad7a7629498e7f214693fa6087b9f0",
+        "size_bytes": 383165
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3b973c5ab2318af028316403b317c805db3bf57e9379588a5175cb2fe83e1bed",
+        "size_bytes": 383174
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f30246ddb76bfa65a1f03daa68d901ef80b04e3a4aac283a1e49b3731e0543ec",
+        "size_bytes": 383112
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:67fe2e5e308c7ffff4437213c0abde313b60acf1bcff3c92123300c8867a9ec0",
+        "size_bytes": 324651
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:bf915d52d9d1e10562f0fd16796f72bc5f637ff9fd8fbc4fbd65d8074f27a0a7",
+        "size_bytes": 324937
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:91b5310c722f1479d78860a2d89321360b19fce44ad1163c1988cfb2ee02d172",
+        "size_bytes": 383706
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:4ae6e8ac65c99a6fc214e6dd34cdbbbb52fa2a3aa8971da348da24910cd425eb",
+        "size_bytes": 317287
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_43_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:296e66165f95798b2381a00b3b81e9edd8ca76e8a0a3eb20971940e199192f34",
+        "size_bytes": 382656
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:9a292712b5f610b8fdf72537269a63efdb3e8518bc4c48e84ad8e9b140a90011",
+        "size_bytes": 383136
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2559fa91eac8ed4274577a7d3877a1286aab537919135a539f4468065caa6b45",
+        "size_bytes": 383709
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:efe2663f66320a85964fb38e33e071f3a016af26c54f229290f6ddd2811640e8",
+        "size_bytes": 384123
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2f981c59bcae87c4d5d94efe5ea3dc3f08193e58eddf3b85eeba9bd36cdb60f0",
+        "size_bytes": 383677
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:34a594dd1df74422524b60966209dee2995ddcb16c592a95efaecfcc93dd9060",
+        "size_bytes": 383700
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1880ae703614ba3dc03b53aeea6fc63be891bad390f22a4a277700aa134ec29c",
+        "size_bytes": 383752
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:c2840495c2919424261234bc97b3dcc3fb9648f5e7275a0d0424d9803ca86c4e",
+        "size_bytes": 383678
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ca850017774d34becdaf440f6fb30f05c0d54133edfe849693697ef841caa5a1",
+        "size_bytes": 383685
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3252a738297e6ad6cda91d25580e4db4e9f5adf2d0a9149cc5d8d24bb38b9792",
+        "size_bytes": 383624
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:27288482825c75f00bfdedb30f768b2851aac443b66a476e1a26b2d6d9b65adb",
+        "size_bytes": 325099
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:dc980cda75fac804865aee5ffa2fa57672b3e6c63d6f01c99781b512f1f21bd8",
+        "size_bytes": 325114
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:10c47ce72e6d5d73901707c31c880097e19d0470c4b532a8a61c50037982dc14",
+        "size_bytes": 384257
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:90adbe30ccb9000f3404fc11a7c6b211c2cc107021cb13581342dca5b9471fda",
+        "size_bytes": 317529
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_47_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:81693c10dd5c33442054652abd8036a790907e618dcf14ac70a8928d9c3cc193",
+        "size_bytes": 383148
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3713224e82863ba94a25a0c89aad8c355d85cd422b68e19d95be72e2314fae42",
+        "size_bytes": 385128
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:3f697e9d9b855db7050effba305e4020ac8c6452da734ba99230605424217167",
+        "size_bytes": 385704
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:5cdd410a0e00271048baca310e7c22c33d4ca7fefa5d1d9e9892f7310bb32998",
+        "size_bytes": 386117
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:14f488c442818c91463fc7ad4281837eb0a8177bbcf43ae749912114b3775847",
+        "size_bytes": 385674
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:d76dc11716d864c0e07a90551f0708ce3fb3a9160903d08a5561f4fb39142cbf",
+        "size_bytes": 385695
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:a179c7faac978af0d7bfcd8f8b069b5646b961ee4ebe0cd445388effdcca5369",
+        "size_bytes": 385746
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:24e4ecc1cd9edec7f86494f722ba106cb12f492ba3c78c52246d005c4b2472be",
+        "size_bytes": 385672
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:49fc53a529ec01ad36806fbe19b8f12d7ae5be254a6a949927f16eefd0690674",
+        "size_bytes": 385680
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0e89dc3823085ae02e9691942a330ea5e6fb4dcf0750f80e535f09aa17533538",
+        "size_bytes": 385621
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:fa53e4e4c99f6d22b5d2dc95d1357ad4d11543ff19e13b7f46b1581a821ed87b",
+        "size_bytes": 326049
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e626121a838ba145f6bcab22d46f228e814b5683025ed8d248c4b6b330871444",
+        "size_bytes": 326172
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:4fa702118cd834add4448fc40d3019136a9440a36e441353b4c1bf0aa51128cd",
+        "size_bytes": 386184
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:bf67b210da3e03347da47ad5a66c100fce226f58325a2501b3669aa47ea40cbd",
+        "size_bytes": 318525
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_53_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:74a0111ce6f04e0ca79ac59c4e971e81b926093aef3ffb52e2d1ecc2938f09da",
+        "size_bytes": 385139
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:ea03ed3d5f8d1a96761c863c681c6f69b7cba2b31a61084045619d06cab62ceb",
+        "size_bytes": 382646
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:a8b8c3d64bbd1d0f2695c7bb85f0fe9a64137156d1646f901ef55c3812ee4fd2",
+        "size_bytes": 383236
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:0253b61f635cd3332e0f1fdc266ea64b4d4ad52f47fc9725c98fc5f937326d55",
+        "size_bytes": 383654
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:8cdba1807a679074d6e599c2ad4249dd8d96eadf97a227f8a03d94636da9f098",
+        "size_bytes": 383211
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:193c633bdda113de7ec6a7b93decca98a6bcec52a69bab3b0f2213d731653e00",
+        "size_bytes": 383229
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:37b25d74fa37946a23b2b6aec41acde69a9f62b218648af87f1432de9ca08f18",
+        "size_bytes": 383281
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:e7fd7fb91e34c61c12abd6cb155051eae076edaf63d3596bda49a5152e41800e",
+        "size_bytes": 383208
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:bbcf8cf0159601b79aa2d03833ae5d1df921b4d90daf4ce197c4326b469a1a91",
+        "size_bytes": 383212
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:dada9de8d325966a5521015ca09486d22f98ef57cfa5ac7ec2d66d73203fb9b0",
+        "size_bytes": 383158
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f63595baadeb5e59b955877044c93b5d78ea325bdd77f838b2dd9552fb3dfd5f",
+        "size_bytes": 324607
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2099340e5ad9c7b82c66b751358f46bc3a9543734a83025d599cb875d56aec3b",
+        "size_bytes": 324937
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:16716e4468cf06312c23fd7b27dc6d133445d4a3708384f2c6763330db4bbc72",
+        "size_bytes": 383699
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:abf1641a4dd7bf8a51b82e26f0cd71a21385120469d40fe5ec826b3435e559b6",
+        "size_bytes": 317287
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_59_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:5e2d4d49cf7cc894748c39e8aae27f127eac70c052d1a64d1c5c8522d8d7f730",
+        "size_bytes": 382658
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_DPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:494859a9062fc9fe667c3d994047ed67d55a609415552a895f57f5c958468c55",
+        "size_bytes": 388113
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_GRPO-FourState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:34f44a0d643e824b8e26a756dfac75e1565d93203a0e7bf2c0fc747dea6990e1",
+        "size_bytes": 388914
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_GRPO-MatchedAtomic/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:1b3bf11b45373333e3ffabe0be7e3b64c0af127dd321d2f094bdaee2de84b9b0",
+        "size_bytes": 389254
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_GRPO-Terminal/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2a3bb1fa535980b682cdfca30e646c3fed14b702f57138a7a206249492f1ecf0",
+        "size_bytes": 388820
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_GRPOplusBranch/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:95bbca95f3edb7194351eb9da67388e5e2d55b9a1a5348452c7819219451ba75",
+        "size_bytes": 388840
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_GRPOplusBranchplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:58e5628a9220f48e9c3cf7921122e1bf43eaa5e52c8351c39a1a88e15c31bb51",
+        "size_bytes": 388896
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_GRPOplusFlip/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:15a5d3b1aef24b8b24285a34d8d75b0b21956a2e6fd9319e20707df74fbf3cd2",
+        "size_bytes": 388817
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_GRPOplusState/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:9f6b467141ca8c97276ac79b18cea3d0c71ed6492e900c41032ae9f8bd9d9497",
+        "size_bytes": 388890
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_RLOO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:57367f61b0e5ce01a79c0030bf89b6b4ba1f574e445d92153fa948b9daea4cfe",
+        "size_bytes": 388767
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_Random/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:2dce7aa2dfe6e143b678352527934898d3b6f8e91a4f39bf67eac4cf9cb1466a",
+        "size_bytes": 327764
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_Rule-Based/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:04561f4efabe22ad303f12eb4605fd6a9111c32398412e40c4682691232c81d0",
+        "size_bytes": 327748
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_SFT-Continued/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f499631617aa38594e12e34a7506c25a87775c2e7a8b7dfff490724f6a7f6b39",
+        "size_bytes": 389327
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_Search_Oracle/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:dd5a869567d4ceaff3a93dc8d77da77d0c2ef4e9c505ab06945c65b699791cc7",
+        "size_bytes": 320098
+      },
+      {
+        "path": "artifacts/tier1_p23_frozen_raw_10seed/cells/seed_61_SimPO/p23_result.json",
+        "role": "data",
+        "sha256": "sha256:f051931010703eb296ef70d39873066b43e99737fd87ebb55647f0b4ff786a86",
+        "size_bytes": 388211
+      }
+    ]
+  },
+  "data_digest": "sha256:dc7ff8f4fc85b6277bdd66903f85afbd796ff2629a9f185bfd0895f6b08701c8",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "cell_failures": 0,
+    "common_sft_initialization": true,
+    "formal_comparison_authorized": false,
+    "matrix_complete": true,
+    "methods": [
+      "Random",
+      "Rule-Based",
+      "SFT-Continued",
+      "DPO",
+      "SimPO",
+      "RLOO",
+      "GRPO-Terminal",
+      "GRPO-FourState",
+      "GRPO-MatchedAtomic",
+      "GRPO+State",
+      "GRPO+Branch",
+      "GRPO+Flip",
+      "GRPO+Branch+Flip",
+      "Search/Oracle"
+    ],
+    "stage": "frozen_10_seed"
+  },
+  "experiment": "tier1_p23_common_protocol_matrix",
+  "generated_at_utc": "2026-08-27T15:00:14.476547+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+    "status_available": true,
+    "status_digest": "sha256:9c7461ea95f6dcab6dba1d5754d8be4154b4c13b950570a33fe539a423e43d6a"
+  },
+  "git_sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+  "manifest_digest": "sha256:ee2cee8cd10c89f975909a6aba2de3ebd8b4f96041eb6e537983b51036168e90",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      23,
+      29,
+      31,
+      37,
+      43,
+      47,
+      53,
+      59,
+      61
+    ],
+    "training": [
+      17,
+      23,
+      29,
+      31,
+      37,
+      43,
+      47,
+      53,
+      59,
+      61
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:6af0eba666915a46ebaf6d6a07f141c07b6cf45d62790685152e92393407a825",
+    "file_count": 2,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p23_diagnostics.py",
+        "role": "source",
+        "sha256": "sha256:82f42be34e0fa8b9dde934e1b9305ba585d11564ca9fe1fb071d6552ccec3d37",
+        "size_bytes": 30299
+      },
+      {
+        "path": "scripts/aggregate_tier1_p23_cells.py",
+        "role": "source",
+        "sha256": "sha256:710da8f86387c02a20ec4a2c66ecb517c74fc42b1a9bf6c3f9b8e3b943e1df02",
+        "size_bytes": 3903
+      }
+    ]
+  },
+  "source_digest": "sha256:6af0eba666915a46ebaf6d6a07f141c07b6cf45d62790685152e92393407a825",
+  "status": "completed_diagnostic",
+  "training_seed": [
+    17,
+    23,
+    29,
+    31,
+    37,
+    43,
+    47,
+    53,
+    59,
+    61
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "checkpoint": {
+    "available": false,
+    "config_digest": null,
+    "file_count": 0,
+    "files": [],
+    "full_checkpoint_digest": null,
+    "full_tokenizer_digest": null,
+    "full_weights_digest": null,
+    "path": null,
+    "reason": "no_checkpoint_supplied",
+    "supplied": false,
+    "tokenizer_digest": null,
+    "tokenizer_file_count": 0,
+    "weights_digest": null,
+    "weights_file_count": 0
+  },
+  "checkpoint_full_digest": null,
+  "checkpoint_tokenizer_digest": null,
+  "checkpoint_weights_digest": null,
+  "command": {
+    "argv": [
+      "scripts/finalize_tier1_p23_promotion_v2.py",
+      "--output-dir",
+      "artifacts/tier1_p23_promotion_v2"
+    ],
+    "cwd": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "shell": "scripts/finalize_tier1_p23_promotion_v2.py --output-dir artifacts/tier1_p23_promotion_v2"
+  },
+  "command_line": "scripts/finalize_tier1_p23_promotion_v2.py --output-dir artifacts/tier1_p23_promotion_v2",
+  "data": {
+    "available": true,
+    "digest": "sha256:5d70ab7619f28e974f8bf952f999762d36802ba773842319d62e0d421c408368",
+    "file_count": 13,
+    "files": [
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/benchmark_manifest_hidden.json",
+        "role": "data",
+        "sha256": "sha256:7c1f5b0387708924b2f14c4d84412320a7fdcf32cd4621c768f6ab3be98a2e37",
+        "size_bytes": 835974
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/benchmark_manifest_public.json",
+        "role": "data",
+        "sha256": "sha256:2ac79007adb2cfb31874684f3d56aeb20ce61c7cb2590b103369df7350837f4e",
+        "size_bytes": 62529
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/counterfactual_leakage_audit.json",
+        "role": "data",
+        "sha256": "sha256:6a1c043cecf3d5a83397d7d5dae35a7313a63ce8b0e523be6010f958e2237f7b",
+        "size_bytes": 562418
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_oracle_state.json",
+        "role": "data",
+        "sha256": "sha256:d53036189ad2ace48f61542a8d43b7fe3322166ee6aa407bbc3758e1166d59d1",
+        "size_bytes": 61860798
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_oracle_state_canonical_audit.json",
+        "role": "data",
+        "sha256": "sha256:f4f0b06ecc60deb32dda86dc0b54fd811cab5ba969f58f9762e232346df5db24",
+        "size_bytes": 13013
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_oracle_state_collection_audit.json",
+        "role": "data",
+        "sha256": "sha256:83e5e61ece06f985187204a4caacc637ee1ae7dd7062e555e09517f19442367c",
+        "size_bytes": 1986499
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_oracle_state_public.json",
+        "role": "data",
+        "sha256": "sha256:e38dd65c2c8ab01300d422861db01872c14394d1d3e3954ac5c816a79934fa4c",
+        "size_bytes": 1930487
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_raw_evidence.json",
+        "role": "data",
+        "sha256": "sha256:beef3347c59e6a515d34df9c7d2ecb73ac4db9d06b1177f1909a228b4408fffc",
+        "size_bytes": 61784371
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_raw_evidence_canonical_audit.json",
+        "role": "data",
+        "sha256": "sha256:f574dd5f0971f802f64714af480f67c2541bf785ea5ba0a3cff0cf1427718385",
+        "size_bytes": 13013
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_raw_evidence_collection_audit.json",
+        "role": "data",
+        "sha256": "sha256:2d796b7b4e8be25df68774152c22748af37bfb71e9b685aedc000edd3b062dc3",
+        "size_bytes": 1986499
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/dataset_raw_evidence_public.json",
+        "role": "data",
+        "sha256": "sha256:88ac6936ed6ebaf1f3f5eb98792b5f201689505741e2a7d11a6665650b59b194",
+        "size_bytes": 1854060
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/p23_promotion_v2_collection.json",
+        "role": "data",
+        "sha256": "sha256:35ff228688c63fae222cefcb7f965aaf6156408e1ffc7c32e4d58a892c34b08e",
+        "size_bytes": 688
+      },
+      {
+        "path": "artifacts/tier1_p23_promotion_v2/raw_canonical_audit.json",
+        "role": "data",
+        "sha256": "sha256:fded9dde8bb5a464c321f85ef46875dbd10a53c00c55443aa41a4463b95e8ec3",
+        "size_bytes": 13092
+      }
+    ]
+  },
+  "data_digest": "sha256:5d70ab7619f28e974f8bf952f999762d36802ba773842319d62e0d421c408368",
+  "dependencies": {
+    "available": true,
+    "digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+    "file_count": 1,
+    "files": [
+      {
+        "path": "requirements.txt",
+        "role": "dependency_spec",
+        "sha256": "sha256:420a7dbff307ada53129c11be454e545b5c82a7a3f955a4f0a43ffcde6258e6b",
+        "size_bytes": 394
+      }
+    ]
+  },
+  "dependency_spec_digest": "sha256:c32b42768c8f420ca2f2afeb6c77de12eb2021fc35254d635cbe885695748b4e",
+  "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+  "diagnostics": {
+    "canonical_promotion_gate": true,
+    "counterfactual_leakage_pass": true,
+    "counts_by_split": {
+      "promotion": 80,
+      "train": 160,
+      "tune": 64
+    },
+    "diagnostic_only": true,
+    "formal_comparison_authorized": false,
+    "generator_version": "pesco_p23_promotion_v2_generator_20260827_r1",
+    "tracks": [
+      "raw_evidence",
+      "oracle_state"
+    ]
+  },
+  "experiment": "tier1_p23_promotion_v2_collection",
+  "generated_at_utc": "2026-08-27T14:26:39.832230+00:00",
+  "git": {
+    "branch": "main",
+    "dirty": true,
+    "repository": "/juicefs-algorithm/workspace/IPT/zhuochu_yang/PESCO",
+    "sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+    "status_available": true,
+    "status_digest": "sha256:a4940c52b1d4066f3b1561575e37ebbdb799f3516bd20cfd3827ee81f03e125e"
+  },
+  "git_sha": "526cfa018b5f9f0b8e159893e74b733415e8925f",
+  "manifest_digest": "sha256:75ed10716903c7f527bec8fd2ffccc4822ea060104d88dd57b36f520a129939e",
+  "numpy_version": "2.2.6",
+  "python_version": "3.10.12",
+  "pytorch_version": "2.12.0",
+  "runtime": {
+    "dependency_versions_digest": "sha256:e8afe18e4f4528f24c06ca20024b4a25a38a4f2d069f6c52ad30a8dacffaf404",
+    "machine": "x86_64",
+    "numpy_version": "2.2.6",
+    "packages": {
+      "accelerate": "1.13.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.2.6",
+      "safetensors": "0.7.0",
+      "torch": "2.12.0",
+      "transformers": "5.8.1"
+    },
+    "platform": "Linux-5.15.0-86-generic-x86_64-with-glibc2.35",
+    "python_executable": "/usr/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.12",
+    "pytorch_version": "2.12.0"
+  },
+  "schema_version": "pesco_run_manifest_v0.1",
+  "seeds": {
+    "all": [
+      17,
+      29,
+      41,
+      53,
+      103,
+      107,
+      109,
+      113
+    ],
+    "confirmation": [
+      103,
+      107,
+      109,
+      113
+    ],
+    "exploration": [
+      17,
+      29,
+      41,
+      53
+    ]
+  },
+  "source": {
+    "available": true,
+    "digest": "sha256:f4cc927d694f8c6abab71daed720cfdca4450ec781ebbfd51e4bd07ae1495aee",
+    "file_count": 4,
+    "files": [
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_p23_dataset.py",
+        "role": "source",
+        "sha256": "sha256:ec54d7b3c8bc508c61ffff29f05dd02f4774c52751290bda99768ce30cee6734",
+        "size_bytes": 11190
+      },
+      {
+        "path": "research_strategy_optimization/evaluation/tier1_v04_extended.py",
+        "role": "source",
+        "sha256": "sha256:f1735e055a38006d036bfd3465239617a903879490714b7922de51fe5770f63f",
+        "size_bytes": 62577
+      },
+      {
+        "path": "scripts/finalize_tier1_p23_promotion_v2.py",
+        "role": "source",
+        "sha256": "sha256:387ebdb9fd432cdf6d130eecb98c8cf5a824e4bb0a55b51a38b594197b8f5d45",
+        "size_bytes": 5331
+      },
+      {
+        "path": "scripts/prepare_tier1_p23_track.py",
+        "role": "source",
+        "sha256": "sha256:ef24d7169d2b3e9ef00506daec8397bd793323998463ece9b4e14c705f73bcbd",
+        "size_bytes": 4255
+      }
+    ]
+  },
+  "source_digest": "sha256:f4cc927d694f8c6abab71daed720cfdca4450ec781ebbfd51e4bd07ae1495aee",
+  "status": "completed_cpu_diagnostic",
+  "training_seed": null
+}

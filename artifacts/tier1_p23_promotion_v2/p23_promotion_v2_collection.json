@@ -1,0 +1,26 @@
+{
+  "canonical_promotion_gate": true,
+  "counterfactual_leakage": {
+    "audited_world_count": 1216,
+    "pass": true
+  },
+  "counts_by_split": {
+    "promotion": 80,
+    "train": 160,
+    "tune": 64
+  },
+  "diagnostic_only": true,
+  "formal_comparison_authorized": false,
+  "generator_version": "pesco_p23_promotion_v2_generator_20260827_r1",
+  "model_evaluation_authorized": false,
+  "question_count": 304,
+  "raw_canonical_promotion_pairs": 75,
+  "raw_canonical_promotion_question_clusters": 75,
+  "schema_version": "pesco_tier1_p23_promotion_v2_collection_v0.1",
+  "status": "completed_cpu_diagnostic",
+  "tracks": [
+    "raw_evidence",
+    "oracle_state"
+  ],
+  "world_count": 1216
+}
