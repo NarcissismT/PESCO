@@ -553,7 +553,7 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
         # threshold, making every branch invalid and violating the benchmark
         # contract that every world has at least one feasible action.
         sample_resolves_low_variance = (
-            self.mechanism_family in {self.FAMILY_LOW_SAMPLE_VARIANCE, self.FAMILY_HETEROGENEOUS_NOISE}
+            self.mechanism_family in {self.FAMILY_LOW_SAMPLE_VARIANCE, self.FAMILY_HETEROGENEOUS_NOISE, "replication_instability"}
             and option is ResearchAction.SAMPLE
             and self._sample_size >= int(self.SAMPLE_MINIMUM)
         )
