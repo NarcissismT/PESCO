@@ -52,6 +52,7 @@ artifacts/tier1_p232_convergence/steps_*/p231_result.json
 artifacts/tier1_p232_convergence/steps_*/sft_checkpoints/
 artifacts/tier1_p23_promotion_v4_private/
 scripts/generate_promotion_v4_private.py
+artifacts/tier1_p232_promotion_v4_public/promotion_v4_freeze_receipt.json
 
 # 构建与系统文件
 build/
