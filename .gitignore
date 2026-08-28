@@ -51,6 +51,7 @@ artifacts/tier1_p232_branch_conflict_pcgrad/sft_checkpoints/
 artifacts/tier1_p232_convergence/steps_*/p231_result.json
 artifacts/tier1_p232_convergence/steps_*/sft_checkpoints/
 artifacts/tier1_p23_promotion_v4_private/
+artifacts/tier1_p23_promotion_v4_private_invalid_run/
 scripts/generate_promotion_v4_private.py
 artifacts/tier1_p232_promotion_v4_public/promotion_v4_freeze_receipt.json
 artifacts/tier1_p232_atomic_factorial_10seed/canonical_reversal_ids.json
