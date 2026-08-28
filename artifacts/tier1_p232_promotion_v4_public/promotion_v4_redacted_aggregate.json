@@ -1,0 +1,72 @@
+{
+  "methods": {
+    "Atomic+Branch": {
+      "insufficient_recall": 0.2015625,
+      "invalid_recall": 0.2546875,
+      "mean_normalized_regret": 0.2678373258469256,
+      "state_macro_f1": 0.15318718977551976
+    },
+    "Atomic+Branch+Flip": {
+      "insufficient_recall": 0.2234375,
+      "invalid_recall": 0.1640625,
+      "mean_normalized_regret": 0.25964501112684246,
+      "state_macro_f1": 0.15033872968623116
+    },
+    "Atomic+Flip": {
+      "insufficient_recall": 0.2171875,
+      "invalid_recall": 0.1703125,
+      "mean_normalized_regret": 0.25964501112684246,
+      "state_macro_f1": 0.15085718988732685
+    },
+    "Atomic+State": {
+      "insufficient_recall": 0.96875,
+      "invalid_recall": 0.0796875,
+      "mean_normalized_regret": 0.26870349401393107,
+      "state_macro_f1": 0.47236900398371306
+    },
+    "Atomic+State+Branch": {
+      "insufficient_recall": 0.96875,
+      "invalid_recall": 0.0890625,
+      "mean_normalized_regret": 0.26394532492609474,
+      "state_macro_f1": 0.45871588057821755
+    },
+    "Atomic+State+Flip": {
+      "insufficient_recall": 0.96875,
+      "invalid_recall": 0.0296875,
+      "mean_normalized_regret": 0.2608168861268424,
+      "state_macro_f1": 0.45419929674516524
+    },
+    "GRPO-Atomic": {
+      "insufficient_recall": 0.2015625,
+      "invalid_recall": 0.24375,
+      "mean_normalized_regret": 0.2711345525967323,
+      "state_macro_f1": 0.14941144436424386
+    },
+    "PESCO-Full": {
+      "insufficient_recall": 0.96875,
+      "invalid_recall": 0.03125,
+      "mean_normalized_regret": 0.2612956220290981,
+      "state_macro_f1": 0.4335068977761102
+    }
+  },
+  "no_individual_labels_or_effects": true,
+  "ood_gate": {
+    "all_formula_signatures_changed": true,
+    "all_protocol_signatures_changed": true,
+    "five_families_present": true,
+    "hidden_validation_bias_decreases": true,
+    "mean_absolute_bias_reduction": 0.09019362584464775
+  },
+  "p232_status": "NO_GO_P2_3_2",
+  "paired_bootstrap_replicates": 5000,
+  "private_input_not_in_repo": true,
+  "schema_version": "pesco_promotion_v4_redacted_aggregate_v0.1",
+  "strict_shortcut_models": [
+    "all_raw:gradient_boosting",
+    "all_raw:logistic_regression",
+    "all_raw:random_forest",
+    "without_confirmation:gradient_boosting",
+    "without_confirmation:logistic_regression",
+    "without_confirmation:random_forest"
+  ]
+}

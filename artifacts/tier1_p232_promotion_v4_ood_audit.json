@@ -1,0 +1,54 @@
+{
+  "gates": {
+    "all_formula_signatures_changed": true,
+    "all_protocol_signatures_changed": true,
+    "five_families_present": true,
+    "hidden_validation_bias_decreases": true,
+    "mean_absolute_bias_reduction": 0.09019362584464775
+  },
+  "mechanisms": [
+    {
+      "absolute_bias_reduction": 0.010135516748957159,
+      "family": "heteroscedastic_noise",
+      "formula_signature_changed": true,
+      "hidden_validation_bias_reduction": 0.010135516748957159,
+      "protocol_signature_changed": true,
+      "repair_estimator_changed": true
+    },
+    {
+      "absolute_bias_reduction": 0.03906910466944197,
+      "family": "nonlinear_response",
+      "formula_signature_changed": true,
+      "hidden_validation_bias_reduction": 0.03906910466944197,
+      "protocol_signature_changed": true,
+      "repair_estimator_changed": true
+    },
+    {
+      "absolute_bias_reduction": 0.3767643371746743,
+      "family": "measurement_shift",
+      "formula_signature_changed": true,
+      "hidden_validation_bias_reduction": 0.3767643371746743,
+      "protocol_signature_changed": true,
+      "repair_estimator_changed": true
+    },
+    {
+      "absolute_bias_reduction": 0.010576088028129023,
+      "family": "missing_not_at_random",
+      "formula_signature_changed": true,
+      "hidden_validation_bias_reduction": 0.010576088028129023,
+      "protocol_signature_changed": true,
+      "repair_estimator_changed": true
+    },
+    {
+      "absolute_bias_reduction": 0.014423082602036367,
+      "family": "intervention_noncompliance",
+      "formula_signature_changed": true,
+      "hidden_validation_bias_reduction": 0.014423082602036367,
+      "protocol_signature_changed": true,
+      "repair_estimator_changed": true
+    }
+  ],
+  "private_input": true,
+  "public_redacted": true,
+  "schema_version": "pesco_promotion_v4_ood_mechanism_audit_v0.1"
+}

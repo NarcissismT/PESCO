@@ -86,6 +86,13 @@ class P231Config:
     max_pairs_per_question: int = 1
     bootstrap_replicates: int = 2000
     reward_scale: float = 1.0
+    # P2.3.2 objective diagnostics.  ``sibling_advantage`` is the registered
+    # branch-credit formulation; ``expected_utility`` is retained as a second
+    # formulation for the conflict audit.  PCGrad is optional and only changes
+    # how auxiliary branch/flip gradients are combined, never the evaluator.
+    branch_formulation: str = "sibling_advantage"
+    gradient_mode: str = "sum"
+    branch_question_normalize: bool = True
 
 
 def _state_digest(state_dict: Mapping[str, Tensor]) -> str:
@@ -223,9 +230,46 @@ def _rollout(policy: DifferentiableStrategyPolicy, batch: Sequence[Any], config:
     return {"features": features, "actions": actions, "rewards": rewards, "advantages": advantages, "old_logprob": old_logprob, "state_targets": state_targets, "rollout_reward_digest": hashlib.sha256(rewards.detach().cpu().numpy().tobytes()).hexdigest()}
 
 
+def _cosine(a: Tensor | None, b: Tensor | None) -> float | None:
+    if a is None or b is None:
+        return None
+    na, nb = torch.linalg.vector_norm(a), torch.linalg.vector_norm(b)
+    if float(na) <= 1e-12 or float(nb) <= 1e-12:
+        return None
+    return float(torch.dot(a, b) / (na * nb))
+
+
+def _flat_grads(loss: Tensor, parameters: Sequence[Tensor]) -> Tensor:
+    grads = torch.autograd.grad(loss, parameters, retain_graph=True, allow_unused=True)
+    return torch.cat([(g.detach().reshape(-1) if g is not None else torch.zeros_like(p).reshape(-1))
+                      for p, g in zip(parameters, grads)])
+
+
+def _branch_objective(outputs: Mapping[str, Tensor], rollout: Mapping[str, Tensor], config: P231Config) -> Tensor:
+    """Same-state branch credit with question-normalized sibling advantages."""
+    utility_matrix = rollout.get("all_rewards")
+    if utility_matrix is None:
+        return outputs["action_logits"].sum() * 0.0
+    probs = F.softmax(outputs["action_logits"], dim=-1)
+    if str(config.branch_formulation) == "expected_utility":
+        centered = utility_matrix - utility_matrix.mean(dim=-1, keepdim=True)
+        return -(probs * centered.detach()).sum(dim=-1).mean()
+    # For each candidate action compare it with the mean of its siblings.  This
+    # avoids assigning the same endpoint several incompatible exact labels.
+    n_actions = utility_matrix.shape[-1]
+    total = utility_matrix.sum(dim=-1, keepdim=True)
+    sibling = (total - utility_matrix) / float(max(1, n_actions - 1))
+    advantage = utility_matrix - sibling
+    if bool(config.branch_question_normalize):
+        scale = advantage.abs().sum(dim=-1, keepdim=True).clamp_min(1e-6)
+        advantage = advantage / scale
+    return -(probs * advantage.detach()).sum(dim=-1).mean()
+
+
 def _update_from_rollout(policy: DifferentiableStrategyPolicy, reference: DifferentiableStrategyPolicy, rollout: Mapping[str, Tensor], config: P231Config, *, optimizer: torch.optim.Optimizer, grpo: bool, branch: bool, state: bool) -> dict:
     features = rollout["features"]; actions = rollout["actions"]; advantages = rollout["advantages"].detach(); old_logprob = rollout["old_logprob"].detach();
-    losses=[]; clip_fractions=[]; kls=[]; entropies=[]; grad_norms=[]
+    losses=[]; clip_fractions=[]; kls=[]; entropies=[]; grad_norms=[]; branch_cos=[]; state_flip_cos=[]; option_flip_cos=[]
+    parameters = [parameter for parameter in policy.parameters() if parameter.requires_grad]
     flip_loss_fn = rollout.get("flip_loss_fn")
     for _ in range(max(1, int(config.minibatch_epochs))):
         outputs = policy(features); log_probs = F.log_softmax(outputs["action_logits"], dim=-1); sampled_logprob = log_probs.gather(1, actions); ratio = torch.exp(sampled_logprob - old_logprob)
@@ -233,29 +277,74 @@ def _update_from_rollout(policy: DifferentiableStrategyPolicy, reference: Differ
             unclipped = ratio * advantages; clipped = torch.clamp(ratio, 1.0 - float(config.clip_epsilon), 1.0 + float(config.clip_epsilon)) * advantages; option_loss = -torch.minimum(unclipped, clipped).mean(); clip_fractions.append(float((torch.abs(ratio - 1.0) > float(config.clip_epsilon)).float().mean().detach()))
         else:
             option_loss = -(sampled_logprob * advantages).mean(); clip_fractions.append(0.0)
-        branch_loss = outputs["action_logits"].sum() * 0.0
-        if branch:
-            utility_matrix = rollout.get("all_rewards")
-            if utility_matrix is not None:
-                centered = utility_matrix - utility_matrix.mean(dim=-1, keepdim=True); branch_loss = -(F.softmax(outputs["action_logits"], dim=-1) * centered.detach()).sum(dim=-1).mean()
+        branch_loss = _branch_objective(outputs, rollout, config) if branch else outputs["action_logits"].sum() * 0.0
         state_loss = F.cross_entropy(outputs["state_logits"], rollout["state_targets"]) if state else outputs["state_logits"].sum() * 0.0
         belief_loss = F.binary_cross_entropy_with_logits(outputs["belief_logits"], _belief_target_matrix([None] * len(features))) if False else outputs["belief_logits"].sum() * 0.0
         kl = _mean_kl(outputs["action_logits"], reference(features)["action_logits"])
         entropy = _entropy(F.softmax(outputs["action_logits"], dim=-1))
         flip_loss = flip_loss_fn(policy) if callable(flip_loss_fn) else outputs["action_logits"].sum() * 0.0
-        total = option_loss + float(config.branch_loss_weight) * branch_loss + float(config.state_weight) * state_loss + float(config.pairwise_weight) * flip_loss + float(config.base_kl_weight) * kl + float(config.entropy_floor_weight) * F.relu(float(config.entropy_floor) - entropy)
-        optimizer.zero_grad(set_to_none=True); total.backward(); grad_norm=float(torch.nn.utils.clip_grad_norm_(policy.parameters(), float(config.gradient_clip_norm))); optimizer.step()
+        main_loss = option_loss + float(config.state_weight) * state_loss + float(config.base_kl_weight) * kl + float(config.entropy_floor_weight) * F.relu(float(config.entropy_floor) - entropy)
+        total = main_loss + float(config.branch_loss_weight) * branch_loss + float(config.pairwise_weight) * flip_loss
+        branch_vec = _flat_grads(branch_loss, parameters) if branch else None
+        flip_vec = _flat_grads(flip_loss, parameters) if callable(flip_loss_fn) else None
+        main_vec = _flat_grads(main_loss, parameters)
+        branch_cos.append(_cosine(main_vec, branch_vec)); state_flip_cos.append(_cosine(_flat_grads(state_loss, parameters) if state else None, flip_vec)); option_flip_cos.append(_cosine(_flat_grads(option_loss, parameters), flip_vec))
+        optimizer.zero_grad(set_to_none=True)
+        if str(config.gradient_mode).lower() == "pcgrad" and (branch_vec is not None or flip_vec is not None):
+            # Project each auxiliary gradient away from a conflicting main vector.
+            projected = main_vec.clone()
+            for vec, weight in ((branch_vec, float(config.branch_loss_weight)), (flip_vec, float(config.pairwise_weight))):
+                if vec is None:
+                    continue
+                dot = torch.dot(vec, main_vec)
+                if float(dot) < 0.0:
+                    vec = vec - dot / (torch.dot(main_vec, main_vec) + 1e-12) * main_vec
+                projected = projected + weight * vec
+            offset = 0
+            for parameter in parameters:
+                size = parameter.numel(); parameter.grad = projected[offset:offset + size].view_as(parameter).clone(); offset += size
+        else:
+            total.backward()
+        grad_norm=float(torch.nn.utils.clip_grad_norm_(policy.parameters(), float(config.gradient_clip_norm))); optimizer.step()
         losses.append(float(total.detach())); kls.append(float(kl.detach())); entropies.append(float(entropy.detach())); grad_norms.append(grad_norm)
-    return {"loss": sum(losses)/len(losses), "option_loss": float(option_loss.detach()), "flip_loss": float(flip_loss.detach()), "clip_fraction": sum(clip_fractions)/len(clip_fractions), "kl": sum(kls)/len(kls), "entropy": sum(entropies)/len(entropies), "gradient_norm": sum(grad_norms)/len(grad_norms), "minibatch_epochs": int(config.minibatch_epochs), "frozen_rollout": True, "importance_ratio_mean": float(ratio.detach().mean()), "importance_ratio_max_abs_delta": float(torch.abs(ratio.detach() - 1.0).max())}
+    return {"loss": sum(losses)/len(losses), "option_loss": float(option_loss.detach()), "branch_loss": float(branch_loss.detach()), "state_loss": float(state_loss.detach()), "flip_loss": float(flip_loss.detach()), "clip_fraction": sum(clip_fractions)/len(clip_fractions), "kl": sum(kls)/len(kls), "entropy": sum(entropies)/len(entropies), "gradient_norm": sum(grad_norms)/len(grad_norms), "branch_main_gradient_cosine": sum(v for v in branch_cos if v is not None) / max(1, sum(v is not None for v in branch_cos)), "state_flip_gradient_cosine": sum(v for v in state_flip_cos if v is not None) / max(1, sum(v is not None for v in state_flip_cos)), "option_flip_gradient_cosine": sum(v for v in option_flip_cos if v is not None) / max(1, sum(v is not None for v in option_flip_cos)), "minibatch_epochs": int(config.minibatch_epochs), "frozen_rollout": True, "importance_ratio_mean": float(ratio.detach().mean()), "importance_ratio_max_abs_delta": float(torch.abs(ratio.detach() - 1.0).max())}
 
 
 def fit_rollout_method(dataset: DecisionDataset, sft_policy: DifferentiableStrategyPolicy, method: str, config: P231Config, canonical_pairs: Sequence[Any]) -> tuple[DifferentiableStrategyPolicy, dict]:
     policy = copy.deepcopy(sft_policy); reference = sft_policy.clone_frozen(); generator = torch.Generator().manual_seed(int(config.seed) + 8101)
     optimizer = torch.optim.Adam(policy.parameters(), lr=float(config.learning_rate))
     train = [example for example in dataset.examples if example.split == "train"] or list(dataset.examples)
-    reward_name = "atomic" if method == "GRPO-MatchedAtomic" else "four_state" if method == "GRPO-FourState" else "terminal"
-    grpo = method.startswith("GRPO")
-    branch = method in {"GRPO+Branch", "GRPO+Branch+Flip"}; state = method in {"GRPO-FourState", "GRPO+State"}
+    # P2.3.2 is a unified Atomic factorial.  Legacy P2.3.1 names remain accepted
+    # as aliases so old diagnostics can still be reproduced, but every new factor
+    # combination receives exactly the same atomic reward vector.
+    aliases = {
+        "GRPO-MatchedAtomic": "GRPO-Atomic",
+        "GRPO+State": "Atomic+State",
+        "GRPO+Branch": "Atomic+Branch",
+        "GRPO+Flip": "Atomic+Flip",
+        "GRPO+Branch+Flip": "PESCO-Full",
+        "GRPO-FourState": "GRPO-FourState",
+        "GRPO-Terminal": "GRPO-Terminal",
+        "RLOO": "RLOO",
+    }
+    canonical_method = aliases.get(method, method)
+    factor_methods = {
+        "GRPO-Atomic": (True, False, False),
+        "Atomic+State": (True, False, True),
+        "Atomic+Branch": (True, True, False),
+        "Atomic+Flip": (True, False, False),
+        "Atomic+State+Branch": (True, True, True),
+        "Atomic+State+Flip": (True, False, True),
+        "Atomic+Branch+Flip": (True, True, False),
+        "PESCO-Full": (True, True, True),
+    }
+    if canonical_method in factor_methods:
+        grpo, branch, state = factor_methods[canonical_method]
+        reward_name = "atomic"
+    else:
+        reward_name = "atomic" if canonical_method == "GRPO-MatchedAtomic" else "four_state" if canonical_method == "GRPO-FourState" else "terminal"
+        grpo = canonical_method.startswith("GRPO")
+        branch = canonical_method in {"GRPO+Branch", "GRPO+Branch+Flip"}; state = canonical_method in {"GRPO-FourState", "GRPO+State"}
     # Ensure all methods receive the same number of rollout/update steps.  Flip
     # supervision is train-only: tune/promotion pairs are never used as labels.
     train_indices = {index for index, example in enumerate(dataset.examples) if example.split == "train"}
@@ -265,7 +354,8 @@ def fit_rollout_method(dataset: DecisionDataset, sft_policy: DifferentiableStrat
         indices = torch.randint(len(train), (min(len(train), max(2, int(config.batch_size))),), generator=generator); batch=[train[int(i)] for i in indices.tolist()]
         rollout = _rollout(policy, batch, config, generator, reward_name)
         rollout["all_rewards"] = torch.stack([reward_tensors(example, reward_scale=config.reward_scale)[reward_name] for example in batch])
-        if method in {"GRPO+Flip", "GRPO+Branch+Flip"}:
+        flip_enabled = canonical_method in {"Atomic+Flip", "Atomic+State+Flip", "Atomic+Branch+Flip", "PESCO-Full", "GRPO+Flip", "GRPO+Branch+Flip"}
+        if flip_enabled:
             flip_examples = [dataset.examples[int(pair.left)] for pair in train_pairs] + [dataset.examples[int(pair.right)] for pair in train_pairs]
             flip_actions = [(pair.action_left, pair.action_right) for pair in train_pairs] + [(pair.action_right, pair.action_left) for pair in train_pairs]
             def flip_loss_fn(current_policy: DifferentiableStrategyPolicy, flip_examples=flip_examples, flip_actions=flip_actions):
@@ -275,10 +365,10 @@ def fit_rollout_method(dataset: DecisionDataset, sft_policy: DifferentiableStrat
                     losses.append(-F.logsigmoid(logits[ACTION_SET.index(chosen)] - logits[ACTION_SET.index(rejected)]))
                 return torch.stack(losses).mean() if losses else rollout["features"].sum() * 0.0
             rollout["flip_loss_fn"] = flip_loss_fn
-        row = _update_from_rollout(policy, reference, rollout, config, optimizer=optimizer, grpo=grpo, branch=branch, state=state); row.update({"step":step,"method":method,"reward_name":reward_name,"rollout_group_size":int(config.rollout_group_size),"old_logprob_saved":True,"importance_ratio_used":bool(grpo),"clipped_surrogate_used":bool(grpo),"clip_epsilon":float(config.clip_epsilon),"flip_objective_used":method in {"GRPO+Flip", "GRPO+Branch+Flip"},"initialized_from_sft":True,"sft_checkpoint_digest":_state_digest(sft_policy.state_dict()),"rollout_sample_count":len(batch)*int(config.rollout_group_size),"environment_budget_units":len(batch)*int(config.rollout_group_size),"auxiliary_pair_forward_passes":2*len(train_pairs) if method in {"GRPO+Flip", "GRPO+Branch+Flip"} else 0}); logs.append(row)
+        row = _update_from_rollout(policy, reference, rollout, config, optimizer=optimizer, grpo=grpo, branch=branch, state=state); row.update({"step":step,"method":method,"canonical_method":canonical_method,"reward_name":reward_name,"rollout_group_size":int(config.rollout_group_size),"old_logprob_saved":True,"importance_ratio_used":bool(grpo),"clipped_surrogate_used":bool(grpo),"clip_epsilon":float(config.clip_epsilon),"flip_objective_used":flip_enabled,"branch_formulation":str(config.branch_formulation),"gradient_mode":str(config.gradient_mode),"initialized_from_sft":True,"sft_checkpoint_digest":_state_digest(sft_policy.state_dict()),"rollout_sample_count":len(batch)*int(config.rollout_group_size),"environment_budget_units":len(batch)*int(config.rollout_group_size),"auxiliary_pair_forward_passes":2*len(train_pairs) if flip_enabled else 0}); logs.append(row)
     initial_digest = _state_digest(sft_policy.state_dict())
     final_digest = _state_digest(policy.state_dict())
-    return policy, {"method":method,"optimizer":"GRPO" if grpo else "RLOO","reward_name":reward_name,"rollout_group_size":int(config.rollout_group_size),"minibatch_epochs":int(config.minibatch_epochs),"old_logprob_saved":True,"importance_ratio_used":bool(grpo),"clipped_surrogate_used":bool(grpo),"branch_credit":bool(branch),"state_auxiliary":bool(state),"train_canonical_pair_count":len(train_pairs),"logs":logs,"initial_sft_digest":initial_digest,"final_policy_digest":final_digest,"optimizer_parameter_delta":final_digest != initial_digest}
+    return policy, {"method":method,"canonical_method":canonical_method,"optimizer":"GRPO" if grpo else "RLOO","reward_name":reward_name,"rollout_group_size":int(config.rollout_group_size),"minibatch_epochs":int(config.minibatch_epochs),"old_logprob_saved":True,"importance_ratio_used":bool(grpo),"clipped_surrogate_used":bool(grpo),"branch_credit":bool(branch),"state_auxiliary":bool(state),"flip_objective_used":bool(flip_enabled),"branch_formulation":str(config.branch_formulation),"gradient_mode":str(config.gradient_mode),"train_canonical_pair_count":len(train_pairs),"logs":logs,"initial_sft_digest":initial_digest,"final_policy_digest":final_digest,"optimizer_parameter_delta":final_digest != initial_digest}
 
 
 def evaluate_canonical_policy(policy: DifferentiableStrategyPolicy, dataset: DecisionDataset, split: str, canonical_pairs: Sequence[Any], *, canonical_pair_digest: str | None = None) -> dict:

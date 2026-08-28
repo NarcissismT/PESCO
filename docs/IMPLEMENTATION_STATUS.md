@@ -188,3 +188,30 @@ relative-weight gate 通过，但 regret CI、8/10 seed 方向、shortcut superi
 4. 全球原创性或现实科学发现。新路径证书只支持局部、可执行、独立确认的自主性声明。
 5. `stage_3_zero_shot` 不再硬编码 GO：pilot 的 `zero_shot_diagnostic.json` 与 `stage_status.json` 明确为 NO-GO。当前 B artifact 是一次独立外部 checkpoint 诊断，不等于打开 `stage_3` 或 Tier 2；虽然 fresh forward 已完成，仍需冻结执行器、最终分割、污染审计及其他 scientific hard gates，才能申请打开该阶段。
 6. Tier 1 v0.3 differentiable suite 是小型 CPU MLP 的机制实验，不是 LLM、QLoRA 或外部论文方法复现；其 `diagnostic_ood` 是机制实例留出的诊断 split，不等价于已锁定的正式 final OOD。
+
+### P2.3.2 unified Atomic factorial and convergence
+
+反馈要求的统一 Atomic 因子矩阵已经在 consumed `promotion_v2` 的 raw-evidence
+轨完成：`GRPO-Atomic`、`Atomic+State`、`Atomic+Branch`、`Atomic+Flip`、
+`Atomic+State+Branch`、`Atomic+State+Flip`、`Atomic+Branch+Flip` 与
+`PESCO-Full` 共用同一 atomic reward receipt、同一 seed 的 SFT checkpoint 和同一
+rollout budget。分支 credit 改为 sibling advantage，并记录
+`cos(∇L_branch,∇L_main)`、`cos(∇L_state,∇L_flip)`；另行完成 expected-utility
+branch 公式和 PCGrad 冲突复跑。翻转的 PairRank 指标按问题 macro 计分，配对
+two-way bootstrap 使用相同 seed/question 抽样、5000 次重采样。状态 Macro-F1、
+calibration/ECE、Invalid recall 与 Insufficient recall 已加入评测器。
+
+16/32/64/128/256 optimizer-step 收敛 sweep 已完成，报告 tail loss、KL、entropy、
+clip fraction、regret slope/spread 和 checkpoint sensitivity。结果显示
+Atomic+Flip 的 PairRank 与 regret 最稳定，但 Full 相对 Atomic 的 regret CI 仍跨
+0，Atomic+Branch 边际也跨 0，因此 P2.3.2 仍是 NO-GO，不进入 LoRA 或在线 RL。
+
+### promotion-v4 private OOD boundary
+
+promotion-v3 已标记 consumed；新的私有 promotion-v4 使用 50 个 train、40 个
+final-ID 和 50 个 final-OOD question clusters。final-OOD 是真正未在开发阶段出现的
+五类机制：heteroscedastic noise、nonlinear response、measurement shift、
+missing-not-at-random 和 intervention noncompliance。每类都通过公式/estimator/
+protocol hash 变化以及私有 bias-reduction 审计；公开只保留 commitment digest 和
+机制级 aggregate，不提交生成器、hidden manifest、labels 或 effects。promotion-v4
+最终模型比较继续遵守 post-freeze、一次性 atomic receipt 和 fail-closed gate。

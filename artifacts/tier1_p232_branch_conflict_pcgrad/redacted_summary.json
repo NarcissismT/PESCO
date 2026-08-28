@@ -1,0 +1,23 @@
+{
+  "configuration": "pcgrad",
+  "methods": {
+    "Atomic+Branch": {
+      "mean_branch_main_cosine": 0.556061633702484,
+      "mean_normalized_regret": 0.26409805369137784,
+      "mean_option_flip_cosine": 0.0,
+      "mean_pairrank": 0.7380952380952381
+    },
+    "PESCO-Full": {
+      "mean_branch_main_cosine": 0.5244670219083977,
+      "mean_normalized_regret": 0.24909813612684228,
+      "mean_option_flip_cosine": 0.07350372561559008,
+      "mean_pairrank": 1.0
+    }
+  },
+  "schema_version": "pesco_tier1_p232_branch_conflict_redacted_v0.1",
+  "seeds": [
+    17,
+    23,
+    29
+  ]
+}

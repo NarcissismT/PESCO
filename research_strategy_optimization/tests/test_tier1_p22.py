@@ -2,18 +2,19 @@ from __future__ import annotations
 
 import unittest
 
-import torch
+try:
+    import torch
+    from research_strategy_optimization.algorithms.differentiable_strategy import DecisionDataset
+    from research_strategy_optimization.evaluation.tier1_p22_diagnostics import (
+        P22Config, _canonical_reversals, _aggregate, _utility_soft_targets,
+    )
+    from scripts.write_p22_gate_receipt import build as build_p22_gate
+    _TORCH_AVAILABLE = True
+except ImportError:
+    _TORCH_AVAILABLE = False
 
-from research_strategy_optimization.algorithms.differentiable_strategy import DecisionDataset
-from research_strategy_optimization.evaluation.tier1_p22_diagnostics import (
-    P22Config,
-    _canonical_reversals,
-    _aggregate,
-    _utility_soft_targets,
-)
-from scripts.write_p22_gate_receipt import build as build_p22_gate
 
-
+@unittest.skipUnless(_TORCH_AVAILABLE, "PyTorch extra is required for differentiable P2.2 tests")
 class Tier1P22Tests(unittest.TestCase):
     def test_soft_utility_targets_are_normalized_and_monotone(self) -> None:
         targets = _utility_soft_targets(torch.tensor([[1.0, 0.0, -1.0, 1.0]]), 0.25)

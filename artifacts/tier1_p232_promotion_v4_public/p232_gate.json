@@ -1,0 +1,29 @@
+{
+  "convergence_digest": "sha256:e939352760b24bd12da16bea19f50a2c4a39cda40189edb0662f32d0a08d1705",
+  "diagnostic_only": true,
+  "formal_comparison_authorized": false,
+  "gates": {
+    "action_feasibility_pass": true,
+    "at_least_8_of_10_seeds": true,
+    "atomic_factorial_complete": true,
+    "branch_marginal_positive": false,
+    "convergence_all_steps": true,
+    "family_majority_direction": false,
+    "flip_marginal_positive": true,
+    "full_beats_atomic_base_regret_ci": false,
+    "full_beats_no_branch_regret_ci": false,
+    "full_beats_no_flip_pairrank_ci": true,
+    "full_beats_strict_rf_gbdt": false,
+    "full_includes_state_branch_flip": true,
+    "invalid_insufficient_recall_noninferior": true,
+    "ood_mechanism_audit_pass": true,
+    "paired_multiway_bootstrap_pass": true,
+    "relative_reward_stability": true,
+    "safety_noninferior": true,
+    "state_macro_f1_improves": true
+  },
+  "paired_aggregate_digest": "sha256:04cabe085e9071751f7f2b4c85d579d2b45308eb1e592f0b81c1b9143f29097a",
+  "schema_version": "pesco_tier1_p232_gate_v0.1",
+  "status": "NO_GO_P2_3_2",
+  "strict_shortcut_digest": "sha256:490dbcecd007d336a58800504ba897956f63fe00a06829b7c7b82cf248456675"
+}

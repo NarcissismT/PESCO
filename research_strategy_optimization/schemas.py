@@ -130,6 +130,13 @@ class WorldSpec:
     # are deliberately absent from policy-visible observations.
     metric_mismatch: bool = False
     protocol_invalid: bool = False
+    # P2.3.2/P2.3.3 independent OOD mechanisms.  These flags are evaluator-owned
+    # latent parameters and are never exposed through policy observations.
+    heteroscedastic_noise: bool = False
+    nonlinear_response: bool = False
+    measurement_shift: bool = False
+    missing_not_at_random: bool = False
+    intervention_noncompliance: bool = False
 
     def __post_init__(self) -> None:
         if not str(self.world_id):
@@ -141,7 +148,7 @@ class WorldSpec:
             raise ValueError("world effect/noise parameters must be finite")
         if isinstance(self.initial_samples, bool) or int(self.initial_samples) != self.initial_samples or int(self.initial_samples) <= 0:
             raise ValueError("initial_samples must be a positive integer")
-        if not isinstance(self.metric_mismatch, bool) or not isinstance(self.protocol_invalid, bool):
+        if any(not isinstance(value, bool) for value in (self.metric_mismatch, self.protocol_invalid, self.heteroscedastic_noise, self.nonlinear_response, self.measurement_shift, self.missing_not_at_random, self.intervention_noncompliance)):
             raise ValueError("world mechanism flags must be booleans")
         if not isinstance(self.public_task_family, str):
             raise ValueError("public_task_family must be a string")

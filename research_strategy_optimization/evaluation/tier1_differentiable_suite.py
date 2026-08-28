@@ -814,6 +814,8 @@ def evaluate_differentiable_policy(
     regrets: List[float] = []
     state_targets: List[int] = []
     state_predictions: List[int] = []
+    state_confidences: List[float] = []
+    state_correct_flags: List[bool] = []
     entropies: List[float] = []
     best_action_probabilities: List[float] = []
     belief_scores: List[float] = []
@@ -928,6 +930,8 @@ def evaluate_differentiable_policy(
         regrets.append(float(max(example.branch_utilities) - example.branch_utilities[selected]))
         state_targets.append(STATE_SET.index(example.state_target))
         state_predictions.append(STATE_SET.index(predicted_state))
+        state_confidences.append(float(state_probability))
+        state_correct_flags.append(bool(predicted_state is example.state_target))
         entropies.append(entropy)
         best_action_probabilities.append(float(probabilities[example.best_action.value]))
         full_record = {
@@ -1117,6 +1121,24 @@ def evaluate_differentiable_policy(
             len(STATE_SET),
         ),
     )
+    state_recall = {}
+    for state in STATE_SET:
+        target_index = STATE_SET.index(state)
+        denom = sum(target == target_index for target in state_targets)
+        state_recall[state.value] = (
+            sum(target == target_index and pred == target_index for target, pred in zip(state_targets, state_predictions)) / denom
+            if denom else None
+        )
+    # Reliability diagnostics are reported on the predicted state confidence.  The
+    # policy is not calibrated against hidden labels during action selection; this is
+    # an evaluator-side state-head diagnostic only.
+    state_brier = sum((confidence - float(correct)) ** 2 for confidence, correct in zip(state_confidences, state_correct_flags)) / max(1, len(state_confidences))
+    calibration_bins = []
+    for lower in (0.0, 0.2, 0.4, 0.6, 0.8):
+        members = [idx for idx, confidence in enumerate(state_confidences) if lower <= confidence < lower + 0.2 or (lower == 0.8 and confidence <= 1.0)]
+        if members:
+            calibration_bins.append({"lower": lower, "upper": lower + 0.2, "n": len(members), "mean_confidence": sum(state_confidences[idx] for idx in members) / len(members), "accuracy": sum(state_correct_flags[idx] for idx in members) / len(members)})
+    state_ece = sum((item["n"] / max(1, len(state_confidences))) * abs(item["mean_confidence"] - item["accuracy"]) for item in calibration_bins)
     pairwise_ranking_accuracy_ci = _question_macro_bootstrap_ci(
         pair_rows,
         "pairwise_ranking_correct",
@@ -1234,6 +1256,12 @@ def evaluate_differentiable_policy(
         "mean_regret_ci": regret_ci,
         "state_macro_f1_ci": state_macro_f1_ci,
         "state_accuracy": sum(target == pred for target, pred in zip(state_targets, state_predictions)) / len(state_targets),
+        "state_recall": state_recall,
+        "invalid_recall": state_recall.get(EvidenceState.INVALID.value),
+        "insufficient_recall": state_recall.get(EvidenceState.INSUFFICIENT.value),
+        "state_brier": state_brier,
+        "state_calibration_ece": state_ece,
+        "state_calibration_bins": calibration_bins,
         "mean_entropy": sum(entropies) / len(entropies),
         "mean_best_action_probability": sum(best_action_probabilities) / len(best_action_probabilities),
         "mean_belief_log_loss": sum(belief_scores) / len(belief_scores),

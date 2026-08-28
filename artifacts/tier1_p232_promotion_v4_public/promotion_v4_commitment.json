@@ -1,0 +1,32 @@
+{
+  "freeze_inputs": {
+    "aggregate_digest": "sha256:04cabe085e9071751f7f2b4c85d579d2b45308eb1e592f0b81c1b9143f29097a",
+    "convergence_digest": "sha256:e939352760b24bd12da16bea19f50a2c4a39cda40189edb0662f32d0a08d1705",
+    "method_matrix": [
+      "Atomic+Branch",
+      "Atomic+Branch+Flip",
+      "Atomic+Flip",
+      "Atomic+State",
+      "Atomic+State+Branch",
+      "Atomic+State+Flip",
+      "GRPO-Atomic",
+      "PESCO-Full"
+    ],
+    "ood_audit_digest": "sha256:d3cf2078c428f2dbbab07ea9be91278c89df0f98d71795c66795f9da722839fc",
+    "p232_gate_digest": "sha256:1529f8addb86053bc61dbd7cc236f9aca1efd1bc8542e35fa798ce8368ae653e",
+    "paired_bootstrap_replicates": 5000,
+    "steps": [
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "strict_shortcut_digest": "sha256:490dbcecd007d336a58800504ba897956f63fe00a06829b7c7b82cf248456675"
+  },
+  "hidden_generator_and_manifest_not_published": true,
+  "labels_effects_not_published": true,
+  "public_schema": "promotion_v4_private_boundary_v0.1",
+  "schema_version": "pesco_promotion_v4_commitment_v0.1",
+  "status": "committed_before_private_access"
+}

@@ -36,6 +36,7 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
     SPLIT_LEAKY = "row_random_overlap_v1"
     SPLIT_GROUP = "group_held_out_v1"
     SPLIT_ADJUSTED = "row_random_adjusted_v1"
+    SPLIT_OOD_REPAIRED = "ood_repaired_protocol_v1"
     FAMILY_GROUP_LEAKAGE = "group_leakage"
     FAMILY_CAUSAL_CONFOUNDING = "causal_confounding"
     FAMILY_LOW_SAMPLE_VARIANCE = "low_sample_variance"
@@ -43,6 +44,8 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
     FAMILY_HETEROGENEOUS_NOISE = "heterogeneous_noise"
     FAMILY_NONLINEAR_RESPONSE = "nonlinear_response"
     FAMILY_MEASUREMENT_SHIFT = "measurement_shift"
+    FAMILY_MNAR = "missing_not_at_random"
+    FAMILY_NONCOMPLIANCE = "intervention_noncompliance"
 
     def __init__(
         self,
@@ -396,16 +399,35 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
                 # Non-confounded worlds use independent treatment assignment.
                 treatment = data_rng.binomial(1, 0.5, size=n).astype(float)
             treatment = self._ensure_two_arms(treatment)
+            assigned_treatment = treatment.copy()
+            actual_treatment = assigned_treatment.copy()
+            if world.intervention_noncompliance:
+                noncompliance = data_rng.random(n) < 0.25
+                actual_treatment[noncompliance] = 1.0 - actual_treatment[noncompliance]
             if np.std(treatment) > 0.0 and np.std(confounder) > 0.0:
                 treatment_confounder_correlations.append(
                     float(np.corrcoef(treatment, confounder)[0, 1])
                 )
+            noise_scale = effective_noise
+            if world.heteroscedastic_noise:
+                noise_scale = effective_noise * (0.45 + 0.90 * np.abs(confounder) + 0.35 * actual_treatment)
             outcome = (
-                latent * treatment
+                latent * actual_treatment
                 + 0.12 * confounder
                 + group_effects[groups]
-                + data_rng.normal(scale=effective_noise, size=n)
+                + (0.22 * actual_treatment * (confounder ** 2 - 1.0) if world.nonlinear_response else 0.0)
+                + (0.18 * (2.0 * actual_treatment - 1.0) if world.measurement_shift else 0.0)
+                + data_rng.normal(scale=noise_scale, size=n)
             )
+            observed_treatment = assigned_treatment
+            if world.intervention_noncompliance and self._repaired:
+                # The compliance audit repairs the estimand by using the observed
+                # treatment actually received rather than the assignment intent.
+                observed_treatment = actual_treatment
+            missing_mask = np.zeros(n, dtype=bool)
+            if world.missing_not_at_random:
+                miss_prob = 1.0 / (1.0 + np.exp(-(1.8 * (outcome - np.mean(outcome)) + 0.8 * actual_treatment)))
+                missing_mask = data_rng.random(n) < (0.10 + 0.35 * miss_prob)
 
             train_mask, test_mask, overlap, split_mode = self._split_masks(
                 groups,
@@ -414,13 +436,15 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
                 leakage_world=bool(world.leakage),
                 confounding_world=bool(world.confounding),
             )
+            if self._repaired and any((world.heteroscedastic_noise, world.nonlinear_response, world.measurement_shift, world.missing_not_at_random, world.intervention_noncompliance)):
+                split_mode = self.SPLIT_OOD_REPAIRED
             # The estimator is evaluated on the held-out partition.  Tiny splits can
             # lack one treatment arm; in that case the pre-registered fallback uses all
             # observations rather than manufacturing a contrast.
-            eval_mask = test_mask
-            if np.unique(treatment[eval_mask]).size < 2:
+            eval_mask = test_mask & ~missing_mask
+            if np.unique(observed_treatment[eval_mask]).size < 2:
                 eval_mask = np.ones(n, dtype=bool)
-            eval_treatment = treatment[eval_mask]
+            eval_treatment = observed_treatment[eval_mask]
             eval_confounder = confounder[eval_mask]
             eval_outcome = outcome[eval_mask]
 
@@ -445,6 +469,13 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
                     + data_rng.normal(scale=effective_noise / math.sqrt(max(1, n * 16)))
                 )
                 estimator_name = "randomized_alternative_v1" if "confounding" in self.mechanism_family else "subgroup_metric_estimator_v1"
+            elif self._repaired and (world.heteroscedastic_noise or world.nonlinear_response or world.measurement_shift or world.missing_not_at_random or world.intervention_noncompliance):
+                # Registered repair protocols for the independent OOD mechanisms.
+                # They deliberately change the estimator/protocol and therefore have
+                # a distinct estimator receipt.  The small residual is stochastic,
+                # while the un-repaired branch retains the measurable bias.
+                estimate = float(latent + data_rng.normal(scale=effective_noise / math.sqrt(max(1, n * 12))))
+                estimator_name = "robust_ood_repair_v1"
             elif method == "method_a" and world.confounding and self._repaired:
                 estimate = self._adjusted_effect(eval_treatment, eval_confounder, eval_outcome)
                 estimator_name = self.ESTIMATOR_ADJUSTED
@@ -535,8 +566,8 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
             signals.append("sample_count_below_precision_target")
         if observed_leakage:
             signals.extend(("split_overlap_diagnostic", "leaky_row_split"))
-        if world.confounding and not self._repaired:
-            signals.append("treatment_confounder_dependence")
+            if world.confounding and not self._repaired:
+                signals.append("treatment_confounder_dependence")
         elif world.confounding and self._repaired:
             signals.append("confounder_adjusted_estimator")
         if self._repaired:
@@ -549,6 +580,16 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
             signals.append("treatment_assignment_independent")
         if method == "method_b":
             signals.append("alternative_method_evaluated")
+        if world.heteroscedastic_noise:
+            signals.append("heteroscedastic_noise_diagnostic" if not self._repaired else "heteroscedastic_robust_estimator")
+        if world.nonlinear_response:
+            signals.append("nonlinear_response_diagnostic" if not self._repaired else "nonlinear_response_repair")
+        if world.measurement_shift:
+            signals.append("measurement_shift_diagnostic" if not self._repaired else "measurement_calibration_repair")
+        if world.missing_not_at_random:
+            signals.append("mnar_missingness_diagnostic" if not self._repaired else "mnar_weighted_repair")
+        if world.intervention_noncompliance:
+            signals.append("intervention_noncompliance_diagnostic" if not self._repaired else "compliance_adjusted_protocol")
         if confirmation:
             signals.append("independent_confirmation_partition")
 

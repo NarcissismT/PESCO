@@ -3,19 +3,18 @@ from __future__ import annotations
 import unittest
 from types import SimpleNamespace
 
-from research_strategy_optimization.algorithms.differentiable_strategy import DecisionDataset, DifferentiableStrategyPolicy
-from research_strategy_optimization.evaluation.tier1_p231_diagnostics import (
-    FOUR_STATE_COMPONENTS,
-    P231Config,
-    REWARD_COMPONENTS,
-    TERMINAL_COMPONENTS,
-    canonical_pair_payload,
-    fit_rollout_method,
-    reward_tensors,
-    verify_canonical_pair_payload,
-)
+try:
+    from research_strategy_optimization.algorithms.differentiable_strategy import DecisionDataset, DifferentiableStrategyPolicy
+    from research_strategy_optimization.evaluation.tier1_p231_diagnostics import (
+        FOUR_STATE_COMPONENTS, P231Config, REWARD_COMPONENTS, TERMINAL_COMPONENTS,
+        canonical_pair_payload, fit_rollout_method, reward_tensors, verify_canonical_pair_payload,
+    )
+    _TORCH_AVAILABLE = True
+except ImportError:
+    _TORCH_AVAILABLE = False
 
 
+@unittest.skipUnless(_TORCH_AVAILABLE, "PyTorch extra is required for differentiable P2.3.1 tests")
 class Tier1P231Tests(unittest.TestCase):
     def test_artificial_reward_sample_has_three_distinct_objectives(self) -> None:
         action_names = [action.value for action in __import__(

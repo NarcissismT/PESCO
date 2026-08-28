@@ -3,15 +3,18 @@ from __future__ import annotations
 import json
 import unittest
 
-from research_strategy_optimization.algorithms.differentiable_strategy import DecisionDataset
-from research_strategy_optimization.evaluation.tier1_p23_dataset import (
-    P23_COUNTS,
-    P23_GENERATOR_VERSION,
-    build_tier1_p23_promotion_v2_benchmark,
-)
-from research_strategy_optimization.evaluation.tier1_p23_diagnostics import P23_COMPONENT_MAPPING, P23Config, _canonical_reversals
+try:
+    from research_strategy_optimization.algorithms.differentiable_strategy import DecisionDataset
+    from research_strategy_optimization.evaluation.tier1_p23_dataset import (
+        P23_COUNTS, P23_GENERATOR_VERSION, build_tier1_p23_promotion_v2_benchmark,
+    )
+    from research_strategy_optimization.evaluation.tier1_p23_diagnostics import P23_COMPONENT_MAPPING, P23Config, _canonical_reversals
+    _TORCH_AVAILABLE = True
+except ImportError:
+    _TORCH_AVAILABLE = False
 
 
+@unittest.skipUnless(_TORCH_AVAILABLE, "PyTorch extra is required for differentiable P2.3 tests")
 class Tier1P23Tests(unittest.TestCase):
     def test_promotion_v2_split_and_family_contract(self) -> None:
         benchmark = build_tier1_p23_promotion_v2_benchmark()

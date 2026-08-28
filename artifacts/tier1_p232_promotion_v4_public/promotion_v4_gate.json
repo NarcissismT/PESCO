@@ -1,0 +1,22 @@
+{
+  "gates": {
+    "access_sentinel_absent_before_run": true,
+    "atomic_one_time_receipt_required": true,
+    "formal_model_gate": false,
+    "freeze_receipt_required": true,
+    "independent_post_freeze_process_required": true,
+    "no_hidden_manifest_in_public_repo": true,
+    "public_schema_only": true,
+    "real_ood_five_families": {
+      "all_formula_signatures_changed": true,
+      "all_protocol_signatures_changed": true,
+      "five_families_present": true,
+      "hidden_validation_bias_decreases": true,
+      "mean_absolute_bias_reduction": 0.09019362584464775
+    }
+  },
+  "p232_gate": "NO_GO_P2_3_2",
+  "private_promotion_created_after_freeze": false,
+  "schema_version": "pesco_promotion_v4_gate_v0.1",
+  "status": "NO_GO_PROMOTION_V4_PENDING_PRIVATE_FINAL"
+}
