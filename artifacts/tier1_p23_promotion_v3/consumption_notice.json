@@ -1,0 +1,8 @@
+{
+  "schema_version": "pesco_promotion_v3_consumption_notice_v0.1",
+  "status": "diagnostic_promotion_v3_consumed",
+  "formal_final_authorized": false,
+  "reason": "The promotion-v3 hidden manifest and final result were accessed before the v4 freeze and are retained only for historical audit. They must not be reused as a formal final after evaluator or algorithm changes.",
+  "superseded_by": "promotion_v4_private_post_freeze_evaluation",
+  "labels_or_effects_republished": false
+}
