@@ -97,6 +97,9 @@ class P22Config:
     lagrange_learning_rate: float = 0.10
     gradient_clip_norm: float = 5.0
     bootstrap_replicates: int = 2000
+    # Public evidence-state class weights.  The default is neutral for backwards
+    # compatibility; P2.3.3 can register an INVALID-upweighted vector.
+    state_class_weights: Tuple[float, ...] | None = None
 
 
 def _utility_soft_targets(utilities: Tensor, temperature: float) -> Tensor:
@@ -399,6 +402,8 @@ def _fit_sft(dataset: DecisionDataset, config: P22Config) -> Tuple[Differentiabl
         seed=int(config.seed), hidden_dim=int(config.hidden_dim), batch_size=int(config.batch_size),
         learning_rate=float(config.sft_learning_rate), max_optimizer_steps=max(1, int(config.sft_steps)),
         epochs=max(1, int(config.sft_steps)),
+        state_class_weights=tuple(config.state_class_weights) if config.state_class_weights is not None else None,
+        state_loss_weight=1.0,
     ))
     policy, log = trainer.fit(dataset, "SFT")
     return policy, {"optimizer_steps": int(log.optimizer_steps), "objective": "public_branch_utility_winner_cross_entropy"}

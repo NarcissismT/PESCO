@@ -1,0 +1,54 @@
+{
+  "audit_sha256": "sha256:80689b0919098bbcbbd0a78b639b7c1dbb33e7312ba923513e47ba59efe26bdc",
+  "estimator_source": "data_arrays_only",
+  "forced_hidden_truth_invariance": true,
+  "no_hidden_truth_used_by_estimator": true,
+  "rows": [
+    {
+      "estimate": 0.22280652738724313,
+      "estimate_after_hidden_change": 0.22280652738724313,
+      "fixed_observed_arrays_invariant": true,
+      "latent_after_forced_test": 17.0,
+      "latent_before_forced_test": -9.0,
+      "mechanism": "heterogeneous_noise",
+      "uses_hidden_truth": false
+    },
+    {
+      "estimate": 0.20533103866783492,
+      "estimate_after_hidden_change": 0.20533103866783492,
+      "fixed_observed_arrays_invariant": true,
+      "latent_after_forced_test": 17.0,
+      "latent_before_forced_test": -9.0,
+      "mechanism": "nonlinear_response",
+      "uses_hidden_truth": false
+    },
+    {
+      "estimate": -0.1470686434329946,
+      "estimate_after_hidden_change": -0.1470686434329946,
+      "fixed_observed_arrays_invariant": true,
+      "latent_after_forced_test": 17.0,
+      "latent_before_forced_test": -9.0,
+      "mechanism": "measurement_shift",
+      "uses_hidden_truth": false
+    },
+    {
+      "estimate": 0.20927551377728837,
+      "estimate_after_hidden_change": 0.20927551377728837,
+      "fixed_observed_arrays_invariant": true,
+      "latent_after_forced_test": 17.0,
+      "latent_before_forced_test": -9.0,
+      "mechanism": "missing_not_at_random",
+      "uses_hidden_truth": false
+    },
+    {
+      "estimate": 0.32955952353740675,
+      "estimate_after_hidden_change": 0.32955952353740675,
+      "fixed_observed_arrays_invariant": true,
+      "latent_after_forced_test": 17.0,
+      "latent_before_forced_test": -9.0,
+      "mechanism": "intervention_noncompliance",
+      "uses_hidden_truth": false
+    }
+  ],
+  "schema_version": "pesco_p233_estimator_audit_v0.1"
+}

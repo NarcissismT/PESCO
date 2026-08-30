@@ -1,0 +1,9 @@
+{
+  "all_features_unchanged": true,
+  "all_metadata_exclusion_flags": true,
+  "all_pre_action_hashes_present": true,
+  "example_count": 7200,
+  "pass": true,
+  "rows_digest": "sha256:a5b91e31e2c997e80f3f311b35935f3355e6edc7eacceaf916e812641b76383f",
+  "schema_version": "pesco_p233_counterfactual_leakage_audit_v0.1"
+}

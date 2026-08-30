@@ -1,0 +1,41 @@
+{
+  "audit_sha256": "sha256:e4da331fef31d9de6a001b0394ff1b50a6a805b3fc5ed49da0e259914f1850b1",
+  "p233_go": {
+    "all_gate_values_derived_from_receipts": true,
+    "all_methods_share_atomic_reward": true,
+    "at_least_8_of_10_seed_directions_positive": true,
+    "branch_factorial_effect_regret_ci_upper_lt_zero": true,
+    "convergence_rule_frozen_and_passed": true,
+    "environment_execution_budget_matched": true,
+    "family_majority_direction_positive": true,
+    "flip_does_not_harm_regret": true,
+    "flip_pairrank_delta_ci_lower_gt_zero": true,
+    "full_beats_strict_shortcut_baseline": true,
+    "full_state_macro_f1_noninferior_to_atomic_state": true,
+    "full_vs_atomic_state_flip_regret_ci_upper_lt_zero": true,
+    "full_vs_best_nonfull_regret_ci_upper_lt_zero": true,
+    "invalid_recall_absolute_floor_pass": true,
+    "leave_one_family_out_robust": true,
+    "min_per_state_recall_pass": true,
+    "no_hidden_truth_used_by_estimator": true,
+    "reward_weight_stability_pass": true,
+    "selected_action_replication_noninferior": true,
+    "selected_action_validity_noninferior": true
+  },
+  "receipt_sources": {
+    "aggregate": "p233_aggregate.json",
+    "convergence": "convergence_summary.json",
+    "estimator": "estimator_audit.json",
+    "matrix": "p233_matrix_result.json",
+    "shortcut": "shortcut_probe_result.json"
+  },
+  "schema_version": "pesco_p233_go_v0.1",
+  "split": "promotion",
+  "status": "GO",
+  "thresholds": {
+    "invalid_recall_floor": 0.05,
+    "min_per_state_recall": 0.1,
+    "replication_floor": 0.7,
+    "state_f1_noninferiority_margin": 0.02
+  }
+}

@@ -1,54 +1,549 @@
 {
-  "schema_version": "pesco_implementation_manifest_v0.2",
-  "source_plan": "PESCO_Research_Algorithm_and_Experimental_Plan_v1.md",
-  "cutoff_date": "2026-08-27",
-  "scope_note": "CPU/Tier-0 reference closure, Tier-1 v0.3 A/B/C/D/E current diagnostic suite plus explicit F discovery boundary, P2.1 evaluator/shortcut diagnostics, P2.2 consumed promotion, P2.3 common-protocol promotion-v2 diagnostics, P2.3.1 optimizer authenticity, and promotion-v3 final gate; private evaluator boundary remains fail-closed for scaling; historical v0.4/formal/P2 artifacts are explicitly marked diagnostic_v04_consumed by additive consumption notices; v0.5 is marked final_boundary_rehearsal_consumed; historical discovery certificates are explicitly scoped as legacy; no claim of completed LLM training or external-paper reproduction.",
-  "requirements": [
-    {"id": "R1", "plan_sections": ["6", "15", "20.3", "20.5", "20.6"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/evidence/hypothesis_registry.py", "artifacts/pesco_pilot/freeze_check.json", "artifacts/pesco_pilot/hypothesis_registry.json", "artifacts/pesco_pilot/audit_ledger.jsonl"]},
-    {"id": "R2", "plan_sections": ["5", "6.3", "14.2", "14.3"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/evidence/evidence_classifier.py", "research_strategy_optimization/environments/tier0_simulator.py", "artifacts/pesco_pilot/negative_controls.json", "artifacts/tier1_smoke.json"]},
-    {"id": "R3", "plan_sections": ["9.1", "9.2", "9.7", "20.4"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/algorithms/branch_rollout.py", "research_strategy_optimization/environments/snapshot_manager.py", "artifacts/pesco_pilot/same_state_branches.json", "artifacts/pesco_pilot/mvp_counts.json"]},
-    {"id": "R4", "plan_sections": ["9.3", "9.4", "9.5", "12.3", "12.6"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/algorithms/leave_one_out_advantage.py", "research_strategy_optimization/algorithms/objectives.py", "artifacts/pesco_pilot/training_log_full.json"]},
-    {"id": "R5", "plan_sections": ["10", "10.4", "10.5"], "status": "implemented_and_audited", "evidence": ["research_strategy_optimization/algorithms/paired_world_sampler.py", "research_strategy_optimization/algorithms/preference_reversal_loss.py", "artifacts/pesco_pilot/reversal_pairs.json", "artifacts/pesco_pilot/training_log_full.json"]},
-    {"id": "R6", "plan_sections": ["11"], "status": "implemented_and_audited_legacy_scope_explicit", "evidence": ["research_strategy_optimization/algorithms/discovery_certificate.py", "research_strategy_optimization/evaluation/legacy_certificates.py", "artifacts/pesco_pilot/negative_controls.json", "artifacts/pesco_pilot/certificate_PESCO-Full_rq_tier0_001_world_02.json", "artifacts/pesco_pilot/legacy_certificates_manifest.json", "artifacts/pesco_pilot/discovery_policy.json"]},
-    {"id": "R7", "plan_sections": ["12.7", "12.8", "22.5", "22.6"], "status": "cpu_reference_go_real_zero_shot_current_diagnostic_external_checkpoint_formal_stage3_no_go", "evidence": ["research_strategy_optimization/algorithms/pesco_trainer.py", "research_strategy_optimization/environments/tier2_posttraining_env.py", "artifacts/pesco_pilot/stage_status.json", "artifacts/pesco_pilot/training_authorization.json", "artifacts/pesco_pilot/zero_shot_diagnostic.json", "artifacts/tier1_zero_shot.json", "artifacts/experiment_b_real_zero_shot.json", "artifacts/tier1_zero_shot_current_status.json", "artifacts/tier1_zero_shot_run_manifest.json", "scripts/run_tier1_zero_shot.py"]},
-    {"id": "R8", "plan_sections": ["16"], "status": "protocol_matched_adapters_only", "evidence": ["research_strategy_optimization/configs/baselines/matched_cpu_suite.yaml", "artifacts/pesco_pilot/baseline_manifest.json", "artifacts/pesco_pilot/results.json", "artifacts/pesco_pilot/experiment_b_diagnostic.json", "artifacts/pesco_pilot/experiment_c_diagnostic.json"]},
-    {"id": "R9", "plan_sections": ["17", "19"], "status": "implemented_and_audited_p2_1_metric_boundary", "evidence": ["research_strategy_optimization/evaluation/", "research_strategy_optimization/evaluation/tier1_differentiable_suite.py", "research_strategy_optimization/evaluation/tier1_p2_experiments.py", "research_strategy_optimization/evaluation/shortcut_probes.py", "visualization/", "artifacts/pesco_pilot/report/summary.json", "artifacts/pesco_pilot/report/report_metadata.json", "artifacts/pesco_pilot/experiment_b_diagnostic.json", "artifacts/pesco_pilot/experiment_c_diagnostic.json", "research_strategy_optimization/tests/test_tier1_p2_p3.py", "research_strategy_optimization/tests/test_shortcut_probes.py"]},
-    {"id": "R10", "plan_sections": ["18", "22.2", "22.3"], "status": "mvp_go", "evidence": ["artifacts/pesco_pilot/tier0_go.json", "artifacts/pesco_pilot/mvp_gate.json", "artifacts/pesco_pilot/negative_controls.json"]},
-    {"id": "R11", "plan_sections": ["18.1"], "status": "registered_with_cpu_switches", "evidence": ["research_strategy_optimization/evaluation/ablations.py", "research_strategy_optimization/configs/algorithms/ablations_v0_2.yaml", "artifacts/pesco_pilot/ablation_manifest.json"]},
-    {"id": "R12", "plan_sections": ["21", "22.7"], "status": "freeze_and_budget_templates_present_final_scientific_run_pending", "evidence": ["research_strategy_optimization/configs/", "artifacts/pesco_pilot/compute_ledger.json", "artifacts/pesco_pilot/freeze_check.json"]},
-    {"id": "R13", "plan_sections": ["12.2", "12.3", "12.5", "12.7", "18.1"], "status": "tier1_v03_a_b_cde_current_f_diagnostic_suite", "evidence": ["research_strategy_optimization/algorithms/differentiable_strategy.py", "research_strategy_optimization/evaluation/tier1_differentiable_suite.py", "research_strategy_optimization/configs/algorithms/tier1_differentiable_suite_v0_3.yaml", "scripts/run_tier1_differentiable_suite.py", "scripts/audit_tier1_count_semantics.py", "research_strategy_optimization/utils/run_manifest.py", "artifacts/tier1_v03/tier1_go.json", "artifacts/tier1_v03/summary.json", "artifacts/tier1_v03/count_semantics_audit.json", "artifacts/tier1_v03/experiment_a_environment_correctness.json", "artifacts/tier1_v03/benchmark_manifest.json", "artifacts/tier1_v03/question_world_groups.json", "artifacts/tier1_v03/action_level_branches.json", "artifacts/tier1_v03/run_manifest.json", "artifacts/tier1_zero_shot.json", "artifacts/experiment_b_real_zero_shot.json", "artifacts/tier1_zero_shot_run_manifest.json", "artifacts/tier1_differentiable_suite/run_manifest.json", "artifacts/tier1_differentiable_suite/suite.json", "artifacts/tier1_differentiable_suite/dataset.json", "artifacts/tier1_differentiable_suite/experiment_c_state_reward.json", "artifacts/tier1_differentiable_suite/experiment_d_branch_ablation.json", "artifacts/tier1_differentiable_suite/experiment_e_flip_ablation.json", "artifacts/tier1_differentiable_suite/experiment_f_discovery_boundary.json"]},
-    {"id": "R14", "plan_sections": ["feedback.v04"], "status": "tier1_v04_diagnostic_consumed_p2_1_superseded", "evidence": ["research_strategy_optimization/evaluation/tier1_v04.py", "research_strategy_optimization/evaluation/tier1_v04_extended.py", "scripts/run_tier1_v04_extended.py", "artifacts/tier1_v04/consumption_notice.json", "artifacts/tier1_v04_extended/consumption_notice.json", "artifacts/tier1_v04_extended/benchmark_manifest.json", "artifacts/tier1_v04_extended/dataset_raw_evidence.json", "artifacts/tier1_v04_extended/dataset_oracle_state.json", "artifacts/tier1_v04_extended/decisions.json", "artifacts/tier1_v04_extended/trajectories.json", "artifacts/tier1_v04_extended/tier1_v04_extended_go.json", "artifacts/tier1_v04_extended/run_manifest.json", "artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json", "artifacts/tier1_p21_diagnostic/counterfactual_leakage_audit.json"]},
-    {"id": "R15", "plan_sections": ["feedback.p2", "feedback.p3"], "status": "p2_v04_historical_consumed_p2_1_diagnostic_complete_p3_fail_closed", "evidence": ["research_strategy_optimization/evaluation/tier1_p2_experiments.py", "research_strategy_optimization/evaluation/tier1_p3_gate.py", "research_strategy_optimization/environments/tier1_benchmark.py", "research_strategy_optimization/tests/test_reward_components.py", "scripts/run_tier1_p2.py", "scripts/run_tier1_p3_gate.py", "artifacts/tier1_p2_v04_ten_seed/consumption_notice.json", "artifacts/tier1_p2_v04_ten_seed/p2_result.json", "artifacts/tier1_p2_v04_ten_seed/p2_gate.json", "artifacts/tier1_p2_v04_ten_seed/run_manifest.json", "artifacts/tier1_p2_v04_ten_seed_v3/consumption_notice.json", "artifacts/tier1_p2_v04_formal_final_ten_seed/consumption_notice.json", "artifacts/tier1_p2_v04_formal_final_ten_seed/p2_result.json", "artifacts/tier1_p2_v04_formal_final_ten_seed/p2_gate.json", "artifacts/tier1_p2_v04_formal_final_ten_seed/run_manifest.json", "artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json", "artifacts/tier1_p21_shortcut_probe/shortcut_probe_result.json", "artifacts/tier1_p3_small_model_gate/small_model_gate.json", "artifacts/tier1_p3_small_model_gate/run_manifest.json"]},
-    {"id": "R16", "plan_sections": ["feedback.B_zero_shot_robustness"], "status": "bounded_single_checkpoint_robustness_fail_closed", "evidence": ["research_strategy_optimization/evaluation/tier1_zero_shot_robustness.py", "scripts/run_tier1_zero_shot_robustness.py", "research_strategy_optimization/tests/test_tier1_zero_shot_robustness.py", "artifacts/tier1_zero_shot_robustness_null_only.json", "artifacts/tier1_zero_shot_robustness_null_only.run_manifest.json"]},
-    {"id": "R17", "plan_sections": ["feedback.formal_final_id_ood"], "status": "v04_and_v05_consumed_v06_private_boundary_model_comparison_locked", "evidence": ["artifacts/tier1_v04_formal_final/consumption_notice.json", "artifacts/tier1_v05_frozen_final/consumption_notice.json", "research_strategy_optimization/evaluation/tier1_v06_frozen_final.py", "scripts/audit_public_final_leakage.py", "artifacts/tier1_v06_public_leakage_audit.json", "artifacts/tier1_v06_evaluator_private/private_boundary_audit.json"]},
-    {"id": "R18", "plan_sections": ["feedback.p2_1_diagnostic"], "status": "p2_1_fresh_and_algorithm_diagnostic_complete_counterfactual_family_gradient_sensitivity_audits", "evidence": ["research_strategy_optimization/evaluation/tier1_p21_dataset.py", "research_strategy_optimization/evaluation/tier1_p21_diagnostics.py", "research_strategy_optimization/evaluation/tier1_p2_experiments.py", "scripts/prepare_tier1_p21_diagnostic.py", "scripts/run_tier1_p21_diagnostics.py", "scripts/run_tier1_p21_constrained.py", "scripts/aggregate_tier1_p21_diagnostics.py", "scripts/run_tier1_p21_seed_sweep.py", "scripts/run_p21_sensitivity_audit.py", "artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json", "artifacts/tier1_p21_diagnostic/collection_audit.json", "artifacts/tier1_p21_diagnostic/counterfactual_leakage_audit.json", "artifacts/tier1_p21_diagnostic/run_manifest.json", "artifacts/tier1_p21_algorithm_diagnostic/p21_algorithm_diagnostic.json", "artifacts/tier1_p21_algorithm_diagnostic/run_manifest.json", "artifacts/tier1_p21_seed_sweep_diagnostic/seed_sweep_result.json", "artifacts/tier1_p21_seed_sweep_diagnostic/run_manifest.json", "artifacts/tier1_p21_seed_sweep_10seed_diagnostic/seed_sweep_result.json", "artifacts/tier1_p21_seed_sweep_10seed_diagnostic/run_manifest.json", "artifacts/tier1_p21_sensitivity_audit/sensitivity_audit.json", "artifacts/tier1_p21_sensitivity_audit/run_manifest.json", "artifacts/tier1_p21_constrained_diagnostic/constrained_result.json", "artifacts/tier1_p21_algorithm_diagnostic/shortcut_probe_strict/shortcut_probe_result.json", "research_strategy_optimization/tests/test_tier1_p21.py"]},
-    {"id": "R19", "plan_sections": ["feedback.shortcut_probe", "feedback.v05_freeze", "feedback.p2_2"], "status": "p22_screening_and_frozen_10seed_all_methods_gate_blocked_shortcut_strict_completed_v06_private_boundary_audited", "evidence": ["research_strategy_optimization/evaluation/tier1_p22_diagnostics.py", "scripts/run_tier1_p22_diagnostics.py", "scripts/run_tier1_p22_matrix.py", "scripts/audit_p22_family_loo.py", "scripts/audit_p22_method_reward_sensitivity.py", "scripts/audit_reward_weight_sensitivity.py", "scripts/summarize_p22_gradient_conflicts.py", "scripts/select_p22_global_baseline.py", "scripts/write_p22_gate_receipt.py", "scripts/run_p22_power_analysis.py", "artifacts/tier1_p22_screening_final_objective_v2/p22_matrix_result.json", "artifacts/tier1_p22_screening_final_objective_v2/run_manifest.json", "artifacts/tier1_p22_screening_final_objective_v2/global_baseline_selection.json", "artifacts/tier1_p22_screening_final_objective_v2/family_loo.json", "artifacts/tier1_p22_screening_final_objective_v2/method_reward_sensitivity.json", "artifacts/tier1_p22_screening_final_objective_v2/reward_weight_sensitivity.json", "artifacts/tier1_p22_screening_final_objective_v2/gradient_conflict_summary.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_matrix_result.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/run_manifest.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_gate_receipt.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_gate_receipt_pairwise.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_gate_receipt_listwise_pcgrad.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/family_loo.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/family_loo_pairwise.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/method_reward_sensitivity.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/reward_weight_sensitivity.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/gradient_conflict_summary.json", "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/gradient_conflict_pairwise.json", "artifacts/tier1_p22_frozen_listwise_safety_10seed/p22_matrix_result.json", "artifacts/tier1_p22_frozen_listwise_safety_10seed/run_manifest.json", "artifacts/tier1_p22_frozen_listwise_safety_10seed/p22_gate_receipt.json", "artifacts/tier1_p22_frozen_listwise_safety_10seed/family_loo.json", "artifacts/tier1_p22_frozen_listwise_safety_10seed/method_reward_sensitivity.json", "artifacts/tier1_p22_frozen_listwise_safety_10seed/reward_weight_sensitivity.json", "artifacts/tier1_p22_frozen_listwise_safety_10seed/gradient_conflict_summary.json", "artifacts/tier1_p22_sweep_top1margin_0_10/p22_matrix_result.json", "artifacts/tier1_p22_sweep_top1margin_0_25/p22_matrix_result.json", "artifacts/tier1_p22_power_analysis/power_analysis.json", "artifacts/tier1_p22_strict_shortcut/shortcut_probe_result.json", "artifacts/tier1_v06_public_leakage_audit.json", "artifacts/tier1_v06_evaluator_private/private_boundary_audit.json"]},
-    {"id": "R20", "plan_sections": ["feedback.p2_3.1", "feedback.promotion_v3"], "status": "p231_authenticity_passed_promotion_v3_consumed_final_no_go", "evidence": ["research_strategy_optimization/evaluation/tier1_p231_diagnostics.py", "research_strategy_optimization/evaluation/tier1_p23_v3_dataset.py", "research_strategy_optimization/environments/tier1_tabular_env.py", "research_strategy_optimization/schemas.py", "scripts/run_tier1_p231_dev.py", "scripts/audit_tier1_p231_authenticity.py", "scripts/aggregate_tier1_p231_dev.py", "scripts/audit_tier1_p231_action_feasibility.py", "scripts/audit_tier1_p231_canonical_contract.py", "scripts/audit_tier1_p23_reward_stability.py", "scripts/prepare_tier1_p23_promotion_v3.py", "scripts/run_tier1_p23_promotion_v3_final.py", "scripts/write_tier1_p23_promotion_v3_gate.py", "scripts/freeze_tier1_p231_promotion_v3.py", "artifacts/tier1_p23_promotion_v3/consumption_notice.json", "artifacts/tier1_p231_dev_authenticity_3seed/p231_authenticity_gate.json", "artifacts/tier1_p231_consumed_10seed/p231_authenticity_gate.json", "artifacts/tier1_p231_consumed_10seed/p231_aggregate.json", "artifacts/tier1_p231_action_feasibility.json", "artifacts/tier1_p231_relative_reward_stability.json", "artifacts/tier1_p231_shortcut_probe_strict/shortcut_probe_result.json", "artifacts/tier1_p231_freeze/promotion_v3_freeze_receipt.json", "artifacts/tier1_p23_promotion_v3/promotion_v3_collection.json", "artifacts/tier1_p23_promotion_v3/action_feasibility_audit.json", "artifacts/tier1_p23_promotion_v3_final_10seed/promotion_v3_final_result.json", "artifacts/tier1_p23_promotion_v3_final_10seed/promotion_v3_gate.json", "artifacts/tier1_p23_promotion_v3_final_10seed/canonical_contract_audit.json"]},
-    {"id": "R21", "plan_sections": ["feedback.p2_3.2"], "status": "atomic_factorial_convergence_paired_bootstrap_shortcut_and_gradient_conflict_completed_no_go", "evidence": ["research_strategy_optimization/evaluation/tier1_p231_diagnostics.py", "research_strategy_optimization/evaluation/tier1_differentiable_suite.py", "scripts/run_tier1_p232_factorial.py", "scripts/run_tier1_p232_convergence.py", "scripts/aggregate_tier1_p232.py", "artifacts/tier1_p232_atomic_factorial_10seed/p232_paired_aggregate.json", "artifacts/tier1_p232_atomic_factorial_10seed/shortcut_probe_strict/shortcut_probe_result.json", "artifacts/tier1_p232_convergence/convergence_summary.json", "artifacts/tier1_p232_branch_conflict_expected/redacted_summary.json", "artifacts/tier1_p232_branch_conflict_pcgrad/redacted_summary.json"]},
-    {"id": "R22", "plan_sections": ["feedback.promotion_v4", "feedback.real_ood"], "status": "promotion_v4_private_boundary_and_five_mechanism_ood_audit_completed_formal_gate_pending", "evidence": ["research_strategy_optimization/schemas.py", "research_strategy_optimization/environments/tier1_tabular_env.py", "scripts/audit_promotion_v4_ood.py", "scripts/write_tier1_p232_gate.py", "scripts/freeze_tier1_p232_promotion_v4.py", "scripts/run_tier1_promotion_v4_private.py", "artifacts/tier1_p232_promotion_v4_ood_audit.json", "artifacts/tier1_p232_promotion_v4_public/promotion_v4_commitment.json", "artifacts/tier1_p232_promotion_v4_public/promotion_v4_redacted_aggregate.json", "artifacts/tier1_p232_promotion_v4_public/promotion_v4_gate.json"]}
-  ],
-  "completion_boundary": {
-    "tier0_cpu_reference": true,
-    "tier1_smoke": true,
-    "tier2_llm_rl": false,
-    "qlora": false,
-    "final_id_evaluation": true,
-    "final_ood_evaluation": true,
-    "external_paper_reimplementations": false,
-    "formal_environment_receipts": true,
-    "formal_model_comparison": false,
-    "diagnostic_v04_consumed": true,
-    "p2_1_diagnostics": true,
-    "shortcut_probes": true,
-    "v05_final_prepared": false,
-    "v05_boundary_rehearsal_consumed": true,
-    "v05_final_frozen": false,
-    "p22_screening_gate": false,
-    "p231_authenticity_gate": true,
-    "promotion_v3_gate": false,
-    "p232_atomic_factorial_gate": false,
-    "promotion_v4_gate": false,
-    "v06_private_final_authorized": false,
-    "reason": "v0.4/formal/P2 artifacts are retained for historical audit but consumed after the latent-template/evaluator-boundary review. P2.3.1 optimizer authenticity and strict shortcut are complete. P2.3.2 unified Atomic factorial, 16/32/64/128/256 convergence, two-way paired bootstrap, state diagnostics, second branch formulation and PCGrad conflict runs are complete; regret and branch-marginal gates remain closed. Promotion-v4 private five-family OOD mechanism audit and redacted boundary artifacts are complete, while the private final model gate is fail-closed pending regret/non-inferiority criteria. LoRA/GSPO/BPO/CBPO/online RL remain closed."
-  }
+    "schema_version": "pesco_implementation_manifest_v0.2",
+    "source_plan": "PESCO_Research_Algorithm_and_Experimental_Plan_v1.md",
+    "cutoff_date": "2026-08-27",
+    "scope_note": "CPU/Tier-0 reference closure, Tier-1 v0.3 A/B/C/D/E current diagnostic suite plus explicit F discovery boundary, P2.1 evaluator/shortcut diagnostics, P2.2 consumed promotion, P2.3 common-protocol promotion-v2 diagnostics, P2.3.1 optimizer authenticity, and promotion-v3 final gate; private evaluator boundary remains fail-closed for scaling; historical v0.4/formal/P2 artifacts are explicitly marked diagnostic_v04_consumed by additive consumption notices; v0.5 is marked final_boundary_rehearsal_consumed; historical discovery certificates are explicitly scoped as legacy; no claim of completed LLM training or external-paper reproduction.",
+    "requirements": [
+        {
+            "id": "R1",
+            "plan_sections": [
+                "6",
+                "15",
+                "20.3",
+                "20.5",
+                "20.6"
+            ],
+            "status": "implemented_and_audited",
+            "evidence": [
+                "research_strategy_optimization/evidence/hypothesis_registry.py",
+                "artifacts/pesco_pilot/freeze_check.json",
+                "artifacts/pesco_pilot/hypothesis_registry.json",
+                "artifacts/pesco_pilot/audit_ledger.jsonl"
+            ]
+        },
+        {
+            "id": "R2",
+            "plan_sections": [
+                "5",
+                "6.3",
+                "14.2",
+                "14.3"
+            ],
+            "status": "implemented_and_audited",
+            "evidence": [
+                "research_strategy_optimization/evidence/evidence_classifier.py",
+                "research_strategy_optimization/environments/tier0_simulator.py",
+                "artifacts/pesco_pilot/negative_controls.json",
+                "artifacts/tier1_smoke.json"
+            ]
+        },
+        {
+            "id": "R3",
+            "plan_sections": [
+                "9.1",
+                "9.2",
+                "9.7",
+                "20.4"
+            ],
+            "status": "implemented_and_audited",
+            "evidence": [
+                "research_strategy_optimization/algorithms/branch_rollout.py",
+                "research_strategy_optimization/environments/snapshot_manager.py",
+                "artifacts/pesco_pilot/same_state_branches.json",
+                "artifacts/pesco_pilot/mvp_counts.json"
+            ]
+        },
+        {
+            "id": "R4",
+            "plan_sections": [
+                "9.3",
+                "9.4",
+                "9.5",
+                "12.3",
+                "12.6"
+            ],
+            "status": "implemented_and_audited",
+            "evidence": [
+                "research_strategy_optimization/algorithms/leave_one_out_advantage.py",
+                "research_strategy_optimization/algorithms/objectives.py",
+                "artifacts/pesco_pilot/training_log_full.json"
+            ]
+        },
+        {
+            "id": "R5",
+            "plan_sections": [
+                "10",
+                "10.4",
+                "10.5"
+            ],
+            "status": "implemented_and_audited",
+            "evidence": [
+                "research_strategy_optimization/algorithms/paired_world_sampler.py",
+                "research_strategy_optimization/algorithms/preference_reversal_loss.py",
+                "artifacts/pesco_pilot/reversal_pairs.json",
+                "artifacts/pesco_pilot/training_log_full.json"
+            ]
+        },
+        {
+            "id": "R6",
+            "plan_sections": [
+                "11"
+            ],
+            "status": "implemented_and_audited_legacy_scope_explicit",
+            "evidence": [
+                "research_strategy_optimization/algorithms/discovery_certificate.py",
+                "research_strategy_optimization/evaluation/legacy_certificates.py",
+                "artifacts/pesco_pilot/negative_controls.json",
+                "artifacts/pesco_pilot/certificate_PESCO-Full_rq_tier0_001_world_02.json",
+                "artifacts/pesco_pilot/legacy_certificates_manifest.json",
+                "artifacts/pesco_pilot/discovery_policy.json"
+            ]
+        },
+        {
+            "id": "R7",
+            "plan_sections": [
+                "12.7",
+                "12.8",
+                "22.5",
+                "22.6"
+            ],
+            "status": "cpu_reference_go_real_zero_shot_current_diagnostic_external_checkpoint_formal_stage3_no_go",
+            "evidence": [
+                "research_strategy_optimization/algorithms/pesco_trainer.py",
+                "research_strategy_optimization/environments/tier2_posttraining_env.py",
+                "artifacts/pesco_pilot/stage_status.json",
+                "artifacts/pesco_pilot/training_authorization.json",
+                "artifacts/pesco_pilot/zero_shot_diagnostic.json",
+                "artifacts/tier1_zero_shot.json",
+                "artifacts/experiment_b_real_zero_shot.json",
+                "artifacts/tier1_zero_shot_current_status.json",
+                "artifacts/tier1_zero_shot_run_manifest.json",
+                "scripts/run_tier1_zero_shot.py"
+            ]
+        },
+        {
+            "id": "R8",
+            "plan_sections": [
+                "16"
+            ],
+            "status": "protocol_matched_adapters_only",
+            "evidence": [
+                "research_strategy_optimization/configs/baselines/matched_cpu_suite.yaml",
+                "artifacts/pesco_pilot/baseline_manifest.json",
+                "artifacts/pesco_pilot/results.json",
+                "artifacts/pesco_pilot/experiment_b_diagnostic.json",
+                "artifacts/pesco_pilot/experiment_c_diagnostic.json"
+            ]
+        },
+        {
+            "id": "R9",
+            "plan_sections": [
+                "17",
+                "19"
+            ],
+            "status": "implemented_and_audited_p2_1_metric_boundary",
+            "evidence": [
+                "research_strategy_optimization/evaluation/",
+                "research_strategy_optimization/evaluation/tier1_differentiable_suite.py",
+                "research_strategy_optimization/evaluation/tier1_p2_experiments.py",
+                "research_strategy_optimization/evaluation/shortcut_probes.py",
+                "visualization/",
+                "artifacts/pesco_pilot/report/summary.json",
+                "artifacts/pesco_pilot/report/report_metadata.json",
+                "artifacts/pesco_pilot/experiment_b_diagnostic.json",
+                "artifacts/pesco_pilot/experiment_c_diagnostic.json",
+                "research_strategy_optimization/tests/test_tier1_p2_p3.py",
+                "research_strategy_optimization/tests/test_shortcut_probes.py"
+            ]
+        },
+        {
+            "id": "R10",
+            "plan_sections": [
+                "18",
+                "22.2",
+                "22.3"
+            ],
+            "status": "mvp_go",
+            "evidence": [
+                "artifacts/pesco_pilot/tier0_go.json",
+                "artifacts/pesco_pilot/mvp_gate.json",
+                "artifacts/pesco_pilot/negative_controls.json"
+            ]
+        },
+        {
+            "id": "R11",
+            "plan_sections": [
+                "18.1"
+            ],
+            "status": "registered_with_cpu_switches",
+            "evidence": [
+                "research_strategy_optimization/evaluation/ablations.py",
+                "research_strategy_optimization/configs/algorithms/ablations_v0_2.yaml",
+                "artifacts/pesco_pilot/ablation_manifest.json"
+            ]
+        },
+        {
+            "id": "R12",
+            "plan_sections": [
+                "21",
+                "22.7"
+            ],
+            "status": "freeze_and_budget_templates_present_final_scientific_run_pending",
+            "evidence": [
+                "research_strategy_optimization/configs/",
+                "artifacts/pesco_pilot/compute_ledger.json",
+                "artifacts/pesco_pilot/freeze_check.json"
+            ]
+        },
+        {
+            "id": "R13",
+            "plan_sections": [
+                "12.2",
+                "12.3",
+                "12.5",
+                "12.7",
+                "18.1"
+            ],
+            "status": "tier1_v03_a_b_cde_current_f_diagnostic_suite",
+            "evidence": [
+                "research_strategy_optimization/algorithms/differentiable_strategy.py",
+                "research_strategy_optimization/evaluation/tier1_differentiable_suite.py",
+                "research_strategy_optimization/configs/algorithms/tier1_differentiable_suite_v0_3.yaml",
+                "scripts/run_tier1_differentiable_suite.py",
+                "scripts/audit_tier1_count_semantics.py",
+                "research_strategy_optimization/utils/run_manifest.py",
+                "artifacts/tier1_v03/tier1_go.json",
+                "artifacts/tier1_v03/summary.json",
+                "artifacts/tier1_v03/count_semantics_audit.json",
+                "artifacts/tier1_v03/experiment_a_environment_correctness.json",
+                "artifacts/tier1_v03/benchmark_manifest.json",
+                "artifacts/tier1_v03/question_world_groups.json",
+                "artifacts/tier1_v03/action_level_branches.json",
+                "artifacts/tier1_v03/run_manifest.json",
+                "artifacts/tier1_zero_shot.json",
+                "artifacts/experiment_b_real_zero_shot.json",
+                "artifacts/tier1_zero_shot_run_manifest.json",
+                "artifacts/tier1_differentiable_suite/run_manifest.json",
+                "artifacts/tier1_differentiable_suite/suite.json",
+                "artifacts/tier1_differentiable_suite/dataset.json",
+                "artifacts/tier1_differentiable_suite/experiment_c_state_reward.json",
+                "artifacts/tier1_differentiable_suite/experiment_d_branch_ablation.json",
+                "artifacts/tier1_differentiable_suite/experiment_e_flip_ablation.json",
+                "artifacts/tier1_differentiable_suite/experiment_f_discovery_boundary.json"
+            ]
+        },
+        {
+            "id": "R14",
+            "plan_sections": [
+                "feedback.v04"
+            ],
+            "status": "tier1_v04_diagnostic_consumed_p2_1_superseded",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_v04.py",
+                "research_strategy_optimization/evaluation/tier1_v04_extended.py",
+                "scripts/run_tier1_v04_extended.py",
+                "artifacts/tier1_v04/consumption_notice.json",
+                "artifacts/tier1_v04_extended/consumption_notice.json",
+                "artifacts/tier1_v04_extended/benchmark_manifest.json",
+                "artifacts/tier1_v04_extended/dataset_raw_evidence.json",
+                "artifacts/tier1_v04_extended/dataset_oracle_state.json",
+                "artifacts/tier1_v04_extended/decisions.json",
+                "artifacts/tier1_v04_extended/trajectories.json",
+                "artifacts/tier1_v04_extended/tier1_v04_extended_go.json",
+                "artifacts/tier1_v04_extended/run_manifest.json",
+                "artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json",
+                "artifacts/tier1_p21_diagnostic/counterfactual_leakage_audit.json"
+            ]
+        },
+        {
+            "id": "R15",
+            "plan_sections": [
+                "feedback.p2",
+                "feedback.p3"
+            ],
+            "status": "p2_v04_historical_consumed_p2_1_diagnostic_complete_p3_fail_closed",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_p2_experiments.py",
+                "research_strategy_optimization/evaluation/tier1_p3_gate.py",
+                "research_strategy_optimization/environments/tier1_benchmark.py",
+                "research_strategy_optimization/tests/test_reward_components.py",
+                "scripts/run_tier1_p2.py",
+                "scripts/run_tier1_p3_gate.py",
+                "artifacts/tier1_p2_v04_ten_seed/consumption_notice.json",
+                "artifacts/tier1_p2_v04_ten_seed/p2_result.json",
+                "artifacts/tier1_p2_v04_ten_seed/p2_gate.json",
+                "artifacts/tier1_p2_v04_ten_seed/run_manifest.json",
+                "artifacts/tier1_p2_v04_ten_seed_v3/consumption_notice.json",
+                "artifacts/tier1_p2_v04_formal_final_ten_seed/consumption_notice.json",
+                "artifacts/tier1_p2_v04_formal_final_ten_seed/p2_result.json",
+                "artifacts/tier1_p2_v04_formal_final_ten_seed/p2_gate.json",
+                "artifacts/tier1_p2_v04_formal_final_ten_seed/run_manifest.json",
+                "artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json",
+                "artifacts/tier1_p21_shortcut_probe/shortcut_probe_result.json",
+                "artifacts/tier1_p3_small_model_gate/small_model_gate.json",
+                "artifacts/tier1_p3_small_model_gate/run_manifest.json"
+            ]
+        },
+        {
+            "id": "R16",
+            "plan_sections": [
+                "feedback.B_zero_shot_robustness"
+            ],
+            "status": "bounded_single_checkpoint_robustness_fail_closed",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_zero_shot_robustness.py",
+                "scripts/run_tier1_zero_shot_robustness.py",
+                "research_strategy_optimization/tests/test_tier1_zero_shot_robustness.py",
+                "artifacts/tier1_zero_shot_robustness_null_only.json",
+                "artifacts/tier1_zero_shot_robustness_null_only.run_manifest.json"
+            ]
+        },
+        {
+            "id": "R17",
+            "plan_sections": [
+                "feedback.formal_final_id_ood"
+            ],
+            "status": "v04_and_v05_consumed_v06_private_boundary_model_comparison_locked",
+            "evidence": [
+                "artifacts/tier1_v04_formal_final/consumption_notice.json",
+                "artifacts/tier1_v05_frozen_final/consumption_notice.json",
+                "research_strategy_optimization/evaluation/tier1_v06_frozen_final.py",
+                "scripts/audit_public_final_leakage.py",
+                "artifacts/tier1_v06_public_leakage_audit.json",
+                "artifacts/tier1_v06_evaluator_private/private_boundary_audit.json"
+            ]
+        },
+        {
+            "id": "R18",
+            "plan_sections": [
+                "feedback.p2_1_diagnostic"
+            ],
+            "status": "p2_1_fresh_and_algorithm_diagnostic_complete_counterfactual_family_gradient_sensitivity_audits",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_p21_dataset.py",
+                "research_strategy_optimization/evaluation/tier1_p21_diagnostics.py",
+                "research_strategy_optimization/evaluation/tier1_p2_experiments.py",
+                "scripts/prepare_tier1_p21_diagnostic.py",
+                "scripts/run_tier1_p21_diagnostics.py",
+                "scripts/run_tier1_p21_constrained.py",
+                "scripts/aggregate_tier1_p21_diagnostics.py",
+                "scripts/run_tier1_p21_seed_sweep.py",
+                "scripts/run_p21_sensitivity_audit.py",
+                "artifacts/tier1_p21_diagnostic/p21_diagnostic_result.json",
+                "artifacts/tier1_p21_diagnostic/collection_audit.json",
+                "artifacts/tier1_p21_diagnostic/counterfactual_leakage_audit.json",
+                "artifacts/tier1_p21_diagnostic/run_manifest.json",
+                "artifacts/tier1_p21_algorithm_diagnostic/p21_algorithm_diagnostic.json",
+                "artifacts/tier1_p21_algorithm_diagnostic/run_manifest.json",
+                "artifacts/tier1_p21_seed_sweep_diagnostic/seed_sweep_result.json",
+                "artifacts/tier1_p21_seed_sweep_diagnostic/run_manifest.json",
+                "artifacts/tier1_p21_seed_sweep_10seed_diagnostic/seed_sweep_result.json",
+                "artifacts/tier1_p21_seed_sweep_10seed_diagnostic/run_manifest.json",
+                "artifacts/tier1_p21_sensitivity_audit/sensitivity_audit.json",
+                "artifacts/tier1_p21_sensitivity_audit/run_manifest.json",
+                "artifacts/tier1_p21_constrained_diagnostic/constrained_result.json",
+                "artifacts/tier1_p21_algorithm_diagnostic/shortcut_probe_strict/shortcut_probe_result.json",
+                "research_strategy_optimization/tests/test_tier1_p21.py"
+            ]
+        },
+        {
+            "id": "R19",
+            "plan_sections": [
+                "feedback.shortcut_probe",
+                "feedback.v05_freeze",
+                "feedback.p2_2"
+            ],
+            "status": "p22_screening_and_frozen_10seed_all_methods_gate_blocked_shortcut_strict_completed_v06_private_boundary_audited",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_p22_diagnostics.py",
+                "scripts/run_tier1_p22_diagnostics.py",
+                "scripts/run_tier1_p22_matrix.py",
+                "scripts/audit_p22_family_loo.py",
+                "scripts/audit_p22_method_reward_sensitivity.py",
+                "scripts/audit_reward_weight_sensitivity.py",
+                "scripts/summarize_p22_gradient_conflicts.py",
+                "scripts/select_p22_global_baseline.py",
+                "scripts/write_p22_gate_receipt.py",
+                "scripts/run_p22_power_analysis.py",
+                "artifacts/tier1_p22_screening_final_objective_v2/p22_matrix_result.json",
+                "artifacts/tier1_p22_screening_final_objective_v2/run_manifest.json",
+                "artifacts/tier1_p22_screening_final_objective_v2/global_baseline_selection.json",
+                "artifacts/tier1_p22_screening_final_objective_v2/family_loo.json",
+                "artifacts/tier1_p22_screening_final_objective_v2/method_reward_sensitivity.json",
+                "artifacts/tier1_p22_screening_final_objective_v2/reward_weight_sensitivity.json",
+                "artifacts/tier1_p22_screening_final_objective_v2/gradient_conflict_summary.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_matrix_result.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/run_manifest.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_gate_receipt.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_gate_receipt_pairwise.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/p22_gate_receipt_listwise_pcgrad.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/family_loo.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/family_loo_pairwise.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/method_reward_sensitivity.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/reward_weight_sensitivity.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/gradient_conflict_summary.json",
+                "artifacts/tier1_p22_frozen_listwise_pcgrad_10seed/gradient_conflict_pairwise.json",
+                "artifacts/tier1_p22_frozen_listwise_safety_10seed/p22_matrix_result.json",
+                "artifacts/tier1_p22_frozen_listwise_safety_10seed/run_manifest.json",
+                "artifacts/tier1_p22_frozen_listwise_safety_10seed/p22_gate_receipt.json",
+                "artifacts/tier1_p22_frozen_listwise_safety_10seed/family_loo.json",
+                "artifacts/tier1_p22_frozen_listwise_safety_10seed/method_reward_sensitivity.json",
+                "artifacts/tier1_p22_frozen_listwise_safety_10seed/reward_weight_sensitivity.json",
+                "artifacts/tier1_p22_frozen_listwise_safety_10seed/gradient_conflict_summary.json",
+                "artifacts/tier1_p22_sweep_top1margin_0_10/p22_matrix_result.json",
+                "artifacts/tier1_p22_sweep_top1margin_0_25/p22_matrix_result.json",
+                "artifacts/tier1_p22_power_analysis/power_analysis.json",
+                "artifacts/tier1_p22_strict_shortcut/shortcut_probe_result.json",
+                "artifacts/tier1_v06_public_leakage_audit.json",
+                "artifacts/tier1_v06_evaluator_private/private_boundary_audit.json"
+            ]
+        },
+        {
+            "id": "R20",
+            "plan_sections": [
+                "feedback.p2_3.1",
+                "feedback.promotion_v3"
+            ],
+            "status": "p231_authenticity_passed_promotion_v3_consumed_final_no_go",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_p231_diagnostics.py",
+                "research_strategy_optimization/evaluation/tier1_p23_v3_dataset.py",
+                "research_strategy_optimization/environments/tier1_tabular_env.py",
+                "research_strategy_optimization/schemas.py",
+                "scripts/run_tier1_p231_dev.py",
+                "scripts/audit_tier1_p231_authenticity.py",
+                "scripts/aggregate_tier1_p231_dev.py",
+                "scripts/audit_tier1_p231_action_feasibility.py",
+                "scripts/audit_tier1_p231_canonical_contract.py",
+                "scripts/audit_tier1_p23_reward_stability.py",
+                "scripts/prepare_tier1_p23_promotion_v3.py",
+                "scripts/run_tier1_p23_promotion_v3_final.py",
+                "scripts/write_tier1_p23_promotion_v3_gate.py",
+                "scripts/freeze_tier1_p231_promotion_v3.py",
+                "artifacts/tier1_p23_promotion_v3/consumption_notice.json",
+                "artifacts/tier1_p231_dev_authenticity_3seed/p231_authenticity_gate.json",
+                "artifacts/tier1_p231_consumed_10seed/p231_authenticity_gate.json",
+                "artifacts/tier1_p231_consumed_10seed/p231_aggregate.json",
+                "artifacts/tier1_p231_action_feasibility.json",
+                "artifacts/tier1_p231_relative_reward_stability.json",
+                "artifacts/tier1_p231_shortcut_probe_strict/shortcut_probe_result.json",
+                "artifacts/tier1_p231_freeze/promotion_v3_freeze_receipt.json",
+                "artifacts/tier1_p23_promotion_v3/promotion_v3_collection.json",
+                "artifacts/tier1_p23_promotion_v3/action_feasibility_audit.json",
+                "artifacts/tier1_p23_promotion_v3_final_10seed/promotion_v3_final_result.json",
+                "artifacts/tier1_p23_promotion_v3_final_10seed/promotion_v3_gate.json",
+                "artifacts/tier1_p23_promotion_v3_final_10seed/canonical_contract_audit.json"
+            ]
+        },
+        {
+            "id": "R21",
+            "plan_sections": [
+                "feedback.p2_3.2"
+            ],
+            "status": "atomic_factorial_convergence_paired_bootstrap_shortcut_and_gradient_conflict_completed_no_go",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_p231_diagnostics.py",
+                "research_strategy_optimization/evaluation/tier1_differentiable_suite.py",
+                "scripts/run_tier1_p232_factorial.py",
+                "scripts/run_tier1_p232_convergence.py",
+                "scripts/aggregate_tier1_p232.py",
+                "artifacts/tier1_p232_atomic_factorial_10seed/p232_paired_aggregate.json",
+                "artifacts/tier1_p232_atomic_factorial_10seed/shortcut_probe_strict/shortcut_probe_result.json",
+                "artifacts/tier1_p232_convergence/convergence_summary.json",
+                "artifacts/tier1_p232_branch_conflict_expected/redacted_summary.json",
+                "artifacts/tier1_p232_branch_conflict_pcgrad/redacted_summary.json"
+            ]
+        },
+        {
+            "id": "R22",
+            "plan_sections": [
+                "feedback.promotion_v4",
+                "feedback.real_ood"
+            ],
+            "status": "promotion_v4_aborted_before_private_access_superseded_by_p233",
+            "evidence": [
+                "research_strategy_optimization/schemas.py",
+                "research_strategy_optimization/environments/tier1_tabular_env.py",
+                "scripts/audit_promotion_v4_ood.py",
+                "scripts/write_tier1_p232_gate.py",
+                "scripts/freeze_tier1_p232_promotion_v4.py",
+                "scripts/run_tier1_promotion_v4_private.py",
+                "artifacts/tier1_p232_promotion_v4_ood_audit.json",
+                "artifacts/tier1_p232_promotion_v4_public/promotion_v4_commitment.json",
+                "artifacts/tier1_p232_promotion_v4_public/promotion_v4_redacted_aggregate.json",
+                "artifacts/tier1_p232_promotion_v4_public/promotion_v4_gate.json",
+                "artifacts/tier1_p232_promotion_v4_public/promotion_v4_abort_notice.json"
+            ]
+        },
+        {
+            "id": "R23",
+            "plan_sections": [
+                "feedback.p2_3.3",
+                "feedback.real_ood_estimator",
+                "feedback.receipt_gates"
+            ],
+            "status": "p233_diagnostic_complete_receipt_only_gate_go_private_v5_authorized",
+            "evidence": [
+                "research_strategy_optimization/evaluation/tier1_p233_dataset.py",
+                "research_strategy_optimization/evaluation/tier1_p231_diagnostics.py",
+                "research_strategy_optimization/environments/tier1_tabular_env.py",
+                "scripts/prepare_tier1_p233_diagnostic.py",
+                "scripts/run_tier1_p233_matrix.py",
+                "scripts/run_tier1_p232_convergence.py",
+                "scripts/aggregate_tier1_p233.py",
+                "scripts/write_tier1_p233_gate.py",
+                "scripts/audit_tier1_p233_estimators.py",
+                "scripts/audit_tier1_p233_counterfactual_leakage.py",
+                "scripts/run_tier1_p233_estimator_coverage.py",
+                "scripts/run_tier1_p233_reward_stability.py",
+                "scripts/audit_tier1_p233_completeness.py",
+                "scripts/run_shortcut_probes.py",
+                "scripts/run_tier1_p233_promotion_v5.py",
+                "artifacts/tier1_p233_diagnostic/collection_manifest.json",
+                "artifacts/tier1_p233_diagnostic/counterfactual_leakage_audit.json",
+                "artifacts/tier1_p233_estimator_audit/estimator_audit.json",
+                "artifacts/tier1_p233_estimator_audit/coverage_calibration.json",
+                "artifacts/tier1_p233_shortcut_probe/shortcut_probe_result.json",
+                "artifacts/tier1_p233_convergence/convergence_summary.json",
+                "artifacts/tier1_p233_matrix_10seed/p233_matrix_result.json",
+                "artifacts/tier1_p233_matrix_10seed/sft_checkpoints/",
+                "artifacts/tier1_p233_matrix_10seed/canonical_reversal_ids.json",
+                "artifacts/tier1_p233_matrix_10seed/reward_tensor_audit.json",
+                "artifacts/tier1_p233_matrix_10seed/p233_aggregate_tune.json",
+                "artifacts/tier1_p233_matrix_10seed/p233_aggregate_promotion.json",
+                "artifacts/tier1_p233_matrix_10seed/p233_gate.json",
+                "artifacts/tier1_p233_matrix_10seed/reward_weight_stability.json",
+                "artifacts/tier1_p233_matrix_10seed/promotion_v5_guard.json",
+                "artifacts/tier1_p233_matrix_10seed/feedback_completeness_audit.json",
+                "artifacts/tier1_p233_promotion_v5",
+                "artifacts/tier1_p232_promotion_v4_public/promotion_v4_abort_notice.json",
+                "research_strategy_optimization/tests/test_tier1_p233_gate.py"
+            ]
+        }
+    ],
+    "completion_boundary": {
+        "tier0_cpu_reference": true,
+        "tier1_smoke": true,
+        "tier2_llm_rl": false,
+        "qlora": false,
+        "final_id_evaluation": true,
+        "final_ood_evaluation": true,
+        "external_paper_reimplementations": false,
+        "formal_environment_receipts": true,
+        "formal_model_comparison": false,
+        "diagnostic_v04_consumed": true,
+        "p2_1_diagnostics": true,
+        "shortcut_probes": true,
+        "v05_final_prepared": false,
+        "v05_boundary_rehearsal_consumed": true,
+        "v05_final_frozen": false,
+        "p22_screening_gate": false,
+        "p231_authenticity_gate": true,
+        "promotion_v3_gate": false,
+        "p232_atomic_factorial_gate": false,
+        "promotion_v4_gate": false,
+        "p233_gate": true,
+        "v06_private_final_authorized": false,
+        "reason": "v0.4/formal/P2 artifacts are retained for historical audit but consumed after the latent-template/evaluator-boundary review. P2.3.1 optimizer authenticity, P2.3.2 unified Atomic factorial/convergence, and P2.3.3 fresh ten-family diagnostic are complete. The final receipt-only P2.3.3 gate is GO: observed-array-only estimators and forced hidden invariance, strict sklearn shortcut probes, common 1024-step 10-seed matrix, paired seed-question bootstrap, branch/flip/full regret gates, state floors, family leave-one-out, budget, validity, replication, and reward stability all pass. Promotion-v5 was authorized only after the public gate and accessed no private data. LoRA/GSPO/BPO/CBPO/online RL remain outside this CPU reference scope."
+    }
 }

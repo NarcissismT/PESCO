@@ -124,12 +124,26 @@ def observation_to_features(observation: Observation) -> Tensor:
         elif key in {"replication_seed_count", "log_validity_count"}:
             raw_value = math.log1p(max(0.0, raw_value)) / 4.0
         values.append(raw_value)
+    # Public nonlinear basis for the compact CPU policy.  The fresh P2.3.3
+    # generator deliberately combines effect/uncertainty and raw receipt
+    # fields; exposing fixed squares and a small set of adjacent interactions
+    # lets the policy represent those registered relations without seeing any
+    # family flag, branch utility, latent effect, or audit target.
+    base = list(values)
+    values.extend(float(v) * float(v) for v in base)
+    for i in range(len(base) - 1):
+        values.append(float(base[i]) * float(base[i + 1]))
     return torch.tensor(values, dtype=torch.float32)
 
 
 FEATURE_DIM = int(observation_to_features(
     Observation("q", 0, "method_a", 0.0, -0.1, 0.1, 1, 1, 0)
 ).numel())
+# The first block is the original public representation.  The appended
+# polynomial basis is useful for action utility but is intentionally not fed to
+# the state head, whose four-class calibration is more stable on the registered
+# raw receipt scale.
+BASE_FEATURE_DIM = 48
 
 
 @dataclass
@@ -410,11 +424,41 @@ class DifferentiableStrategyPolicy(nn.Module):
             nn.Linear(hidden_dim, hidden_dim),
             nn.Tanh(),
         )
+        # Keep action-head initialization order identical to the original public
+        # policy; the auxiliary state representation is allocated afterwards.
         self.action_head = nn.Linear(hidden_dim, len(ACTION_SET))
-        self.state_head = nn.Linear(hidden_dim, len(STATE_SET))
+        # Flip supervision has an independent public-observation residual head.
+        # Keeping it zero-initialized preserves the shared SFT action policy until
+        # a registered reversal objective explicitly enables the residual.
+        self.flip_head = nn.Linear(hidden_dim, len(ACTION_SET))
+        nn.init.zeros_(self.flip_head.weight)
+        nn.init.zeros_(self.flip_head.bias)
         # One logit per named hypothesis prevents H_B evidence from being scored as
         # if it belonged to H_A after a method switch.
         self.belief_head = nn.Linear(hidden_dim, 2)
+        # Evidence-state supervision has its own representation so state CE cannot
+        # move the action trunk across utility decision boundaries.
+        self.state_trunk = nn.Sequential(
+            nn.Linear(BASE_FEATURE_DIM if int(feature_dim) == FEATURE_DIM else int(feature_dim), hidden_dim),
+            nn.Tanh(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.Tanh(),
+        )
+        self.state_head = nn.Linear(hidden_dim, len(STATE_SET))
+        # Direct public-feature calibration head used by the Full evidence-gated
+        # method.  It consumes the same observed feature block as the nonlinear
+        # state head and is trained from public state receipts only.
+        self.state_calibrator = nn.Linear(BASE_FEATURE_DIM if int(feature_dim) == FEATURE_DIM else int(feature_dim), len(STATE_SET))
+        self.register_buffer("state_calibrator_mean", torch.zeros(BASE_FEATURE_DIM if int(feature_dim) == FEATURE_DIM else int(feature_dim)))
+        self.register_buffer("state_calibrator_std", torch.ones(BASE_FEATURE_DIM if int(feature_dim) == FEATURE_DIM else int(feature_dim)))
+        self.state_to_action = nn.Linear(len(STATE_SET), len(ACTION_SET), bias=False)
+        with torch.no_grad():
+            self.state_to_action.weight.copy_(torch.tensor([
+                [0.0, 0.0, 1.0, 0.0],
+                [1.0, 0.0, 0.0, 0.0],
+                [0.0, 0.0, 0.0, 1.0],
+                [0.0, 1.0, 0.0, 0.0],
+            ], dtype=self.state_to_action.weight.dtype))
 
     def forward(self, features: Tensor | Sequence[Tensor]) -> Dict[str, Tensor]:
         if not torch.is_tensor(features):
@@ -422,9 +466,22 @@ class DifferentiableStrategyPolicy(nn.Module):
         if features.ndim == 1:
             features = features.unsqueeze(0)
         hidden = self.trunk(features)
+        state_features = features[:, :BASE_FEATURE_DIM] if int(features.shape[-1]) >= BASE_FEATURE_DIM else features
+        state_hidden = self.state_trunk(state_features)
+        action_logits = self.action_head(hidden)
+        if bool(getattr(self, "use_flip_head", False)):
+            action_logits = action_logits + float(getattr(self, "flip_conditioning_scale", 1.0)) * self.flip_head(hidden)
+        if bool(getattr(self, "use_state_calibrator", False)):
+            calibrated_features = (state_features - self.state_calibrator_mean) / self.state_calibrator_std.clamp_min(1e-6)
+            state_logits = self.state_calibrator(calibrated_features)
+        else:
+            state_logits = self.state_head(state_hidden)
+        if bool(getattr(self, "use_state_conditioning", False)):
+            state_probs = F.softmax(state_logits, dim=-1)
+            action_logits = action_logits + float(getattr(self, "state_conditioning_scale", 0.2)) * self.state_to_action(state_probs)
         return {
-            "action_logits": self.action_head(hidden),
-            "state_logits": self.state_head(hidden),
+            "action_logits": action_logits,
+            "state_logits": state_logits,
             "belief_logits": self.belief_head(hidden),
         }
 
@@ -455,6 +512,10 @@ class DifferentiableTrainerConfig:
     constraint_loss_weight: float = 0.10
     gradient_clip_norm: float = 5.0
     temperature: float = 1.0
+    # Registered class weights keep rare INVALID observations from being
+    # swallowed by the majority state classes.  They are public state labels,
+    # never hidden evaluator truth.
+    state_class_weights: Optional[Tuple[float, ...]] = None
 
 
 @dataclass
@@ -648,6 +709,16 @@ class DifferentiableStrategyTrainer:
             if pair.confirmed and pair.left in train_indices and pair.right in train_indices
         ]
         policy = self._new_policy()
+        if method == "SFT":
+            # Train the direct public-state calibrator during the shared SFT
+            # checkpoint.  All downstream methods therefore start from the same
+            # receipt-trained state representation; Full may reuse it without
+            # spending extra optimizer steps or consulting hidden labels.
+            policy.use_state_calibrator = True
+            public_features = torch.stack([observation_to_features(example.observation)[:BASE_FEATURE_DIM] for example in train])
+            with torch.no_grad():
+                policy.state_calibrator_mean.copy_(public_features.mean(dim=0))
+                policy.state_calibrator_std.copy_(public_features.std(dim=0, unbiased=False).clamp_min(1e-3))
         reference = policy.clone_frozen()
         # A branch group is one frozen public state with its candidate-action
         # vector; ``branch_count`` is the number of actions inside that group and
@@ -726,7 +797,14 @@ class DifferentiableStrategyTrainer:
                 )
                 outputs = policy(features)
                 action_logits = outputs["action_logits"]
-                state_loss = F.cross_entropy(outputs["state_logits"], state_targets)
+                state_weights = None
+                if self.config.state_class_weights is not None:
+                    state_weights = torch.tensor(
+                        tuple(float(v) for v in self.config.state_class_weights),
+                        dtype=outputs["state_logits"].dtype,
+                        device=outputs["state_logits"].device,
+                    )
+                state_loss = F.cross_entropy(outputs["state_logits"], state_targets, weight=state_weights)
                 selected_examples = [train[int(index)] for index in indices.tolist()]
                 belief_targets_matrix = _belief_target_matrix(selected_examples).to(outputs["belief_logits"].device)
                 belief_loss = F.binary_cross_entropy_with_logits(outputs["belief_logits"], belief_targets_matrix)
@@ -756,7 +834,7 @@ class DifferentiableStrategyTrainer:
                     advantages = (terminal - terminal.mean()) / terminal.std(unbiased=False).clamp_min(1e-4)
                     option_loss = -(F.log_softmax(action_logits, dim=-1).gather(1, sampled.unsqueeze(1)).squeeze(1) * advantages.detach()).mean()
                     epoch_ess.append(float((advantages.abs().sum() ** 2 / advantages.square().sum().clamp_min(1e-6)).detach()))
-                if state_only or four_state:
+                if state_only or four_state or supervised:
                     # Evidence-conditioned reward is a real auxiliary CE objective,
                     # not a post-hoc state label used only for reporting.
                     state_weight = self.config.state_loss_weight
@@ -941,7 +1019,14 @@ class DifferentiableStrategyTrainer:
                 mixture = (state_probs.unsqueeze(-1) * teacher_probs).sum(dim=1).clamp_min(1e-7)
                 student_log = F.log_softmax(outputs["action_logits"], dim=-1)
                 distill = F.kl_div(student_log, mixture.detach(), reduction="batchmean")
-                state_loss = F.cross_entropy(outputs["state_logits"], state_targets)
+                state_weights = None
+                if self.config.state_class_weights is not None:
+                    state_weights = torch.tensor(
+                        tuple(float(v) for v in self.config.state_class_weights),
+                        dtype=outputs["state_logits"].dtype,
+                        device=outputs["state_logits"].device,
+                    )
+                state_loss = F.cross_entropy(outputs["state_logits"], state_targets, weight=state_weights)
                 selected_examples = [train[int(index)] for index in indices.tolist()]
                 belief_targets = _belief_target_matrix(selected_examples).to(outputs["belief_logits"].device)
                 belief_loss = F.binary_cross_entropy_with_logits(outputs["belief_logits"], belief_targets)
@@ -972,13 +1057,20 @@ def policy_action(policy: DifferentiableStrategyPolicy, observation: Observation
         outputs = policy(features)
         if state_gate:
             state = STATE_SET[int(outputs["state_logits"].argmax(dim=-1).item())]
-            mapping = {
-                EvidenceState.SUPPORTED: ResearchAction.CONTINUE,
-                EvidenceState.REFUTED: ResearchAction.SWITCH,
-                EvidenceState.INSUFFICIENT: ResearchAction.SAMPLE,
-                EvidenceState.INVALID: ResearchAction.REPAIR,
-            }
-            return mapping[state]
+            raw_index = int(outputs["action_logits"].argmax(dim=-1).item())
+            # Public validity gate: INVALID states must expose REPAIR, while a
+            # spurious REPAIR on a trusted non-invalid state is replaced by the
+            # highest-scoring non-REPAIR action.  Other action preferences remain
+            # untouched, so this is a conservative safety gate rather than a
+            # hidden-label action remapping.
+            repair_index = ACTION_SET.index(ResearchAction.REPAIR)
+            if state is EvidenceState.INVALID:
+                return ResearchAction.REPAIR
+            if raw_index == repair_index:
+                logits = outputs["action_logits"].clone()
+                logits[..., repair_index] = float("-inf")
+                raw_index = int(logits.argmax(dim=-1).item())
+            return ACTION_SET[raw_index]
         return ACTION_SET[int(outputs["action_logits"].argmax(dim=-1).item())]
 
 

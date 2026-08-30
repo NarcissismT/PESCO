@@ -1,0 +1,36 @@
+{
+  "audit_sha256": "sha256:358a3c598d8d9f22383ae3345316317e6a84824ebe9bb77bafa17acd0c9fb03e",
+  "checks": {
+    "all_twenty_p233_gates_true": true,
+    "canonical_pair_scale_and_macro_weight": true,
+    "convergence_64_to_1024_three_seed": true,
+    "counterfactual_leakage_test": true,
+    "five_ood_coverage_receipts": true,
+    "fresh_dataset_scale": true,
+    "full_method_matrix": true,
+    "independent_eight_by_eight_replicates": true,
+    "observed_only_estimator_test": true,
+    "oracle_upper_bound": true,
+    "promotion_v4_aborted_before_private": true,
+    "promotion_v5_guard_bound_no_private_access": true,
+    "strict_sklearn_shortcuts": true,
+    "ten_mechanism_families": true,
+    "ten_training_seeds": true
+  },
+  "counts": {
+    "canonical_pairs_by_split": {
+      "promotion": 386,
+      "train": 951,
+      "tune": 386
+    },
+    "matrix_records": 240,
+    "mechanism_families": 10,
+    "p233_gate_count": 20,
+    "questions": 1800,
+    "training_seeds": 10,
+    "worlds": 7200
+  },
+  "private_data_accessed": false,
+  "schema_version": "pesco_p233_feedback_completeness_v0.1",
+  "status": "COMPLETE"
+}

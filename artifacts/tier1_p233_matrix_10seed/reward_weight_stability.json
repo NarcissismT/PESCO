@@ -1,0 +1,13 @@
+{
+  "example_count": 7200,
+  "pass": true,
+  "perturbation": "global_atomic_reward_weight_plus_minus_20_percent",
+  "receipt_derived": true,
+  "scales": [
+    0.8,
+    1.0,
+    1.2
+  ],
+  "schema_version": "pesco_p233_reward_weight_stability_v0.1",
+  "winner_stability_rate": 1.0
+}

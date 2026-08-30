@@ -1,0 +1,616 @@
+{
+  "diagnostic_only": true,
+  "formal_comparison_authorized": false,
+  "gates": {
+    "all_seeds_executed": true,
+    "all_steps_executed": true,
+    "checkpoint_action_sensitivity_reported": true,
+    "common_budget_rule": "one frozen 1024-step checkpoint selected from tune; no per-method checkpoint selection",
+    "kl_entropy_clip_stability_reported": true,
+    "tail_loss_slope_reported": true,
+    "tune_regret_plateau_reported": true
+  },
+  "isolated_processes": true,
+  "methods": [
+    "GRPO-Atomic",
+    "Atomic+Branch",
+    "PESCO-Full"
+  ],
+  "records": [
+    {
+      "method": "GRPO-Atomic",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.15173564106225967,
+          "tail_kl": 0.518203366547823,
+          "tail_loss": 0.07010372634977102,
+          "tune_mean_regret": 0.21176991045628474
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.169194296002388,
+          "tail_kl": 0.6427885480225086,
+          "tail_loss": 0.06997663108631968,
+          "tune_mean_regret": 0.1923223991991426
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.17471109330654144,
+          "tail_kl": 0.831376776099205,
+          "tail_loss": 0.07292087562382221,
+          "tune_mean_regret": 0.1952987635438129
+        }
+      ],
+      "steps": 64,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.16521367679039636,
+      "tail_kl": 0.6641228968898455,
+      "tail_loss": 0.07100041101997097,
+      "tune_mean_regret": 0.19979702439974675
+    },
+    {
+      "method": "GRPO-Atomic",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.09913531970232725,
+          "tail_kl": 0.6310403719544411,
+          "tail_loss": 0.08025051467120647,
+          "tune_mean_regret": 0.19351258935491825
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.12051886599510908,
+          "tail_kl": 0.7409498766064644,
+          "tail_loss": 0.07924117334187031,
+          "tune_mean_regret": 0.19882037033938826
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.4676396809518337,
+          "tail_kl": 0.5837676674127579,
+          "tail_loss": 0.024553460185416043,
+          "tune_mean_regret": 0.17925667955934926
+        }
+      ],
+      "steps": 128,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.22909795554975668,
+      "tail_kl": 0.6519193053245544,
+      "tail_loss": 0.06134838273283094,
+      "tune_mean_regret": 0.19052987975121857
+    },
+    {
+      "method": "GRPO-Atomic",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.36182741820812225,
+          "tail_kl": 0.5527744144201279,
+          "tail_loss": 0.03928137640468776,
+          "tune_mean_regret": 0.19177703690684944
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.36247745528817177,
+          "tail_kl": 0.6356726214289665,
+          "tail_loss": 0.0408418383449316,
+          "tune_mean_regret": 0.19707630853509353
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.37853477895259857,
+          "tail_kl": 0.662857674062252,
+          "tail_loss": 0.03897693892940879,
+          "tune_mean_regret": 0.2148856601693433
+        }
+      ],
+      "steps": 256,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.3676132174829642,
+      "tail_kl": 0.6171015699704488,
+      "tail_loss": 0.039700051226342715,
+      "tune_mean_regret": 0.2012463352037621
+    },
+    {
+      "method": "GRPO-Atomic",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.12257407885044813,
+          "tail_kl": 0.934767410159111,
+          "tail_loss": 0.08280923962593079,
+          "tune_mean_regret": 0.19270082888003176
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.2497989535331726,
+          "tail_kl": 0.71506167948246,
+          "tail_loss": 0.05933139566332102,
+          "tune_mean_regret": 0.21851677785638535
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.1836840622127056,
+          "tail_kl": 1.3526289612054825,
+          "tail_loss": 0.08199997432529926,
+          "tune_mean_regret": 0.19255990189363234
+        }
+      ],
+      "steps": 512,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.18535236486544213,
+      "tail_kl": 1.0008193502823512,
+      "tail_loss": 0.07471353653818369,
+      "tune_mean_regret": 0.2012591695433498
+    },
+    {
+      "adjacent_checkpoint_consistency": true,
+      "method": "GRPO-Atomic",
+      "plateau_gate": true,
+      "plateau_rule": "last_two_checkpoints_abs_slope_lt_2e-4_and_spread_lt_0.10",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.25153156369924545,
+          "tail_kl": 1.0609885230660439,
+          "tail_loss": 0.06599003775045276,
+          "tune_mean_regret": 0.20328977879802337
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.1880392674356699,
+          "tail_kl": 1.0020087957382202,
+          "tail_loss": 0.07433428801596165,
+          "tune_mean_regret": 0.1923223991991426
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.21420798636972904,
+          "tail_kl": 0.9208807870745659,
+          "tail_loss": 0.06878641992807388,
+          "tune_mean_regret": 0.19245675866366616
+        }
+      ],
+      "steps": 1024,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.21792627250154814,
+      "tail_kl": 0.9946260352929434,
+      "tail_loss": 0.06970358189816277,
+      "tail_regret_slope": -1.0226934875792455e-05,
+      "tail_regret_spread": 0.005236190656405737,
+      "tune_mean_regret": 0.19602297888694406
+    },
+    {
+      "method": "Atomic+Branch",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.4837205186486244,
+          "tail_kl": 0.1845156056806445,
+          "tail_loss": -0.791509248316288,
+          "tune_mean_regret": 0.19792750416869326
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.41559483483433723,
+          "tail_kl": 0.322082981467247,
+          "tail_loss": -0.7387487553060055,
+          "tune_mean_regret": 0.19597524283304538
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.48203855752944946,
+          "tail_kl": 0.299411254003644,
+          "tail_loss": -0.7559870928525925,
+          "tune_mean_regret": 0.19530349053599194
+        }
+      ],
+      "steps": 64,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.4604513036708037,
+      "tail_kl": 0.26866994705051184,
+      "tail_loss": -0.762081698824962,
+      "tune_mean_regret": 0.19640207917924354
+    },
+    {
+      "method": "Atomic+Branch",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.3872735761106014,
+          "tail_kl": 0.35057124495506287,
+          "tail_loss": 0.13293300196528435,
+          "tune_mean_regret": 0.19792750416869326
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.37550177425146103,
+          "tail_kl": 0.460068229585886,
+          "tail_loss": 0.16187460348010063,
+          "tune_mean_regret": 0.19597524283304538
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.4077647253870964,
+          "tail_kl": 0.44997721910476685,
+          "tail_loss": -0.10118893533945084,
+          "tune_mean_regret": 0.19530349053599194
+        }
+      ],
+      "steps": 128,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.3901800252497196,
+      "tail_kl": 0.4202055645485719,
+      "tail_loss": 0.06453955670197804,
+      "tune_mean_regret": 0.19640207917924354
+    },
+    {
+      "method": "Atomic+Branch",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.2767815962433815,
+          "tail_kl": 0.555677056312561,
+          "tail_loss": -1.0264761745929718,
+          "tune_mean_regret": 0.19792750416869326
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.2792628202587366,
+          "tail_kl": 0.48594775795936584,
+          "tail_loss": -1.0048016458749771,
+          "tune_mean_regret": 0.19597524283304538
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.31414695084095,
+          "tail_kl": 0.6830566003918648,
+          "tail_loss": -1.1080228313803673,
+          "tune_mean_regret": 0.19530349053599194
+        }
+      ],
+      "steps": 256,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.29006378911435604,
+      "tail_kl": 0.5748938048879305,
+      "tail_loss": -1.0464335506161053,
+      "tune_mean_regret": 0.19640207917924354
+    },
+    {
+      "method": "Atomic+Branch",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.21126012317836285,
+          "tail_kl": 0.7838870510458946,
+          "tail_loss": -1.5772431939840317,
+          "tune_mean_regret": 0.19792750416869326
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.21508200280368328,
+          "tail_kl": 0.5975146666169167,
+          "tail_loss": -1.5879384279251099,
+          "tune_mean_regret": 0.19597524283304538
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.27358701080083847,
+          "tail_kl": 0.9368799775838852,
+          "tail_loss": -1.5914606750011444,
+          "tune_mean_regret": 0.19530349053599194
+        }
+      ],
+      "steps": 512,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.23330971226096153,
+      "tail_kl": 0.7727605650822321,
+      "tail_loss": -1.5855474323034286,
+      "tune_mean_regret": 0.19640207917924354
+    },
+    {
+      "adjacent_checkpoint_consistency": true,
+      "method": "Atomic+Branch",
+      "plateau_gate": true,
+      "plateau_rule": "last_two_checkpoints_abs_slope_lt_2e-4_and_spread_lt_0.10",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.2770896330475807,
+          "tail_kl": 0.8431560844182968,
+          "tail_loss": -1.5614034831523895,
+          "tune_mean_regret": 0.19792750416869326
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.30816180258989334,
+          "tail_kl": 0.6902029737830162,
+          "tail_loss": -1.5594141781330109,
+          "tune_mean_regret": 0.19597524283304538
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.29879890382289886,
+          "tail_kl": 0.8232748284935951,
+          "tail_loss": -1.5661201924085617,
+          "tune_mean_regret": 0.19530349053599194
+        }
+      ],
+      "steps": 1024,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.29468344648679096,
+      "tail_kl": 0.7855446288983027,
+      "tail_loss": -1.5623126178979874,
+      "tail_regret_slope": 0.0,
+      "tail_regret_spread": 0.0,
+      "tune_mean_regret": 0.19640207917924354
+    },
+    {
+      "method": "PESCO-Full",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.6902229487895966,
+          "tail_kl": 3.4924596548080444e-10,
+          "tail_loss": 0.19497357122600079,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.806502141058445,
+          "tail_kl": -2.9176590032875538e-09,
+          "tail_loss": 0.1909898854792118,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.8881847560405731,
+          "tail_kl": -2.8448994271457195e-09,
+          "tail_loss": 0.1785067617893219,
+          "tune_mean_regret": 0.1351936608568735
+        }
+      ],
+      "steps": 64,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.7949699486295382,
+      "tail_kl": -1.8044374883174896e-09,
+      "tail_loss": 0.18815673949817815,
+      "tune_mean_regret": 0.1351936608568735
+    },
+    {
+      "method": "PESCO-Full",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.7118549570441246,
+          "tail_kl": -2.764863893389702e-10,
+          "tail_loss": 0.2586291693150997,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.7893388047814369,
+          "tail_kl": -6.548361852765083e-10,
+          "tail_loss": 0.18940616864711046,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.90878876298666,
+          "tail_kl": -1.382431946694851e-10,
+          "tail_loss": 0.24788147769868374,
+          "tune_mean_regret": 0.1351936608568735
+        }
+      ],
+      "steps": 128,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.8033275082707405,
+      "tail_kl": -3.5652192309498787e-10,
+      "tail_loss": 0.23197227188696465,
+      "tune_mean_regret": 0.1351936608568735
+    },
+    {
+      "method": "PESCO-Full",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.7235378921031952,
+          "tail_kl": -2.6520865503698587e-09,
+          "tail_loss": 0.22653114423155785,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.7790301963686943,
+          "tail_kl": -5.820766091346741e-10,
+          "tail_loss": 0.08837475907057524,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.9153863489627838,
+          "tail_kl": 3.3905962482094765e-09,
+          "tail_loss": 0.22955671977251768,
+          "tune_mean_regret": 0.1351936608568735
+        }
+      ],
+      "steps": 256,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.8059848124782244,
+      "tail_kl": 5.214436290164789e-11,
+      "tail_loss": 0.1814875410248836,
+      "tune_mean_regret": 0.1351936608568735
+    },
+    {
+      "method": "PESCO-Full",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.7305203676223755,
+          "tail_kl": -9.1313268058002e-10,
+          "tail_loss": 0.12647313717752695,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.7689605429768562,
+          "tail_kl": -5.602487362921238e-10,
+          "tail_loss": -0.054984875954687595,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.91828453540802,
+          "tail_kl": 5.7480065152049065e-09,
+          "tail_loss": 0.15569217409938574,
+          "tune_mean_regret": 0.1351936608568735
+        }
+      ],
+      "steps": 512,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.8059218153357506,
+      "tail_kl": 1.4248750327775876e-09,
+      "tail_loss": 0.07572681177407503,
+      "tune_mean_regret": 0.1351936608568735
+    },
+    {
+      "adjacent_checkpoint_consistency": true,
+      "method": "PESCO-Full",
+      "plateau_gate": true,
+      "plateau_rule": "last_two_checkpoints_abs_slope_lt_2e-4_and_spread_lt_0.10",
+      "seed_count": 3,
+      "seed_receipts": [
+        {
+          "seed": 17,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.7442335188388824,
+          "tail_kl": 1.8917489796876907e-10,
+          "tail_loss": 0.2191980555653572,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 23,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.8071835190057755,
+          "tail_kl": 1.178705133497715e-09,
+          "tail_loss": 0.09840973652899265,
+          "tune_mean_regret": 0.1351936608568735
+        },
+        {
+          "seed": 29,
+          "tail_clip_fraction": 0.0,
+          "tail_entropy": 0.9212374687194824,
+          "tail_kl": 6.555637810379267e-09,
+          "tail_loss": 0.14611324295401573,
+          "tune_mean_regret": 0.1351936608568735
+        }
+      ],
+      "steps": 1024,
+      "tail_clip_fraction": 0.0,
+      "tail_entropy": 0.8242181688547134,
+      "tail_kl": 2.6411726139485836e-09,
+      "tail_loss": 0.1545736783494552,
+      "tail_regret_slope": 0.0,
+      "tail_regret_spread": 0.0,
+      "tune_mean_regret": 0.1351936608568735
+    }
+  ],
+  "runs": {
+    "1024": [
+      "artifacts/tier1_p233_convergence/isolated/steps_1024_seed17/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_1024_seed23/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_1024_seed29/p231_result.json"
+    ],
+    "128": [
+      "artifacts/tier1_p233_convergence/isolated/steps_128_seed17/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_128_seed23/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_128_seed29/p231_result.json"
+    ],
+    "256": [
+      "artifacts/tier1_p233_convergence/isolated/steps_256_seed17/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_256_seed23/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_256_seed29/p231_result.json"
+    ],
+    "512": [
+      "artifacts/tier1_p233_convergence/isolated/steps_512_seed17/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_512_seed23/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_512_seed29/p231_result.json"
+    ],
+    "64": [
+      "artifacts/tier1_p233_convergence/isolated/steps_64_seed17/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_64_seed23/p231_result.json",
+      "artifacts/tier1_p233_convergence/isolated/steps_64_seed29/p231_result.json"
+    ]
+  },
+  "schema_version": "pesco_tier1_p233_convergence_v0.3",
+  "seeds": [
+    17,
+    23,
+    29
+  ],
+  "steps": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ]
+}

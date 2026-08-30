@@ -47,6 +47,104 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
     FAMILY_MNAR = "missing_not_at_random"
     FAMILY_NONCOMPLIANCE = "intervention_noncompliance"
 
+    @staticmethod
+    def _ols_design_effect(design: np.ndarray, treatment_column: int, outcome: np.ndarray) -> float:
+        """Return a treatment coefficient from observed design/outcome arrays."""
+        design = np.asarray(design, dtype=float)
+        outcome = np.asarray(outcome, dtype=float)
+        if design.ndim != 2 or outcome.ndim != 1 or design.shape[0] != outcome.size:
+            return 0.0
+        if design.shape[0] < max(4, design.shape[1] + 1):
+            return 0.0
+        coef, *_ = np.linalg.lstsq(design, outcome, rcond=None)
+        value = float(coef[int(treatment_column)])
+        return value if math.isfinite(value) else 0.0
+
+    @classmethod
+    def estimate_ood_repair(
+        cls,
+        mechanism: str,
+        treatment: Sequence[float],
+        confounder: Sequence[float],
+        outcome: Sequence[float],
+        *,
+        assigned_treatment: Optional[Sequence[float]] = None,
+        observed_treatment: Optional[Sequence[float]] = None,
+        observed_mask: Optional[Sequence[bool]] = None,
+        anchor_treatment: Optional[Sequence[float]] = None,
+        anchor_outcome: Optional[Sequence[float]] = None,
+    ) -> float:
+        """Estimate an OOD effect only from observed arrays.
+
+        The estimator deliberately has no access to ``WorldSpec`` or a latent effect.
+        Each registered repair corresponds to a data-based identification strategy:
+        HC3/WLS-style regression for heteroscedasticity, interactions for nonlinear
+        response, an independent anchor for measurement shift, IPW for MNAR, and an
+        IV Wald/CACE estimate for noncompliance.
+        """
+        t = np.asarray(treatment, dtype=float)
+        c = np.asarray(confounder, dtype=float)
+        y = np.asarray(outcome, dtype=float)
+        n = min(t.size, c.size, y.size)
+        if n < 4:
+            return cls._difference_in_means(t, y)
+        t, c, y = t[:n], c[:n], y[:n]
+        key = str(mechanism)
+        if key == cls.FAMILY_NONLINEAR_RESPONSE:
+            # The estimand is the population-average effect.  The interaction term
+            # recovers the known quadratic heterogeneity without using its generator.
+            x = np.column_stack((np.ones(n), t, c, c * c, t * c, t * c * c))
+            coef, *_ = np.linalg.lstsq(x, y, rcond=None)
+            value = float(coef[1] + coef[5])
+            return value if math.isfinite(value) else cls._adjusted_effect(t, c, y)
+        if key == cls.FAMILY_MEASUREMENT_SHIFT:
+            base = cls._adjusted_effect(t, c, y)
+            if anchor_treatment is None or anchor_outcome is None:
+                return base
+            at = np.asarray(anchor_treatment, dtype=float)
+            ay = np.asarray(anchor_outcome, dtype=float)
+            shift = cls._difference_in_means(at, ay)
+            value = float(base - shift)
+            return value if math.isfinite(value) else base
+        if key == cls.FAMILY_MNAR:
+            mask = np.ones(n, dtype=bool) if observed_mask is None else np.asarray(observed_mask, dtype=bool)[:n]
+            m = min(t.size, y.size, mask.size)
+            t, y, mask = t[:m], y[:m], mask[:m]
+            if int(mask.sum()) < 6 or np.unique(t[mask]).size < 2:
+                return cls._difference_in_means(t[mask], y[mask]) if int(mask.sum()) else 0.0
+            # Selection probabilities are fitted from observed treatment/covariate
+            # predictors, then stabilized inverse-probability weighted regression.
+            c = c[:m]
+            z = np.column_stack((np.ones(m), t, c))
+            coef, *_ = np.linalg.lstsq(z, mask.astype(float), rcond=None)
+            p = np.clip(z @ coef, 0.05, 0.95)
+            w = mask.astype(float) / p
+            x = z[mask]
+            sw = np.sqrt(w[mask])
+            value = cls._ols_design_effect(x * sw[:, None], 1, y[mask] * sw)
+            return value if math.isfinite(value) else cls._difference_in_means(t[mask], y[mask])
+        if key == cls.FAMILY_NONCOMPLIANCE:
+            a = t if assigned_treatment is None else np.asarray(assigned_treatment, dtype=float)[:n]
+            r = t if observed_treatment is None else np.asarray(observed_treatment, dtype=float)[:n]
+            da = float(np.mean(a * y) - np.mean(a) * np.mean(y))
+            dr = float(np.mean(a * r) - np.mean(a) * np.mean(r))
+            if abs(dr) > 1e-8:
+                value = da / dr
+                if math.isfinite(value):
+                    return value
+            return cls._difference_in_means(r, y)
+        # HC3/WLS repair for heteroscedastic noise and the conservative default for
+        # future registered OOD families: adjust on observed covariates and use no
+        # hidden generator parameter.
+        x = np.column_stack((np.ones(n), t, c))
+        coef, *_ = np.linalg.lstsq(x, y, rcond=None)
+        resid = y - x @ coef
+        leverage = np.sum(x * (x @ np.linalg.pinv(x.T @ x)), axis=1)
+        weights = 1.0 / np.maximum((1.0 - np.clip(leverage, 0.0, 0.95)) ** 2 * (resid * resid + 1e-4), 1e-4)
+        sw = np.sqrt(np.clip(weights, 0.05, 20.0))
+        value = cls._ols_design_effect(x * sw[:, None], 1, y * sw)
+        return value if math.isfinite(value) else cls._adjusted_effect(t, c, y)
+
     def __init__(
         self,
         worlds: Optional[Iterable[WorldSpec]] = None,
@@ -221,6 +319,12 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
 
     @staticmethod
     def _difference_in_means(treatment: np.ndarray, outcome: np.ndarray) -> float:
+        treatment = np.asarray(treatment, dtype=float)
+        outcome = np.asarray(outcome, dtype=float)
+        n = min(treatment.size, outcome.size)
+        treatment, outcome = treatment[:n], outcome[:n]
+        if n < 2:
+            return float(np.mean(outcome)) if n else 0.0
         treatment = Tier1TabularEnvironment._ensure_two_arms(treatment)
         treated = outcome[treatment == 1.0]
         control = outcome[treatment == 0.0]
@@ -419,6 +523,12 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
                 + (0.18 * (2.0 * actual_treatment - 1.0) if world.measurement_shift else 0.0)
                 + data_rng.normal(scale=noise_scale, size=n)
             )
+            anchor_treatment = data_rng.binomial(1, 0.5, size=n).astype(float) if world.measurement_shift else None
+            anchor_outcome = (
+                0.18 * (2.0 * anchor_treatment - 1.0)
+                + data_rng.normal(scale=effective_noise, size=n)
+                if anchor_treatment is not None else None
+            )
             observed_treatment = assigned_treatment
             if world.intervention_noncompliance and self._repaired:
                 # The compliance audit repairs the estimand by using the observed
@@ -460,22 +570,35 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
                 )
                 and not world.confounding
             ):
-                # Registered alternatives in the causal/subgroup families use a
-                # randomized or subgroup-aware estimator.  It is still generated from
-                # the held-out NumPy data stream, but its pre-registered variance is
-                # materially lower than the observational difference-in-means path.
-                estimate = float(
-                    latent
-                    + data_rng.normal(scale=effective_noise / math.sqrt(max(1, n * 16)))
-                )
+                # Registered alternatives use only the held-out observed arrays.  A
+                # randomized/subgroup-aware label describes the protocol, not a
+                # hidden effect lookup.
+                estimate = self._adjusted_effect(eval_treatment, eval_confounder, eval_outcome)
                 estimator_name = "randomized_alternative_v1" if "confounding" in self.mechanism_family else "subgroup_metric_estimator_v1"
             elif self._repaired and (world.heteroscedastic_noise or world.nonlinear_response or world.measurement_shift or world.missing_not_at_random or world.intervention_noncompliance):
-                # Registered repair protocols for the independent OOD mechanisms.
-                # They deliberately change the estimator/protocol and therefore have
-                # a distinct estimator receipt.  The small residual is stochastic,
-                # while the un-repaired branch retains the measurable bias.
-                estimate = float(latent + data_rng.normal(scale=effective_noise / math.sqrt(max(1, n * 12))))
-                estimator_name = "robust_ood_repair_v1"
+                mechanism = (
+                    self.FAMILY_HETEROGENEOUS_NOISE if world.heteroscedastic_noise else
+                    self.FAMILY_NONLINEAR_RESPONSE if world.nonlinear_response else
+                    self.FAMILY_MEASUREMENT_SHIFT if world.measurement_shift else
+                    self.FAMILY_MNAR if world.missing_not_at_random else
+                    self.FAMILY_NONCOMPLIANCE
+                )
+                repair_mask = test_mask if mechanism == self.FAMILY_MNAR else eval_mask
+                repair_treatment = observed_treatment[repair_mask]
+                repair_confounder = confounder[repair_mask]
+                repair_outcome = outcome[repair_mask]
+                estimate = self.estimate_ood_repair(
+                    mechanism,
+                    repair_treatment,
+                    repair_confounder,
+                    repair_outcome,
+                    assigned_treatment=assigned_treatment[repair_mask],
+                    observed_treatment=observed_treatment[repair_mask],
+                    observed_mask=~missing_mask[repair_mask],
+                    anchor_treatment=anchor_treatment[repair_mask] if anchor_treatment is not None else None,
+                    anchor_outcome=anchor_outcome[repair_mask] if anchor_outcome is not None else None,
+                )
+                estimator_name = f"{mechanism}_data_estimator_v1"
             elif method == "method_a" and world.confounding and self._repaired:
                 estimate = self._adjusted_effect(eval_treatment, eval_confounder, eval_outcome)
                 estimator_name = self.ESTIMATOR_ADJUSTED
@@ -530,6 +653,9 @@ class Tier1TabularEnvironment(Tier0ResearchEnvironment):
             self._array_digest_update(data_digest, f"seed={seed}:treatment:", treatment)
             self._array_digest_update(data_digest, f"seed={seed}:group_effects:", group_effects)
             self._array_digest_update(data_digest, f"seed={seed}:outcome:", outcome)
+            if anchor_treatment is not None and anchor_outcome is not None:
+                self._array_digest_update(data_digest, f"seed={seed}:anchor_treatment:", anchor_treatment)
+                self._array_digest_update(data_digest, f"seed={seed}:anchor_outcome:", anchor_outcome)
             self._array_digest_update(split_digest, f"seed={seed}:train:", train_mask)
             self._array_digest_update(split_digest, f"seed={seed}:test:", test_mask)
             split_digest.update(f"seed={seed}:mode={split_mode}".encode("utf-8"))

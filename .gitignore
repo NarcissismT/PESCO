@@ -65,6 +65,38 @@ artifacts/tier1_p232_branch_conflict_pcgrad/reward_tensor_audit.json
 artifacts/tier1_p232_branch_conflict_pcgrad/run_manifest.json
 artifacts/tier1_p232_convergence/steps_*/
 
+# P2.3.3 evaluator-hidden/raw collection products remain local.
+artifacts/tier1_p233_diagnostic/benchmark_manifest_hidden.json
+artifacts/tier1_p233_diagnostic/dataset_raw_evidence.json
+artifacts/tier1_p233_diagnostic/collection_manifest.json
+artifacts/tier1_p233_diagnostic/*_final.json
+
+# P2.3.3 full matrix records, checkpoints, and evaluator internals remain local;
+# publish only compact aggregates, gates, manifests, and audit receipts.
+artifacts/tier1_p233_matrix_10seed/p231_result.json
+artifacts/tier1_p233_matrix_10seed/p233_matrix_result*.json
+artifacts/tier1_p233_matrix_10seed/canonical_reversal_ids.json
+artifacts/tier1_p233_matrix_10seed/reward_tensor_audit.json
+artifacts/tier1_p233_matrix_10seed/sft_checkpoints/
+artifacts/tier1_p233_matrix_10seed/*_final.json
+artifacts/tier1_p233_matrix_10seed/*_r2.json
+artifacts/tier1_p233_matrix_10seed/p2_*.json
+artifacts/tier1_p233_matrix_10seed/p233_aggregate.json
+artifacts/tier1_p233_matrix_10seed/promotion_v5_guard.json
+artifacts/tier1_p233_matrix_10seed_old_h64/
+
+# P2.3.3 convergence intermediates and superseded reruns remain local.
+artifacts/tier1_p233_convergence/isolated/
+artifacts/tier1_p233_convergence/steps_*/
+artifacts/tier1_p233_convergence_v2/
+
+# Duplicate/intermediate estimator outputs and local execution marker.
+artifacts/tier1_p233_estimator_audit/*_final.json
+artifacts/tier1_p233_estimator_audit/counterfactual_leakage.json
+artifacts/tier1_p233_promotion_v5
+artifacts/tier1_p233_promotion_v5.sentinel
+artifacts/tier1_p233_shortcut_probe/run_manifest.json
+
 # 构建与系统文件
 build/
 dist/

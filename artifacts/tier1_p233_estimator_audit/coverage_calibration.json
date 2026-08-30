@@ -1,0 +1,63 @@
+{
+  "all_estimators_observed_array_only": true,
+  "receipt_derived": true,
+  "rows": [
+    {
+      "bootstrap_interval_high": 0.3470478060613041,
+      "bootstrap_interval_low": 0.06668091507356086,
+      "coverage_test_recorded": true,
+      "empirical_normal_ci_coverage": 0.93,
+      "empirical_se": 0.06750919846989112,
+      "mean_estimate": 0.21090886951456325,
+      "mechanism": "heterogeneous_noise",
+      "replicates": 100,
+      "se_calibration_ratio": 0.3200870528834237
+    },
+    {
+      "bootstrap_interval_high": 0.2817506747830897,
+      "bootstrap_interval_low": 0.11892090734926315,
+      "coverage_test_recorded": true,
+      "empirical_normal_ci_coverage": 0.96,
+      "empirical_se": 0.04509950233860197,
+      "mean_estimate": 0.2023205169706367,
+      "mechanism": "nonlinear_response",
+      "replicates": 100,
+      "se_calibration_ratio": 0.22291116597506214
+    },
+    {
+      "bootstrap_interval_high": 0.3181663558243804,
+      "bootstrap_interval_low": 0.06829774680384114,
+      "coverage_test_recorded": true,
+      "empirical_normal_ci_coverage": 0.93,
+      "empirical_se": 0.061876570156510276,
+      "mean_estimate": 0.1986415546997862,
+      "mechanism": "measurement_shift",
+      "replicates": 100,
+      "se_calibration_ratio": 0.3114986199641181
+    },
+    {
+      "bootstrap_interval_high": 0.3017567748496506,
+      "bootstrap_interval_low": 0.11088739331845722,
+      "coverage_test_recorded": true,
+      "empirical_normal_ci_coverage": 0.95,
+      "empirical_se": 0.048709315668923905,
+      "mean_estimate": 0.20175419594567004,
+      "mechanism": "missing_not_at_random",
+      "replicates": 100,
+      "se_calibration_ratio": 0.24142900939735962
+    },
+    {
+      "bootstrap_interval_high": 0.35878308862327696,
+      "bootstrap_interval_low": 0.04360450487367741,
+      "coverage_test_recorded": true,
+      "empirical_normal_ci_coverage": 0.97,
+      "empirical_se": 0.08730989488559143,
+      "mean_estimate": 0.19813297385181092,
+      "mechanism": "intervention_noncompliance",
+      "replicates": 100,
+      "se_calibration_ratio": 0.4406631222872216
+    }
+  ],
+  "schema_version": "pesco_p233_estimator_coverage_v0.1",
+  "target_nominal_coverage": 0.95
+}

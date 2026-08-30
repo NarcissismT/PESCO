@@ -1,0 +1,8 @@
+{
+  "schema_version": "pesco_promotion_v4_abort_notice_v0.1",
+  "status": "ABORTED_BEFORE_PRIVATE_ACCESS",
+  "reason": "P2.3.2 NO-GO, OOD estimator provenance defect, and non-converged common budget",
+  "private_data_accessed": false,
+  "superseded_by": "tier1_p233_diagnostic",
+  "formal_comparison_authorized": false
+}
