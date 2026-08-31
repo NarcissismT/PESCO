@@ -1,0 +1,28 @@
+{
+  "checkpoint_bundle_verified": true,
+  "checkpoint_receipts": [
+    {
+      "checkpoint": "artifacts/tier1_p233_r1_matrix_atomic_target_runs/seed_17/sft_checkpoints/sft_seed_17.pt",
+      "manifest": "artifacts/tier1_p233_r1_matrix_atomic_target_runs/seed_17/sft_checkpoints/sft_seed_17.json",
+      "seed": 17,
+      "state_dict_sha256": "sha256:fe7640b9a9e020c03c9afe86c4e1182bddd1f9afa6433280a333a97f93eb7c26",
+      "verified": true
+    }
+  ],
+  "p234_gate_sha256": "sha256:c9b09cae746b3d6ccdee6bddc7c82cf25397a98bba679a5aa8caff61b518cd0d",
+  "prerequisites": {
+    "p234_gate_go": false,
+    "private_commitment_after_code_freeze": true,
+    "private_commitment_untouched": true,
+    "r1_checkpoint_bundle_verified": true
+  },
+  "private_commitment_sha256": "sha256:5c7bc9b06a7c320e147ca1fa40085d960d6f038a4c200e6ac9bf0c4c29e2fb24",
+  "private_data_accessed": false,
+  "promotion_runner_bound_to_r1_checkpoints": true,
+  "r1_matrix_sha256": "sha256:829f52601861607291e9550a8aa8da84e90ab3afd623c5ad173991ac3bd04676",
+  "reason": "P2.3.4 gate must be GO and bound to r1 checkpoints before any private promotion-v6 access",
+  "schema_version": "pesco_promotion_v6_guard_v1",
+  "sentinel": "artifacts/tier1_p234_atomic_target/promotion_v6_guard.json.sentinel",
+  "sentinel_created_before_private_access": true,
+  "status": "REFUSED_P234_NO_GO"
+}

@@ -104,6 +104,10 @@ artifacts/tier1_p233_r1_*
 !artifacts/tier1_p233_r1_final_atomic_target/**
 artifacts/tier1_p233_r1_final_atomic_target/matrix.json
 
+# P2.3.4 full matrix remains local; publish compact aggregates and gate receipts.
+artifacts/tier1_p234_atomic_target/matrix.json
+artifacts/tier1_p234_atomic_target/*.sentinel
+
 # 构建与系统文件
 build/
 dist/

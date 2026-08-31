@@ -48,7 +48,12 @@ def generate(family,rng,n=160,truth=.20):
     y=effect*t+.12*c+rng.normal(scale=noise,size=n)
     kw={"assigned_treatment":assigned,"observed_treatment":actual}
     if family==E.FAMILY_MEASUREMENT_SHIFT:
-        at=rng.binomial(1,.5,n).astype(float); ay=.18*(2*at-1)+rng.normal(scale=.25,size=n); kw.update(anchor_treatment=at,anchor_outcome=ay)
+        # The environment generator adds the same ``+0.36 * treatment`` measurement
+        # shift to the outcome and to a paired anchor pair.  Match that here so the
+        # estimator's anchor-subtraction has a real shift to remove.
+        shift = .36*t
+        y = y + shift
+        at=rng.binomial(1,.5,n).astype(float); ay=.36*at+rng.normal(scale=.25,size=n); kw.update(anchor_treatment=at,anchor_outcome=ay)
     if family==E.FAMILY_MNAR:
         # Genuine outcome-dependent selection; no observed-only estimator can
         # identify this without an explicit selection model.  Keep the row as a

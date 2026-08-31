@@ -1,0 +1,46 @@
+{
+  "audit_sha256": "sha256:1475944cf35ead45dda2b98d0e5ae91a2ff9225e10aed9dc27858229b28d01ea",
+  "diagnostic_only": true,
+  "p234_go": {
+    "all_estimator_bias_bounds_pass": true,
+    "all_estimator_coverage_lower_bounds_pass": true,
+    "all_loo_metrics_finite": true,
+    "branch_factorial_effect_ci_upper_lt_zero": true,
+    "family_majority_direction_positive": false,
+    "full_beats_strict_rf_gbdt": false,
+    "full_vs_asb_pairrank_ci_lower_gt_zero": false,
+    "full_vs_asf_regret_ci_upper_lt_zero": true,
+    "full_vs_best_frozen_nonfull_regret_ci_upper_lt_zero": false,
+    "loo_macro_regret_ci_upper_lt_zero": false,
+    "measurement_shift_calibration_pass": true,
+    "no_hidden_truth_used_by_estimator": true,
+    "one_shot_private_access_guard_pass": true,
+    "p233_r1_policy_authenticity_pass": true,
+    "practical_effect_size_floor_pass": false,
+    "private_dataset_commitment_created_after_code_freeze": true,
+    "promotion_runner_bound_to_r1_checkpoints": true,
+    "worst_family_noninferiority_pass": true
+  },
+  "private_data_accessed": false,
+  "receipt_sources": {
+    "aggregate": "artifacts/tier1_p234_atomic_target/aggregate_promotion.json",
+    "attribution": "artifacts/tier1_p234_atomic_target/attribution.json",
+    "convergence": "artifacts/tier1_p234_atomic_target/convergence.json",
+    "estimator": "artifacts/tier1_p234_atomic_target/coverage_calibration.json",
+    "leakage": "artifacts/tier1_p234_atomic_target/counterfactual_leakage.json",
+    "loo": "artifacts/tier1_p234_atomic_target/family_loo.json",
+    "matrix": "artifacts/tier1_p234_atomic_target/matrix.json",
+    "private_commitment": "artifacts/tier1_p234_atomic_target/private_commitment.json",
+    "promotion_v6_guard": "artifacts/tier1_p234_atomic_target/promotion_v6_guard.json",
+    "shortcut": "artifacts/tier1_p234_atomic_target/shortcut_probe_result.json",
+    "stability": "artifacts/tier1_p234_atomic_target/reward_weight_stability.json"
+  },
+  "schema_version": "pesco_p234_gate_v1",
+  "status": "NO_GO",
+  "thresholds": {
+    "estimator_bias_bound": 0.05,
+    "estimator_coverage_lower_bound": 0.9,
+    "practical_effect_size_floor": 0.005,
+    "worst_family_noninferiority_margin": 0.02
+  }
+}

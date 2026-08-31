@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
 from research_strategy_optimization.algorithms.differentiable_strategy import DecisionDataset
 
-FAMILIES=("group_leakage","causal_confounding","low_sample_variance","subgroup_metric_mismatch","heterogeneous_noise","nonlinear_response","measurement_shift","missing_not_at_random","intervention_noncompliance","group_generalization")
+FAMILIES=("group_leakage","causal_confounding","low_sample_variance","subgroup_metric_mismatch","heteroscedastic_noise","nonlinear_response","measurement_shift","missing_not_at_random","intervention_noncompliance","protocol_drift")
 
 def main(argv=None):
     p=argparse.ArgumentParser(); p.add_argument('--dataset',type=Path,required=True); p.add_argument('--output',type=Path,required=True); p.add_argument('--seed',type=int,default=17); p.add_argument('--steps',type=int,default=128); a=p.parse_args(argv)

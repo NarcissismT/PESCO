@@ -1,0 +1,22 @@
+{
+  "bound_r1_checkpoint_digests": [
+    {
+      "seed": 17,
+      "state_dict_sha256": "sha256:fe7640b9a9e020c03c9afe86c4e1182bddd1f9afa6433280a333a97f93eb7c26"
+    }
+  ],
+  "code_freeze": {
+    "code_root_digest": "sha256:6fb66d1fe9dba4dc6047062b2724f7e463da562a4409176efbb868ced3c567d0",
+    "git_head": "335fcf6bc2f5c7c4bb6f4c601f3af98293dedba1",
+    "git_status_dirty": true,
+    "scripts_digest": "sha256:3835aa81923219e6d22a6bb4facbea2373d71fcb1f2cf012bf279907b06514a6"
+  },
+  "commitment_created_at": "2026-08-31T12:48:49.750997+00:00",
+  "commitment_purpose": "reserve a separate private ID+OOD dataset for p234 promotion-v6 evaluation; no access performed here",
+  "gate_sha256": "sha256:c9b09cae746b3d6ccdee6bddc7c82cf25397a98bba679a5aa8caff61b518cd0d",
+  "matrix_digest": "sha256:75b058caabdee8c03b0316382029ccb9ed4a1c3b87eb4036bd9d6fbd60bd72d6",
+  "private_dataset_accessed": false,
+  "promotion_target": "promotion_v6",
+  "schema_version": "pesco_p234_private_commitment_v1",
+  "status": "CREATED_AFTER_CODE_FREEZE"
+}
