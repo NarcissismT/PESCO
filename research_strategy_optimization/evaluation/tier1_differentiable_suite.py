@@ -793,6 +793,29 @@ def _pairwise_reversal_ranking_correct(
     return bool(math.isfinite(left_margin) and math.isfinite(right_margin) and left_margin > 0.0 and right_margin > 0.0)
 
 
+def _pairwise_reversal_ranking_score(
+    left_probabilities: Mapping[str, float],
+    right_probabilities: Mapping[str, float],
+    action_left: ResearchAction,
+    action_right: ResearchAction,
+) -> float:
+    """Bounded continuous score for the two endpoint ranking inequalities.
+
+    Binary accuracy is retained as a diagnostic, but it saturates when two
+    policies preserve the same signs.  The r1 effect-size metric uses the
+    receipt-aligned probability margins so small, genuine improvements remain
+    observable without consulting hidden labels.
+    """
+    try:
+        left_margin = float(left_probabilities.get(action_left.value, 0.0)) - float(left_probabilities.get(action_right.value, 0.0))
+        right_margin = float(right_probabilities.get(action_right.value, 0.0)) - float(right_probabilities.get(action_left.value, 0.0))
+    except (TypeError, ValueError):
+        return 0.0
+    if not (math.isfinite(left_margin) and math.isfinite(right_margin)):
+        return 0.0
+    return float(0.5 + 0.25 * (left_margin + right_margin))
+
+
 def evaluate_differentiable_policy(
     policy: DifferentiableStrategyPolicy,
     dataset: DecisionDataset,
@@ -849,32 +872,11 @@ def evaluate_differentiable_policy(
     with torch.no_grad():
         split_outputs = policy(split_features)
         split_action_logits = split_outputs["action_logits"]
-        # PESCO-Full may carry a receipt-bound public shortcut adapter trained
-        # only on the train split.  Override action logits for evaluation while
-        # leaving state/belief heads untouched; the adapter consumes observed
-        # features without confirmation summaries and cannot access hidden truth.
-        public_adapter = getattr(policy, "full_public_adapter", None)
-        if public_adapter is not None and not state_gate:
-            try:
-                import numpy as np
-                from research_strategy_optimization.evaluation.shortcut_probes import observation_features
-                adapter_x = np.stack([
-                    observation_features(example.observation.to_dict(), "without_confirmation")
-                    for example in split_examples
-                ])
-                adapter_pred = public_adapter.predict(adapter_x)
-                fallback = getattr(policy, "full_public_adapter_fallback", None)
-                threshold = getattr(policy, "full_public_adapter_threshold", None)
-                if fallback is not None and threshold is not None:
-                    primary_prob = public_adapter.predict_proba(adapter_x).max(axis=1)
-                    fallback_pred = fallback.predict(adapter_x)
-                    adapter_pred = np.where(primary_prob >= float(threshold), adapter_pred, fallback_pred)
-                split_action_logits = torch.full_like(split_action_logits, -20.0)
-                split_action_logits[torch.arange(len(adapter_pred)), torch.as_tensor(adapter_pred, dtype=torch.long)] = 20.0
-            except Exception:
-                # Strict formal runs have sklearn installed; minimal unit-test
-                # environments retain the normal differentiable action head.
-                pass
+        # Action logits always come from the policy network.  Shortcut probes are
+        # separate baseline methods and are never allowed to override a PESCO
+        # policy's output during evaluation.  This is an explicit authenticity
+        # boundary: an attached adapter is ignored and recorded as an audit error
+        # by the P2.3.3-r1 runner rather than silently changing the metric.
         split_action_probabilities = F.softmax(split_action_logits, dim=-1)
         split_state_logits = split_outputs["state_logits"]
         split_state_probabilities = F.softmax(split_state_logits, dim=-1)
@@ -1071,6 +1073,12 @@ def evaluate_differentiable_policy(
                 pair.action_left,
                 pair.action_right,
             ),
+            "pairwise_ranking_score": _pairwise_reversal_ranking_score(
+                left_probabilities,
+                right_probabilities,
+                pair.action_left,
+                pair.action_right,
+            ),
             "exact_top1_reversal_correct": bool(
                 predicted_actions.get(pair.left) is pair.action_left
                 and predicted_actions.get(pair.right) is pair.action_right
@@ -1243,6 +1251,10 @@ def evaluate_differentiable_policy(
                 _weighted_pair_mean(question_pair_rows, "pairwise_ranking_correct")
                 if question_pair_rows else None
             ),
+            "pairwise_reversal_ranking_score": (
+                _weighted_pair_mean(question_pair_rows, "pairwise_ranking_score")
+                if question_pair_rows else None
+            ),
             "exact_top1_reversal_accuracy": (
                 _weighted_pair_mean(question_pair_rows, "exact_top1_reversal_correct")
                 if question_pair_rows else None
@@ -1313,6 +1325,7 @@ def evaluate_differentiable_policy(
                 "question_id": row["question_id"],
                 "pair_count": row["pair_count"],
                 "pairwise_reversal_ranking_accuracy": row["pairwise_reversal_ranking_accuracy"],
+                "pairwise_reversal_ranking_score": row.get("pairwise_reversal_ranking_score"),
                 "exact_top1_reversal_accuracy": row["exact_top1_reversal_accuracy"],
             }
             for row in question_metric_rows
@@ -1326,6 +1339,10 @@ def evaluate_differentiable_policy(
         "reversal_pair_eligible_n": len(eligible_pairs),
         "pairwise_reversal_ranking_correct_n": int(pairwise_ranking_correct),
         "pairwise_reversal_ranking_accuracy": pairwise_ranking_accuracy,
+        "pairwise_reversal_ranking_score": (
+            sum(float(row["pairwise_ranking_score"]) for row in pair_rows) / len(pair_rows)
+            if pair_rows else None
+        ),
         "pairwise_reversal_ranking_accuracy_ci": pairwise_ranking_accuracy_ci,
         "exact_top1_reversal_correct_n": int(exact_top1_reversal_correct),
         "exact_top1_reversal_accuracy": exact_top1_reversal_accuracy,

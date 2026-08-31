@@ -1,0 +1,65 @@
+{
+  "components": {
+    "confirmation_bonus": {
+      "changed_winner_rate": 0.015277777777777777,
+      "example_count": 7200,
+      "winner_stability_rate": 0.9847222222222223
+    },
+    "execution_cost_penalty": {
+      "changed_winner_rate": 0.0015277777777777779,
+      "example_count": 7200,
+      "winner_stability_rate": 0.9984722222222222
+    },
+    "heldout_split_bonus": {
+      "changed_winner_rate": 0.0,
+      "example_count": 7200,
+      "winner_stability_rate": 1.0
+    },
+    "mechanism_transition_bonus": {
+      "changed_winner_rate": 0.0006944444444444445,
+      "example_count": 7200,
+      "winner_stability_rate": 0.9993055555555556
+    },
+    "repair_protocol_bonus": {
+      "changed_winner_rate": 0.0,
+      "example_count": 7200,
+      "winner_stability_rate": 1.0
+    },
+    "replicate_bonus": {
+      "changed_winner_rate": 0.0,
+      "example_count": 7200,
+      "winner_stability_rate": 1.0
+    },
+    "sample_precision_bonus": {
+      "changed_winner_rate": 0.06041666666666667,
+      "example_count": 7200,
+      "winner_stability_rate": 0.9395833333333333
+    },
+    "state_resolution_bonus": {
+      "changed_winner_rate": 0.0,
+      "example_count": 7200,
+      "winner_stability_rate": 1.0
+    },
+    "switch_failure_penalty": {
+      "changed_winner_rate": 0.01625,
+      "example_count": 7200,
+      "winner_stability_rate": 0.98375
+    },
+    "switch_success_bonus": {
+      "changed_winner_rate": 0.07486111111111111,
+      "example_count": 7200,
+      "winner_stability_rate": 0.9251388888888888
+    },
+    "validity_gate": {
+      "changed_winner_rate": 0.0,
+      "example_count": 7200,
+      "winner_stability_rate": 1.0
+    }
+  },
+  "not_global_rescale": true,
+  "overall_mean_stability": 0.9846338383838383,
+  "pass": true,
+  "perturbation": "each reward component independently multiplied by 0.8/1.0/1.2",
+  "receipt_derived": true,
+  "schema_version": "pesco_p233_r1_reward_weight_stability_v1"
+}

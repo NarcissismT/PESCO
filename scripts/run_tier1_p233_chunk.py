@@ -7,6 +7,7 @@ while preventing allocator growth across a long 10-seed matrix.
 """
 from __future__ import annotations
 import argparse
+from dataclasses import asdict
 import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,13 +30,22 @@ def main(argv=None):
     p.add_argument("--sft-learning-rate", type=float, default=0.003)
     p.add_argument("--branch-loss-weight", type=float, default=0.30)
     p.add_argument("--utility-target-weight", type=float, default=0.25)
+    p.add_argument("--atomic-target-weight", type=float, default=0.0)
     p.add_argument("--pairwise-weight", type=float, default=0.10)
     p.add_argument("--state-weight", type=float, default=0.2)
     p.add_argument("--state-invalid-weight", type=float, default=3.0)
     p.add_argument("--splits", nargs="+", default=("tune", "promotion"))
     p.add_argument("--gradient-mode", choices=("sum", "pcgrad"), default="sum")
+    p.add_argument("--pcgrad-aux-pair", action="store_true")
+    p.add_argument("--pcgrad-aux-orthogonal", action="store_true")
+    p.add_argument("--branch-head-isolated", action="store_true")
+    p.add_argument("--flip-head-isolated", action="store_true")
+    p.add_argument("--branch-formulation", choices=("sibling_advantage", "expected_utility", "utility_cross_entropy", "soft_utility_cross_entropy", "utility_improvement_soft_ce", "utility_improvement_expected", "top1_hinge"), default="expected_utility")
     p.add_argument("--all-methods", action="store_true")
     p.add_argument("--flip-reference-kl-weight", type=float, default=0.5)
+    p.add_argument("--branch-trust-region", action="store_true")
+    p.add_argument("--branch-trust-epsilon", type=float, default=0.005)
+    p.add_argument("--stratified-factorial", action="store_true")
     a = p.parse_args(argv)
     d = DecisionDataset.from_json(a.dataset)
     cfg = P231Config(
@@ -44,11 +54,19 @@ def main(argv=None):
         learning_rate=a.learning_rate, sft_learning_rate=a.sft_learning_rate,
         branch_loss_weight=a.branch_loss_weight,
         utility_target_weight=a.utility_target_weight,
+        atomic_target_weight=a.atomic_target_weight,
         pairwise_weight=a.pairwise_weight, state_weight=a.state_weight,
         state_class_weights=(a.state_invalid_weight, 1.0, 1.0, 1.0),
-        top1_gap_threshold=0.0, gradient_mode=a.gradient_mode,
+        top1_gap_threshold=0.0, gradient_mode=a.gradient_mode, branch_formulation=a.branch_formulation,
+        pcgrad_auxiliary_conflict=bool(a.pcgrad_aux_pair),
+        pcgrad_auxiliary_orthogonal=bool(a.pcgrad_aux_orthogonal),
+        branch_head_isolated=bool(a.branch_head_isolated),
+        flip_head_isolated=bool(a.flip_head_isolated),
         flip_reference_kl_weight=a.flip_reference_kl_weight,
+        branch_trust_region=bool(a.branch_trust_region), branch_trust_epsilon=float(a.branch_trust_epsilon),
+        stratified_factorial=bool(a.stratified_factorial),
     )
+    cfg = P231Config(**{**asdict(cfg), "authentic_factorial": True})
     methods = tuple(a.methods)
     result = run_p231_dev_diagnostic(
         a.output_dir, d, seeds=(a.seed,), config=cfg,

@@ -67,7 +67,7 @@ def main(argv=None):
         'reward_tensor_audit':template.get('reward_tensor_audit',{}),
         'optimizer_contract':template.get('optimizer_contract',{}),
         'oracle_branch_search':[{'split':split,'method':'Oracle-Branch-Search','question_count':len(question_ids_by_split[split]),'mean_regret':0.0,'normalized_regret':0.0,'upper_bound_only':True,'receipt_bound':True} for split in ('tune','promotion')],
-        'method_matrix_contract':{'sft_shared_checkpoint':True,'rl_methods_share_atomic_reward':True,'oracle_excluded_from_training':True,'eval_splits':['tune','promotion'],'top1_gap_threshold':0.0,'isolated_seed_processes':True},
+        'method_matrix_contract':{'sft_shared_checkpoint':True,'rl_methods_share_atomic_reward':True,'oracle_excluded_from_training':True,'eval_splits':['tune','promotion'],'top1_gap_threshold':0.0,'isolated_seed_processes':True,'authentic_factorial':True,'only_factor_switches_differ':True,'external_action_adapter_forbidden':True,'common_training_budget':template.get('config',{}).get('finetune_steps')},
         'diagnostic_only':True,'formal_comparison_authorized':False,
     }
     a.output.parent.mkdir(parents=True,exist_ok=True); a.output.write_text(json.dumps(result,indent=2,ensure_ascii=False,sort_keys=True)); print({'output':str(a.output),'records':len(all_records),'methods':methods})

@@ -31,7 +31,7 @@
   },
   "schema_version": "pesco_p233_go_v0.1",
   "split": "promotion",
-  "status": "GO",
+  "status": "INVALIDATED_DIAGNOSTIC_BEFORE_PRIVATE_ACCESS",
   "thresholds": {
     "invalid_recall_floor": 0.05,
     "min_per_state_recall": 0.1,

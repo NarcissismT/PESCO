@@ -1,0 +1,87 @@
+{
+  "all_estimators_observed_array_only": true,
+  "inner_bootstrap_replicates": 80,
+  "mnar_note": "MNAR row is outcome-dependent and intentionally reported as a stress test; it is not claimed identifiable without a selection model.",
+  "receipt_derived": true,
+  "replicates_per_mechanism": 500,
+  "rows": [
+    {
+      "bias": 0.0018062453655028898,
+      "coverage_lower_approx": 0.9191833605017524,
+      "coverage_receipt": true,
+      "coverage_upper_approx": 0.9608166394982475,
+      "empirical_95ci_coverage": 0.94,
+      "mean_estimate": 0.2018062453655029,
+      "mechanism": "heterogeneous_noise",
+      "median_dataset_se": 0.05310556255488956,
+      "replicates": 500,
+      "rmse": 0.052395426191078856,
+      "selection_assumption": "observed_array_model",
+      "truth": 0.2
+    },
+    {
+      "bias": 0.0001717300807838884,
+      "coverage_lower_approx": 0.9215114833333401,
+      "coverage_receipt": true,
+      "coverage_upper_approx": 0.9624885166666598,
+      "empirical_95ci_coverage": 0.942,
+      "mean_estimate": 0.2001717300807839,
+      "mechanism": "nonlinear_response",
+      "median_dataset_se": 0.040233322220886825,
+      "replicates": 500,
+      "rmse": 0.040919859065261605,
+      "selection_assumption": "observed_array_model",
+      "truth": 0.2
+    },
+    {
+      "bias": -0.3616371146312887,
+      "coverage_lower_approx": 0.0,
+      "coverage_receipt": true,
+      "coverage_upper_approx": 8.765386471799176e-08,
+      "empirical_95ci_coverage": 0.0,
+      "mean_estimate": -0.16163711463128871,
+      "mechanism": "measurement_shift",
+      "median_dataset_se": 0.055668990515004166,
+      "replicates": 500,
+      "rmse": 0.3664781714172977,
+      "selection_assumption": "observed_array_model",
+      "truth": 0.2
+    },
+    {
+      "bias": -0.004218978039668031,
+      "coverage_lower_approx": 0.9238464721500179,
+      "coverage_receipt": true,
+      "coverage_upper_approx": 0.964153527849982,
+      "empirical_95ci_coverage": 0.944,
+      "mean_estimate": 0.19578102196033198,
+      "mechanism": "missing_not_at_random",
+      "median_dataset_se": 0.055834771563116024,
+      "replicates": 500,
+      "rmse": 0.05523487682857713,
+      "selection_assumption": "outcome_dependent_MNAR_stress_test",
+      "truth": 0.2
+    },
+    {
+      "bias": -0.0028801367641966835,
+      "coverage_lower_approx": 0.9404175873327919,
+      "coverage_receipt": true,
+      "coverage_upper_approx": 0.975582412667208,
+      "empirical_95ci_coverage": 0.958,
+      "mean_estimate": 0.19711986323580333,
+      "mechanism": "intervention_noncompliance",
+      "median_dataset_se": 0.07991652366370025,
+      "replicates": 500,
+      "rmse": 0.07761203984957676,
+      "selection_assumption": "observed_array_model",
+      "truth": 0.2
+    }
+  ],
+  "schema_version": "pesco_p233_r1_estimator_coverage_v1",
+  "source_audit": {
+    "forbidden_attributes": [],
+    "forbidden_names": [],
+    "no_hidden_truth_used_by_estimator": true,
+    "source_sha256": "sha256:689ed8be1a9f594493ec52481249caa4e91e45a43183a965ca99fbe01eb9fa7e"
+  },
+  "target_nominal_coverage": 0.95
+}

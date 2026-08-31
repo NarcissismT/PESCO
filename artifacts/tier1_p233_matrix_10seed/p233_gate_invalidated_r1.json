@@ -1,0 +1,14 @@
+{
+  "schema_version": "pesco_p233_gate_invalidation_v1",
+  "status": "INVALIDATED_DIAGNOSTIC_BEFORE_PRIVATE_ACCESS",
+  "private_data_accessed": false,
+  "reasons": [
+    "PESCO-Full action head was frozen in the superseded run",
+    "RandomForest adapter overrode action logits in the superseded run",
+    "factorial cells changed multiple components",
+    "Full flip contribution gate was mis-specified",
+    "64-step matrix was not bound to convergence configuration"
+  ],
+  "supersedes": "p233_gate.json",
+  "promotion_v5_authorized": false
+}

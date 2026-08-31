@@ -427,6 +427,14 @@ class DifferentiableStrategyPolicy(nn.Module):
         # Keep action-head initialization order identical to the original public
         # policy; the auxiliary state representation is allocated afterwards.
         self.action_head = nn.Linear(hidden_dim, len(ACTION_SET))
+        # Branch supervision has an explicit in-network residual capacity.  It
+        # is present in every checkpoint (so the factorial cells keep an
+        # identical architecture) and starts at zero, preserving the common
+        # SFT action policy until the Branch factor is enabled.  This is not an
+        # inference adapter: its logits are part of the differentiable policy.
+        self.branch_head = nn.Linear(hidden_dim, len(ACTION_SET))
+        nn.init.zeros_(self.branch_head.weight)
+        nn.init.zeros_(self.branch_head.bias)
         # Flip supervision has an independent public-observation residual head.
         # Keeping it zero-initialized preserves the shared SFT action policy until
         # a registered reversal objective explicitly enables the residual.
@@ -469,6 +477,8 @@ class DifferentiableStrategyPolicy(nn.Module):
         state_features = features[:, :BASE_FEATURE_DIM] if int(features.shape[-1]) >= BASE_FEATURE_DIM else features
         state_hidden = self.state_trunk(state_features)
         action_logits = self.action_head(hidden)
+        if bool(getattr(self, "use_branch_head", False)):
+            action_logits = action_logits + float(getattr(self, "branch_conditioning_scale", 0.2)) * self.branch_head(hidden)
         if bool(getattr(self, "use_flip_head", False)):
             action_logits = action_logits + float(getattr(self, "flip_conditioning_scale", 1.0)) * self.flip_head(hidden)
         if bool(getattr(self, "use_state_calibrator", False)):

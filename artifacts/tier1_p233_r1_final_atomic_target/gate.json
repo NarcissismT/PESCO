@@ -1,0 +1,50 @@
+{
+  "audit_sha256": "sha256:1e951fe73c9e4a145067b981ec5bafe616fbc60c9414280c374b4e192749effe",
+  "diagnostic_only": true,
+  "p233_go": {
+    "all_gate_values_derived_from_receipts": true,
+    "all_methods_share_atomic_reward": true,
+    "at_least_8_of_10_seed_directions_positive": true,
+    "branch_factorial_effect_regret_ci_upper_lt_zero": true,
+    "convergence_rule_frozen_and_passed": true,
+    "environment_execution_budget_matched": true,
+    "family_majority_direction_positive": false,
+    "flip_does_not_harm_regret": true,
+    "flip_pairrank_delta_ci_lower_gt_zero": true,
+    "full_action_head_parameter_delta_positive": true,
+    "full_action_logits_change_after_training": true,
+    "full_beats_strict_shortcut_baseline": false,
+    "full_state_macro_f1_noninferior_to_atomic_state": true,
+    "full_vs_atomic_state_flip_regret_ci_upper_lt_zero": true,
+    "full_vs_best_nonfull_regret_ci_upper_lt_zero": false,
+    "invalid_recall_absolute_floor_pass": true,
+    "leave_one_family_out_robust": true,
+    "min_per_state_recall_pass": true,
+    "no_external_adapter_overrides_action_logits": true,
+    "no_hidden_truth_used_by_estimator": true,
+    "policy_authenticity": true,
+    "reward_weight_stability_pass": true,
+    "selected_action_replication_noninferior": true,
+    "selected_action_validity_noninferior": true
+  },
+  "private_data_accessed": false,
+  "receipt_sources": {
+    "aggregate": "artifacts/tier1_p233_r1_final_atomic_target/aggregate_promotion.json",
+    "attribution": "artifacts/tier1_p233_r1_final_atomic_target/attribution.json",
+    "convergence": "artifacts/tier1_p233_r1_final_atomic_target/convergence.json",
+    "estimator": "artifacts/tier1_p233_r1_final_atomic_target/coverage_calibration.json",
+    "leakage": "artifacts/tier1_p233_r1_final_atomic_target/counterfactual_leakage.json",
+    "loo": "artifacts/tier1_p233_r1_final_atomic_target/family_loo.json",
+    "matrix": "artifacts/tier1_p233_r1_final_atomic_target/matrix.json",
+    "shortcut": "artifacts/tier1_p233_r1_final_atomic_target/shortcut_probe_result.json",
+    "stability": "artifacts/tier1_p233_r1_final_atomic_target/reward_weight_stability.json"
+  },
+  "schema_version": "pesco_p233_r1_gate_v1",
+  "status": "NO_GO",
+  "thresholds": {
+    "full_vs_asb_regret_noninferiority_margin": 0.01,
+    "invalid_recall_floor": 0.05,
+    "min_per_state_recall": 0.1,
+    "state_f1_noninferiority_margin": 0.02
+  }
+}

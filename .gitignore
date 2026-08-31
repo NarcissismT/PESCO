@@ -97,6 +97,13 @@ artifacts/tier1_p233_promotion_v5
 artifacts/tier1_p233_promotion_v5.sentinel
 artifacts/tier1_p233_shortcut_probe/run_manifest.json
 
+# P2.3.3-r1 tuning probes, chunked runs, and superseded candidates remain local.
+# Publish only the curated final atomic-target bundle and the gate invalidation receipt.
+artifacts/tier1_p233_r1_*
+!artifacts/tier1_p233_r1_final_atomic_target/
+!artifacts/tier1_p233_r1_final_atomic_target/**
+artifacts/tier1_p233_r1_final_atomic_target/matrix.json
+
 # 构建与系统文件
 build/
 dist/

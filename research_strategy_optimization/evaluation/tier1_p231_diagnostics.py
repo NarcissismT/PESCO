@@ -89,20 +89,51 @@ class P231Config:
     reward_scale: float = 1.0
     # P2.3.2 objective diagnostics.  ``sibling_advantage`` is the registered
     # branch-credit formulation; ``expected_utility`` is retained as a second
-    # formulation for the conflict audit.  PCGrad is optional and only changes
+    # formulation for the conflict audit. ``utility_cross_entropy`` is a
+    # receipt-derived proper action target used in r1 branch-objective search.
+    # ``top1_hinge`` is a conservative receipt-derived correction: it updates
+    # only when the branch-winner action is not already ahead of its strongest
+    # competitor, avoiding utility degradation on already-correct decisions.
+    # PCGrad is optional and only changes
     # how auxiliary branch/flip gradients are combined, never the evaluator.
     branch_formulation: str = "sibling_advantage"
     gradient_mode: str = "sum"
+    pcgrad_auxiliary_conflict: bool = False
+    pcgrad_auxiliary_orthogonal: bool = False
+    # Optional authenticity diagnostic: route the Branch auxiliary through the
+    # in-network branch residual only.  The residual exists in every cell, but
+    # its gradient is enabled only when the Branch switch is on.
+    branch_head_isolated: bool = False
+    flip_head_isolated: bool = False
     branch_question_normalize: bool = True
+    # Optional receipt-derived trust region for the Branch auxiliary.  When
+    # enabled, Branch updates are applied only to examples whose current
+    # expected atomic utility has not fallen below the common SFT reference by
+    # more than this tolerance.  This is the constrained utility safeguard
+    # proposed in the r1 feedback, not an evaluator-side selection rule.
+    branch_trust_region: bool = False
+    branch_trust_epsilon: float = 0.005
     # Direct evaluator-owned utility supervision is used only by methods that
     # explicitly consume all same-state branch receipts (Branch/FullInfo).  It
     # complements sibling advantages with a stable proper scoring target.
     utility_target_weight: float = 0.50
+    # Optional common atomic-utility target.  When non-zero it is applied to
+    # every authentic factorial cell, so the State/Branch/Flip switches remain
+    # the only between-cell objective differences.
+    atomic_target_weight: float = 0.0
     utility_temperature: float = 0.25
     # Registered public-state class weights; INVALID is intentionally upweighted
     # to enforce the preregistered per-state recall floor.
     state_class_weights: tuple[float, ...] | None = (3.0, 1.0, 1.0, 1.0)
     flip_reference_kl_weight: float = 0.50
+    # P2.3.3-r1 uses a strict factorial implementation: all eight factor cells
+    # share the same optimizer, schedule, checkpoint rule and network structure.
+    # Only the State/Branch/Flip objective switches may differ.
+    authentic_factorial: bool = False
+    # Deterministic all-action rollout used by an optional factorial variance
+    # diagnostic.  It keeps the same four action receipt budget while removing
+    # multinomial sampling noise from the policy-gradient update.
+    stratified_factorial: bool = False
 
 
 def _state_digest(state_dict: Mapping[str, Tensor]) -> str:
@@ -251,10 +282,31 @@ def _cosine(a: Tensor | None, b: Tensor | None) -> float | None:
     return float(torch.dot(a, b) / (na * nb))
 
 
-def _flat_grads(loss: Tensor, parameters: Sequence[Tensor]) -> Tensor:
-    grads = torch.autograd.grad(loss, parameters, retain_graph=True, allow_unused=True)
+def _flat_grads(loss: Tensor, parameters: Sequence[Tensor], *, retain_graph: bool = True) -> Tensor:
+    grads = torch.autograd.grad(loss, parameters, retain_graph=retain_graph, allow_unused=True)
     return torch.cat([(g.detach().reshape(-1) if g is not None else torch.zeros_like(p).reshape(-1))
                       for p, g in zip(parameters, grads)])
+
+
+def _branch_head_mask(parameters: Sequence[Tensor], *, only_branch_head: bool) -> Tensor:
+    """Flat gradient mask for the optional isolated branch residual."""
+    chunks = []
+    for parameter in parameters:
+        enabled = str(getattr(parameter, "_pesco_name", ""))
+        # Names are attached by _update_from_rollout immediately before use;
+        # absent names conservatively disable the mask rather than guessing.
+        keep = enabled.startswith("branch_head.") if only_branch_head else not enabled.startswith("branch_head.")
+        chunks.append(torch.ones_like(parameter).reshape(-1) if keep else torch.zeros_like(parameter).reshape(-1))
+    return torch.cat(chunks) if chunks else torch.zeros(0)
+
+
+def _named_head_mask(parameters: Sequence[Tensor], prefix: str, *, only_prefix: bool) -> Tensor:
+    chunks = []
+    for parameter in parameters:
+        name = str(getattr(parameter, "_pesco_name", ""))
+        keep = name.startswith(prefix) if only_prefix else not name.startswith(prefix)
+        chunks.append(torch.ones_like(parameter).reshape(-1) if keep else torch.zeros_like(parameter).reshape(-1))
+    return torch.cat(chunks) if chunks else torch.zeros(0)
 
 
 def _branch_objective(outputs: Mapping[str, Tensor], rollout: Mapping[str, Tensor], config: P231Config) -> Tensor:
@@ -263,6 +315,71 @@ def _branch_objective(outputs: Mapping[str, Tensor], rollout: Mapping[str, Tenso
     if utility_matrix is None:
         return outputs["action_logits"].sum() * 0.0
     probs = F.softmax(outputs["action_logits"], dim=-1)
+    eligibility = None
+    if bool(rollout.get("branch_trust_region", config.branch_trust_region)):
+        reference_probs = rollout.get("reference_action_probabilities")
+        if reference_probs is not None:
+            current_expected = (probs * utility_matrix.detach()).sum(dim=-1)
+            reference_expected = (reference_probs.detach() * utility_matrix.detach()).sum(dim=-1)
+            eligibility = (current_expected >= reference_expected - float(config.branch_trust_epsilon)).to(probs.dtype)
+    if str(config.branch_formulation) == "top1_hinge" or bool(rollout.get("branch_top1_hinge")):
+        targets = utility_matrix.argmax(dim=-1)
+        target_logits = outputs["action_logits"].gather(1, targets[:, None]).squeeze(1)
+        masked = outputs["action_logits"].clone()
+        masked.scatter_(1, targets[:, None], float("-inf"))
+        strongest_other = masked.max(dim=-1).values
+        per_example = F.relu(0.10 - (target_logits - strongest_other))
+        if eligibility is not None:
+            if not bool(eligibility.any()):
+                return per_example.sum() * 0.0
+            return (per_example * eligibility).sum() / eligibility.sum().clamp_min(1.0)
+        return per_example.mean()
+    if str(config.branch_formulation) == "soft_utility_cross_entropy" or bool(rollout.get("branch_soft_utility_cross_entropy")):
+        temperature = max(1e-3, float(config.utility_temperature))
+        targets = F.softmax(utility_matrix.detach() / temperature, dim=-1)
+        per_example = -(targets * F.log_softmax(outputs["action_logits"], dim=-1)).sum(dim=-1)
+        if eligibility is not None:
+            if not bool(eligibility.any()):
+                return per_example.sum() * 0.0
+            return (per_example * eligibility).sum() / eligibility.sum().clamp_min(1.0)
+        return per_example.mean()
+    if str(config.branch_formulation) == "utility_improvement_soft_ce" or bool(rollout.get("branch_utility_improvement_soft_ce")):
+        temperature = max(1e-3, float(config.utility_temperature))
+        targets = F.softmax(utility_matrix.detach() / temperature, dim=-1)
+        per_example = -(targets * F.log_softmax(outputs["action_logits"], dim=-1)).sum(dim=-1)
+        current_expected = (probs * utility_matrix.detach()).sum(dim=-1)
+        best_expected = utility_matrix.detach().max(dim=-1).values
+        gain = (best_expected - current_expected).clamp_min(0.0)
+        gain = gain / gain.mean().clamp_min(1e-6)
+        weighted = per_example * gain
+        if eligibility is not None:
+            if not bool(eligibility.any()):
+                return weighted.sum() * 0.0
+            return (weighted * eligibility).sum() / eligibility.sum().clamp_min(1.0)
+        return weighted.mean()
+    if str(config.branch_formulation) == "utility_improvement_expected" or bool(rollout.get("branch_utility_improvement_expected")):
+        current_expected = (probs * utility_matrix.detach()).sum(dim=-1)
+        best_expected = utility_matrix.detach().max(dim=-1).values
+        gain = (best_expected - current_expected).clamp_min(0.0)
+        gain = gain / gain.mean().clamp_min(1e-6)
+        weighted = -current_expected * gain
+        if eligibility is not None:
+            if not bool(eligibility.any()):
+                return weighted.sum() * 0.0
+            return (weighted * eligibility).sum() / eligibility.sum().clamp_min(1.0)
+        return weighted.mean()
+    if str(config.branch_formulation) == "utility_cross_entropy" or bool(rollout.get("branch_utility_cross_entropy")):
+        targets = utility_matrix.argmax(dim=-1)
+        per_example = F.cross_entropy(outputs["action_logits"], targets, reduction="none")
+        margin = torch.topk(utility_matrix.detach(), k=min(2, utility_matrix.shape[-1]), dim=-1).values
+        confidence = (margin[..., 0] - margin[..., 1]).clamp_min(0.0)
+        confidence = confidence / confidence.mean().clamp_min(1e-6)
+        weighted = per_example * confidence
+        if eligibility is not None:
+            if not bool(eligibility.any()):
+                return weighted.sum() * 0.0
+            return (weighted * eligibility).sum() / eligibility.sum().clamp_min(1.0)
+        return weighted.mean()
     if bool(rollout.get("full_info")) or bool(rollout.get("branch_expected_utility")) or str(config.branch_formulation) == "expected_utility":
         centered = utility_matrix - utility_matrix.mean(dim=-1, keepdim=True)
         loss = -(probs * centered.detach()).sum(dim=-1)
@@ -281,13 +398,26 @@ def _branch_objective(outputs: Mapping[str, Tensor], rollout: Mapping[str, Tenso
     margin = torch.topk(utility_matrix.detach(), k=min(2, utility_matrix.shape[-1]), dim=-1).values
     confidence = (margin[..., 0] - margin[..., 1]).clamp_min(0.0)
     confidence = confidence / confidence.mean().clamp_min(1e-6)
-    return (loss * confidence).mean()
+    weighted = loss * confidence
+    if eligibility is not None:
+        reference_probs = rollout.get("reference_action_probabilities")
+        if reference_probs is not None:
+            current_expected = (probs * utility_matrix.detach()).sum(dim=-1)
+            reference_expected = (reference_probs.detach() * utility_matrix.detach()).sum(dim=-1)
+            eligible = (current_expected >= reference_expected - float(config.branch_trust_epsilon)).to(weighted.dtype)
+            if bool(eligible.any()):
+                weighted = weighted * eligible
+                return weighted.sum() / eligible.sum().clamp_min(1.0)
+            return weighted.sum() * 0.0
+    return weighted.mean()
 
 
 def _update_from_rollout(policy: DifferentiableStrategyPolicy, reference: DifferentiableStrategyPolicy, rollout: Mapping[str, Tensor], config: P231Config, *, optimizer: torch.optim.Optimizer, grpo: bool, branch: bool, state: bool, full_info: bool = False) -> dict:
     features = rollout["features"]; actions = rollout["actions"]; advantages = rollout["advantages"].detach(); old_logprob = rollout["old_logprob"].detach();
     losses=[]; clip_fractions=[]; kls=[]; entropies=[]; grad_norms=[]; branch_cos=[]; state_flip_cos=[]; option_flip_cos=[]
     parameters = [parameter for parameter in policy.parameters() if parameter.requires_grad]
+    for name, parameter in policy.named_parameters():
+        parameter._pesco_name = name
     flip_loss_fn = rollout.get("flip_loss_fn")
     for _ in range(max(1, int(config.minibatch_epochs))):
         outputs = policy(features); log_probs = F.log_softmax(outputs["action_logits"], dim=-1); sampled_logprob = log_probs.gather(1, actions); ratio = torch.exp(sampled_logprob - old_logprob)
@@ -349,13 +479,60 @@ def _update_from_rollout(policy: DifferentiableStrategyPolicy, reference: Differ
         pairwise_weight = float(rollout.get("pairwise_loss_weight", config.pairwise_weight))
         total = main_loss + branch_weight * branch_loss + pairwise_weight * flip_loss
         frozen_action = bool(rollout.get("freeze_action_checkpoint"))
-        branch_vec = None if frozen_action else (_flat_grads(branch_loss, parameters) if branch else None)
-        flip_vec = None if frozen_action else (_flat_grads(flip_loss, parameters) if callable(flip_loss_fn) else None)
-        main_vec = _flat_grads(main_loss, parameters)
-        branch_cos.append(_cosine(main_vec, branch_vec)); state_flip_cos.append(_cosine(_flat_grads(state_loss, parameters) if state and state_loss.requires_grad else None, flip_vec)); option_flip_cos.append(_cosine(None if frozen_action or not option_loss.requires_grad else _flat_grads(option_loss, parameters), flip_vec))
+        # PCGrad needs separate auxiliary vectors.  Avoid retaining and probing
+        # three additional graphs for state/option diagnostics in this mode:
+        # the branch/main projection is the registered conflict audit, while
+        # state/option cosine receipts are still emitted as null when the
+        # optimized path cannot compute them without an extra graph traversal.
+        use_pcgrad = str(config.gradient_mode).lower() == "pcgrad"
+        pcgrad_active = bool(use_pcgrad and not frozen_action and (branch or callable(flip_loss_fn)))
+        branch_vec = None if frozen_action else (_flat_grads(branch_loss, parameters, retain_graph=True) if branch else None)
+        flip_vec = None if frozen_action else (_flat_grads(flip_loss, parameters, retain_graph=True) if callable(flip_loss_fn) else None)
+        # Keep the graph for the ordinary backward/diagnostic path.  When
+        # PCGrad is active, the main vector is the final autograd traversal and
+        # can release its graph immediately after the branch/flip vectors.
+        main_vec = _flat_grads(main_loss, parameters, retain_graph=not pcgrad_active)
+        if bool(config.branch_head_isolated) and branch_vec is not None:
+            # The branch residual is a dedicated auxiliary capacity: Branch
+            # gradients update it, while the protected utility and Flip paths
+            # cannot rewrite it (or vice versa).
+            branch_mask = _branch_head_mask(parameters, only_branch_head=True).to(branch_vec)
+            non_branch_mask = _branch_head_mask(parameters, only_branch_head=False).to(branch_vec)
+            branch_vec = branch_vec * branch_mask
+            main_vec = main_vec * non_branch_mask
+            if flip_vec is not None:
+                flip_vec = flip_vec * non_branch_mask
+        if bool(config.flip_head_isolated) and flip_vec is not None:
+            # The Flip residual is likewise protected from main/Branch writes;
+            # Flip itself may update the shared action path so PairRank remains
+            # a genuine learned policy property rather than a detached head.
+            non_flip_mask = _named_head_mask(parameters, "flip_head.", only_prefix=False).to(flip_vec)
+            # Flip may still update the shared action path (and therefore learn
+            # genuine reversal ranking); only the protected main/Branch paths
+            # are prevented from overwriting the Flip residual.
+            main_vec = main_vec * non_flip_mask
+            if branch_vec is not None:
+                branch_vec = branch_vec * non_flip_mask
+        branch_cos.append(_cosine(main_vec, branch_vec))
+        if pcgrad_active:
+            state_flip_cos.append(None); option_flip_cos.append(None)
+        else:
+            state_flip_cos.append(_cosine(_flat_grads(state_loss, parameters) if state and state_loss.requires_grad else None, flip_vec)); option_flip_cos.append(_cosine(None if frozen_action or not option_loss.requires_grad else _flat_grads(option_loss, parameters), flip_vec))
         optimizer.zero_grad(set_to_none=True)
-        if str(config.gradient_mode).lower() == "pcgrad" and (branch_vec is not None or flip_vec is not None):
+        if pcgrad_active and (branch_vec is not None or flip_vec is not None):
             # Project each auxiliary gradient away from a conflicting main vector.
+            if bool(config.pcgrad_auxiliary_conflict) and branch_vec is not None and flip_vec is not None:
+                aux_dot = torch.dot(branch_vec, flip_vec)
+                if bool(config.pcgrad_auxiliary_orthogonal):
+                    branch_vec = branch_vec - aux_dot / (torch.dot(flip_vec, flip_vec) + 1e-12) * flip_vec
+                    aux_dot = torch.dot(flip_vec, branch_vec)
+                    flip_vec = flip_vec - aux_dot / (torch.dot(branch_vec, branch_vec) + 1e-12) * branch_vec
+                elif float(aux_dot) < 0.0:
+                    denom = torch.dot(flip_vec, flip_vec) + 1e-12
+                    branch_vec = branch_vec - aux_dot / denom * flip_vec
+                    aux_dot = torch.dot(flip_vec, branch_vec)
+                    if float(aux_dot) < 0.0:
+                        flip_vec = flip_vec - aux_dot / (torch.dot(branch_vec, branch_vec) + 1e-12) * branch_vec
             projected = main_vec.clone()
             for vec, weight in ((branch_vec, branch_weight), (flip_vec, pairwise_weight)):
                 if vec is None:
@@ -372,6 +549,186 @@ def _update_from_rollout(policy: DifferentiableStrategyPolicy, reference: Differ
         grad_norm=float(torch.nn.utils.clip_grad_norm_(policy.parameters(), float(config.gradient_clip_norm))); optimizer.step()
         losses.append(float(total.detach())); kls.append(float(kl.detach())); entropies.append(float(entropy.detach())); grad_norms.append(grad_norm)
     return {"loss": sum(losses)/len(losses), "option_loss": float(option_loss.detach()), "branch_loss": float(branch_loss.detach()), "utility_target_loss": float(utility_target_loss.detach()), "state_loss": float(state_loss.detach()), "flip_loss": float(flip_loss.detach()), "clip_fraction": sum(clip_fractions)/len(clip_fractions), "kl": sum(kls)/len(kls), "entropy": sum(entropies)/len(entropies), "gradient_norm": sum(grad_norms)/len(grad_norms), "branch_main_gradient_cosine": sum(v for v in branch_cos if v is not None) / max(1, sum(v is not None for v in branch_cos)), "state_flip_gradient_cosine": sum(v for v in state_flip_cos if v is not None) / max(1, sum(v is not None for v in state_flip_cos)), "option_flip_gradient_cosine": sum(v for v in option_flip_cos if v is not None) / max(1, sum(v is not None for v in option_flip_cos)), "minibatch_epochs": int(config.minibatch_epochs), "frozen_rollout": True, "importance_ratio_mean": float(ratio.detach().mean()), "importance_ratio_max_abs_delta": float(torch.abs(ratio.detach() - 1.0).max())}
+
+
+def _r1_factor_flags(method: str) -> tuple[bool, bool, bool]:
+    """Return the registered (State, Branch, Flip) switches for r1 cells."""
+
+    table = {
+        "GRPO-Atomic": (False, False, False),
+        "Atomic+State": (True, False, False),
+        "Atomic+Branch": (False, True, False),
+        "Atomic+Flip": (False, False, True),
+        "Atomic+State+Branch": (True, True, False),
+        "Atomic+State+Flip": (True, False, True),
+        "Atomic+Branch+Flip": (False, True, True),
+        "PESCO-Full": (True, True, True),
+    }
+    if str(method) not in table:
+        raise ValueError(f"not a P2.3.3-r1 factorial method: {method}")
+    return table[str(method)]
+
+
+def fit_rollout_method_authentic_factorial(
+    dataset: DecisionDataset,
+    sft_policy: DifferentiableStrategyPolicy,
+    method: str,
+    config: P231Config,
+    canonical_pairs: Sequence[Any],
+) -> tuple[DifferentiableStrategyPolicy, dict]:
+    """Train one pure factorial cell with no external action adapter.
+
+    Every cell starts from the exact supplied SFT state and consumes the same
+    clipped-atomic rollout/update schedule.  Branch and Flip add only their
+    registered differentiable losses; State adds only state supervision and the
+    fixed public state-conditioning path.  No checkpoint selection, RF adapter,
+    hidden label, or method-specific learning-rate change is permitted.
+    """
+
+    use_state, use_branch, use_flip = _r1_factor_flags(method)
+    policy = copy.deepcopy(sft_policy)
+    reference = sft_policy.clone_frozen()
+    # Explicitly remove any legacy adapter fields if a caller hands us a policy
+    # produced by an older diagnostic.  Evaluation itself never consults these.
+    for attr in ("full_public_adapter", "full_public_adapter_fallback", "full_public_adapter_threshold"):
+        if hasattr(policy, attr):
+            delattr(policy, attr)
+    policy.use_state_conditioning = bool(use_state)
+    policy.state_conditioning_scale = 0.2
+    policy.use_branch_head = bool(use_branch)
+    policy.branch_conditioning_scale = 0.2
+    policy.use_flip_head = bool(use_flip)
+    policy.flip_conditioning_scale = 1.0
+    # SFT's public calibrator is shared unchanged; all cells use the same state
+    # representation and differ only in whether state loss/conditioning is active.
+    policy.use_state_calibrator = bool(getattr(sft_policy, "use_state_calibrator", True))
+    optimizer = torch.optim.Adam(policy.parameters(), lr=float(config.learning_rate))
+    generator = torch.Generator().manual_seed(int(config.seed) + 8101)
+    train = [example for example in dataset.examples if example.split == "train"] or list(dataset.examples)
+    train_indices = {index for index, example in enumerate(dataset.examples) if example.split == "train"}
+    train_pairs = [pair for pair in canonical_pairs if int(pair.left) in train_indices and int(pair.right) in train_indices]
+    fixed_features = torch.stack([observation_to_features(example.observation) for example in dataset.examples])
+    with torch.no_grad():
+        before_logits = policy(fixed_features)["action_logits"].detach().clone()
+        before_actions = before_logits.argmax(dim=-1)
+    logs: list[dict[str, Any]] = []
+    for step in range(max(1, int(config.finetune_steps))):
+        batch_size = min(len(train), max(2, int(config.batch_size)))
+        start = (int(step) * batch_size) % max(1, len(train))
+        batch = [train[(start + offset) % len(train)] for offset in range(batch_size)]
+        rollout = _rollout(policy, batch, config, generator, "atomic", stratified=bool(config.stratified_factorial))
+        rollout["all_rewards"] = torch.stack([reward_tensors(example, reward_scale=config.reward_scale)["atomic"] for example in batch])
+        rollout.update({
+            "full_info": False,
+            "utility_only": False,
+            "utility_target": bool(config.atomic_target_weight > 0.0),
+            "utility_target_weight": float(config.atomic_target_weight),
+            "state_loss_weight": float(config.state_weight),
+            "action_state_constraint": False,
+            "freeze_action_checkpoint": False,
+            "branch_loss_weight": float(config.branch_loss_weight) if use_branch else 0.0,
+            "branch_expected_utility": str(config.branch_formulation) == "expected_utility",
+            "branch_question_normalize": bool(config.branch_question_normalize),
+            "branch_trust_region": bool(config.branch_trust_region),
+            "pairwise_loss_weight": float(config.pairwise_weight) if use_flip else 0.0,
+        })
+        if use_branch and bool(config.branch_trust_region):
+            with torch.no_grad():
+                rollout["reference_action_probabilities"] = F.softmax(reference(rollout["features"])["action_logits"], dim=-1)
+        if use_flip and train_pairs:
+            pair_width = min(64, len(train_pairs))
+            pair_start = (int(step) * pair_width) % len(train_pairs)
+            pair_batch = [train_pairs[(pair_start + offset) % len(train_pairs)] for offset in range(pair_width)]
+            flip_examples = [dataset.examples[int(pair.left)] for pair in pair_batch] + [dataset.examples[int(pair.right)] for pair in pair_batch]
+            flip_actions = [(pair.action_left, pair.action_right) for pair in pair_batch] + [(pair.action_right, pair.action_left) for pair in pair_batch]
+            flip_weights = torch.tensor([max(1e-6, float(getattr(pair, "weight", 1.0))) for pair in pair_batch] * 2, dtype=torch.float32)
+            flip_features = torch.stack([observation_to_features(example.observation) for example in flip_examples])
+            flip_chosen = torch.tensor([ACTION_SET.index(chosen) for chosen, _ in flip_actions], dtype=torch.long)
+            flip_rejected = torch.tensor([ACTION_SET.index(rejected) for _, rejected in flip_actions], dtype=torch.long)
+            def flip_loss_fn(current_policy: DifferentiableStrategyPolicy, flip_features=flip_features, flip_chosen=flip_chosen, flip_rejected=flip_rejected, flip_weights=flip_weights):
+                current_logits = current_policy(flip_features)["action_logits"]
+                log_probs = F.log_softmax(current_logits, dim=-1)
+                margins = log_probs.gather(1, flip_chosen[:, None]).squeeze(1) - log_probs.gather(1, flip_rejected[:, None]).squeeze(1)
+                weights = flip_weights.to(margins.device)
+                pair_loss = -(weights * F.logsigmoid(margins)).sum() / weights.sum().clamp_min(1e-6)
+                if float(config.flip_reference_kl_weight) > 0.0:
+                    with torch.no_grad():
+                        ref_logits = reference(flip_features)["action_logits"]
+                    pair_loss = pair_loss + float(config.flip_reference_kl_weight) * F.kl_div(log_probs, F.softmax(ref_logits, dim=-1), reduction="batchmean")
+                return pair_loss
+            rollout["flip_loss_fn"] = flip_loss_fn
+        row = _update_from_rollout(
+            policy, reference, rollout, config, optimizer=optimizer, grpo=True,
+            branch=use_branch, state=use_state, full_info=False,
+        )
+        row.update({
+            "step": int(step), "method": str(method), "canonical_method": str(method),
+            "atomic_reward_shared": True, "factor_use_state": bool(use_state),
+            "factor_use_branch": bool(use_branch), "factor_use_flip": bool(use_flip),
+            "authentic_factorial": True, "external_adapter_used": False,
+            "rollout_sample_count": len(batch) * int(config.rollout_group_size),
+            "policy_rollout_calls": len(batch) * int(config.rollout_group_size),
+            # All factor cells consume the same frozen four-branch receipt set;
+            # the switch only controls whether the corresponding differentiable
+            # objective is applied.  Accounting must therefore not vary with the
+            # objective flag.
+            "counterfactual_branch_calls": len(batch) * 4,
+            "exploration_seed_executions": len(batch) * 4 * 8,
+            "confirmation_seed_executions": len(batch) * 4 * 8,
+            "optimizer_steps": int(config.minibatch_epochs),
+            "forward_backward_flops": int(len(batch) * int(config.rollout_group_size) * max(1, int(config.hidden_dim)) * 12),
+            "auxiliary_pair_forward_passes": 2 * min(64, len(train_pairs)) if use_flip else 0,
+        })
+        logs.append(row)
+    with torch.no_grad():
+        after_logits = policy(fixed_features)["action_logits"].detach().clone()
+        after_actions = after_logits.argmax(dim=-1)
+    def delta(prefix: str) -> float:
+        total = 0.0
+        for key, value in policy.state_dict().items():
+            if key.startswith(prefix) and key in sft_policy.state_dict():
+                total += float(torch.linalg.vector_norm(value.detach().cpu() - sft_policy.state_dict()[key].detach().cpu())) ** 2
+        return math.sqrt(total)
+    action_delta = delta("action_head.")
+    branch_head_delta = delta("branch_head.")
+    state_delta = delta("state_head.") + delta("state_calibrator.")
+    flip_delta = delta("flip_head.")
+    trunk_delta = delta("trunk.")
+    action_change = torch.abs(after_logits - before_logits)
+    train_log = {
+        "method": str(method), "canonical_method": str(method), "optimizer": "GRPO",
+        "reward_name": "atomic", "atomic_reward_shared": True,
+        "factor_use_state": bool(use_state), "factor_use_branch": bool(use_branch), "factor_use_flip": bool(use_flip),
+        "authentic_factorial": True, "external_adapter_used": False,
+        "external_adapter_overrides_action_logits": False,
+        "checkpoint_guard": {"enabled": False, "selection_split": None, "selection_metric": None},
+        "train_canonical_pair_count": len(train_pairs), "logs": logs,
+        "initial_sft_digest": _state_digest(sft_policy.state_dict()),
+        "final_policy_digest": _state_digest(policy.state_dict()),
+        "optimizer_parameter_delta": bool(_state_digest(policy.state_dict()) != _state_digest(sft_policy.state_dict())),
+        "parameter_deltas": {
+            "trunk": trunk_delta, "action_head": action_delta,
+            "branch_head": branch_head_delta,
+            "flip_head": flip_delta, "state_head": state_delta,
+        },
+        "action_head_parameter_delta_norm": action_delta,
+        "branch_head_parameter_delta_norm": branch_head_delta,
+        "action_logits_change_mean_abs": float(action_change.mean()),
+        "action_logits_change_max_abs": float(action_change.max()),
+        "action_logits_changed_count": int((action_change > 1e-8).any(dim=-1).sum()),
+        "selected_action_change_count": int((before_actions != after_actions).sum()),
+        "selected_action_change_rate": float((before_actions != after_actions).float().mean()),
+        "no_external_adapter_overrides_action_logits": True,
+        "budget_contract": {
+            "policy_rollout_calls": sum(int(x.get("policy_rollout_calls", 0)) for x in logs),
+            "counterfactual_branch_calls": sum(int(x.get("counterfactual_branch_calls", 0)) for x in logs),
+            "exploration_seed_executions": sum(int(x.get("exploration_seed_executions", 0)) for x in logs),
+            "confirmation_seed_executions": sum(int(x.get("confirmation_seed_executions", 0)) for x in logs),
+            "optimizer_steps": sum(int(x.get("optimizer_steps", 0)) for x in logs),
+            "forward_backward_flops": sum(int(x.get("forward_backward_flops", 0)) for x in logs),
+        },
+    }
+    return policy, train_log
 
 
 def fit_rollout_method(dataset: DecisionDataset, sft_policy: DifferentiableStrategyPolicy, method: str, config: P231Config, canonical_pairs: Sequence[Any]) -> tuple[DifferentiableStrategyPolicy, dict]:
@@ -733,11 +1090,18 @@ def run_p231_dev_diagnostic(output_dir: str | Path, dataset: DecisionDataset, *,
         for split_name in selected_eval_splits:
             sft_row=evaluate_canonical_policy(sft_policy,dataset,split_name,canonical_pairs,canonical_pair_digest=canonical_payload["canonical_pair_digest"]); sft_row.update({"method":"SFT","seed":seed,"split":split_name,"initial_sft_digest":ck["state_dict_sha256"]}); records.append(sft_row)
         for method in methods:
-            policy,train_log=fit_rollout_method(dataset,sft_policy,method,seed_config,canonical_pairs); logs[str(seed)][method]=train_log
+            if bool(seed_config.authentic_factorial) and str(method) in {
+                "GRPO-Atomic", "Atomic+State", "Atomic+Branch", "Atomic+Flip",
+                "Atomic+State+Branch", "Atomic+State+Flip", "Atomic+Branch+Flip", "PESCO-Full",
+            }:
+                policy, train_log = fit_rollout_method_authentic_factorial(dataset, sft_policy, method, seed_config, canonical_pairs)
+            else:
+                policy, train_log = fit_rollout_method(dataset, sft_policy, method, seed_config, canonical_pairs)
+            logs[str(seed)][method]=train_log
             for split_name in selected_eval_splits:
                 row=evaluate_canonical_policy(policy,dataset,split_name,canonical_pairs,canonical_pair_digest=canonical_payload["canonical_pair_digest"],state_gate=False); row.update({"method":method,"seed":seed,"split":split_name,"initial_sft_digest":ck["state_dict_sha256"],"final_policy_digest":train_log["final_policy_digest"]}); records.append(row)
     result={"schema_version":"pesco_tier1_p231_optimizer_authenticity_diagnostic_v0.1","seeds":[int(s) for s in seeds],"methods":["SFT",*methods],"eval_splits":list(selected_eval_splits),"config":asdict(config),"canonical_pair_digest":canonical_payload["canonical_pair_digest"],"canonical_pair_count":len(canonical_rows),"canonical_pair_contract":contract_audit,"records":records,"training_logs":logs,"sft_checkpoints":checkpoints,"reward_tensor_audit":reward_audit,"optimizer_contract":{"rloo_no_clip":True,"grpo_old_logprob":True,"grpo_importance_ratio":True,"grpo_clipped_surrogate":True,"frozen_rollout_batch":True,"common_sft_checkpoint":True},"diagnostic_only":True,"formal_comparison_authorized":False}
     (output/"p231_result.json").write_text(json.dumps(result,indent=2,ensure_ascii=False,sort_keys=True),encoding="utf-8"); return result
 
 
-__all__=["P231Config","REWARD_COMPONENTS","TERMINAL_COMPONENTS","FOUR_STATE_COMPONENTS","reward_tensors","audit_reward_tensors","canonical_pair_payload","verify_canonical_pair_payload","save_sft_checkpoint","load_sft_checkpoint","fit_rollout_method","evaluate_canonical_policy","run_p231_dev_diagnostic"]
+__all__=["P231Config","REWARD_COMPONENTS","TERMINAL_COMPONENTS","FOUR_STATE_COMPONENTS","reward_tensors","audit_reward_tensors","canonical_pair_payload","verify_canonical_pair_payload","save_sft_checkpoint","load_sft_checkpoint","fit_rollout_method","fit_rollout_method_authentic_factorial","evaluate_canonical_policy","run_p231_dev_diagnostic"]
